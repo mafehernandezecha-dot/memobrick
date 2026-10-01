@@ -3237,3 +3237,8 @@ video{max-width:100%;height:auto;display:block}
 .sec-tip .st-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#5A6068}
 .sec-tip p{flex:1;margin:0;font-size:11.5px;line-height:1.45}
 @media screen and (max-width:980px){.sc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sec-tip{flex-wrap:wrap}}
+
+/* the hidden toast only slid 150% of its own height down from 26px above
+   the bottom edge, so an empty black pill stayed visible on every page */
+.toast:not(.on){opacity:0;visibility:hidden;pointer-events:none}
+.toast{transition:transform .25s ease,opacity .2s ease,visibility .2s}
