@@ -94,12 +94,13 @@ window.MB_BG_PHOTO_URLS = {
         <video id="heroVid" referrerpolicy="no-referrer" poster="{{ 'mb-hero-poster.jpg' | asset_url }}" data-poster-mobile="{{ 'mb-hero-mobile-poster.jpg' | asset_url }}" autoplay muted loop playsinline preload="metadata" aria-label="A customer's hands placing a brick while building their MemoBrick photo mosaic"></video>
         <button class="vidplay" id="heroPlay" aria-label="Play the video" hidden>▶</button>
       </figure>
-      <p class="lede">{{ section.settings.hero_text_1 }}</p>
-      <p class="lede">{{ section.settings.hero_text_2 }}</p>
+      <p class="lede lede-1">{{ section.settings.hero_text_1 }}</p>
+      <p class="lede lede-2">{{ section.settings.hero_text_2 }}</p>
       <div class="hero-cta">
         <a class="btn btn-red big" href="/pages/editor">{{ section.settings.hero_button_1 }}</a>
         <button class="btn btn-ghost big" data-go="freeproof">{{ section.settings.hero_button_2 }}</button>
       </div>
+      <p class="hero-from">From <b data-from-price>$35</b> · Made &amp; shipped from Miami in 2–4 days</p>
       <p class="hero-tertiary">Ordering 10 or more?
          <button class="linky2" data-go="corporate">Corporate &amp; bulk →</button></p>
       <div class="hero-trustbar">
@@ -109,6 +110,8 @@ window.MB_BG_PHOTO_URLS = {
         <span>Preview Before Ordering</span>
       </div>
     </div>
+    <!-- phones: a create button that stays in reach once the hero scrolls away -->
+    <a class="btn btn-red mob-cta" id="mobCta" href="/pages/editor" aria-hidden="true" tabindex="-1">Create yours <small>· from <span data-from-price>$35</span></small></a>
   <div class="wrap promo-strip">
     <p><b>Order early &amp; save 20%</b> — create your personalized gift before the holiday rush. Code <b>EARLYBIRD20</b> at checkout.</p>
   </div>

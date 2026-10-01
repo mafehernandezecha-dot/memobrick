@@ -1329,6 +1329,90 @@ if (burger && navLinks){
 })();
 
 
+/* "From $X": the cheapest size on sale, from the live catalog prices */
+(function fromPrice(){
+  const els = document.querySelectorAll("[data-from-price]");
+  if (!els.length || !SIZES.length) return;
+  const p = Math.min(...SIZES.map((z) => z.price).filter((v) => v > 0));
+  if (!isFinite(p)) return;
+  const txt = "$" + (p % 1 ? p.toFixed(2) : String(p));
+  els.forEach((el) => { el.textContent = txt; });
+})();
+
+/* PHONE: sticky create button, shown once the hero's own buttons have
+   scrolled out of view and hidden again near the bottom of the page. */
+(function mobileCta(){
+  const cta = document.getElementById("mobCta"), heroCta = document.querySelector(".hero-cta");
+  if (!cta || !heroCta) return;
+  if (document.querySelector('[id*="shopify-chat"], inbox-online-store-chat')) document.body.classList.add("has-chat");
+  let raf = 0;
+  const sync = () => {
+    raf = 0;
+    const home = cta.closest(".view");
+    const past = heroCta.getBoundingClientRect().bottom < 0;
+    const nearEnd = window.innerHeight + window.scrollY > document.documentElement.scrollHeight - 220;
+    // a section's own red button already on screen: don't stack a second one on it
+    const vh = window.innerHeight;
+    const otherCta = [...document.querySelectorAll("#view-home .btn-red")].some((el) => {
+      if (el === cta) return false;
+      const r = el.getBoundingClientRect();
+      return r.height > 0 && r.top < vh && r.bottom > vh*0.45;
+    });
+    const on = past && !nearEnd && !otherCta && !(home && home.hidden);
+    cta.classList.toggle("on", on);
+    cta.setAttribute("aria-hidden", on ? "false" : "true");
+    cta.tabIndex = on ? 0 : -1;
+  };
+  const ask = () => { if (!raf) raf = requestAnimationFrame(sync); };
+  window.addEventListener("scroll", ask, { passive: true });
+  window.addEventListener("resize", ask);
+  sync();
+})();
+
+/* PHONE: the customer-photo rails (reviews, "see what a photo becomes")
+   as real carousels — swipe, arrows and position dots, like desktop.
+   The rails themselves are painted above; this only adds the controls,
+   and keeps the dots right when "Show more reviews" adds cards. */
+(function phoneRails(){
+  ["#transformTrack", "#revTrack"].forEach((sel) => {
+    const track = document.querySelector(sel);
+    if (!track) return;
+    let rail = track.closest(".revrail");
+    if (!rail){
+      rail = document.createElement("div"); rail.className = "revrail";
+      track.parentNode.insertBefore(rail, track); rail.appendChild(track);
+      const mk = (cls, label, ch) => { const b = document.createElement("button"); b.type = "button";
+        b.className = "revnav " + cls; b.setAttribute("aria-label", label); b.textContent = ch; return b; };
+      const prev = mk("prev", "Previous", "\u2039"), next = mk("next", "Next", "\u203A");
+      rail.insertBefore(prev, track); rail.appendChild(next);
+      const step = () => { const c = track.children[0]; return c ? c.getBoundingClientRect().width + 12 : track.clientWidth*0.8; };
+      prev.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
+      next.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
+      const sync = () => { prev.disabled = track.scrollLeft < 8; next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8; };
+      track.addEventListener("scroll", sync, { passive: true }); window.addEventListener("resize", sync); sync();
+    }
+    rail.classList.add("phone-rail");
+    const dots = document.createElement("div"); dots.className = "rail-dots"; dots.setAttribute("aria-hidden", "true");
+    rail.parentNode.insertBefore(dots, rail.nextSibling);
+    const build = () => {
+      const n = track.children.length;
+      dots.innerHTML = n > 1 ? "<i></i>".repeat(Math.min(n, 12)) : "";
+      mark();
+    };
+    const mark = () => {
+      const n = track.children.length, c = track.children[0];
+      if (!c || n < 2) return;
+      const w = c.getBoundingClientRect().width + 12;
+      const idx = Math.min(n - 1, Math.round(track.scrollLeft / Math.max(1, w)));
+      const k = Math.min(n, 12), on = n <= 12 ? idx : Math.round(idx / (n - 1) * (k - 1));
+      [...dots.children].forEach((d, i) => d.classList.toggle("on", i === on));
+    };
+    track.addEventListener("scroll", mark, { passive: true });
+    new MutationObserver(build).observe(track, { childList: true });
+    build();
+  });
+})();
+
 /* no Creator on this page (product, cart, blog…): the site-wide parts above
    are all it needs */
 if (!document.getElementById("mosaic")) return;
