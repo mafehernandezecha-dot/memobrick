@@ -2606,7 +2606,7 @@ function analyzeExposure(img, faces){
    where it lands — the white-point stretch alone already lifts an evenly
    dark photo, and a curve sized without knowing that either doubled the
    lift or was cancelled by it. Returns the applied curve info or null. */
-function brightenSubject(buf, gw, gh, skinMask, cls){
+function brightenSubject(buf, gw, gh, skinMask, cls, shaded){
   const faceBased = !!(skinMask && skinMask.some((v) => v));
   const hist = new Uint32Array(256); let n = 0;
   for (let y = 0; y < gh; y++){
@@ -2620,10 +2620,13 @@ function brightenSubject(buf, gw, gh, skinMask, cls){
   const st = expoStats(hist, n);
   if (!st) return null;
   const now = st.median;
-  const target = cls === "veryDark" ? (faceBased ? 0.50 : 0.42) : (faceBased ? 0.46 : 0.38);
+  // a face in shade in a well-lit photo is brought up to the light the
+  // rest of the scene has, a little further than a generally dark photo
+  const shadedFace = !!(shaded && faceBased && cls === "dark");
+  const target = shadedFace ? 0.52 : cls === "veryDark" ? (faceBased ? 0.50 : 0.42) : (faceBased ? 0.46 : 0.38);
   if (now >= target - 0.02) return { before: now, after: now, e: 1, faceBased, curve: null };   // already there
   let e = Math.log(target) / Math.log(Math.max(0.04, now));
-  e = cls === "veryDark" ? clamp(e, 0.55, 1) : clamp(e, 0.72, 1);
+  e = cls === "veryDark" ? clamp(e, 0.55, 1) : clamp(e, shadedFace ? 0.60 : 0.72, 1);
   // highlight protection: brighter photos (real highlights) get an earlier shoulder
   let whole = 0, clipN = 0;
   for (let i = 0; i < buf.length; i += 3) if (0.2126*buf[i] + 0.7152*buf[i+1] + 0.0722*buf[i+2] >= 242) clipN++;
@@ -2710,6 +2713,31 @@ function applyExposureCurve(buf, lut, skinMask){
       nr = Y2 + (nr - Y2)*t; ng = Y2 + (ng - Y2)*t; nb = Y2 + (nb - Y2)*t;
     }
     buf[i] = nr; buf[i+1] = ng; buf[i+2] = nb;
+  }
+}
+/* Skin saturation guard. The black/white-point step stretches each colour
+   channel on its own: right for the photo as a whole, but on skin it
+   pushes red up and blue down, so natural skin (e.g. 130,90,73) comes out
+   as saturated orange-brown (125,75,52) and the palette answers with
+   Coffee/Brown bricks. For skin pixels only, the colour's strength
+   relative to its brightness is held to what the photo itself had (plus
+   5%); the new brightness and the white-balance hue are kept. Only ever
+   reduces saturation, never adds it. */
+function keepSkinSaturation(buf, pre, skinMask){
+  if (!skinMask) return;
+  for (let p = 0, i = 0; p < skinMask.length; p++, i += 3){
+    if (!skinMask[p]) continue;
+    const r0 = pre[i], g0 = pre[i+1], b0 = pre[i+2];
+    const Y0 = 0.2126*r0 + 0.7152*g0 + 0.0722*b0;
+    const r = buf[i], g = buf[i+1], b = buf[i+2];
+    const Y = 0.2126*r + 0.7152*g + 0.0722*b;
+    if (Y0 < 1 || Y < 1) continue;
+    const c0 = Math.hypot(r0 - Y0, g0 - Y0, b0 - Y0) / Y0;
+    const c = Math.hypot(r - Y, g - Y, b - Y) / Y;
+    const cap = c0 * 1.05;
+    if (c <= cap || c <= 0) continue;
+    const t = cap / c;
+    buf[i] = Y + (r - Y)*t; buf[i+1] = Y + (g - Y)*t; buf[i+2] = Y + (b - Y)*t;
   }
 }
 // analyse lazily on the first render of a photo (i.e. straight after
@@ -2846,6 +2874,9 @@ function draw(reuse){
     // stretch is itself a brightness gain, so smart auto-brightness governs
     // it: a TOO BRIGHT photo, or a dark photo the customer switched back to
     // "Original brightness", keeps only the black point (no gain)
+    // the photo's own colours before levels, kept so skin can be held to
+    // its natural saturation once the people's skin is known (below)
+    const preLevels = S.auto ? Float32Array.from(buf) : null;
     if (S.auto){
       const lev = measureLevels(toneSrc);
       const cls = expoCls();
@@ -2866,12 +2897,13 @@ function draw(reuse){
     const face = analyzeFaceRegions(buf, gw, gh, faceAlreadyConfirmed, mlFacesInGrid(gw, gh) || [], humanSkinInGrid(gw, gh));  // 1. human faces only; skin follows the real outline
     S.skinMask = face.mask; S.faceBoxes = face.boxes;
     S.regionMap = classifyRegions(buf, gw, gh, S.skinMask, S.faceBoxes);  // skin/hair/clothing/background — still used for photo enhancement below
+    if (preLevels) keepSkinSaturation(buf, preLevels, S.skinMask);  // levels must not turn skin orange
 
     // 3. smart auto-brightness: only for photos the upload analysis found
     // dark, sized on the subject (the real skin of the people, when there
     // are any) as it stands after step 2, before highlight recovery, HDR,
     // skin protection, sharpening and the palette/mosaic conversion
-    S.expoApplied = autoBrightActive() ? brightenSubject(buf, gw, gh, S.skinMask, S.expo.cls) : null;
+    S.expoApplied = autoBrightActive() ? brightenSubject(buf, gw, gh, S.skinMask, S.expo.cls, S.expo.shaded) : null;
 
     if (S.auto){
       recoverHighlights(buf, gw, gh, 35);                      // highlight recovery — keeps bright faces from clipping to white
