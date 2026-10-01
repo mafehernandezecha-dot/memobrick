@@ -3302,7 +3302,7 @@ video{max-width:100%;height:auto;display:block}
 /* the product photo shows the shape; the striped ratio swatch beside the title read as a missing image */
 #sizes .ratio{display:none}
 /* phones and tablets: the hero plays the short 12-second portrait clip
-   (mb-hero-719c221d.mp4, 0.7 MB) instead of the 31-second landscape one.
+   (mb-hero-short-hd.mp4: the 0.7 MB 420px original, upscaled to 720×1280 and sharpened, 2.7 MB) instead of the 31-second landscape one.
    Shown 4:5 and capped in height so the create button stays close below it. */
 @media(max-width:900px){
   .hero-img video{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;max-height:58vh}
