@@ -4259,6 +4259,19 @@ document.addEventListener("click", (e) => {
   requestAnimationFrame(() => {
     if (id === "top"){ window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // photos above the target (the reviews rail) finish loading during the
+    // smooth scroll and push the section down, so it used to stop short.
+    // Once the scroll settles, line it up again if it has moved.
+    let tries = 0, last = -1;
+    const settle = setInterval(() => {
+      const y = Math.round(window.scrollY);
+      if (y !== last){ last = y; return; }               // still scrolling
+      const want = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      const off = el.getBoundingClientRect().top - want;
+      if (Math.abs(off) > 12 && tries++ < 2){ last = -1; el.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+      clearInterval(settle);
+    }, 250);
+    setTimeout(() => clearInterval(settle), 6000);
   });
 });
 
