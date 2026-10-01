@@ -1,0 +1,9 @@
+{%- render 'site-header' -%}
+<div class="wrap" style="padding:40px 20px 80px;max-width:900px">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">MemoBrick</p>
+  <h1 style="font-family:var(--display);font-size:28px">Gift card</h1>
+  <p style="font-size:22px;font-weight:700">{{ gift_card.balance | money }}</p>
+  <p style="font-family:var(--mono)">{{ gift_card.code }}</p>
+  <p style="margin-top:32px"><a href="/" style="color:var(--b-blue);font-weight:600">&larr; Back to MemoBrick</a></p>
+</div>
+{%- render 'site-footer' -%}

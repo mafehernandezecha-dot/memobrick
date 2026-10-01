@@ -1,0 +1,65 @@
+{%- comment -%}
+  Was missing the site header/footer, and every result — including
+  products — rendered as a plain text link with no image or price. For a
+  visitor actively searching (high intent), that's a weak result page.
+  Now shows product results as real cards matching the site's other
+  product grids, with a proper empty-state that still offers somewhere
+  to go instead of a dead end.
+{%- endcomment -%}
+{%- render 'site-header' -%}
+<div class="wrap" style="padding:48px 20px 90px;max-width:1100px">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">MemoBrick</p>
+  <h1 style="font-family:var(--display);font-size:32px;margin:10px 0 22px">Search</h1>
+
+  <form action="/search" style="max-width:460px;margin:0 0 32px;display:flex;gap:8px">
+    <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search MemoBrick"
+      style="flex:1;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;font-family:var(--body);font-size:15px;background:var(--paper);color:var(--ink)">
+    <button type="submit" class="btn btn-red">Search</button>
+  </form>
+
+  {%- if search.performed -%}
+    {%- if search.results_count > 0 -%}
+      <p style="color:var(--ink-2);font-size:14px;margin:0 0 20px">{{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for "{{ search.terms | escape }}"</p>
+      <div class="shopcard-grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            <a class="shopcard" href="{{ item.url }}">
+              {%- if item.featured_image -%}
+                <img referrerpolicy="no-referrer" src="{{ item.featured_image | image_url: width: 400 }}"
+                  alt="{{ item.title | escape }}" loading="lazy" onerror="this.style.display='none'">
+              {%- endif -%}
+              <span class="shopcard-title">{{ item.title | escape }}</span>
+              <span class="shopcard-price">
+                {{ item.price_min | money }}
+                {%- if item.compare_at_price_min > item.price_min -%}
+                  <s>{{ item.compare_at_price_min | money }}</s>
+                {%- endif -%}
+              </span>
+            </a>
+          {%- else -%}
+            <a class="shopcard" href="{{ item.url }}">
+              <span class="shopcard-title" style="padding-top:16px">{{ item.title | escape }}</span>
+              {%- if item.content -%}
+                <span class="shopcard-price">{{ item.content | strip_html | truncate: 90 }}</span>
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="fp-form-card fp-link-card">
+        <p class="fp-link-lede">No results for "{{ search.terms | escape }}". Try a different word, or jump straight to:</p>
+        <div class="notfound-links" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:460px;margin:18px auto 0">
+          <a class="btn btn-ghost" href="/pages/editor">Start designing</a>
+          <a class="btn btn-ghost" href="/collections/catalogue-picture">Ready-made designs</a>
+          <a class="btn btn-ghost" href="/pages/how-it-works">How it works</a>
+          <a class="btn btn-ghost" href="/pages/faqs">FAQs</a>
+        </div>
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <p style="color:var(--ink-2)">Search for sizes, designs, or a question you have.</p>
+  {%- endif -%}
+</div>
+{%- render 'site-footer' -%}
+<style>@media(max-width:420px){.notfound-links{grid-template-columns:1fr}}</style>

@@ -1,0 +1,1428 @@
+{%- comment -%}
+  The complete MemoBrick storefront.
+{%- endcomment -%}
+{%- render 'memobrick-catalog' -%}
+<script>
+window.MB_SAMPLE_PORTRAIT_URL = "{{ 'mb-256ed61735.jpg' | asset_url }}";
+window.MB_PACKAGE_GIF_URL = "{{ 'mb-package-unbox.webp' | asset_url }}";
+window.MB_BG_PHOTO_URLS = {
+  rainbowTunnel: "{{ 'bg-rainbow-tunnel.jpg' | asset_url }}",
+  pinkCyan: "{{ 'bg-pink-cyan-gradient.jpg' | asset_url }}",
+  colorSwirl: "{{ 'bg-color-swirl.jpg' | asset_url }}",
+  rainbowStudio: "{{ 'bg-rainbow-studio.jpg' | asset_url }}",
+  paintSplatterWarm: "{{ 'bg-paint-splatter-warm.jpg' | asset_url }}",
+  paintSplatterWhite: "{{ 'bg-paint-splatter-white.jpg' | asset_url }}",
+  watercolorStripes: "{{ 'bg-watercolor-stripes.jpg' | asset_url }}",
+  rainbowVortex: "{{ 'bg-rainbow-vortex.jpg' | asset_url }}",
+  sunsetGradient: "{{ 'bg-sunset-gradient.jpg' | asset_url }}",
+  bokehBlur: "{{ 'bg-bokeh-blur.jpg' | asset_url }}",
+  colorBlobs: "{{ 'bg-color-blobs.jpg' | asset_url }}",
+  marbleSwirl: "{{ 'bg-marble-swirl.jpg' | asset_url }}",
+  waveArt: "{{ 'bg-wave-art.jpg' | asset_url }}",
+  palmSunset: "{{ 'bg-palm-sunset.jpg' | asset_url }}",
+  purpleOceanSunset: "{{ 'bg-purple-ocean-sunset.jpg' | asset_url }}",
+  watercolorSky: "{{ 'bg-watercolor-sky.jpg' | asset_url }}",
+  tropicalLagoon: "{{ 'bg-tropical-lagoon.jpg' | asset_url }}",
+  pastelBeachSunset: "{{ 'bg-pastel-beach-sunset.jpg' | asset_url }}",
+  watercolorBeach: "{{ 'bg-watercolor-beach.jpg' | asset_url }}",
+  papercutWaves: "{{ 'bg-papercut-waves.jpg' | asset_url }}",
+  paintTexturePink: "{{ 'bg-paint-texture-pink.jpg' | asset_url }}",
+  paintTextureTeal: "{{ 'bg-paint-texture-teal.jpg' | asset_url }}",
+  inkSwirl: "{{ 'bg-ink-swirl.jpg' | asset_url }}",
+  inkSplash: "{{ 'bg-ink-splash.jpg' | asset_url }}",
+  cartoonClouds: "{{ 'bg-cartoon-clouds.jpg' | asset_url }}"
+};
+</script>
+
+
+<header class="nav">
+  <div class="rainbow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap nav-in">
+    <a class="logo" href="/"><img referrerpolicy="no-referrer" class="logo-img" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Camara_Memobrick_1_copy_4_1c73c4e8-ec38-42a5-9d06-8513ecc122fb.png" alt="MemoBrick" onerror="this.style.display='none'"></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a class="navlink" href="/pages/editor">Create</a>
+      <button data-go="freeproof" class="navlink">Let us design it</button>
+      <a href="/collections/catalogue-picture">Ready-made designs</a>
+      <button data-go="corporate" class="navlink">Corporate &amp; bulk</button>
+      <a href="#reviews">Reviews</a>
+      <a href="#how">How it works</a>
+      {% for blog in blogs %}{% if forloop.first %}<a href="{{ blog.url }}">Blog</a>{% endif %}{% endfor %}
+      <a class="btn btn-red" href="/pages/editor">Create My MemoBrick</a>
+    </nav>
+    <div class="cart-wrap">
+      <a class="cart-icon" href="{{ routes.cart_url }}" id="cartIconBtn" aria-label="Cart, {{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %}" aria-expanded="false" aria-haspopup="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count" id="cartCount"{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+      <div class="cart-drawer" id="cartDrawer" hidden>
+        <div class="cart-drawer-head">
+          <b>Your cart</b>
+          <button class="cart-drawer-close" id="cartDrawerClose" aria-label="Close cart" type="button">&times;</button>
+        </div>
+        <div class="cart-ship-bar" id="cartShipBar" hidden>
+          <p class="cart-ship-msg" id="cartShipMsg"></p>
+          <div class="cart-ship-track"><div class="cart-ship-fill" id="cartShipFill"></div></div>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems"></div>
+        <div class="cart-drawer-foot" id="cartDrawerFoot" hidden>
+          <div class="cart-drawer-total">
+            <span>Subtotal</span>
+            <b id="cartDrawerTotal">$0.00</b>
+          </div>
+          <a class="btn btn-red" id="cartDrawerCheckout" href="/checkout">Checkout</a>
+          <a href="{{ routes.cart_url }}" class="cart-drawer-viewall">View full cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="view" id="view-home"{% if template.suffix == 'editor' %} hidden{% endif %}>
+    <div class="wrap hero">
+      <p class="eyebrow">{{ section.settings.hero_eyebrow }}</p>
+      <h1>{{ section.settings.hero_heading }}</h1>
+      <div class="rail" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <figure class="hero-img">
+        <video id="heroVid" referrerpolicy="no-referrer" poster="{{ 'mb-hero-poster.jpg' | asset_url }}" data-poster-mobile="{{ 'mb-hero-mobile-poster.jpg' | asset_url }}" autoplay muted loop playsinline preload="metadata" aria-label="A customer's hands placing a brick while building their MemoBrick photo mosaic"></video>
+        <button class="vidplay" id="heroPlay" aria-label="Play the video" hidden>▶</button>
+      </figure>
+      <p class="lede">{{ section.settings.hero_text_1 }}</p>
+      <p class="lede">{{ section.settings.hero_text_2 }}</p>
+      <div class="hero-cta">
+        <a class="btn btn-red big" href="/pages/editor">{{ section.settings.hero_button_1 }}</a>
+        <button class="btn btn-ghost big" data-go="freeproof">{{ section.settings.hero_button_2 }}</button>
+      </div>
+      <p class="hero-tertiary">Ordering 10 or more?
+         <button class="linky2" data-go="corporate">Corporate &amp; bulk →</button></p>
+      <div class="hero-trustbar">
+        <span class="htb-stars">★★★★★ <b>4.8</b> · 747 Reviews</span>
+        <span>Made &amp; Shipped from Miami</span>
+        <span>40+ Colors</span>
+        <span>Preview Before Ordering</span>
+      </div>
+    </div>
+  <div class="wrap promo-strip">
+    <p><b>Order early &amp; save 20%</b> — create your personalized gift before the holiday rush. Code <b>EARLYBIRD20</b> at checkout.</p>
+  </div>
+
+  <section id="transformations" data-accent="yellow">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Real builds, real people</p>
+        <h2>See what a photo becomes.</h2>
+        <p>Every photo below was taken by the customer who wrote the review — 747 of them, averaging 4.8 stars.</p>
+      </div>
+      <div class="rev-grid" id="transformTrack" data-count="3"></div>
+      <p style="text-align:center;margin-top:28px">
+        <a class="btn btn-red big" href="/pages/editor">See your photo in bricks</a>
+      </p>
+      <p style="text-align:center;margin-top:12px">
+        <a class="mini" href="/pages/happy-customers">See all 747 reviews →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="how" data-accent="blue">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Upload it. Create it. Build it.</h2>
+        <p>Prefer not to design it yourself? Our designers will create it for you — send a photo <button type="button" class="linky" data-go="freeproof">and get a free proof →</button></p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="k">STEP 01</span>
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 44V16m0 0l-11 11m11-11l11 11" stroke="#15171B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 44v6a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4v-6" stroke="#0A8FC9" stroke-width="2.5" stroke-linecap="round"></path></svg>
+          <h3>Upload</h3>
+          <p>Choose a photo you love.</p>
+        </article>
+        <article class="step">
+          <span class="k">STEP 02</span>
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="6" y="12" width="52" height="40" rx="5" fill="#ECEDEF" stroke="#15171B" stroke-width="2.5"></rect><circle cx="23" cy="27" r="6" fill="#F5C518"></circle><path d="M10 46l14-14 10 9 9-8 13 13" stroke="#15171B" stroke-width="2.5" stroke-linejoin="round"></path></svg>
+          <h3>Create</h3>
+          <p>Turn it into a MemoBrick and make it yours.</p>
+        </article>
+        <article class="step">
+          <span class="k">STEP 03</span>
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="10" y="8" width="44" height="48" rx="4" fill="#fff" stroke="#15171B" stroke-width="2.5"></rect><path d="M18 20h20M18 28h28M18 36h24" stroke="#8C9199" stroke-width="2.5" stroke-linecap="round"></path><circle cx="46" cy="46" r="9" fill="#1E8E4A"></circle><path d="M42 46l3 3 5-6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <h3>Order</h3>
+          <p>We prepare everything you need.</p>
+        </article>
+        <article class="step">
+          <span class="k">STEP 04</span>
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="18" width="20" height="14" rx="3" fill="#C41E1E"></rect><rect x="32" y="18" width="24" height="14" rx="3" fill="#0A8FC9"></rect><rect x="8" y="36" width="26" height="14" rx="3" fill="#F5C518"></rect><rect x="38" y="36" width="18" height="14" rx="3" fill="#15171B"></rect><path d="M12 14v-4M20 14v-4M40 14v-4M50 14v-4" stroke="#15171B" stroke-width="2.5" stroke-linecap="round"></path></svg>
+          <h3>Build</h3>
+          <p>Follow your personalized instructions and bring it to life.</p>
+        </article>
+      </div>
+      <p style="text-align:center;margin-top:36px">
+        <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="whatsinbox" data-accent="yellow" style="padding-top:0">
+    <div class="wrap">
+      <div class="unbox-teaser">
+        <img src="{{ 'mb-package-unbox.webp' | asset_url }}" alt="The MemoBrick kit arriving in its box, ready to build" loading="lazy" onerror="this.style.display='none'">
+        <div class="unbox-teaser-copy">
+          <p class="eyebrow">What actually shows up</p>
+          <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(26px,3vw,36px);margin:6px 0 14px">Everything you need is in the box.</h2>
+          <ul class="unbox-list">
+            <li>Custom 1×1 bricks, sorted into numbered bags</li>
+            <li>Baseplates for your exact size</li>
+            <li>Personalized building instructions made for your design</li>
+            <li>Everything else you need — nothing extra to buy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="press" data-accent="red" style="padding-top:64px">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">In the news</p>
+        <h2>MemoBrick on Fox News.</h2>
+      </div>
+      <div class="presswrap">
+        <div class="tvframe">
+          <a class="tvthumb" id="foxThumb" href="https://www.youtube.com/watch?v=_WrESPAjNjI" target="_blank" rel="noopener" aria-label="Watch the MemoBrick segment on Fox News">
+            <img referrerpolicy="no-referrer" src="{{ 'mb-0baf518b06.jpg' | asset_url }}" alt="MemoBrick featured on the Fox Holiday Gift Guide, with brick portraits and kits on the studio desk" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+            <span class="playbtn" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+            <span class="tvcap">Fox Holiday Gift Guide · watch the segment</span>
+          </a>
+        </div>
+        <aside class="presside">
+          <p class="pressk">As featured in</p>
+          <div class="presslogos">
+            <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Fox-News.png" alt="Fox News" loading="lazy" onerror="this.style.display='none'">
+            <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/NBC.png" alt="NBC" loading="lazy" onerror="this.style.display='none'">
+            <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/yahoo.png" alt="Yahoo" loading="lazy" onerror="this.style.display='none'">
+            <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Disrupt.png" alt="Disrupt" loading="lazy" onerror="this.style.display='none'">
+          </div>
+          <p class="presscopy">Alongside 747 reviews averaging 4.8 stars, and a design proof before anything is produced.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="padding:70px 0 0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Why MemoBrick</p>
+        <h2>A memory you keep. An experience you build.</h2>
+        <p>A photo you love becomes something you can hold — built brick by brick, and displayed because you made it yourself.</p>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <img referrerpolicy="no-referrer" src="{{ 'mb-eb56eea217.jpg' | asset_url }}" alt="An aeroplane leaving Miami" loading="lazy" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+          <div class="cap"><h3>Made &amp; shipped from Miami</h3><p>Your personalized kit, prepared in the USA.</p></div>
+        </article>
+        <article class="feature">
+          <img referrerpolicy="no-referrer" src="{{ 'mb-f3d3ed8181.jpg' | asset_url }}" alt="A pile of bricks in more than forty colors" loading="lazy" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+          <div class="cap"><h3>40+ colors</h3><p>More colors help bring your photo to life.</p></div>
+        </article>
+        <article class="feature">
+          <img referrerpolicy="no-referrer" src="{{ 'mb-2ad9d5b841.jpg' | asset_url }}" alt="A mosaic being customised on a baseplate" loading="lazy" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+          <div class="cap"><h3>Easy to build</h3><p>Follow personalized step-by-step instructions.</p></div>
+        </article>
+        <article class="feature">
+          <div class="feature-svg" style="aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center">
+            <svg width="120" height="90" viewBox="0 0 120 90" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="112" height="82" rx="4" fill="#ECEDEF" stroke="#15171B" stroke-width="2"></rect>
+              <rect x="34" y="20" width="52" height="40" rx="2" fill="#fff" stroke="#15171B" stroke-width="2"></rect>
+              <rect x="40" y="26" width="40" height="28" fill="#0A8FC9" opacity="0.18"></rect>
+              <path d="M40 46l8-10 8 7 8-9 16 14" stroke="#0A8FC9" stroke-width="2" stroke-linejoin="round" fill="none"></path>
+              <path d="M34 68h52M60 60v8" stroke="#15171B" stroke-width="1.5" stroke-dasharray="3 3"></path>
+              <path d="M12 20v40M108 20v40" stroke="#C41E1E" stroke-width="1.5" stroke-dasharray="3 3"></path>
+            </svg>
+          </div>
+          <div class="cap"><h3>Made from your photo</h3><p>Your own memory becomes something you can build and display.</p></div>
+        </article>
+      </div>
+      <p style="text-align:center;margin-top:36px">
+        <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="sizes" data-accent="green">
+    <div class="wrap">
+      <div class="sizes-top">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Sizes &amp; prices</p>
+          <h2>Choosing your size is easy.</h2>
+          <p>More detail in the photo usually benefits from a larger MemoBrick.</p>
+          <ul class="size-guide-list">
+            <li><b>1 person</b> — smaller sizes can work beautifully.</li>
+            <li><b>2 people</b> — choose more detail for clearer faces.</li>
+            <li><b>Family / group</b> — larger sizes help preserve facial detail.</li>
+          </ul>
+          <p class="size-guide-note"><b>Not sure?</b> The Creator helps you choose the right size for your photo.</p>
+          <p style="margin-top:16px">
+            <a class="btn btn-red" href="/pages/editor">Start with my photo</a>
+          </p>
+        </div>
+        <figure class="scaleview" id="scaleView"></figure>
+      </div>
+
+      <div class="sizetabs" id="sizeTabs" role="group" aria-label="Filter sizes by shape">
+        <button data-f="all" aria-pressed="true">All 20</button>
+        <button data-f="square" aria-pressed="false">Square</button>
+        <button data-f="portrait" aria-pressed="false">Portrait</button>
+        <button data-f="landscape" aria-pressed="false">Landscape</button>
+      </div>
+
+      <div class="sizes" id="sizeCards"></div>
+      <div class="more-wrap"><button class="btn btn-ghost" id="moreSizes">Show 12 more</button></div>
+      <p class="sizes-design-link">
+        Prefer to have us design it for you? <a id="sizesDesignLink" href="/pages/editor#design">Upload your photo &amp; checkout →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="giftinspo" data-accent="purple">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Every photo has a story</p>
+        <h2>From camera roll to unforgettable gift.</h2>
+        <p>Turn the photos sitting on your phone into something they can actually build and keep.</p>
+      </div>
+      <div class="giftinspo-tags">
+        <a href="/pages/editor">Couples</a>
+        <a href="/pages/editor">Family</a>
+        <a href="/pages/editor">Pets</a>
+        <a href="/pages/editor">Weddings</a>
+        <a href="/pages/editor">Babies</a>
+        <a href="/pages/editor">Travel</a>
+        <a href="/pages/editor">Birthdays</a>
+        <a href="/pages/editor">Anniversaries</a>
+        <a href="/pages/editor">Memorials</a>
+        <a href="/pages/editor">Holiday Gifts</a>
+      </div>
+      <p style="text-align:center;margin-top:28px">
+        <a class="btn btn-red big" href="/pages/editor">Create a gift</a>
+      </p>
+      {%- comment -%}
+        Step 12 (conversion cleanup pass): the Art Gift Kit used to be its
+        own full section with a large image, directly under this one —
+        two gift-themed sections back to back. Consolidated into a single
+        compact link here instead, since it's a related but genuinely
+        different offer (buy now, they choose the photo later) worth
+        keeping reachable without giving it equal homepage weight to the
+        main custom-photo journey.
+      {%- endcomment -%}
+      <p style="text-align:center;margin-top:14px;font-size:14px;color:var(--ink-2)">
+        Need a gift right now? <a href="/products/unlimited-memobrick" target="_blank" rel="noopener" style="color:var(--b-red);font-weight:600;text-decoration:underline">Buy the kit — they pick the photo later →</a>
+      </p>
+    </div>
+  </section>
+
+  {%- comment -%}
+    Step 3 (conversion cleanup pass): Ready-Made Designs and Corporate/Bulk
+    were removed as full homepage sections here. Corporate/Bulk was
+    already reachable via nav, hero, and footer links, so that removal
+    was safe on its own. Ready-Made Designs was NOT already linked
+    anywhere else — this theme's nav is hardcoded, not a dynamic Shopify
+    menu, and had no entry for it. Found during a bug check after the
+    fact and fixed by adding a real nav link (see the header markup)
+    rather than leaving the collection with no path to it at all.
+  {%- endcomment -%}
+
+  <section id="twoways" data-accent="blue" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Two ways to create</p>
+        <h2>Design it yourself, or let us design it.</h2>
+      </div>
+      <div class="twoways-grid">
+        <article class="twoways-card">
+          <p class="eyebrow">Option 1</p>
+          <h3>Create It Yourself</h3>
+          <p>Upload your photo, customize your MemoBrick and make it yours — live, in the free Creator.</p>
+          <ul class="twoways-list">
+            <li>You design and approve it yourself</li>
+            <li>See it change in real time</li>
+            <li>Ships 2–4 business days after you check out</li>
+          </ul>
+          <a class="btn btn-red full" href="/pages/editor">Start creating</a>
+        </article>
+        <article class="twoways-card">
+          <p class="eyebrow">Option 2</p>
+          <h3>Let Us Design It</h3>
+          <p>Send us your photo and let our designer prepare your MemoBrick — free to see, no obligation.</p>
+          <ul class="twoways-list">
+            <li>Our designer creates it for you after you send your photo</li>
+            <li>Unlimited revisions until you approve</li>
+            <li>Ships 2–4 business days after you approve</li>
+          </ul>
+          <a class="btn btn-ghost full" href="/pages/free-preview">Design it for me</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" data-accent="yellow">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Real builds, real people</p>
+        <h2>747 reviews. These are their photos.</h2>
+        <p>The proof before production, the hours spent building it together, and what happens when
+someone finally sees it. Every photo below was taken by the customer who wrote the review.</p>
+      </div>
+      <div class="revrail">
+          <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
+          <div class="rev-grid" id="revTrack"></div>
+          <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
+        </div>
+        <div class="revmore">
+          <button class="mini" id="revMore">Show more reviews</button>
+          <a class="mini" href="/pages/happy-customers" target="_blank" rel="noopener">
+            Read all 747 on memobrick.com</a>
+        </div>
+    </div>
+  </section>
+
+  <section id="faq" data-accent="orange" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">FAQs</p>
+        <h2>Before you order.</h2>
+      </div>
+      <div class="faq">
+        <details open=""><summary>Which photos work best?</summary><p>One clear subject filling most of the frame, lit from the front or the side. Busy backgrounds turn to noise at this resolution — crop in close with the slider above, and check the result at arm's length rather than nose-to-screen.</p></details>
+        <details><summary>Will it look like the preview?</summary><p>Yes, allowing for the fact that screens vary in brightness and color. The proof we email is generated from the same color matching you're using here.</p></details>
+        <details><summary>Does my photo leave my computer?</summary><p>Not in this Creator — the mosaic is built entirely in your browser. The image is only sent when you place an order or request a proof.</p></details>
+        <details><summary>Are the bricks compatible with the ones I own?</summary><p>MemoBrick uses standard 1×1 plates and compatible baseplates. Our 40+ color palette helps preserve skin tones, shadows and small details from your photo.</p></details>
+        <details><summary>How long does shipping take?</summary><p>Kits are made to order and normally dispatch in 2–4 business days, then travel by tracked post. Order tracking lives on the main site.</p></details>
+        <details><summary>What if a brick is missing?</summary><p>Send us the color name and count from your parts list and replacements go out free, for as long as you own the kit.</p></details>
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
+        <p style="margin-top:12px"><a href="/pages/free-preview" style="color:var(--ink-2);font-size:14px;text-decoration:underline">Not ready yet? Get a free proof first →</a></p>
+      </div>
+    </div>
+  </section>
+  </section>
+
+  <section class="view" id="view-design" hidden data-flow="designer_service">
+    <div class="wrap svc">
+      <a class="backlink" href="/">← Back to MemoBrick</a>
+      <ol class="steps3" id="steps3Svc" aria-label="Progress">
+        <li class="s1 on"><span class="n"><i class="num">1</i><i class="tick">✓</i></span><span class="t">Upload</span></li>
+        <li class="s2"><span class="n"><i class="num">2</i><i class="tick">✓</i></span><span class="t">Choose size</span></li>
+        <li class="s3"><span class="n"><i class="num">3</i><i class="tick">✓</i></span><span class="t">Checkout</span></li>
+      </ol>
+      <h2 class="svc-h">Let us create your MemoBrick.</h2>
+      <p class="svc-sub">Upload your photo, choose your size and place your order. Our designers create your
+         brick mosaic and send you a digital proof before production.</p>
+      <ul class="svc-trust">
+        <li>Design service included</li>
+        <li>Digital proof before production</li>
+        <li>Revisions before you approve</li>
+        <li>Made &amp; shipped from Miami</li>
+        <li>Your photo is attached securely to your order</li>
+      </ul>
+
+      <section class="svc-step" aria-labelledby="svcPhotoH">
+        <h3 id="svcPhotoH"><span class="sn">1</span> Your photo</h3>
+        <div class="dropwrap">
+          <label class="dropzone" id="svcDrop" for="svcFile" tabindex="0">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="7" y="14" width="50" height="38" rx="5"></rect>
+              <path d="M32 44V22m0 0l-9 9m9-9l9 9"></path></svg>
+            <b>Upload your photo</b>
+            <span>Drag &amp; drop or choose from your device</span>
+            <em class="fmt">JPG, PNG, HEIC and most photo formats</em>
+          </label>
+          <label class="sr-only" for="svcFile">Upload your photo</label>
+          <input type="file" id="svcFile" class="file-input" accept="image/*,.heic,.heif,.hif,.avif,.webp,.png,.jpg,.jpeg,.jfif,.tif,.tiff,.bmp">
+        </div>
+        <div class="svc-have" id="svcHave" hidden>
+          <img fetchpriority="high" id="svcThumb" alt="Your uploaded photo" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+          <div><b id="svcName">photo.jpg</b><span id="svcMeta">—</span></div>
+          <button class="mini" id="svcChange">Change photo</button>
+        </div>
+        <p class="fielderr" id="svcPhotoErr" role="alert" hidden>Add your photo before continuing.</p>
+      </section>
+
+      <section class="svc-step" aria-labelledby="svcSizeH">
+        <h3 id="svcSizeH"><span class="sn">2</span> Choose your size</h3>
+        <div class="svc-sizes" id="svcSizes" role="radiogroup" aria-label="MemoBrick size"></div>
+        <button class="mini" id="svcMoreSizes">Show all sizes</button>
+        <p class="fielderr" id="svcSizeErr" role="alert" hidden>Choose a size before continuing.</p>
+      </section>
+
+      <section class="svc-step" aria-labelledby="svcNotesH">
+        <h3 id="svcNotesH"><span class="sn">3</span> Design notes <em>optional</em></h3>
+        <label class="sr-only" for="svcNotes">Design notes</label>
+        <textarea id="svcNotes" rows="3" placeholder="Anything you'd like our designers to know? Example: focus on the couple, remove the background, make the dog more visible…"></textarea>
+      </section>
+
+      <div class="svc-buy buycard">
+        <p class="buyk">Your MemoBrick</p>
+        <p class="buyline"><span id="svcSizeLbl">20 × 20&quot;</span> · <span id="svcBricks">4,096 bricks</span>
+           · <span id="svcPlates">4 baseplates</span> · Design service included</p>
+        <div class="buyprice"><b id="svcPrice">$99.88</b><s id="svcWas"></s><span class="save" id="svcSave" hidden></span></div>
+        <button class="btn btn-red full buycta" id="svcCheckout">Checkout</button>
+        <p class="buynote">You'll receive a design proof before production.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-freeproof" hidden data-flow="free_proof">
+    <div class="wrap fp-wrap">
+      <a class="backlink" href="/">← Back to MemoBrick</a>
+
+      <div class="fp-hero">
+        <h2 class="fp-h">Not Sure How Your Photo Will Look? <span class="fp-h-accent">We'll Show You. Free.</span></h2>
+        <p class="fp-sub">Upload your photo and our designers will create a MemoBrick preview for you. No payment. No obligation.</p>
+        <p class="fp-trust">100% Free Proof · No Obligation · Made by a Real Designer</p>
+      </div>
+
+      <div class="fp-steps">
+        <div class="fp-step">
+          <span class="fp-step-ic fp-blue"><svg viewBox="0 0 24 24"><path d="M12 4v12m0-12l-5 5m5-5l5 5"></path><path d="M4 18v2h16v-2"></path></svg></span>
+          <b>1. Upload your photo</b>
+        </div>
+        <div class="fp-step">
+          <span class="fp-step-ic fp-pink"><svg viewBox="0 0 24 24"><path d="M15 4l5 5-9 9-5 1 1-5z"></path></svg></span>
+          <b>2. Our designer creates your MemoBrick</b>
+        </div>
+        <div class="fp-step">
+          <span class="fp-step-ic fp-mint"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+          <b>3. Receive your free proof</b>
+        </div>
+      </div>
+
+      <div class="fp-example">
+        <div class="fp-example-side">
+          <img class="fp-example-img" referrerpolicy="no-referrer" src="{{ 'mb-256ed61735.jpg' | asset_url }}" alt="An example reference photo — a close-cropped portrait" loading="lazy" onerror="this.style.display='none'">
+          <span>Your Photo</span>
+        </div>
+        <span class="fp-arrow">→</span>
+        <div class="fp-example-side">
+          <img class="fp-example-img" referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Custom-Memobrick-Photo-Mosaic-20x20.png?v=1788843352" alt="The same kind of photo turned into a MemoBrick mosaic" loading="lazy" onerror="this.style.display='none'">
+          <span>MemoBrick Preview</span>
+        </div>
+      </div>
+
+      {%- comment -%}
+        Was a Google Forms iframe embed + an explicit target="_blank" button
+        — both sent people off-site or degraded to a "click to open" card
+        under third-party-cookie blocking (Google's own embedding
+        limitation, not fixable from theme code). Then briefly a link out
+        to /pages/free-preview instead, since embedding Hulk's widget
+        directly here was unverified. Now embedded directly — same
+        pxFormGenerator div as the standalone page, keyed to the same
+        global theme setting, so both stay in sync automatically if the Form ID
+        ever changes. Falls back to linking to the standalone page only if
+        that setting is ever cleared.
+      {%- endcomment -%}
+      <div class="fp-form-card">
+        {%- if settings.hulk_freeproof_form_id != blank -%}
+          <div class="hulk-form-embed">
+            <div style="margin:0 auto;" class="pxFormGenerator" id="{{ settings.hulk_freeproof_form_id | escape }}"></div>
+          </div>
+        {%- else -%}
+          <div class="fp-link-card">
+            <p class="fp-link-lede">Fill out your details and upload your photo — our team will send your free proof by email.</p>
+            <a class="btn btn-red big" href="/pages/free-preview#proofForm">Request my free proof →</a>
+          </div>
+        {%- endif -%}
+      </div>
+      <p class="fp-note">No payment required. 100% free, no obligation.</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-corporate" hidden data-flow="corporate_bulk">
+    <div class="wrap corp">
+      <a class="backlink" href="/">← Back to MemoBrick</a>
+
+      <header class="corp-hero">
+        <p class="eyebrow">Corporate &amp; bulk</p>
+        <h2>Turn meaningful moments into unforgettable corporate gifts.</h2>
+        <p class="lede">Personalised MemoBrick kits for employees, clients, events and branded experiences —
+           from individual gifts to large collaborative installations.</p>
+        <div class="hero-cta">
+          <a class="btn btn-red big" href="#corpQuote">Request a quote</a>
+          <button class="btn btn-ghost big" data-go="upload">Start with your image</button>
+        </div>
+      </header>
+
+      <section class="corp-sec">
+        <h3>What we make for teams</h3>
+        <div class="corp-grid">
+          <article><b>Employee gifts</b><p>Celebrate milestones, anniversaries, holidays and achievements.</p></article>
+          <article><b>Client &amp; VIP gifts</b><p>A personalised gift people actually keep.</p></article>
+          <article><b>Events</b><p>Interactive brick mosaics for conferences, weddings, launches and celebrations.</p></article>
+          <article><b>Brand activations</b><p>Turn logos, artwork or campaigns into large collaborative builds.</p></article>
+          <article><b>Bulk personalised gifts</b><p>A different photo for every recipient, or one design for the group.</p></article>
+          <article><b>Large installations</b><p>Custom large-format mosaics for offices, venues and events.</p></article>
+        </div>
+      </section>
+
+      <section class="corp-sec">
+        <h3>How bulk orders work</h3>
+        <ol class="corp-steps">
+          <li><span>1</span><b>Tell us about the project</b><p>Quantity, size, deadline and idea.</p></li>
+          <li><span>2</span><b>Upload your artwork</b><p>Photo, logo or design.</p></li>
+          <li><span>3</span><b>We create your proof and quote</b><p>Our team confirms design, pricing and production timing.</p></li>
+          <li><span>4</span><b>We produce and ship</b><p>Everything together, or to multiple recipients where available.</p></li>
+        </ol>
+      </section>
+
+      <section class="corp-sec" id="corpQuote">
+        <h3>Request a bulk quote</h3>
+        {%- comment -%}
+          Prefers Hulk Form Builder (real file uploads for artwork/logos)
+          whenever a Form ID is set in the customizer — see the matching
+          comment on the Free Proof form above for how that embed works
+          and its fallback behavior. Native contact-form version below
+          keeps working exactly as before when no Hulk ID is set yet.
+        {%- endcomment -%}
+        <div class="corp-form-card">
+        {%- if section.settings.hulk_corporate_form_id != blank -%}
+          <div class="hulk-form-embed">
+            <div style="margin:0 auto;" class="pxFormGenerator" id="{{ section.settings.hulk_corporate_form_id }}"></div>
+          </div>
+        {%- else -%}
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <script>window.MB_CONTACT_FORM_SUCCESS = true;</script>
+            <div class="corp-done">
+              <b>Thank you — your request is in.</b>
+              <p>We reply by email, usually within one business day. Have reference photos, a logo
+                 or artwork? Just reply to our confirmation email with them attached.</p>
+            </div>
+          {% else %}
+            <form class="corp-form" id="corpForm" novalidate data-flow="corporate_bulk"
+                  action="{{ form.action|default: '' }}" method="post">
+              {% comment %} the form tag above already injects form_type + utf8 hidden fields {% endcomment %}
+              <div class="ff"><label for="cfName">Name <i>required</i></label>
+                <input id="cfName" name="contact[Name]" autocomplete="name" required></div>
+              <div class="ff"><label for="cfCompany">Company <i>required</i></label>
+                <input id="cfCompany" name="contact[Company]" autocomplete="organization" required></div>
+              <div class="ff"><label for="cfEmail">Work email <i>required</i></label>
+                <input id="cfEmail" name="contact[email]" type="email" autocomplete="email" required></div>
+              <div class="ff"><label for="cfPhone">Phone <i>optional</i></label>
+                <input id="cfPhone" name="contact[Phone]" type="tel" autocomplete="tel"></div>
+              <div class="ff"><label for="cfType">Project type <i>required</i></label>
+                <select id="cfType" name="contact[Project type]" required>
+                  <option value="">Choose one…</option>
+                  <option>Employee gifting</option><option>Client gifting</option><option>Event</option>
+                  <option>Brand activation</option><option>Large installation</option>
+                  <option>Wedding / celebration</option><option>Wholesale</option><option>Other</option>
+                </select></div>
+              <div class="ff"><label for="cfQty">Estimated quantity <i>required</i></label>
+                <select id="cfQty" name="contact[Quantity]" required>
+                  <option value="">Choose one…</option>
+                  <option>10–24</option><option>25–49</option><option>50–99</option>
+                  <option>100–249</option><option>250–499</option><option>500+</option>
+                </select></div>
+              <div class="ff"><label for="cfDate">Desired delivery date <i>optional</i></label>
+                <input id="cfDate" name="contact[Delivery date]" type="date"></div>
+              <div class="ff wide"><label for="cfMsg">Project details <i>required</i></label>
+                <textarea id="cfMsg" name="contact[body]" rows="4" required
+                  placeholder="Quantity, sizes, deadline and what you have in mind."></textarea>
+                <span class="ff-hint">Have reference photos, a logo or artwork? Submit this form first, then reply to
+                  our confirmation email with them attached — we can't accept file uploads here yet.</span></div>
+              <p class="fielderr" id="cfErr" role="alert" hidden></p>
+              <button class="btn btn-red big" type="submit" id="cfSubmit">Request my quote</button>
+              <p class="corp-note">We reply by email. Nothing is charged at this stage.</p>
+            </form>
+          {% endif %}
+        {% endform %}
+        {%- endif -%}
+        </div>
+      </section>
+
+      <section class="corp-sec corp-cta">
+        <h3>Planning something special?</h3>
+        <p>Tell us the quantity, deadline and idea, and we'll help you build the right MemoBrick experience.</p>
+        <a class="btn btn-red" href="#corpQuote">Request a bulk quote</a>
+      </section>
+    </div>
+  </section>
+
+  <section class="view" id="view-upload"{% unless template.suffix == 'editor' %} hidden{% endunless %}>
+    <div class="wrap upload-wrap">
+      <a class="backlink" href="/">← Back</a>
+      <ol class="steps3" id="steps3Up" aria-label="Progress">
+        <li class="s1"><span class="n"><i class="num">1</i><i class="tick">✓</i></span><span class="t">Upload your photo</span></li>
+        <li class="s2"><span class="n"><i class="num">2</i><i class="tick">✓</i></span><span class="t">Make it yours</span></li>
+        <li class="s3"><span class="n"><i class="num">3</i><i class="tick">✓</i></span><span class="t">Order your kit</span></li>
+      </ol>
+      <h2 class="upload-h">Turn your favourite photo into brick art.</h2>
+      <p class="upload-sub">Upload a photo and see your MemoBrick in seconds.</p>
+      <ul class="upbenefits">
+        <li>🔒 Your photo stays private</li>
+        <li>✨ Instant brick preview</li>
+        <li>🎨 40+ brick colors</li>
+      </ul>
+      <p class="upsize" id="upSize" hidden=""></p>
+
+      <div class="dropwrap">
+      <label class="dropzone" id="bigDrop" tabindex="0">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="7" y="14" width="50" height="38" rx="5"></rect>
+          <path d="M32 44V22m0 0l-9 9m9-9l9 9"></path>
+        </svg>
+        <b>Upload your photo</b>
+        <span>Drag &amp; drop or choose from your device</span>
+        <em class="fmt">JPG, PNG, HEIC and most photo formats</em>
+      </label>
+      <input type="file" id="file" class="file-input" accept="image/*,.heic,.heif">
+      </div>
+
+      <div class="finder">
+        <div class="findrow">
+          <span class="tsep">No photo to hand?</span>
+          <input type="search" id="findQ" placeholder="Search free photos — “golden retriever”, “bride”, “skyline”" aria-label="Search free photos">
+          <button class="btn btn-red" id="findGo">Search</button>
+        </div>
+        <p class="privline">🔒 Private by default — your photo is processed in your browser.</p>
+        <p class="findnote" id="findNote">Openly licensed photos, searched and loaded right here. You can also copy any
+           image and press <kbd>⌘</kbd><kbd>V</kbd> (or <kbd>Ctrl</kbd><kbd>V</kbd>).</p>
+        <div class="findgrid" id="findGrid" hidden></div>
+      </div>
+
+      <div class="whyhead">
+        <h3><span class="sp">✦</span> Why does this matter? <span class="sp">✦</span></h3>
+        <p>MemoBrick turns your photo into tiny bricks. These three things help us capture
+           the most detail and get the best result.</p>
+      </div>
+      <div class="whygrid upgrid">
+        <figure class="whycard"><span class="whyimg w1" role="img" style="background-image:url({{ 'mb-3b9218a097.jpg' | asset_url }})" aria-label="Fill the frame: a close-cropped portrait works, a full-body shot across a room does not"></span></figure>
+        <figure class="whycard"><span class="whyimg w2" role="img" style="background-image:url({{ 'mb-78f2097aeb.jpg' | asset_url }})" aria-label="Light on the face: front or side light works, a bright window behind does not"></span></figure>
+        <figure class="whycard"><span class="whyimg w3" role="img" style="background-image:url({{ 'mb-411d9fd9a3.jpg' | asset_url }})" aria-label="Keep the background quiet: a plain wall works, a busy patterned wall does not"></span></figure>
+      </div>
+      <p class="upload-foot">Not sure your photo will work? <button type="button" class="linky" data-go="freeproof">let us design it for you</button>.</p>
+    </div>
+  </section>
+
+  <section class="view" id="view-editor" hidden="">
+    <div class="ed-topbar" id="edTopbar">
+      <button class="ed-tb-back" data-go="upload">‹ <span>Back</span></button>
+      <button class="ed-tb-tour" data-tour-replay="" aria-label="Replay guided tour">? Tour</button>
+      <div class="ed-tb-meta">
+        <b id="edTopSize">20 × 20"</b>
+        <span class="ed-tb-price"><s id="edTopWas" hidden></s><b id="edTopPrice">$99.88</b></span>
+      </div>
+      <button class="ed-tb-finish" id="edTopFinish">Finish Editing <span>→</span></button>
+    </div>
+    <div class="wrap">
+      <div class="ed-head">
+        <button class="backlink" data-go="upload">← Change photo</button>
+        <ol class="steps3" id="steps3Ed" aria-label="Progress">
+        <li class="s1"><span class="n"><i class="num">1</i><i class="tick">✓</i></span><span class="t">Upload your photo</span></li>
+        <li class="s2"><span class="n"><i class="num">2</i><i class="tick">✓</i></span><span class="t">Make it yours</span></li>
+        <li class="s3"><span class="n"><i class="num">3</i><i class="tick">✓</i></span><span class="t">Order your kit</span></li>
+      </ol>
+        <h2 class="ed-h">Your memory, in bricks.</h2>
+        <div class="toptips">
+          <span class="tt-k">For the best result</span>
+          <ol>
+            <li><b>1</b> Fill the frame — crop to head and shoulders</li>
+            <li><b>2</b> Light on the face — not a window behind</li>
+            <li><b>3</b> Quiet background — a plain wall beats a busy one</li>
+          </ol>
+          <button class="mini" id="topTips">See examples</button>
+        </div>
+        <a class="tipslink sr-only" href="#edTips">Not reading well? See the photo tips ↓</a>
+      </div>
+    <div class="trustrow">
+        <a href="#reviews" class="tr-stars">★★★★★ <b>4.8</b> from 747 customers</a>
+        <span>Real customer photos</span>
+        <span>Free proof before production</span>
+        <span>Made &amp; shipped from Miami</span>
+      </div>
+      <!-- ============ MOBILE EDITOR (<=767px) ============
+     A dedicated shell, not the desktop editor restacked. Its controls drive
+     the same engine and the same state; nothing here duplicates image logic,
+     and no panel is ever moved around the DOM. -->
+<div class="mob" id="mob" hidden>
+  <!-- ZONE A — top info bar: always visible, never scrolls away -->
+  <header class="mob-top">
+    <button class="mob-back" id="mobBack" aria-label="Back to photo">‹ <span>Back</span></button>
+    <button class="mob-tour-btn" data-tour-replay="" aria-label="Replay guided tour">?</button>
+    <div class="mob-top-meta">
+      <b class="mob-top-size" id="mobTopSize">20 × 20"</b>
+      <span class="mob-top-price">
+        <s id="mobTopWas" hidden></s>
+        <b id="mobTopPrice">$99.88</b>
+      </span>
+    </div>
+    <button class="mob-finish" id="mobFinish">Finish Editing <span>→</span></button>
+  </header>
+
+  <!-- ZONE B — the live MemoBrick preview. This element is never removed,
+       hidden or replaced while a tool is open: every edit below is drawn
+       straight onto the same canvas the customer is already looking at. -->
+  <div class="mob-stage">
+    <div class="mob-preview" id="mobPreview"></div>
+    <div class="mob-stage-row">
+      <button class="mob-tips-link" id="mobTips">Photo tips</button>
+    </div>
+    <div class="mob-notice" id="mobNotice" hidden></div>
+  </div>
+
+  <!-- ZONE C — editing workspace. JS renders EITHER the step's tool cards
+       OR one active tool's bottom-sheet panel here. Nothing else in .mob
+       ever changes when the customer switches steps or tools. -->
+  <div class="mob-workspace" id="mobWorkspace" aria-live="polite"></div>
+</div>
+
+<div class="mob-sheet" id="mobSheet" hidden>
+  <div class="mob-sheet-card" role="dialog" aria-label="Photo tips">
+    <span class="mob-grab"></span>
+    <h3>Photo tips</h3>
+    <ul>
+      <li><b>Fill the frame</b> — crop in to head and shoulders.</li>
+      <li><b>Light on the face</b> — front or side, never a window behind.</li>
+      <li><b>Quiet background</b> — a plain wall beats a busy one.</li>
+    </ul>
+    <button class="mob-go" id="mobSheetClose">Got it</button>
+  </div>
+</div>
+
+<div class="bench">
+      <aside class="side" data-noedit="">
+        <nav class="edtabs" role="tablist" aria-label="Editing tools">
+          <button class="edtab" data-tab="panelPhoto" role="tab" aria-selected="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10.5" r="2"></circle><path d="M4 17l5-5 3.5 3.5L16 12l4 4"></path></svg>
+            <span>Photo</span>
+          </button>
+          <button class="edtab" data-tab="panelSize" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M4 12h16M12 4v16"></path></svg>
+            <span>Size</span>
+          </button>
+          <button class="edtab" data-tab="panelCrop" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg>
+            <span>Crop</span>
+          </button>
+          <button class="edtab" data-tab="panelBackgrounds" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5-9 9"></path></svg>
+            <span>Background</span>
+          </button>
+          <button class="edtab" data-tab="panelColors" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"></circle><circle cx="16" cy="8" r="3.2"></circle><circle cx="12" cy="16" r="3.2"></circle></svg>
+            <span>Colors</span>
+          </button>
+          <button class="edtab" data-tab="panelAdjust" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 12h4M12 12h8M4 17h9M17 17h3"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="12" r="2"></circle><circle cx="15" cy="17" r="2"></circle></svg>
+            <span>Adjust</span>
+          </button>
+          <button class="edtab" data-tab="panelStyles" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2z"></path><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"></path></svg>
+            <span>Styles</span>
+          </button>
+          <button class="edtab" data-tab="panelPaint" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24"><path d="M15 4l5 5-9 9-5 1 1-5z"></path><circle cx="6" cy="18" r="1.6"></circle></svg>
+            <span>Edit</span>
+          </button>
+        </nav>
+        <div class="side-scroll">
+
+          <details class="acc" data-acc="" open="" id="panelPhoto">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10.5" r="2"></circle><path d="M4 17l5-5 3.5 3.5L16 12l4 4"></path></svg>
+              <span><b>Photo</b><i id="accPhoto">Upload, drop or paste</i></span>
+            </summary>
+            <div class="acc-body">
+              <div class="curphoto">
+                <canvas id="thumb" width="132" height="132" aria-hidden="true"></canvas>
+                <div>
+                  <label class="mini full" id="uploadBtn" tabindex="0" role="button">Change photo</label>
+                  <p class="acc-help">Any format your phone or camera makes. Stays in your browser until you order.</p>
+                </div>
+              </div>
+              <div class="samples">
+                <span class="tsep">Need a photo?</span>
+                <button class="mini" data-go="upload">Search free photos</button>
+              </div>
+              <div class="photo-actions">
+                <button class="mini full" id="editCropBtn">Edit crop</button>
+                <button class="mini full" id="photoTipsBtn">ⓘ Photo tips</button>
+              </div>
+            </div>
+          </details>
+
+          <details class="acc" data-acc="" id="panelSize">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M4 12h16M12 4v16"></path></svg>
+              <span><b>Size</b><i id="accSize">20 × 20" · 4 baseplates</i></span>
+            </summary>
+            <div class="acc-body">
+                <div class="size-rec" id="sizeRec" hidden></div>
+                <div class="sizegrid" id="sizeGrid" role="group" aria-label="All sizes"></div>
+              {%- comment -%} kept (hidden) because the editor script still syncs it; every size is now a button above {%- endcomment -%}
+              <label class="sr-only" for="sizeAll">All sizes</label>
+              <select id="sizeAll" class="sizesel" hidden tabindex="-1" aria-hidden="true"></select>
+            </div>
+          </details>
+
+          <details class="acc" data-acc="" id="panelCrop">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><path d="M6 2v14a2 2 0 0 0 2 2h14"></path><path d="M18 22V8a2 2 0 0 0-2-2H2"></path></svg>
+              <span><b>Crop</b><i id="zoomVal2">100% zoom</i></span>
+            </summary>
+            <div class="acc-body">
+              <div class="lbl mt">Zoom &amp; crop <span id="zoomVal">100%</span></div>
+              <div class="zoomrow">
+                <button class="zbtn" id="zoomOut" aria-label="Zoom out">−</button>
+                <input type="range" id="zoom" min="50" max="300" value="100" step="1" aria-label="Zoom the crop">
+                <button class="zbtn" id="zoomIn" aria-label="Zoom in">+</button>
+              </div>
+              <button class="btn full" id="openCrop">Choose the area to build</button>
+              <div class="btnrow">
+                <button class="mini" id="autoCropFaces">Auto-crop to face</button>
+                <button class="mini" id="fitAll">Fit whole photo</button>
+                <button class="mini" id="resetCrop">Reset crop</button>
+              </div>
+              <p class="acc-help">Drag the picture to move the crop, or scroll to zoom.</p>
+
+              <div class="bgrow" id="bgRow" hidden="">
+                <span>Border brick</span>
+                <button class="sw" data-bg="#FEFEFE" aria-pressed="true" style="--c:#FEFEFE" title="White (037)"></button>
+                <button class="sw" data-bg="#A4A9AA" aria-pressed="false" style="--c:#A4A9AA" title="Stone Grey (036)"></button>
+                <button class="sw" data-bg="#111011" aria-pressed="false" style="--c:#111011" title="Black (001)"></button>
+                <button class="sw" data-bg="#BD3A32" aria-pressed="false" style="--c:#BD3A32" title="Red (026)"></button>
+                <button class="sw" data-bg="#2A63AC" aria-pressed="false" style="--c:#2A63AC" title="Deep Blue (013)"></button>
+                <button class="sw" data-bg="#F8D548" aria-pressed="false" style="--c:#F8D548" title="Yellow (011)"></button>
+                <button class="sw" data-bg="#F9D8C6" aria-pressed="false" style="--c:#F9D8C6" title="Cream (020)"></button>
+                <button class="sw" data-bg="#284C3C" aria-pressed="false" style="--c:#284C3C" title="Dark Green (023)"></button>
+              </div>
+            </div>
+          </details>
+
+          <details class="acc" data-acc="" id="panelColors">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3.2"></circle><circle cx="16" cy="8" r="3.2"></circle><circle cx="12" cy="16" r="3.2"></circle></svg>
+              <span><b>Colors</b><i id="accColors">Automatic selection</i></span>
+            </summary>
+            <div class="acc-body">
+              <div class="colorhead">
+                <span id="colorCount">— colors in this picture</span>
+                <button class="mini" id="colorRestoreAll" hidden="">Restore all colors</button>
+              </div>
+              <div class="colorgrid" id="colorGrid" role="group" aria-label="All MemoBrick colors — checked ones are used in your picture"></div>
+              <p class="acc-help">Colors with a checkmark are used in your picture right now. Tap any color to leave it out — MemoBrick will re-pick the nearest color for those bricks. Tap an excluded color again to bring it back.</p>
+            </div>
+          </details>
+
+          <details class="acc" data-acc="" id="panelBackgrounds">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5-9 9"></path></svg>
+              <span><b>Backgrounds</b><i id="accBackgrounds">Original photo</i></span>
+            </summary>
+            <div class="acc-body">
+              <p class="bg-status" id="bgStatus" hidden="" role="status" aria-live="polite"></p>
+              <button type="button" class="bgremove-cta" id="bgRemoveBtn" aria-pressed="false">
+                <svg viewBox="0 0 24 24"><path d="M3 3l18 18M10.5 4.5a7.5 7.5 0 0 1 9 9M6.3 6.3a7.5 7.5 0 0 0 9.4 9.4"></path></svg>
+                <span>
+                  <b>Remove background</b>
+                  <i>Keep just the person, unchanged — drop everything behind them</i>
+                </span>
+              </button>
+              <div class="bggrid" id="bgGrid" role="group" aria-label="Background styles"></div>
+              <label class="sr-only" for="bgUploadInput">Upload a custom background photo</label>
+              <input type="file" id="bgUploadInput" class="file-input" accept="image/*">
+            </div>
+          </details>
+
+          
+
+          
+
+          
+          
+          <details class="acc advanced" data-acc="" id="panelAdvanced">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 12h4M12 12h8M4 17h9M17 17h3"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="12" r="2"></circle><circle cx="15" cy="17" r="2"></circle></svg>
+              <span><b>Advanced adjustments</b><i>Optional — your design is already optimised</i></span>
+            </summary>
+            <div class="acc-body adv-body">
+              <p class="acc-help">Everything here is fine-tuning. The defaults are chosen to suit your photo.</p>
+<details class="acc" data-sub id="panelAdjust">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 12h4M12 12h8M4 17h9M17 17h3"></path><circle cx="16" cy="7" r="2"></circle><circle cx="10" cy="12" r="2"></circle><circle cx="15" cy="17" r="2"></circle></svg>
+              <span><b>Fine tuning</b><i>Brightness, detail, warmth</i></span>
+            </summary>
+            <div class="acc-body">
+              <div class="field">
+                <label class="label" for="warm">Warmth <span id="valWarm">35%</span></label>
+                <input type="range" id="warm" min="0" max="100" value="35" step="1">
+                <p class="fhelp">Reads the lighting in your photo and warms it by the right amount.
+                   Whites, skies and greens are protected. <button class="linky" id="warmAuto">Restore automatic warmth</button></p>
+              </div>
+              <div class="field">
+                <label class="label" for="shadows">Shadows <span id="valShadows">15%</span></label>
+                <input type="range" id="shadows" min="-100" max="100" value="15" step="1">
+                <p class="fhelp">Positive opens dark areas without washing the picture out. Negative deepens them.</p>
+              </div>
+              <div class="field">
+                <label class="label" for="det">Photo detail <span id="valDet">60%</span></label>
+                <input type="range" id="det" min="0" max="150" value="60" step="1">
+                <p class="fhelp">Sharpens at brick size. 40–60% keeps eyes readable.</p>
+              </div>
+              <div class="field">
+                <label class="label" for="bri">Brightness <span id="valBri">0</span></label>
+                <input type="range" id="bri" min="-100" max="100" value="0" step="1">
+              </div>
+              <div class="field">
+                <label class="label" for="con">Contrast <span id="valCon">+10</span></label>
+                <input type="range" id="con" min="-100" max="100" value="10" step="1">
+              </div>
+              <div class="field">
+                <label class="label" for="sat">Saturation <span id="valSat">+7</span></label>
+                <input type="range" id="sat" min="-100" max="100" value="7" step="1">
+              </div>
+              <div class="toggles" role="group" aria-label="Display options">
+                <button class="tog" id="togAuto" aria-pressed="true">Auto-fix photo</button>
+                <button class="tog" id="togStuds" aria-pressed="true">Show brick texture</button>
+                <button class="tog" id="togBoards" aria-pressed="false">Show baseplate grid</button>
+              </div>
+              <p class="fhelp">Reads your photo's lighting and faces and adjusts exposure, skin tones and detail automatically. Turn off to compare with the plain conversion.</p>
+              <button class="mini full mt" id="autoFix">Reset adjustments</button>
+            </div>
+          </details>
+
+<details class="acc" data-sub id="panelStyles">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2z"></path><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"></path></svg>
+              <span><b>Try Different Looks</b><i>A few ready-made styles to choose from</i></span>
+            </summary>
+            <div class="acc-body">
+              <div id="styleSuggestIdle">
+                <p class="acc-help">We'll create a few versions of your MemoBrick. Pick your favorite or keep your current design.</p>
+                <button class="mini full btn-gradient-cta" id="styleSuggestRun" style="color:#fff">✨ Show Me Different Looks</button>
+              </div>
+              <div id="styleSuggestWorking" hidden>
+                <p class="acc-help autofix-working-text" id="styleSuggestWorkingText">Generating options…</p>
+              </div>
+              <div id="styleSuggestResult" class="stylegrid" hidden></div>
+              <button class="mini full ghost" id="styleSuggestAgain" hidden>Show different options</button>
+            </div>
+          </details>
+<details class="acc" data-sub id="panelPaint">
+            <summary>
+              <svg class="ai" viewBox="0 0 24 24"><path d="M15 4l5 5-9 9-5 1 1-5z"></path><circle cx="6" cy="18" r="1.6"></circle></svg>
+              <span><b>Edit single bricks</b><i>Fix a stray brick by hand</i></span>
+            </summary>
+            <div class="acc-body">
+              <button class="tog full" id="togEdit" aria-pressed="false">Turn on brick editing</button>
+              <div class="editrow" id="editRow" hidden="">
+                <span>Brush</span>
+                <div class="brushtabs" id="brushTabs" role="tablist">
+                  <button type="button" class="brushtab" data-brushfilter="all" aria-selected="true">All colors</button>
+                  <button type="button" class="brushtab" data-brushfilter="skin" aria-selected="false">Skin only</button>
+                </div>
+                <div class="brushes" id="brushes"></div>
+                <div class="btnrow">
+                  <button class="mini" id="pickBtn" aria-pressed="false">Pick color</button>
+                  <button class="mini" id="undoBtn" data-undo title="Undo">↶ Undo</button>
+                  <button class="mini" id="redoBtn" data-redo title="Redo">↷ Redo</button>
+                  <button class="mini" id="clearEdits">Clear</button>
+                </div>
+                <div class="swapbox">
+                  <p class="lbl">Replace a whole color</p>
+                  <div class="swaprow">
+                    <label class="sr-only" for="swapFrom">Color to replace</label>
+                    <select id="swapFrom"></select>
+                    <span class="arrow" aria-hidden="true">→</span>
+                    <label class="sr-only" for="swapTo">New color</label>
+                    <select id="swapTo"></select>
+                  </div>
+                  <button class="mini full" id="swapGo">Replace color</button>
+                  <p class="acc-help" id="swapNote">Changes every brick of that color. One undo puts it back.</p>
+                </div>
+                <span class="editcount" id="editCount">nothing edited yet</span>
+              </div>
+              <p class="acc-help">Click or drag on the mosaic to place bricks. Alt-click lifts a color.</p>
+            </div>
+          </details>
+            </div>
+          </details>
+        </div>
+        <div class="side-foot buycard">
+            <p class="buyk">Your MemoBrick</p>
+            <p class="buyline"><span id="pcPieces">4,096 bricks</span> · <span id="pcBoards">4 baseplates</span>
+               · <span id="pcTime">About 4 h to build</span></p>
+            <div class="buyprice">
+              <b id="pcAmt">$99.88</b><s id="pcWas">$159</s><span class="save" id="pcSave">Save 37%</span>
+            </div>
+            <button class="addon" id="buildBtn" aria-pressed="false">Let us build it for you <b>$169</b></button>
+            <button class="mini full seespace" id="wallOpen2">See It in Your Space — see the real size</button>
+            <a class="btn btn-red full buycta" id="orderBtn" href="#" target="_blank" rel="noopener">Order My MemoBrick</a>
+            <ul class="buytrust">
+              <li>Free digital proof before production</li>
+              <li>Free revisions until you approve</li>
+              <li><span data-prodtime>Made &amp; shipped from Miami within 2–4 business days after approval.</span></li>
+            </ul>
+            <p class="buynote">Your design is saved with your order.</p>
+            <button class="designers" data-go="design">
+              Rather not design it yourself? <b>Let our designers do it</b></button>
+          </div>
+      </aside>
+
+      <div class="stage" data-noedit="">
+        <div class="stage-top">
+          <span class="chip" id="chipGrid">64 × 64 studs</span>
+          <span class="chip" id="chipPal">All 40 · max 18</span>
+          <span class="chip" id="chipSrc">No photo yet</span>
+        </div>
+        <div class="stage-view" id="stageView">
+        <div class="canvas-hold pannable empty" id="hold">
+          <canvas id="mosaic" width="1200" height="1200" aria-label="Live brick mosaic preview"></canvas>
+          <canvas id="photo" width="700" height="700" aria-hidden="true"></canvas>
+          <div class="tip" id="tip"><i></i><span></span></div>
+          <div class="drop">Drop your photo here</div>
+          <div class="crophint" id="cropHint"></div>
+          <label class="emptystate" id="emptyState" tabindex="0" role="button">
+            <svg viewBox="0 0 64 64" aria-hidden="true">
+              <rect x="7" y="14" width="50" height="38" rx="5"></rect>
+              <path d="M32 42V22m0 0l-8 8m8-8l8 8"></path>
+            </svg>
+            <b>Add your photo</b>
+            <span>Click to upload, or drop a file here</span>
+            <em>Any image format · stays in your browser</em>
+          </label>
+        </div>
+        </div>
+        <p class="sr-only" id="liveStatus" aria-live="polite"></p>
+
+          <div class="cropbar">
+            <div class="cb-txt">
+              <b>What you see here is what becomes your MemoBrick.</b>
+              <span>Move the frame over the part of the photo you want built.</span>
+            </div>
+            <button class="btn btn-blue" id="adjustCrop">Adjust crop &amp; zoom</button>
+            <button class="btn btn-blue big wallbtn" id="wallOpen">✨ See It in Your Space</button>
+          </div>
+        <div class="tbar tools">
+          <button class="mini" id="undoTop" data-undo title="Undo">↶ Undo</button>
+            <button class="mini" id="redoTop" data-redo title="Redo">↷ Redo</button>
+            <button class="mini" id="peekBtn">Hold to compare</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="parts" data-noedit="">
+      <div class="parts-head">
+        <h3>Your parts list</h3>
+        <p id="partsMeta">sorted into numbered bags</p>
+      </div>
+      <div class="colorbar" id="colorBar" aria-hidden="true"></div>
+      <div class="parts-grid" id="partsGrid"></div>
+    </div>
+      <section class="ed-tips" id="edTips">
+        <button class="tipstoggle" id="tipsToggle" aria-expanded="true" aria-controls="tipsBody">
+          <span class="ti" aria-hidden="true">?</span>
+          <span class="tt"><b>Photo tips — what makes a good mosaic</b>
+            <i>Fill the frame · light on the face · quiet background</i></span>
+          <span class="tc" aria-hidden="true">▾</span>
+        </button>
+        <div class="tipsbody" id="tipsBody">
+        <div class="whyhead">
+          <h3><span class="sp">✦</span> Why does this matter? <span class="sp">✦</span></h3>
+          <p>MemoBrick turns your photo into tiny bricks. These three things help us capture
+           the most detail and get the best result.</p>
+        </div>
+        <div class="whygrid">
+        <figure class="whycard"><span class="whyimg w1" role="img" style="background-image:url({{ 'mb-3b9218a097.jpg' | asset_url }})" aria-label="Fill the frame: a close-cropped portrait works, a full-body shot across a room does not"></span></figure>
+        <figure class="whycard"><span class="whyimg w2" role="img" style="background-image:url({{ 'mb-78f2097aeb.jpg' | asset_url }})" aria-label="Light on the face: front or side light works, a bright window behind does not"></span></figure>
+        <figure class="whycard"><span class="whyimg w3" role="img" style="background-image:url({{ 'mb-411d9fd9a3.jpg' | asset_url }})" aria-label="Keep the background quiet: a plain wall works, a busy patterned wall does not"></span></figure>
+      </div>
+      <div class="guide-cols">
+        <div class="tips">
+          <h3 class="tips-h">Seven moves that fix almost everything</h3>
+          <ol class="tips-list">
+            <li><b>Crop in first.</b> Use <span class="pill">+</span> and drag the picture until the subject fills the board. Do this before anything else — every other setting depends on it.</li>
+            <li><b>Can't bear to crop?</b> Hit <span class="pill">Fit whole photo</span> and choose a border brick. The margin becomes part of the design instead of a bad crop.</li>
+            <li><b>Leave <span class="pill">Auto levels</span> on.</b> It rescues flat, hazy and underexposed phone photos before a single brick is chosen. Turn it off only if your photo is already graded.</li>
+            <li><b>Push <span class="pill">Detail</span> to 40–60% for faces.</b> It sharpens at stud resolution, which is what keeps eyes and jawlines readable. Drop it near 0 for logos and flat graphics.</li>
+            <li><b>Keep <span class="pill">Blend shades</span> around 70–85% for people.</b> It mixes neighbouring bricks into shades we don't stock. For type, logos or bold graphics, drop it to 0 for clean edges.</li>
+            <li><b>Judge it with <span class="pill">Step-back view</span>.</b> Mosaics are built up close and looked at from across a room. Nose-to-screen is the wrong distance to make decisions at.</li>
+            <li><b>Fix the last few studs by hand.</b> <span class="pill">Touch up bricks</span> lets you place individual bricks — an eye that's gone soft or a stray dark stud on a cheek takes about thirty seconds.</li>
+          </ol>
+        </div>
+
+        <aside class="tips-side">
+          <img class="tips-gif" src="{{ 'mb-package-unbox.webp' | asset_url }}" alt="A MemoBrick mosaic coming together, brick by brick" loading="lazy" onerror="this.style.display='none'">
+          <h4>Rather not do it yourself?</h4>
+          <p class="tips-side-trust">★★★★★ <b>4.8</b> from 747 reviews</p>
+          <p>Send it over and our designers will create your design, then send a proof before production. If the photo won't work, we'll tell you honestly and suggest a crop or a bigger board.</p>
+          <button type="button" class="btn btn-red" data-go="freeproof">Get My Free Proof</button>
+          <blockquote class="tips-side-quote">
+            <p>"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form."</p>
+            <cite>— Aaron M., verified buyer</cite>
+          </blockquote>
+          <ul class="quicklist">
+            <li><b>Best subjects</b> faces, pets, weddings, houses, logos</li>
+            <li><b>Minimum quality</b> anything a phone shot in daylight</li>
+            <li><b>Avoid</b> heavy filters, screenshots of screens, dark night shots</li>
+            <li><b>More people</b> means a bigger board — see sizes above</li>
+          </ul>
+        </aside>
+      </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="rainbow foot-rainbow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="foot">
+      <a class="logo" href="/"><img referrerpolicy="no-referrer" class="logo-img" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Camara_Memobrick_1_copy_4_1c73c4e8-ec38-42a5-9d06-8513ecc122fb.png" alt="MemoBrick" onerror="this.style.display='none'"></a>
+      <nav class="foot-links">
+        <a href="/pages/how-it-works" target="_blank" rel="noopener">How it works</a>
+        <button type="button" class="linky" data-go="freeproof">Get My Free Proof</button>
+        <a href="/pages/happy-customers" target="_blank" rel="noopener">Reviews</a>
+        {%- assign blog_link = blank -%}
+        {%- assign blog_menu = linklists['our-blog'] -%}
+        {%- if blog_menu != blank and blog_menu.links.size > 0 -%}
+          {%- assign blog_link = blog_menu.links.first -%}
+        {%- endif -%}
+        {%- if blog_link == blank -%}
+          {%- for link in linklists['main-menu'].links -%}
+            {%- if link.title contains 'Blog' and blog_link == blank -%}{%- assign blog_link = link -%}{%- endif -%}
+          {%- endfor -%}
+          {%- for link in linklists['footer'].links -%}
+            {%- if link.title contains 'Blog' and blog_link == blank -%}{%- assign blog_link = link -%}{%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if blog_link != blank -%}<a href="{{ blog_link.url }}">Blog</a>{%- endif -%}
+        <a href="/pages/custom-brick-mosaics-for-brands" target="_blank" rel="noopener">Business services</a>
+        <a href="/collections/catalogue-picture">Ready-made designs</a>
+        <a href="{{ routes.account_url }}">Track your order</a>
+        <a href="#sizes">Sizes</a>
+        <a href="#giftinspo">Gift kit</a>
+        <a href="#faq">FAQs</a>
+        <button class="footlink" data-go="corporate">Corporate &amp; bulk</button>
+        <a href="/pages/contact-us" target="_blank" rel="noopener">Contact</a>
+        
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<div class="instructions" id="instructions" hidden="" data-noedit="">
+  <div class="ins-bar">
+    <strong>Build instructions</strong>
+    <span>Internal document — ships with the kit</span>
+    <button class="btn btn-red" id="insPrint">Download PDF</button>
+    <button class="mini" id="insClose">Close</button>
+  </div>
+  <div class="ins-sheets" id="insSheets"></div>
+</div>
+
+
+
+
+
+<div class="cms" id="cms" hidden data-editor-ui>
+  <div class="cms-bar">
+    <strong>Content editor</strong>
+    <span id="cmsCount">0 edits</span>
+    <span class="cms-hint">Click any text on the page to change it</span>
+    <button class="btn btn-red" id="cmsSave">Download updated site</button>
+    <button class="mini" id="cmsUndo">Undo all</button>
+    <button class="mini" id="cmsExit">Exit</button>
+  </div>
+</div>
+
+<div class="cropper" id="cropper" hidden>
+  <div class="cr-bar">
+    <strong>Choose the area to build</strong>
+    <span class="cr-hint">Drag the frame over the face · drag a corner to resize</span>
+    <button class="mini" id="crFill">Whole photo</button>
+    <button class="mini" id="crFace">Centre</button>
+    <button class="btn btn-red" id="crApply">Use this area</button>
+    <button class="mini" id="crCancel">Cancel</button>
+  </div>
+  <div class="cr-stage" id="crStage">
+    <img referrerpolicy="no-referrer" id="crImg" alt="Your photo, with a crop frame over it" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+    <div class="cr-shade" id="crShade"></div>
+    <div class="cr-frame" id="crFrame">
+      <span class="h nw"></span><span class="h ne"></span><span class="h sw"></span><span class="h se"></span>
+      <i></i><i></i>
+    </div>
+  </div>
+</div>
+
+<div class="buybar" id="buyBar" hidden>
+  <div class="bb-in">
+    <span class="bb-size" id="bbSize">20 × 20&quot;</span>
+    <span class="bb-price" id="bbPrice">$99.88</span>
+    <a class="btn btn-red" id="bbCta" href="#" target="_blank" rel="noopener">Order My MemoBrick</a>
+  </div>
+</div>
+<div class="tipsmodal" id="photoTipsModal" hidden role="dialog" aria-modal="true" aria-labelledby="photoTipsTitle">
+  <div class="tipsmodal-card">
+    <h3 id="photoTipsTitle">Photo tips</h3>
+    <p class="acc-help">For best results:</p>
+    <ul class="tipscheck">
+      <li>Use a clear photo</li>
+      <li>Keep faces large in the frame</li>
+      <li>Use good lighting</li>
+      <li>Avoid very busy backgrounds</li>
+      <li>Crop close to the important subject</li>
+    </ul>
+    <button class="btn full" id="photoTipsGotIt">Got it</button>
+  </div>
+</div>
+<div class="wallview" id="wallView" hidden role="dialog" aria-modal="true" aria-labelledby="wallTitle">
+  <div class="wv-bar">
+    <strong id="wallTitle">See It in Your Space</strong>
+    <span class="wv-sub">Your MemoBrick, at its real size</span>
+    <button class="mini" id="wallClose">← Back to editor</button>
+    <div class="wv-cta-wrap">
+      <button class="btn btn-red" id="wallCart">Looks Good — Order My MemoBrick</button>
+      <span class="wv-cta-note">Your design will be saved exactly as shown.</span>
+    </div>
+  </div>
+  <div class="roomsrcs" aria-hidden="true" hidden>
+  <img class="roomsrc r-living" id="roomImg-living" alt="" src="{{ 'mb-a25f3642f7.jpg' | asset_url }}" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+  <img class="roomsrc r-bedroom" id="roomImg-bedroom" alt="" src="{{ 'mb-b38be1a6cf.jpg' | asset_url }}" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+  <img class="roomsrc r-office" id="roomImg-office" alt="" src="{{ 'mb-64f3126123.jpg' | asset_url }}" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
+  </div>
+  <div class="wv-body">
+    <div class="wv-stage">
+      <canvas id="wallCanvas" width="1400" height="900" aria-label="Your MemoBrick shown on a wall"></canvas>
+      <p class="wv-drag" id="wallDragHint">Drag the artwork to reposition it</p>
+    </div>
+
+    <aside class="wv-panel">
+      <p class="wv-k">Mockup</p>
+
+      <label class="wv-lab" for="wallRoom">Room</label>
+      <select id="wallRoom">
+        <option value="living">Modern living room</option>
+        <option value="bedroom">Bedroom</option>
+        <option value="office">Home office</option>
+        <option value="nursery">Nursery / kids room</option>
+        <option value="gallery">Gallery wall</option>
+        <option value="statement">Large statement wall</option>
+        <option value="plain">Minimalist wall</option>
+      </select>
+      <label class="mini full ownroom" for="wallRoomFile" tabindex="0">Upload my room</label>
+      <input type="file" id="wallRoomFile" class="file-input" accept="image/*">
+
+      <label class="wv-lab" for="wallSizeSel">Size</label>
+      <select id="wallSizeSel"></select>
+
+      <label class="wv-lab" for="wallFrame">Frame</label>
+      <select id="wallFrame">
+        <option value="none">No frame</option>
+        <option value="black">Black frame</option>
+        <option value="oak">Oak frame</option>
+        <option value="white">White frame</option>
+      </select>
+      <p class="wv-note">Frames are sold separately — this is a preview only.</p>
+
+      <div class="wv-spec">
+        <span class="k">Your MemoBrick</span>
+        <b id="wallSize">20 × 20&quot;</b>
+        <span id="wallDims">Approx. 20 × 20 inches (51 × 51 cm)</span>
+        <span id="wallSpec">4,096 bricks · 4 baseplates</span>
+      </div>
+
+      <p class="wv-k">Compare sizes</p>
+      <div id="wallSizes"></div>
+      <span class="wv-hint">Same room, same photo — only the product size changes. Your design is untouched.</span>
+
+      <div class="wv-tune">
+        <label for="wallHeight">Wall height — sets the true size</label>
+        <input type="range" id="wallHeight" min="48" max="144" value="108" step="2">
+        <span id="wallHeightVal">9 ft wall</span>
+      </div>
+      <div class="btnrow">
+        <button class="mini" id="wallSmaller" aria-label="Show smaller">−</button>
+        <button class="mini" id="wallBigger" aria-label="Show larger">+</button>
+        <button class="mini" id="wallRotL" aria-label="Rotate left">↺</button>
+        <button class="mini" id="wallRotR" aria-label="Rotate right">↻</button>
+        <button class="mini" id="wallReset">Reset</button>
+        <button class="mini" id="wallDownload">Download</button>
+      </div>
+    </aside>
+  </div>
+</div>
+<script id="heroSrc" type="text/plain">{{ "mb-hero-build.mp4" | asset_url }}</script>
+<script id="heroSrcMobile" type="text/plain">{{ "mb-hero-mobile.mp4" | asset_url }}</script>
+<div class="toast" id="toast"></div>
+
+
+
+
+{% schema %}
+{
+  "name": "MemoBrick storefront",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero section"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow text",
+      "default": "Custom brick mosaics"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Headline",
+      "default": "Turn Your Favorite Photo Into a MemoBrick"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text_1",
+      "label": "First paragraph",
+      "default": "Turn a photo you love into a personalized brick mosaic you can build, display and keep forever."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text_2",
+      "label": "Second paragraph",
+      "default": "Prefer to leave it to us? Our designers will create your MemoBrick for you — free, before you decide."
+    },
+    {
+      "type": "text",
+      "id": "hero_button_1",
+      "label": "Primary button text",
+      "default": "Create My MemoBrick"
+    },
+    {
+      "type": "text",
+      "id": "hero_button_2",
+      "label": "Secondary button text",
+      "default": "Let Us Design It For You"
+    },
+    {
+      "type": "header",
+      "content": "Hulk Form Builder"
+    },
+    {
+      "type": "paragraph",
+      "content": "Create each form in the Hulk Form Builder app, enable the app embed for it under Theme settings → App embeds, then paste the Form ID below. The Free Proof form ID is set under Theme settings → Hulk Form Builder. Leave the corporate ID blank to keep the built-in fallback form (works, but can't accept a photo upload directly)."
+    },
+    {
+      "type": "text",
+      "id": "hulk_corporate_form_id",
+      "label": "Corporate quote — Hulk Form ID"
+    }
+  ]
+}
+{% endschema %}

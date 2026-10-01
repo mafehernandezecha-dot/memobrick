@@ -1,0 +1,73 @@
+{%- comment -%}
+  Standalone reviews page — the homepage's "Read all 747 on memobrick.com"
+  link already pointed at /pages/happy-customers before this template
+  existed, so this fills a gap the site was already expecting.
+
+  Reuses the same #revTrack/#revPrev/#revNext/#revMore markup and ids the
+  homepage uses — memobrick.js's realReviews() and reviews-rail code both
+  just do document.querySelector for these ids, so the same real review
+  data (customer photos included) powers this page automatically with no
+  new JS and no duplicated review array to keep in sync.
+
+  Known limitation: the review grid itself is rendered by JavaScript from
+  the REVIEWS array in memobrick.js, so it won't appear in view-source or
+  to a crawler that doesn't execute JS. The h1/intro and the
+  AggregateRating structured data below are server-rendered and always
+  present regardless. Moving REVIEWS into a Liquid-readable data source
+  (a metafield or JSON asset) would let the review grid itself be
+  server-rendered too — flagged as a follow-up, not done here, since it
+  changes how review data is maintained going forward.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "MemoBrick custom photo mosaic",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "747"
+  }
+}
+</script>
+
+{%- render 'site-header' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "MemoBrick", "item": {{ request.origin | append: '/' | json }} },
+    { "@type": "ListItem", "position": 2, "name": "Happy customers", "item": {{ canonical_url | json }} }
+  ]
+}
+</script>
+<div class="wrap" style="padding:48px 20px 20px;max-width:1160px">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">
+    <a href="/" style="color:inherit;text-decoration:none">MemoBrick</a> <span aria-hidden="true">›</span> Happy customers
+  </p>
+  <h1 style="font-family:var(--display);font-size:32px;letter-spacing:-.03em;margin:10px 0 8px">
+    747 reviews. These are their photos.
+  </h1>
+  <p style="color:var(--ink-2);font-size:16px;max-width:640px;margin:0 0 34px">
+    The proof before production, the hours spent building it together, and what happens when someone
+    finally sees it. Every photo below was taken by the customer who wrote the review.
+  </p>
+</div>
+
+<div class="wrap">
+  <div class="revrail">
+    <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
+    <div class="rev-grid" id="revTrack"></div>
+    <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
+  </div>
+  <div class="revmore">
+    <button class="mini" id="revMore">Show more reviews</button>
+    <a class="mini" href="https://loox.io/s/4JeBfbNCQq" target="_blank" rel="noopener">See the full feed on Loox</a>
+  </div>
+  <p style="text-align:center;margin:36px 0 70px">
+    <a class="btn btn-red" href="/pages/editor">Start designing your MemoBrick</a>
+  </p>
+</div>
+
+{%- render 'site-footer' -%}

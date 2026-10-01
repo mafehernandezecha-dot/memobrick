@@ -1,0 +1,8 @@
+{%- render 'site-header' -%}
+<div class="wrap" style="padding:40px 20px 80px;max-width:900px">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">MemoBrick</p>
+  <h1 style="font-family:var(--display);font-size:30px;margin:6px 0 18px">Collections</h1>
+  <ul>{% for c in collections %}<li style="margin:8px 0"><a href="{{ c.url }}">{{ c.title }}</a></li>{% endfor %}</ul>
+  <p style="margin-top:32px"><a href="/" style="color:var(--b-blue);font-weight:600">&larr; Back to MemoBrick</a></p>
+</div>
+{%- render 'site-footer' -%}
