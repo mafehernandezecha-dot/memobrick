@@ -123,14 +123,21 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
     const bySize = new Map(cat.sizes.map((s) => [String(s.id), s]));
     SIZES.forEach((size) => {
       const rec = bySize.get(String(size.id));
-      if (!rec || !rec.variants) return;
+      // in a real catalog but missing from it (product renamed, unpublished
+      // or not found by the Liquid lookup): checkout can't find a variant for
+      // it, so stop offering it at a stale hard-coded price — dropUnbuyableSizes
+      // below removes it. An empty catalog leaves every static size alone.
+      if (!rec || !rec.variants || !rec.variants.length){ if (cat.sizes.length) size.v = ""; return; }
       const kit = rec.variants.find((v) => !v.service && v.available) || rec.variants.find((v) => !v.service);
       const build = rec.variants.find((v) => v.service && v.available) || rec.variants.find((v) => v.service);
       if (kit && kit.price != null){
         size.price = Math.round((typeof kit.price === "number" ? kit.price : parseFloat(kit.price))) / 100;
-        size.was = (kit.compareAtPrice != null)
+        // a compare-at price that isn't above the price is no saving: showing it
+        // printed "Save 0%" (or a negative saving) next to the price
+        const cap = (kit.compareAtPrice != null)
           ? Math.round((typeof kit.compareAtPrice === "number" ? kit.compareAtPrice : parseFloat(kit.compareAtPrice))) / 100
-          : undefined;
+          : 0;
+        size.was = cap > size.price ? cap : undefined;
       }
       if (build && build.price != null){
         size.build = Math.round((typeof build.price === "number" ? build.price : parseFloat(build.price))) / 100;
@@ -976,6 +983,278 @@ function humanSkinInGrid(gw, gh){
   }
   return out;
 }
+
+/* =====================================================================
+   SITE-WIDE PARTS — run on every page, before the Creator.
+   memobrick.js loads on every page (layout/theme.liquid), but only the
+   homepage and /pages/editor contain the Creator. The Creator code below
+   assumes its canvases exist, and used to throw on the first line of it
+   on product, cart, collection and blog pages — taking the phone menu,
+   the cart drawer and the product-page reviews down with it. These parts
+   need nothing from the Creator, so they run first; then pages without
+   the Creator stop cleanly.
+   ===================================================================== */
+/* keep every timing mention in step with the single constant */
+document.querySelectorAll("[data-prodtime]").forEach((el) => { el.textContent = PRODUCTION_TIME_TEXT; });
+
+const REVIEWS = [{"n":"Richard J.","r":5,"d":"August 14, 2026","t":"Always such a great and unique gift to give to friends and family","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg"},{"n":"Donna K.","r":5,"d":"August 9, 2026","t":"Excellent","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/8/9/o3XA6i-fF_mid.jpg"},{"n":"Steve B.","r":5,"d":"July 16, 2026","t":"My son loves it!!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/7/16/ik1scdnFM_mid.jpg"},{"n":"Tim R.","r":5,"d":"July 8, 2026","t":"Another spectacular job turning a photo into art. She's already asking when we're going to do another one.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/7/8/_MtiAWOcs_mid.jpg"},{"n":"Nicole N.","r":5,"d":"June 18, 2026","t":"Absolutely love my memobrick order. Will definitely recommend to family and friends.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/6/18/30vbX20BQ_mid.jpg"},{"n":"Brian B.","r":5,"d":"June 4, 2026","t":"great product, great gift ! my wife loved putting the mosaic together, and the instruction sheet and whole kit are great quality ! we are going to order again !","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/6/5/vnVn9uYJ5_mid.jpg"},{"n":"Ellen S.","r":5,"d":"May 28, 2026","t":"This was so much fun to do with my boyfriend! We loved doing it and can't wait to hang it in our house. It came out so good!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg"},{"n":"Lauren D.","r":5,"d":"May 28, 2026","t":"This was so much fun to do! I just love how it turned out! I'm just waiting until I can get a shadow box for it, and then I'll hang it on my wall 😁","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/31/RHKvYxUPr_mid.jpg"},{"n":"Mary S.","r":3,"d":"May 24, 2026","t":"It looks blurry to me but it is ok","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/5/24/QsvJ3JsVf_mid.jpg"},{"n":"Giselle D.","r":4,"d":"April 25, 2026","t":"A little hard to snap in sometimes and see the letters through the block but it came out great","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/4/26/NMq2OMbuu_mid.jpg"},{"n":"Melanie B.","r":5,"d":"April 9, 2026","t":"Very cool picture and everyone loves it!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/4/19/J_v2xITlk_mid.jpg"},{"n":"Jennifer H.","r":5,"d":"March 17, 2026","t":"Was a fun and a little bit challenging project to do. Can't wait to do another one","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/18/DePzXpS4A_mid.jpg"},{"n":"Jennifer M.","r":5,"d":"March 7, 2026","t":"Love, love, love!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg"},{"n":"Lucy W.","r":5,"d":"March 6, 2026","t":"Loved putting it together","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/3/11/2kZnl5hIp_mid.jpg"},{"n":"Donnie M.","r":4,"d":"February 27, 2026","t":"I really enjoyed hose it turned out and the only thing that I didn't like too well was the word we're not as legible as I thought they would be.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/3/2/FrAR14A8Ss_mid.jpg"},{"n":"Donnie M.","r":5,"d":"February 25, 2026","t":"I just love the way this turned out. It won't be my last purchase.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2026/2/26/-jmr6H1Gp_mid.jpg"},{"n":"Marsha W.","r":5,"d":"February 24, 2026","t":"This was fun!!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/24/XV14cLgqn_mid.jpg"},{"n":"Tim R.","r":5,"d":"February 23, 2026","t":"Another beautiful picture. Thank you again","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/27/9TvgauJIm_mid.jpg"},{"n":"Erica C.","r":5,"d":"February 21, 2026","t":"Love it ! Came out soo good ! Very happy with the purchase !","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/21/Zm2Bhe1Jq_mid.jpg"},{"n":"Halley D.","r":5,"d":"February 13, 2026","t":"Turned out better than I ever expected! Definitely will order again :)","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/2/14/foeLiecYb_mid.jpg"},{"n":"Allison H.","r":5,"d":"February 11, 2026","t":"The frame worked out great.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2026/2/12/eNaxDI0Nk_mid.jpg"},{"n":"Kelsey M.","r":5,"d":"February 8, 2026","t":"I love these memo bricks! I ordered a smaller size, but when they emailed the mockup they showed me the difference of what it would look like compared to the bigger size. I was offered to upgrade to the bigger size, which I did. I am so glad I did! These were fun to put together and see how the final product came out. It is interesting to see how they use different colors to create shadows. I had one picture that was mostly black and white in a dark setting with a lot of shadows. A light purple color was used to help show those. Definitely recommend!","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/9/7xFZPGgJq_mid.jpg"},{"n":"Kris C.","r":5,"d":"February 3, 2026","t":"It was difficult to get the board to stick together so I had to get my own joiner pieces so it stays together better but I really loved making it and watching it come together!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg"},{"n":"Aaron M.","r":5,"d":"January 25, 2026","t":"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form.","p":"Custom Bricked Mosaic Portrait 30x20\"","img":"https://images.loox.io/uploads/2026/1/25/GwlS7rLfA_mid.jpg"},{"n":"Nadeana T.","r":5,"d":"January 24, 2026","t":"Absolutely incredible! Pattern is simple to follow and portrait turned out fantastic!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/1/24/wj6s-qpgI_mid.jpg"},{"n":"Kellie G.","r":5,"d":"January 14, 2026","t":"My son-in-law who builds and collects all the adult Star Wars Lego kits love this. Said it was easily the hardest build he has done.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/14/V-UHmIaiB_mid.jpg"},{"n":"Teri M.","r":5,"d":"January 9, 2026","t":"It was great","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/10/S2qR_raR0_mid.jpg"},{"n":"Elizabeth P.","r":5,"d":"January 3, 2026","t":"I got this for my son for Christmas. He thought it was the coolest thing ever. He's been putting it together since he got it and is almost done. He really likes it.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/1/3/sdpzAIsdg_mid.jpg"},{"n":"Jacob P.","r":5,"d":"December 31, 2025","t":"I loved building it and my girlfriend loved the finished project. It was her favorite picture and I was so excited to bring it to life in this unique way","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/1/1/UcXoh1baeq_mid.jpg"},{"n":"Emily S.","r":5,"d":"December 29, 2025","t":"Love this!","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/12/30/c_KH7WMJEG_mid.jpg"},{"n":"John R.","r":4,"d":"November 28, 2025","t":"The frame works well enough. It could have been a little simpler to assemble. Also I suggest the it be made with a back that the picture can lock into.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/11/28/GM4kRymqx_mid.jpg"},{"n":"Jennifer B.","r":5,"d":"November 11, 2025","t":"Loved it! Will be ordering again soon!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/11/11/u5E39DACF_mid.jpg"},{"n":"John R.","r":5,"d":"November 2, 2025","t":"It was a fun relaxing task. My wife and I are thrilled to have our wedding photo in such an interesting style.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2025/11/3/yWOhEH0xx-_mid.jpg"},{"n":"Michael F.","r":5,"d":"October 27, 2025","t":"Perfect and unique gift for grandson. Kept him off electronics.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/10/27/BEA1z2h7l_mid.jpg"},{"n":"Kimberly W.","r":5,"d":"October 17, 2025","t":"I gave this to my son for his birthday. He loved putting it together and the frame was super easy to install.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2025/10/17/fkwmMBB3R_mid.jpg"},{"n":"Candice L.","r":5,"d":"October 7, 2025","t":"I split the photo in half so I could get 2 of the 60x20 so I could fill my wall more and its turned out AMAZING!","p":"Custom Bricked Mosaic Portrait 60x20\"","img":"https://images.loox.io/uploads/2025/10/8/gsJn-GTlj_mid.jpg"},{"n":"Athena P.","r":5,"d":"October 7, 2025","t":"I really enjoyed doing this one of my girls and I. I had issues with the tool not working for me. I wish that the frames weren't so expensive.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/10/7/0bJe8d7-A_mid.jpg"},{"n":"Athena P.","r":4,"d":"September 30, 2025","t":"I love this picture. However I wish that it wasn't so close up. I wish that it was able to capture more of her and her beauty.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/9/30/CoZGC-fD9_mid.jpg"},{"n":"Carol J.","r":5,"d":"September 30, 2025","t":"I love it","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2025/9/30/-uiTZ8ev3_mid.jpg"},{"n":"Norma G.","r":5,"d":"September 12, 2025","t":"We LOVE the way the portrait looks! I have shown it off to all of my friends and family. It is a great memory that will be kept for a long time. It was very easy to put together and the result is fantastic! I highly recommend this to everyone.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/9/12/Q14hvAZ8s_mid.jpg"}];
+
+/* Every review here was written by a real customer and is reproduced verbatim
+   from memobrick.com, photo included. The store has 747 reviews in total;
+   these are the ones published publicly on the site. The rest live in Loox,
+   so the section links out rather than inventing any.  */
+/* Shared between the two review-rendering blocks below: these are the
+   specific reviews used in the small "transformations" teaser near the
+   top of the page. The full rail (paint(), just below) excludes them so
+   a visitor doesn't scroll down and see the exact same reviews twice —
+   it starts with whatever comes next instead. */
+const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
+
+(function realReviews(){
+  const track = document.querySelector("#revTrack");
+  if (!track || typeof REVIEWS === "undefined") return;
+  const rest = REVIEWS.filter((r, i) => !TRANSFORM_PICKS.includes(i));
+  let shown = 12;
+
+  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
+
+  function paint(){
+    track.innerHTML = rest.slice(0, shown).map((r) =>
+      '<figure class="rev">' +
+        '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
+        'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
+        '<figcaption>' +
+          '<span class="stars">' + stars(r.r) + "</span>" +
+          "<p>" + esc(r.t) + "</p>" +
+          "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
+          '<span class="rev-prod">' + esc(r.p) + "</span>" +
+        "</figcaption></figure>").join("");
+    const more = document.querySelector("#revMore");
+    if (more) more.hidden = shown >= rest.length;
+  }
+
+  const more = document.querySelector("#revMore");
+  if (more) more.addEventListener("click", () => { shown = rest.length; paint(); });
+  paint();
+})();
+
+/* Compact "transformations" teaser near the top of the homepage — the same
+   real review data and escaping as the full rail above, just 6 specific,
+   strongly positive examples rather than the first 6 by date, so the
+   earliest thing a visitor sees is representative of what people love
+   about it. Nothing here is invented: same REVIEWS array, same esc(). */
+(function transformTeaser(){
+  const track = document.querySelector("#transformTrack");
+  if (!track || typeof REVIEWS === "undefined") return;
+  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
+  const picks = TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean);
+  track.innerHTML = picks.map((r) =>
+    '<figure class="rev">' +
+      '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
+      'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
+      '<figcaption>' +
+        '<span class="stars">' + stars(r.r) + "</span>" +
+        "<p>" + esc(r.t) + "</p>" +
+        "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
+        '<span class="rev-prod">' + esc(r.p) + "</span>" +
+      "</figcaption></figure>").join("");
+})();
+
+/* the reviews rail */
+const revTrack = document.querySelector("#revTrack");
+if (revTrack){
+  const step = () => Math.max(280, revTrack.clientWidth * 0.8);
+  const sync = () => {
+    const prev = document.querySelector("#revPrev"), next = document.querySelector("#revNext");
+    if (!prev || !next) return;
+    prev.disabled = revTrack.scrollLeft < 8;
+    next.disabled = revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 8;
+  };
+  document.querySelector("#revPrev").addEventListener("click", () =>
+    revTrack.scrollBy({ left: -step(), behavior: "smooth" }));
+  document.querySelector("#revNext").addEventListener("click", () =>
+    revTrack.scrollBy({ left: step(), behavior: "smooth" }));
+  revTrack.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", sync);
+  sync();
+}
+
+/* ---------------- mobile navigation ---------------- */
+const burger = $("#burger"), navLinks = $("#navLinks");
+if (burger && navLinks){
+  burger.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open);
+  });
+  navLinks.addEventListener("click", (e) => {
+    if (e.target.closest("a,button")){
+      navLinks.classList.remove("open");
+      burger.setAttribute("aria-expanded", false);
+    }
+  });
+}
+
+/* =====================================================================
+   CART DROPDOWN — click the cart icon to open a live-updating panel
+   instead of leaving the page. Falls back to the real /cart page via
+   the icon's href if JS fails for any reason.
+   ===================================================================== */
+(function cartDrawerModule(){
+  const btn = document.querySelector("#cartIconBtn");
+  const drawer = document.querySelector("#cartDrawer");
+  const itemsEl = document.querySelector("#cartDrawerItems");
+  const footEl = document.querySelector("#cartDrawerFoot");
+  const totalEl = document.querySelector("#cartDrawerTotal");
+  const countEl = document.querySelector("#cartCount");
+  const closeBtn = document.querySelector("#cartDrawerClose");
+  if (!btn || !drawer) return;
+
+  const fmt = (cents) => "$" + (cents / 100).toFixed(2);
+
+  function renderCart(cart){
+    if (!cart.items.length){
+      itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+      footEl.hidden = true;
+    } else {
+      itemsEl.innerHTML = "";
+      cart.items.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "cart-drawer-item";
+        if (item.image){
+          const img = document.createElement("img");
+          img.src = item.image + "&width=120";
+          img.alt = "";
+          img.loading = "lazy";
+          row.appendChild(img);
+        }
+        const info = document.createElement("div");
+        info.className = "cart-drawer-item-info";
+        const title = document.createElement("b");
+        title.textContent = item.product_title;
+        info.appendChild(title);
+        if (item.variant_title && item.variant_title !== "Default Title"){
+          const variant = document.createElement("span");
+          variant.textContent = item.variant_title;
+          info.appendChild(variant);
+        }
+        const row2 = document.createElement("div");
+        row2.className = "cart-drawer-item-row";
+        const qty = document.createElement("span");
+        qty.textContent = "Qty " + item.quantity + " · " + fmt(item.final_line_price);
+        const rm = document.createElement("button");
+        rm.className = "cart-drawer-remove"; rm.type = "button"; rm.textContent = "Remove";
+        rm.dataset.key = item.key;
+        row2.appendChild(qty); row2.appendChild(rm);
+        info.appendChild(row2);
+        row.appendChild(info);
+        itemsEl.appendChild(row);
+      });
+      footEl.hidden = false;
+      totalEl.textContent = fmt(cart.total_price);
+    }
+    // free-shipping progress bar — threshold comes from the theme setting
+    // (window.MB_FREE_SHIPPING_THRESHOLD, set in layout/theme.liquid), not
+    // hardcoded, so it stays correct if the merchant ever changes it
+    const shipBar = document.querySelector("#cartShipBar");
+    if (shipBar){
+      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100; // dollars -> cents, matching cart.total_price
+      if (!threshold || !cart.items.length){
+        shipBar.hidden = true;
+      } else {
+        shipBar.hidden = false;
+        const msg = document.querySelector("#cartShipMsg");
+        const fill = document.querySelector("#cartShipFill");
+        const pct = Math.max(0, Math.min(100, (cart.total_price / threshold) * 100));
+        if (fill) fill.style.width = pct + "%";
+        if (msg){
+          if (cart.total_price >= threshold){
+            msg.textContent = "You've unlocked free shipping! 🎉";
+          } else {
+            const remaining = fmt(threshold - cart.total_price);
+            msg.textContent = "Add " + remaining + " more for free shipping";
+          }
+        }
+      }
+    }
+  }
+
+  function updateBadge(count){
+    if (!countEl) return;
+    countEl.textContent = count;
+    countEl.hidden = count === 0;
+  }
+
+  async function loadCart(){
+    itemsEl.innerHTML = '<p class="cart-empty">Loading…</p>';
+    try {
+      const res = await fetch("/cart.js");
+      const cart = await res.json();
+      renderCart(cart);
+      updateBadge(cart.item_count);
+    } catch (e){
+      itemsEl.innerHTML = '<p class="cart-empty">Couldn' + "'" + 't load your cart. <a href="' + btn.getAttribute("href") + '">Open cart page</a></p>';
+    }
+  }
+
+  async function removeItem(key){
+    const row = itemsEl.querySelector('[data-key="' + key + '"]');
+    if (row) row.closest(".cart-drawer-item").style.opacity = ".4";
+    try {
+      const res = await fetch("/cart/change.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: key, quantity: 0 })
+      });
+      const cart = await res.json();
+      renderCart(cart);
+      updateBadge(cart.item_count);
+    } catch (e){ loadCart(); }
+  }
+
+  function openDrawer(){
+    drawer.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    loadCart();
+    document.addEventListener("click", onOutsideClick, true);
+    document.addEventListener("keydown", onEscape);
+  }
+  window.MB_openCartDrawer = openDrawer;
+  function closeDrawer(){
+    drawer.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    document.removeEventListener("click", onOutsideClick, true);
+    document.removeEventListener("keydown", onEscape);
+  }
+  function onOutsideClick(e){
+    if (!drawer.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDrawer();
+  }
+  function onEscape(e){ if (e.key === "Escape") closeDrawer(); }
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    drawer.hidden ? openDrawer() : closeDrawer();
+  });
+  closeBtn.addEventListener("click", closeDrawer);
+  itemsEl.addEventListener("click", (e) => {
+    const rm = e.target.closest("[data-key]");
+    if (rm) removeItem(rm.dataset.key);
+  });
+
+  // any add-to-cart flow elsewhere on the site (editor checkout, designer
+  // service, free proof) can refresh the badge without a full reload
+  document.addEventListener("memobrick:added", () => {
+    fetch("/cart.js").then((r) => r.json()).then((cart) => updateBadge(cart.item_count)).catch(() => {});
+  });
+})();
+
+
+/* no Creator on this page (product, cart, blog…): the site-wide parts above
+   are all it needs */
+if (!document.getElementById("mosaic")) return;
 
 /* ---------------------------- render ---------------------------- */
 const mos = $("#mosaic"), mctx = mos.getContext("2d");
@@ -3486,6 +3765,9 @@ function tally(cells, P){
 }
 
 function meta(){
+  // keep the saved copy current: it used to be written once, 400 ms after
+  // upload, so a reload brought back the first size and crop, not the design
+  if (S.uploaded){ clearTimeout(meta._save); meta._save = setTimeout(saveSession, 1500); }
   const { gw, gh, bx, by } = dims(), pieces = gw*gh;
   const canBuild = !!S.size.build;
   const total = (S.build && canBuild) ? S.size.build : S.size.price;
@@ -3766,6 +4048,12 @@ function showView(name){
     try { history.replaceState(null, "", location.pathname + location.search); }
     catch (e) { location.hash = ""; }
   }
+  // #editor marks "the editor is open" so a reload comes back to the design
+  // (restoreSession only restores there); leaving the editor drops it
+  try {
+    if (name === "editor" && location.hash !== "#editor") history.replaceState(null, "", location.pathname + location.search + "#editor");
+    else if (name !== "editor" && location.hash === "#editor") history.replaceState(null, "", location.pathname + location.search);
+  } catch (e){}
   if (name === "editor"){
     const panels = document.querySelectorAll("[data-acc]");
     if (panels.length){
@@ -3780,6 +4068,7 @@ function showView(name){
     if (el) el.hidden = (v !== name);
   });
   document.body.classList.toggle("in-app", name !== "home");
+  document.body.classList.toggle("in-editor", name === "editor");   // phones: the editor's own sticky bar owns the top edge
   window.scrollTo({ top: 0, behavior: "auto" });
   if (name === "editor") renderIfNeeded();     // never rebuild an existing design
 }
@@ -4441,7 +4730,10 @@ if (foxThumb){
       return;
     }
     const z = SIZES.find((x) => x.id === svc.sizeId);
-    const onShopify = /myshopify|mymemobrick/.test(location.hostname);
+    // the Shopify catalog is printed into every storefront page (live domain,
+    // *.myshopify.com, theme preview); a hostname test missed preview and any
+    // other domain and faked a "Ready to send" without adding to cart
+    const onShopify = !!document.querySelector("#memobrick-catalog") || /myshopify|mymemobrick/.test(location.hostname);
     if (!onShopify){
       toast("Ready to send: " + z.label + " with your photo attached. On the live shop this posts to checkout.");
       return;
@@ -4939,76 +5231,6 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
   });
 })();
 
-/* keep every timing mention in step with the single constant */
-document.querySelectorAll("[data-prodtime]").forEach((el) => { el.textContent = PRODUCTION_TIME_TEXT; });
-
-const REVIEWS = [{"n":"Richard J.","r":5,"d":"August 14, 2026","t":"Always such a great and unique gift to give to friends and family","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg"},{"n":"Donna K.","r":5,"d":"August 9, 2026","t":"Excellent","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/8/9/o3XA6i-fF_mid.jpg"},{"n":"Steve B.","r":5,"d":"July 16, 2026","t":"My son loves it!!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/7/16/ik1scdnFM_mid.jpg"},{"n":"Tim R.","r":5,"d":"July 8, 2026","t":"Another spectacular job turning a photo into art. She's already asking when we're going to do another one.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/7/8/_MtiAWOcs_mid.jpg"},{"n":"Nicole N.","r":5,"d":"June 18, 2026","t":"Absolutely love my memobrick order. Will definitely recommend to family and friends.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/6/18/30vbX20BQ_mid.jpg"},{"n":"Brian B.","r":5,"d":"June 4, 2026","t":"great product, great gift ! my wife loved putting the mosaic together, and the instruction sheet and whole kit are great quality ! we are going to order again !","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/6/5/vnVn9uYJ5_mid.jpg"},{"n":"Ellen S.","r":5,"d":"May 28, 2026","t":"This was so much fun to do with my boyfriend! We loved doing it and can't wait to hang it in our house. It came out so good!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg"},{"n":"Lauren D.","r":5,"d":"May 28, 2026","t":"This was so much fun to do! I just love how it turned out! I'm just waiting until I can get a shadow box for it, and then I'll hang it on my wall 😁","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/31/RHKvYxUPr_mid.jpg"},{"n":"Mary S.","r":3,"d":"May 24, 2026","t":"It looks blurry to me but it is ok","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/5/24/QsvJ3JsVf_mid.jpg"},{"n":"Giselle D.","r":4,"d":"April 25, 2026","t":"A little hard to snap in sometimes and see the letters through the block but it came out great","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/4/26/NMq2OMbuu_mid.jpg"},{"n":"Melanie B.","r":5,"d":"April 9, 2026","t":"Very cool picture and everyone loves it!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/4/19/J_v2xITlk_mid.jpg"},{"n":"Jennifer H.","r":5,"d":"March 17, 2026","t":"Was a fun and a little bit challenging project to do. Can't wait to do another one","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/18/DePzXpS4A_mid.jpg"},{"n":"Jennifer M.","r":5,"d":"March 7, 2026","t":"Love, love, love!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg"},{"n":"Lucy W.","r":5,"d":"March 6, 2026","t":"Loved putting it together","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/3/11/2kZnl5hIp_mid.jpg"},{"n":"Donnie M.","r":4,"d":"February 27, 2026","t":"I really enjoyed hose it turned out and the only thing that I didn't like too well was the word we're not as legible as I thought they would be.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/3/2/FrAR14A8Ss_mid.jpg"},{"n":"Donnie M.","r":5,"d":"February 25, 2026","t":"I just love the way this turned out. It won't be my last purchase.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2026/2/26/-jmr6H1Gp_mid.jpg"},{"n":"Marsha W.","r":5,"d":"February 24, 2026","t":"This was fun!!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/24/XV14cLgqn_mid.jpg"},{"n":"Tim R.","r":5,"d":"February 23, 2026","t":"Another beautiful picture. Thank you again","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/27/9TvgauJIm_mid.jpg"},{"n":"Erica C.","r":5,"d":"February 21, 2026","t":"Love it ! Came out soo good ! Very happy with the purchase !","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/21/Zm2Bhe1Jq_mid.jpg"},{"n":"Halley D.","r":5,"d":"February 13, 2026","t":"Turned out better than I ever expected! Definitely will order again :)","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/2/14/foeLiecYb_mid.jpg"},{"n":"Allison H.","r":5,"d":"February 11, 2026","t":"The frame worked out great.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2026/2/12/eNaxDI0Nk_mid.jpg"},{"n":"Kelsey M.","r":5,"d":"February 8, 2026","t":"I love these memo bricks! I ordered a smaller size, but when they emailed the mockup they showed me the difference of what it would look like compared to the bigger size. I was offered to upgrade to the bigger size, which I did. I am so glad I did! These were fun to put together and see how the final product came out. It is interesting to see how they use different colors to create shadows. I had one picture that was mostly black and white in a dark setting with a lot of shadows. A light purple color was used to help show those. Definitely recommend!","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/9/7xFZPGgJq_mid.jpg"},{"n":"Kris C.","r":5,"d":"February 3, 2026","t":"It was difficult to get the board to stick together so I had to get my own joiner pieces so it stays together better but I really loved making it and watching it come together!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg"},{"n":"Aaron M.","r":5,"d":"January 25, 2026","t":"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form.","p":"Custom Bricked Mosaic Portrait 30x20\"","img":"https://images.loox.io/uploads/2026/1/25/GwlS7rLfA_mid.jpg"},{"n":"Nadeana T.","r":5,"d":"January 24, 2026","t":"Absolutely incredible! Pattern is simple to follow and portrait turned out fantastic!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/1/24/wj6s-qpgI_mid.jpg"},{"n":"Kellie G.","r":5,"d":"January 14, 2026","t":"My son-in-law who builds and collects all the adult Star Wars Lego kits love this. Said it was easily the hardest build he has done.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/14/V-UHmIaiB_mid.jpg"},{"n":"Teri M.","r":5,"d":"January 9, 2026","t":"It was great","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/10/S2qR_raR0_mid.jpg"},{"n":"Elizabeth P.","r":5,"d":"January 3, 2026","t":"I got this for my son for Christmas. He thought it was the coolest thing ever. He's been putting it together since he got it and is almost done. He really likes it.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/1/3/sdpzAIsdg_mid.jpg"},{"n":"Jacob P.","r":5,"d":"December 31, 2025","t":"I loved building it and my girlfriend loved the finished project. It was her favorite picture and I was so excited to bring it to life in this unique way","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/1/1/UcXoh1baeq_mid.jpg"},{"n":"Emily S.","r":5,"d":"December 29, 2025","t":"Love this!","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/12/30/c_KH7WMJEG_mid.jpg"},{"n":"John R.","r":4,"d":"November 28, 2025","t":"The frame works well enough. It could have been a little simpler to assemble. Also I suggest the it be made with a back that the picture can lock into.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/11/28/GM4kRymqx_mid.jpg"},{"n":"Jennifer B.","r":5,"d":"November 11, 2025","t":"Loved it! Will be ordering again soon!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/11/11/u5E39DACF_mid.jpg"},{"n":"John R.","r":5,"d":"November 2, 2025","t":"It was a fun relaxing task. My wife and I are thrilled to have our wedding photo in such an interesting style.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2025/11/3/yWOhEH0xx-_mid.jpg"},{"n":"Michael F.","r":5,"d":"October 27, 2025","t":"Perfect and unique gift for grandson. Kept him off electronics.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/10/27/BEA1z2h7l_mid.jpg"},{"n":"Kimberly W.","r":5,"d":"October 17, 2025","t":"I gave this to my son for his birthday. He loved putting it together and the frame was super easy to install.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2025/10/17/fkwmMBB3R_mid.jpg"},{"n":"Candice L.","r":5,"d":"October 7, 2025","t":"I split the photo in half so I could get 2 of the 60x20 so I could fill my wall more and its turned out AMAZING!","p":"Custom Bricked Mosaic Portrait 60x20\"","img":"https://images.loox.io/uploads/2025/10/8/gsJn-GTlj_mid.jpg"},{"n":"Athena P.","r":5,"d":"October 7, 2025","t":"I really enjoyed doing this one of my girls and I. I had issues with the tool not working for me. I wish that the frames weren't so expensive.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/10/7/0bJe8d7-A_mid.jpg"},{"n":"Athena P.","r":4,"d":"September 30, 2025","t":"I love this picture. However I wish that it wasn't so close up. I wish that it was able to capture more of her and her beauty.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/9/30/CoZGC-fD9_mid.jpg"},{"n":"Carol J.","r":5,"d":"September 30, 2025","t":"I love it","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2025/9/30/-uiTZ8ev3_mid.jpg"},{"n":"Norma G.","r":5,"d":"September 12, 2025","t":"We LOVE the way the portrait looks! I have shown it off to all of my friends and family. It is a great memory that will be kept for a long time. It was very easy to put together and the result is fantastic! I highly recommend this to everyone.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/9/12/Q14hvAZ8s_mid.jpg"}];
-
-/* Every review here was written by a real customer and is reproduced verbatim
-   from memobrick.com, photo included. The store has 747 reviews in total;
-   these are the ones published publicly on the site. The rest live in Loox,
-   so the section links out rather than inventing any.  */
-/* Shared between the two review-rendering blocks below: these are the
-   specific reviews used in the small "transformations" teaser near the
-   top of the page. The full rail (paint(), just below) excludes them so
-   a visitor doesn't scroll down and see the exact same reviews twice —
-   it starts with whatever comes next instead. */
-const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
-
-(function realReviews(){
-  const track = document.querySelector("#revTrack");
-  if (!track || typeof REVIEWS === "undefined") return;
-  const rest = REVIEWS.filter((r, i) => !TRANSFORM_PICKS.includes(i));
-  let shown = 12;
-
-  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
-  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
-    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
-
-  function paint(){
-    track.innerHTML = rest.slice(0, shown).map((r) =>
-      '<figure class="rev">' +
-        '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
-        'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
-        '<figcaption>' +
-          '<span class="stars">' + stars(r.r) + "</span>" +
-          "<p>" + esc(r.t) + "</p>" +
-          "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
-          '<span class="rev-prod">' + esc(r.p) + "</span>" +
-        "</figcaption></figure>").join("");
-    const more = document.querySelector("#revMore");
-    if (more) more.hidden = shown >= rest.length;
-  }
-
-  const more = document.querySelector("#revMore");
-  if (more) more.addEventListener("click", () => { shown = rest.length; paint(); });
-  paint();
-})();
-
-/* Compact "transformations" teaser near the top of the homepage — the same
-   real review data and escaping as the full rail above, just 6 specific,
-   strongly positive examples rather than the first 6 by date, so the
-   earliest thing a visitor sees is representative of what people love
-   about it. Nothing here is invented: same REVIEWS array, same esc(). */
-(function transformTeaser(){
-  const track = document.querySelector("#transformTrack");
-  if (!track || typeof REVIEWS === "undefined") return;
-  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
-  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
-    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
-  const picks = TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean);
-  track.innerHTML = picks.map((r) =>
-    '<figure class="rev">' +
-      '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
-      'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
-      '<figcaption>' +
-        '<span class="stars">' + stars(r.r) + "</span>" +
-        "<p>" + esc(r.t) + "</p>" +
-        "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
-        '<span class="rev-prod">' + esc(r.p) + "</span>" +
-      "</figcaption></figure>").join("");
-})();
-
 /* =====================================================================
    REMOTE MEDIA SAFETY NET
    Opened as a local file — which is how this build is tested on a phone —
@@ -5134,25 +5356,6 @@ function diag(msg){
   window.__memobrickDiag = show;
 })();
 
-/* the reviews rail */
-const revTrack = document.querySelector("#revTrack");
-if (revTrack){
-  const step = () => Math.max(280, revTrack.clientWidth * 0.8);
-  const sync = () => {
-    const prev = document.querySelector("#revPrev"), next = document.querySelector("#revNext");
-    if (!prev || !next) return;
-    prev.disabled = revTrack.scrollLeft < 8;
-    next.disabled = revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 8;
-  };
-  document.querySelector("#revPrev").addEventListener("click", () =>
-    revTrack.scrollBy({ left: -step(), behavior: "smooth" }));
-  document.querySelector("#revNext").addEventListener("click", () =>
-    revTrack.scrollBy({ left: step(), behavior: "smooth" }));
-  revTrack.addEventListener("scroll", sync, { passive: true });
-  window.addEventListener("resize", sync);
-  sync();
-}
-
 /* the strip at the top of the editor opens the full guide below */
 function revealTips(){
   const body = document.querySelector("#tipsBody"), btn = document.querySelector("#tipsToggle");
@@ -5193,21 +5396,6 @@ if (tipsToggle && tipsBody){
     tipsToggle.setAttribute("aria-expanded", open);
     tipsToggle.setAttribute("aria-expanded", open);
     if (open) tipsBody.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  });
-}
-
-/* ---------------- mobile navigation ---------------- */
-const burger = $("#burger"), navLinks = $("#navLinks");
-if (burger && navLinks){
-  burger.addEventListener("click", () => {
-    const open = navLinks.classList.toggle("open");
-    burger.setAttribute("aria-expanded", open);
-  });
-  navLinks.addEventListener("click", (e) => {
-    if (e.target.closest("a,button")){
-      navLinks.classList.remove("open");
-      burger.setAttribute("aria-expanded", false);
-    }
   });
 }
 
@@ -5549,8 +5737,12 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
    runs rather than leaving the customer stuck. */
 async function autoCropToFaces(silent){
   const img = S.img; if (!img) { if (!silent) toast("Upload a photo first."); return; }
-  const { gw, gh } = dims();
+  let { gw, gh } = dims();
   const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  // what the framing was when detection started: detection can take 8 s+,
+  // and an automatic crop must not undo a zoom, pan or size the customer
+  // chose in the meantime
+  const framingAtStart = [S.size.id, S.zoom, S.ox, S.oy].join("|");
   if (!iw || !ih) return;
   if (!silent) toast("Finding faces…");
 
@@ -5615,6 +5807,12 @@ async function autoCropToFaces(silent){
       union = { x0: ux0, y0: uy0, x1: ux1, y1: uy1 }; faceCount = boxes.length;
     }
   }
+
+  // the photo may have been replaced while faces were found (the fallback
+  // path had no check), or the customer may already have framed it
+  if (S.img !== img) return;
+  if (silent && [S.size.id, S.zoom, S.ox, S.oy].join("|") !== framingAtStart) return;
+  ({ gw, gh } = dims());          // the board may have changed shape during detection
 
   if (!union){ if (!silent){ fitWholePhoto(true); toast("No face found — fit the whole photo instead."); } return; }
 
@@ -5909,7 +6107,7 @@ function saveSession(){
     c.getContext("2d").drawImage(S.img, 0, 0, c.width, c.height);
     sessionStorage.setItem("mb_photo", c.toDataURL("image/jpeg", 0.82));
     sessionStorage.setItem("mb_state", JSON.stringify({
-      sizeId: S.size.id, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
+      sizeId: S.size.id, build: !!S.build, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
       bri: S.bri, con: S.con, sat: S.sat, temp: S.temp, detail: S.detail,
       dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, pal: S.pal,
       excludedColors: S.excludedColors ? [...S.excludedColors] : [],
@@ -5920,6 +6118,12 @@ function saveSession(){
 
 function restoreSession(){
   try {
+    // only bring the saved design back where the customer is designing (the
+    // editor page, #editor, or a ?size= deep link). Restoring on every visit
+    // turned the homepage into the editor for the rest of the tab, and the
+    // logo, Sizes and FAQ links could no longer reach it.
+    const qs = new URLSearchParams(location.search);
+    if (!(window.MB_LANDING_VIEW === "upload" || location.hash === "#editor" || qs.get("size"))) return false;
     const data = sessionStorage.getItem("mb_photo");
     if (!data) return false;
     const st = JSON.parse(sessionStorage.getItem("mb_state") || "{}");
@@ -5932,14 +6136,19 @@ function restoreSession(){
       // returning visitor, rather than just quietly starting fresh.
       try {
         adopt(im, { name: "restored.jpg", type: "image/jpeg" }, { skipAutoCrop: !st.fresh });
-        const z = SIZES.find((x) => x.id === st.sizeId);
+        // a size in the link (a product page's "design this size") wins
+        const z = SIZES.find((x) => x.id === (qs.get("size") || st.sizeId));
         if (z) S.size = z;
+        if (z && st.build && z.build && !qs.get("size")) S.build = true;
+        // a value missing from an older saved copy keeps the current one
+        // instead of becoming undefined (sliders read "undefined")
+        const pick = (k) => (st[k] == null ? S[k] : st[k]);
         Object.assign(S, {
           zoom: st.zoom || 1, ox: st.ox || 0, oy: st.oy || 0,
           bg: st.bg || S.bg, bgEffect: st.bgEffect || S.bgEffect,
-          bri: st.bri, con: st.con, sat: st.sat, temp: st.temp, detail: st.detail,
-          dither: st.dither, shadows: st.shadows, warm: st.warm,
-          auto: st.auto, pal: st.pal || S.pal,
+          bri: pick("bri"), con: pick("con"), sat: pick("sat"), temp: pick("temp"), detail: pick("detail"),
+          dither: pick("dither"), shadows: pick("shadows"), warm: pick("warm"),
+          auto: pick("auto"), pal: st.pal || S.pal,
         });
         if (st.excludedColors && st.excludedColors.length) S.excludedColors = new Set(st.excludedColors);
         if (st.edits && st.edits.length) S.edits = new Map(st.edits);
@@ -5953,7 +6162,12 @@ function restoreSession(){
         // an error for something the customer never asked to happen
       }
     };
-    im.onerror = () => {};
+    // an unreadable saved photo: restoreSession already returned true, so
+    // without this no view was ever shown (a blank page)
+    im.onerror = () => {
+      try { sessionStorage.removeItem("mb_photo"); sessionStorage.removeItem("mb_state"); } catch (x){}
+      showView(window.MB_LANDING_VIEW || "home");
+    };
     im.src = data;
     return true;
   } catch (e){ return false; }
@@ -7703,7 +7917,10 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     try { saveSession(); } catch (e){}
 
     const id = o.designId || designId();
-    const props = designProperties(o.state, id);
+    // the label production reads must match the variant actually charged:
+    // the editor's state calls it S.build, never buildForMe, so the old
+    // lookup marked every "we build it" order as "Build at home"
+    const props = designProperties(Object.assign({}, o.state, { buildForMe: !!variant.service }), id);
 
     const fd = new FormData();
     fd.append("id", variant.id);
@@ -7731,7 +7948,36 @@ body{background:#8a8f96;margin:0;padding:20px 0}
       }
     } catch (e){ /* instructions failed to build — the order still has the design image and settings */ }
 
-    const res = await fetch("/cart/add.js", { method: "POST", body: fd });
+    // The PNG and the booklet make this a multi-MB upload. A stalled phone
+    // connection used to leave the button on "Preparing…" forever, and a
+    // rejected attachment failed the whole order. Now: a time limit, then
+    // one retry without the files (the design settings production needs
+    // still go with the order). Before retrying, check the first try didn't
+    // land after all, so the design is never added to the cart twice.
+    const post = (body) => {
+      const ac = (typeof AbortController === "function") ? new AbortController() : null;
+      const t = ac ? setTimeout(() => ac.abort(), 90000) : 0;
+      return fetch("/cart/add.js", { method: "POST", body: body, signal: ac ? ac.signal : undefined })
+        .finally(() => clearTimeout(t));
+    };
+    const alreadyInCart = async () => {
+      try {
+        const cart = await (await fetch("/cart.js")).json();
+        return (cart.items || []).find((it) => it.properties && it.properties["Design ID"] === id) || null;
+      } catch (e){ return null; }
+    };
+    let res = await post(fd).catch(() => null);
+    if (!res || (!res.ok && res.status !== 422)){          // 422 = a real stock/variant answer: keep it
+      const landed = await alreadyInCart();
+      if (landed){
+        document.dispatchEvent(new CustomEvent("memobrick:added", { detail: { line: landed, designId: id } }));
+        return { line: landed, designId: id, variant: variant };
+      }
+      const lite = new FormData();
+      for (const [k, v] of fd.entries()) if (!(v instanceof Blob)) lite.append(k, v);
+      res = await post(lite).catch(() => null);
+      if (!res) throw new Error("cart-failed");
+    }
     if (!res.ok){
       let msg = "";
       try { msg = (await res.json()).description || ""; } catch (e){}
@@ -8554,159 +8800,6 @@ body{background:#8a8f96;margin:0;padding:20px 0}
   // per browser via localStorage[TOUR_KEY].)
 
   document.querySelectorAll("[data-tour-replay]").forEach((b) => b.addEventListener("click", start));
-})();
-
-/* =====================================================================
-   CART DROPDOWN — click the cart icon to open a live-updating panel
-   instead of leaving the page. Falls back to the real /cart page via
-   the icon's href if JS fails for any reason.
-   ===================================================================== */
-(function cartDrawerModule(){
-  const btn = document.querySelector("#cartIconBtn");
-  const drawer = document.querySelector("#cartDrawer");
-  const itemsEl = document.querySelector("#cartDrawerItems");
-  const footEl = document.querySelector("#cartDrawerFoot");
-  const totalEl = document.querySelector("#cartDrawerTotal");
-  const countEl = document.querySelector("#cartCount");
-  const closeBtn = document.querySelector("#cartDrawerClose");
-  if (!btn || !drawer) return;
-
-  const fmt = (cents) => "$" + (cents / 100).toFixed(2);
-
-  function renderCart(cart){
-    if (!cart.items.length){
-      itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
-      footEl.hidden = true;
-    } else {
-      itemsEl.innerHTML = "";
-      cart.items.forEach((item) => {
-        const row = document.createElement("div");
-        row.className = "cart-drawer-item";
-        if (item.image){
-          const img = document.createElement("img");
-          img.src = item.image + "&width=120";
-          img.alt = "";
-          img.loading = "lazy";
-          row.appendChild(img);
-        }
-        const info = document.createElement("div");
-        info.className = "cart-drawer-item-info";
-        const title = document.createElement("b");
-        title.textContent = item.product_title;
-        info.appendChild(title);
-        if (item.variant_title && item.variant_title !== "Default Title"){
-          const variant = document.createElement("span");
-          variant.textContent = item.variant_title;
-          info.appendChild(variant);
-        }
-        const row2 = document.createElement("div");
-        row2.className = "cart-drawer-item-row";
-        const qty = document.createElement("span");
-        qty.textContent = "Qty " + item.quantity + " · " + fmt(item.final_line_price);
-        const rm = document.createElement("button");
-        rm.className = "cart-drawer-remove"; rm.type = "button"; rm.textContent = "Remove";
-        rm.dataset.key = item.key;
-        row2.appendChild(qty); row2.appendChild(rm);
-        info.appendChild(row2);
-        row.appendChild(info);
-        itemsEl.appendChild(row);
-      });
-      footEl.hidden = false;
-      totalEl.textContent = fmt(cart.total_price);
-    }
-    // free-shipping progress bar — threshold comes from the theme setting
-    // (window.MB_FREE_SHIPPING_THRESHOLD, set in layout/theme.liquid), not
-    // hardcoded, so it stays correct if the merchant ever changes it
-    const shipBar = document.querySelector("#cartShipBar");
-    if (shipBar){
-      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100; // dollars -> cents, matching cart.total_price
-      if (!threshold || !cart.items.length){
-        shipBar.hidden = true;
-      } else {
-        shipBar.hidden = false;
-        const msg = document.querySelector("#cartShipMsg");
-        const fill = document.querySelector("#cartShipFill");
-        const pct = Math.max(0, Math.min(100, (cart.total_price / threshold) * 100));
-        if (fill) fill.style.width = pct + "%";
-        if (msg){
-          if (cart.total_price >= threshold){
-            msg.textContent = "You've unlocked free shipping! 🎉";
-          } else {
-            const remaining = fmt(threshold - cart.total_price);
-            msg.textContent = "Add " + remaining + " more for free shipping";
-          }
-        }
-      }
-    }
-  }
-
-  function updateBadge(count){
-    if (!countEl) return;
-    countEl.textContent = count;
-    countEl.hidden = count === 0;
-  }
-
-  async function loadCart(){
-    itemsEl.innerHTML = '<p class="cart-empty">Loading…</p>';
-    try {
-      const res = await fetch("/cart.js");
-      const cart = await res.json();
-      renderCart(cart);
-      updateBadge(cart.item_count);
-    } catch (e){
-      itemsEl.innerHTML = '<p class="cart-empty">Couldn' + "'" + 't load your cart. <a href="' + btn.getAttribute("href") + '">Open cart page</a></p>';
-    }
-  }
-
-  async function removeItem(key){
-    const row = itemsEl.querySelector('[data-key="' + key + '"]');
-    if (row) row.closest(".cart-drawer-item").style.opacity = ".4";
-    try {
-      const res = await fetch("/cart/change.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: key, quantity: 0 })
-      });
-      const cart = await res.json();
-      renderCart(cart);
-      updateBadge(cart.item_count);
-    } catch (e){ loadCart(); }
-  }
-
-  function openDrawer(){
-    drawer.hidden = false;
-    btn.setAttribute("aria-expanded", "true");
-    loadCart();
-    document.addEventListener("click", onOutsideClick, true);
-    document.addEventListener("keydown", onEscape);
-  }
-  window.MB_openCartDrawer = openDrawer;
-  function closeDrawer(){
-    drawer.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-    document.removeEventListener("click", onOutsideClick, true);
-    document.removeEventListener("keydown", onEscape);
-  }
-  function onOutsideClick(e){
-    if (!drawer.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDrawer();
-  }
-  function onEscape(e){ if (e.key === "Escape") closeDrawer(); }
-
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    drawer.hidden ? openDrawer() : closeDrawer();
-  });
-  closeBtn.addEventListener("click", closeDrawer);
-  itemsEl.addEventListener("click", (e) => {
-    const rm = e.target.closest("[data-key]");
-    if (rm) removeItem(rm.dataset.key);
-  });
-
-  // any add-to-cart flow elsewhere on the site (editor checkout, designer
-  // service, free proof) can refresh the badge without a full reload
-  document.addEventListener("memobrick:added", () => {
-    fetch("/cart.js").then((r) => r.json()).then((cart) => updateBadge(cart.item_count)).catch(() => {});
-  });
 })();
 
 /* =====================================================================

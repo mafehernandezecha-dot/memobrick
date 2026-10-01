@@ -3242,3 +3242,13 @@ video{max-width:100%;height:auto;display:block}
    the bottom edge, so an empty black pill stayed visible on every page */
 .toast:not(.on){opacity:0;visibility:hidden;pointer-events:none}
 .toast{transition:transform .25s ease,opacity .2s ease,visibility .2s}
+
+/* overflow-x:hidden on both html and body turns body into the scroll
+   container, so the sticky .nav (and the cart drawer inside it) scrolled
+   off-screen. clip stops sideways scrolling without breaking sticky. */
+@supports (overflow:clip){html,body{overflow-x:clip}}
+
+/* phones, inside the editor: the site header scrolls away normally so the
+   editor's own sticky bar (size, price, Finish) stays on top instead of
+   sliding under the now-working sticky site nav */
+@media(max-width:767px){body.in-editor .nav{position:relative}}
