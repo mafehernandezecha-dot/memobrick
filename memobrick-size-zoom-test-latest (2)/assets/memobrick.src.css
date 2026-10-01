@@ -3309,7 +3309,7 @@ video{max-width:100%;height:auto;display:block}
 }
 
 /* ============ after upload: design it yourself, or let our artist ============ */
-.dchoice{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+.dchoice{position:fixed;inset:0;z-index:9400;display:flex;align-items:center;justify-content:center;
   padding:20px;background:rgba(21,23,27,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
 .dchoice[hidden]{display:none}
 html.dchoice-open{overflow:hidden}

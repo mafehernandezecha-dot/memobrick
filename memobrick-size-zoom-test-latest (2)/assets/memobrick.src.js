@@ -4936,31 +4936,39 @@ let svcPrefill = null;
    Right after a photo is uploaded, its brick preview opens with a choice
    on top: design it yourself in the Creator, or let our artist design it
    (Pro Design Service: photo and size carried over, one tap from checkout).
-   Asked for uploads of the customer's own file only, and only until they
-   pick "myself" once in this visit.
+   Asked every time the customer uploads their own file from the upload
+   screen; a photo changed from inside the editor after they already chose
+   "myself" on this page is not asked again. The "Save your design" email
+   popup waits for this choice (memobrick:designchoice) and only follows
+   "myself".
    ===================================================================== */
 const designChoice = (function(){
   const sheet = document.querySelector("#designChoice");
   if (!sheet) return { offer(){} };
   const thumb = sheet.querySelector("#dcThumb");
+  const card = sheet.querySelector(".dchoice-card");
   let file = null, lastFocus = null;
-  let declined = false;
-  try { declined = sessionStorage.getItem("mbDesignChoice") === "self"; } catch (e) {}
+  let choseSelf = false;              // on this page load
 
+  function announce(choice){
+    try { document.dispatchEvent(new CustomEvent("memobrick:designchoice", { detail: { choice } })); } catch (e) {}
+  }
   function close(){
     sheet.hidden = true;
+    if (card) card.removeAttribute("aria-modal");
     document.documentElement.classList.remove("dchoice-open");
     if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {}
   }
   function self(){
-    declined = true;
-    try { sessionStorage.setItem("mbDesignChoice", "self"); } catch (e) {}
+    choseSelf = true;
     close();
     track("design_choice", { choice: "self" });
+    announce("self");
   }
   function artist(){
     close();
     track("design_choice", { choice: "artist" });
+    announce("artist");
     if (svcPrefill && file) svcPrefill(file, S.size && S.size.id);
     showView("design");
     // the photo and size are already filled in: land on the order summary
@@ -4988,8 +4996,11 @@ const designChoice = (function(){
   });
 
   return {
-    offer(f){
-      if (declined || !f || !(f instanceof Blob)) return;
+    // fromStart: the upload came from the upload screen (always asked);
+    // otherwise it is a photo change inside the editor
+    offer(f, fromStart){
+      if (!f || !(f instanceof Blob)) return;
+      if (choseSelf && !fromStart) return;
       file = f;
       if (thumb){
         const url = URL.createObjectURL(f);
@@ -5000,6 +5011,7 @@ const designChoice = (function(){
       }
       lastFocus = document.activeElement;
       sheet.hidden = false;
+      if (card) card.setAttribute("aria-modal", "true");
       document.documentElement.classList.add("dchoice-open");
       setTimeout(() => { const b = sheet.querySelector("#dcSelf"); if (b) b.focus(); }, 50);
     }
@@ -6542,6 +6554,8 @@ function adopt(img, f, opts){
 }
 
 function loadFile(f){
+  const upView = document.querySelector("#view-upload");
+  const fromStart = !!(upView && !upView.hidden);
   if (!looksLikeImage(f)){
     toast("That doesn't look like an image. JPG, PNG, HEIC, WebP, AVIF, GIF, BMP, TIFF and SVG all work.");
     return;
@@ -6552,7 +6566,7 @@ function loadFile(f){
     .then(() => { diag("trying createImageBitmap"); return decodeViaBitmap(f); })
     .catch((e) => { diag("bitmap failed: " + e.message + " — trying FileReader"); return decodeViaDataURL(f); })
     .catch((e) => { diag("FileReader failed: " + e.message + " — trying object URL"); return decodeViaImage(f); })
-    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); adopt(img, f); try { designChoice.offer(f); } catch (e) {} })
+    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); adopt(img, f); try { designChoice.offer(f, fromStart); } catch (e) {} })
     .catch(() => {
       const name = (f.name || "") + " " + (f.type || "");
       if (/heic|heif|hif/i.test(name))
