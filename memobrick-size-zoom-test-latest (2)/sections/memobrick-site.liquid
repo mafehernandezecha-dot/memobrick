@@ -94,13 +94,12 @@ window.MB_BG_PHOTO_URLS = {
         <video id="heroVid" referrerpolicy="no-referrer" poster="{{ 'mb-hero-poster.jpg' | asset_url }}" data-poster-mobile="{{ 'mb-hero-mobile-poster.jpg' | asset_url }}" autoplay muted loop playsinline preload="metadata" aria-label="A customer's hands placing a brick while building their MemoBrick photo mosaic"></video>
         <button class="vidplay" id="heroPlay" aria-label="Play the video" hidden>▶</button>
       </figure>
-      <p class="lede lede-1">{{ section.settings.hero_text_1 }}</p>
-      <p class="lede lede-2">{{ section.settings.hero_text_2 }}</p>
+      <p class="lede">{{ section.settings.hero_text_1 }}</p>
+      <p class="lede">{{ section.settings.hero_text_2 }}</p>
       <div class="hero-cta">
         <a class="btn btn-red big" href="/pages/editor">{{ section.settings.hero_button_1 }}</a>
         <button class="btn btn-ghost big" data-go="freeproof">{{ section.settings.hero_button_2 }}</button>
       </div>
-      <p class="hero-from">From <b data-from-price>$35</b> · Made &amp; shipped from Miami in 2–4 days</p>
       <p class="hero-tertiary">Ordering 10 or more?
          <button class="linky2" data-go="corporate">Corporate &amp; bulk →</button></p>
       <div class="hero-trustbar">
@@ -110,25 +109,29 @@ window.MB_BG_PHOTO_URLS = {
         <span>Preview Before Ordering</span>
       </div>
     </div>
-    <!-- phones: a create button that stays in reach once the hero scrolls away -->
-    <a class="btn btn-red mob-cta" id="mobCta" href="/pages/editor" aria-hidden="true" tabindex="-1">Create yours <small>· from <span data-from-price>$35</span></small></a>
   <div class="wrap promo-strip">
     <p><b>Order early &amp; save 20%</b> — create your personalized gift before the holiday rush. Code <b>EARLYBIRD20</b> at checkout.</p>
   </div>
 
-  <section id="transformations" data-accent="yellow">
+  <section id="reviews" data-accent="yellow">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Real builds, real people</p>
-        <h2>See what a photo becomes.</h2>
-        <p>Every photo below was taken by the customer who wrote the review — 747 of them, averaging 4.8 stars.</p>
+        <h2>747 reviews. These are their photos.</h2>
+        <p>Every photo below was taken by the customer who wrote the review.</p>
       </div>
-      <div class="rev-grid" id="transformTrack" data-count="3"></div>
+      <div class="revrail">
+          <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
+          <div class="rev-grid" id="revTrack"></div>
+          <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
+        </div>
+        <div class="revmore">
+          <button class="mini" id="revMore">Show more reviews</button>
+          <a class="mini" href="/pages/happy-customers" target="_blank" rel="noopener">
+            Read all 747 reviews</a>
+        </div>
       <p style="text-align:center;margin-top:28px">
         <a class="btn btn-red big" href="/pages/editor">See your photo in bricks</a>
-      </p>
-      <p style="text-align:center;margin-top:12px">
-        <a class="mini" href="/pages/happy-customers">See all 747 reviews →</a>
       </p>
     </div>
   </section>
@@ -166,27 +169,75 @@ window.MB_BG_PHOTO_URLS = {
           <p>Follow your personalized instructions and bring it to life.</p>
         </article>
       </div>
-      <p style="text-align:center;margin-top:36px">
+      <p class="inbox-line"><b>In the box:</b> custom bricks sorted into numbered bags · baseplates for your size · your personalized instructions. Nothing extra to buy.</p>
+      <p style="text-align:center;margin-top:28px">
         <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
       </p>
     </div>
   </section>
 
-  <section id="whatsinbox" data-accent="yellow" style="padding-top:0">
+  <section id="twoways" data-accent="blue" style="padding-top:0">
     <div class="wrap">
-      <div class="unbox-teaser">
-        <img src="{{ 'mb-package-unbox.webp' | asset_url }}" alt="The MemoBrick kit arriving in its box, ready to build" loading="lazy" onerror="this.style.display='none'">
-        <div class="unbox-teaser-copy">
-          <p class="eyebrow">What actually shows up</p>
-          <h2 style="font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(26px,3vw,36px);margin:6px 0 14px">Everything you need is in the box.</h2>
-          <ul class="unbox-list">
-            <li>Custom 1×1 bricks, sorted into numbered bags</li>
-            <li>Baseplates for your exact size</li>
-            <li>Personalized building instructions made for your design</li>
-            <li>Everything else you need — nothing extra to buy</li>
-          </ul>
-        </div>
+      <div class="sec-head">
+        <p class="eyebrow">Two ways to create</p>
+        <h2>Design it yourself, or let us design it.</h2>
       </div>
+      <div class="twoways-grid">
+        <article class="twoways-card">
+          <p class="eyebrow">Option 1</p>
+          <h3>Create It Yourself</h3>
+          <p>Upload your photo, customize your MemoBrick and make it yours — live, in the free Creator.</p>
+          <ul class="twoways-list">
+            <li>You design and approve it yourself</li>
+            <li>See it change in real time</li>
+            <li>Ships 2–4 business days after you check out</li>
+          </ul>
+          <a class="btn btn-red full" href="/pages/editor">Start creating</a>
+        </article>
+        <article class="twoways-card">
+          <p class="eyebrow">Option 2</p>
+          <h3>Let Us Design It</h3>
+          <p>Send us your photo and let our designer prepare your MemoBrick — free to see, no obligation.</p>
+          <ul class="twoways-list">
+            <li>Our designer creates it for you after you send your photo</li>
+            <li>Unlimited revisions until you approve</li>
+            <li>Ships 2–4 business days after you approve</li>
+          </ul>
+          <button type="button" class="btn btn-ghost full" data-go="freeproof">Design it for me</button>
+        </article>
+      </div>
+      <p id="giftinspo" style="text-align:center;margin-top:22px;font-size:15px;color:var(--ink-2)">
+        Giving it as a gift? <a href="/products/unlimited-memobrick" style="color:var(--b-red);font-weight:600;text-decoration:underline">Buy the kit now, they pick the photo later →</a>
+      </p>
+    </div>
+  </section>
+
+  <section id="sizes" data-accent="green">
+    <div class="wrap">
+      <div class="sizes-top">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Sizes &amp; prices</p>
+          <h2>Choosing your size is easy.</h2>
+          <p>More detail in the photo usually benefits from a larger MemoBrick.</p>
+          <ul class="size-guide-list">
+            <li><b>1 person</b> — smaller sizes can work beautifully.</li>
+            <li><b>2 people</b> — choose more detail for clearer faces.</li>
+            <li><b>Family / group</b> — larger sizes help preserve facial detail.</li>
+          </ul>
+          <p class="size-guide-note"><b>Not sure?</b> The Creator helps you choose the right size for your photo.</p>
+        </div>
+        <figure class="scaleview" id="scaleView"></figure>
+      </div>
+
+      <div class="sizetabs" id="sizeTabs" role="group" aria-label="Filter sizes by shape">
+        <button data-f="all" aria-pressed="true">All 20</button>
+        <button data-f="square" aria-pressed="false">Square</button>
+        <button data-f="portrait" aria-pressed="false">Portrait</button>
+        <button data-f="landscape" aria-pressed="false">Landscape</button>
+      </div>
+
+      <div class="sizes" id="sizeCards"></div>
+      <div class="more-wrap"><button class="btn btn-ghost" id="moreSizes">Show 12 more</button></div>
     </div>
   </section>
 
@@ -218,183 +269,6 @@ window.MB_BG_PHOTO_URLS = {
     </div>
   </section>
 
-  <section id="why" style="padding:70px 0 0">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Why MemoBrick</p>
-        <h2>A memory you keep. An experience you build.</h2>
-        <p>A photo you love becomes something you can hold — built brick by brick, and displayed because you made it yourself.</p>
-      </div>
-      <div class="features">
-        <article class="feature">
-          <img referrerpolicy="no-referrer" src="{{ 'mb-eb56eea217.jpg' | asset_url }}" alt="An aeroplane leaving Miami" loading="lazy" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
-          <div class="cap"><h3>Made &amp; shipped from Miami</h3><p>Your personalized kit, prepared in the USA.</p></div>
-        </article>
-        <article class="feature">
-          <img referrerpolicy="no-referrer" src="{{ 'mb-f3d3ed8181.jpg' | asset_url }}" alt="A pile of bricks in more than forty colors" loading="lazy" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
-          <div class="cap"><h3>40+ colors</h3><p>More colors help bring your photo to life.</p></div>
-        </article>
-        <article class="feature">
-          <img referrerpolicy="no-referrer" src="{{ 'mb-2ad9d5b841.jpg' | asset_url }}" alt="A mosaic being customised on a baseplate" loading="lazy" onerror="var p=this.closest('figure,.giftart,.rev');if(p)p.className+=' img-failed';this.style.display='none'">
-          <div class="cap"><h3>Easy to build</h3><p>Follow personalized step-by-step instructions.</p></div>
-        </article>
-        <article class="feature">
-          <div class="feature-svg" style="aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center">
-            <svg width="120" height="90" viewBox="0 0 120 90" fill="none" aria-hidden="true">
-              <rect x="4" y="4" width="112" height="82" rx="4" fill="#ECEDEF" stroke="#15171B" stroke-width="2"></rect>
-              <rect x="34" y="20" width="52" height="40" rx="2" fill="#fff" stroke="#15171B" stroke-width="2"></rect>
-              <rect x="40" y="26" width="40" height="28" fill="#0A8FC9" opacity="0.18"></rect>
-              <path d="M40 46l8-10 8 7 8-9 16 14" stroke="#0A8FC9" stroke-width="2" stroke-linejoin="round" fill="none"></path>
-              <path d="M34 68h52M60 60v8" stroke="#15171B" stroke-width="1.5" stroke-dasharray="3 3"></path>
-              <path d="M12 20v40M108 20v40" stroke="#C41E1E" stroke-width="1.5" stroke-dasharray="3 3"></path>
-            </svg>
-          </div>
-          <div class="cap"><h3>Made from your photo</h3><p>Your own memory becomes something you can build and display.</p></div>
-        </article>
-      </div>
-      <p style="text-align:center;margin-top:36px">
-        <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
-      </p>
-    </div>
-  </section>
-
-  <section id="sizes" data-accent="green">
-    <div class="wrap">
-      <div class="sizes-top">
-        <div class="sec-head" style="margin-bottom:0">
-          <p class="eyebrow">Sizes &amp; prices</p>
-          <h2>Choosing your size is easy.</h2>
-          <p>More detail in the photo usually benefits from a larger MemoBrick.</p>
-          <ul class="size-guide-list">
-            <li><b>1 person</b> — smaller sizes can work beautifully.</li>
-            <li><b>2 people</b> — choose more detail for clearer faces.</li>
-            <li><b>Family / group</b> — larger sizes help preserve facial detail.</li>
-          </ul>
-          <p class="size-guide-note"><b>Not sure?</b> The Creator helps you choose the right size for your photo.</p>
-          <p style="margin-top:16px">
-            <a class="btn btn-red" href="/pages/editor">Start with my photo</a>
-          </p>
-        </div>
-        <figure class="scaleview" id="scaleView"></figure>
-      </div>
-
-      <div class="sizetabs" id="sizeTabs" role="group" aria-label="Filter sizes by shape">
-        <button data-f="all" aria-pressed="true">All 20</button>
-        <button data-f="square" aria-pressed="false">Square</button>
-        <button data-f="portrait" aria-pressed="false">Portrait</button>
-        <button data-f="landscape" aria-pressed="false">Landscape</button>
-      </div>
-
-      <div class="sizes" id="sizeCards"></div>
-      <div class="more-wrap"><button class="btn btn-ghost" id="moreSizes">Show 12 more</button></div>
-      <p class="sizes-design-link">
-        Rather have our designers make it? <a id="sizesDesignLink" href="/pages/editor#design">Order with Pro Design Service →</a>
-      </p>
-    </div>
-  </section>
-
-  <section id="giftinspo" data-accent="purple">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Every photo has a story</p>
-        <h2>From camera roll to unforgettable gift.</h2>
-        <p>Turn the photos sitting on your phone into something they can actually build and keep.</p>
-      </div>
-      <div class="giftinspo-tags">
-        <a href="/pages/editor">Couples</a>
-        <a href="/pages/editor">Family</a>
-        <a href="/pages/editor">Pets</a>
-        <a href="/pages/editor">Weddings</a>
-        <a href="/pages/editor">Babies</a>
-        <a href="/pages/editor">Travel</a>
-        <a href="/pages/editor">Birthdays</a>
-        <a href="/pages/editor">Anniversaries</a>
-        <a href="/pages/editor">Memorials</a>
-        <a href="/pages/editor">Holiday Gifts</a>
-      </div>
-      <p style="text-align:center;margin-top:28px">
-        <a class="btn btn-red big" href="/pages/editor">Create a gift</a>
-      </p>
-      {%- comment -%}
-        Step 12 (conversion cleanup pass): the Art Gift Kit used to be its
-        own full section with a large image, directly under this one —
-        two gift-themed sections back to back. Consolidated into a single
-        compact link here instead, since it's a related but genuinely
-        different offer (buy now, they choose the photo later) worth
-        keeping reachable without giving it equal homepage weight to the
-        main custom-photo journey.
-      {%- endcomment -%}
-      <p style="text-align:center;margin-top:14px;font-size:14px;color:var(--ink-2)">
-        Need a gift right now? <a href="/products/unlimited-memobrick" target="_blank" rel="noopener" style="color:var(--b-red);font-weight:600;text-decoration:underline">Buy the kit — they pick the photo later →</a>
-      </p>
-    </div>
-  </section>
-
-  {%- comment -%}
-    Step 3 (conversion cleanup pass): Ready-Made Designs and Corporate/Bulk
-    were removed as full homepage sections here. Corporate/Bulk was
-    already reachable via nav, hero, and footer links, so that removal
-    was safe on its own. Ready-Made Designs was NOT already linked
-    anywhere else — this theme's nav is hardcoded, not a dynamic Shopify
-    menu, and had no entry for it. Found during a bug check after the
-    fact and fixed by adding a real nav link (see the header markup)
-    rather than leaving the collection with no path to it at all.
-  {%- endcomment -%}
-
-  <section id="twoways" data-accent="blue" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Two ways to create</p>
-        <h2>Design it yourself, or let us design it.</h2>
-      </div>
-      <div class="twoways-grid">
-        <article class="twoways-card">
-          <p class="eyebrow">Option 1</p>
-          <h3>Create It Yourself</h3>
-          <p>Upload your photo, customize your MemoBrick and make it yours — live, in the free Creator.</p>
-          <ul class="twoways-list">
-            <li>You design and approve it yourself</li>
-            <li>See it change in real time</li>
-            <li>Ships 2–4 business days after you check out</li>
-          </ul>
-          <a class="btn btn-red full" href="/pages/editor">Start creating</a>
-        </article>
-        <article class="twoways-card">
-          <p class="eyebrow">Option 2</p>
-          <h3>Let Us Design It</h3>
-          <p>Send us your photo and let our designer prepare your MemoBrick — free to see, no obligation.</p>
-          <ul class="twoways-list">
-            <li>Our designer creates it for you after you send your photo</li>
-            <li>Unlimited revisions until you approve</li>
-            <li>Ships 2–4 business days after you approve</li>
-          </ul>
-          <a class="btn btn-ghost full" href="/pages/free-preview">Design it for me</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews" data-accent="yellow">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Real builds, real people</p>
-        <h2>747 reviews. These are their photos.</h2>
-        <p>The proof before production, the hours spent building it together, and what happens when
-someone finally sees it. Every photo below was taken by the customer who wrote the review.</p>
-      </div>
-      <div class="revrail">
-          <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
-          <div class="rev-grid" id="revTrack"></div>
-          <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
-        </div>
-        <div class="revmore">
-          <button class="mini" id="revMore">Show more reviews</button>
-          <a class="mini" href="/pages/happy-customers" target="_blank" rel="noopener">
-            Read all 747 reviews</a>
-        </div>
-    </div>
-  </section>
-
   <section id="faq" data-accent="orange" style="padding-top:0">
     <div class="wrap">
       <div class="sec-head">
@@ -411,7 +285,7 @@ someone finally sees it. Every photo below was taken by the customer who wrote t
       </div>
       <div style="text-align:center;margin-top:40px">
         <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
-        <p style="margin-top:12px"><a href="/pages/free-preview" style="color:var(--ink-2);font-size:14px;text-decoration:underline">Not ready yet? Get a free proof first →</a></p>
+        <p style="margin-top:12px"><button type="button" class="linky" data-go="freeproof" style="color:var(--ink-2);font-size:14px;text-decoration:underline">Not ready yet? Get a free proof first →</button></p>
       </div>
     </div>
   </section>

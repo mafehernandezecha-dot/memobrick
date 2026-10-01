@@ -7,54 +7,6 @@
   before/after example) around the real, working Hulk embed.
 {%- endcomment -%}
 {%- render 'site-header' -%}
-<div class="fp-page">
-  <div class="wrap fp-wrap">
-    <div class="fp-hero">
-      <h1 class="fp-h">Not Sure How Your Photo Will Look? <span class="fp-h-accent">We'll Show You. Free.</span></h1>
-      <p class="fp-sub">Upload your photo and our designers will create a MemoBrick preview for you. No payment. No obligation.</p>
-      <p class="fp-trust">100% Free Proof · No Obligation · Made by a Real Designer</p>
-    </div>
-
-    <div class="fp-steps">
-      <div class="fp-step">
-        <span class="fp-step-ic fp-blue"><svg viewBox="0 0 24 24"><path d="M12 4v12m0-12l-5 5m5-5l5 5"></path><path d="M4 18v2h16v-2"></path></svg></span>
-        <b>1. Upload your photo</b>
-      </div>
-      <div class="fp-step">
-        <span class="fp-step-ic fp-pink"><svg viewBox="0 0 24 24"><path d="M15 4l5 5-9 9-5 1 1-5z"></path></svg></span>
-        <b>2. Our designer creates your MemoBrick</b>
-      </div>
-      <div class="fp-step">
-        <span class="fp-step-ic fp-mint"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
-        <b>3. Receive your free proof</b>
-      </div>
-    </div>
-
-    <div class="fp-example">
-      <div class="fp-example-side">
-        <img class="fp-example-img" referrerpolicy="no-referrer" src="{{ 'mb-256ed61735.jpg' | asset_url }}" alt="An example reference photo — a close-cropped portrait" loading="lazy" onerror="this.style.display='none'">
-        <span>Your Photo</span>
-      </div>
-      <span class="fp-arrow">→</span>
-      <div class="fp-example-side">
-        <img class="fp-example-img" referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Custom-Memobrick-Photo-Mosaic-20x20.png?v=1788843352" alt="The same kind of photo turned into a MemoBrick mosaic" loading="lazy" onerror="this.style.display='none'">
-        <span>MemoBrick Preview</span>
-      </div>
-    </div>
-
-    <div class="fp-form-card" id="proofForm">
-      {%- comment -%}
-        Hulk Form Builder embed. The Form ID comes from
-        Theme settings → Hulk Form Builder (shared with the homepage's
-        free-proof view), so it only ever needs changing in one place.
-      {%- endcomment -%}
-      {%- assign hulk_fp_id = settings.hulk_freeproof_form_id | default: '2n1U3xnqHKzKiTv9oc59VA' -%}
-      <div class="hulk-form-embed">
-        <div style="margin:0 auto;" class="pxFormGenerator" id="{{ hulk_fp_id | escape }}"></div>
-      </div>
-    </div>
-    <p class="fp-note">No payment required. 100% free, no obligation.</p>
-  </div>
-</div>
+{%- render 'free-proof-page' -%}
 
 {%- render 'site-footer' -%}
