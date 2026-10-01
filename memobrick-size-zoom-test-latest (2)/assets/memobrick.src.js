@@ -5684,11 +5684,15 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
 
   let ux = ux0, uy = uy0, uw = ux1-ux0, uh = uy1-uy0;
 
-  // margin: expand 12% on each side so the crop doesn't hug the face(s)
-  // tightly, then clamp back within the photo
-  const marginX = uw*0.12, marginY = uh*0.12;
-  ux = Math.max(0, ux-marginX); uy = Math.max(0, uy-marginY);
-  const ex1 = Math.min(1, ux1+marginX), ey1 = Math.min(1, uy1+marginY);
+  // margin: frame the whole head with a little shoulder, not just the face.
+  // The detector's box runs roughly brow to chin, so a flat 12% cut off hair
+  // and chin and zoomed in so far that features became a few big bricks (a
+  // real review: "I wish that it wasn't so close up"). Tested side by side
+  // on portraits: much more room than this (60% above, 80% below) pulled in
+  // so much background on a square board that the face got small again.
+  const padTop = uh*0.35, padSide = uw*0.20, padBottom = uh*0.40;
+  ux = Math.max(0, ux-padSide); uy = Math.max(0, uy-padTop);
+  const ex1 = Math.min(1, ux1+padSide), ey1 = Math.min(1, uy1+padBottom);
   uw = ex1-ux; uh = ey1-uy;
 
   // reshape to the board's own aspect ratio, growing whichever side is
@@ -5703,7 +5707,7 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
   // zoom: how much to scale so this reshaped box fills the whole visible
   // crop — my own S.zoom is a multiplier on top of "cover", exactly
   // matching what 1/max(width,height) gives here
-  const zoomPct = clamp(Math.round((1/Math.max(rw, rh))*100), 100, 300);
+  const zoomPct = clamp(Math.round((1/Math.max(rw, rh))*100), 100, 240);   // was 300: deep zooms made faces blocky
   S.zoom = zoomPct/100;
 
   // convert the desired centre (cx0, cy0, normalised 0-1 in photo space)
@@ -5716,7 +5720,13 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
   const wantX = cx0*iw, wantY = cy0*ih;       // desired centre, in photo pixel space
   S.ox = slackX > 0.001 ? clamp(((iw/2 - wantX)*sc)/slackX, -1, 1) : 0;
   S.oy = slackY > 0.001 ? clamp(((ih/2 - wantY)*sc)/slackY, -1, 1) : 0;
+  // how wide the largest face now is, as a share of the board's width — the
+  // size suggestion uses it to say how many bricks across a face gets
+  const faces = (S.mlFaces && S.mlFacesImg === S.imgId) ? S.mlFaces : null;
+  const faceW = faces && faces.length ? Math.max(...faces.map((f) => f.x1 - f.x0)) : 0;
+  S.faceFrac = faceW > 0 ? Math.min(1, faceW*dw/W) : null;
   setZoom(zoomPct, false, true);
+  if (typeof updateSizeRecommendation === "function") updateSizeRecommendation();
 }
 
 /* Face-aware auto-crop. Detects every face in the FULL original photo —
@@ -5857,6 +5867,40 @@ function recommendedSizeForFaces(n){
   return best;
 }
 
+/* The size to suggest for this photo, with the reason in words. Starts
+   from the face count (recommendedSizeForFaces), then makes sure the
+   largest face gets enough bricks across for clear eyes (FACE_MIN_STUDS),
+   preferring the photo's own shape. Only ever a suggestion: the board is
+   never switched automatically. */
+const FACE_MIN_STUDS = 18;
+function recommendedSizeForPhoto(){
+  const n = S.detectedFaceCount;
+  const byCount = recommendedSizeForFaces(n);
+  if (!byCount) return null;
+  const img = S.img, iw = img && (img.naturalWidth || img.width), ih = img && (img.naturalHeight || img.height);
+  const ratio = iw && ih ? iw/ih : 1;
+  const shape = ratio > 1.15 ? "landscape" : ratio < 0.87 ? "portrait" : "square";
+  const frac = S.faceFrac || 0;
+  const fitsCount = (z) => { const f = FITS[z.id]; const nums = f && f.match(/\d+/g); return !nums || Number(nums[nums.length - 1]) >= n; };
+  const studs = (z) => Math.round(frac * z.gw);
+  // never suggest a smaller board than the one already chosen: the old
+  // face-count rule recommended 16x16 to someone on 20x20
+  const floor = Math.max(byCount.gw*byCount.gh, S.size.gw*S.size.gh);
+  const pool = SIZES.filter((z) => z.id !== "10x10" && fitsCount(z) && z.gw*z.gh >= floor);
+  const ok = (z) => !frac || studs(z) >= FACE_MIN_STUDS;
+  const byArea = (a, b) => a.gw*a.gh - b.gw*b.gh;
+  const best = pool.filter((z) => z.shape === shape && ok(z)).sort(byArea)[0]
+            || pool.filter(ok).sort(byArea)[0] || S.size;
+  let why;
+  if (frac && studs(best) >= FACE_MIN_STUDS && studs(S.size) < FACE_MIN_STUDS)
+    why = "The face gets about " + studs(best) + " bricks across on this size (" + studs(S.size) + " now), so eyes and smile stay clear.";
+  else if (best.shape === shape && S.size.shape !== shape)
+    why = "Matches your photo\u2019s " + (shape === "portrait" ? "tall" : "wide") + " shape, so less of it is cropped.";
+  else
+    why = "Your photo has " + n + (n === 1 ? " face" : " faces") + " \u2014 this size keeps more detail.";
+  return { size: best, why: why };
+}
+
 /* Desktop-only counterpart to the mobile size panel's own inline
    recommendation banner (built fresh each time that panel renders).
    #sizeGrid renders once at script load rather than per-photo, so
@@ -5864,14 +5908,13 @@ function recommendedSizeForFaces(n){
    slot right above it — purely additive, sizeGrid/sizeAll untouched. */
 function updateSizeRecommendation(){
   const el = $("#sizeRec"); if (!el) return;
-  const rec = recommendedSizeForFaces(S.detectedFaceCount);
+  const pick = recommendedSizeForPhoto(), rec = pick && pick.size;
   if (!rec || rec.id === S.size.id){ el.hidden = true; el.innerHTML = ""; return; }
-  const n = S.detectedFaceCount;
   el.hidden = false;
   el.innerHTML = '<span class="size-rec-k">✨ Recommended for your photo</span>' +
     '<button type="button" class="size-rec-pick" data-id="' + rec.id + '">' +
       '<b>' + rec.label + '</b>' +
-      '<span>Your photo has ' + n + (n === 1 ? ' face' : ' faces') + ' — this size keeps more detail.</span>' +
+      '<span>' + pick.why + '</span>' +
     '</button>';
   el.querySelector(".size-rec-pick").addEventListener("click", () => setSize(rec.id));
 }
@@ -6207,6 +6250,7 @@ function adopt(img, f, opts){
   S.imgId = (S.imgId || 0) + 1;
   S.baseBuf = null; S.baseKey = ""; S.cells = null; S.cacheKey = "";
   S.pickedPal = null; S.palKey = "";
+  S.faceFrac = null;
   S.detectedFaceCount = null;   // belongs to the previous photo — cleared until this one's own detection resolves
   S.mlFaces = null; S.mlFacesImg = -1;
   S.expo = null; S.autoBright = true;   // each photo gets its own exposure analysis
@@ -8208,16 +8252,14 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     },
     size(){
       const list = SIZES.slice().sort((a, b) => (a.gw * a.gh) - (b.gw * b.gh) || a.price - b.price);
-      const rec = recommendedSizeForFaces(S.detectedFaceCount);
+      const pick = recommendedSizeForPhoto(), rec = pick && pick.size;
       let html = "";
       if (rec && rec.id !== (S.size && S.size.id)){
-        const n = S.detectedFaceCount;
         html += '<div class="mob-size-rec">' +
           '<span class="mob-size-rec-k">✨ Recommended for your photo</span>' +
           '<button type="button" class="mob-size-rec-pick" data-size="' + rec.id + '">' +
             '<b>' + rec.label + '</b>' +
-            '<span>Your photo has ' + n + (n === 1 ? ' face' : ' faces') +
-              ' — this size keeps more detail.</span>' +
+            '<span>' + pick.why + '</span>' +
           '</button></div>';
       }
       html += '<div class="mob-sizes">' + list.map((z) => {
