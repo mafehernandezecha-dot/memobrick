@@ -3299,3 +3299,5 @@ video{max-width:100%;height:auto;display:block}
 #view-home > section.gift-line{padding:0}
 @media(max-width:700px){#view-home > section{padding:40px 0}}
 @media(min-width:1021px){#sizes .sizes{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* the product photo shows the shape; the striped ratio swatch beside the title read as a missing image */
+#sizes .ratio{display:none}

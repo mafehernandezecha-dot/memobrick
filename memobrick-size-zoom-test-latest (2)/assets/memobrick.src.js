@@ -147,7 +147,7 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
       // don't exist and render as broken images. The live product's own
       // featured_image is guaranteed to exist (it's how the product shows
       // up in Shopify at all), so it wins whenever the catalog has it.
-      if (rec.image) size.img = rec.image;
+      if (rec.image){ size.imgStatic = size.img; size.img = rec.image; }
       // variant ids and handle come from the live store too, so a size can
       // be added (or its product re-created) in Shopify without editing JS
       if (rec.handle) size.handle = rec.handle;
@@ -5385,6 +5385,8 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
    ===================================================================== */
 (function mediaSafety(){
   function fallback(img){
+    // size-card photos try their backup photo first (their own onerror)
+    if (img.classList.contains("size-img")) return;
     const card = img.closest(".rev, .gal-item, .shopcard");
     if (card){
       // a customer photo that will not load is the whole point of the card:
@@ -5412,25 +5414,11 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
     new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
   } catch (e) {}
 
-  /* the banner video: if it cannot play, show its poster instead of a black box */
-  const vid = document.querySelector("#heroVid");
-  if (vid){
-    const posterOnly = () => {
-      const src = vid.getAttribute("poster");
-      if (!src) { vid.style.display = "none"; return; }
-      const im = new Image();
-      im.src = src; im.alt = "Building a MemoBrick photo mosaic, brick by brick";
-      im.className = "hero-poster";
-      im.style.cssText = "width:100%;height:auto;display:block;border-radius:inherit";
-      if (vid.parentElement) vid.parentElement.insertBefore(im, vid);
-      vid.style.display = "none";
-    };
-    vid.addEventListener("error", posterOnly);
-    // iOS refuses data: video outright; give it a moment, then fall back
-    setTimeout(() => {
-      if (vid.readyState === 0 && !vid.videoWidth) posterOnly();
-    }, 2500);
-  }
+  /* the banner video's own fallback lives in heroVideo(): it retries a failed
+     load once and only then shows the poster. A second fallback here used to
+     swap the video for its poster whenever it hadn't started loading after
+     2.5 seconds, which on a slower phone connection hid the video for good
+     (and could stack a second poster image on top). */
 })();
 
 /* =====================================================================
@@ -5629,7 +5617,7 @@ function renderSizes(){
     return `
     <article class="size${x.id===S.size.id?" pick":""}${i>=SIZES_SHOWN?" extra":""}" data-id="${x.id}">
       ${x.id===S.size.id?'<span class="tag now">In the creator</span>':(x.id==="16x16"?'<span class="tag">Most ordered</span>':"")}
-      <img class="size-img" referrerpolicy="no-referrer" src="${x.img}" alt="MemoBrick ${x.label} mosaic" loading="lazy" onerror="this.style.display='none'">
+      <img class="size-img" referrerpolicy="no-referrer" src="${x.img}"${x.imgStatic && x.imgStatic !== x.img ? ` data-fallback="${x.imgStatic}"` : ""} alt="MemoBrick ${x.label} mosaic" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}else{this.style.display='none'}">
       <div class="size-head">
         <span class="ratio" style="width:${ar}px;height:${arh}px" aria-hidden="true"></span>
         <div>
