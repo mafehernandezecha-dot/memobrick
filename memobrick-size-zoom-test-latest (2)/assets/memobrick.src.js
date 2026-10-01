@@ -4749,6 +4749,9 @@ if (foxThumb){
    and send a proof before production. Sizes and prices come from the same
    SIZES catalogue the creator uses — there is no second price list.
    ===================================================================== */
+// filled in by designerService() below: hands an uploaded photo (and the
+// size it was previewed at) to the Pro Design Service form
+let svcPrefill = null;
 (function designerService(){
   const drop = document.querySelector("#svcDrop"),
         input = document.querySelector("#svcFile"),
@@ -4916,7 +4919,91 @@ if (foxThumb){
   }
   if (checkout) checkout.addEventListener("click", submit);
 
+  svcPrefill = (f, sizeId) => {
+    takeFile(f);
+    if (sizeId && SIZES.some((z) => z.id === sizeId)){
+      svc.sizeId = sizeId;
+      if (POPULAR.indexOf(sizeId) < 0) svc.showAll = true;   // keep the chosen size visible
+    }
+    drawSizes(); summary();
+  };
+
   drawSizes(); summary();
+})();
+
+/* =====================================================================
+   DESIGN CHOICE  (#designChoice)
+   Right after a photo is uploaded, its brick preview opens with a choice
+   on top: design it yourself in the Creator, or let our artist design it
+   (Pro Design Service: photo and size carried over, one tap from checkout).
+   Asked for uploads of the customer's own file only, and only until they
+   pick "myself" once in this visit.
+   ===================================================================== */
+const designChoice = (function(){
+  const sheet = document.querySelector("#designChoice");
+  if (!sheet) return { offer(){} };
+  const thumb = sheet.querySelector("#dcThumb");
+  let file = null, lastFocus = null;
+  let declined = false;
+  try { declined = sessionStorage.getItem("mbDesignChoice") === "self"; } catch (e) {}
+
+  function close(){
+    sheet.hidden = true;
+    document.documentElement.classList.remove("dchoice-open");
+    if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {}
+  }
+  function self(){
+    declined = true;
+    try { sessionStorage.setItem("mbDesignChoice", "self"); } catch (e) {}
+    close();
+    track("design_choice", { choice: "self" });
+  }
+  function artist(){
+    close();
+    track("design_choice", { choice: "artist" });
+    if (svcPrefill && file) svcPrefill(file, S.size && S.size.id);
+    showView("design");
+    // the photo and size are already filled in: land on the order summary
+    requestAnimationFrame(() => {
+      const buy = document.querySelector("#view-design .svc-buy");
+      if (buy) buy.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+  function track(name, data){
+    try { if (window.dataLayer) window.dataLayer.push(Object.assign({ event: "memobrick_" + name }, data)); } catch (e) {}
+  }
+
+  sheet.querySelector("#dcSelf").addEventListener("click", self);
+  sheet.querySelector("#dcClose").addEventListener("click", self);
+  sheet.querySelector("#dcArtist").addEventListener("click", artist);
+  sheet.addEventListener("click", (e) => { if (e.target === sheet) self(); });
+  sheet.addEventListener("keydown", (e) => {
+    if (e.key === "Escape"){ e.preventDefault(); self(); return; }
+    if (e.key !== "Tab") return;                       // keep focus inside the dialog
+    const f = [...sheet.querySelectorAll("button")].filter((b) => b.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+
+  return {
+    offer(f){
+      if (declined || !f || !(f instanceof Blob)) return;
+      file = f;
+      if (thumb){
+        const url = URL.createObjectURL(f);
+        thumb.onload = () => URL.revokeObjectURL(url);
+        thumb.onerror = () => { thumb.style.display = "none"; };
+        thumb.style.display = "";
+        thumb.src = url;
+      }
+      lastFocus = document.activeElement;
+      sheet.hidden = false;
+      document.documentElement.classList.add("dchoice-open");
+      setTimeout(() => { const b = sheet.querySelector("#dcSelf"); if (b) b.focus(); }, 50);
+    }
+  };
 })();
 
 /* =====================================================================
@@ -6465,7 +6552,7 @@ function loadFile(f){
     .then(() => { diag("trying createImageBitmap"); return decodeViaBitmap(f); })
     .catch((e) => { diag("bitmap failed: " + e.message + " — trying FileReader"); return decodeViaDataURL(f); })
     .catch((e) => { diag("FileReader failed: " + e.message + " — trying object URL"); return decodeViaImage(f); })
-    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); return adopt(img, f); })
+    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); adopt(img, f); try { designChoice.offer(f); } catch (e) {} })
     .catch(() => {
       const name = (f.name || "") + " " + (f.type || "");
       if (/heic|heif|hif/i.test(name))

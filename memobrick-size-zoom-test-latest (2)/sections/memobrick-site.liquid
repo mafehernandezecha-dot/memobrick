@@ -531,6 +531,36 @@ window.MB_BG_PHOTO_URLS = {
     </div>
   </section>
 
+  {%- comment -%}
+    Shown once a photo has been uploaded, over the first preview of it:
+    design it yourself in the Creator, or hand it to our artist (Pro Design
+    Service) and go straight on to checkout.
+  {%- endcomment -%}
+  <div class="dchoice" id="designChoice" hidden>
+    <div class="dchoice-card" role="dialog" aria-modal="true" aria-labelledby="dcTitle">
+      <button type="button" class="dchoice-x" id="dcClose" aria-label="Close and design it myself">×</button>
+      <div class="dchoice-top">
+        <img id="dcThumb" alt="Your uploaded photo">
+        <div>
+          <p class="eyebrow">Your photo is ready</p>
+          <h2 id="dcTitle">How would you like to design it?</h2>
+        </div>
+      </div>
+      <div class="dchoice-opts">
+        <button type="button" class="dchoice-opt" id="dcSelf">
+          <span class="dchoice-k">Design it myself</span>
+          <span class="dchoice-d">Crop, colors and background in the Creator. See every change live, then check out when you love it.</span>
+          <span class="btn btn-red full">Edit my design</span>
+        </button>
+        <button type="button" class="dchoice-opt" id="dcArtist">
+          <span class="dchoice-k">Let our artist design it</span>
+          <span class="dchoice-d">A MemoBrick artist designs your mosaic and emails you a proof before production. Revisions until you approve.</span>
+          <span class="btn btn-ghost full">Continue to checkout →</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <section class="view" id="view-editor" hidden="">
     <div class="ed-topbar" id="edTopbar">
       <button class="ed-tb-back" data-go="upload">‹ <span>Back</span></button>
