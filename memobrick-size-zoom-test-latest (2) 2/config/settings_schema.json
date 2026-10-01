@@ -1,0 +1,238 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "MemoBrick",
+    "theme_version": "1.0.0",
+    "theme_author": "MemoBrick",
+    "theme_documentation_url": "https://mymemobrick.com",
+    "theme_support_email": "support@memobrickofficial.com"
+  },
+  {
+    "name": "MemoBrick",
+    "settings": [
+      {
+        "type": "header",
+        "content": "This theme is the MemoBrick storefront. Content is edited in the creator files."
+      },
+      {
+        "type": "header",
+        "content": "SEO & social sharing"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Displayed in browser tabs and search results. Square image, at least 32 x 32px, works best."
+      },
+      {
+        "type": "image_picker",
+        "id": "social_share_image",
+        "label": "Default social sharing image",
+        "info": "Used when a page is shared on social media and that page has no image of its own (for example, the homepage). Recommended size: 1200 x 630px."
+      },
+      {
+        "type": "header",
+        "content": "Free shipping"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold ($)",
+        "info": "Shown in the cart drawer's free-shipping progress bar.",
+        "default": 125
+      }
+    ]
+  },
+  {
+    "name": "Hulk Form Builder",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Create the form in the Hulk Form Builder app, turn on its app embed under Theme settings → App embeds, then paste the Form ID below."
+      },
+      {
+        "type": "text",
+        "id": "hulk_freeproof_form_id",
+        "label": "Free Proof request — Hulk Form ID",
+        "default": "2n1U3xnqHKzKiTv9oc59VA",
+        "info": "Used on the Free Proof page (/pages/free-preview) and the homepage's 'Let us design it' view."
+      }
+    ]
+  },
+  {
+    "name": "Design capture",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Saves a picture of every design customers make (including ones who never order) to your Google Drive, so you can see what people designed and where they gave up."
+      },
+      {
+        "type": "checkbox",
+        "id": "design_capture_enabled",
+        "label": "Save customer designs",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "design_capture_url",
+        "label": "Google Apps Script web app URL",
+        "info": "Paste the /exec URL from the Apps Script deployment."
+      },
+      {
+        "type": "text",
+        "id": "design_capture_key",
+        "label": "Secret key",
+        "info": "Must match SECRET_KEY in the Apps Script. Any random word works."
+      },
+      {
+        "type": "checkbox",
+        "id": "design_capture_photo",
+        "label": "Also save the customer's original photo",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Save-your-design email",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "1st ask: right after the customer uploads their photo. 2nd ask (only if they tapped Skip): a small card that never blocks the editor, shown once they've kept designing for a while and paused — or, on desktop, when they move to leave the page. Emails are saved as Shopify customers (tagged), which Omnisend syncs. Never shown to logged-in customers."
+      },
+      {
+        "type": "checkbox",
+        "id": "email_gate_enabled",
+        "label": "Ask for email in the design tool",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "email_gate_delay",
+        "label": "Wait after upload",
+        "min": 0,
+        "max": 30,
+        "step": 1,
+        "unit": "sec",
+        "default": 0,
+        "info": "0 = ask immediately after the photo is uploaded."
+      },
+      {
+        "type": "text",
+        "id": "email_gate_heading",
+        "label": "Heading",
+        "default": "Great photo! Let’s save your design 🎨"
+      },
+      {
+        "type": "textarea",
+        "id": "email_gate_text",
+        "label": "Text",
+        "default": "Enter your email before you start, so your design is saved and you can come back and finish it anytime."
+      },
+      {
+        "type": "text",
+        "id": "email_gate_button",
+        "label": "Button",
+        "default": "Start designing"
+      },
+      {
+        "type": "text",
+        "id": "email_gate_skip",
+        "label": "Skip link",
+        "default": "Skip for now"
+      },
+      {
+        "type": "text",
+        "id": "email_gate_fine",
+        "label": "Small print",
+        "default": "We'll also send design tips and offers. Unsubscribe anytime."
+      },
+      {
+        "type": "header",
+        "content": "Second ask (after Skip)"
+      },
+      {
+        "type": "range",
+        "id": "email_gate_second_after",
+        "label": "Show after designing for",
+        "min": 20,
+        "max": 300,
+        "step": 5,
+        "unit": "sec",
+        "default": 75
+      },
+      {
+        "type": "text",
+        "id": "email_gate_second_heading",
+        "label": "Heading",
+        "default": "Looking great! Save your progress?"
+      },
+      {
+        "type": "text",
+        "id": "email_gate_second_text",
+        "label": "Text",
+        "default": "Add your email so your design is kept safe. You can keep designing."
+      },
+      {
+        "type": "text",
+        "id": "email_gate_second_button",
+        "label": "Button",
+        "default": "Save my design"
+      },
+      {
+        "type": "text",
+        "id": "email_gate_exit_heading",
+        "label": "Desktop 'leaving' heading",
+        "default": "Leaving already? Keep your design 💾"
+      },
+      {
+        "type": "text",
+        "id": "email_gate_exit_text",
+        "label": "Desktop 'leaving' text",
+        "default": "Enter your email and your mosaic will be waiting for you when you come back."
+      },
+      {
+        "type": "header",
+        "content": "Tags & timing"
+      },
+      {
+        "type": "text",
+        "id": "email_gate_tags",
+        "label": "Customer tags",
+        "default": "newsletter,started-design",
+        "info": "Comma separated. Use the 'started-design' tag to trigger your Omnisend reminder automation."
+      },
+      {
+        "type": "range",
+        "id": "email_gate_skip_days",
+        "label": "After 2 skips, ask again after",
+        "min": 1,
+        "max": 30,
+        "step": 1,
+        "unit": "d",
+        "default": 3
+      }
+    ]
+  },
+  {
+    "name": "Omnisend design reminder",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "When a customer adds a design to the cart, sends Omnisend a custom event with a picture of THEIR design. Build an Omnisend workflow triggered by this event to email them their own mosaic. Needs the Omnisend app embed turned on."
+      },
+      {
+        "type": "checkbox",
+        "id": "omnisend_design_enabled",
+        "label": "Send designs to Omnisend",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "omnisend_design_event",
+        "label": "Custom event name",
+        "default": "added design to cart",
+        "info": "Must match the trigger name in your Omnisend workflow."
+      }
+    ]
+  }
+]

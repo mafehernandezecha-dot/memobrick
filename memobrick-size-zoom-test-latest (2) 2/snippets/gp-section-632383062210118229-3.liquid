@@ -1,0 +1,235 @@
+
+    <div
+    style="--d:block;--d-mobile:block;--d-tablet:block"
+    data-id="gLF2UjWz1F"
+      items-repeat
+    >
+      <div style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--w:var(--g-ct-w);--w-tablet:var(--g-ct-w);--w-mobile:var(--g-ct-w);--rg:10px;--cg:10px;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--gtc:repeat(1, minmax(0, 1fr));--gtc-tablet:repeat(3, minmax(0, 1fr));--gtc-mobile:repeat(2, minmax(0, 1fr))"
+          class="gp-grid !gp-m-auto gp-w-full"
+        >
+        {% liquid
+            assign articlePickType = 'latest'
+            assign articleHandles = ''| split: ","
+            assign articleBlogTitle = "" | split: ","
+            assign limit = "4"
+            assign blogTitle = ''
+            assign all_articles = null | sort
+
+            if articlePickType == 'manually'
+              for handle in articleHandles
+                assign articleByHandle = articles[handle] | sort
+                assign all_articles = all_articles | concat: articleByHandle
+              endfor
+            else
+              assign current_blog_handle = blogs['news']
+              if gp_enable_custom_dynamic_blog == true
+                assign current_blog_handle = blogs[blog.handle]
+              endif
+              assign all_articles = current_blog_handle.articles | limit: limit | sort: "updated_at" | reverse
+              assign blogTitle = current_blog_handle.title
+            endif
+
+        %}
+        {% for article in all_articles limit: limit %}
+          {% if articlePickType == 'manually' %}
+              {% assign blogTitle = articleBlogTitle[forloop.index0] %}
+          {% endif %}
+          <div>
+    
+
+    
+
+    
+    <gp-row
+      data-id="gCVakT75jS" id="gCVakT75jS" data-same-height-subgrid-container
+      class="gCVakT75jS gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]"
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--cg:8px;--rg:0px;--gtc:minmax(0, auto) minmax(0, auto) minmax(0, auto);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--h:auto;--pc:start"
+    >
+      <script gp-data type="application/json">{"background":{},"uid":"gCVakT75jS"}</script>
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gOtJXpCo2O gp-relative gp-flex gp-flex-col"
+    >
+      <div gp-el-wrapper style="--bs:solid;--bw:0px 1px 0px 0px;--bc:#DDDDDD;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:var(--g-s-s);--pt:0px;--pr:var(--g-s-s)" class="gC44VW71Zi ">
+      
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gC44VW71Zi"
+      
+      style="--dynamic-source-color:#F4F4F4"
+    >
+      <div  >
+        <div
+          data-gp-text
+          class="gp-g-paragraph-3 gp-text-g-text-1 gp-text-instant"
+          style="--w:100%;--tdt:auto;--ta:left;--c:var(--g-c-text-1, text-1);word-break:break-word;overflow:hidden"
+        >
+          By {{ article.author }}
+        </div>
+      </div>
+    </div>
+    
+  
+      </div>
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="g_pXLjeI-D gp-relative gp-flex gp-flex-col"
+    >
+      <div gp-el-wrapper style="--bs:solid;--bw:0px 1px 0px 0px;--bc:#DDDDDD;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:var(--g-s-s);--pt:0px;--pr:var(--g-s-s)" class="gYtnsZ-qNh ">
+      
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gYtnsZ-qNh"
+      
+      style="--dynamic-source-color:#F4F4F4"
+    >
+      <div  >
+        <div
+          data-gp-text
+          class="gp-g-paragraph-3 gp-text-g-text-1 gp-text-instant"
+          style="--w:100%;--tdt:auto;--ta:left;--c:var(--g-c-text-1, text-1);word-break:break-word;overflow:hidden"
+        >
+          {{ blogTitle }}
+        </div>
+      </div>
+    </div>
+    
+  
+      </div>
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gYyvxESRn_ gp-relative gp-flex gp-flex-col"
+    >
+      <div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="gkA7cIST5W ">
+      
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gkA7cIST5W"
+      
+      style="--dynamic-source-color:#F4F4F4"
+    >
+      <div  >
+        <div
+          data-gp-text
+          class="gp-g-paragraph-3 gp-text-g-text-1 gp-text-instant"
+          style="--w:100%;--tdt:auto;--ta:left;--c:var(--g-c-text-1, text-1);--size:12px;--size-tablet:10px;--size-mobile:9px;word-break:break-word;overflow:hidden"
+        >
+          {{ article.published_at | date: '%b %d, %Y' }}
+        </div>
+      </div>
+    </div>
+    
+  
+      </div>
+    </div>
+
+      
+    </gp-row>
+  
+  <div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="gWePpjiWrz ">
+      
+    
+          <a href="{{article.url}}" target="_self" title="{{article.title}}">
+          
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gWePpjiWrz"
+      
+      style="--dynamic-source-color:#F4F4F4"
+    >
+      <div  >
+        <h2
+          data-gp-text
+          class="gp-g-subheading-3 hover:gp-text-g-highlight gp-text-g-text-2 gp-text-instant"
+          style="--w:100%;--tdt:auto;--ta:left;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--hvr-c:var(--g-c-highlight, highlight);--c:var(--g-c-text-2, text-2);word-break:break-word;overflow:hidden"
+        >
+          {{article.title}}
+        </h2>
+      </div>
+    </div>
+    
+          </a>
+        
+  
+      </div><div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:var(--g-s-s)" class="gTuzX1gdTF ">
+      
+    
+    <a href="{{article.url}}" target="_blank" class="gp-cursor-auto gp-pointer-events-none [&_button]:gp-pointer-events-auto">
+      
+    <gp-button
+      
+      class="gp-flex gp-flex-col"
+    >
+      <script gp-data type="application/json">{}</script>
+      <div style="--ta:left" >
+        <style>[data-id="gTuzX1gdTF"].gp-button-base::before, [data-id="gTuzX1gdTF-interaction"].gp-button-base::before {
+      
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    border-style: none;
+  border-width: 1px 1px 1px 1px;
+  border-color: #121212;
+  
+    
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      
+  
+    }
+  
+      
+  [data-id="gTuzX1gdTF"]:hover::before, [data-id="gTuzX1gdTF-interaction"]:hover::before {
+    
+    
+  }</style>
+        
+        <button
+          data-id="gTuzX1gdTF" dataId="gTuzX1gdTF" data-state="idle" aria-label="Read more"
+          
+          type="button"
+          style="--w:Auto;--w-tablet:Auto;--w-mobile:Auto;--h:Auto;--h-tablet:Auto;--h-mobile:Auto;--pl:var(--g-s-xl);--pr:var(--g-s-xl);--pt:var(--g-s-m);--pb:var(--g-s-m);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--hvr-bblr:0px;--hvr-bbrr:0px;--hvr-btlr:0px;--hvr-btrr:0px;--hvr-bg:var(--g-c-highlight, highlight);--bg:var(--g-c-brand, brand);--c:var(--g-c-text-3, text-3);--ff:var(--g-font-body, body);--ls:0px"
+          class="gTuzX1gdTF gp-button-base gp-group gp-relative gp-inline-flex gp-max-w-full gp-items-center gp-justify-center gp-no-underline gp-transition-colors gp-duration-200 disabled:gp-btn-disabled disabled:gp-opacity-30 gp-text-g-text-3 "
+        >
+        
+        <div class="gp-inline-flex gp-flex-row-reverse">
+          
+    <span
+      style="--ff:var(--g-font-body, body);--ls:0px;word-break:break-word;--ml:8px;--height-desktop:1em;--height-tablet:1em;--height-mobile:1em"
+      class="gp-button-icon gp-z-1 gp-inline-flex gp-shrink-0 gp-items-center gp-justify-center group-data-[state=loading]:gp-invisible [&>svg]:!gp-h-[var(--height-desktop)] [&>svg]:!gp-w-auto tablet:[&>svg]:!gp-h-[var(--height-tablet)] mobile:[&>svg]:!gp-h-[var(--height-mobile)]"
+    >
+      <svg height="20" width="20" data-name="arrow-right-bold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" data-id="508817550824440168"><path fill="currentColor" strokelinecap="round" strokelinejoin="round" d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path></svg>
+    </span>
+  
+          
+    <span
+      data-gp-text
+      style="--ff:var(--g-font-body, body);--ls:0px;word-break:break-word"
+      class="gp-content-product-button group-active/button:!gp-text-inherit gp-relative gp-flex gp-h-full gp-items-center gp-overflow-hidden gp-break-words group-data-[state=loading]:gp-invisible [&_p]:gp-whitespace-pre-line gp-text button-text"
+    >
+      {{ section.settings.ggTuzX1gdTF_label }}
+    </span>
+        </div>
+        
+        </button>
+      </div>
+      <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-button-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+    </gp-button>
+  </a>
+  
+      </div></div>
+        {% endfor %}
+      </div>
+    </div>
+
+  

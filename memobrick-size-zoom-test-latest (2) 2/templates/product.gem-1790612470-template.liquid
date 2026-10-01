@@ -1,0 +1,333 @@
+{%- comment -%}
+  Per-size facts, sourced from each product's own live Shopify description
+  (pieces / base plates / build time / fits) rather than recomputed from the
+  creator's stud grid — the two don't always agree exactly (e.g. 16x16 is
+  48x48 studs but the kit is described and sold as 2,500 pieces), and the
+  product's own listed numbers are what the customer actually sees quoted
+  elsewhere, so they're the source of truth here. FITS is copied from each
+  product's own description where it states one; the two sizes that don't
+  state it (50x60, 60x30) fall back to the creator's estimate.
+{%- endcomment -%}
+{% assign size_id = "" %}
+{% assign pieces = "" %}
+{% assign plates = "" %}
+{% assign hours = "" %}
+{% assign fits = "" %}
+{% case product.handle %}
+  {% when "custom-bricked-mosaic-10x10" %}
+    {% assign size_id = "10x10" %} {% assign pieces = "1,024" %} {% assign plates = "1" %} {% assign hours = "1" %} {% assign fits = "One face" %}
+  {% when "1-big-board" %}
+    {% assign size_id = "16x16" %} {% assign pieces = "2,500" %} {% assign plates = "1" %} {% assign hours = "2.5" %} {% assign fits = "One face" %}
+  {% when "2-2-boards" %}
+    {% assign size_id = "20x20" %} {% assign pieces = "4,096" %} {% assign plates = "4" %} {% assign hours = "4" %} {% assign fits = "1–2 people" %}
+  {% when "2-3-boards" %}
+    {% assign size_id = "20x30" %} {% assign pieces = "6,144" %} {% assign plates = "6" %} {% assign hours = "6" %} {% assign fits = "1–3 people" %}
+  {% when "3-2-boards" %}
+    {% assign size_id = "30x20" %} {% assign pieces = "6,144" %} {% assign plates = "6" %} {% assign hours = "6" %} {% assign fits = "1–3 people" %}
+  {% when "20x40fits-1-3-individuals" %}
+    {% assign size_id = "20x40" %} {% assign pieces = "8,192" %} {% assign plates = "8" %} {% assign hours = "8" %} {% assign fits = "1–3 people" %}
+  {% when "4-2-boards" %}
+    {% assign size_id = "40x20" %} {% assign pieces = "8,192" %} {% assign plates = "8" %} {% assign hours = "8" %} {% assign fits = "1–3 people" %}
+  {% when "2-5-boards" %}
+    {% assign size_id = "20x50" %} {% assign pieces = "10,240" %} {% assign plates = "10" %} {% assign hours = "10" %} {% assign fits = "1–4 people" %}
+  {% when "5-2-boards" %}
+    {% assign size_id = "50x20" %} {% assign pieces = "10,240" %} {% assign plates = "10" %} {% assign hours = "10" %} {% assign fits = "1–4 people" %}
+  {% when "3-3-boards" %}
+    {% assign size_id = "30x30" %} {% assign pieces = "9,216" %} {% assign plates = "9" %} {% assign hours = "9" %} {% assign fits = "1–4 people" %}
+  {% when "3-4-boards" %}
+    {% assign size_id = "30x40" %} {% assign pieces = "12,288" %} {% assign plates = "12" %} {% assign hours = "12" %} {% assign fits = "1–5 people" %}
+  {% when "4-3-boards" %}
+    {% assign size_id = "40x30" %} {% assign pieces = "12,288" %} {% assign plates = "12" %} {% assign hours = "12" %} {% assign fits = "1–5 people" %}
+  {% when "3-5-boards" %}
+    {% assign size_id = "30x50" %} {% assign pieces = "15,360" %} {% assign plates = "15" %} {% assign hours = "15" %} {% assign fits = "1–5 people" %}
+  {% when "5-3-boards" %}
+    {% assign size_id = "50x30" %} {% assign pieces = "15,360" %} {% assign plates = "15" %} {% assign hours = "15" %} {% assign fits = "1–5 people" %}
+  {% when "4-4-boards" %}
+    {% assign size_id = "40x40" %} {% assign pieces = "16,384" %} {% assign plates = "16" %} {% assign hours = "16" %} {% assign fits = "1–5 people" %}
+  {% when "4-5-boards" %}
+    {% assign size_id = "40x50" %} {% assign pieces = "20,480" %} {% assign plates = "20" %} {% assign hours = "20" %} {% assign fits = "1–6 people" %}
+  {% when "5-5-board" %}
+    {% assign size_id = "50x50" %} {% assign pieces = "25,600" %} {% assign plates = "25" %} {% assign hours = "25" %} {% assign fits = "1–7 people" %}
+  {% when "custom-bricked-mosaic-portrait-60x30" %}
+    {% assign size_id = "60x30" %} {% assign pieces = "18,432" %} {% assign plates = "32" %} {% assign hours = "18" %} {% assign fits = "1–6 people" %}
+  {% when "custom-bricked-mosaic-portrait-50x60" %}
+    {% assign size_id = "50x60" %} {% assign pieces = "30,720" %} {% assign plates = "30" %} {% assign hours = "30" %} {% assign fits = "1–8 people" %}
+  {% when "60x60-fits-1-9-individuals" %}
+    {% assign size_id = "60x60" %} {% assign pieces = "36,864" %} {% assign plates = "32" %} {% assign hours = "30" %} {% assign fits = "1–9 people" %}
+{% endcase %}
+{%- comment -%} newer sizes, matched on title so they work whatever their handle is {%- endcomment -%}
+{% if size_id == "" and product.title contains "Custom Bricked Mosaic" %}
+  {% if product.title contains "60x20" %}
+    {% assign size_id = "60x20" %} {% assign pieces = "12,288" %} {% assign plates = "12" %} {% assign hours = "12" %} {% assign fits = "1–4 people" %}
+  {% elsif product.title contains "70x60" %}
+    {% assign size_id = "70x60" %} {% assign pieces = "43,008" %} {% assign plates = "42" %} {% assign hours = "35" %} {% assign fits = "1–10 people" %}
+  {% endif %}
+{% endif %}
+{% assign is_creator_product = false %}
+{% if product.title contains "Custom Bricked Mosaic" or product.title contains "Custom Brick Portrait" %}{% assign is_creator_product = true %}{% endif %}
+
+{%- render 'site-header' -%}
+<div class="wrap pdp" style="padding:40px 20px 90px;max-width:1080px">
+
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px">
+    <a href="/" style="color:inherit;text-decoration:none">MemoBrick</a> <span aria-hidden="true">›</span> Custom Bricked Mosaics
+  </p>
+  <h1 style="font-family:var(--display);font-size:32px;letter-spacing:-.03em;margin:0 0 12px;max-width:720px">{{ product.title | escape }}</h1>
+
+  <div class="trustrow" style="justify-content:flex-start;margin:0 0 18px">
+    <a href="#pdp-reviews" class="tr-stars">★★★★★ <b>4.8</b> from 747 customers</a>
+    <span>Real customer photos</span>
+    <span>Free proof before production</span>
+    <span>Made &amp; shipped from Miami</span>
+  </div>
+
+  <a href="/#press" class="pdp-press">
+    <span class="pdp-press-k">As featured in</span>
+    <span class="pdp-press-logos">
+      <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Fox-News.png" alt="Fox News" loading="lazy" onerror="this.style.display='none'">
+      <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/NBC.png" alt="NBC" loading="lazy" onerror="this.style.display='none'">
+      <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/yahoo.png" alt="Yahoo" loading="lazy" onerror="this.style.display='none'">
+      <img referrerpolicy="no-referrer" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Disrupt.png" alt="Disrupt" loading="lazy" onerror="this.style.display='none'">
+    </span>
+  </a>
+
+  <div class="pdp-top">
+    <div class="pdp-gallery">
+      <div class="pdp-gallery-main">
+        {% if product.featured_image %}
+          <img id="pdpMainImg" src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.title | escape }}">
+        {% endif %}
+      </div>
+      {% if product.images.size > 1 %}
+        <div class="pdp-thumbs" role="list">
+          {% for image in product.images limit: 10 %}
+            <button type="button" class="pdp-thumb{% if forloop.first %} on{% endif %}"
+              data-full="{{ image | image_url: width: 900 }}" aria-label="Show photo {{ forloop.index }}">
+              <img src="{{ image | image_url: width: 160 }}" alt="{{ product.title | escape }} — photo {{ forloop.index }}" loading="lazy">
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pdp-buy">
+      <p class="pdp-price">
+        {{ product.selected_or_first_available_variant.price | money }}
+        {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+          <s class="pdp-was">{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>
+        {%- endif %}
+      </p>
+
+      {% if size_id != "" %}
+        <div class="pdp-specs">
+          <div><b>{{ pieces }}</b><span>Pieces</span></div>
+          <div><b>{{ plates }}</b><span>Base plates</span></div>
+          <div><b>{{ hours }}h</b><span>Build time</span></div>
+          <div><b>{{ fits }}</b><span>Fits</span></div>
+        </div>
+      {% endif %}
+
+      {% if is_creator_product %}
+        {%- comment -%}
+          Two real, distinct paths, both landing with this exact size
+          pre-selected: design it yourself in the live Creator, or upload
+          a photo and let MemoBrick's designers build it — straight to
+          checkout, no live editing. That second path already existed
+          (view-design / the "designer_service" flow) but was previously
+          only discoverable from a small link buried at the bottom of the
+          Creator's own sidebar — after someone had already started
+          designing it themselves. Surfacing it here means a customer
+          sees both options before committing to either one.
+        {%- endcomment -%}
+        <div class="pdp-path">
+          <p class="pdp-path-label">Design it yourself</p>
+          <a class="btn btn-red pdp-cta" href="{% if size_id != '' %}/pages/editor?size={{ size_id }}#editor{% else %}/pages/editor{% endif %}">Design your own MemoBrick</a>
+          <p class="pdp-note">Upload a photo, preview it live, and adjust everything yourself — no design skills needed.</p>
+        </div>
+
+        <div class="pdp-or"><span>or</span></div>
+
+        <div class="pdp-path">
+          <p class="pdp-path-label">Let us design it for you</p>
+          <a class="btn btn-ghost pdp-cta" href="{% if size_id != '' %}/pages/editor?size={{ size_id }}#design{% else %}/pages/editor#design{% endif %}">Upload your photo &amp; checkout</a>
+          <p class="pdp-note">Our designers build it for you and send a digital proof before production — no live editor, straight to checkout.</p>
+        </div>
+      {% else %}
+        <form method="post" action="/cart/add">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <input type="hidden" name="return_to" value="/checkout">
+          <button type="submit" class="btn btn-red pdp-cta">Buy now — {{ product.selected_or_first_available_variant.price | money }}</button>
+        </form>
+      {% endif %}
+
+      <p class="pdp-note">Made &amp; shipped from Miami within 2–4 business days after approval.</p>
+
+      <div class="pdp-badges">
+        <div class="pdp-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Secure checkout</span>
+        </div>
+        <div class="pdp-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg>
+          <span>Free proof before production</span>
+        </div>
+        <div class="pdp-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 4.5v9L12 20l-9-4.5v-9z"></path><path d="M12 22v-9M3 6.5l9 4.5 9-4.5"></path></svg>
+          <span>Made &amp; shipped from Miami</span>
+        </div>
+      </div>
+    </div>
+    {%- comment -%}
+      Sticky mobile add-to-cart bar: on a long PDP (specs, reviews, size
+      comparisons all below the fold) a visitor who's scrolled past the
+      main CTA has to scroll back up to act. This keeps the same CTA
+      reachable without that friction — mobile only, and only once the
+      real CTA has actually scrolled out of view, so it's not just a
+      redundant second button sitting on screen from the start.
+
+      Deliberately reuses the exact same action as the main CTA (same
+      href for the creator flow; submits the real cart form for a direct
+      buy) rather than duplicating any logic, so there's nothing here
+      that could drift out of sync with the real button above.
+    {%- endcomment -%}
+    <div class="pdp-sticky" id="pdpSticky" hidden>
+      <div class="pdp-sticky-info">
+        <b>{{ product.selected_or_first_available_variant.price | money }}</b>
+        {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+          <s>{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>
+        {%- endif %}
+      </div>
+      {% if is_creator_product %}
+        <a class="btn btn-red" href="{% if size_id != '' %}/pages/editor?size={{ size_id }}#editor{% else %}/pages/editor{% endif %}">Design this in the creator</a>
+      {% else %}
+        <button type="button" class="btn btn-red" id="pdpStickyBuy">Buy now</button>
+      {% endif %}
+    </div>
+    <script>
+    (function(){
+      var bar = document.getElementById("pdpSticky");
+      var anchor = document.querySelector(".pdp-buy .pdp-cta");
+      if (!bar || !anchor || !("IntersectionObserver" in window)) return;
+      var mq = window.matchMedia("(max-width:760px)");
+      var io = new IntersectionObserver(function(entries){
+        var e = entries[0];
+        bar.hidden = !mq.matches || e.isIntersecting;
+      }, { rootMargin: "0px 0px -10px 0px" });
+      io.observe(anchor);
+      mq.addEventListener ? mq.addEventListener("change", function(){ if (!mq.matches) bar.hidden = true; })
+                           : mq.addListener(function(){ if (!mq.matches) bar.hidden = true; });
+      var stickyBuy = document.getElementById("pdpStickyBuy");
+      if (stickyBuy){
+        stickyBuy.addEventListener("click", function(){
+          var form = document.querySelector('form[action="/cart/add"]');
+          if (form) form.requestSubmit ? form.requestSubmit() : form.submit();
+        });
+      }
+    })();
+    </script>
+  </div>
+
+  {% if product.description != blank %}
+    <div class="pdp-desc">{{ product.description }}</div>
+  {% endif %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | truncate: 5000 | json }},
+    {%- if product.featured_image %}
+    "image": {{ product.featured_image | image_url: width: 1200 | prepend: 'https:' | json }},
+    {%- endif -%}
+    {%- if product.vendor %}
+    "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- endif -%}
+    {%- if product.selected_or_first_available_variant.sku != blank %}
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- endif %}
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "747" },
+    "offers": {
+      "@type": "Offer",
+      "url": {{ request.origin | append: product.url | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": {{ product.selected_or_first_available_variant.price | money_without_currency | remove: ',' | json }},
+      "availability": "https://schema.org/{% if product.selected_or_first_available_variant.available %}InStock{% else %}OutOfStock{% endif %}"
+    }
+  }
+  </script>
+
+  <section class="pdp-why">
+    <p class="eyebrow">Get the best results</p>
+    <h2 style="font-family:var(--display);font-size:24px;margin:4px 0 18px">Three things that make or break a mosaic.</h2>
+    <div class="whygrid upgrid">
+      <figure class="whycard"><span class="whyimg w1" role="img" style="background-image:url({{ 'mb-3b9218a097.jpg' | asset_url }})" aria-label="Fill the frame: a close-cropped portrait works, a full-body shot across a room does not"></span>
+        <figcaption style="padding:14px 16px"><b>Fill the frame</b><p style="margin:4px 0 0;color:var(--ink-2);font-size:14px">A close-cropped portrait works — a full-body shot across a room does not.</p></figcaption></figure>
+      <figure class="whycard"><span class="whyimg w2" role="img" style="background-image:url({{ 'mb-78f2097aeb.jpg' | asset_url }})" aria-label="Light on the face: front or side light works, a bright window behind does not"></span>
+        <figcaption style="padding:14px 16px"><b>Light on the face</b><p style="margin:4px 0 0;color:var(--ink-2);font-size:14px">Front or side light works — a bright window behind the subject does not.</p></figcaption></figure>
+      <figure class="whycard"><span class="whyimg w3" role="img" style="background-image:url({{ 'mb-411d9fd9a3.jpg' | asset_url }})" aria-label="Keep the background quiet: a plain wall works, a busy patterned wall does not"></span>
+        <figcaption style="padding:14px 16px"><b>Quiet background</b><p style="margin:4px 0 0;color:var(--ink-2);font-size:14px">A plain wall beats a busy, patterned one — the editor's Background tool can also swap it out.</p></figcaption></figure>
+    </div>
+
+    <a href="#pdp-reviews" class="pdp-social">
+      <span class="pdp-social-avatars" aria-hidden="true">
+        <img src="https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg" alt="" loading="lazy">
+        <img src="https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg" alt="" loading="lazy">
+        <img src="https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg" alt="" loading="lazy">
+        <img src="https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg" alt="" loading="lazy">
+      </span>
+      <span class="pdp-social-text"><b>★★★★★ 4.8</b> from 747 customers who followed these same three tips — see their photos ↓</span>
+    </a>
+  </section>
+
+  <section class="pdp-faq">
+    <p class="eyebrow">FAQs</p>
+    <h2 style="font-family:var(--display);font-size:24px;margin:4px 0 18px">Before you order.</h2>
+    <div class="faq">
+      <details open><summary>Which photos work best?</summary><p>One clear subject filling most of the frame, lit from the front or the side. Busy backgrounds turn to noise at this resolution — crop in close in the editor, and check the result at arm's length rather than nose-to-screen.</p></details>
+      <details><summary>Will it look like the preview?</summary><p>Yes, allowing for the fact that screens vary in brightness and color. The proof we email is generated from the same color matching you see in the editor.</p></details>
+      <details><summary>Does my photo leave my computer?</summary><p>Not in the Creator — the mosaic is built entirely in your browser. The image is only sent when you place an order or request a proof.</p></details>
+      <details><summary>Are the bricks compatible with the ones I own?</summary><p>MemoBrick uses standard 1×1 plates and compatible baseplates. Our 40+ color palette helps preserve skin tones, shadows and small details from your photo.</p></details>
+      <details><summary>When does it ship?</summary><p>Made &amp; shipped from Miami within 2–4 business days after approval, then your kit travels by tracked post. Order tracking lives on the main site.</p></details>
+      <details><summary>What if a brick is missing?</summary><p>Send us the color name and count from your parts list and replacements go out free, for as long as you own the kit.</p></details>
+    </div>
+  </section>
+
+  <section class="pdp-reviews pdp-revcarousel" id="pdp-reviews">
+    <div class="pdp-rev-head">
+      <div>
+        <p class="eyebrow">Reviews</p>
+        <h2 style="font-family:var(--display);font-size:26px;margin:4px 0 0">What customers say.</h2>
+      </div>
+      <div class="pdp-rev-stat">
+        <b>4.8</b>
+        <span>★★★★★<br>747 reviews</span>
+      </div>
+    </div>
+    <div class="revrail">
+      <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
+      <div class="rev-grid" id="revTrack"></div>
+      <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
+    </div>
+    <p style="text-align:center"><button class="mini" id="revMore" hidden>Show more reviews</button></p>
+  </section>
+
+  <p style="margin-top:32px"><a href="/" style="color:var(--b-blue);font-weight:600">&larr; Back to MemoBrick</a></p>
+</div>
+{%- render 'site-footer' -%}
+
+<script>
+(function(){
+  var thumbs = document.querySelectorAll(".pdp-thumb");
+  var main = document.getElementById("pdpMainImg");
+  if (!thumbs.length || !main) return;
+  thumbs.forEach(function(b){
+    b.addEventListener("click", function(){
+      main.src = b.dataset.full;
+      thumbs.forEach(function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+    });
+  });
+})();
+</script>

@@ -1,0 +1,46 @@
+{%- render 'site-header' -%}
+<div class="wrap" style="padding:40px 20px 80px;max-width:900px">
+  <p style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)">MemoBrick</p>
+  <h1 style="font-family:var(--display);font-size:34px;letter-spacing:-.03em;margin:6px 0 18px">Your cart</h1>
+  {% if cart.item_count == 0 %}
+    <p style="color:var(--ink-2)">Your cart is empty.</p>
+    <p style="margin-top:18px"><a class="btn btn-red" href="/">Create your MemoBrick</a></p>
+  {% else %}
+  <form action="/cart" method="post" novalidate>
+    {% for item in cart.items %}
+      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)">
+        {% if item.image %}<img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="80" height="80" style="width:80px;height:80px;object-fit:cover;border-radius:8px;flex:0 0 auto">{% endif %}
+        <div style="flex:1">
+          <b>{{ item.product.title }}</b>
+          <div style="font-family:var(--mono);font-size:12px;color:var(--ink-3)">{{ item.variant.title }}</div>
+          {% for p in item.properties %}
+            {% unless p.last == blank or p.first == '_design' or p.first contains '_' %}
+              <div style="font-size:12.5px;color:var(--ink-2)">{{ p.first }}: {{ p.last }}</div>
+            {% endunless %}
+          {% endfor %}
+          {% if forloop.last %}
+            <a href="/pages/editor#editor" style="display:inline-block;margin-top:8px;font-size:12.5px;color:var(--b-blue);font-weight:600;text-decoration:underline">Edit this design again</a>
+          {% endif %}
+        </div>
+        <div style="text-align:right">
+          <div><b>{{ item.final_line_price | money }}</b></div>
+          <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" style="width:64px;margin-top:8px;padding:8px;border:1px solid var(--line);border-radius:8px">
+          <div style="margin-top:8px">
+            <a href="{{ item.url_to_remove }}" style="font-size:12.5px;color:var(--ink-3);text-decoration:underline">Remove</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px">
+      <b style="font-size:20px">Total {{ cart.total_price | money }}</b>
+      <span>
+        <button type="submit" name="update" class="mini" style="min-height:44px">Update</button>
+        <button type="submit" name="checkout" class="btn btn-red" style="min-height:44px">Checkout</button>
+      </span>
+    </div>
+    <p style="font-size:12px;color:var(--ink-3);margin-top:12px">Taxes, discounts and shipping are calculated at checkout.</p>
+  </form>
+  {% endif %}
+  <p style="margin-top:32px"><a href="/" style="color:var(--b-blue);font-weight:600">&larr; Back to MemoBrick</a></p>
+</div>
+{%- render 'site-footer' -%}

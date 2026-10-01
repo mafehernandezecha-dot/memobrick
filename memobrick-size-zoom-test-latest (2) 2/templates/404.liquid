@@ -1,0 +1,17 @@
+{%- comment -%}
+  Auto-redirects to the homepage instead of showing a recovery page.
+  Note: Shopify still returns an HTTP 404 status for this URL (that part
+  isn't changeable from a template), but a redirect straight to real
+  content is what Google calls a "soft 404" — it can make Googlebot
+  spend less time crawling the rest of the site, since redirected-to-home
+  pages look like they might be disguising genuinely broken links. Worth
+  knowing if 404 volume is ever high; for occasional stale links this
+  tradeoff is usually fine.
+
+  location.replace (not href=) so the dead URL doesn't sit in browser
+  history — hitting Back won't return to the 404.
+{%- endcomment -%}
+<script>location.replace("/");</script>
+<div class="wrap" style="padding:56px 20px 90px;max-width:720px;text-align:center">
+  <p style="color:var(--ink-2)">Redirecting you to MemoBrick… <a href="/" style="color:var(--b-blue);font-weight:600">click here</a> if you're not redirected.</p>
+</div>

@@ -1,0 +1,62 @@
+{%- comment -%}
+  Site header for standalone pages (page.*.liquid templates that aren't
+  the homepage SPA). The homepage's own header, still in
+  sections/memobrick-site.liquid, uses data-go="..." actions and same-page
+  anchors (#reviews, #how) that only work inside the single-page app —
+  copying that verbatim onto a standalone page would render a nav full of
+  dead links. This version points the same items at real URLs: the
+  standalone pages built for How it works, Reviews, Free Proof and the
+  editor itself (/pages/editor), and /#view-corporate to land on the
+  homepage with that panel already open.
+
+  Cart icon/drawer markup and ids are unchanged from the homepage header,
+  since memobrick.js's cart handling is already site-wide, not tied to
+  which page it's on.
+{%- endcomment -%}
+<header class="nav">
+  <div class="rainbow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap nav-in">
+    <a class="logo" href="/"><img referrerpolicy="no-referrer" class="logo-img" src="https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Camara_Memobrick_1_copy_4_1c73c4e8-ec38-42a5-9d06-8513ecc122fb.png" alt="MemoBrick" onerror="this.style.display='none'"></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks">
+      <a class="navlink" href="/pages/editor">Create</a>
+      <a class="navlink" href="/pages/free-preview#proofForm">Let us design it</a>
+      <a href="/collections/catalogue-picture">Ready-made designs</a>
+      <a class="navlink" href="/#view-corporate">Corporate &amp; bulk</a>
+      <a href="/pages/happy-customers">Reviews</a>
+      <a href="/pages/how-it-works">How it works</a>
+      {% for blog in blogs %}{% if forloop.first %}<a href="{{ blog.url }}">Blog</a>{% endif %}{% endfor %}
+      <a class="btn btn-red" href="/pages/editor">Create My MemoBrick</a>
+    </nav>
+    <div class="cart-wrap">
+      <a class="cart-icon" href="{{ routes.cart_url }}" id="cartIconBtn" aria-label="Cart, {{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %}" aria-expanded="false" aria-haspopup="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-count" id="cartCount"{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+      <div class="cart-drawer" id="cartDrawer" hidden>
+        <div class="cart-drawer-head">
+          <b>Your cart</b>
+          <button class="cart-drawer-close" id="cartDrawerClose" aria-label="Close cart" type="button">&times;</button>
+        </div>
+        <div class="cart-ship-bar" id="cartShipBar" hidden>
+          <p class="cart-ship-msg" id="cartShipMsg"></p>
+          <div class="cart-ship-track"><div class="cart-ship-fill" id="cartShipFill"></div></div>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems"></div>
+        <div class="cart-drawer-foot" id="cartDrawerFoot" hidden>
+          <div class="cart-drawer-total">
+            <span>Subtotal</span>
+            <b id="cartDrawerTotal">$0.00</b>
+          </div>
+          <a class="btn btn-red" id="cartDrawerCheckout" href="/checkout">Checkout</a>
+          <a href="{{ routes.cart_url }}" class="cart-drawer-viewall">View full cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

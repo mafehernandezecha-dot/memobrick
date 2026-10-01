@@ -1,0 +1,67 @@
+{%- comment -%}
+  MemoBrick Creator — size to Shopify variant map.
+  Handles are the source of truth; price, compare-at price and availability are
+  read live from Shopify so the creator never carries its own price table.
+  "built" is the "we build it for you" service variant where the product has one.
+{%- endcomment -%}
+{%- assign mb_handles = "custom-bricked-mosaic-10x10,1-big-board,2-2-boards,2-3-boards,3-2-boards,20x40fits-1-3-individuals,4-2-boards,3-3-boards,2-5-boards,5-2-boards,3-4-boards,4-3-boards,3-5-boards,5-3-boards,4-4-boards,4-5-boards,5-5-board,custom-bricked-mosaic-portrait-60x30,custom-bricked-mosaic-portrait-50x60,60x60-fits-1-9-individuals,custom-bricked-mosaic-portrait-60x20,custom-bricked-mosaic-portrait-70x60" | split: "," -%}
+{%- assign mb_labels  = "10x10,16x16,20x20,20x30,30x20,20x40,40x20,30x30,20x50,50x20,30x40,40x30,30x50,50x30,40x40,40x50,50x50,60x30,50x60,60x60,60x20,70x60" | split: "," -%}
+{%- assign mb_shapes  = "square,square,square,portrait,landscape,portrait,landscape,square,portrait,landscape,portrait,landscape,portrait,landscape,square,portrait,square,landscape,portrait,square,landscape,landscape" | split: "," -%}
+<script id="memobrick-catalog" type="application/json">
+{
+  "sizes": [
+    {%- assign mb_written = false -%}
+    {%- for h in mb_handles -%}
+      {%- assign mb_i = forloop.index0 -%}
+      {%- assign mb_label = mb_labels[mb_i] -%}
+      {%- comment -%}
+        Shopify's all_products can only look up 20 different handles per
+        page, and the first 20 sizes use all of them. Sizes after that (and
+        any size whose handle isn't found, e.g. a renamed product) are found
+        by title in the Custom Bricks Portrait collection instead, e.g.
+        'Custom Bricked Mosaic Portrait 60x20"'.
+      {%- endcomment -%}
+      {%- if mb_i < 20 -%}
+        {%- assign p = all_products[h] -%}
+      {%- else -%}
+        {%- assign p = nil -%}
+      {%- endif -%}
+      {%- if p == nil or p == empty or p.id == blank -%}
+        {%- for cp in collections['the-gift-for-everyone'].products -%}
+          {%- if cp.title contains 'Custom Bricked Mosaic' and cp.title contains mb_label -%}
+            {%- assign p = cp -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if p != empty and p.id -%}
+        {%- if mb_written %},{% endif -%}
+        {%- assign mb_written = true -%}
+        {
+          "id": {{ mb_label | json }},
+          "shape": {{ mb_shapes[mb_i] | json }},
+          "handle": {{ p.handle | json }},
+          "title": {{ p.title | json }},
+          "productId": {{ p.id | json }},
+          "image": {%- if p.featured_image -%}{{ p.featured_image | image_url: width: 400 | prepend: 'https:' | json }}{%- else -%}null{%- endif -%},
+          "variants": [
+            {%- for v in p.variants -%}
+              {%- unless forloop.first %},{% endunless -%}
+              {
+                "id": {{ v.id | json }},
+                "title": {{ v.title | json }},
+                "price": {{ v.price | json }},
+                "compareAtPrice": {{ v.compare_at_price | json }},
+                "available": {{ v.available | json }},
+                "service": {%- if v.title contains "Build at home" or v.title == "No" or v.title == "Default Title" -%}false{%- else -%}true{%- endif -%}
+              }
+            {%- endfor -%}
+          ]
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  ],
+  "moneyFormat": {{ shop.money_format | json }},
+  "cartUrl": "/cart"
+}
+</script>

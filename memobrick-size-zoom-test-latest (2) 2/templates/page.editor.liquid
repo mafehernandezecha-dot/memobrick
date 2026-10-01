@@ -1,0 +1,30 @@
+{%- comment -%}
+  /pages/editor — the Create/upload/editor/design tool as its own
+  bookmarkable, shareable URL, separate from the homepage.
+
+  Deliberately reuses the exact same 'memobrick-site' section the
+  homepage renders, rather than extracting the upload/editor/design
+  markup into a new section. That markup is the most tightly-coupled part
+  of the whole theme — canvas processing, face detection, drag handlers,
+  the size picker, the wall visualiser — all sharing one JS state machine
+  (the S object, showView(), renderIfNeeded()) with dozens of specific
+  element ids referenced across ~900 lines. Physically splitting that
+  apart without a live Shopify environment to test against risks
+  breaking the actual revenue-generating tool over a URL preference.
+
+  Instead: window.MB_LANDING_VIEW below tells the shared boot script
+  (assets/memobrick.js) to open on the "upload" view by default here,
+  instead of "home". Every marketing CTA that used to jump to the
+  in-page upload view now links to this URL as a real navigation
+  instead, so it's a genuine separate page/URL from the visitor's
+  perspective — same tool, same tested code, new address.
+
+  Tradeoff, stated plainly: both this page and the homepage still ship
+  the same full section markup (marketing sections + the tool), just
+  defaulting to a different starting view — this does not reduce either
+  page's weight. A true code-level split remains a real future option if
+  that matters more than the risk of doing it without live testing.
+{%- endcomment -%}
+<script>window.MB_LANDING_VIEW = "upload";</script>
+{% section 'memobrick-site' %}
+<script src="{{ 'memobrick-size-zoom.js' | asset_url }}" defer></script>
