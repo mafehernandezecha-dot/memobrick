@@ -2569,16 +2569,24 @@ function analyzeExposure(img, faces){
      bright, clipping background (backlight). The same test keeps a
      well-exposed low-key scene with real highlights from being lifted. */
   const underexposed = whole.p95 < (faceBased ? 0.80 : 0.85);
-  const backlit = whole.clipPct > 0.03 && sm < 0.5*whole.p90;
+  // backlight: most of the frame is bright and clipping while the subject
+  // is far darker. A few white pixels (a white shirt) are not backlight —
+  // otherwise dark skin in good light next to something white got lifted
+  const backlit = whole.clipPct > 0.05 && whole.median > 0.50 && sm < 0.5*whole.median;
+  /* The dark classes are tested FIRST: a backlit photo (dark person in
+     front of a bright window or sky) has a very bright frame median, and
+     checking "too bright" first called it overexposed and left the person
+     dark. "Too bright" now also requires the subject itself to be bright. */
   let cls = "ok";
-  if (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06 && sm > 0.45)) cls = "bright";
-  else if (faceBased){
+  if (faceBased){
     if (sm < 0.26 && (underexposed || backlit)) cls = "veryDark";
     else if (sm < 0.40 && (underexposed || backlit)) cls = "dark";
   } else {
-    if ((sm < 0.22 && underexposed) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
-    else if ((sm < 0.38 && underexposed) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
+    if ((sm < 0.22 && (underexposed || backlit)) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
+    else if ((sm < 0.38 && (underexposed || backlit)) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
   }
+  if (cls === "ok" && sm > 0.45 &&
+      (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06))) cls = "bright";
   return { cls, apply: cls === "dark" || cls === "veryDark", whole, subject, faceBased, backlit, underexposed,
            faceKey: useFaces ? faces.length : 0 };
 }
@@ -2624,7 +2632,7 @@ function brightenSubject(buf, gw, gh, skinMask, cls){
     }
   }
   if (!curve || e >= 0.985) return { before: now, after: now, e: 1, faceBased, curve: null };
-  applyExposureCurve(buf, curve);
+  applyExposureCurve(buf, curve, faceBased ? skinMask : null);
   return { before: now, after: curve[Math.round(now*255)]/255, e: +e.toFixed(3), faceBased, curve };
 }
 // 256-entry luminance curve: power lift, capped shadow gain (toe) and a
@@ -2646,21 +2654,41 @@ function expoCurve(e, maxGain, knee){
 }
 // apply to a working RGB buffer (0..255 floats). Hue is kept exactly and
 // saturation is kept as it LOOKS: the new luminance comes from the curve,
-// and each channel's distance from grey grows by the square root of the
+// and each channel's distance from grey grows by a power of the
 // brightening ratio. Scaling colour fully with the ratio (plain gain)
 // makes lifted shadows over-saturated — dark skin turns orange, brown
-// hair turns yellow; not scaling it at all washes colours out. Channels
-// are pulled back together (same hue) if any would clip.
-function applyExposureCurve(buf, lut){
-  for (let i = 0; i < buf.length; i += 3){
+// hair turns yellow; not scaling it at all washes colours out. Skin
+// (when the people's faces are known) uses the square root of the ratio;
+// everything else uses ratio^0.75 so clothing, sky and other colours keep
+// enough saturation to land on the right palette brick rather than a
+// greyer neighbour. Channels are pulled back together (same hue) if any
+// would clip.
+function applyExposureCurve(buf, lut, skinMask){
+  for (let i = 0, p = 0; i < buf.length; i += 3, p++){
     const r = buf[i], g = buf[i+1], b = buf[i+2];
     const Y = 0.2126*r + 0.7152*g + 0.0722*b;
     if (Y <= 0.5) continue;
     const yi = Math.min(254.999, Y), lo = yi | 0, fr = yi - lo;
-    const Y2 = lut[lo] + (lut[lo+1] - lut[lo])*fr;
+    let Y2 = lut[lo] + (lut[lo+1] - lut[lo])*fr;
     if (Y2 <= Y + 0.05) continue;
-    const s = Math.sqrt(Y2 / Y);                      // chroma growth: between "none" and "full gain"
-    let nr = Y2 + (r - Y)*s, ng = Y2 + (g - Y)*s, nb = Y2 + (b - Y)*s;
+    const cpow = (skinMask && skinMask[p]) ? 0.5 : 0.75;   // chroma growth: between "none" and "full gain"
+    const lift = (Yn) => {
+      const s = Math.pow(Yn / Y, cpow);
+      return [Yn + (r - Y)*s, Yn + (g - Y)*s, Yn + (b - Y)*s];
+    };
+    let [nr, ng, nb] = lift(Y2);
+    if (Math.max(nr, ng, nb) > 255){
+      // a saturated bright colour (pink top, blue sky) would clip: give it
+      // less brightening rather than less colour, so it neither blows out
+      // nor fades toward grey
+      let a = Y, z = Y2;
+      for (let k = 0; k < 8; k++){
+        const m = (a + z)/2;
+        if (Math.max(...lift(m)) > 255) z = m; else a = m;
+      }
+      [nr, ng, nb] = lift(a);
+      Y2 = a;
+    }
     const hi = Math.max(nr, ng, nb), low = Math.min(nr, ng, nb);
     if (hi > 255 || low < 0){
       // shrink the colour offset (not the luminance) until it fits
