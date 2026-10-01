@@ -6358,12 +6358,13 @@ function instructionsHTML(){
         }
         grid += tr + `<th>${y+1}</th></tr>`;
       }
-      const plateLegend = legend.filter((L) => used.has(L.id));
+      // this section's own counts decide the order: most used here first
+      const plateLegend = legend.filter((L) => used.has(L.id)).sort((a, b) => used.get(b.id) - used.get(a.id));
       const scale = sectionScale(w, h);
       const cellMm = (BRICK_MM * scale).toFixed(3);
       const scaleNote = scale >= 0.999
-        ? `<p class="scale-note"><span class="ruler"></span> Printed at <b>true size</b> — this ruler mark measures exactly 1 inch. If it doesn't, set your printer to "Actual size" / 100%, not "Fit to page".</p>`
-        : `<p class="scale-note"><span class="ruler"></span> <span class="scale-warn">Reduced to ${Math.round(scale*100)}% of true size</span> — this baseplate is larger than an 11×17" sheet. Use the printed grid for brick placement, not as a physical size reference.</p>`;
+        ? `<p class="scale-note"><span class="ruler"></span><span>Printed at <b>true size</b> — this ruler mark measures exactly 1 inch. If it doesn't, set your printer to "Actual size" / 100%, not "Fit to page".</span></p>`
+        : `<p class="scale-note"><span class="ruler"></span><span><span class="scale-warn">Reduced to ${Math.round(scale*100)}% of true size</span> — this baseplate is larger than an 11×17" sheet. Use the printed grid for brick placement, not as a physical size reference.</span></p>`;
       out += `<section class="sheet">
         ${head(page, "Section " + idx)}
         <div class="bk-head">
@@ -6380,18 +6381,27 @@ function instructionsHTML(){
           <em>${idx} of ${nSections} sections</em></div>
         ${scaleNote}
         <table class="grid" style="--cell-mm:${cellMm}">${grid}</table>
-        <div class="sec-foot">
-          <table class="legend small">
-            <tr><th></th><th>Code</th><th>Color</th><th>Here</th></tr>
-            ${plateLegend.map((L) => `<tr><td><span class="sw" style="background:${L.hex}"></span></td>
-              <td class="code">${L.id}</td><td>${L.name}</td>
-              <td class="num">${fmt(used.get(L.id))}</td></tr>`).join("")}
-          </table>
-          <div class="tipbox">
-            <b>Tip</b>
-            <p>${TIPS[(idx - 1) % TIPS.length]}</p>
-            <label class="done"><span></span>Section ${idx} finished</label>
+        <div class="sec-colors">
+          <div class="sc-head">
+            <b>Colors for this section</b>
+            <span>${plateLegend.length} colors · ${fmt(w*h)} bricks · most used first</span>
           </div>
+          <!-- color cards instead of a long table: a single column of up to
+               18 colors pushed the page past 17" and split the list across
+               two printed sheets. The swatch carries the code exactly as
+               the grid squares do, so a card matches a square at a glance -->
+          <div class="sc-grid">
+            ${plateLegend.map((L) => `<div class="sc" title="${L.name}">
+              <span class="sc-sw" style="background:${L.hex};color:${readable(L.hex)}">${L.id}</span>
+              <span class="sc-n">${fmt(used.get(L.id))}</span>
+              <span class="sc-tick"></span>
+            </div>`).join("")}
+          </div>
+        </div>
+        <div class="sec-tip">
+          <span class="st-label">Tip</span>
+          <p>${TIPS[(idx - 1) % TIPS.length]}</p>
+          <label class="done"><span></span>Section ${idx} finished</label>
         </div>
       </section>`;
     });
@@ -6536,15 +6546,17 @@ function buildInstructionsPDF(doc){
   y += 10;
   doc.setTextColor(...PDF_INK2);
   const introLines = pdfWrap(doc,
-    `Somewhere in this box is a photo you love, taken apart into ${fmt(total)} pieces. Putting it back together takes about ${hours} hours \u2014 longer if people keep wandering over to help, which they will.`,
+    `Somewhere in this box is a photo you love, taken apart into ${fmt(total)} pieces. Putting it back together takes about ${hours} ${hours === 1 ? "hour" : "hours"} \u2014 longer if people keep wandering over to help, which they will.`,
     PDF_CONTENT_W, 10.5);
   doc.text(introLines, PDF_MARGIN_X, y);
   y += introLines.length*5 + 8;
 
   doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12.5);
   doc.text("What's in the box", PDF_MARGIN_X, y); y += 7;
-  const boxItems = [["15 bags of bricks","labelled with the color code"], ["1 baseplate",'1 \u00D7 1, they clip together'],
-                     ["1 brick separator","for the piece in the wrong square"], ["This booklet","1 section, one page each"]];
+  const boxItems = [[`${legend.length} bags of bricks`,"labelled with the color code"],
+                     [`${bx*by} baseplate${bx*by === 1 ? "" : "s"}`, `${bx} \u00D7 ${by}, they clip together`],
+                     ["1 brick separator","for the piece in the wrong square"],
+                     ["This booklet",`${nSections} section${nSections === 1 ? "" : "s"}, one page each`]];
   const bw = (PDF_CONTENT_W - 6)/2, bh = 22;
   boxItems.forEach(([t,s], i) => {
     const bx_ = PDF_MARGIN_X + (i%2)*(bw+6), by_ = y + Math.floor(i/2)*(bh+6);
@@ -6578,7 +6590,8 @@ function buildInstructionsPDF(doc){
     for (let k=1;k<restLines.length;k++) doc.text(restLines[k], PDF_MARGIN_X+9, y+k*5);
     y += Math.max(5, restLines.length*5) + 5;
     doc.setDrawColor(...PDF_LINE_SOFT); doc.setLineWidth(0.3);
-    doc.line(PDF_MARGIN_X, y-2.5, PDF_PAGE_W-PDF_MARGIN_X, y-2.5);
+    // divider sits between the two rules, clear of the next rule's text and number
+    doc.line(PDF_MARGIN_X, y-5.5, PDF_PAGE_W-PDF_MARGIN_X, y-5.5);
   });
   y += 4;
   doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
@@ -6729,6 +6742,9 @@ function buildInstructionsPDF(doc){
     cols.forEach(([x0, x1], c) => {
       const idx = r*cols.length + c + 1;
       const w = x1 - x0, h = y1 - y0;
+      const secSet = new Set();
+      for (let yy=0; yy<h; yy++) for (let xx=0; xx<w; xx++) secSet.add(P[cellsArr[(y0+yy)*gw + (x0+xx)]].id);
+      const secColors = secSet.size;
       doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
       pdfHeader(doc, `Section ${idx}`, ref, pageNum);
       let sy = PDF_MARGIN_Y + 12;
@@ -6739,7 +6755,7 @@ function buildInstructionsPDF(doc){
       doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(17);
       doc.text(`Section ${idx}`, PDF_MARGIN_X+16, sy-1);
       doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(8);
-      doc.text(`Studs ${x0+1}\u2013${x1} across \u00B7 ${y0+1}\u2013${y1} down \u00B7 ${fmt(w*h)} bricks \u00B7 ${legend.length} colors`, PDF_MARGIN_X+16, sy+5);
+      doc.text(`Studs ${x0+1}\u2013${x1} across \u00B7 ${y0+1}\u2013${y1} down \u00B7 ${fmt(w*h)} bricks \u00B7 ${secColors} colors`, PDF_MARGIN_X+16, sy+5);
       sy += 12;
 
       const scale = sectionScale(w, h);
@@ -6792,7 +6808,8 @@ function buildInstructionsPDF(doc){
         const code = P[cellsArr[(y0+yy)*gw + (x0+xx)]];
         used.set(code.id, (used.get(code.id) || 0) + 1);
       }
-      const plateLegend = legend.filter((L) => used.has(L.id)).map((L) => ({ ...L, here: used.get(L.id) }));
+      const plateLegend = legend.filter((L) => used.has(L.id)).map((L) => ({ ...L, here: used.get(L.id) }))
+                                .sort((a, b) => b.here - a.here);
 
       const checkSpace5 = (needed) => {
         if (sy + needed > PDF_PAGE_H - PDF_MARGIN_Y){
@@ -6801,23 +6818,35 @@ function buildInstructionsPDF(doc){
           sy = PDF_MARGIN_Y + 8;
         }
       };
-      doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(7.5);
-      doc.text("CODE", PDF_MARGIN_X+8, sy); doc.text("COLOR", PDF_MARGIN_X+26, sy);
-      doc.text("HERE", PDF_MARGIN_X+90, sy, { align:"right" });
+      // color cards, same design as the HTML booklet: the code on a
+      // swatch (as on the grid), the count, a tick box — nine per row,
+      // so even 18 colors take two rows and stay on the section's page
+      const perRow = 9, gap = 2.2, pad = 4;
+      const cardW = (PDF_CONTENT_W - pad*2 - gap*(perRow-1)) / perRow, cardH = 11;
+      const nRows = Math.ceil(plateLegend.length / perRow);
+      const boxH = 13 + nRows*cardH + (nRows-1)*gap + pad;
+      checkSpace5(boxH + 2);
       doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4);
-      doc.line(PDF_MARGIN_X, sy+2, PDF_MARGIN_X+100, sy+2);
-      sy += 7;
-      for (const c of plateLegend){
-        checkSpace5(6.5);
-        doc.setFillColor(...pdfHexRgb(c.hex)); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.15);
-        doc.roundedRect(PDF_MARGIN_X, sy-3.5, 4.5, 4.5, 1, 1, "FD");
-        doc.setTextColor(...PDF_INK); doc.setFont("courier","normal"); doc.setFontSize(8.5);
-        doc.text(c.id, PDF_MARGIN_X+8, sy);
-        doc.setFont("helvetica","normal"); doc.text(c.name, PDF_MARGIN_X+26, sy);
-        doc.setFont("courier","normal");
-        doc.text(fmt(c.here), PDF_MARGIN_X+90, sy, { align:"right" });
-        sy += 6.5;
-      }
+      doc.roundedRect(PDF_MARGIN_X, sy, PDF_CONTENT_W, boxH, 3, 3, "S");
+      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10.5);
+      doc.text("Colors for this section", PDF_MARGIN_X+pad, sy+7);
+      doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(7);
+      doc.text(`${plateLegend.length} colors \u00B7 ${fmt(w*h)} bricks \u00B7 most used first`, PDF_PAGE_W-PDF_MARGIN_X-pad, sy+7, { align:"right" });
+      plateLegend.forEach((c, i) => {
+        const cx = PDF_MARGIN_X + pad + (i % perRow)*(cardW + gap);
+        const cy = sy + 11 + Math.floor(i / perRow)*(cardH + gap);
+        doc.setFillColor(0xF4,0xF3,0xEF); doc.roundedRect(cx, cy, cardW, cardH, 1.8, 1.8, "F");
+        const sw = 8;
+        doc.setFillColor(...pdfHexRgb(c.hex)); doc.setDrawColor(0xB4,0xB4,0xB4); doc.setLineWidth(0.15);
+        doc.roundedRect(cx+1.5, cy+1.5, sw, sw, 1.2, 1.2, "FD");
+        doc.setTextColor(...pdfReadable(c.hex)); doc.setFont("courier","bold"); doc.setFontSize(7);
+        doc.text(c.id, cx+1.5+sw/2, cy+1.5+sw/2+0.9, { align:"center" });
+        doc.setTextColor(...PDF_INK); doc.setFont("courier","bold"); doc.setFontSize(9.5);
+        doc.text(fmt(c.here), cx+sw+3.5, cy+cardH/2+1.3);
+        doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.3);
+        doc.roundedRect(cx+cardW-4.5, cy+cardH/2-1.5, 3, 3, 0.6, 0.6, "S");
+      });
+      sy += boxH;
 
       checkSpace5(24);
       const tip = TIPS[idx % TIPS.length];
@@ -7632,11 +7661,17 @@ meta();
 body{background:#8a8f96;margin:0;padding:20px 0}
 .sheet{width:279.4mm;min-height:431.8mm;margin:0 auto 22px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
 .ins-sheets{max-width:none}
+/* one sheet = one printed 11x17" page. The sheet already carries its own
+   14mm/11mm padding, so the page itself has no margin — a 10mm page
+   margin on top of a full-size sheet pushed the bottom of every sheet
+   (and every section's color list) onto a second, mostly blank page */
 @media print{
   body{background:#fff;padding:0}
-  .sheet{box-shadow:none;page-break-after:always;margin:0 auto}
-  .sheet:last-child{page-break-after:auto}
-  @page{size:11in 17in;margin:10mm}
+  @page{size:11in 17in;margin:0}
+  .ins-sheets{padding:0}
+  .sheet{width:279.4mm;min-height:431.8mm;height:auto;padding:14mm 11mm;margin:0;box-shadow:none;
+    break-inside:avoid;break-after:page;page-break-after:always}
+  .sheet:last-child{break-after:auto;page-break-after:auto}
 }
 </style></head><body><div class="ins-sheets">${body}</div></body></html>`;
   }
