@@ -3257,7 +3257,7 @@ function draw(reuse){
   // whenever hasSkin is true, so this should reliably find all 8 (or as
   // many as choosePalette could fit).
   const skinHexSet = new Set(SKIN_PALETTE.map((c) => c[1]));
-  const skinIndices = [];
+  let skinIndices = [];
   for (let pi = 0; pi < PAL.length; pi++) if (skinHexSet.has(PAL[pi].hex)) skinIndices.push(pi);
   // Region-classified skin pixels already can't land on a non-skin color —
   // the hard restriction above only offers the 8 SKIN_PALETTE bricks. The
@@ -3292,6 +3292,35 @@ function draw(reuse){
   const hasBgSwap = !!(S.bgEffect && S.bgEffect !== "original" && S.subjectMask);
   const subjectAlphaGrid = hasBgSwap ? resampleAlpha(S.subjectMask, S.segW, S.segH, gw, gh) : null;
   const isSubjectPixel = (x, y) => !subjectAlphaGrid || subjectAlphaGrid[y*gw + x] > 0.5;
+  /* SKIN TONE BAND. Every skin pixel could take any of the 8 skin bricks,
+     Cream to Dark Brown, and dithering spreads error between neighbours,
+     so a fair face in soft shade picked up isolated Brown / Dark Brown
+     bricks mid-cheek and read as blotchy or darker than it is. The band is
+     measured from THIS photo's own skin (lightness, 8th to 92nd
+     percentile) and only the skin bricks inside it, plus a small margin,
+     stay allowed (never fewer than 3, so shading survives). Dark skin
+     keeps its dark bricks and is never pushed paler: the band comes from
+     the photo, not a target. Eyes, brows and lips are not skin pixels and
+     keep the full palette. */
+  if (S.auto && regionMapForDither && skinIndices.length > 3 && window.MB_SKIN_BAND !== false){
+    const Ls = [];
+    for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++){
+      const p = y*gw + x;
+      if (regionMapForDither[p] !== 1 || !isSubjectPixel(x, y)) continue;
+      const o = p*3;
+      Ls.push(rgb2lab(clamp(buf[o],0,255), clamp(buf[o+1],0,255), clamp(buf[o+2],0,255))[0]);
+    }
+    if (Ls.length >= 30){
+      Ls.sort((u, v) => u - v);
+      const lo = Ls[Math.floor(Ls.length*0.08)] - 6, hi = Ls[Math.floor(Ls.length*0.92)] + 6;
+      const mid = (lo + hi)/2;
+      let band = skinIndices.filter((pi) => PAL[pi].lab[0] >= lo && PAL[pi].lab[0] <= hi);
+      if (band.length < 3){
+        band = skinIndices.slice().sort((u, v) => Math.abs(PAL[u].lab[0] - mid) - Math.abs(PAL[v].lab[0] - mid)).slice(0, 3);
+      }
+      skinIndices = band;
+    }
+  }
   // White and yellow are never acceptable on skin either — unlike red
   // (which lips legitimately need, so it reroutes to "any other color"),
   // these reroute straight to the nearest of the 8 approved skin tones,
