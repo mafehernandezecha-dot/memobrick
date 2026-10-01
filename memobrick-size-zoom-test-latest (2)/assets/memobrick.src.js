@@ -2577,10 +2577,20 @@ function analyzeExposure(img, faces){
      front of a bright window or sky) has a very bright frame median, and
      checking "too bright" first called it overexposed and left the person
      dark. "Too bright" now also requires the subject itself to be bright. */
+  /* Face in shade: a well-exposed, sunny scene where the person stands in
+     shade (under a tree, a canopy, a hat brim). The photo is fine, but the
+     face sits a clear step below the scene, and the brick palette turns
+     that level into Brown/Coffee bricks — a fair-skinned child reads as
+     dark-skinned in the mosaic. It gets the gentle "slightly dark" fill.
+     The band keeps dark skin in good light out of it: such a face sits
+     much further below the scene (under 60% of the frame median) and
+     below the 0.28 floor, and is left exactly as it is. */
+  const shadedFace = faceBased && !underexposed && !backlit &&
+    sm >= 0.28 && sm < 0.46 && sm < whole.median - 0.08 && sm > 0.6*whole.median;
   let cls = "ok";
   if (faceBased){
     if (sm < 0.26 && (underexposed || backlit)) cls = "veryDark";
-    else if (sm < 0.40 && (underexposed || backlit)) cls = "dark";
+    else if ((sm < 0.40 && (underexposed || backlit)) || shadedFace) cls = "dark";
   } else {
     if ((sm < 0.22 && (underexposed || backlit)) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
     else if ((sm < 0.38 && (underexposed || backlit)) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
@@ -2588,6 +2598,7 @@ function analyzeExposure(img, faces){
   if (cls === "ok" && sm > 0.45 &&
       (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06))) cls = "bright";
   return { cls, apply: cls === "dark" || cls === "veryDark", whole, subject, faceBased, backlit, underexposed,
+           shaded: shadedFace && cls === "dark",
            faceKey: useFaces ? faces.length : 0 };
 }
 /* Step 3: the correction itself, computed on the working image AFTER the
@@ -2747,7 +2758,7 @@ function syncBrightPill(){
     ? '<span aria-hidden="true">☀</span> Auto brightness applied <u>Undo</u>'
     : '<span aria-hidden="true">☀</span> Original brightness <u>Brighten</u>';
   brightPill.title = on
-    ? "Your photo was " + (S.expo.cls === "veryDark" ? "quite dark" : "a little dark") + ", so it was brightened automatically. Tap to use the original brightness."
+    ? (S.expo.shaded ? "The face was in shade" : "Your photo was " + (S.expo.cls === "veryDark" ? "quite dark" : "a little dark")) + ", so it was brightened automatically. Tap to use the original brightness."
     : "Tap to brighten this photo automatically again.";
 }
 
