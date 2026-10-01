@@ -933,6 +933,81 @@ function drawSource(ctx, W, H){
 /* MediaPipe face boxes are stored normalised to the whole photo; this maps
    them onto the board grid through the same crop maths drawSource() uses,
    dropping any face that's been cropped out of view. */
+/* FACIAL FEATURES. The eyes, brows and mouth are what make a mosaic look
+   like the person, and at 15-25 bricks across a face they are only a few
+   bricks each: the general smoothing, the skin rules and dithering tend to
+   wash them into the skin. Using the detector's landmarks (eyes, mouth),
+   mapped onto the board through the current crop, this gently deepens
+   the darks and adds contrast around the eyes and brows and on the lips,
+   and returns a mask of those bricks so dithering leaves them solid. Only
+   inside small regions around each landmark; never on the rest of the
+   face, so skin stays even. */
+function faceFeaturesInGrid(gw, gh){
+  if (!S.mlFaces || S.mlFacesImg !== S.imgId || !S.img) return null;
+  const img = S.img, iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  if (!iw || !ih) return null;
+  const sc = Math.max(gw/iw, gh/ih) * S.zoom;
+  const dw = iw*sc, dh = ih*sc;
+  const ox = (gw-dw)/2 + S.ox*Math.abs(dw - gw)/2, oy = (gh-dh)/2 + S.oy*Math.abs(dh - gh)/2;
+  const out = [];
+  for (const f of S.mlFaces){
+    if (!f.kp) continue;
+    const P = (q) => ({ x: ox + q.x*dw, y: oy + q.y*dh });
+    const fw = (f.x1 - f.x0)*dw;
+    if (fw < 9) continue;                         // too small for features to be drawn at all
+    const eyes = [P(f.kp[0]), P(f.kp[1])], mouth = P(f.kp[3]);
+    // landmarks from the tilted detector passes are already mapped back to
+    // the photo, so they're valid; only a face lying on its side is left
+    // out, where "the brow is above the eye" no longer holds
+    if (Math.abs(eyes[1].y - eyes[0].y) > Math.abs(eyes[1].x - eyes[0].x)) continue;
+    if (eyes.every((e) => e.x < 0 || e.y < 0 || e.x >= gw || e.y >= gh)) continue;
+    out.push({ fw, eyes, mouth });
+  }
+  return out.length ? out : null;
+}
+function enhanceFaceFeatures(buf, gw, gh, feats){
+  const mask = new Uint8Array(gw*gh);
+  const lum = (o) => 0.299*buf[o] + 0.587*buf[o+1] + 0.114*buf[o+2];
+  // one elliptical region: local contrast on luminance (chroma kept), darks
+  // pushed a little deeper, strongest in the middle, fading at the edge
+  const region = (cx, cy, rx, ry, k, deepen, satBoost) => {
+    const x0 = Math.max(0, Math.floor(cx - rx)), x1 = Math.min(gw - 1, Math.ceil(cx + rx));
+    const y0 = Math.max(0, Math.floor(cy - ry)), y1 = Math.min(gh - 1, Math.ceil(cy + ry));
+    if (x1 < x0 || y1 < y0) return;
+    let sum = 0, n = 0;
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++){ sum += lum((y*gw + x)*3); n++; }
+    const m = sum / Math.max(1, n);
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++){
+      const dx = (x + 0.5 - cx)/rx, dy = (y + 0.5 - cy)/ry, d2 = dx*dx + dy*dy;
+      if (d2 > 1) continue;
+      const w = 1 - d2*0.6;                       // full strength in the middle
+      const o = (y*gw + x)*3, L = lum(o);
+      // the dark side (pupils, lashes, brows, the lip line) gets the full
+      // contrast; the light side only a little, or skin beside the eye turns
+      // into stray pale bricks
+      const kk = L < m ? k : 1 + (k - 1)*0.25;
+      let L2 = m + (L - m)*(1 + (kk - 1)*w);
+      if (L < m) L2 -= (m - L)*deepen*w;
+      L2 = clamp(L2, 0, 255);
+      const t = L > 0.5 ? L2 / L : 1, sb = 1 + (satBoost - 1)*w;
+      for (let c = 0; c < 3; c++){
+        const v = buf[o+c]*t;
+        buf[o+c] = clamp(L2 + (v - L2)*sb, 0, 255);
+      }
+      mask[y*gw + x] = 1;
+    }
+  };
+  for (const f of feats){
+    const ex = Math.abs(f.eyes[1].x - f.eyes[0].x) || f.fw*0.4;
+    for (const e of f.eyes){
+      region(e.x, e.y, ex*0.34, ex*0.24, 1.45, 0.25, 1);                 // eye: iris, lash line, white
+      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, 1.30, 0.20, 1);      // brow just above it
+    }
+    region(f.mouth.x, f.mouth.y, ex*0.50, ex*0.22, 1.30, 0.15, 1.12);   // lips and the line between them
+  }
+  return mask;
+}
+
 function mlFacesInGrid(gw, gh){
   if (!S.mlFaces || S.mlFacesImg !== S.imgId || !S.img) return null;
   const img = S.img;
@@ -2312,10 +2387,17 @@ function detectFacesTiled(img, detector){
         const px1 = sx + (b.originX + b.width)/k, py1 = sy + (b.originY + b.height)/k;
         const pts = [[px0, py0], [px1, py0], [px0, py1], [px1, py1]].map(([x, y]) => toImg(x, y));
         const xs = pts.map((q) => q[0]), ys = pts.map((q) => q[1]);
+        // the detector's six landmarks (right eye, left eye, nose tip, mouth,
+        // two ears), normalised to the photo like the box — used to bring out
+        // the eyes, brows and mouth in the mosaic (enhanceFaceFeatures)
+        const kp = ((d.keypoints) || []).map((q) => {
+          const [x, y] = toImg(sx + q.x*c.width/k, sy + q.y*c.height/k);
+          return { x: clamp(x/iw, 0, 1), y: clamp(y/ih, 0, 1) };
+        });
         const f = {
           x0: clamp(Math.min(...xs)/iw, 0, 1), y0: clamp(Math.min(...ys)/ih, 0, 1),
           x1: clamp(Math.max(...xs)/iw, 0, 1), y1: clamp(Math.max(...ys)/ih, 0, 1),
-          score: sc, rotated: toImg !== same,
+          score: sc, rotated: toImg !== same, kp: kp.length >= 4 ? kp : null,
         };
         if (f.x1 - f.x0 > 0.005 && f.y1 - f.y0 > 0.005) found.push(f);
       }
@@ -3223,6 +3305,12 @@ function draw(reuse){
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
+  // bring out eyes, brows and mouth (auto only); their bricks stay undithered
+  let featureMask = null;
+  if (S.auto && window.MB_FACE_FEATURES !== false){
+    const feats = faceFeaturesInGrid(gw, gh);
+    if (feats) featureMask = enhanceFaceFeatures(buf, gw, gh, feats);
+  }
 
   const hasSkin = S.regionMap ? S.regionMap.includes(1) : false;
   const key = S.pal + "|" + gw + "x" + gh + "|" + [...S.excludedColors].sort().join(",") + "|" + (S.paletteCount || "auto") + "|" + (hasSkin ? "skin" : "noskin");
@@ -3421,7 +3509,7 @@ function draw(reuse){
     for (let k = 0; k < gw; k++){
       const x = ltr ? k : gw-1-k, i = (y*gw + x)*3;
       const regionMult = regionMapForDither ? REGION_DITHER[regionMapForDither[y*gw + x]] : 1;
-      const strength = baseStrength * regionMult;
+      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult;
       const r = clamp(buf[i],0,255), g = clamp(buf[i+1],0,255), b = clamp(buf[i+2],0,255);
       const isSkinPixel = regionMapForDither ? (regionMapForDither[y*gw + x] === 1 && isSubjectPixel(x, y)) : false;
       let n = nearest(r, g, b, PAL, true, isSkinPixel ? skinIndices : null);
