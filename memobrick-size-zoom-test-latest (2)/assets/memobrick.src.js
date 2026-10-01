@@ -1003,9 +1003,56 @@ function enhanceFaceFeatures(buf, gw, gh, feats){
       region(e.x, e.y, ex*0.34, ex*0.24, 1.45, 0.25, 1);                 // eye: iris, lash line, white
       region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, 1.30, 0.20, 1);      // brow just above it
     }
-    region(f.mouth.x, f.mouth.y, ex*0.50, ex*0.22, 1.30, 0.15, 1.12);   // lips and the line between them
+    // lips: a narrow, gentle region — a wider or stronger one also deepened
+    // the soft shadow under the lower lip into a dark patch
+    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, 1.15, 0.05, 1.12);
+    if (ex >= 8) f.eyes.forEach((e) => shapeEye(e, ex));
   }
   return mask;
+
+  /* An open eye drawn the way brick portrait artists draw it: black only
+     at the pupil, the rest of the iris in the eye's own dark colour (dark
+     brown, or a dark blue or green brick for light eyes), and one bright
+     catchlight in the same corner of both eyes. Without this every eye
+     came out as a solid black blob of 10-12 bricks. Mask value 2 = the
+     brick may use the full palette (not the skin bricks) and is not
+     dithered. Small faces and closed or smiling eyes are left alone. */
+  function shapeEye(e, ex){
+    const rx = ex*0.30, ry = ex*0.20;
+    const x0 = Math.max(0, Math.floor(e.x - rx)), x1 = Math.min(gw - 1, Math.ceil(e.x + rx));
+    const y0 = Math.max(0, Math.floor(e.y - ry)), y1 = Math.min(gh - 1, Math.ceil(e.y + ry));
+    if (x1 - x0 < 2 || y1 - y0 < 1) return;
+    const px = [];
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) px.push({ x, y, L: lum((y*gw + x)*3) });
+    const mean = px.reduce((t, q) => t + q.L, 0) / px.length;
+    const dark = px.filter((q) => q.L < mean*0.62);
+    if (dark.length < 3) return;                                   // closed or squinting: nothing to shape
+    let cx = 0, cy = 0, tw = 0;
+    for (const q of dark){ const w = (mean - q.L) + 1; cx += q.x*w; cy += q.y*w; tw += w; }
+    cx /= tw; cy /= tw;
+    const pupil = dark.reduce((b, q) => ((q.x - cx)**2 + (q.y - cy)**2 < (b.x - cx)**2 + (b.y - cy)**2 ? q : b));
+    // the iris colour: the average of the dark pixels, lifted so it maps to a
+    // dark coloured brick rather than black
+    let ir = 0, ig = 0, ib = 0;
+    for (const q of dark){ const o = (q.y*gw + q.x)*3; ir += buf[o]; ig += buf[o+1]; ib += buf[o+2]; }
+    ir /= dark.length; ig /= dark.length; ib /= dark.length;
+    const il = 0.299*ir + 0.587*ig + 0.114*ib, lift = il > 1 ? Math.max(1, 62/il) : 1;
+    const iris = [clamp(ir*lift, 0, 255), clamp(ig*lift, 0, 255), clamp(ib*lift, 0, 255)];
+    const rIris = Math.max(1.2, ex*0.14);
+    for (const q of dark){
+      const d = Math.hypot(q.x - pupil.x, q.y - pupil.y), o = (q.y*gw + q.x)*3;
+      if (q === pupil){ buf[o] = 18; buf[o+1] = 16; buf[o+2] = 17; }
+      else if (d <= rIris){ buf[o] = iris[0]; buf[o+1] = iris[1]; buf[o+2] = iris[2]; }
+      else continue;
+      mask[q.y*gw + q.x] = 2;
+    }
+    // catchlight: up and to the left of the pupil, the same in both eyes
+    const lx = pupil.x - 1, ly = pupil.y - 1;
+    if (lx >= 0 && ly >= 0 && lx < gw && ly < gh && Math.hypot(lx + 0.5 - cx, ly + 0.5 - cy) <= rIris + 1){
+      const o = (ly*gw + lx)*3;
+      buf[o] = 236; buf[o+1] = 236; buf[o+2] = 232; mask[ly*gw + lx] = 2;
+    }
+  }
 }
 
 function mlFacesInGrid(gw, gh){
@@ -3534,6 +3581,8 @@ function draw(reuse){
         if (inFace && isSubjectPixel(x, y) && S.skinMask && S.skinMask[y*gw + x]) n = nearest(r, g, b, PAL, true, skinIndices);
       }
       n = faceGuard(x, y, n, skinIndices);
+      // a shaped eye brick (pupil, iris, catchlight) keeps its exact colour
+      if (featureMask && featureMask[y*gw + x] === 2) n = nearest(r, g, b, PAL, false);
       cells[y*gw + x] = n;
       if (strength <= 0) continue;
       const cap = 46;                       // an unbounded error smears color across the face
