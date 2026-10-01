@@ -11,3 +11,4 @@
 #view-home>section{padding:56px 0}#view-home>section.gift-line{padding:0}@media(max-width:700px){#view-home>section{padding:40px 0}}@media(min-width:1021px){#sizes .sizes{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
 #sizes .ratio{display:none}
+@media(max-width:900px){.hero-img video{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;max-height:58vh}}
