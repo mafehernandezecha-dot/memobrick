@@ -86,6 +86,9 @@ window.MB_BG_PHOTO_URLS = {
 <main id="top">
 
   <section class="view" id="view-home"{% if template.suffix == 'editor' %} hidden{% endif %}>
+  <div class="promo-strip promo-top">
+    <p><b>Order early &amp; save 20%</b> with code <b>EARLYBIRD20</b> at checkout.</p>
+  </div>
     <div class="wrap hero">
       <p class="eyebrow">{{ section.settings.hero_eyebrow }}</p>
       <h1>{{ section.settings.hero_heading }}</h1>
@@ -95,42 +98,33 @@ window.MB_BG_PHOTO_URLS = {
         <button class="vidplay" id="heroPlay" aria-label="Play the video" hidden>▶</button>
       </figure>
       <p class="lede">{{ section.settings.hero_text_1 }}</p>
-      <p class="lede">{{ section.settings.hero_text_2 }}</p>
       <div class="hero-cta">
         <a class="btn btn-red big" href="/pages/editor">{{ section.settings.hero_button_1 }}</a>
-        <button class="btn btn-ghost big" data-go="freeproof">{{ section.settings.hero_button_2 }}</button>
       </div>
-      <p class="hero-tertiary">Ordering 10 or more?
-         <button class="linky2" data-go="corporate">Corporate &amp; bulk →</button></p>
+      <p class="hero-tertiary"><button type="button" class="linky2" data-go="freeproof">Not sure yet? Get a free design proof first →</button></p>
       <div class="hero-trustbar">
         <span class="htb-stars">★★★★★ <b>4.8</b> · 747 Reviews</span>
+        <span>As seen on Fox News</span>
         <span>Made &amp; Shipped from Miami</span>
-        <span>40+ Colors</span>
-        <span>Preview Before Ordering</span>
+        <span>Free Design Proof</span>
       </div>
     </div>
-  <div class="wrap promo-strip">
-    <p><b>Order early &amp; save 20%</b> — create your personalized gift before the holiday rush. Code <b>EARLYBIRD20</b> at checkout.</p>
-  </div>
 
   <section id="reviews" data-accent="yellow">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">Real builds, real people</p>
         <h2>747 reviews. These are their photos.</h2>
-        <p>Every photo below was taken by the customer who wrote the review.</p>
       </div>
       <div class="revrail">
-          <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
-          <div class="rev-grid" id="revTrack"></div>
-          <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
-        </div>
-        <div class="revmore">
-          <button class="mini" id="revMore">Show more reviews</button>
-          <a class="mini" href="/pages/happy-customers" target="_blank" rel="noopener">
-            Read all 747 reviews</a>
-        </div>
-      <p style="text-align:center;margin-top:28px">
+        <button class="revnav prev" id="revPrev" aria-label="Previous reviews">‹</button>
+        <div class="rev-grid" id="revTrack"></div>
+        <button class="revnav next" id="revNext" aria-label="More reviews">›</button>
+      </div>
+      <div class="revmore">
+        <a class="mini" href="/pages/happy-customers" target="_blank" rel="noopener">Read all 747 reviews</a>
+      </div>
+      <p style="text-align:center;margin-top:24px">
         <a class="btn btn-red big" href="/pages/editor">See your photo in bricks</a>
       </p>
     </div>
@@ -140,108 +134,53 @@ window.MB_BG_PHOTO_URLS = {
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">How it works</p>
-        <h2>Upload it. Create it. Build it.</h2>
-        <p>Prefer not to design it yourself? Our designers will create it for you — send a photo <button type="button" class="linky" data-go="freeproof">and get a free proof →</button></p>
+        <h2>Upload it. We pack it. You build it.</h2>
       </div>
-      <div class="steps">
+      <div class="steps steps-3">
         <article class="step">
           <span class="k">STEP 01</span>
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 44V16m0 0l-11 11m11-11l11 11" stroke="#15171B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 44v6a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4v-6" stroke="#0A8FC9" stroke-width="2.5" stroke-linecap="round"></path></svg>
-          <h3>Upload</h3>
-          <p>Choose a photo you love.</p>
+          <h3>Upload a photo</h3>
+          <p>See it as a brick mosaic instantly, pick your size and make it yours.</p>
         </article>
         <article class="step">
           <span class="k">STEP 02</span>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="6" y="12" width="52" height="40" rx="5" fill="#ECEDEF" stroke="#15171B" stroke-width="2.5"></rect><circle cx="23" cy="27" r="6" fill="#F5C518"></circle><path d="M10 46l14-14 10 9 9-8 13 13" stroke="#15171B" stroke-width="2.5" stroke-linejoin="round"></path></svg>
-          <h3>Create</h3>
-          <p>Turn it into a MemoBrick and make it yours.</p>
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="10" y="8" width="44" height="48" rx="4" fill="#fff" stroke="#15171B" stroke-width="2.5"></rect><path d="M18 20h20M18 28h28M18 36h24" stroke="#8C9199" stroke-width="2.5" stroke-linecap="round"></path><circle cx="46" cy="46" r="9" fill="#1E8E4A"></circle><path d="M42 46l3 3 5-6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <h3>We pack your kit</h3>
+          <p>Bricks sorted into numbered bags, baseplates and your personal instructions. Ships in 2–4 business days.</p>
         </article>
         <article class="step">
           <span class="k">STEP 03</span>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="10" y="8" width="44" height="48" rx="4" fill="#fff" stroke="#15171B" stroke-width="2.5"></rect><path d="M18 20h20M18 28h28M18 36h24" stroke="#8C9199" stroke-width="2.5" stroke-linecap="round"></path><circle cx="46" cy="46" r="9" fill="#1E8E4A"></circle><path d="M42 46l3 3 5-6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <h3>Order</h3>
-          <p>We prepare everything you need.</p>
-        </article>
-        <article class="step">
-          <span class="k">STEP 04</span>
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="18" width="20" height="14" rx="3" fill="#C41E1E"></rect><rect x="32" y="18" width="24" height="14" rx="3" fill="#0A8FC9"></rect><rect x="8" y="36" width="26" height="14" rx="3" fill="#F5C518"></rect><rect x="38" y="36" width="18" height="14" rx="3" fill="#15171B"></rect><path d="M12 14v-4M20 14v-4M40 14v-4M50 14v-4" stroke="#15171B" stroke-width="2.5" stroke-linecap="round"></path></svg>
-          <h3>Build</h3>
-          <p>Follow your personalized instructions and bring it to life.</p>
+          <h3>Build it</h3>
+          <p>Follow your step-by-step guide, one plate at a time. Then hang it, frame it or gift it.</p>
         </article>
       </div>
-      <p class="inbox-line"><b>In the box:</b> custom bricks sorted into numbered bags · baseplates for your size · your personalized instructions. Nothing extra to buy.</p>
-      <p style="text-align:center;margin-top:28px">
+      <p class="inbox-line">Rather have us design it? <button type="button" class="linky" data-go="freeproof">Send a photo and get a free proof →</button></p>
+      <p style="text-align:center;margin-top:24px">
         <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
-      </p>
-    </div>
-  </section>
-
-  <section id="twoways" data-accent="blue" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Two ways to create</p>
-        <h2>Design it yourself, or let us design it.</h2>
-      </div>
-      <div class="twoways-grid">
-        <article class="twoways-card">
-          <p class="eyebrow">Option 1</p>
-          <h3>Create It Yourself</h3>
-          <p>Upload your photo, customize your MemoBrick and make it yours — live, in the free Creator.</p>
-          <ul class="twoways-list">
-            <li>You design and approve it yourself</li>
-            <li>See it change in real time</li>
-            <li>Ships 2–4 business days after you check out</li>
-          </ul>
-          <a class="btn btn-red full" href="/pages/editor">Start creating</a>
-        </article>
-        <article class="twoways-card">
-          <p class="eyebrow">Option 2</p>
-          <h3>Let Us Design It</h3>
-          <p>Send us your photo and let our designer prepare your MemoBrick — free to see, no obligation.</p>
-          <ul class="twoways-list">
-            <li>Our designer creates it for you after you send your photo</li>
-            <li>Unlimited revisions until you approve</li>
-            <li>Ships 2–4 business days after you approve</li>
-          </ul>
-          <button type="button" class="btn btn-ghost full" data-go="freeproof">Design it for me</button>
-        </article>
-      </div>
-      <p id="giftinspo" style="text-align:center;margin-top:22px;font-size:15px;color:var(--ink-2)">
-        Giving it as a gift? <a href="/products/unlimited-memobrick" style="color:var(--b-red);font-weight:600;text-decoration:underline">Buy the kit now, they pick the photo later →</a>
       </p>
     </div>
   </section>
 
   <section id="sizes" data-accent="green">
     <div class="wrap">
-      <div class="sizes-top">
-        <div class="sec-head" style="margin-bottom:0">
-          <p class="eyebrow">Sizes &amp; prices</p>
-          <h2>Choosing your size is easy.</h2>
-          <p>More detail in the photo usually benefits from a larger MemoBrick.</p>
-          <ul class="size-guide-list">
-            <li><b>1 person</b> — smaller sizes can work beautifully.</li>
-            <li><b>2 people</b> — choose more detail for clearer faces.</li>
-            <li><b>Family / group</b> — larger sizes help preserve facial detail.</li>
-          </ul>
-          <p class="size-guide-note"><b>Not sure?</b> The Creator helps you choose the right size for your photo.</p>
-        </div>
-        <figure class="scaleview" id="scaleView"></figure>
+      <div class="sec-head">
+        <p class="eyebrow">Sizes &amp; prices</p>
+        <h2>Pick your size.</h2>
+        <p class="size-guide-note"><b>1 person</b> → 10×10 or 16×16 · <b>2 people</b> → 20×20 · <b>Family</b> → 20×30 or larger. The Creator suggests the best size for your photo.</p>
       </div>
-
-      <div class="sizetabs" id="sizeTabs" role="group" aria-label="Filter sizes by shape">
-        <button data-f="all" aria-pressed="true">All 20</button>
-        <button data-f="square" aria-pressed="false">Square</button>
-        <button data-f="portrait" aria-pressed="false">Portrait</button>
-        <button data-f="landscape" aria-pressed="false">Landscape</button>
+      <figure class="scaleview" id="scaleView" hidden></figure>
+      <div class="sizetabs" id="sizeTabs" role="group" aria-label="Filter sizes by shape" hidden>
+        <button data-f="all" aria-pressed="true">All</button>
       </div>
-
       <div class="sizes" id="sizeCards"></div>
-      <div class="more-wrap"><button class="btn btn-ghost" id="moreSizes">Show 12 more</button></div>
+      <p class="sizes-foot"><a href="/pages/editor">See all 20 sizes in the Creator →</a></p>
+      <p class="sizes-trust">Free design proof before anything is made · Shipping calculated at checkout</p>
     </div>
   </section>
 
-  <section id="press" data-accent="red" style="padding-top:64px">
+  <section id="press" data-accent="red">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">In the news</p>
@@ -269,7 +208,13 @@ window.MB_BG_PHOTO_URLS = {
     </div>
   </section>
 
-  <section id="faq" data-accent="orange" style="padding-top:0">
+  <section id="giftinspo" class="gift-line">
+    <div class="wrap">
+      <p>Giving it as a gift? <a href="/products/unlimited-memobrick">Buy the kit now, they pick the photo later →</a></p>
+    </div>
+  </section>
+
+  <section id="faq" data-accent="orange">
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow">FAQs</p>
@@ -277,18 +222,18 @@ window.MB_BG_PHOTO_URLS = {
       </div>
       <div class="faq">
         <details open=""><summary>Which photos work best?</summary><p>One clear subject filling most of the frame, lit from the front or the side. Busy backgrounds turn to noise at this resolution — crop in close with the zoom slider in the Creator, and check the result at arm's length rather than nose-to-screen.</p></details>
-        <details><summary>Will it look like the preview?</summary><p>Yes, allowing for the fact that screens vary in brightness and color. The proof we email is generated from the same color matching you're using here.</p></details>
-        <details><summary>What happens to my photo?</summary><p>The mosaic preview is built in your browser. We keep a copy of your photo and design so we can help you finish it and produce your order. We never share or sell it.</p></details>
-        <details><summary>Are the bricks compatible with the ones I own?</summary><p>MemoBrick uses standard 1×1 plates and compatible baseplates. Our 40+ color palette helps preserve skin tones, shadows and small details from your photo.</p></details>
-        <details><summary>How long does shipping take?</summary><p>Kits are made to order and normally dispatch in 2–4 business days, then travel by tracked post. You get a tracking link by email as soon as it ships.</p></details>
+        <details><summary>When will it arrive?</summary><p>Kits are made to order and leave Miami 2–4 business days after you order, then travel by tracked USPS or UPS. You get a tracking link by email as soon as it ships.</p></details>
+        <details><summary>What does shipping cost?</summary><p>Shipping is calculated at checkout from your address and kit size, using live USPS and UPS rates, so you see the exact cost before you pay.</p></details>
         <details><summary>What if a brick is missing?</summary><p>Send us the color name and count from your parts list and replacements go out free, for as long as you own the kit.</p></details>
       </div>
-      <div style="text-align:center;margin-top:40px">
+      <div style="text-align:center;margin-top:36px">
         <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
         <p style="margin-top:12px"><button type="button" class="linky" data-go="freeproof" style="color:var(--ink-2);font-size:14px;text-decoration:underline">Not ready yet? Get a free proof first →</button></p>
       </div>
     </div>
   </section>
+
+  <a class="btn btn-red big mob-cta" id="mobCta" href="/pages/editor" hidden>Create My MemoBrick</a>
   </section>
 
   <section class="view" id="view-design" hidden data-flow="designer_service">

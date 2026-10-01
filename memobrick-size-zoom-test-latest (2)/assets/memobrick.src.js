@@ -1145,6 +1145,27 @@ const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
       "</figcaption></figure>").join("");
 })();
 
+/* phones: keep a create button on screen once the hero's own button has
+   scrolled away; step aside again near the final button and the footer so
+   it never covers them. Only on the homepage, where #mobCta exists. */
+(function stickyCreate(){
+  const cta = document.querySelector("#mobCta");
+  const hero = document.querySelector(".hero-cta");
+  if (!cta || !hero || !("IntersectionObserver" in window)) return;
+  const ends = [document.querySelector("#faq .btn-red"), document.querySelector("footer")].filter(Boolean);
+  let pastHero = false;
+  const endVisible = new Set();
+  const sync = () => { cta.hidden = !pastHero || endVisible.size > 0; };
+  new IntersectionObserver(([e]) => {
+    pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; sync();
+  }).observe(hero);
+  const io = new IntersectionObserver((list) => {
+    list.forEach((e) => { if (e.isIntersecting) endVisible.add(e.target); else endVisible.delete(e.target); });
+    sync();
+  });
+  ends.forEach((el) => io.observe(el));
+})();
+
 /* the reviews rail */
 const revTrack = document.querySelector("#revTrack");
 if (revTrack){
