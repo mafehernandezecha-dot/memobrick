@@ -5312,7 +5312,7 @@ function renderSizes(){
         ${x.build?`<li><span>Built for you</span><span>${money(x.build)}</span></li>`:""}
       </ul>
       <button class="btn${x.id===S.size.id?"":" btn-ghost"}" data-try="${x.id}">${x.id===S.size.id?"Now in the creator":"Try this size"}</button>
-      <a class="viewlink" href="${url(x, false)}" target="_blank" rel="noopener">View on memobrick.com →</a>
+      <a class="viewlink" href="${url(x, false)}" target="_blank" rel="noopener">View product page →</a>
     </article>`;
   }).join("");
   const extra = list.length - 8;
@@ -7496,6 +7496,8 @@ if (!restoreSession()){
     params.get("size") ? "upload" :
     location.hash === "#editor" ? "editor" :
     location.hash === "#freeproof" ? "freeproof" :
+    // the header/footer "Corporate & bulk" links on other pages point here
+    (location.hash === "#view-corporate" || location.hash === "#corporate") ? "corporate" :
     window.MB_LANDING_VIEW || "home"));
 }
 meta();
