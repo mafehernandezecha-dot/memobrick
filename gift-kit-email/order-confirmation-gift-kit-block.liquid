@@ -1,0 +1,45 @@
+{%- comment -%}
+  MemoBrick — "Personalise your gift" block for the ORDER CONFIRMATION email.
+  Paste in Shopify admin → Settings → Notifications → Customer notifications
+  → Order confirmation → Edit code, just above the "Order summary" section.
+
+  Shows only when the order contains "Art Gift Kit — Buy Now, Personalise
+  Later" (product id 8607545032924). One button per kit bought. The button
+  opens the Creator in gift mode: size locked to the kit, no prices, and
+  "Submit my design" instead of checkout.
+{%- endcomment -%}
+{%- assign mb_gift_lines = '' -%}
+{%- for line in line_items -%}
+  {%- if line.product_id == 8607545032924 or line.title contains 'Art Gift Kit' -%}
+    {%- assign mb_size = line.variant_title | downcase | remove: ' ' | replace: '×', 'x' -%}
+    {%- unless mb_size contains 'x' -%}{%- assign mb_size = '20x20' -%}{%- endunless -%}
+    {%- for n in (1..line.quantity) -%}
+      {%- assign mb_ref = order_name -%}
+      {%- if line.quantity > 1 -%}{%- assign mb_ref = order_name | append: '-' | append: n -%}{%- endif -%}
+      {%- capture mb_btn -%}
+        <a href="https://mymemobrick.com/pages/editor?size={{ mb_size }}&gift={{ mb_ref | url_encode }}&email={{ email | url_encode }}"
+           style="display:inline-block;background:#c8324a;color:#ffffff;text-decoration:none;font-weight:700;font-size:16px;padding:14px 26px;border-radius:999px;margin:6px 0">
+          Personalise my MemoBrick{% if line.quantity > 1 %} ({{ n }} of {{ line.quantity }}){% endif %} →
+        </a><br>
+      {%- endcapture -%}
+      {%- assign mb_gift_lines = mb_gift_lines | append: mb_btn -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if mb_gift_lines != '' -%}
+<table class="row" style="width:100%;border-spacing:0;border-collapse:collapse;margin:24px 0">
+  <tr>
+    <td style="background:#fff6f0;border-radius:16px;padding:24px;text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif">
+      <p style="font-size:26px;margin:0">🎁</p>
+      <h2 style="font-size:20px;margin:8px 0;color:#1d1d1f">Your gift kit is paid — now make it personal</h2>
+      <p style="font-size:15px;line-height:1.5;color:#555555;margin:0 0 14px">
+        Pick a photo, design the mosaic in our free Creator and tap <b>Submit my design</b>.
+        There's nothing more to pay. Giving it as a gift? Just forward this email to the
+        person you're giving it to — they can design it themselves and tell us where to ship it.
+      </p>
+      {{ mb_gift_lines }}
+      <p style="font-size:13px;color:#888888;margin:12px 0 0">Each link personalises one kit. Ships 2–4 business days after we approve the design.</p>
+    </td>
+  </tr>
+</table>
+{%- endif -%}

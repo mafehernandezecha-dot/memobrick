@@ -116,6 +116,8 @@
   {{ content_for_layout }}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.2.1/jspdf.umd.min.js" defer></script>
   <script src="{{ 'memobrick.js' | asset_url }}" defer></script>
+  {%- comment -%} Gift kit links (?gift=…) open the Creator with checkout replaced by "Submit my design" {%- endcomment -%}
+  <script src="{{ 'memobrick-gift-redeem.js' | asset_url }}" defer></script>
   {%- if settings.email_gate_enabled -%}
     <script>
       window.MB_EMAIL_GATE = {
