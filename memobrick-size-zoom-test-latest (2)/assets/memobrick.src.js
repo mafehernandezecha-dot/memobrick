@@ -2902,8 +2902,8 @@ const EXPO_SHADOW = 0.18, EXPO_CLIP = 0.95;
 function expoStats(hist, total){
   if (!total) return null;
   let sum = 0, acc = 0, shadow = 0, clip = 0;
-  const q = { p5: null, median: null, p75: null, p90: null, p95: null };
-  const at = { p5: 0.05, median: 0.5, p75: 0.75, p90: 0.90, p95: 0.95 };
+  const q = { p5: null, median: null, p75: null, p90: null, p95: null, p99: null };
+  const at = { p5: 0.05, median: 0.5, p75: 0.75, p90: 0.90, p95: 0.95, p99: 0.99 };
   for (let i = 0; i < 256; i++){
     const n = hist[i], v = i/255;
     sum += n*v; acc += n;
@@ -2923,8 +2923,8 @@ function analyzeExposure(img, faces){
   const cx = c.getContext("2d", { willReadFrequently: true });
   cx.drawImage(img, 0, 0, w, h);
   const d = cx.getImageData(0, 0, w, h).data;
-  const all = new Uint32Array(256), subj = new Uint32Array(256);
-  let subjN = 0;
+  const all = new Uint32Array(256), subj = new Uint32Array(256), fullFace = new Uint32Array(256);
+  let subjN = 0, fullN = 0;
   const useFaces = faces && faces.length;
   // faces: the inner part of each box (mostly skin, not hair or background)
   const inFace = (u, v) => faces.some((f) => {
@@ -2940,6 +2940,12 @@ function analyzeExposure(img, faces){
       const u = (x + 0.5)/w;
       if (useFaces){
         if (inFace(u, v)){ subj[Y]++; subjN++; }
+        // an oval inside the face box: eyes, nose and mouth, not the
+        // background in the box's corners
+        if (faces.some((f) => {
+          const ex = (u - (f.x0 + f.x1)/2) / ((f.x1 - f.x0)*0.38), ey = (v - (f.y0 + f.y1)/2 - (f.y1 - f.y0)*0.04) / ((f.y1 - f.y0)*0.42);
+          return ex*ex + ey*ey <= 1;
+        })){ fullFace[Y]++; fullN++; }
       } else if (u > 0.2 && u < 0.8 && v > 0.12 && v < 0.82){
         subj[Y]++; subjN++;                       // centre-weighted: where the subject usually is
       }
@@ -2947,6 +2953,10 @@ function analyzeExposure(img, faces){
   }
   const whole = expoStats(all, w*h);
   const faceBased = !!(useFaces && subjN > 30);
+  // the brightest 1% of the whole face box: eye whites, teeth, the shine on
+  // a forehead. In good light these are bright whatever the skin tone; in a
+  // backlit or shaded face even they are dim
+  const faceHi = fullN > 30 ? expoStats(fullFace, fullN).p99 : null;
   const subject = (subjN > 30 ? expoStats(subj, subjN) : null) || whole;
   const sm = subject.median;
   /* A dark subject alone is not proof of a dark photo: people with dark
@@ -2960,7 +2970,13 @@ function analyzeExposure(img, faces){
   // backlight: most of the frame is bright and clipping while the subject
   // is far darker. A few white pixels (a white shirt) are not backlight —
   // otherwise dark skin in good light next to something white got lifted
-  const backlit = whole.clipPct > 0.05 && whole.median > 0.50 && sm < 0.5*whole.median;
+  const backlitClipped = whole.clipPct > 0.05 && whole.median > 0.50 && sm < 0.5*whole.median;
+  // backlight without clipping (a bright wall, a window or sky a phone kept
+  // just below white): a very bright scene, a face far below it, AND even
+  // the face's brightest spots (eye whites, teeth, shine) are dim. Dark skin
+  // in good light still has bright eyes and teeth, so it isn't caught here.
+  const backlitSoft = faceBased && faceHi !== null && whole.median > 0.65 && sm < 0.4*whole.median && faceHi < 0.40;
+  const backlit = backlitClipped || backlitSoft;
   /* The dark classes are tested FIRST: a backlit photo (dark person in
      front of a bright window or sky) has a very bright frame median, and
      checking "too bright" first called it overexposed and left the person
@@ -2986,7 +3002,7 @@ function analyzeExposure(img, faces){
   if (cls === "ok" && sm > 0.45 &&
       (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06))) cls = "bright";
   return { cls, apply: cls === "dark" || cls === "veryDark", whole, subject, faceBased, backlit, underexposed,
-           shaded: shadedFace && cls === "dark",
+           shaded: shadedFace && cls === "dark", faceHi,
            faceKey: useFaces ? faces.length : 0 };
 }
 /* Step 3: the correction itself, computed on the working image AFTER the
@@ -3102,6 +3118,34 @@ function applyExposureCurve(buf, lut, skinMask){
     }
     buf[i] = nr; buf[i+1] = ng; buf[i+2] = nb;
   }
+}
+/* Skin level guard. The black/white-point step is meant to add contrast,
+   but on a photo with bright window light and no real blacks it raises the
+   black point a long way, and the mid-tones, where skin sits, come out
+   darker: a child's face measured L 50 in the photo and L 39 after levels,
+   and the palette answered with Brown and Dark Brown bricks. Auto-
+   brightness can't catch it, because it judges the original photo (where
+   the face is fine). So once the people's skin is known: if levels left
+   the skin darker than it is in the photo, a mid-tone curve (black and
+   white points stay put) lifts it back to the photo's own skin level. */
+function holdSkinLevel(buf, pre, skinMask){
+  if (!skinMask) return null;
+  const hb = new Uint32Array(256), hp = new Uint32Array(256); let n = 0;
+  for (let p = 0, i = 0; p < skinMask.length; p++, i += 3){
+    if (!skinMask[p]) continue;
+    hb[clamp(Math.round(0.2126*buf[i] + 0.7152*buf[i+1] + 0.0722*buf[i+2]), 0, 255)]++;
+    hp[clamp(Math.round(0.2126*pre[i] + 0.7152*pre[i+1] + 0.0722*pre[i+2]), 0, 255)]++;
+    n++;
+  }
+  if (n < 20) return null;
+  const now = expoStats(hb, n).median, was = expoStats(hp, n).median;
+  if (!(now > 0.04 && was > now + 0.01)) return null;
+  const g = clamp(Math.log(was) / Math.log(now), 0.55, 1);
+  if (g >= 0.995) return null;
+  const lut = new Float32Array(256);
+  for (let k = 0; k < 256; k++) lut[k] = 255*Math.pow(k/255, g);
+  applyExposureCurve(buf, lut, skinMask);
+  return { was, now, g: +g.toFixed(3) };
 }
 /* Skin saturation guard. The black/white-point step stretches each colour
    channel on its own: right for the photo as a whole, but on skin it
@@ -3286,6 +3330,7 @@ function draw(reuse){
     S.skinMask = face.mask; S.faceBoxes = face.boxes;
     S.regionMap = classifyRegions(buf, gw, gh, S.skinMask, S.faceBoxes);  // skin/hair/clothing/background — still used for photo enhancement below
     if (preLevels) keepSkinSaturation(buf, preLevels, S.skinMask);  // levels must not turn skin orange
+    if (preLevels) holdSkinLevel(buf, preLevels, S.skinMask);       // ...or darker than the photo
 
     // 3. smart auto-brightness: only for photos the upload analysis found
     // dark, sized on the subject (the real skin of the people, when there
