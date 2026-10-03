@@ -997,15 +997,16 @@ function enhanceFaceFeatures(buf, gw, gh, feats){
       mask[y*gw + x] = 1;
     }
   };
+  const FK = window.MB_FEAT_K || 1, sk = (k) => 1 + (k - 1)*FK;
   for (const f of feats){
     const ex = Math.abs(f.eyes[1].x - f.eyes[0].x) || f.fw*0.4;
     for (const e of f.eyes){
-      region(e.x, e.y, ex*0.34, ex*0.24, 1.45, 0.25, 1);                 // eye: iris, lash line, white
-      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, 1.30, 0.20, 1);      // brow just above it
+      region(e.x, e.y, ex*0.34, ex*0.24, sk(1.45), 0.25*FK, 1);                 // eye: iris, lash line, white
+      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, sk(1.30), 0.20*FK, 1);      // brow just above it
     }
     // lips: a narrow, gentle region — a wider or stronger one also deepened
     // the soft shadow under the lower lip into a dark patch
-    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, 1.15, 0.05, 1.12);
+    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, sk(1.15), 0.05*FK, 1.12);
   }
   return mask;
 }
@@ -1904,6 +1905,29 @@ function sharpen(buf, gw, gh, amount, skinMask){
    every photo — a photo that's already warm gets little to none, which
    is what stops faces drifting orange, pink or red; a photo with a real
    blue cast still gets a meaningful counter-push. */
+/* FACE DETAIL. Brightness-only unsharp mask (3x3) inside each detected
+   face. At 15-25 bricks across a face, an eye or the nose is one to three
+   bricks; the general sharpening deliberately goes easy on skin, which
+   also softens exactly those features. Here the face as a whole gets a
+   brightness-only pass, so colour stays clean while edges (eyes, nose,
+   mouth, jaw) hold. */
+function faceDetail(buf, gw, gh, boxes, amount){
+  if (!(amount > 0)) return;
+  const Y = (o) => 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
+  for (const b of boxes){
+    const x0 = Math.max(0, b.x0 - 1), x1 = Math.min(gw - 1, b.x1 + 1), y0 = Math.max(0, b.y0 - 1), y1 = Math.min(gh - 1, b.y1 + 1);
+    const w = x1 - x0 + 1, h = y1 - y0 + 1, lum = new Float32Array(w*h);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) lum[y*w + x] = Y(((y0 + y)*gw + (x0 + x))*3);
+    const K = [1,2,1, 2,4,2, 1,2,1];
+    for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++){
+      let s = 0, k = 0;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++, k++) s += lum[(y + dy)*w + (x + dx)]*K[k];
+      const d = clamp((lum[y*w + x] - s/16)*amount, -40, 40);
+      const o = ((y0 + y)*gw + (x0 + x))*3;
+      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
+    }
+  }
+}
 /* FACE SHADING. The skin bricks are about 10 L apart (Caramel 73, Nougat
    66, Toffee 56, Coffee 47), while the light and shadow that shape a face
    (cheek and forehead highlights, the shadow under the nose, the sides of
@@ -3407,6 +3431,7 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
+  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 0.8);
   if (S.auto && S.skinMask) faceShading(buf, gw, S.skinMask, S.faceBoxes);   // features need light and shadow
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
   // bring out eyes, brows and mouth (auto only); their bricks stay undithered
@@ -3444,6 +3469,13 @@ function draw(reuse){
   const regionMapForDither = S.auto ? S.regionMap : null;
   // background 0, skin 1, hair 2, clothing 3
   const REGION_DITHER = [0.22, 0.28, 0.30, 0.30];
+  // inside a face, dithering speckles are as big as an eye at small sizes
+  const FACE_DITHER = window.MB_FACE_DITHER != null ? window.MB_FACE_DITHER : 0.3;
+  let faceGridDither = null;
+  if (FACE_DITHER !== 1 && S.auto && S.faceBoxes && S.faceBoxes.length){
+    faceGridDither = new Uint8Array(gw*gh);
+    for (const b of S.faceBoxes) for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) faceGridDither[y*gw + x] = 1;
+  }
   // which PAL indices are approved skin-tone bricks — computed once, not
   // per pixel. choosePalette() above guarantees these are present in PAL
   // whenever hasSkin is true, so this should reliably find all 8 (or as
@@ -3613,7 +3645,8 @@ function draw(reuse){
     for (let k = 0; k < gw; k++){
       const x = ltr ? k : gw-1-k, i = (y*gw + x)*3;
       const regionMult = regionMapForDither ? REGION_DITHER[regionMapForDither[y*gw + x]] : 1;
-      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult;
+      const faceMult = (faceGridDither && faceGridDither[y*gw + x]) ? FACE_DITHER : 1;
+      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult * faceMult;
       const r = clamp(buf[i],0,255), g = clamp(buf[i+1],0,255), b = clamp(buf[i+2],0,255);
       const isSkinPixel = regionMapForDither ? (regionMapForDither[y*gw + x] === 1 && isSubjectPixel(x, y)) : false;
       let n = nearest(r, g, b, PAL, true, isSkinPixel ? skinIndices : null);
