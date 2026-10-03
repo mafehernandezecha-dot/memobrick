@@ -297,8 +297,8 @@ function rgb2lab(r,g,b){
    the default below for a persistent local override. */
 window.DEBUG_MEMOBRICK_PROCESSING = false;
 
-const AUTO_START = { bri: 28, con: -10, sat: 55, temp: 0, detail: 150,
-                     dither: 74, shadows: -50, warm: 35, auto: true };
+const AUTO_START = { bri: 20, con: -10, sat: 41, temp: 0, detail: 150,
+                     dither: 74, shadows: -100, warm: 35, auto: true };
 
 const CACHE = {};
 function pal(){
@@ -997,16 +997,15 @@ function enhanceFaceFeatures(buf, gw, gh, feats){
       mask[y*gw + x] = 1;
     }
   };
-  const FK = window.MB_FEAT_K || 1, sk = (k) => 1 + (k - 1)*FK;
   for (const f of feats){
     const ex = Math.abs(f.eyes[1].x - f.eyes[0].x) || f.fw*0.4;
     for (const e of f.eyes){
-      region(e.x, e.y, ex*0.34, ex*0.24, sk(1.45), 0.25*FK, 1);                 // eye: iris, lash line, white
-      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, sk(1.30), 0.20*FK, 1);      // brow just above it
+      region(e.x, e.y, ex*0.34, ex*0.24, 1.45, 0.25, 1);                 // eye: iris, lash line, white
+      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, 1.30, 0.20, 1);      // brow just above it
     }
     // lips: a narrow, gentle region — a wider or stronger one also deepened
     // the soft shadow under the lower lip into a dark patch
-    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, sk(1.15), 0.05*FK, 1.12);
+    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, 1.15, 0.05, 1.12);
   }
   return mask;
 }
@@ -1905,29 +1904,6 @@ function sharpen(buf, gw, gh, amount, skinMask){
    every photo — a photo that's already warm gets little to none, which
    is what stops faces drifting orange, pink or red; a photo with a real
    blue cast still gets a meaningful counter-push. */
-/* FACE DETAIL. Brightness-only unsharp mask (3x3) inside each detected
-   face. At 15-25 bricks across a face, an eye or the nose is one to three
-   bricks; the general sharpening deliberately goes easy on skin, which
-   also softens exactly those features. Here the face as a whole gets a
-   brightness-only pass, so colour stays clean while edges (eyes, nose,
-   mouth, jaw) hold. */
-function faceDetail(buf, gw, gh, boxes, amount){
-  if (!(amount > 0)) return;
-  const Y = (o) => 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
-  for (const b of boxes){
-    const x0 = Math.max(0, b.x0 - 1), x1 = Math.min(gw - 1, b.x1 + 1), y0 = Math.max(0, b.y0 - 1), y1 = Math.min(gh - 1, b.y1 + 1);
-    const w = x1 - x0 + 1, h = y1 - y0 + 1, lum = new Float32Array(w*h);
-    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) lum[y*w + x] = Y(((y0 + y)*gw + (x0 + x))*3);
-    const K = [1,2,1, 2,4,2, 1,2,1];
-    for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++){
-      let s = 0, k = 0;
-      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++, k++) s += lum[(y + dy)*w + (x + dx)]*K[k];
-      const d = clamp((lum[y*w + x] - s/16)*amount, -40, 40);
-      const o = ((y0 + y)*gw + (x0 + x))*3;
-      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
-    }
-  }
-}
 /* FACE SHADING. The skin bricks are about 10 L apart (Caramel 73, Nougat
    66, Toffee 56, Coffee 47), while the light and shadow that shape a face
    (cheek and forehead highlights, the shadow under the nose, the sides of
@@ -1940,7 +1916,7 @@ function faceDetail(buf, gw, gh, boxes, amount){
    median itself doesn't move, so the overall skin tone stays as it is. */
 function faceShading(buf, gw, skinMask, boxes){
   if (!boxes || !boxes.length) return;
-  const K = window.MB_FACE_K || 1.9, CAP = 24;
+  const K = window.MB_FACE_K || 1.7, CAP = 24;
   for (const b of boxes){
     const ys = [];
     for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
@@ -2089,37 +2065,6 @@ function choosePalette(buf, gw, gh, P, max, mustInclude){
       }
     }
     if (!moved) break;
-  }
-  // Accent pass: the greedy picks above are area-weighted, so small vivid
-  // things (a rainbow hair clip, beads, a toy) never won a slot and came
-  // out grey/brown. Swap up to ACC low-chroma picks for the brick that best
-  // serves the vivid pixels that are currently badly matched.
-  const ACC = window.MB_ACCENTS != null ? window.MB_ACCENTS : 3;
-  if (ACC > 0){
-    const skinHex = new Set((mustInclude || []).map((c) => c.hex));
-    const nearestErr = (i) => { let bd = Infinity; for (const k of chosen){ const d = dLab(labs[i], P[k]); if (d < bd) bd = d; } return bd; };
-    const vivid = [];
-    for (let i = 0; i < S_; i++) if (labs[i][3] >= 30 && nearestErr(i) > 120) vivid.push(i);
-    const minHits = Math.max(4, Math.round(5 * S_ / (gw*gh)));
-    for (let a = 0; a < ACC && vivid.length >= minHits; a++){
-      let best = -1, bestHits = 0, bestGain = 0;
-      for (let c = 0; c < P.length; c++){
-        if (chosen.includes(c) || P[c].C < 25) continue;
-        let hits = 0, gain = 0;
-        for (const i of vivid){ const d = dLab(labs[i], P[c]), e = nearestErr(i); if (d < e){ hits++; gain += (e - d)*w[i]; } }
-        if (hits >= minHits && gain > bestGain){ best = c; bestHits = hits; bestGain = gain; }
-      }
-      if (best < 0) break;
-      let at = -1;
-      for (let k = chosen.length - 1; k >= 0; k--){
-        const c = P[chosen[k]];
-        if (skinHex.has(c.hex) || c.C >= 20 || c.lab[0] > 92 || c.lab[0] < 12) continue;
-        at = k; break;
-      }
-      if (at < 0) break;
-      chosen[at] = best;
-      for (let j = vivid.length - 1; j >= 0; j--) if (nearestErr(vivid[j]) <= 120) vivid.splice(j, 1);
-    }
   }
   let result = chosen.map((c) => P[c]);
   // guarantee specific colors are present (the approved skin palette, when
@@ -3462,7 +3407,6 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
-  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 1.25);
   if (S.auto && S.skinMask) faceShading(buf, gw, S.skinMask, S.faceBoxes);   // features need light and shadow
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
   // bring out eyes, brows and mouth (auto only); their bricks stay undithered
@@ -3475,7 +3419,7 @@ function draw(reuse){
   const hasSkin = S.regionMap ? S.regionMap.includes(1) : false;
   const key = S.pal + "|" + gw + "x" + gh + "|" + [...S.excludedColors].sort().join(",") + "|" + (S.paletteCount || "auto") + "|" + (hasSkin ? "skin" : "noskin");
   let PAL = (reuse && S.usedPal && S.palKey === key) ? S.pickedPal
-    : choosePalette(buf, gw, gh, P, S.paletteCount || MAX_COLOURS, hasSkin ? photoSkinPal(buf, gw, gh) : null);
+    : choosePalette(buf, gw, gh, P, S.paletteCount || MAX_COLOURS, hasSkin ? skinPal() : null);
   S.pickedPal = PAL; S.palKey = key;
 
   // serpentine Floyd–Steinberg: alternating direction kills the diagonal
@@ -3500,13 +3444,6 @@ function draw(reuse){
   const regionMapForDither = S.auto ? S.regionMap : null;
   // background 0, skin 1, hair 2, clothing 3
   const REGION_DITHER = [0.22, 0.28, 0.30, 0.30];
-  // inside a face, dithering speckles are as big as an eye at small sizes
-  const FACE_DITHER = window.MB_FACE_DITHER != null ? window.MB_FACE_DITHER : 0.15;
-  let faceGridDither = null;
-  if (FACE_DITHER !== 1 && S.auto && S.faceBoxes && S.faceBoxes.length){
-    faceGridDither = new Uint8Array(gw*gh);
-    for (const b of S.faceBoxes) for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) faceGridDither[y*gw + x] = 1;
-  }
   // which PAL indices are approved skin-tone bricks — computed once, not
   // per pixel. choosePalette() above guarantees these are present in PAL
   // whenever hasSkin is true, so this should reliably find all 8 (or as
@@ -3676,8 +3613,7 @@ function draw(reuse){
     for (let k = 0; k < gw; k++){
       const x = ltr ? k : gw-1-k, i = (y*gw + x)*3;
       const regionMult = regionMapForDither ? REGION_DITHER[regionMapForDither[y*gw + x]] : 1;
-      const faceMult = (faceGridDither && faceGridDither[y*gw + x]) ? FACE_DITHER : 1;
-      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult * faceMult;
+      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult;
       const r = clamp(buf[i],0,255), g = clamp(buf[i+1],0,255), b = clamp(buf[i+2],0,255);
       const isSkinPixel = regionMapForDither ? (regionMapForDither[y*gw + x] === 1 && isSubjectPixel(x, y)) : false;
       let n = nearest(r, g, b, PAL, true, isSkinPixel ? skinIndices : null);
@@ -3722,7 +3658,7 @@ function draw(reuse){
     }
   }
 
-  PAL = enforceMinimum(cells, PAL, window.MB_MIN_BRICKS || MIN_BRICKS);
+  PAL = enforceMinimum(cells, PAL, MIN_BRICKS);
 
   if (S.auto){
     // strength scales with how many bricks there are to work with — a
@@ -4132,26 +4068,6 @@ function fullPal(){
    of the design — skin restriction is a baseline behavior, not tied to
    palette choice. */
 let SKIN_PAL_CACHE = null;
-/* Only reserve the skin bricks this photo's skin actually spans (by
-   lightness, with a margin). Reserving all 8 skin bricks for every photo
-   left just 10 slots for everything else, so the vivid colors (clothes,
-   toys, background) were the first to be replaced. */
-function photoSkinPal(buf, gw, gh){
-  const all = skinPal();
-  if (window.MB_SKIN_RESERVE_ALL || !S.regionMap) return all;
-  const Ls = [];
-  for (let p = 0; p < gw*gh; p++){
-    if (S.regionMap[p] !== 1) continue;
-    const o = p*3;
-    Ls.push(rgb2lab(clamp(buf[o],0,255), clamp(buf[o+1],0,255), clamp(buf[o+2],0,255))[0]);
-  }
-  if (Ls.length < 30) return all;
-  Ls.sort((u, v) => u - v);
-  const lo = Ls[Math.floor(Ls.length*0.05)] - 8, hi = Ls[Math.floor(Ls.length*0.95)] + 8, mid = (lo + hi)/2;
-  let keep = all.filter((c) => c.lab[0] >= lo && c.lab[0] <= hi);
-  if (keep.length < 3) keep = all.slice().sort((a, b) => Math.abs(a.lab[0] - mid) - Math.abs(b.lab[0] - mid)).slice(0, 3);
-  return keep;
-}
 function skinPal(){
   if (SKIN_PAL_CACHE) return SKIN_PAL_CACHE;
   return SKIN_PAL_CACHE = SKIN_PALETTE.map(([name,hex,id,brick]) => {
@@ -6354,7 +6270,7 @@ $$(".sliders input, .ep-toggles .tog").forEach((el) =>
   el.addEventListener("pointerdown", () => { const d = el.closest("details"); if (d) d.open = true; }));
 $("#autoFix").addEventListener("click", () => {
   pushHistory("Back to the automatic settings");
-  Object.assign(S, AUTO_START, window.MB_AUTO_OVERRIDE || null);
+  Object.assign(S, AUTO_START);
   S.auto = true;
   $("#togAuto").setAttribute("aria-pressed", true);
   syncSliders();
@@ -6664,7 +6580,7 @@ function adopt(img, f, opts){
   if (typeof updateSizeRecommendation === "function") updateSizeRecommendation();
   // the automatic starting point, applied once for this photo. Anything the
   // customer changes afterwards is theirs and is never overwritten.
-  Object.assign(S, AUTO_START, window.MB_AUTO_OVERRIDE || null);
+  Object.assign(S, AUTO_START);
   S.detailTouched = false; S.analyzedImgId = -1;   // let the pipeline re-analyse this photo fresh
   HIST.past.length = 0; HIST.future.length = 0;
   updateHistoryButtons();
