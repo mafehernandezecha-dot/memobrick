@@ -1,0 +1,42 @@
+/* MemoBrick Editor — team build additions. Uses the storefront's own
+   tokens from memobrick.css so the editor looks exactly as it does live. */
+
+.team-bar{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line-soft)}
+.team-bar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:1280px;margin:0 auto;padding:10px 16px}
+.team-brand{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink);white-space:nowrap}
+.team-brand b{color:var(--red);font-weight:600}
+.team-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--ink);color:#fff;border-radius:6px;padding:3px 7px;margin-left:6px;vertical-align:3px}
+.team-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.team-actions label.mini{cursor:pointer}
+
+/* storefront-only entry points that have nowhere to go in the team build */
+.team-build [data-go="freeproof"],
+.team-build [data-go="design"],
+.team-build [data-go="corporate"],
+.team-build .trustrow,
+.team-build .tr-stars,
+.team-build #buyBar,
+.team-build .wv-cta-note{display:none !important}
+
+.team-modal{position:fixed;inset:0;z-index:1000;background:rgba(21,23,27,.55);
+  display:flex;align-items:center;justify-content:center;padding:16px}
+.team-modal[hidden]{display:none}
+.team-modal-card{position:relative;background:var(--card);border-radius:var(--r);max-width:620px;width:100%;
+  max-height:calc(100vh - 32px);overflow:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.team-modal-card h3{font-family:var(--display);font-size:24px;margin:0 0 4px}
+.team-modal-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--ink-2)}
+.team-sub{color:var(--ink-2);margin:0 0 16px;font-size:14px}
+.team-field{display:block;margin:0 0 16px}
+.team-field span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
+.team-field input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+.team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.team-opt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;cursor:pointer;
+  border:1px solid var(--line);border-radius:12px;background:var(--card);padding:12px 14px;font:inherit;color:var(--ink)}
+.team-opt:hover{border-color:var(--ink-3)}
+.team-opt span{font-size:12.5px;color:var(--ink-2)}
+.team-opt-all{background:var(--red);border-color:var(--red);color:#fff}
+.team-opt-all span{color:rgba(255,255,255,.85)}
+.team-opt[aria-busy="true"]{opacity:.6;pointer-events:none}
+@media (max-width:520px){ .team-grid{grid-template-columns:1fr} .team-brand{font-size:17px} }
