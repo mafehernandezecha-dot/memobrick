@@ -1904,6 +1904,37 @@ function sharpen(buf, gw, gh, amount, skinMask){
    every photo — a photo that's already warm gets little to none, which
    is what stops faces drifting orange, pink or red; a photo with a real
    blue cast still gets a meaningful counter-push. */
+/* FACE SHADING. The skin bricks are about 10 L apart (Caramel 73, Nougat
+   66, Toffee 56, Coffee 47), while the light and shadow that shape a face
+   (cheek and forehead highlights, the shadow under the nose, the sides of
+   the face, the smile lines) span only a few L. Quantized as is, a whole
+   face lands on one brick and reads flat: no nose, no smile. Inside each
+   detected face, skin pixels have their brightness spread away from the
+   face's own median, so highlights reach the next lighter skin brick and
+   shadows the next darker one, the way hand-made brick portraits are
+   shaded. Brightness only (colour offsets are kept), capped, and the
+   median itself doesn't move, so the overall skin tone stays as it is. */
+function faceShading(buf, gw, skinMask, boxes){
+  if (!boxes || !boxes.length) return;
+  const K = window.MB_FACE_K || 1.7, CAP = 24;
+  for (const b of boxes){
+    const ys = [];
+    for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
+      const p = y*gw + x; if (!skinMask[p]) continue;
+      const o = p*3; ys.push(0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2]);
+    }
+    if (ys.length < 20) continue;
+    ys.sort((u, v) => u - v);
+    const med = ys[ys.length >> 1];
+    for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
+      const p = y*gw + x; if (!skinMask[p]) continue;
+      const o = p*3;
+      const Y = 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
+      const d = clamp((Y - med)*(K - 1), -CAP, CAP);
+      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
+    }
+  }
+}
 function protectSkinColors(buf, skinMask){
   if (!skinMask) return;
   const N = skinMask.length;
@@ -3376,6 +3407,7 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
+  if (S.auto && S.skinMask) faceShading(buf, gw, S.skinMask, S.faceBoxes);   // features need light and shadow
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
   // bring out eyes, brows and mouth (auto only); their bricks stay undithered
   let featureMask = null;
