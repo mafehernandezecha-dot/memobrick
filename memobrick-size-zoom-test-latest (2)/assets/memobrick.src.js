@@ -1940,7 +1940,7 @@ function faceDetail(buf, gw, gh, boxes, amount){
    median itself doesn't move, so the overall skin tone stays as it is. */
 function faceShading(buf, gw, skinMask, boxes){
   if (!boxes || !boxes.length) return;
-  const K = window.MB_FACE_K || 1.7, CAP = 24;
+  const K = window.MB_FACE_K || 1.9, CAP = 24;
   for (const b of boxes){
     const ys = [];
     for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
@@ -3431,7 +3431,7 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
-  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 0.8);
+  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 1.25);
   if (S.auto && S.skinMask) faceShading(buf, gw, S.skinMask, S.faceBoxes);   // features need light and shadow
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
   // bring out eyes, brows and mouth (auto only); their bricks stay undithered
@@ -3470,7 +3470,7 @@ function draw(reuse){
   // background 0, skin 1, hair 2, clothing 3
   const REGION_DITHER = [0.22, 0.28, 0.30, 0.30];
   // inside a face, dithering speckles are as big as an eye at small sizes
-  const FACE_DITHER = window.MB_FACE_DITHER != null ? window.MB_FACE_DITHER : 0.3;
+  const FACE_DITHER = window.MB_FACE_DITHER != null ? window.MB_FACE_DITHER : 0.15;
   let faceGridDither = null;
   if (FACE_DITHER !== 1 && S.auto && S.faceBoxes && S.faceBoxes.length){
     faceGridDither = new Uint8Array(gw*gh);
