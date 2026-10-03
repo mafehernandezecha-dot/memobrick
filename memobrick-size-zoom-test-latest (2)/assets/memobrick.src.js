@@ -8232,11 +8232,30 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     // Prefixed with an underscore: Shopify's convention for a line-item
     // property that's stored on the order and visible to the merchant in
     // admin, but never rendered in the customer-facing cart or checkout.
+    // A real PDF (the same one the customer can download): it opens and
+    // prints like any PDF, one 11x17" page per sheet. The HTML version
+    // relied on the browser honouring its 11x17" page size; Safari and a
+    // Letter-size print dialog don't, so every sheet spilled onto a second,
+    // blank page. The HTML is only sent if the PDF library isn't loaded.
     try {
-      const doc = await buildInstructionsDocument();
-      if (doc){
-        const htmlBlob = new Blob([doc], { type: "text/html" });
-        fd.append("properties[_Build Instructions]", htmlBlob, "memobrick-instructions-" + id + ".html");
+      let attached = false;
+      if (window.jspdf && window.jspdf.jsPDF && S.cells && S.usedPal){
+        try {
+          const pdf = new window.jspdf.jsPDF({ unit: "mm", format: [PDF_PAGE_W, PDF_PAGE_H], orientation: "portrait" });
+          buildInstructionsPDF(pdf);
+          const pdfBlob = pdf.output("blob");
+          if (pdfBlob && pdfBlob.size){
+            fd.append("properties[_Build Instructions]", pdfBlob, "memobrick-instructions-" + id + ".pdf");
+            attached = true;
+          }
+        } catch (e){ /* fall back to the HTML booklet below */ }
+      }
+      if (!attached){
+        const doc = await buildInstructionsDocument();
+        if (doc){
+          const htmlBlob = new Blob([doc], { type: "text/html" });
+          fd.append("properties[_Build Instructions]", htmlBlob, "memobrick-instructions-" + id + ".html");
+        }
       }
     } catch (e){ /* instructions failed to build — the order still has the design image and settings */ }
 
