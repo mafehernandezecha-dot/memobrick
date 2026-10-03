@@ -3340,3 +3340,18 @@ html.dchoice-open{overflow:hidden}
   .dchoice-opts{grid-template-columns:1fr;gap:10px}
   .dchoice-opt{padding:14px 16px;gap:6px}
 }
+/* desktop menu: labels never wrap onto two lines; tighter on mid-size
+   screens, and the two lowest-priority links (both also in the footer)
+   step aside on small laptops so everything fits on one row */
+@media(min-width:901px){
+  .nav-links a,.nav-links .navlink{white-space:nowrap}
+}
+@media(min-width:901px) and (max-width:1366px){
+  .nav-in{gap:18px}
+  .nav-links{gap:15px}
+  .nav-links a,.nav-links .navlink{font-size:13.5px}
+  .nav-links .btn{padding-left:16px;padding-right:16px}
+}
+@media(min-width:901px) and (max-width:1180px){
+  .nav-links a[href^="/blogs"],.nav-links a[href*="view-corporate"],.nav-links [data-go="corporate"]{display:none}
+}
