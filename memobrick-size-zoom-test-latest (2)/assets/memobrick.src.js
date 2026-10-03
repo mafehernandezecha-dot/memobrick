@@ -297,8 +297,8 @@ function rgb2lab(r,g,b){
    the default below for a persistent local override. */
 window.DEBUG_MEMOBRICK_PROCESSING = false;
 
-const AUTO_START = { bri: 20, con: -10, sat: 41, temp: 0, detail: 150,
-                     dither: 74, shadows: -100, warm: 35, auto: true };
+const AUTO_START = { bri: 28, con: -10, sat: 55, temp: 0, detail: 150,
+                     dither: 74, shadows: -50, warm: 35, auto: true };
 
 const CACHE = {};
 function pal(){
@@ -2090,6 +2090,37 @@ function choosePalette(buf, gw, gh, P, max, mustInclude){
     }
     if (!moved) break;
   }
+  // Accent pass: the greedy picks above are area-weighted, so small vivid
+  // things (a rainbow hair clip, beads, a toy) never won a slot and came
+  // out grey/brown. Swap up to ACC low-chroma picks for the brick that best
+  // serves the vivid pixels that are currently badly matched.
+  const ACC = window.MB_ACCENTS != null ? window.MB_ACCENTS : 3;
+  if (ACC > 0){
+    const skinHex = new Set((mustInclude || []).map((c) => c.hex));
+    const nearestErr = (i) => { let bd = Infinity; for (const k of chosen){ const d = dLab(labs[i], P[k]); if (d < bd) bd = d; } return bd; };
+    const vivid = [];
+    for (let i = 0; i < S_; i++) if (labs[i][3] >= 30 && nearestErr(i) > 120) vivid.push(i);
+    const minHits = Math.max(4, Math.round(5 * S_ / (gw*gh)));
+    for (let a = 0; a < ACC && vivid.length >= minHits; a++){
+      let best = -1, bestHits = 0, bestGain = 0;
+      for (let c = 0; c < P.length; c++){
+        if (chosen.includes(c) || P[c].C < 25) continue;
+        let hits = 0, gain = 0;
+        for (const i of vivid){ const d = dLab(labs[i], P[c]), e = nearestErr(i); if (d < e){ hits++; gain += (e - d)*w[i]; } }
+        if (hits >= minHits && gain > bestGain){ best = c; bestHits = hits; bestGain = gain; }
+      }
+      if (best < 0) break;
+      let at = -1;
+      for (let k = chosen.length - 1; k >= 0; k--){
+        const c = P[chosen[k]];
+        if (skinHex.has(c.hex) || c.C >= 20 || c.lab[0] > 92 || c.lab[0] < 12) continue;
+        at = k; break;
+      }
+      if (at < 0) break;
+      chosen[at] = best;
+      for (let j = vivid.length - 1; j >= 0; j--) if (nearestErr(vivid[j]) <= 120) vivid.splice(j, 1);
+    }
+  }
   let result = chosen.map((c) => P[c]);
   // guarantee specific colors are present (the approved skin palette, when
   // this photo has detected skin) — replace the lowest-priority entries
@@ -3444,7 +3475,7 @@ function draw(reuse){
   const hasSkin = S.regionMap ? S.regionMap.includes(1) : false;
   const key = S.pal + "|" + gw + "x" + gh + "|" + [...S.excludedColors].sort().join(",") + "|" + (S.paletteCount || "auto") + "|" + (hasSkin ? "skin" : "noskin");
   let PAL = (reuse && S.usedPal && S.palKey === key) ? S.pickedPal
-    : choosePalette(buf, gw, gh, P, S.paletteCount || MAX_COLOURS, hasSkin ? skinPal() : null);
+    : choosePalette(buf, gw, gh, P, S.paletteCount || MAX_COLOURS, hasSkin ? photoSkinPal(buf, gw, gh) : null);
   S.pickedPal = PAL; S.palKey = key;
 
   // serpentine Floyd–Steinberg: alternating direction kills the diagonal
@@ -3691,7 +3722,7 @@ function draw(reuse){
     }
   }
 
-  PAL = enforceMinimum(cells, PAL, MIN_BRICKS);
+  PAL = enforceMinimum(cells, PAL, window.MB_MIN_BRICKS || MIN_BRICKS);
 
   if (S.auto){
     // strength scales with how many bricks there are to work with — a
@@ -4101,6 +4132,26 @@ function fullPal(){
    of the design — skin restriction is a baseline behavior, not tied to
    palette choice. */
 let SKIN_PAL_CACHE = null;
+/* Only reserve the skin bricks this photo's skin actually spans (by
+   lightness, with a margin). Reserving all 8 skin bricks for every photo
+   left just 10 slots for everything else, so the vivid colors (clothes,
+   toys, background) were the first to be replaced. */
+function photoSkinPal(buf, gw, gh){
+  const all = skinPal();
+  if (window.MB_SKIN_RESERVE_ALL || !S.regionMap) return all;
+  const Ls = [];
+  for (let p = 0; p < gw*gh; p++){
+    if (S.regionMap[p] !== 1) continue;
+    const o = p*3;
+    Ls.push(rgb2lab(clamp(buf[o],0,255), clamp(buf[o+1],0,255), clamp(buf[o+2],0,255))[0]);
+  }
+  if (Ls.length < 30) return all;
+  Ls.sort((u, v) => u - v);
+  const lo = Ls[Math.floor(Ls.length*0.05)] - 8, hi = Ls[Math.floor(Ls.length*0.95)] + 8, mid = (lo + hi)/2;
+  let keep = all.filter((c) => c.lab[0] >= lo && c.lab[0] <= hi);
+  if (keep.length < 3) keep = all.slice().sort((a, b) => Math.abs(a.lab[0] - mid) - Math.abs(b.lab[0] - mid)).slice(0, 3);
+  return keep;
+}
 function skinPal(){
   if (SKIN_PAL_CACHE) return SKIN_PAL_CACHE;
   return SKIN_PAL_CACHE = SKIN_PALETTE.map(([name,hex,id,brick]) => {
@@ -6303,7 +6354,7 @@ $$(".sliders input, .ep-toggles .tog").forEach((el) =>
   el.addEventListener("pointerdown", () => { const d = el.closest("details"); if (d) d.open = true; }));
 $("#autoFix").addEventListener("click", () => {
   pushHistory("Back to the automatic settings");
-  Object.assign(S, AUTO_START);
+  Object.assign(S, AUTO_START, window.MB_AUTO_OVERRIDE || null);
   S.auto = true;
   $("#togAuto").setAttribute("aria-pressed", true);
   syncSliders();
@@ -6613,7 +6664,7 @@ function adopt(img, f, opts){
   if (typeof updateSizeRecommendation === "function") updateSizeRecommendation();
   // the automatic starting point, applied once for this photo. Anything the
   // customer changes afterwards is theirs and is never overwritten.
-  Object.assign(S, AUTO_START);
+  Object.assign(S, AUTO_START, window.MB_AUTO_OVERRIDE || null);
   S.detailTouched = false; S.analyzedImgId = -1;   // let the pipeline re-analyse this photo fresh
   HIST.past.length = 0; HIST.future.length = 0;
   updateHistoryButtons();
