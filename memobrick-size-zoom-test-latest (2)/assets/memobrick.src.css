@@ -3217,3 +3217,141 @@ video{max-width:100%;height:auto;display:block}
 .autobright-pill[hidden]{display:none}
 .canvas-hold.editing .autobright-pill,.canvas-hold.empty .autobright-pill{display:none}
 @media(max-width:767px){.autobright-pill{font-size:11px;padding:5px 9px;left:6px;bottom:6px}}
+/* build booklet: per-section color cards. One card per color, most used
+   first; the swatch shows the code like a grid square, a tick box per card
+   for sorting the bags out before starting the section */
+.sec-colors{margin-top:16px;border:1.5px solid #14161A;border-radius:12px;padding:12px 14px 14px}
+.sec-colors .sc-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.sec-colors .sc-head b{font-family:var(--display);font-size:15px;font-weight:700}
+.sec-colors .sc-head span{font-family:var(--mono);font-size:10px;color:#5A6068}
+.sc-grid{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:7px}
+.sc{display:flex;align-items:center;gap:8px;padding:5px 7px;border-radius:8px;background:#F4F3EF;min-width:0;break-inside:avoid}
+.sc-sw{flex:none;width:34px;height:34px;border-radius:6px;display:grid;place-items:center;font-family:var(--mono);
+  font-size:10.5px;font-weight:700;box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+.sc-txt{display:flex;flex-direction:column;min-width:0;line-height:1.2}
+.sc-txt b{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-txt em{font-style:normal;font-family:var(--mono);font-size:10px;color:#5A6068}
+.sc-n{font-family:var(--mono);font-size:13px;font-weight:700;color:#14161A}
+.sc-tick{flex:none;margin-left:auto;width:11px;height:11px;border:1.3px solid #14161A;border-radius:3px}
+.sec-tip{display:flex;align-items:center;gap:14px;margin-top:10px;padding:9px 14px;border-radius:10px;background:#FFF6D6}
+.sec-tip .st-label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#5A6068}
+.sec-tip p{flex:1;margin:0;font-size:11.5px;line-height:1.45}
+@media screen and (max-width:980px){.sc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sec-tip{flex-wrap:wrap}}
+
+/* the hidden toast only slid 150% of its own height down from 26px above
+   the bottom edge, so an empty black pill stayed visible on every page */
+.toast:not(.on){opacity:0;visibility:hidden;pointer-events:none}
+.toast{transition:transform .25s ease,opacity .2s ease,visibility .2s}
+
+/* overflow-x:hidden on both html and body turns body into the scroll
+   container, so the sticky .nav (and the cart drawer inside it) scrolled
+   off-screen. clip stops sideways scrolling without breaking sticky. */
+@supports (overflow:clip){html,body{overflow-x:clip}}
+
+/* phones, inside the editor: the site header scrolls away normally so the
+   editor's own sticky bar (size, price, Finish) stays on top instead of
+   sliding under the now-working sticky site nav */
+@media(max-width:767px){body.in-editor .nav{position:relative}}
+
+/* homepage: the kit contents as one line under the steps */
+.inbox-line{max-width:760px;margin:26px auto 0;text-align:center;color:var(--ink-2);font-size:15px;line-height:1.6}
+.inbox-line b{color:var(--ink)}
+/* homepage steps: 2×2 on phones and tablets instead of one long column */
+@media(max-width:1020px){.steps{grid-template-columns:1fr 1fr;gap:12px}.steps .step:last-child{grid-column:auto}}
+@media(max-width:700px){.step{padding:16px}.step svg{width:44px;height:44px;margin-bottom:10px}.step h3{font-size:17px}.step p{font-size:14px}}
+/* phones: the wall-scale drawing makes the sizes section very long; the cards say enough */
+@media(max-width:700px){#sizes .scaleview{display:none}}
+
+/* ============ short homepage (v12) ============ */
+/* promo now sits above the hero as a thin bar */
+.promo-top{padding:9px 16px;border-top:0}
+.promo-top p{font-size:13.5px}
+/* three steps instead of four */
+.steps.steps-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1020px){.steps.steps-3{grid-template-columns:1fr}
+  .steps.steps-3 .step{display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:start;padding:16px 18px}
+  .steps.steps-3 .step .k{grid-column:2}
+  .steps.steps-3 .step svg{grid-column:1;grid-row:1 / span 3;width:48px;height:48px;margin:0}
+  .steps.steps-3 .step h3,.steps.steps-3 .step p{grid-column:2}}
+/* sizes: short header, the cards, one link, one reassurance line */
+#sizes .sec-head{margin-bottom:24px}
+#sizes .size-guide-note{margin-top:10px}
+.sizes-foot{text-align:center;margin:22px 0 0;font-weight:600}
+.sizes-foot a{color:var(--b-red);text-decoration:underline}
+.sizes-trust{text-align:center;margin:8px 0 0;font-size:14px;color:var(--ink-2)}
+/* Fox News: smaller video next to the logos */
+#press .presswrap{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);max-width:960px;margin:0 auto;align-items:center}
+#press .presside{padding:20px}
+@media(max-width:900px){#press .presswrap{grid-template-columns:1fr}}
+/* gift kit: one line between Fox News and the FAQ */
+.gift-line{padding:6px 0 0}
+.gift-line p{text-align:center;margin:0;font-size:15px;color:var(--ink-2)}
+.gift-line a{color:var(--b-red);font-weight:600;text-decoration:underline}
+/* phones: a create button that stays on screen once the hero's has scrolled away */
+.mob-cta{display:none}
+@media(max-width:700px){
+  .mob-cta:not([hidden]){display:flex;position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));
+    z-index:60;justify-content:center;box-shadow:0 14px 30px -12px rgba(29,31,36,.55)}
+}
+.mob-cta[hidden]{display:none!important}
+/* tighter spacing between homepage sections, and the 4 size cards fill the row */
+#view-home > section{padding:56px 0}
+#view-home > section.gift-line{padding:0}
+@media(max-width:700px){#view-home > section{padding:40px 0}}
+@media(min-width:1021px){#sizes .sizes{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* the product photo shows the shape; the striped ratio swatch beside the title read as a missing image */
+#sizes .ratio{display:none}
+/* phones and tablets: the hero plays the short 12-second portrait clip
+   (mb-hero-short-hd.mp4: the 0.7 MB 420px original, upscaled to 720×1280 and sharpened, 2.7 MB) instead of the 31-second landscape one.
+   Shown 4:5 and capped in height so the create button stays close below it. */
+@media(max-width:900px){
+  .hero-img video{aspect-ratio:4/5;object-fit:cover;width:100%;height:auto;max-height:58vh}
+}
+
+/* ============ after upload: design it yourself, or let our artist ============ */
+.dchoice{position:fixed;inset:0;z-index:9400;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:rgba(21,23,27,.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.dchoice[hidden]{display:none}
+html.dchoice-open{overflow:hidden}
+.dchoice-card{position:relative;width:min(720px,100%);max-height:calc(100vh - 40px);overflow:auto;
+  background:var(--card,#fff);border-radius:22px;padding:26px;box-shadow:0 30px 80px -30px rgba(21,23,27,.6)}
+.dchoice-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;background:transparent;
+  font-size:28px;line-height:1;color:var(--ink-3);cursor:pointer;border-radius:12px}
+.dchoice-x:hover{background:var(--paper,#f6f1e8);color:var(--ink)}
+.dchoice-top{display:flex;align-items:center;gap:16px;margin:0 40px 20px 0}
+.dchoice-top img{width:72px;height:72px;flex:none;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.dchoice-top .eyebrow{margin:0 0 4px}
+.dchoice-top h2{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:clamp(22px,3vw,28px);line-height:1.15}
+.dchoice-opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dchoice-opt{display:flex;flex-direction:column;gap:10px;text-align:left;font:inherit;color:inherit;cursor:pointer;
+  background:var(--card,#fff);border:1.5px solid var(--line);border-radius:18px;padding:18px;
+  transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+.dchoice-opt:hover,.dchoice-opt:focus-visible{border-color:var(--b-red);box-shadow:0 18px 36px -26px rgba(21,23,27,.55);transform:translateY(-2px)}
+#dcSelf{border-top:6px solid var(--b-red)}
+#dcArtist{border-top:6px solid var(--b-blue)}
+.dchoice-k{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--ink)}
+.dchoice-d{color:var(--ink-2);font-size:14.5px;line-height:1.5;flex:1}
+.dchoice-opt .btn{pointer-events:none;margin-top:4px}
+@media(max-width:640px){
+  .dchoice{align-items:flex-end;padding:0}
+  .dchoice-card{border-radius:22px 22px 0 0;padding:20px 16px calc(18px + env(safe-area-inset-bottom));max-height:92vh}
+  .dchoice-top{margin-bottom:14px}
+  .dchoice-top img{width:56px;height:56px}
+  .dchoice-opts{grid-template-columns:1fr;gap:10px}
+  .dchoice-opt{padding:14px 16px;gap:6px}
+}
+/* desktop menu: labels never wrap onto two lines; tighter on mid-size
+   screens, and the two lowest-priority links (both also in the footer)
+   step aside on small laptops so everything fits on one row */
+@media(min-width:901px){
+  .nav-links a,.nav-links .navlink{white-space:nowrap}
+}
+@media(min-width:901px) and (max-width:1366px){
+  .nav-in{gap:18px}
+  .nav-links{gap:15px}
+  .nav-links a,.nav-links .navlink{font-size:13.5px}
+  .nav-links .btn{padding-left:16px;padding-right:16px}
+}
+@media(min-width:901px) and (max-width:1180px){
+  .nav-links a[href^="/blogs"],.nav-links a[href*="view-corporate"],.nav-links [data-go="corporate"]{display:none}
+}
