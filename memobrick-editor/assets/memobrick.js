@@ -150,13 +150,8 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
 
   } catch (e){ /* malformed or missing catalog: the static prices stand */ }
 })();
-/* A size that isn't set up in this store (no product / no variant id) is
-   hidden rather than offered with a checkout button that can't work. */
-(function dropUnbuyableSizes(){
-  for (let i = SIZES.length - 1; i >= 0; i--){
-    if (!SIZES[i].v) SIZES.splice(i, 1);
-  }
-})();
+/* Team build: every size is offered, including ones with no shop product,
+   plus any custom sizes the team creates (see team.js). */
 
 
 /* --------------------------- palettes --------------------------- */
@@ -3438,8 +3433,8 @@ function meta(){
     else etWas.hidden = true;
   }
   const btn = $("#orderBtn");
-  btn.href = url(S.size, S.build);
-  btn.textContent = `Order the ${S.size.label} kit`;
+  btn.href = "#";
+  btn.textContent = `Finish & generate instructions`;
   const bb = $("#buildBtn");
   bb.hidden = !canBuild;
   bb.style.display = canBuild ? "" : "none";
@@ -3704,7 +3699,7 @@ function showView(name){
       panels.forEach((d, i) => { d.open = (i === wanted); });
     }
   }
-  ["home","upload","editor","design","corporate","freeproof"].forEach((v) => {
+  ["projects","home","upload","editor","design","corporate","freeproof"].forEach((v) => {
     const el = document.querySelector("#view-" + v);
     if (el) el.hidden = (v !== name);
   });
@@ -5146,13 +5141,20 @@ function toast(msg){
   clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("on"), 2400);
 }
 
-// every size as a button, one list from smallest to largest (by area,
-// then price) — no square/portrait/landscape split
-$("#sizeGrid").innerHTML = SIZES.slice()
-  .sort((a, b) => (a.gw*a.gh) - (b.gw*b.gh) || a.price - b.price)
-  .map((x) =>
-    `<button class="sizebtn" data-id="${x.id}" aria-pressed="${x.id===S.size.id}">${x.label}
-      <small>${money(x.price)}</small></button>`).join("");
+// every size as a button, one list from smallest to largest by area — no
+// square/portrait/landscape split. Re-run whenever a custom size is added.
+function renderSizePickers(){
+  $("#sizeGrid").innerHTML = SIZES.slice()
+    .sort((a, b) => (a.gw*a.gh) - (b.gw*b.gh) || a.bx*a.by - b.bx*b.by)
+    .map((x) =>
+      `<button class="sizebtn${x.custom ? " sizebtn-custom" : ""}" data-id="${x.id}" aria-pressed="${x.id===S.size.id}">${x.label}
+        <small>${x.gw}×${x.gh} studs · ${x.bx*x.by} plate${x.bx*x.by === 1 ? "" : "s"}</small></button>`).join("");
+  const groups = [["square","Square"],["portrait","Portrait"],["landscape","Landscape"]];
+  $("#sizeAll").innerHTML = groups.map(([k,name]) =>
+    `<optgroup label="${name}">` + SIZES.filter((x) => x.shape===k).map((x) =>
+      `<option value="${x.id}"${x.id===S.size.id?" selected":""}>${x.label}</option>`).join("") + `</optgroup>`).join("");
+}
+renderSizePickers();
 $("#sizeGrid").addEventListener("click", (e) => {
   const b = e.target.closest("[data-id]"); if (!b) return;
   setSize(b.dataset.id);
@@ -5194,10 +5196,6 @@ if (bgUploadInput) bgUploadInput.addEventListener("change", () => {
   bgUploadInput.value = "";
 });
 
-const groups = [["square","Square"],["portrait","Portrait"],["landscape","Landscape"]];
-$("#sizeAll").innerHTML = groups.map(([k,name]) =>
-  `<optgroup label="${name}">` + SIZES.filter((x) => x.shape===k).map((x) =>
-    `<option value="${x.id}"${x.id===S.size.id?" selected":""}>${x.label} — ${money(x.price)}</option>`).join("") + `</optgroup>`).join("");
 $("#sizeAll").addEventListener("change", (e) => setSize(e.target.value));
 
 function setSize(id){
@@ -7880,8 +7878,9 @@ body{background:#8a8f96;margin:0;padding:20px 0}
           (rec && rec.id === z.id ? '<span class="mob-size-badge">✨ Recommended</span>' : '') +
           '<b>' + z.label + '</b>' +
           (w && h ? '<i>' + w + ' × ' + h + '</i>' : "") +
-          '<em>' + money(amount) + '</em></button>';
-      }).join("") + '</div>';
+          '<em>' + z.gw + '×' + z.gh + ' studs</em></button>';
+      }).join("") + '</div>' +
+        '<div class="mob-row"><button type="button" data-team-custom-size>＋ Custom size…</button></div>';
       return html;
     },
     colors(){
@@ -8850,13 +8849,26 @@ function runABCDCompare(){
 window.runABCDCompare = runABCDCompare;
 
 
-/* ==== standalone team build: internal API (added by build.mjs) ====
+/* ==== standalone team build: internal API  ====
    Exposes the editor's own state and production helpers to team.js so
    exports come from exactly the same code the storefront uses. */
+/* put a saved, finished design back exactly as it was approved: the
+   brick grid and its colors, not a re-processing of the photo (face
+   detection and exposure analysis can land slightly differently) */
+function teamApplyDesign(cells, entries){
+  const P = entries.map(([name, hex, id, brick]) => {
+    const [r, g, b] = hex2rgb(hex);
+    const _l = rgb2lab(r, g, b);
+    return { name, hex, id, brick, r, g, b, lab: _l, C: Math.sqrt(_l[1]*_l[1] + _l[2]*_l[2]),
+             top: shade(hex, .16), lo: shade(hex, -.22), hi: shade(hex, .38) };
+  });
+  S.cells = cells; S.usedPal = P; S.baseCells = cells.slice(); S.cacheKey = mosaicKey();
+  repaint(); tally(cells, P); meta();
+}
 window.MB_TEAM = {
-  S, SIZES, PALETTES, mosaic: mos, showView, render, syncSliders, toast,
-  saveSession, restoreSession, orderRef, instructionsHTML,
-  openInstructions, downloadInstructionsPDF,
+  S, SIZES, PALETTES, MAX_COLOURS, MIN_BRICKS, mosaic: mos, showView, render, syncSliders, toast,
+  saveSession, restoreSession, orderRef, instructionsHTML, buildInstructionsPDF,
+  openInstructions, downloadInstructionsPDF, renderSizePickers, setSize, meta, applyDesign: teamApplyDesign,
 };
 document.dispatchEvent(new CustomEvent("memobrick:team-ready"));
 })();

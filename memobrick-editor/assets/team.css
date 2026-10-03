@@ -1,36 +1,104 @@
-/* MemoBrick Editor — team build additions. Uses the storefront's own
-   tokens from memobrick.css so the editor looks exactly as it does live. */
+/* MemoBrick Studio — team build additions. Uses the storefront's own
+   tokens from memobrick.css so the editor itself looks exactly as it does live. */
 
+/* ---------- top bar ---------- */
 .team-bar{position:sticky;top:0;z-index:60;background:var(--paper);border-bottom:1px solid var(--line-soft)}
-.team-bar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-  max-width:1280px;margin:0 auto;padding:10px 16px}
-.team-brand{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink);white-space:nowrap}
+.team-bar-in{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;max-width:1280px;margin:0 auto;padding:10px 16px}
+.team-brand{font-family:var(--display);font-size:20px;font-weight:600;color:var(--ink);white-space:nowrap;
+  background:none;border:0;padding:0;cursor:pointer}
 .team-brand b{color:var(--red);font-weight:600}
 .team-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   background:var(--ink);color:#fff;border-radius:6px;padding:3px 7px;margin-left:6px;vertical-align:3px}
-.team-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.team-actions label.mini{cursor:pointer}
+.team-current{display:flex;align-items:baseline;gap:8px;min-width:0;flex:1 1 200px}
+.team-current[hidden]{display:none}
+.team-current-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.team-current b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.team-saved{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.team-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-left:auto}
+.team-actions [hidden]{display:none}
+label.mini{cursor:pointer}
 
-/* storefront-only entry points that have nowhere to go in the team build */
+/* ---------- status badges ---------- */
+.team-status,.tp-status{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  border-radius:999px;padding:3px 8px;white-space:nowrap}
+.tp-draft{background:#FFF4D6;color:#7A5A00}
+.tp-finished{background:#DDF3E5;color:#1E6B3A}
+
+/* ---------- customer-only parts of the storefront editor ---------- */
 .team-build [data-go="freeproof"],
 .team-build [data-go="design"],
 .team-build [data-go="corporate"],
+.team-build .steps3,
+.team-build .upbenefits,
+.team-build .whyhead,
+.team-build .whygrid,
+.team-build .upload-foot,
+.team-build .finder,
+.team-build .toptips,
+.team-build .tipslink,
 .team-build .trustrow,
-.team-build .tr-stars,
+.team-build #edTips,
+.team-build .buyprice,
+.team-build #buildBtn,
+.team-build .buytrust,
+.team-build .buynote,
+.team-build .designers,
+.team-build .ed-tb-price,
+.team-build .mob-top-price,
 .team-build #buyBar,
 .team-build .wv-cta-note{display:none !important}
+.team-build .team-custom-btn{margin-top:10px}
+.team-build .sizebtn-custom{border-style:dashed}
 
+/* ---------- projects screen ---------- */
+.team-projects{padding-top:28px;padding-bottom:60px}
+.tp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.tp-head h2{font-family:var(--display);font-size:34px;margin:0 0 4px}
+.tp-head-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tp-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.tp-tools input[type=search]{flex:1 1 260px;min-width:0;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;background:var(--card)}
+.tp-filter{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:3px}
+.tp-filter button{border:0;background:none;border-radius:7px;padding:7px 12px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink-2)}
+.tp-filter button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.tp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.tp-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden}
+.tp-thumb{display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;background:var(--paper);border:0;padding:0;cursor:pointer;
+  color:var(--ink-3);font-size:14px}
+.tp-thumb img{max-width:100%;max-height:100%;object-fit:contain;image-rendering:pixelated}
+.tp-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px}
+.tp-title{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.tp-title b{font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tp-sub,.tp-spec,.tp-when{margin:0;font-size:13.5px;color:var(--ink-2)}
+.tp-when{color:var(--ink-3);font-size:12.5px}
+.tp-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tp-actions .mini{font-size:12.5px;padding:6px 10px}
+.tp-del{color:var(--red)}
+.tp-empty{text-align:center;padding:60px 16px;background:var(--card);border:1px dashed var(--line);border-radius:var(--r)}
+.tp-empty[hidden]{display:none}
+.tp-empty b{font-family:var(--display);font-size:22px}
+.tp-empty p{color:var(--ink-2)}
+
+/* ---------- dialogs ---------- */
 .team-modal{position:fixed;inset:0;z-index:1000;background:rgba(21,23,27,.55);
   display:flex;align-items:center;justify-content:center;padding:16px}
 .team-modal[hidden]{display:none}
-.team-modal-card{position:relative;background:var(--card);border-radius:var(--r);max-width:620px;width:100%;
-  max-height:calc(100vh - 32px);overflow:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.team-modal-card h3{font-family:var(--display);font-size:24px;margin:0 0 4px}
+.team-modal-card{position:relative;background:var(--card);border-radius:var(--r);max-width:620px;width:100%;box-sizing:border-box;
+  max-height:calc(100vh - 32px);overflow:auto;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.3);margin:0}
+.team-modal-card h3{font-family:var(--display);font-size:24px;margin:0 0 8px}
 .team-modal-x{position:absolute;top:10px;right:12px;border:0;background:none;font-size:26px;line-height:1;cursor:pointer;color:var(--ink-2)}
-.team-sub{color:var(--ink-2);margin:0 0 16px;font-size:14px}
-.team-field{display:block;margin:0 0 16px}
+.team-sub{color:var(--ink-2);margin:0 0 16px;font-size:14px;line-height:1.5}
+.team-field{display:block;margin:0 0 14px;min-width:0}
+.team-field[hidden]{display:none}
 .team-field span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:6px}
-.team-field input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+.team-field input,.team-field select,.team-field textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;
+  padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}
+.team-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.team-modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}
+.team-spec{display:flex;flex-direction:column;gap:4px;background:var(--paper);border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:14px}
+.team-spec b{font-size:18px}
+.team-spec span{color:var(--ink-2)}
+.team-spec .team-note{color:var(--azur)}
+.team-warn{color:#9A5B00 !important;margin:0}
 .team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .team-opt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;cursor:pointer;
   border:1px solid var(--line);border-radius:12px;background:var(--card);padding:12px 14px;font:inherit;color:var(--ink)}
@@ -39,4 +107,10 @@
 .team-opt-all{background:var(--red);border-color:var(--red);color:#fff}
 .team-opt-all span{color:rgba(255,255,255,.85)}
 .team-opt[aria-busy="true"]{opacity:.6;pointer-events:none}
-@media (max-width:520px){ .team-grid{grid-template-columns:1fr} .team-brand{font-size:17px} }
+
+@media (max-width:560px){
+  .team-grid,.team-row{grid-template-columns:1fr}
+  .team-brand{font-size:17px}
+  .tp-head h2{font-size:28px}
+  .team-actions{margin-left:0}
+}

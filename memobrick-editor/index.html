@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>MemoBrick Editor — Team</title>
+  <title>MemoBrick Studio — Team</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="assets/team.css">
 </head>
 <body class="memobrick-site template-page team-build in-app">
-  <script>window.MB_LANDING_VIEW = "upload";</script>
+  <script>
+    // the team app always opens on the Projects screen; projects are reopened
+    // explicitly, never from a leftover browser-tab session
+    window.MB_LANDING_VIEW = "projects";
+    try { sessionStorage.removeItem("mb_photo"); sessionStorage.removeItem("mb_state"); } catch (e) {}
+  </script>
   <script src="assets/jspdf.umd.min.js" defer></script>
   <script src="assets/memobrick.js" defer></script>
   <script src="assets/memobrick-size-zoom.js" defer></script>
@@ -21,13 +26,18 @@
   <header class="team-bar" data-noedit>
     <div class="rainbow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div class="team-bar-in">
-      <span class="team-brand">MemoBrick <b>Editor</b> <span class="team-tag">Team</span></span>
+      <button type="button" class="team-brand" data-go="projects" title="All projects">MemoBrick <b>Studio</b> <span class="team-tag">Team</span></button>
+      <div class="team-current" id="teamCurrent" hidden>
+        <span class="team-current-k">Project</span>
+        <b id="teamCurrentName"></b>
+        <span class="team-status" id="teamCurrentStatus"></span>
+        <span class="team-saved" id="teamSaved" aria-live="polite"></span>
+      </div>
       <nav class="team-actions">
-        <button type="button" class="mini" id="teamNew">New photo</button>
-        <label class="mini" for="teamOpenFile" tabindex="0">Open project</label>
-        <input type="file" id="teamOpenFile" class="file-input" accept=".json,.memobrick,application/json">
-        <button type="button" class="mini" id="teamSave">Save project</button>
-        <button type="button" class="btn btn-red" id="teamExport">Export</button>
+        <button type="button" class="mini" data-go="projects">Projects</button>
+        <button type="button" class="mini" id="teamDetails" hidden>Details</button>
+        <button type="button" class="mini" id="teamFiles" hidden>Files</button>
+        <button type="button" class="btn btn-red" id="teamFinish" hidden>Finish &amp; generate instructions</button>
       </nav>
     </div>
   </header>
@@ -64,16 +74,46 @@ window.MB_BG_PHOTO_URLS = {
 };
 </script>
 <main id="top">
+<section class="view" id="view-projects" hidden>
+  <div class="wrap team-projects">
+    <div class="tp-head">
+      <div>
+        <h2>Projects</h2>
+        <p class="team-sub">Every design is a project. It saves automatically while you edit; finishing it generates the build instructions.</p>
+      </div>
+      <div class="tp-head-actions">
+        <label class="mini" for="teamImportFile" tabindex="0">Import project</label>
+        <input type="file" id="teamImportFile" class="file-input" accept=".json,application/json" multiple>
+        <button type="button" class="mini" id="teamBackup">Back up all</button>
+        <button type="button" class="btn btn-red" data-action="new">＋ New project</button>
+      </div>
+    </div>
+    <div class="tp-tools">
+      <input type="search" id="tpSearch" placeholder="Search by name, order or customer" aria-label="Search projects">
+      <div class="tp-filter" role="group" aria-label="Filter by status">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="draft" aria-pressed="false">In progress</button>
+        <button type="button" data-filter="finished" aria-pressed="false">Finished</button>
+      </div>
+    </div>
+    <div class="tp-grid" id="tpGrid"></div>
+    <div class="tp-empty" id="tpEmpty" hidden>
+      <b>No projects yet</b>
+      <p>Create one to start designing — give it a name, the order number and a size.</p>
+      <button type="button" class="btn btn-red" data-action="new">＋ New project</button>
+    </div>
+  </div>
+</section>
 <section class="view" id="view-upload">
     <div class="wrap upload-wrap">
-      <a class="backlink" href="https://mymemobrick.com/">← Back</a>
+      <button type="button" class="backlink" data-go="projects">← Projects</button>
       <ol class="steps3" id="steps3Up" aria-label="Progress">
         <li class="s1"><span class="n"><i class="num">1</i><i class="tick">✓</i></span><span class="t">Upload your photo</span></li>
         <li class="s2"><span class="n"><i class="num">2</i><i class="tick">✓</i></span><span class="t">Make it yours</span></li>
         <li class="s3"><span class="n"><i class="num">3</i><i class="tick">✓</i></span><span class="t">Order your kit</span></li>
       </ol>
-      <h2 class="upload-h">Turn your favourite photo into brick art.</h2>
-      <p class="upload-sub">Upload a photo and see your MemoBrick in seconds.</p>
+      <h2 class="upload-h">Add the photo for <span id="teamUpName">this project</span></h2>
+      <p class="upload-sub">Use the customer’s original file. The size can be changed later in the editor.</p>
       <ul class="upbenefits">
         <li>🔒 Your photo stays private</li>
         <li>✨ Instant brick preview</li>
@@ -138,7 +178,7 @@ window.MB_BG_PHOTO_URLS = {
         <li class="s2"><span class="n"><i class="num">2</i><i class="tick">✓</i></span><span class="t">Make it yours</span></li>
         <li class="s3"><span class="n"><i class="num">3</i><i class="tick">✓</i></span><span class="t">Order your kit</span></li>
       </ol>
-        <h2 class="ed-h">Your memory, in bricks.</h2>
+        <h2 class="ed-h" id="teamEdTitle">Design</h2>
         <div class="toptips">
           <span class="tt-k">For the best result</span>
           <ol>
@@ -275,6 +315,7 @@ window.MB_BG_PHOTO_URLS = {
             <div class="acc-body">
                 <div class="size-rec" id="sizeRec" hidden></div>
                 <div class="sizegrid" id="sizeGrid" role="group" aria-label="All sizes"></div>
+                <button type="button" class="mini full team-custom-btn" data-team-custom-size>＋ Custom size…</button>
               
               <label class="sr-only" for="sizeAll">All sizes</label>
               <select id="sizeAll" class="sizesel" hidden tabindex="-1" aria-hidden="true"></select>
@@ -726,22 +767,62 @@ window.MB_BG_PHOTO_URLS = {
 
 <div class="toast" id="toast"></div>
 
-  <div class="team-modal" id="teamExportModal" hidden role="dialog" aria-modal="true" aria-labelledby="teamExportTitle" data-noedit>
+  <div class="team-modal" id="teamProjectModal" hidden role="dialog" aria-modal="true" aria-labelledby="teamProjectTitle" data-noedit>
+    <form class="team-modal-card" id="teamProjectForm">
+      <button type="button" class="team-modal-x" data-close aria-label="Close">&times;</button>
+      <h3 id="teamProjectTitle">New project</h3>
+      <label class="team-field"><span>Project name *</span>
+        <input type="text" name="name" required maxlength="80" placeholder="e.g. Garcia family portrait" autocomplete="off"></label>
+      <div class="team-row">
+        <label class="team-field"><span>Order number</span>
+          <input type="text" name="ref" maxlength="40" placeholder="#1042" autocomplete="off"></label>
+        <label class="team-field"><span>Customer</span>
+          <input type="text" name="customer" maxlength="80" autocomplete="off"></label>
+      </div>
+      <label class="team-field" data-new-only><span>Size</span>
+        <select name="size" id="teamProjectSize"></select></label>
+      <label class="team-field"><span>Notes</span>
+        <textarea name="notes" rows="3" maxlength="2000" placeholder="Customer requests, approvals, anything production should know"></textarea></label>
+      <div class="team-modal-actions">
+        <button type="button" class="mini" data-close>Cancel</button>
+        <button type="submit" class="btn btn-red" id="teamProjectSubmit">Create &amp; add photo</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="team-modal" id="teamCustomModal" hidden role="dialog" aria-modal="true" aria-labelledby="teamCustomTitle" data-noedit>
+    <form class="team-modal-card" id="teamCustomForm">
+      <button type="button" class="team-modal-x" data-close aria-label="Close">&times;</button>
+      <h3 id="teamCustomTitle">Custom size</h3>
+      <p class="team-sub">Custom sizes follow the same MemoBrick rules as every kit: built from standard
+        32 × 32-stud baseplates (10" each), at most <b data-rule="colors">18</b> brick colors, and at least
+        <b data-rule="min">30</b> bricks of any color used.</p>
+      <div class="team-row">
+        <label class="team-field"><span>Baseplates across</span>
+          <input type="number" name="bx" min="1" max="10" step="1" value="3" required></label>
+        <label class="team-field"><span>Baseplates down</span>
+          <input type="number" name="by" min="1" max="10" step="1" value="4" required></label>
+      </div>
+      <div class="team-spec" id="teamCustomSpec" aria-live="polite"></div>
+      <div class="team-modal-actions">
+        <button type="button" class="mini" data-close>Cancel</button>
+        <button type="submit" class="btn btn-red">Use this size</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="team-modal" id="teamFilesModal" hidden role="dialog" aria-modal="true" aria-labelledby="teamFilesTitle" data-noedit>
     <div class="team-modal-card">
-      <button type="button" class="team-modal-x" id="teamExportClose" aria-label="Close">&times;</button>
-      <h3 id="teamExportTitle">Export production pack</h3>
-      <p class="team-sub" id="teamExportSummary"></p>
-      <label class="team-field">
-        <span>Order / reference</span>
-        <input type="text" id="teamRef" placeholder="e.g. #1042 or customer name" autocomplete="off">
-      </label>
+      <button type="button" class="team-modal-x" data-close aria-label="Close">&times;</button>
+      <h3 id="teamFilesTitle">Production files</h3>
+      <p class="team-sub" id="teamFilesSummary"></p>
       <div class="team-grid">
-        <button type="button" class="team-opt" data-export="png"><b>Design image</b><span>Final mosaic, PNG</span></button>
-        <button type="button" class="team-opt" data-export="pdf"><b>Build instructions</b><span>Printable booklet, PDF</span></button>
-        <button type="button" class="team-opt" data-export="parts"><b>Picking list</b><span>Brick counts per color, CSV</span></button>
-        <button type="button" class="team-opt" data-export="project"><b>Project file</b><span>Photo + settings, reopen later</span></button>
+        <button type="button" class="team-opt team-opt-all" data-export="pdf"><b>Build instructions</b><span>Printable booklet, PDF</span></button>
         <button type="button" class="team-opt" data-export="preview"><b>Preview instructions</b><span>Open the booklet on screen</span></button>
-        <button type="button" class="team-opt team-opt-all" data-export="all"><b>Download everything</b><span>PNG + PDF + CSV + project</span></button>
+        <button type="button" class="team-opt" data-export="png"><b>Design image</b><span>Final mosaic, PNG</span></button>
+        <button type="button" class="team-opt" data-export="parts"><b>Picking list</b><span>Brick counts per color, CSV</span></button>
+        <button type="button" class="team-opt" data-export="project"><b>Project file</b><span>Share or back up this project</span></button>
+        <button type="button" class="team-opt" data-export="all"><b>Download everything</b><span>PDF + PNG + CSV + project</span></button>
       </div>
     </div>
   </div>
