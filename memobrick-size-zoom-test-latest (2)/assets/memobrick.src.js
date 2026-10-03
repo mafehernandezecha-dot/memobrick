@@ -6970,6 +6970,8 @@ const PDF_FUN = [[0xE2,0x38,0x2B],[0x0F,0x9B,0xD7],[0xFF,0xC7,0x2C],[0x34,0xA8,0
 function pdfHexRgb(hex){ return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)]; }
 function pdfReadable(hex){ return readable(hex) === "#14161A" ? PDF_INK : [255,255,255]; }
 function pdfOnColor(rgb){ return (0.299*rgb[0] + 0.587*rgb[1] + 0.114*rgb[2]) > 150 ? PDF_INK : [255,255,255]; }
+// text in an outline's colour: light colours (yellow) are darkened enough to read
+function pdfInkOf(rgb){ return pdfShade(rgb, (0.299*rgb[0] + 0.587*rgb[1] + 0.114*rgb[2]) > 170 ? 0.45 : 0.12); }
 function pdfTint(rgb, k){ return rgb.map((v) => Math.round(v + (255 - v)*k)); }
 function pdfShade(rgb, k){ return rgb.map((v) => Math.round(v*(1 - k))); }
 function pdfRainbowBar(doc, y, h){
@@ -6981,55 +6983,52 @@ function pdfWrap(doc, text, maxWidth, size, font = "helvetica", style = "normal"
   return doc.splitTextToSize(text, maxWidth);
 }
 
-/* A toy brick seen from the front: rounded body, studs on top. */
+/* A toy brick seen from the front, drawn as a coloured outline only
+   (no fills) so the booklet stays light on printer ink. */
 function pdfBrick(doc, x, y, w, h, rgb, studs){
   const n = studs || Math.max(1, Math.round(w / (h*0.9)));
   const sw = Math.min(w / n * 0.56, h*0.62), sh = h*0.26;
-  const edge = pdfShade(rgb, 0.28);
-  doc.setFillColor(...rgb); doc.setDrawColor(...edge); doc.setLineWidth(0.35);
+  doc.setDrawColor(...rgb); doc.setLineWidth(Math.min(0.9, Math.max(0.35, h*0.05)));
   for (let i = 0; i < n; i++){
     const cx = x + (i + 0.5) * (w / n);
-    doc.roundedRect(cx - sw/2, y - sh + 0.4, sw, sh + 0.6, sh*0.35, sh*0.35, "FD");
+    doc.roundedRect(cx - sw/2, y - sh, sw, sh, sh*0.35, sh*0.35, "S");
   }
+  doc.setFillColor(255,255,255);
   doc.roundedRect(x, y, w, h, Math.min(2.2, h*0.2), Math.min(2.2, h*0.2), "FD");
-  doc.setFillColor(...pdfTint(rgb, 0.35));
-  doc.roundedRect(x + 1, y + 1, w - 2, Math.max(0.8, h*0.12), 0.5, 0.5, "F");
 }
-/* Brick badge with a big number on it. */
+/* Outline brick badge with a big number in the badge colour. */
 function pdfBadge(doc, x, y, size, rgb, label, fontSize){
   pdfBrick(doc, x, y, size, size*0.78, rgb, 2);
-  doc.setTextColor(...pdfOnColor(rgb)); doc.setFont("helvetica", "bold"); doc.setFontSize(fontSize || size*1.45);
+  doc.setTextColor(...pdfInkOf(rgb)); doc.setFont("helvetica", "bold"); doc.setFontSize(fontSize || size*1.45);
   doc.text(String(label), x + size/2, y + size*0.39 + (fontSize || size*1.45)*0.14, { align: "center" });
 }
-/* Bricky, the booklet's guide: a smiling brick. */
+/* Bricky, the booklet's guide: a smiling brick, line drawing only. */
 function pdfMascot(doc, x, y, s, rgb, wave){
-  const edge = pdfShade(rgb, 0.3);
-  doc.setLineWidth(s*0.03); doc.setDrawColor(...edge); doc.setFillColor(...rgb);
+  const lw = Math.max(0.5, s*0.035);
+  doc.setFillColor(255,255,255);
   // arms
-  doc.setDrawColor(...PDF_INK); doc.setLineWidth(s*0.05);
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(lw);
   doc.line(x + s*0.04, y + s*0.62, x - s*0.12, y + s*0.82);
   if (wave){ doc.line(x + s*0.96, y + s*0.55, x + s*1.14, y + s*0.25); }
   else { doc.line(x + s*0.96, y + s*0.62, x + s*1.12, y + s*0.82); }
-  // body and studs
-  doc.setDrawColor(...edge); doc.setLineWidth(s*0.03);
+  // studs, body, legs
+  doc.setDrawColor(...rgb); doc.setLineWidth(lw*1.2);
   doc.roundedRect(x + s*0.17, y + s*0.06, s*0.24, s*0.16, s*0.05, s*0.05, "FD");
   doc.roundedRect(x + s*0.59, y + s*0.06, s*0.24, s*0.16, s*0.05, s*0.05, "FD");
   doc.roundedRect(x, y + s*0.18, s, s*0.78, s*0.12, s*0.12, "FD");
-  // legs
-  doc.setFillColor(...PDF_INK);
-  doc.roundedRect(x + s*0.2, y + s*0.94, s*0.18, s*0.12, s*0.04, s*0.04, "F");
-  doc.roundedRect(x + s*0.62, y + s*0.94, s*0.18, s*0.12, s*0.04, s*0.04, "F");
+  doc.roundedRect(x + s*0.2, y + s*0.96, s*0.18, s*0.1, s*0.04, s*0.04, "S");
+  doc.roundedRect(x + s*0.62, y + s*0.96, s*0.18, s*0.1, s*0.04, s*0.04, "S");
   // face
-  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(s*0.025);
-  doc.ellipse(x + s*0.34, y + s*0.48, s*0.1, s*0.12, "FD");
-  doc.ellipse(x + s*0.66, y + s*0.48, s*0.1, s*0.12, "FD");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(lw*0.8);
+  doc.ellipse(x + s*0.34, y + s*0.48, s*0.1, s*0.12, "S");
+  doc.ellipse(x + s*0.66, y + s*0.48, s*0.1, s*0.12, "S");
   doc.setFillColor(...PDF_INK);
-  doc.circle(x + s*0.36, y + s*0.5, s*0.045, "F");
-  doc.circle(x + s*0.68, y + s*0.5, s*0.045, "F");
-  doc.setFillColor(0xFF,0x9E,0xB5);
-  doc.ellipse(x + s*0.18, y + s*0.66, s*0.07, s*0.045, "F");
-  doc.ellipse(x + s*0.82, y + s*0.66, s*0.07, s*0.045, "F");
-  doc.setDrawColor(...PDF_INK); doc.setLineWidth(s*0.04);
+  doc.circle(x + s*0.36, y + s*0.5, s*0.035, "F");
+  doc.circle(x + s*0.68, y + s*0.5, s*0.035, "F");
+  doc.setDrawColor(0xF0,0x7A,0x98); doc.setLineWidth(lw*0.7);
+  doc.ellipse(x + s*0.18, y + s*0.66, s*0.06, s*0.035, "S");
+  doc.ellipse(x + s*0.82, y + s*0.66, s*0.06, s*0.035, "S");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(lw);
   doc.lines([[s*0.08, s*0.09, s*0.28, s*0.09, s*0.36, 0]], x + s*0.32, y + s*0.68, [1,1], "S", false);
 }
 /* A hand-drawn style tick. */
@@ -7038,14 +7037,14 @@ function pdfTick(doc, x, y, s, rgb){
   doc.lines([[s*0.3, s*0.35], [s*0.6, -s*0.8]], x, y + s*0.45, [1,1], "S", false);
 }
 function pdfCheckbox(doc, x, y, s){
-  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.35);
-  doc.roundedRect(x, y, s, s, s*0.22, s*0.22, "FD");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.35);
+  doc.roundedRect(x, y, s, s, s*0.22, s*0.22, "S");
 }
-/* Speech bubble with a tail pointing left. */
+/* Speech bubble (outline) with a tail pointing left. */
 function pdfBubble(doc, x, y, w, h, rgb){
-  doc.setFillColor(...rgb); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-  doc.roundedRect(x, y, w, h, 4, 4, "FD");
-  doc.triangle(x + 0.4, y + h*0.45, x + 0.4, y + h*0.45 + 6, x - 5, y + h*0.45 + 7, "F");
+  doc.setDrawColor(...rgb); doc.setLineWidth(0.7); doc.setFillColor(255,255,255);
+  doc.roundedRect(x, y, w, h, 4, 4, "S");
+  doc.triangle(x + 0.5, y + h*0.45 + 0.3, x + 0.5, y + h*0.45 + 5.7, x - 0.2, y + h*0.45 + 3, "F");
   doc.line(x, y + h*0.45, x - 5, y + h*0.45 + 7);
   doc.line(x - 5, y + h*0.45 + 7, x, y + h*0.45 + 6);
 }
@@ -7058,26 +7057,26 @@ function pdfConfetti(doc, x, y, w, h, count, seed, avoid){
     const c = PDF_FUN[Math.floor(rnd()*PDF_FUN.length)];
     const px = x + rnd()*w, py = y + rnd()*h, k = rnd();
     if (blocked(px, py)) continue;
-    doc.setFillColor(...c);
-    if (k < 0.4) doc.circle(px, py, 0.8 + rnd()*1.2, "F");
-    else if (k < 0.8) doc.roundedRect(px, py, 1.6 + rnd()*2.6, 1.1 + rnd()*1.2, 0.4, 0.4, "F");
-    else doc.triangle(px, py, px + 2.6, py + 0.6, px + 0.8, py + 2.6, "F");
+    doc.setDrawColor(...c); doc.setLineWidth(0.45);
+    if (k < 0.4) doc.circle(px, py, 0.9 + rnd()*1.2, "S");
+    else if (k < 0.8) doc.roundedRect(px, py, 1.8 + rnd()*2.6, 1.2 + rnd()*1.2, 0.4, 0.4, "S");
+    else doc.triangle(px, py, px + 2.8, py + 0.6, px + 0.8, py + 2.8, "S");
   }
 }
 /* Top of every inside page: studs + wordmark left, a colored page pill right. */
 function pdfHeader(doc, label, ref, pageNum, rgb){
   const accent = rgb || PDF_RED;
   PDF_FUN.slice(0, 4).forEach((c, i) => {
-    doc.setFillColor(...c); doc.circle(PDF_MARGIN_X + 2 + i*5, PDF_MARGIN_Y - 5.2, 1.9, "F");
+    doc.setDrawColor(...c); doc.setLineWidth(0.7); doc.circle(PDF_MARGIN_X + 2 + i*5, PDF_MARGIN_Y - 5.2, 1.7, "S");
   });
   doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
   doc.text("MEMOBRICK", PDF_MARGIN_X + 21, PDF_MARGIN_Y - 3.8);
   doc.setFont("helvetica", "bold"); doc.setFontSize(8.5);
   const pill = `${label}  ·  page ${pageNum}`;
   const pw = doc.getTextWidth(pill) + 10;
-  doc.setFillColor(...accent);
-  doc.roundedRect(PDF_PAGE_W - PDF_MARGIN_X - pw, PDF_MARGIN_Y - 9.5, pw, 7.4, 3.7, 3.7, "F");
-  doc.setTextColor(...pdfOnColor(accent));
+  doc.setDrawColor(...accent); doc.setLineWidth(0.7);
+  doc.roundedRect(PDF_PAGE_W - PDF_MARGIN_X - pw, PDF_MARGIN_Y - 9.5, pw, 7.4, 3.7, 3.7, "S");
+  doc.setTextColor(...pdfInkOf(accent));
   doc.text(pill, PDF_PAGE_W - PDF_MARGIN_X - pw/2, PDF_MARGIN_Y - 4.6, { align: "center" });
   doc.setTextColor(...PDF_INK3); doc.setFont("courier", "normal"); doc.setFontSize(7);
   doc.text(ref, PDF_PAGE_W - PDF_MARGIN_X - pw - 3, PDF_MARGIN_Y - 4.6, { align: "right" });
@@ -7095,8 +7094,8 @@ function pdfTitle(doc, before, hi, after, x, y, size, rgb){
   if (before){ doc.setTextColor(...PDF_INK); doc.text(before, cx, y); cx += doc.getTextWidth(before); }
   if (hi){
     const w = doc.getTextWidth(hi);
-    doc.setFillColor(...(rgb || PDF_YELLOW));
-    doc.roundedRect(cx - 1.2, y - size*0.3, w + 2.4, size*0.36, 1.6, 1.6, "F");
+    doc.setDrawColor(...(rgb || PDF_YELLOW)); doc.setLineWidth(Math.max(1, size*0.07));
+    doc.line(cx, y + size*0.07, cx + w, y + size*0.07);
     doc.setTextColor(...PDF_INK); doc.text(hi, cx, y); cx += w;
   }
   if (after){ doc.setTextColor(...PDF_INK); doc.text(after, cx, y); }
@@ -7129,10 +7128,10 @@ function buildInstructionsPDF(doc){
   let y;
 
   /* ---- 1. cover ---- */
-  doc.setFillColor(...PDF_YELLOW); doc.rect(0, 0, PDF_PAGE_W, 120, "F");
-  doc.setFillColor(...PDF_CREAM); doc.rect(0, 120, PDF_PAGE_W, PDF_PAGE_H - 120, "F");
+  // a dotted line of studs instead of a solid colour band
+
   // a wavy edge of studs between the two colors
-  for (let x = 0; x < PDF_PAGE_W + 8; x += 8){ doc.setFillColor(...PDF_YELLOW); doc.circle(x, 120, 4, "F"); }
+  for (let x = PDF_MARGIN_X + 3, i = 0; x < PDF_PAGE_W - PDF_MARGIN_X; x += 9, i++){ doc.setDrawColor(...PDF_FUN[i % PDF_FUN.length]); doc.setLineWidth(0.7); doc.circle(x, 112, 2.6, "S"); }
   pdfConfetti(doc, 8, 6, PDF_PAGE_W - 16, 100, 70, 11, [[PDF_MARGIN_X, 16, 70, 13], [PDF_MARGIN_X, 36, 150, 54], [PDF_PAGE_W - PDF_MARGIN_X - 52, 34, 52, 50]]);
   doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
   doc.roundedRect(PDF_MARGIN_X, 18, 64, 9, 4.5, 4.5, "FD");
@@ -7146,7 +7145,7 @@ function buildInstructionsPDF(doc){
   pdfMascot(doc, PDF_PAGE_W - PDF_MARGIN_X - 44, 40, 38, PDF_RED, true);
 
   const frameY = 132, frameH = 196, frameX = PDF_MARGIN_X + 14, frameW = PDF_CONTENT_W - 28;
-  doc.setFillColor(...PDF_RED); doc.roundedRect(frameX + 4, frameY + 4, frameW, frameH, 5, 5, "F");
+  doc.setDrawColor(...PDF_RED); doc.setLineWidth(1); doc.roundedRect(frameX + 4, frameY + 4, frameW, frameH, 5, 5, "S");
   doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(1);
   doc.roundedRect(frameX, frameY, frameW, frameH, 5, 5, "FD");
   if (preview){
@@ -7160,8 +7159,9 @@ function buildInstructionsPDF(doc){
   }
   // sticker on the corner of the frame
   const stX = frameX + frameW - 6, stY = frameY + 4;
-  doc.setFillColor(...PDF_YELLOW); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.8);
+  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_YELLOW); doc.setLineWidth(1.4);
   doc.circle(stX, stY, 17, "FD");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4); doc.circle(stX, stY, 14.6, "S");
   doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
   doc.text("MADE FROM", stX, stY - 4, { align: "center" });
   doc.text("YOUR PHOTO", stX, stY + 1, { align: "center" });
@@ -7175,7 +7175,7 @@ function buildInstructionsPDF(doc){
   stats.forEach(([big, small], i) => {
     const x = PDF_MARGIN_X + i*(tileW + 6), c = PDF_FUN[i];
     pdfBrick(doc, x, statY, tileW, tileH, c, 3);
-    doc.setTextColor(...pdfOnColor(c)); doc.setFont("helvetica", "bold"); doc.setFontSize(20);
+    doc.setTextColor(...pdfInkOf(c)); doc.setFont("helvetica", "bold"); doc.setFontSize(20);
     doc.text(big, x + tileW/2, statY + 15, { align: "center" });
     doc.setFont("helvetica", "bold"); doc.setFontSize(8);
     doc.text(small.toUpperCase(), x + tileW/2, statY + 22.5, { align: "center" });
@@ -7210,27 +7210,25 @@ function buildInstructionsPDF(doc){
   const bw = (PDF_CONTENT_W - 8)/2, bh = 32;
   boxItems.forEach(([t, s, icon], i) => {
     const c = PDF_FUN[i], bx_ = PDF_MARGIN_X + (i%2)*(bw + 8), by_ = y + Math.floor(i/2)*(bh + 8);
-    doc.setFillColor(...pdfTint(c, 0.82)); doc.setDrawColor(...c); doc.setLineWidth(0.8);
-    doc.roundedRect(bx_, by_, bw, bh, 4, 4, "FD");
+    doc.setDrawColor(...c); doc.setLineWidth(0.9);
+    doc.roundedRect(bx_, by_, bw, bh, 4, 4, "S");
     // icon tile
     const ix = bx_ + 6, iy = by_ + 6, is = bh - 12;
-    doc.setFillColor(255,255,255); doc.roundedRect(ix, iy, is, is, 3, 3, "F");
-    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
+    doc.setFillColor(255,255,255); doc.setDrawColor(...c); doc.setLineWidth(0.6);
     if (icon === "bag"){
-      doc.setFillColor(...c); doc.roundedRect(ix + 5, iy + 6, is - 10, is - 9, 1.5, 1.5, "FD");
+      doc.roundedRect(ix + 5, iy + 6, is - 10, is - 9, 1.5, 1.5, "S");
       doc.line(ix + 5, iy + 9, ix + is - 5, iy + 9);
-      doc.setFillColor(255,255,255); doc.roundedRect(ix + 8, iy + 12, is - 16, 5, 1, 1, "FD");
+      doc.roundedRect(ix + 8, iy + 12, is - 16, 5, 1, 1, "S");
     } else if (icon === "plate"){
-      doc.setFillColor(...c); doc.roundedRect(ix + 3, iy + 5, is - 6, is - 10, 1, 1, "FD");
-      doc.setFillColor(...pdfTint(c, 0.4));
-      for (let r = 0; r < 3; r++) for (let q = 0; q < 4; q++) doc.circle(ix + 6.5 + q*((is - 13)/3), iy + 8.5 + r*((is - 17)/2), 1.1, "F");
+      doc.roundedRect(ix + 3, iy + 5, is - 6, is - 10, 1, 1, "S");
+      doc.setLineWidth(0.4);
+      for (let r = 0; r < 3; r++) for (let q = 0; q < 4; q++) doc.circle(ix + 6.5 + q*((is - 13)/3), iy + 8.5 + r*((is - 17)/2), 1.1, "S");
     } else if (icon === "tool"){
-      doc.setFillColor(...c);
-      doc.roundedRect(ix + 4, iy + is/2 - 3, is - 8, 6, 2, 2, "FD");
+      doc.roundedRect(ix + 4, iy + is/2 - 3, is - 8, 6, 2, 2, "S");
       doc.roundedRect(ix + is - 10, iy + is/2 - 6, 6, 12, 1.5, 1.5, "FD");
     } else {
-      doc.setFillColor(...c); doc.roundedRect(ix + 5, iy + 3, is - 10, is - 6, 1, 1, "FD");
-      doc.setDrawColor(255,255,255); doc.setLineWidth(0.6);
+      doc.roundedRect(ix + 5, iy + 3, is - 10, is - 6, 1, 1, "S");
+      doc.setLineWidth(0.5);
       for (let k = 0; k < 3; k++) doc.line(ix + 8, iy + 8 + k*3.5, ix + is - 8, iy + 8 + k*3.5);
     }
     doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12.5);
@@ -7250,8 +7248,8 @@ function buildInstructionsPDF(doc){
   ];
   rules.forEach(([lead, rest], i) => {
     const c = PDF_FUN[(i + 2) % PDF_FUN.length];
-    doc.setFillColor(...pdfTint(c, 0.86));
-    doc.roundedRect(PDF_MARGIN_X, y - 2, PDF_CONTENT_W, 22, 4, 4, "F");
+    doc.setDrawColor(...c); doc.setLineWidth(0.6);
+    doc.roundedRect(PDF_MARGIN_X, y - 2, PDF_CONTENT_W, 22, 4, 4, "S");
     pdfBadge(doc, PDF_MARGIN_X + 5, y + 4.5, 14, c, i + 1, 15);
     doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12);
     doc.text(lead, PDF_MARGIN_X + 26, y + 6);
@@ -7261,11 +7259,11 @@ function buildInstructionsPDF(doc){
     y += 26;
   });
   y += 4;
-  doc.setFillColor(...PDF_YELLOW); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-  doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 18, 3, 3, "FD");
-  doc.setFillColor(...PDF_INK);
-  doc.triangle(PDF_MARGIN_X + 6, y + 14, PDF_MARGIN_X + 12, y + 4, PDF_MARGIN_X + 18, y + 14, "F");
-  doc.setTextColor(...PDF_YELLOW); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
+  doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 18, 3, 3, "S");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
+  doc.triangle(PDF_MARGIN_X + 6, y + 14, PDF_MARGIN_X + 12, y + 4, PDF_MARGIN_X + 18, y + 14, "S");
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
   doc.text("!", PDF_MARGIN_X + 12, y + 12.6, { align: "center" });
   doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
   doc.text("WARNING: CHOKING HAZARD — contains small parts. Not for children under 3 years.", PDF_MARGIN_X + 24, y + 7.5);
@@ -7277,14 +7275,14 @@ function buildInstructionsPDF(doc){
   if (y + 74 < PDF_PAGE_H - 16){
     doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(15);
     doc.text("Meet the build crew", PDF_MARGIN_X, y); y += 6;
-    doc.setFillColor(...PDF_CREAM); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-    doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 62, 4, 4, "FD");
+    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
+    doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 62, 4, 4, "S");
     const fields = [["Head builder", "Started on"], ["Brick sorter", "Snack of choice"], ["Official cheerleader", "Soundtrack"]];
     const fx2 = (PDF_CONTENT_W - 24) / 2;
     fields.forEach(([l, rgt], i) => {
       const ly = y + 18 + i*16;
       [[l, PDF_MARGIN_X + 8], [rgt, PDF_MARGIN_X + 16 + fx2]].forEach(([lab, lx], j) => {
-        doc.setFillColor(...PDF_FUN[(i*2 + j) % PDF_FUN.length]); doc.circle(lx + 1.5, ly - 1.5, 1.5, "F");
+        doc.setDrawColor(...PDF_FUN[(i*2 + j) % PDF_FUN.length]); doc.setLineWidth(0.6); doc.circle(lx + 1.5, ly - 1.5, 1.4, "S");
         doc.setTextColor(...PDF_INK2); doc.setFont("helvetica", "bold"); doc.setFontSize(8.5);
         doc.text(lab.toUpperCase(), lx + 5, ly);
         doc.setDrawColor(...PDF_INK3); doc.setLineWidth(0.35);
@@ -7297,7 +7295,7 @@ function buildInstructionsPDF(doc){
   pdfNewPage(doc); pageNum++;
   pdfHeader(doc, "How it works", ref, pageNum, PDF_FUN[3]);
   y = PDF_MARGIN_Y + 16;
-  pdfTitle(doc, "Every page works ", "the same way.", "", PDF_MARGIN_X, y, 26, pdfTint(PDF_FUN[3], 0.45));
+  pdfTitle(doc, "Every page works ", "the same way.", "", PDF_MARGIN_X, y, 26, PDF_FUN[3]);
   y += 9;
   doc.setTextColor(...PDF_INK2); doc.setFont("helvetica", "normal"); doc.setFontSize(11);
   doc.text("Read this once and you're a pro. Promise.", PDF_MARGIN_X, y); y += 14;
@@ -7305,7 +7303,7 @@ function buildInstructionsPDF(doc){
   const demoCell = 11, demoCodes = ["022","004","017","028"];
   const demoColors = { "022":"#4AA357", "004":"#FCF188", "017":"#8D8F68", "028":"#A2BA45" };
   const gx0 = PDF_MARGIN_X + 8, gy0 = y + 4;
-  doc.setFillColor(...PDF_CREAM); doc.roundedRect(PDF_MARGIN_X, y - 4, demoCell*8 + 20, demoCell*8 + 18, 4, 4, "F");
+
   doc.setFont("courier","bold"); doc.setFontSize(7);
   for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++){
     const code = demoCodes[(r + c) % 4], hex = demoColors[code];
@@ -7323,9 +7321,9 @@ function buildInstructionsPDF(doc){
   // numbered markers on the demo, matching the callouts
   const marker = (n, mx, my) => {
     const c = PDF_FUN[(n - 1) % PDF_FUN.length];
-    doc.setFillColor(...c); doc.setDrawColor(255,255,255); doc.setLineWidth(0.6);
+    doc.setFillColor(255,255,255); doc.setDrawColor(...c); doc.setLineWidth(0.8);
     doc.circle(mx, my, 3.6, "FD");
-    doc.setTextColor(...pdfOnColor(c)); doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
+    doc.setTextColor(...pdfInkOf(c)); doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
     doc.text(String(n), mx, my + 1.2, { align:"center" });
   };
   marker(1, gx0 + 4 + demoCell*5.5, gy0 - 7);
@@ -7363,7 +7361,7 @@ function buildInstructionsPDF(doc){
   }
   y += rows.length*(tileSize*0.78 + 10) + 10;
   if (y + 40 < PDF_PAGE_H - 20){
-    pdfBubble(doc, PDF_MARGIN_X + 44, y, PDF_CONTENT_W - 44, 26, pdfTint(PDF_YELLOW, 0.55));
+    pdfBubble(doc, PDF_MARGIN_X + 44, y, PDF_CONTENT_W - 44, 26, PDF_YELLOW);
     pdfMascot(doc, PDF_MARGIN_X + 4, y - 2, 28, PDF_FUN[3], false);
     doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11);
     doc.text("Pro tip from Bricky:", PDF_MARGIN_X + 52, y + 10);
@@ -7375,7 +7373,7 @@ function buildInstructionsPDF(doc){
   pdfNewPage(doc); pageNum++;
   pdfHeader(doc, "Your bricks", ref, pageNum, PDF_FUN[4]);
   y = PDF_MARGIN_Y + 16;
-  pdfTitle(doc, "", `${legend.length} colors,`, ` ${fmt(total)} bricks.`, PDF_MARGIN_X, y, 26, pdfTint(PDF_FUN[4], 0.45));
+  pdfTitle(doc, "", `${legend.length} colors,`, ` ${fmt(total)} bricks.`, PDF_MARGIN_X, y, 26, PDF_FUN[4]);
   y += 9;
   doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
   const yb = pdfWrap(doc, `Tick each bag off as you open it. Packs hold ${PACK_SIZE} bricks and are rounded up, so every kit arrives with spares — keep them, they're your free replacements.`, PDF_CONTENT_W, 10.5);
@@ -7384,8 +7382,8 @@ function buildInstructionsPDF(doc){
   const colX = { sw: PDF_MARGIN_X + 3, code: PDF_MARGIN_X + 22, color: PDF_MARGIN_X + 42, brick: PDF_MARGIN_X + 104,
                  bricks: PDF_MARGIN_X + 162, packs2: PDF_MARGIN_X + 196, opened: PDF_PAGE_W - PDF_MARGIN_X - 6 };
   const bigHeader = () => {
-    doc.setFillColor(...PDF_INK); doc.roundedRect(PDF_MARGIN_X, y - 5.5, PDF_CONTENT_W, 8.5, 2.5, 2.5, "F");
-    doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6); doc.roundedRect(PDF_MARGIN_X, y - 5.5, PDF_CONTENT_W, 8.5, 2.5, 2.5, "S");
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
     doc.text("CODE", colX.code, y); doc.text("COLOR", colX.color, y);
     doc.text("BRICK", colX.brick, y); doc.text("BRICKS", colX.bricks, y, { align:"right" });
     doc.text("PACKS", colX.packs2, y, { align:"right" }); doc.text("OPENED", colX.opened + 1, y, { align:"right" });
@@ -7403,8 +7401,11 @@ function buildInstructionsPDF(doc){
   };
   legend.forEach((c, i) => {
     checkSpace4(rowH, "Your bricks");
-    if (i % 2 === 0){ doc.setFillColor(...PDF_CREAM); doc.roundedRect(PDF_MARGIN_X, y - 5.6, PDF_CONTENT_W, rowH, 2, 2, "F"); }
-    pdfBrick(doc, colX.sw, y - 3.6, 14, 5.4, pdfHexRgb(c.hex), 2);
+    doc.setDrawColor(...PDF_LINE_SOFT); doc.setLineWidth(0.25);
+    doc.line(PDF_MARGIN_X, y + 3.9, PDF_PAGE_W - PDF_MARGIN_X, y + 3.9);
+    // the swatch is the one place colour is the information itself
+    doc.setFillColor(...pdfHexRgb(c.hex)); doc.setDrawColor(0xB4,0xB4,0xB4); doc.setLineWidth(0.2);
+    doc.roundedRect(colX.sw, y - 3.8, 9, 4.8, 1, 1, "FD");
     doc.setTextColor(...PDF_INK); doc.setFont("courier","bold"); doc.setFontSize(10);
     doc.text(c.id, colX.code, y);
     doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.text(c.name, colX.color, y);
@@ -7433,7 +7434,7 @@ function buildInstructionsPDF(doc){
   facts.forEach(([big, small], i) => {
     const fx = PDF_MARGIN_X + i*(factW + 6), c = PDF_FUN[(i + 3) % PDF_FUN.length];
     pdfBrick(doc, fx, y + 4, factW, 22, c, 3);
-    doc.setTextColor(...pdfOnColor(c)); doc.setFont("helvetica","bold"); doc.setFontSize(13);
+    doc.setTextColor(...pdfInkOf(c)); doc.setFont("helvetica","bold"); doc.setFontSize(13);
     doc.text(big, fx + factW/2, y + 15, { align: "center" });
     doc.setFontSize(7);
     doc.text(small.toUpperCase(), fx + factW/2, y + 21, { align: "center" });
@@ -7464,10 +7465,10 @@ function buildInstructionsPDF(doc){
       for (let rr = 0; rr < rows.length; rr++) for (let cc = 0; cc < cols.length; cc++){
         const k = rr*cols.length + cc + 1;
         const tx = mapX + cc*mapCell, ty = mapY + rr*mapCell;
-        if (k === idx){ doc.setFillColor(...accent); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6); }
-        else if (k < idx){ doc.setFillColor(...pdfTint(secColor(k), 0.7)); doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.3); }
-        else { doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.3); }
-        doc.roundedRect(tx + 0.4, ty + 0.4, mapCell - 0.8, mapCell - 0.8, 0.8, 0.8, "FD");
+        if (k === idx){ doc.setDrawColor(...accent); doc.setLineWidth(1); }
+        else { doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.3); }
+        doc.roundedRect(tx + 0.5, ty + 0.5, mapCell - 1, mapCell - 1, 0.8, 0.8, "S");
+        if (k === idx){ doc.setTextColor(...pdfInkOf(accent)); doc.setFont("helvetica","bold"); doc.setFontSize(mapCell*1.6); doc.text(String(k), tx + mapCell/2, ty + mapCell*0.68, { align: "center" }); }
         if (k < idx) pdfTick(doc, tx + mapCell*0.25, ty + mapCell*0.35, mapCell*0.5, pdfShade(secColor(k), 0.3));
       }
       doc.setTextColor(...PDF_INK3); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
@@ -7499,8 +7500,8 @@ function buildInstructionsPDF(doc){
 
       const gx = PDF_MARGIN_X, gy = sy + 4;
       // a colored frame around the grid, like the edge of a baseplate
-      doc.setFillColor(...accent);
-      doc.roundedRect(gx - 1.6, gy - 1.6, w*cellMm + 3.2, h*cellMm + 3.2, 1.6, 1.6, "F");
+      doc.setDrawColor(...accent); doc.setLineWidth(1);
+      doc.roundedRect(gx - 1.6, gy - 1.6, w*cellMm + 3.2, h*cellMm + 3.2, 1.6, 1.6, "S");
       doc.setFont("courier","normal");
       const fontPt = Math.max(3.2, Math.min(6.5, cellMm*1.15));
       doc.setFontSize(fontPt);
@@ -7547,8 +7548,8 @@ function buildInstructionsPDF(doc){
       const nRows = Math.ceil(plateLegend.length / perRow);
       const boxH = 15 + nRows*cardH + (nRows - 1)*gap + pad;
       checkSpace5(boxH + 2);
-      doc.setFillColor(...pdfTint(accent, 0.86)); doc.setDrawColor(...accent); doc.setLineWidth(0.8);
-      doc.roundedRect(PDF_MARGIN_X, sy, PDF_CONTENT_W, boxH, 4, 4, "FD");
+      doc.setDrawColor(...accent); doc.setLineWidth(0.9);
+      doc.roundedRect(PDF_MARGIN_X, sy, PDF_CONTENT_W, boxH, 4, 4, "S");
       doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11.5);
       doc.text("Bricks for this section", PDF_MARGIN_X + pad, sy + 8);
       doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(8);
@@ -7556,7 +7557,7 @@ function buildInstructionsPDF(doc){
       plateLegend.forEach((col, i) => {
         const cx = PDF_MARGIN_X + pad + (i % perRow)*(cardW + gap);
         const cy = sy + 12 + Math.floor(i / perRow)*(cardH + gap);
-        doc.setFillColor(255,255,255); doc.roundedRect(cx, cy, cardW, cardH, 2, 2, "F");
+        doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.3); doc.roundedRect(cx, cy, cardW, cardH, 2, 2, "S");
         const sw = 8;
         doc.setFillColor(...pdfHexRgb(col.hex)); doc.setDrawColor(0xB4,0xB4,0xB4); doc.setLineWidth(0.15);
         doc.roundedRect(cx + 1.5, cy + 1.5, sw, sw, 1.4, 1.4, "FD");
@@ -7574,14 +7575,14 @@ function buildInstructionsPDF(doc){
       const tip = TIPS[idx % TIPS.length];
       const tipY = sy + 6, tipH = 22, bubX = PDF_MARGIN_X + 30, bubW = PDF_CONTENT_W - 30 - 62;
       pdfMascot(doc, PDF_MARGIN_X + 2, tipY - 1, 21, accent, idx % 2 === 0);
-      pdfBubble(doc, bubX, tipY, bubW, tipH, pdfTint(PDF_YELLOW, 0.6));
+      pdfBubble(doc, bubX, tipY, bubW, tipH, PDF_YELLOW);
       doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(9);
       doc.text("Bricky says:", bubX + 5, tipY + 7);
       doc.setFont("helvetica","normal"); doc.setFontSize(9);
       doc.text(pdfWrap(doc, tip, bubW - 10, 9), bubX + 5, tipY + 12.5);
       const doneX = PDF_PAGE_W - PDF_MARGIN_X - 56;
-      doc.setFillColor(...pdfTint(PDF_FUN[3], 0.8)); doc.setDrawColor(...PDF_FUN[3]); doc.setLineWidth(0.8);
-      doc.roundedRect(doneX, tipY, 56, tipH, 4, 4, "FD");
+      doc.setDrawColor(...PDF_FUN[3]); doc.setLineWidth(0.9);
+      doc.roundedRect(doneX, tipY, 56, tipH, 4, 4, "S");
       pdfCheckbox(doc, doneX + 5, tipY + tipH/2 - 4, 8);
       doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10);
       doc.text(`Section ${idx}`, doneX + 17, tipY + tipH/2 - 1);
@@ -7604,7 +7605,7 @@ function buildInstructionsPDF(doc){
 
   // certificate
   const certH = 70;
-  doc.setFillColor(...PDF_YELLOW); doc.roundedRect(PDF_MARGIN_X + 4, y + 4, PDF_CONTENT_W, certH, 6, 6, "F");
+  doc.setDrawColor(...PDF_YELLOW); doc.setLineWidth(1.2); doc.roundedRect(PDF_MARGIN_X + 4, y + 4, PDF_CONTENT_W, certH, 6, 6, "S");
   doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(1);
   doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, certH, 6, 6, "FD");
   doc.setDrawColor(...PDF_YELLOW); doc.setLineWidth(0.8);
@@ -7631,16 +7632,16 @@ function buildInstructionsPDF(doc){
   const fw = (PDF_CONTENT_W - 8) / 2, fh = 36;
   finItems.forEach(([t, s, icon], i) => {
     const c = PDF_FUN[i], fx = PDF_MARGIN_X + (i%2)*(fw + 8), fy = y + Math.floor(i/2)*(fh + 8);
-    doc.setFillColor(...pdfTint(c, 0.84)); doc.setDrawColor(...c); doc.setLineWidth(0.8);
-    doc.roundedRect(fx, fy, fw, fh, 4, 4, "FD");
+    doc.setDrawColor(...c); doc.setLineWidth(0.9);
+    doc.roundedRect(fx, fy, fw, fh, 4, 4, "S");
     const ix = fx + 5, iy = fy + 6;
-    doc.setFillColor(...c); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4);
-    if (icon === "frame"){ doc.roundedRect(ix, iy, 14, 11, 1, 1, "FD"); doc.setFillColor(255,255,255); doc.rect(ix + 3, iy + 3, 8, 5, "F"); doc.line(ix + 4, iy, ix + 7, iy - 3); doc.line(ix + 10, iy, ix + 7, iy - 3); }
+    doc.setFillColor(255,255,255); doc.setDrawColor(...c); doc.setLineWidth(0.6);
+    if (icon === "frame"){ doc.roundedRect(ix, iy, 14, 11, 1, 1, "S"); doc.rect(ix + 3, iy + 3, 8, 5, "S"); doc.line(ix + 4, iy, ix + 7, iy - 3); doc.line(ix + 10, iy, ix + 7, iy - 3); }
     else if (icon === "brush"){ doc.roundedRect(ix + 5, iy - 2, 4, 9, 1, 1, "FD"); doc.roundedRect(ix + 2, iy + 7, 10, 6, 1.5, 1.5, "FD"); }
     else if (icon === "brick"){ pdfBrick(doc, ix, iy + 2, 14, 8, c, 2); }
     else {
       const pts = []; for (let k = 0; k < 10; k++){ const a = -Math.PI/2 + k*Math.PI/5, rr = k%2 ? 3 : 7.2; pts.push([ix + 7 + rr*Math.cos(a), iy + 6 + rr*Math.sin(a)]); }
-      doc.lines(pts.slice(1).map((p, k) => [p[0] - pts[k][0], p[1] - pts[k][1]]), pts[0][0], pts[0][1], [1,1], "FD", true);
+      doc.lines(pts.slice(1).map((p, k) => [p[0] - pts[k][0], p[1] - pts[k][1]]), pts[0][0], pts[0][1], [1,1], "S", true);
     }
     doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(12);
     doc.text(t, fx + 24, fy + 10);
