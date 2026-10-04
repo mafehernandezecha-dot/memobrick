@@ -62,6 +62,7 @@
     {%- endfor -%}
   ],
   "moneyFormat": {{ shop.money_format | json }},
+  "currency": {{ cart.currency.iso_code | json }},
   "cartUrl": "/cart"
 }
 </script>

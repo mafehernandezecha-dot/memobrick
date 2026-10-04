@@ -267,7 +267,27 @@ const dims = () => ({ gw: S.size.gw, gh: S.size.gh, bx: S.size.bx, by: S.size.by
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 const fmt = (n) => n.toLocaleString("en-US");
-const money = (n) => "$" + (Number.isInteger(n) ? n : n.toFixed(2));
+/* PRICES IN THE SHOPPER'S CURRENCY. With Shopify Markets a visitor abroad
+   gets prices in their own currency (an Israeli visitor sees shekels),
+   but every price here used to be printed with a hard-coded "$", so a
+   ₪129 kit showed as "$129", about 3.7x too much. The catalog now says
+   which currency its prices are in, and every price is labelled with it. */
+const MB_CURRENCY = (() => {
+  try {
+    const el = document.querySelector("#memobrick-catalog");
+    const c = el && JSON.parse(el.textContent).currency;
+    if (c) return String(c);
+  } catch (e){}
+  try { if (window.Shopify && Shopify.currency && Shopify.currency.active) return String(Shopify.currency.active); } catch (e){}
+  return "USD";
+})();
+const money = (n) => {
+  const whole = Math.abs(n - Math.round(n)) < 0.005;
+  try {
+    return new Intl.NumberFormat("en-US", { style: "currency", currency: MB_CURRENCY,
+      minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: whole ? 0 : 2 }).format(whole ? Math.round(n) : n);
+  } catch (e){ return "$" + (whole ? Math.round(n) : n.toFixed(2)); }
+};
 const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
 
 function hex2rgb(h){ return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)]; }
@@ -1216,7 +1236,7 @@ if (burger && navLinks){
   const closeBtn = document.querySelector("#cartDrawerClose");
   if (!btn || !drawer) return;
 
-  const fmt = (cents) => "$" + (cents / 100).toFixed(2);
+  const fmt = (cents) => money(cents / 100);
 
   function renderCart(cart){
     if (!cart.items.length){
@@ -5018,7 +5038,6 @@ let svcPrefill = null;
     "30x20": "Great for couples and families", "30x30": "Statement piece",
   };
 
-  function money(n){ return "$" + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, ""); }
 
   function sizeList(){
     return svc.showAll ? SIZES : SIZES.filter((z) => POPULAR.indexOf(z.id) > -1);
