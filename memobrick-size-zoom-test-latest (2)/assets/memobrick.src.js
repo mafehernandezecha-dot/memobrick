@@ -1284,7 +1284,12 @@ if (burger && navLinks){
     // hardcoded, so it stays correct if the merchant ever changes it
     const shipBar = document.querySelector("#cartShipBar");
     if (shipBar){
-      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100; // dollars -> cents, matching cart.total_price
+      // the setting is in the store's dollars; a shopper paying in another
+      // currency (Shopify Markets) has a cart total in that currency, so the
+      // threshold is converted with Shopify's own rate before comparing
+      let rate = 1;
+      try { rate = parseFloat(window.Shopify && Shopify.currency && Shopify.currency.rate) || 1; } catch (e){}
+      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100 * rate; // dollars -> cents in the cart's currency
       if (!threshold || !cart.items.length){
         shipBar.hidden = true;
       } else {
