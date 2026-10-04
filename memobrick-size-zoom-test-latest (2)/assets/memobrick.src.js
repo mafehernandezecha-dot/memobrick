@@ -3563,7 +3563,7 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
-  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 0.8);
+  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 1.6);
   // face shading spread skin into pale cream highlights and brown shadows;
   // the Studio-style even, warm skin looks better, so it is off by default
   // (window.MB_FACE_K = 1.7 turns it back on for testing)
