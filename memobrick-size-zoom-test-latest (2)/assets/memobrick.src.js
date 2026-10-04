@@ -298,7 +298,7 @@ function rgb2lab(r,g,b){
 window.DEBUG_MEMOBRICK_PROCESSING = false;
 
 const AUTO_START = { bri: 20, con: -10, sat: 41, temp: 0, detail: 150,
-                     dither: 74, shadows: -100, warm: 35, auto: true };
+                     dither: 74, shadows: 0, warm: 35, auto: true };
 
 const CACHE = {};
 function pal(){
