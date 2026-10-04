@@ -2644,11 +2644,45 @@ function bodySkinMap(img, seg){
     const res = seg.segment(c);
     const body = res.confidenceMasks[MP_CAT.bodySkin].getAsFloat32Array();
     const face = res.confidenceMasks[MP_CAT.faceSkin].getAsFloat32Array();
-    const mask = new Uint8Array(c.width*c.height);
-    for (let q = 0; q < mask.length; q++) if (body[q] > 0.6 || face[q] > 0.5) mask[q] = 1;
+    const mask = new Uint8Array(c.width*c.height), fm = new Uint8Array(c.width*c.height);
+    for (let q = 0; q < mask.length; q++){
+      if (body[q] > 0.6 || face[q] > 0.5) mask[q] = 1;
+      if (face[q] > 0.5) fm[q] = 1;
+    }
     if (res.close) res.close();
-    BODY_SKIN = { img, w: c.width, h: c.height, mask };
+    BODY_SKIN = { img, w: c.width, h: c.height, mask, faces: faceSkinBlobs(fm, c.width, c.height, mask) };
   } catch (e){ BODY_SKIN = null; }
+}
+/* Faces from the person model's face-skin pixels, for when the face
+   detector finds none (side profiles, faces looking up). Without a face
+   box the face-detail steps (sharpening, shading, less dithering) never
+   ran and the faces came out flat. Each solid patch of face skin becomes
+   a face box, in the same form as the detector's. */
+function faceSkinBlobs(fm, w, h, skin){
+  const seen = new Uint8Array(w*h), blobs = [];
+  const stack = [];
+  for (let s0 = 0; s0 < w*h; s0++){
+    if (!fm[s0] || seen[s0]) continue;
+    let n = 0, x0 = w, y0 = h, x1 = 0, y1 = 0;
+    stack.push(s0); seen[s0] = 1;
+    while (stack.length){
+      const q = stack.pop(), x = q % w, y = (q / w) | 0;
+      n++; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+      if (x > 0 && fm[q-1] && !seen[q-1]){ seen[q-1] = 1; stack.push(q-1); }
+      if (x < w-1 && fm[q+1] && !seen[q+1]){ seen[q+1] = 1; stack.push(q+1); }
+      if (y > 0 && fm[q-w] && !seen[q-w]){ seen[q-w] = 1; stack.push(q-w); }
+      if (y < h-1 && fm[q+w] && !seen[q+w]){ seen[q+w] = 1; stack.push(q+w); }
+    }
+    blobs.push({ n, x0, y0, x1, y1 });
+  }
+  if (!blobs.length) return [];
+  const big = Math.max(...blobs.map((b) => b.n));
+  return blobs
+    .filter((b) => b.n >= w*h*0.0015 && b.n >= big/20)
+    .filter((b) => { const bw = b.x1 - b.x0 + 1, bh = b.y1 - b.y0 + 1; return bw/bh < 2.5 && bh/bw < 2.5; })
+    .sort((a, b) => b.n - a.n).slice(0, 10)
+    .map((b) => ({ x0: b.x0/w, y0: b.y0/h, x1: (b.x1 + 1)/w, y1: (b.y1 + 1)/h, score: 0.9, fromSkin: true,
+                   skin: { x0: 0, y0: 0, x1: 1, y1: 1, w, h, mask: skin } }));
 }
 /* the whole-photo skin map on the board grid, through the current crop */
 function bodySkinInGrid(gw, gh){
@@ -3009,6 +3043,7 @@ function ensureHumanFaces(){
         bodySkinMap(img, seg);
       } catch (e){ BODY_SKIN = null; }
       if (S.imgId !== id) return;
+      if (BODY_SKIN && BODY_SKIN.img === img && BODY_SKIN.faces.length) faces = BODY_SKIN.faces;
     }
     S.mlFaces = faces; S.mlFacesImg = id;
     if (faces.length || (BODY_SKIN && BODY_SKIN.img === img)){ S.baseKey = ""; render(); }
