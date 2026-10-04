@@ -1290,7 +1290,12 @@ if (burger && navLinks){
       let rate = 1;
       try { rate = parseFloat(window.Shopify && Shopify.currency && Shopify.currency.rate) || 1; } catch (e){}
       const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100 * rate; // dollars -> cents in the cart's currency
-      if (!threshold || !cart.items.length){
+      // free shipping is for United States orders only: shoppers Shopify
+      // places in another country don't see the bar at all
+      let country = "";
+      try { country = String((window.Shopify && Shopify.country) || "").toUpperCase(); } catch (e){}
+      const usShopper = country ? country === "US" : String(cart.currency || "USD").toUpperCase() === "USD";
+      if (!threshold || !cart.items.length || !usShopper){
         shipBar.hidden = true;
       } else {
         shipBar.hidden = false;
