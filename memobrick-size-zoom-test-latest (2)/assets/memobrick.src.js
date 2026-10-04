@@ -3564,7 +3564,10 @@ function draw(reuse){
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
   if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 0.8);
-  if (S.auto && S.skinMask) faceShading(buf, gw, S.skinMask, S.faceBoxes);   // features need light and shadow
+  // face shading spread skin into pale cream highlights and brown shadows;
+  // the Studio-style even, warm skin looks better, so it is off by default
+  // (window.MB_FACE_K = 1.7 turns it back on for testing)
+  if (S.auto && S.skinMask && window.MB_FACE_K > 1) faceShading(buf, gw, S.skinMask, S.faceBoxes);
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
   // bring out eyes, brows and mouth (auto only); their bricks stay undithered
   let featureMask = null;
@@ -3658,7 +3661,7 @@ function draw(reuse){
      keeps its dark bricks and is never pushed paler: the band comes from
      the photo, not a target. Eyes, brows and lips are not skin pixels and
      keep the full palette. */
-  if (S.auto && regionMapForDither && skinIndices.length > 3 && window.MB_SKIN_BAND !== false){
+  if (S.auto && regionMapForDither && skinIndices.length > 3 && window.MB_SKIN_BAND === true){   // off by default: all 8 skin bricks give warmer, more natural skin
     const Ls = [];
     for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++){
       const p = y*gw + x;
