@@ -2620,7 +2620,74 @@ async function verifyHumanFaces(img, faces){
     } catch (e){ /* can't judge this one: leave it out */ }
     await new Promise((r) => setTimeout(r, 0));               // keep the page responsive between faces
   }
+  if (out.length) bodySkinMap(img, seg);
   return out;
+}
+
+/* BODY SKIN. The close-ups above only cover each face and a face-width
+   around it, so arms, hands, shoulders and chests were never treated as
+   skin: under warm light (sunset, indoor bulbs) they were free to take
+   any brick and came out solid orange and yellow (order #21054). One
+   more pass of the same person model over the whole photo marks body
+   and face skin; draw() adds it to the skin map, so the body gets the
+   same skin bricks and the same "never more orange than the photo"
+   rules as the face. */
+let BODY_SKIN = null;
+function bodySkinMap(img, seg){
+  BODY_SKIN = null;
+  try {
+    const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+    const k = 512 / Math.max(iw, ih);
+    const c = document.createElement("canvas");
+    c.width = Math.max(1, Math.round(iw*k)); c.height = Math.max(1, Math.round(ih*k));
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    const res = seg.segment(c);
+    const body = res.confidenceMasks[MP_CAT.bodySkin].getAsFloat32Array();
+    const face = res.confidenceMasks[MP_CAT.faceSkin].getAsFloat32Array();
+    const mask = new Uint8Array(c.width*c.height);
+    for (let q = 0; q < mask.length; q++) if (body[q] > 0.6 || face[q] > 0.5) mask[q] = 1;
+    if (res.close) res.close();
+    BODY_SKIN = { img, w: c.width, h: c.height, mask };
+  } catch (e){ BODY_SKIN = null; }
+}
+/* the whole-photo skin map on the board grid, through the current crop */
+function bodySkinInGrid(gw, gh){
+  if (window.MB_BODY_SKIN === false || !BODY_SKIN || BODY_SKIN.img !== S.img) return null;
+  const img = S.img, m = BODY_SKIN;
+  const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  const sc = Math.max(gw/iw, gh/ih) * S.zoom;
+  const dw = iw*sc, dh = ih*sc;
+  const ox = (gw-dw)/2 + S.ox*Math.abs(dw - gw)/2, oy = (gh-dh)/2 + S.oy*Math.abs(dh - gh)/2;
+  const out = new Uint8Array(gw*gh);
+  for (let y = 0; y < gh; y++){
+    const v = (y + 0.5 - oy)/dh;
+    if (v < 0 || v >= 1) continue;
+    for (let x = 0; x < gw; x++){
+      const u = (x + 0.5 - ox)/dw;
+      if (u < 0 || u >= 1) continue;
+      if (m.mask[Math.min(m.h-1, (v*m.h) | 0)*m.w + Math.min(m.w-1, (u*m.w) | 0)]) out[y*gw + x] = 1;
+    }
+  }
+  return out;
+}
+/* add body skin to the face skin map, with the same colour checks the
+   face cells get (no pupils/deep shadow, no neutrals, no vivid objects) */
+function addBodySkin(buf, gw, gh, mask){
+  const body = bodySkinInGrid(gw, gh);
+  if (!body || !mask) return;
+  for (let p = 0; p < gw*gh; p++){
+    if (mask[p] || !body[p]) continue;
+    const x = p % gw, y = (p / gw) | 0;
+    if (!isSubjectCellForSkin(x, y, gw, gh)) continue;
+    const o = p*3;
+    const [L, a, b] = rgb2lab(buf[o], buf[o+1], buf[o+2]);
+    if (L < 22) continue;
+    const C = Math.sqrt(a*a + b*b);
+    if (C < 7 || C > 62) continue;
+    let hue = Math.atan2(b, a) * 180/Math.PI; if (hue < 0) hue += 360;
+    if (hue > 112 && hue < 330) continue;
+    mask[p] = 1;
+  }
 }
 
 function currentSegKey(){
@@ -2918,10 +2985,33 @@ function ensureHumanFaces(){
       faces = (await detectFacesTiled(img, detector)).filter((f) => f.score >= HUMAN_FACE_MIN_SCORE);
     } catch (err){
       faces = [];                     // detector unavailable: no skin rules, full colors
+      // a slow connection only: the model is still downloading. Don't give
+      // up on this photo — when it arrives, find the faces and redraw, so
+      // the design still gets the proper face and skin treatment
+      if (err && err.message === "face-detector-load-timeout"){
+        loadFaceDetector().then(async (detector) => {
+          if (S.imgId !== id) return;
+          const late = (await detectFacesTiled(img, detector)).filter((f) => f.score >= HUMAN_FACE_MIN_SCORE);
+          if (S.imgId !== id || !late.length) return;
+          S.mlFaces = late; S.mlFacesImg = id; S.baseKey = ""; render();
+        }).catch(() => {});
+      }
     }
     if (S.imgId !== id) return;       // a different photo was loaded meanwhile
+    // no face found (side profiles, faces looking up or away, heads cut
+    // off): the person model can still see the skin, so skin gets the
+    // skin-tone rules anyway instead of none at all
+    if (!faces.length && window.MB_BODY_SKIN !== false){
+      try {
+        const seg = await Promise.race([loadSegmenter(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), 10000))]);
+        if (S.imgId !== id) return;
+        bodySkinMap(img, seg);
+      } catch (e){ BODY_SKIN = null; }
+      if (S.imgId !== id) return;
+    }
     S.mlFaces = faces; S.mlFacesImg = id;
-    if (faces.length){ S.baseKey = ""; render(); }
+    if (faces.length || (BODY_SKIN && BODY_SKIN.img === img)){ S.baseKey = ""; render(); }
   })();
 }
 
@@ -3382,6 +3472,13 @@ function draw(reuse){
     // in the UI telling the customer that's what "Auto off" also did.
     const faceAlreadyConfirmed = !!(S.faceBoxes && S.faceBoxes.length);
     const face = analyzeFaceRegions(buf, gw, gh, faceAlreadyConfirmed, mlFacesInGrid(gw, gh) || [], humanSkinInGrid(gw, gh));  // 1. human faces only; skin follows the real outline
+    addBodySkin(buf, gw, gh, face.mask);          // arms, hands, shoulders: skin too, not just the face
+    if (!face.mask){                              // no face found, but the person model saw skin
+      const m = new Uint8Array(gw*gh);
+      addBodySkin(buf, gw, gh, m);
+      let n = 0; for (let p = 0; p < m.length; p++) n += m[p];
+      if (n >= Math.max(20, gw*gh*0.01)) face.mask = m;
+    }
     S.skinMask = face.mask; S.faceBoxes = face.boxes;
     S.regionMap = classifyRegions(buf, gw, gh, S.skinMask, S.faceBoxes);  // skin/hair/clothing/background — still used for photo enhancement below
     if (preLevels) keepSkinSaturation(buf, preLevels, S.skinMask);  // levels must not turn skin orange
