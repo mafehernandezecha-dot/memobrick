@@ -6308,6 +6308,27 @@ async function autoCropToFaces(silent){
     console.error("MemoBrick: MediaPipe face detection unavailable, falling back —", err);
   }
 
+  if (!union && !detectorRan && window.MB_BODY_SKIN !== false){
+    // the face model didn't load (slow connection): ask the person model
+    // where the faces are before falling back to guessing from colour —
+    // the colour guess framed a shirt instead of the face (customer order)
+    try {
+      if (!BODY_SKIN || BODY_SKIN.img !== img){
+        const seg = await Promise.race([loadSegmenter(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), 10000))]);
+        if (S.img !== img) return;
+        bodySkinMap(img, seg);
+      }
+      const sf = (BODY_SKIN && BODY_SKIN.img === img) ? BODY_SKIN.faces : [];
+      if (sf.length){
+        let ux0 = Infinity, uy0 = Infinity, ux1 = -Infinity, uy1 = -Infinity;
+        for (const f of sf){ ux0 = Math.min(ux0, f.x0); uy0 = Math.min(uy0, f.y0); ux1 = Math.max(ux1, f.x1); uy1 = Math.max(uy1, f.y1); }
+        if (ux1 > ux0){ union = { x0: ux0, y0: uy0, x1: ux1, y1: uy1 }; faceCount = sf.length; }
+        if (!(S.mlFaces && S.mlFacesImg === S.imgId && S.mlFaces.length)){ S.mlFaces = sf; S.mlFacesImg = S.imgId; }
+      }
+    } catch (e){ /* person model unavailable too: colour guess below */ }
+  }
+
   if (!union && !detectorRan){
     // fallback: the skin-color heuristic, at a smaller analysis size —
     // this is a much cruder signal, so a real, isolated face rarely
