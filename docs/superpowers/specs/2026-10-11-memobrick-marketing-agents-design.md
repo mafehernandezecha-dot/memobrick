@@ -6,7 +6,7 @@ Source documents: Memobrick Business and Sales Playbook (October 2026), live Sho
 
 ## 1. Goal
 
-Grow profitable Memobrick orders that the business can fulfill on time, using a small team of Claude Code agents for growth analysis, email and recovery, social content, SEO and blogs, backlinks and partnerships, and website conversion.
+Grow profitable Memobrick orders that the business can fulfill on time, using a team of 16 single-purpose Claude Code agents across analytics, SEO and blogs, backlinks and outreach, social media, email, and conversion.
 
 The first target is the 2026 holiday season. Personalized photo gifts peak from Black Friday (Nov 27, 2026) to the Christmas order-by date. Shipping is 2 to 3 days after approval plus 5 to 18 days in transit, so the last safe order date is roughly early December. The owner must confirm the exact date before any agent publishes it.
 
@@ -42,6 +42,8 @@ Google organic is the largest known channel. Social is about 13 percent of order
 - **Brand rules:** Taken from the playbook and enforced on every customer-facing draft: warm, personal, clear voice; short sentences; one call to action per message; approved terms ("custom brick mosaic", "personalized photo gift", "DIY brick mosaic kit", "40+ colors", 1×1 bricks); no em dashes in customer copy; no fake reviews, invented scarcity, expired codes, or unverified delivery promises; mockups labeled as such; the Miami, Florida shipping claim used only after the owner verifies it.
 - **Tool choice:** Claude Code, because Shopify, Meta Ads, Omnisend, Gmail, Google Drive, Postiz, and the SEO skills are already available to it.
 
+- **Team structure:** One agent per task (16 agents in 6 teams) so every job is organized, separated, and easy to check. A coordinator agent prevents overlap and builds the single weekly approval file. Agents are switched on in two waves (section 6).
+
 ## 3. Architecture
 
 ### File layout
@@ -49,27 +51,38 @@ Google organic is the largest known channel. Social is about 13 percent of order
 ```
 .claude/
   agents/
-    growth-analyst.md
-    email-optimization.md
-    content-social.md
-    seo-blog.md
-    backlinks-pr-creators.md
-    conversion.md
+    coordination/marketing-coordinator.md
+    analytics/growth-analyst.md
+    analytics/ads-analyst.md
+    seo/seo-strategist.md
+    seo/blog-writer.md
+    seo/technical-seo.md
+    outreach/gift-guide-pr.md
+    outreach/link-builder.md
+    outreach/creator-scout.md
+    social/social-planner.md
+    social/social-publisher.md
+    social/community-manager.md
+    email/flow-optimizer.md
+    email/campaign-writer.md
+    conversion/conversion-auditor.md
+    conversion/reviews-ugc.md
   skills/
     memobrick-brand/SKILL.md      shared brand voice, terms, honesty rules, product facts
-    memobrick-approvals/SKILL.md  how to write and read the approval queue
+    memobrick-approvals/SKILL.md  how to propose items and act on approved ones
+    memobrick-run/SKILL.md        the standard run routine every agent follows
 marketing/
   README.md               how the system works and the exact command for each agent
-  scorecard.md            weekly numbers
-  experiments.md          experiment log
-  offers-calendar.md      approved offers, codes, dates, exclusions, order-by dates
-  content-calendar.md     publishing record
-  customer-questions.md   recurring objections and questions (feeds content and SEO)
-  seo/                    keyword map, page plan, audit, article drafts
-  outreach/               gift-guide targets, PR pitches, creator prospects
-  email/                  flow audit, campaign drafts, test records
-  conversion/             funnel tests, issue list
-  approvals/YYYY-Www.md   this week's items waiting for the owner
+  shared/
+    scorecard.md          weekly numbers (growth analyst)
+    experiments.md        experiment log (append-only for all agents)
+    offers-calendar.md    approved offers, codes, dates, exclusions, order-by dates (owner only)
+    content-calendar.md   publishing record (social planner and publisher)
+    customer-questions.md recurring objections and questions (append-only for all agents)
+    contacts-log.md       every person or site contacted, by whom and when (outreach agents)
+  analytics/  seo/  outreach/  social/  email/  conversion/
+                          one subfolder per agent, which only that agent writes
+  approvals/YYYY-Www.md   this week's items waiting for the owner (coordinator only)
   reports/YYYY-MM-DD-<agent>.md   one summary per run
 ```
 
@@ -77,120 +90,194 @@ The theme folders and zip at the repo root stay unchanged.
 
 ### How a run works
 
-1. A scheduled routine starts a fresh cloud session with a one-line instruction such as "Run the seo-blog agent weekly job."
-2. The agent loads `memobrick-brand`, reads the shared records it depends on, and pulls live data from connected tools.
-3. It writes drafts and findings into its own folder, adds items needing a decision to the current approval file, and writes a run report.
-4. It commits to the working branch and pushes, so every change is visible in git history.
-5. On the next run, each agent first acts on items the owner marked approved, then starts new work.
+1. A scheduled routine starts a fresh cloud session with a one-line instruction such as "Run the blog-writer agent weekly job."
+2. The agent follows `memobrick-run`: pull the latest repo, load `memobrick-brand`, read its inputs, and act first on any of its items marked `approved`.
+3. It pulls live data from connected tools, does its one job, and writes output only to its own folder plus append-only rows in shared logs.
+4. It lists anything needing a decision in its run report under "Proposed for approval".
+5. It commits and pushes, so every change is visible in git history.
 
 ### Approval queue
 
-One file per ISO week, `marketing/approvals/2026-W42.md`. Each item has: ID, agent, type (publish, send, ad change, offer, site change), a link to the draft, a one-line reason, and a status line the owner edits to `approved`, `rejected`, or `changes: <note>`. Agents never act on an item without `approved`. Items carry an expiry date so time-sensitive drafts (offers, holiday posts) do not go out late.
+- Agents propose; only the coordinator writes the approval file.
+- One file per ISO week, `marketing/approvals/2026-W42.md`. Each item has an ID, the agent, type (publish, send, ad change, offer, site change), a link to the draft, a one-line reason, an expiry date, and a status line the owner edits to `approved`, `rejected`, or `changes: <note>`.
+- Agents never act on an item without `approved`. Expired items are not executed.
+- Time-sensitive items (holiday posts and emails) are flagged at the top.
 
-### Shared records and handoffs
+### Handoffs between agents
 
-- Growth analyst owns `scorecard.md` and `experiments.md`. Every agent that runs a test adds a row there.
-- Email, social, and SEO agents read `offers-calendar.md`. Only the owner adds offers. Agents may propose them through the approval queue.
-- Any agent that sees a recurring customer question adds it to `customer-questions.md`. Content and SEO agents turn those into posts and articles.
-- UTM convention: `utm_source=<platform>&utm_medium=<organic|email|paid|referral>&utm_campaign=<yyyy-mm-slug>`, so Shopify can attribute orders to agent work.
+| From | To | Handoff file |
+|---|---|---|
+| SEO strategist | Blog writer | `seo/strategist/briefs/<slug>.md` |
+| Blog writer | Technical SEO | `seo/writer/drafts/<slug>.md` (status: ready for check) |
+| Technical SEO | Coordinator | checked draft plus schema and redirect notes |
+| Social planner | Social publisher | `shared/content-calendar.md` row marked Ready, then approved |
+| Social publisher | Growth analyst | live URL and results in `content-calendar.md` |
+| Reviews and UGC | Social planner, blog writer, campaign writer | `conversion/reviews-ugc/approved-stories.md` (permission recorded) |
+| Any agent | Social planner, SEO strategist | `shared/customer-questions.md` |
+| Outreach agents | Each other | `shared/contacts-log.md` checked before any new pitch |
+| All agents | Coordinator | run reports and "Proposed for approval" lists |
+
+UTM convention for every link: `utm_source=<platform>&utm_medium=<organic|email|paid|referral>&utm_campaign=<yyyy-mm-slug>`, so Shopify can attribute orders to agent work.
 
 ## 4. Agents
 
-Each agent file states its job, inputs, tools, weekly job, outputs, and what it must never do. Times are US Eastern.
+Every agent file states its one job, inputs, tools, cadence, outputs, and what it must never do. All agents share these rules: no publishing, sending, ad changes, offers, or live site changes without approval; no invented numbers, dates, contacts, rates, or reviews (unknown stays unknown); brand skill applied to every customer-facing draft. Times are US Eastern.
 
-### 4.1 Growth analyst (priority 1)
+### Coordination
 
-- **Job:** One trusted weekly view of sales and what drove them. Keeps the experiment log honest.
-- **Inputs:** Shopify analytics, Meta Ads insights, `experiments.md`, `offers-calendar.md`.
-- **Weekly (Mon 6:00):** Update `scorecard.md` (net sales, orders, conversion, average order, orders by source, new vs returning). Compare with the prior week and the same week of 2025. Flag anomalies. Review running experiments against their decision rules. Compile the week's approval file summary at the top.
-- **Holiday pulse (daily 8:00, Nov 16 to Dec 20):** Orders, sales, and Meta spend vs yesterday, plus any tracking breakage.
-- **Never:** Change budgets or campaigns. Add revenue across platforms as if orders were unique.
-- **Gap:** Google Ads and Google Analytics are not connected. Search Console access is needed for organic data.
+**1. Marketing coordinator** (wave 1)
+- **Job:** Keep the system organized and give the owner one place to decide.
+- **Cadence:** Mon 7:00 weekly, plus a daily 9:00 check from Nov 16 to Dec 20.
+- **Does:** Reads all run reports, builds the weekly approval file, flags overlaps (same person contacted twice, same offer posted twice, conflicting dates), checks every draft uses only offers in `offers-calendar.md`, and lists missing owner inputs.
+- **Never:** Approve anything itself or change another agent's output.
 
-### 4.2 Email optimization and campaigns (priority 1)
+### Analytics
 
-- **Job:** Improve the recovery flows already running in Omnisend (not rebuild them), run holiday campaigns, and grow repeat purchases.
-- **Current Omnisend setup (read 2026-10-11, reworked 2026-09-28):**
+**2. Growth analyst** (wave 1)
+- **Job:** One trusted weekly view of sales and what drove them.
+- **Inputs:** Shopify analytics, `experiments.md`, `content-calendar.md`.
+- **Cadence:** Mon 6:00 weekly; daily 8:00 holiday pulse Nov 16 to Dec 20.
+- **Does:** Updates `scorecard.md` (net sales, orders, conversion, average order, orders by source, new vs returning), compares with the prior week and the same week of 2025, flags anomalies, and checks running experiments against their decision rules.
+- **Never:** Add revenue across platforms as if orders were unique.
 
-  | Flow | Status | Notes |
-  |---|---|---|
-  | Welcome for memobrick | On | Signup-form subscribers, exits on order |
-  | Browse Abandonment (viewed product) | On | Exits on add to cart or order |
-  | Abandoned Cart (3 emails, 20% in last) | On | Exits on checkout started or order, so it hands off to the checkout flow |
-  | Abandoned Checkout (3 emails, 20% in last) | On | Exits on order. The customer's design now shows in cart and checkout emails |
-  | Post-Purchase: Build & Delight | On | Paid order trigger |
-  | Customer Reactivation, Next Memory (20%) | On | 20% code valid 14 days |
-  | Back in Stock | On | |
-  | Old design-to-cart flow, Copy of Order Confirmation | Off | Replaced, leave off |
+**3. Ads analyst** (wave 2)
+- **Job:** Meta ads review and test proposals.
+- **Inputs:** Meta Ads insights, Shopify orders, product margins, an ad change log.
+- **Cadence:** Mon 6:30 weekly.
+- **Does:** Results by campaign and creative angle (couples, pets, family, birthdays, anniversaries), tracking warnings, one proposed test with budget and decision rule.
+- **Never:** Change budgets, campaigns, or audiences.
+- **Gap:** Google Ads is not connected.
 
-- **Inputs:** Omnisend flows, campaigns, analytics, and segments; Shopify orders; `offers-calendar.md`.
-- **First run:** Pull 90 days of performance per flow and per email (purchases per delivered email, revenue per recipient, unsubscribes, complaints). Check links, mobile rendering, and that the design image appears correctly. Confirm whether review requests are sent by Loox or Omnisend and that customers do not get both. Report the top three improvements.
-- **Test candidates:** Both recovery flows give 20% in the last email. Test a reassurance version (size help, kit contents, delivery date) against the discount on one flow, since the playbook warns against discounting by default. Test send delays during the holiday peak.
-- **Weekly (Tue 6:00):** Draft one campaign for the coming week and one flow improvement, with audience, exclusions, test design, and success measure.
-- **Holiday campaign plan:** Gift-guide email, Black Friday and Cyber Monday, order-by reminders, a last-chance message timed to the confirmed cutoff, and a gift-card angle for after the cutoff if gift cards are offered. Holiday flows must not stack discounts with the 20% recovery codes unless the owner approves.
-- **Never:** Send campaigns, enable, disable, or edit flows without approval. Imply a designer made the customer's design by hand. Use offers not in `offers-calendar.md`.
+### SEO and blog
 
-### 4.3 Content and social (priority 1)
+**4. SEO strategist** (wave 1)
+- **Job:** Decide what pages to create or improve, and brief them.
+- **Inputs:** Live site, Search Console when connected, `customer-questions.md`, SEO skills (keyword clustering, content strategy, content brief, AI visibility).
+- **Cadence:** Mon 8:00 weekly.
+- **Does:** Keeps the keyword map grouped into occasion and recipient hubs (Christmas, couples and anniversaries, pets, family, kids, birthdays, memorial) and buyer-question articles (best photo for a mosaic, sizes and number of faces, what is in the kit, how long building takes). Writes one brief per week, holiday pages first. Tracks how Memobrick appears in AI answers for gift searches.
 
-- **Job:** A steady weekly content plan that shows the photo to mosaic transformation, the building experience, and real customer stories, published through Postiz.
-- **Inputs:** Brand skill, `customer-questions.md`, `offers-calendar.md`, product footage and photos in Google Drive, Postiz.
-- **Weekly (Thu 6:00):** Build next week's calendar: 3 short videos, 2 photo or carousel posts, Story ideas. Each item is a full package: asset reference, caption, cover, call to action, UTM link, platform, time. Where no suitable footage exists, write a precise shot and edit brief.
-- **Daily (once Postiz is connected and the owner allows scheduled publishing):** Check posts due in the last 24 hours went live, record the live URL, flag failures, and check for duplicates before any retry.
-- **Weekly results:** Reach, engagement, sessions, and attributed orders per post, organic kept separate from paid.
-- **Channels:** Instagram, Facebook, TikTok first. Pinterest proposed as a new channel because people search it for photo gift ideas.
-- **Never:** Publish unapproved content. Use AI-generated images that could pass for real orders. Mark a post Published before a live check.
+**5. Blog writer** (wave 1)
+- **Job:** Write pages from the strategist's briefs.
+- **Cadence:** Wed 6:00 weekly.
+- **Does:** One article or hub page per week, with title, meta description, headings, internal links, FAQ, and real product facts. Uses only approved customer stories.
+- **Never:** Write without a brief, mass-produce thin pages, or invent statistics or quotes.
 
-### 4.4 SEO and blog (priority 1)
+**6. Technical SEO** (wave 1)
+- **Job:** Site health and checking drafts before approval.
+- **Inputs:** Theme files in this repo, live site, SEO skills (audit, technical SEO, on-page, schema, internal linking, broken links).
+- **Cadence:** First run is a full audit; then Fri 6:00 weekly.
+- **Does:** Indexing, mobile speed, titles and meta, image alt text, structured data (Product, Review, FAQ, Article), broken links. Confirms on the live site whether the ~50 GemPages "Gift Idea" articles are thin or near-duplicate, then proposes which to merge into hubs with 301 redirects. Checks each blog draft for on-page SEO and adds schema.
+- **Never:** Change the live theme without approval.
 
-- **Job:** Grow orders from Google and AI search with useful pages built around real buyer questions.
-- **Inputs:** Theme files in this repo, the live site, SEO skills (audit, technical SEO, on-page, schema, keyword clustering, content brief, internal linking, AI visibility), Search Console when connected.
-- **First run:** Full audit of mymemobrick.com: indexing, speed on mobile, titles and meta, headings, image alt text, structured data (Product, Review, FAQ, Article), internal links. Inventory existing blog articles. The theme contains about 50 GemPages article templates with heavily repeated "Memobrick ... Gift Idea" phrasing. The audit must confirm on the live site whether these are thin or near-duplicate pages before recommending consolidation.
-- **Page plan:** Keyword map grouped into occasion and recipient hubs (Christmas, couples and anniversaries, pets, family, kids, birthdays, memorial) and buyer-question articles (best photo for a mosaic, sizes and number of faces, what is in the kit, how long building takes, gift for someone who has everything). Weak duplicates get merged into hubs with 301 redirects.
-- **Weekly (Wed 6:00):** One new or consolidated page drafted to brief, one batch of technical fixes, and updated internal links. Holiday pages first, because Christmas pages need time to be crawled before December.
-- **Never:** Mass-produce thin pages. Change the live theme or publish articles without approval. Invent statistics or reviews.
+### Backlinks and outreach
 
-### 4.5 Backlinks, PR and creators (priority 2, starts week 1 for gift guides)
+**7. Gift guide and PR** (wave 1)
+- **Job:** Get Memobrick into holiday gift guides and press.
+- **Cadence:** Tue 6:00 weekly.
+- **Does:** 15 relevant gift guides and editors per week (personalized gifts, couples, pet lovers, families), with exact URL, public contact route, fit, and a short personalized pitch. Local Florida press only after the fulfillment location is verified.
+- **Never:** Send pitches without approval, guess private emails, or pay for links.
 
-- **Job:** Earn links and mentions from relevant sites, and find creators who can make real content.
-- **Gift guides (urgent):** Holiday gift guides from publishers and bloggers are being written now. Each week, research 15 relevant guides and editors (personalized gifts, gifts for couples, pet lovers, families), record the exact URL, the public contact route, and fit, and draft a short personalized pitch.
-- **Ongoing backlinks:** Unlinked brand mentions, resource and gift-idea pages, local Miami and Florida press (only if fulfillment location is verified), wedding, pet, and photography partners. Track every target and outcome in `outreach/`.
-- **Creators:** Research 20 creators per week in the playbook niches, shortlist 5 with evidence, and draft outreach and a brief (real kit, photo to design story, build footage, reveal, reuse rights).
-- **Weekly (Fri 6:00):** New targets, drafts for approval, status update on sent outreach.
-- **Never:** Buy links, use private networks, or guess private contact details. Send outreach without approval. Invent rates or audience data.
-- **Gap:** Ahrefs is configured but blocked from this environment. Backlink data comes from public research until a backlink tool is reachable.
+**8. Link builder** (wave 2)
+- **Job:** Earn lasting links outside the holiday rush.
+- **Cadence:** Thu 6:00 weekly.
+- **Does:** Unlinked brand mentions, resource and gift-idea pages, wedding, pet, and photography partners. Tracks every target and outcome.
+- **Never:** Buy links or use link networks.
+- **Gap:** Ahrefs is blocked from this environment, so research is public-web only until a backlink tool is reachable.
 
-### 4.6 Website conversion (priority 2)
+**9. Creator scout** (wave 2)
+- **Job:** Find creators who can make real Memobrick content.
+- **Cadence:** Fri 8:00 weekly.
+- **Does:** 20 creators per week in the playbook niches (personalized gifts, couples, pets, family memories, DIY and crafts, home decor), shortlist 5 with evidence, draft outreach and a brief (real kit, photo to design story, build footage, reveal, reuse rights).
+- **Never:** Invent rates or audience data, or contact anyone without approval.
 
-- **Job:** Find and rank what stops visitors from buying.
-- **Inputs:** Shopify sessions and funnel data, the live site via the preinstalled Playwright browser, `customer-questions.md`.
-- **First run:** Walk the full path on mobile and desktop (land, upload photo, preview, size choice, cart, checkout up to payment). Record load times, errors, unclear steps, and missing reassurance (size and faces guide, kit contents, delivery dates, real photos, reviews). Deliver the five most consequential issues with evidence.
-- **Every two weeks (Wed):** Re-test after changes and propose one test for `experiments.md`.
-- **Never:** Place real orders, change the theme, or alter the design engine without approval.
+### Social
 
-### Later agents (not built now)
+**10. Social planner** (wave 1)
+- **Job:** Plan next week's content as complete post packages.
+- **Inputs:** Brand skill, `customer-questions.md`, `offers-calendar.md`, approved customer stories, footage and photos in Google Drive.
+- **Cadence:** Thu 6:00 weekly.
+- **Does:** 3 short videos, 2 photo or carousel posts, Story ideas. Each package has asset, caption, cover, call to action, UTM link, platform, and time. Writes a shot and edit brief where footage is missing. Proposes Pinterest as a new channel.
+- **Never:** Use AI images that could pass for real orders.
 
-Customer support, order coordinator, inventory, and corporate gifting sales. These are added once the first six run reliably and the order handoff is verified, as the playbook recommends.
+**11. Social publisher** (wave 1, once Postiz is connected)
+- **Job:** Get approved posts live and prove it.
+- **Cadence:** Daily 18:00.
+- **Does:** Schedules approved packages in Postiz, checks each due post went live, records the live URL, flags failures, and checks for duplicates before any retry. Weekly results per post (reach, engagement, sessions, attributed orders).
+- **Never:** Publish anything not approved, or mark a post Published before a live check.
 
-## 5. Schedule summary
+**12. Community manager** (wave 2)
+- **Job:** Handle comments and route buyers.
+- **Cadence:** Daily 12:00.
+- **Does:** Drafts replies to routine comments using approved answers, sends buying questions to the owner as sales leads, flags complaints, and adds recurring questions to `customer-questions.md`.
+- **Gap:** No connected tool reads Instagram or Facebook comments yet. Until one does, this agent works from comments the owner pastes or exports.
 
-| Agent | Cadence | Day and time (ET) |
+### Email (Omnisend)
+
+Current Omnisend setup (read 2026-10-11, reworked 2026-09-28):
+
+| Flow | Status | Notes |
 |---|---|---|
-| Growth analyst | Weekly, plus daily Nov 16 to Dec 20 | Mon 6:00; daily 8:00 |
-| Email optimization | Weekly | Tue 6:00 |
-| SEO and blog | Weekly | Wed 6:00 |
-| Conversion | Every two weeks | Wed 9:00 |
-| Content and social | Weekly, plus daily live check once enabled | Thu 6:00; daily 18:00 |
-| Backlinks, PR, creators | Weekly | Fri 6:00 |
+| Welcome for memobrick | On | Signup-form subscribers, exits on order |
+| Browse Abandonment (viewed product) | On | Exits on add to cart or order |
+| Abandoned Cart (3 emails, 20% in last) | On | Exits on checkout started or order, so it hands off to the checkout flow |
+| Abandoned Checkout (3 emails, 20% in last) | On | Exits on order. The customer's design shows in cart and checkout emails |
+| Post-Purchase: Build & Delight | On | Paid order trigger |
+| Customer Reactivation, Next Memory (20%) | On | 20% code valid 14 days |
+| Back in Stock | On | |
+| Old design-to-cart flow, Copy of Order Confirmation | Off | Replaced, leave off |
 
-The owner reviews the approval file once a week (suggested Monday) and approves time-sensitive items as they appear.
+**13. Flow optimizer** (wave 1)
+- **Job:** Improve the existing flows, not rebuild them.
+- **Cadence:** First run is a 90-day performance review; then Tue 8:00 weekly.
+- **Does:** Purchases per delivered email, revenue per recipient, unsubscribes, and complaints per flow and per email. Checks links, mobile rendering, and that the design image shows. Proposes one test at a time, starting with a reassurance version (size help, kit contents, delivery date) against the 20% discount in one recovery flow.
+- **Never:** Enable, disable, or edit flows without approval.
+
+**14. Campaign writer** (wave 1)
+- **Job:** Weekly campaigns and the holiday plan.
+- **Cadence:** Tue 6:00 weekly.
+- **Does:** Drafts the coming week's campaign with audience, exclusions, and success measure. Holiday plan: gift-guide email, Black Friday, Cyber Monday, order-by reminders, a last-chance email at the confirmed cutoff, and a gift-card angle after the cutoff if gift cards are offered. No stacking with the 20% recovery codes unless approved.
+- **Never:** Send without approval or use offers not in `offers-calendar.md`.
+
+### Conversion and trust
+
+**15. Conversion auditor** (wave 2)
+- **Job:** Find and rank what stops visitors from buying.
+- **Cadence:** First run is a full journey test; then every two weeks, Wed 9:00.
+- **Does:** Walks land, upload, preview, size choice, cart, and checkout up to payment on mobile and desktop using the preinstalled browser. Records load times, errors, unclear steps, and missing reassurance. Delivers the five most consequential issues with evidence and proposes one test.
+- **Never:** Place real orders or change the theme or design engine.
+
+**16. Reviews and UGC** (wave 2)
+- **Job:** Collect honest reviews and reusable customer stories.
+- **Cadence:** Wed 6:00 weekly.
+- **Does:** Confirms whether Loox or Omnisend sends review requests (one, not both), drafts permission requests to reuse customer photos and videos, and keeps `approved-stories.md` with the permission recorded for each.
+- **Never:** Use a customer photo or quote without recorded permission, or write fake reviews.
+
+### Later (not in this design)
+
+Customer support, order coordinator, inventory, and corporate gifting sales, once the order handoff is verified.
+
+## 5. Weekly schedule
+
+| Day | Wave 1 | Wave 2 |
+|---|---|---|
+| Mon | 6:00 Growth analyst, 7:00 Coordinator, 8:00 SEO strategist | 6:30 Ads analyst |
+| Tue | 6:00 Campaign writer, 6:00 Gift guide and PR, 8:00 Flow optimizer | |
+| Wed | 6:00 Blog writer | 6:00 Reviews and UGC, 9:00 Conversion auditor (every 2 weeks) |
+| Thu | 6:00 Social planner | 6:00 Link builder |
+| Fri | 6:00 Technical SEO | 8:00 Creator scout |
+| Daily | 18:00 Social publisher | 12:00 Community manager |
+| Daily Nov 16 to Dec 20 | 8:00 Growth analyst pulse, 9:00 Coordinator check | |
+
+The owner reviews the approval file on Monday after the coordinator runs, and approves time-sensitive items as they appear.
 
 ## 6. Rollout
 
-- **Week 1 (Oct 12 to 18):** Build agent files, brand and approval skills, and records. Growth analyst baseline. SEO audit. Omnisend flow performance review. First gift-guide target list and pitches. Conversion first run.
-- **Week 2 (Oct 19 to 25):** First approved outputs go live. Holiday offer calendar and order-by date confirmed by owner. First social calendar. First Christmas hub page drafted.
-- **Weeks 3 to 4 (Oct 26 to Nov 8):** Black Friday and Cyber Monday email and social plan approved. Creator pilot if budget allows. Duplicate articles consolidated.
-- **Week 4 review (around Nov 8):** Check agent accuracy, approval workload, and early results. Decide whether to allow scheduled social publishing without per-post approval.
-- **Peak (Nov 16 to Dec 20):** Daily holiday pulse. Order-by countdown content.
+- **Week 1 (Oct 12 to 18):** Build the shared skills, records, and the 10 wave 1 agent files. Dry run each one. Growth analyst baseline, technical SEO audit, flow optimizer 90-day review, first gift guide list and pitches.
+- **Week 2 (Oct 19 to 25):** Scheduled routines on for wave 1. Owner confirms the order-by date and offers. First approved outputs go live. First Christmas hub page drafted. First social calendar.
+- **Weeks 3 to 4 (Oct 26 to Nov 8):** Black Friday and Cyber Monday plan approved. Duplicate articles consolidated.
+- **Week 4 review (around Nov 8):** Agent accuracy, approval workload, early results. Decide on wave 2 and whether routine social publishing can skip per-post approval.
+- **Wave 2 (from Nov 9, or January if the holiday workload is too high):** Ads analyst, link builder, creator scout, community manager, conversion auditor, reviews and UGC.
+- **Peak (Nov 16 to Dec 20):** Daily pulse and coordinator checks. Order-by countdown content.
 - **January:** Post-season review. Plan the later agents.
 
 ## 7. What the owner needs to provide
@@ -212,7 +299,7 @@ Anything not provided stays marked unknown, and the affected agent prepares a br
 
 - **Tool not connected or failing:** The agent records the failure in its run report and the approval file, finishes the parts it can, and does not retry publishing actions blindly.
 - **Missing facts:** Written as unknown. No invented numbers, dates, contacts, or reviews.
-- **Conflicting runs:** Each agent writes only to its own folder plus append-only rows in shared logs. Agents pull before writing and push after.
+- **Conflicting runs:** Each agent writes only to its own folder plus append-only rows in shared logs. Only the coordinator writes the approval file. Agents pull before writing and push after, and runs are staggered in time.
 - **Stale approvals:** Expired items are not executed; the agent re-proposes them if still relevant.
 - **Duplicate posts or emails:** Check for existing scheduled or sent items before creating new ones.
 
@@ -229,4 +316,5 @@ Anything not provided stays marked unknown, and the affected agent prepares a br
 - Changing the website's design engine or checkout.
 - Automatic ad budget changes.
 - Customer support, order coordination, inventory, and corporate sales agents (later phase).
+- Wave 2 agent files are specified here but built only after the week 4 review.
 - Removing the zip and duplicate theme folder from the repo.
