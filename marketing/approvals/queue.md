@@ -137,7 +137,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 9498fd1
 - Reason: New Christmas photo gift hub that links 11 existing Christmas and recipient posts; it needs time to be indexed before mid-November holiday searches peak. Add the JSON-LD from checks/personalized-christmas-photo-gifts.md on publish.
 - Expires: 2026-10-25
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-6
 - Note: Needs an owner-approved hero image (real mosaic or a labeled illustration).
 
