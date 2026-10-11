@@ -12,6 +12,9 @@ base = tuple(int(color[i:i + 2], 16) for i in (0, 2, 4))
 im = Image.open(src).convert('RGBA')
 w, h = im.size
 fig = remove(im, session=new_session('isnet-general-use'), alpha_matting=True)
+# Pull the edge in slightly so no fringe of the old backdrop color survives.
+alpha = fig.getchannel('A').filter(ImageFilter.MinFilter(5)).filter(ImageFilter.GaussianBlur(1.2))
+fig.putalpha(alpha)
 
 # Backdrop: lighter center, darker edges, like the studio shots.
 light = tuple(min(255, int(c * 1.12 + 10)) for c in base)

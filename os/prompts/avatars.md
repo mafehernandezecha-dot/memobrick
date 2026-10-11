@@ -28,7 +28,7 @@ Patricia: blonde high ponytail with long side-swept strands, beige tailored blaz
 
 ## 5. Daniel (teal)
 
-Daniel: swept dark hair, sharp charcoal suit with an open-collar white shirt, sunglasses pushed up on his head, playful smirk, holding a takeaway coffee cup. Teal backdrop.
+Daniel, the cold finance vice president: slicked-back dark brown hair, stern frown with furrowed brows, crisp white shirt with a slim black tie, dark navy trousers. Teal backdrop.
 
 ## 6. Hugo (orange)
 
