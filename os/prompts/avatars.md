@@ -52,7 +52,7 @@ Margarita, the elegant older matriarch: voluminous wavy auburn-brown hair, lilac
 
 ## 11. María Beatriz (wine)
 
-María Beatriz, the high-society woman: voluminous blonde-gray updo, burgundy blazer, pearl necklace, red lipstick, poised smile, holding a small clutch bag. Wine-colored backdrop.
+María Beatriz, the high-society woman: voluminous brown updo with blonde streaks, burgundy skirt suit over a dark top, pearl necklace, ornate gold drop earrings, red lipstick, poised confident smile, holding a burgundy clutch bag. Wine-colored backdrop.
 
 ## 12. Inesita (lilac)
 
