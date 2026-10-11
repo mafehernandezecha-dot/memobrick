@@ -52,8 +52,10 @@ export function WorldView({ state, onPick }: Props) {
     if (ready) world.current?.setFigures(figures);
   }, [ready, figures]);
 
-  const byCharacter = new Map(state.agents.map((a) => [a.character, a]));
-  const roomPending = (cast: string[]) => cast.reduce((n, c) => n + (byCharacter.get(c)?.pending ?? 0), 0);
+  // Only rooms where an active agent works get a name plate; empty rooms, the
+  // entrance and the meeting room stay unlabeled to keep the office calm.
+  const activeCast = new Set(state.agents.filter((a) => a.status === 'active').map((a) => a.character));
+  const labeled = ROOMS.filter((r) => r.cast.some((c) => activeCast.has(c)));
 
   return (
     <div className="world-view">
@@ -61,16 +63,11 @@ export function WorldView({ state, onPick }: Props) {
       {failed && <p className="world-error">Couldn't draw the office in this browser: {failed}</p>}
       <div className="world-overlay" ref={overlay} aria-hidden={!ready}>
         {ready &&
-          ROOMS.map((r) => {
-            const n = roomPending(r.cast);
-            return (
-              <div key={r.id} className="room-label" data-anchor={`room:${r.id}`} data-align="left">
-                <span className="room-icon">{r.icon}</span>
-                <span className="room-name">{r.label}</span>
-                {n > 0 && <span className="badge badge-red">{n}</span>}
-              </div>
-            );
-          })}
+          labeled.map((r) => (
+            <div key={r.id} className="room-label" data-anchor={`room:${r.id}`} data-align="left">
+              {r.label}
+            </div>
+          ))}
         {ready &&
           state.agents
             .filter((a) => a.status === 'active' && (a.pending > 0 || a.live?.state === 'working'))

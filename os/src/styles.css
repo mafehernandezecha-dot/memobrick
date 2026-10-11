@@ -378,28 +378,6 @@ button:focus-visible {
   overflow: hidden;
 }
 
-.main-header {
-  position: absolute;
-  top: 18px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.main-header h1 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  padding: 7px 16px;
-  border-radius: 999px;
-  background: var(--panel);
-  border: 1px solid var(--hairline);
-  backdrop-filter: blur(12px);
-}
 
 .mundo,
 .placeholder {
@@ -448,7 +426,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 4px 9px 4px 6px;
+  padding: 4px 9px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.94);
   border: 1px solid var(--hairline);
@@ -458,20 +436,8 @@ button:focus-visible {
   white-space: nowrap;
 }
 
-.room-icon {
-  font-size: 11px;
-}
-
-.compact .room-name {
-  display: none;
-}
-
 .compact .room-label {
-  padding: 3px 5px;
-}
-
-.room-label .badge {
-  margin-left: 2px;
+  display: none;
 }
 
 .fig-tag {
@@ -663,11 +629,6 @@ button:focus-visible {
     background: rgba(20, 25, 20, 0.2);
   }
 
-  .main-header {
-    justify-content: flex-end;
-    padding-right: 14px;
-    top: 14px;
-  }
 
   .greet-card {
     top: 66px;

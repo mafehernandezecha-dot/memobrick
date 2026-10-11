@@ -26,6 +26,6 @@ Everything is read from this repository each time the app refreshes (every 15 se
 - `marketing/shared/scorecard.md`: the week's sales.
 - `marketing/status/<agent>.json`: the live status each agent writes when it starts and finishes.
 
-The agents work on the `main` branch. To see their latest work, run `git pull` in your copy; for them to see your decisions, commit and push `marketing/approvals/queue.md`.
+The agents work on the `main` branch, and the app keeps your copy in step with it on its own: it pulls the agents' latest work when it starts and every 3 minutes, and each Approve, Edit or Reject is committed and pushed right away (only `marketing/approvals/queue.md` is committed). If a push can't go through, for example when you're offline, the decision stays saved and committed on your computer, the app says so, and it is sent on the next sync; you can also click Push origin in GitHub Desktop. Syncing only happens when your copy is on `main`.
 
 Decisions and chat only work in a browser on the computer running the app. Conversations with Betty are saved in `os/data/chats/` (never pushed to the repository).

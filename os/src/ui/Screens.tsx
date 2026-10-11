@@ -32,7 +32,11 @@ export function TeToca({ state }: { state: AppState }) {
     setBusy(null);
     if (!res.ok) return setMessage({ ok: false, text: body.error ?? "Couldn't save the decision." });
     const label = decision === 'approved' ? 'Approved' : decision === 'rejected' ? 'Rejected' : 'Changes requested';
-    setMessage({ ok: true, text: `${label}: ${id}. Saved to the approval queue; the agent will see it on its next run.` });
+    const sync: { ok: boolean; text: string } | undefined = body.sync;
+    setMessage({
+      ok: sync?.ok ?? true,
+      text: sync?.ok ? `${label}: ${id}. Sent to the agents; they'll act on it on their next run.` : `${label}: ${id}. ${sync?.text ?? 'Saved to the approval queue.'}`,
+    });
     setEditing(null);
     setNote('');
     await refresh();

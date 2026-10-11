@@ -18,10 +18,6 @@ export function Mundo({ state, onPick }: { state: DashboardState; onPick: (agent
 
   return (
     <section className="mundo">
-      <header className="main-header">
-        <h1>World</h1>
-      </header>
-
       <div className="world-stage" aria-label="Memobrick office">
         <WorldView state={state} onPick={onPick} />
       </div>
