@@ -46,9 +46,9 @@ Nicolás, Betty's loyal friend and numbers whiz: neat black hair, tortoiseshell 
 
 Roberto, the distinguished older gentleman: gray hair, gray mustache, dark three-piece suit with a gold pocket watch chain, calm wise expression, holding a leather document folder. Deep-brown backdrop.
 
-## 10. Margarita (lilac)
+## 10. Margarita (blush rose)
 
-Margarita, the elegant older matriarch: silver bob, lavender suit, pearl necklace, small gold brooch, rose lipstick, composed gentle expression. Lilac backdrop.
+Margarita, the elegant older matriarch: coiffed short champagne-blonde hair, rose-pink tailored suit, pearl necklace, small gold brooch, pearl earrings, rose lipstick, composed gracious smile. Blush-rose backdrop.
 
 ## 11. María Beatriz (wine)
 
