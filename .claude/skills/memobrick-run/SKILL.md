@@ -7,7 +7,7 @@ description: The standard run routine every Memobrick marketing agent follows, i
 
 Every agent run follows these steps in order.
 
-1. **Update.** Work on the repository's default branch: `git checkout main && git pull origin main`.
+1. **Update.** Work on the repository's default branch: `git checkout main && git pull origin main`. Then set your live status to `working` (see Live status below), commit it with message `<agent>: status working` and push.
 2. **Brand.** Load the `memobrick-brand` skill.
 3. **Approvals.** Act on your approved items using the `memobrick-approvals` skill. Skip this step in dry run mode.
 4. **Inputs.** Read the inputs listed in your agent file, plus `marketing/shared/offers-calendar.md`.
@@ -23,7 +23,21 @@ Every agent run follows these steps in order.
    - `## Blocked or unknown` (missing connections, missing owner inputs, unknown facts)
    - `## Next run`
 7. **Copy check.** Run `python3 marketing/tools/check.py copy <file>` on every customer-facing draft you created. Fix em dashes and re-run until it passes.
-8. **Commit.** `git add` your files, commit with message `<agent>: <one-line summary>`, and `git push origin main`. If the push is rejected, `git pull --rebase origin main` and push again. The owner's approvals and every agent's reports live on main, so never leave work on another branch.
+8. **Commit.** Set your live status to `needs_me` if you proposed items for approval this run, otherwise `idle`. `git add` your files and the status file, commit with message `<agent>: <one-line summary>`, and `git push origin main`. If the push is rejected, `git pull --rebase origin main` and push again. The owner's approvals and every agent's reports live on main, so never leave work on another branch.
+
+## Live status
+
+The owner's dashboard (Memobrick OS) shows each agent working, idle, or waiting on the owner from `marketing/status/<agent>.json`, where `<agent>` is your agent name (for example `seo-technical`). Write the whole file each time:
+
+```json
+{"state": "working", "task": "Auditoría técnica del sitio", "updated": "2026-10-11T09:00:00-04:00"}
+```
+
+- `state`: `working` while you run, `needs_me` at the end if you proposed items for approval, `idle` otherwise.
+- `task`: a few words in Spanish saying what you are doing, shown in a speech bubble over your figure. Empty when idle.
+- `updated`: the current time in ISO 8601 with the ET offset.
+
+This file is the only exception to the write list in step 5. Write it in dry run mode too.
 
 ## When the live site is unreachable
 

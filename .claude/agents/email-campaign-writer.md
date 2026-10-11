@@ -28,6 +28,8 @@ Weekly: Tuesday 6:00 ET, drafting the campaign for the following week.
 
 Follow the memobrick-run skill.
 
+Report your live status in `marketing/status/email-campaign-writer.json` at the start and end of every run, as that skill's Live status section says.
+
 1. Approved `send` items where you are the Executor: confirm no campaign with the same name exists, create the campaign in Omnisend (`post_campaigns`) exactly as the draft file describes, and schedule it for the draft's send time (`post_campaigns_id_send` with the scheduled time, after reading its schema and documentation). Record the campaign ID.
 2. **Existing campaigns are the owner's approved work.** List campaigns scheduled or drafted in Omnisend (`get_campaigns`). Record each at the top of the holiday plan (name, send time, audience, offer or code, dates it implies). Their offers and dates are owner-approved for those campaigns; do not flag them as unapproved. Reuse them only after the owner adds them to `offers-calendar.md`.
    - **Sent campaigns:** after each send, report delivered, clicks, purchases, revenue, purchases per delivered email, revenue per recipient, and unsubscribes in `marketing/email/campaign-writer/performance-<YYYY-MM>.md`, compared with similar past campaigns.

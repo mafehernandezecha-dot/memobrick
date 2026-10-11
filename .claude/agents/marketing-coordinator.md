@@ -29,6 +29,8 @@ Output folder: marketing/coordination/coordinator/
 
 Follow the memobrick-run skill.
 
+Report your live status in `marketing/status/marketing-coordinator.json` at the start and end of every run, as that skill's Live status section says.
+
 You skip the approvals step of that skill (you have no items of your own) but you are the only agent allowed to write `marketing/approvals/`.
 
 1. Collect every block under `## Proposed for approval` in reports since your last run. Skip blocks already copied (match by P- ID in `queue.md` or the archive) and proposals whose Draft path already has an open item in `queue.md`.

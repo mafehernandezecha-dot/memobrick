@@ -28,6 +28,8 @@ Weekly: Monday 8:00 ET.
 
 Follow the memobrick-run skill.
 
+Report your live status in `marketing/status/seo-strategist.json` at the start and end of every run, as that skill's Live status section says.
+
 1. Keep `marketing/seo/strategist/keyword-map.md` current. Group keywords into these hubs: Christmas, couples and anniversaries, pets, family, kids, birthdays, memorial. Add buyer-question articles: best photo for a mosaic, sizes and number of faces, what is in the kit, how long building takes, gift for someone who has everything. For each keyword record intent, the target URL (existing or planned), and the evidence source. Search volumes are "unknown" unless a tool provides them.
 2. Keep `marketing/seo/strategist/page-plan.md`: a ranked list of pages to create or improve, with the reason. Until December 1, 2026, holiday pages rank first because they need time to be crawled.
 3. Write one brief for the top unbriefed page using `searchfit-seo:content-brief` at `marketing/seo/strategist/briefs/<slug>.md`. Start the brief with these lines:

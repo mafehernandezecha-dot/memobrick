@@ -7,10 +7,14 @@ export const APPROVALS_DESK = 'aprobaciones';
 export type ApprovalItem = {
   id: string;
   agent: string;
+  executor: string;
   type: string;
+  draft: string;
   status: string;
   expires: string;
   reason: string;
+  note: string;
+  flag: string;
 };
 
 /** Items in marketing/approvals/queue.md. Headings like "## Time-sensitive" are skipped. */
@@ -22,10 +26,14 @@ export function parseQueue(md: string): ApprovalItem[] {
       items.push({
         id: cur.id,
         agent: cur.agent ?? '',
+        executor: cur.executor ?? '',
         type: cur.type ?? '',
+        draft: cur.draft ?? '',
         status: (cur.status ?? '').trim(),
         expires: cur.expires ?? '',
         reason: cur.reason ?? '',
+        note: cur.note ?? '',
+        flag: cur.flag ?? '',
       });
     }
   };
@@ -44,6 +52,35 @@ export function parseQueue(md: string): ApprovalItem[] {
 }
 
 export const isPending = (item: ApprovalItem) => item.status === 'pending';
+
+export type Decision = { decision: 'approved' | 'rejected' } | { decision: 'changes'; note: string };
+
+/** The Status value written to the queue for a decision. */
+export function statusFor(d: Decision): string {
+  if (d.decision !== 'changes') return d.decision;
+  const note = d.note.replace(/\s+/g, ' ').trim();
+  if (!note) throw new Error('Escribe qué cambiar.');
+  return `changes: ${note}`;
+}
+
+/**
+ * Rewrites only the Status line of one item in queue.md. Throws when the item
+ * is missing, has no Status line, or is no longer pending.
+ */
+export function setQueueStatus(md: string, id: string, status: string): string {
+  const lines = md.split('\n');
+  const start = lines.findIndex((l) => l.trim() === `## ${id}`);
+  if (start < 0) throw new Error(`No encontré la propuesta ${id}.`);
+  for (let i = start + 1; i < lines.length && !lines[i].startsWith('## '); i++) {
+    const m = lines[i].match(/^(-\s+Status:\s*)(.*)$/);
+    if (m) {
+      if (m[2].trim() !== 'pending') throw new Error(`La propuesta ${id} ya tiene decisión: ${m[2].trim()}.`);
+      lines[i] = `${m[1]}${status}`;
+      return lines.join('\n');
+    }
+  }
+  throw new Error(`La propuesta ${id} no tiene línea Status.`);
+}
 
 export type WeekRow = { week: string; netSales: string; orders: number | null };
 
@@ -65,6 +102,17 @@ export function parseScorecardLatestWeek(md: string): WeekRow | null {
 }
 
 export type ReportFile = { date: string; agent: string; file: string };
+
+/** First "# " heading and the lines under "## Summary" of a run report. */
+export function parseReportSummary(md: string): { title: string; summary: string } {
+  const lines = md.split('\n');
+  const title = (lines.find((l) => l.startsWith('# ')) ?? '').replace(/^#\s+/, '').trim();
+  const at = lines.findIndex((l) => /^##\s+Summary/i.test(l));
+  const out: string[] = [];
+  if (at >= 0)
+    for (let i = at + 1; i < lines.length && !lines[i].startsWith('## '); i++) if (lines[i].trim()) out.push(lines[i].replace(/^[-*]\s+/, '').trim());
+  return { title, summary: out.join(' ') };
+}
 
 /** Run reports are named YYYY-MM-DD-<agent>.md. */
 export function parseReportName(file: string): ReportFile | null {

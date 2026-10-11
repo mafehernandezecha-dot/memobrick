@@ -27,6 +27,8 @@ Weekly: Tuesday 6:00 ET.
 
 Follow the memobrick-run skill.
 
+Report your live status in `marketing/status/outreach-gift-guide-pr.json` at the start and end of every run, as that skill's Live status section says.
+
 1. **Approved `send` items:** the Gmail connector can create drafts but not send. Create a Gmail draft (`create_draft`) to the listed public contact with the approved pitch text, unchanged, and append a row to `contacts-log.md` (Date, Agent, Person or site, URL, Contact route, Purpose, Status: drafted). The owner sends it from Gmail. For form-only contacts, write the exact text to paste and the form URL in your report instead. On each run, search Gmail sent mail (`search_threads`) for earlier drafted pitches and append a row with Status: sent once found, or replied when a reply exists.
 2. **Research:** Find 15 targets that fit: 2026 holiday gift guides and "personalized gift" roundups (gifts for couples, pet lovers, parents, grandparents, families, someone who has everything), plus editors or writers who cover gifting. Prefer guides updated in 2026 or accepting submissions. Skip anyone in `contacts-log.md` within 30 days. Guides that charge a placement or review fee are not targets; list them separately under `## Paid placements (for owner information)` with the fee if stated. If a page cannot be opened, mark every detail taken from search snippets as `unverified` so the owner checks it before sending.
 3. For each target record in `marketing/outreach/gift-guide-pr/targets-<YYYY-MM-DD>.md`: Publication, exact Guide URL, Editor or author, Public contact route (a submission form, a listed email, or a public profile; write "unknown" if none is listed), Fit (one line on why Memobrick belongs there), and Pitch file.

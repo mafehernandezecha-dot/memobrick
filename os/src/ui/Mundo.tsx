@@ -1,5 +1,6 @@
 import { APPROVALS_DESK } from '../../server/parse';
 import type { DashboardState } from '../../server/state';
+import { formatDay } from './context';
 import { WorldView } from './WorldView';
 
 function greeting(d = new Date()) {
@@ -59,10 +60,4 @@ export function Mundo({ state, onPick }: { state: DashboardState; onPick: (agent
       </div>
     </section>
   );
-}
-
-const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-export function formatDay(iso: string) {
-  const [, m, d] = iso.split('-').map(Number);
-  return `${d} ${MONTHS[m - 1]}`;
 }

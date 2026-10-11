@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseQueue, parseReportName, parseScorecardLatestWeek, parseStatus } from './parse';
+import { parseQueue, parseReportName, parseReportSummary, parseScorecardLatestWeek, parseStatus, setQueueStatus, statusFor } from './parse';
 
 describe('parseQueue', () => {
   const md = `# Approval queue
@@ -60,5 +60,40 @@ describe('parseStatus', () => {
     expect(parseStatus('{"state":"working","task":"Brief","updated":"2026-10-11T10:00"}')?.state).toBe('working');
     expect(parseStatus('{"state":"busy"}')).toBeNull();
     expect(parseStatus('not json')).toBeNull();
+  });
+});
+
+describe('setQueueStatus', () => {
+  const md = `## A-1
+- Agent: a
+- Status: pending
+- Note: keep me
+
+## A-2
+- Agent: b
+- Status: pending
+`;
+  it('changes only the Status line of the chosen item', () => {
+    const out = setQueueStatus(md, 'A-2', 'approved');
+    expect(out).toBe(md.replace('- Agent: b\n- Status: pending', '- Agent: b\n- Status: approved'));
+    expect(parseQueue(out).map((i) => i.status)).toEqual(['pending', 'approved']);
+  });
+  it('refuses unknown or already decided items', () => {
+    expect(() => setQueueStatus(md, 'A-9', 'approved')).toThrow(/No encontré/);
+    expect(() => setQueueStatus(setQueueStatus(md, 'A-1', 'rejected'), 'A-1', 'approved')).toThrow(/ya tiene decisión/);
+  });
+});
+
+describe('statusFor', () => {
+  it('writes changes notes on one line and requires text', () => {
+    expect(statusFor({ decision: 'changes', note: ' más corto\n por favor ' })).toBe('changes: más corto por favor');
+    expect(statusFor({ decision: 'approved' })).toBe('approved');
+    expect(() => statusFor({ decision: 'changes', note: '  ' })).toThrow();
+  });
+});
+
+describe('parseReportSummary', () => {
+  it('reads title and summary bullets', () => {
+    expect(parseReportSummary('# DRY RUN: x 2026-10-11\n\n## Summary\n\n- One.\n- Two.\n\n## Done\n- z')).toEqual({ title: 'DRY RUN: x 2026-10-11', summary: 'One. Two.' });
   });
 });

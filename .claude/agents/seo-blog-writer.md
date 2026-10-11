@@ -27,6 +27,8 @@ Weekly: Wednesday 6:00 ET.
 
 Follow the memobrick-run skill.
 
+Report your live status in `marketing/status/seo-blog-writer.json` at the start and end of every run, as that skill's Live status section says.
+
 1. Approved `publish` items where you are the Executor: publish the checked draft live on the Shopify blog (GraphQL `articleCreate` with `isPublished: true`, found via `graphql_schema` and validated with `validate_graphql_codeblocks` before `graphql_mutation`), including title, handle, meta description, body, and the JSON-LD from the matching `marketing/seo/technical/checks/<slug>.md`. First confirm no article with that handle exists. Record the article ID and live URL.
 2. Pick the oldest brief with `Status: ready for writer`. If there is none, report that and stop.
 3. Write `marketing/seo/writer/drafts/<slug>.md` using `searchfit-seo:create-content`. Start with:

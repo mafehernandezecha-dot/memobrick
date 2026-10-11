@@ -28,6 +28,8 @@ You own `marketing/shared/scorecard.md` (you may add rows to its Weekly table).
 
 Follow the memobrick-run skill.
 
+Report your live status in `marketing/status/growth-analyst.json` at the start and end of every run, as that skill's Live status section says.
+
 1. Run these ShopifyQL queries for the week (replace dates; ET):
    - `FROM sales SHOW orders, gross_sales, discounts, net_sales, total_sales, average_order_value SINCE <start> UNTIL <end>`
    - `FROM sessions SHOW sessions, conversion_rate SINCE <start> UNTIL <end>`

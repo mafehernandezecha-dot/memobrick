@@ -38,3 +38,10 @@ All 22 portraits in `avatars/`, figures in `sprites/`. Review images: `python3 s
 - `src/world/layout.ts` is the floor plan: 11 rooms named after the show, each holding a Memobrick department. Agents are seated by their `character` in agents.json; anyone new goes to the Sala de juntas (tested in `layout.test.ts`).
 - `src/world/scene.ts` builds the city block (road loop, buildings, cars, trees, lamps) and the office (walls with studs, floors, furniture, MEMOBRICK pennants) with an orthographic camera. Drag to pan, scroll or pinch to zoom, click a figure to open that agent.
 - Figures use the parametric builder in `src/minifig/` with `src/world/looks.ts` matching each approved portrait. States: working (typing, speech bubble with the task), needs Eden (full color plus red badge), idle or not created (gray ghost). Live "working" needs `marketing/status/<agent>.json`, which comes in stage 4.
+
+## Stage 4: panels, chat and live data (built, waiting for approval)
+- Agent panel ("Lo que hace"): click a figure or a sidebar row. Shows Ahora, the agent's pending items with "Te necesita" and "Ver" (opens the draft), the last report, and "Chatear aquí" / "Armarlo con Betty".
+- Chat with Betty: `server/chat.ts`, official `@anthropic-ai/sdk`, model `claude-opus-5-5`, effort low, server-side refusal fallback on. The system prompt is rebuilt from the repo on every message (team, pending queue, reports, sales week). Credentials come from the owner's environment; chats saved in `os/data/chats/` (gitignored). Not tested against the live API in the cloud session (no key there); the missing-key message was tested.
+- Te toca: Aprobar / Editar (writes `changes: <note>`) / Rechazar, via `server/actions.ts` -> `setQueueStatus`, which only rewrites that item's Status line and refuses already-decided items. Only accepted from localhost.
+- Para Eden (reports), Dashboard, department cards, Agentes por crear, document viewer for any file under `marketing/`.
+- Live status convention: `marketing/status/<agent>.json` `{state, task, updated}`, added to the memobrick-run skill and every agent file. A "working" status older than 6 hours shows as idle.

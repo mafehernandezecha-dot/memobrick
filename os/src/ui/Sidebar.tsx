@@ -1,5 +1,6 @@
 import { APPROVALS_DESK } from '../../server/parse';
 import type { AgentView, DashboardState } from '../../server/state';
+import { useActions } from './context';
 import { Logo } from './Logo';
 
 export type View =
@@ -7,15 +8,15 @@ export type View =
   | { kind: 'dashboard' }
   | { kind: 'para' }
   | { kind: 'tetoca' }
-  | { kind: 'nuevo' }
-  | { kind: 'department'; name: string }
-  | { kind: 'agent'; name: string };
+  | { kind: 'porcrear' }
+  | { kind: 'department'; name: string };
 
 type Props = { state: DashboardState; view: View; onNavigate: (v: View) => void };
 
 const same = (a: View, b: View) => JSON.stringify(a) === JSON.stringify(b);
 
 export function Sidebar({ state, view, onNavigate }: Props) {
+  const { openChat, openAgent } = useActions();
   const active = state.agents.filter((a) => a.status === 'active');
   const toCreate = state.agents.filter((a) => a.status !== 'active');
   const deptColor = new Map(state.departments.map((d) => [d.name, d.color]));
@@ -37,7 +38,7 @@ export function Sidebar({ state, view, onNavigate }: Props) {
         <span className="brand-name">{state.appName}</span>
       </div>
 
-      <button className="btn-lime" onClick={() => onNavigate({ kind: 'nuevo' })}>
+      <button className="btn-lime" onClick={() => openChat('Necesito un trabajo nuevo: ')}>
         + Nuevo trabajo
       </button>
 
@@ -66,16 +67,16 @@ export function Sidebar({ state, view, onNavigate }: Props) {
       <h2 className="side-heading">Tus agentes</h2>
       <div className="agent-list">
         {active.map((a) => (
-          <AgentRow key={a.name} agent={a} color={deptColor.get(a.department ?? '')} view={view} onNavigate={onNavigate} />
+          <AgentRow key={a.name} agent={a} color={deptColor.get(a.department ?? '')} onOpen={openAgent} />
         ))}
       </div>
 
-      <h2 className="side-heading">
+      <button className={`side-heading side-link ${same({ kind: 'porcrear' }, view) ? 'is-active' : ''}`} onClick={() => onNavigate({ kind: 'porcrear' })}>
         Por crear <span className="count">{toCreate.length}</span>
-      </h2>
+      </button>
       <div className="agent-list">
         {toCreate.map((a) => (
-          <AgentRow key={a.name} agent={a} ghost color={deptColor.get(a.department ?? '')} view={view} onNavigate={onNavigate} />
+          <AgentRow key={a.name} agent={a} ghost color={deptColor.get(a.department ?? '')} onOpen={openAgent} />
         ))}
       </div>
 
@@ -84,12 +85,11 @@ export function Sidebar({ state, view, onNavigate }: Props) {
   );
 }
 
-function AgentRow({ agent, ghost, color, view, onNavigate }: { agent: AgentView; ghost?: boolean; color?: string; view: View; onNavigate: (v: View) => void }) {
-  const target: View = { kind: 'agent', name: agent.name };
+function AgentRow({ agent, ghost, color, onOpen }: { agent: AgentView; ghost?: boolean; color?: string; onOpen: (name: string) => void }) {
   const live = agent.live?.state;
   const dotClass = live === 'working' ? 'live-working' : live === 'needs_me' || agent.pending > 0 ? 'live-needs' : live === 'idle' ? 'live-idle' : 'live-unknown';
   return (
-    <button className={`agent-row ${ghost ? 'is-ghost' : ''} ${same(target, view) ? 'is-active' : ''}`} onClick={() => onNavigate(target)}>
+    <button className={`agent-row ${ghost ? 'is-ghost' : ''}`} onClick={() => onOpen(agent.name)}>
       <img className="avatar" src={`/${agent.avatar}`} alt="" loading="lazy" />
       <span className="agent-text">
         <span className="agent-name">
