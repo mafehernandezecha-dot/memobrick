@@ -191,7 +191,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: e91580d
 - Reason: `/pages/blog-post` is a 100% copy of the summer souvenirs article. The fix is to hide the page and 301 it to the article.
 - Expires: 2026-12-31
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-2
 - Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
 
