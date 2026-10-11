@@ -84,7 +84,7 @@ Freddy, the cheerful messenger: swept-back dark-brown hair, confident lopsided g
 
 ## 19. Jenny (peach)
 
-Jenny, cheerful and bubbly: high ponytail with a scrunchie, white blouse with a pink cardigan under a light-wash denim jacket, bright smile, holding a phone. Peach backdrop.
+Jenny, the sensitive one: long straight auburn hair with a center part, worried teary expression with raised brows, silver-gray tank top, dark-blue jeans. Peach backdrop.
 
 ## 20. Efraín (fresh green)
 
