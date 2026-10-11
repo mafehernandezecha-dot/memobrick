@@ -4,27 +4,27 @@
   "ownerName": "Eden",
   "departments": [
     {
-      "name": "Dirección",
+      "name": "Leadership",
       "color": "#4B5563"
     },
     {
-      "name": "Coordinación",
+      "name": "Coordination",
       "color": "#9AA0A6"
     },
     {
-      "name": "Analítica",
+      "name": "Analytics",
       "color": "#F06A9B"
     },
     {
-      "name": "SEO y blog",
+      "name": "SEO & Blog",
       "color": "#34A853"
     },
     {
-      "name": "Alcance y PR",
+      "name": "Outreach & PR",
       "color": "#C9A227"
     },
     {
-      "name": "Redes",
+      "name": "Social",
       "color": "#8E5BD9"
     },
     {
@@ -32,7 +32,7 @@
       "color": "#3B82F6"
     },
     {
-      "name": "Conversión",
+      "name": "Conversion",
       "color": "#14B8A6"
     }
   ],
@@ -40,8 +40,8 @@
     {
       "name": "aprobaciones",
       "character": "betty",
-      "role": "Te habla y lleva tus prioridades y aprobaciones",
-      "department": "Dirección",
+      "role": "Talks with you and keeps your priorities and approvals",
+      "department": "Leadership",
       "status": "active",
       "folder": "marketing/approvals",
       "agentFile": null,
@@ -53,8 +53,8 @@
     {
       "name": "marketing-coordinator",
       "character": "armando",
-      "role": "Coordina el equipo y arma tu fila de aprobaciones",
-      "department": "Coordinación",
+      "role": "Coordinates the team and builds your approval queue",
+      "department": "Coordination",
       "status": "active",
       "folder": "marketing/coordination/coordinator",
       "agentFile": ".claude/agents/marketing-coordinator.md",
@@ -67,8 +67,8 @@
     {
       "name": "growth-analyst",
       "character": "nicolas",
-      "role": "Números de ventas cada semana",
-      "department": "Analítica",
+      "role": "Weekly sales numbers",
+      "department": "Analytics",
       "status": "active",
       "folder": "marketing/analytics/growth-analyst",
       "agentFile": ".claude/agents/growth-analyst.md",
@@ -80,8 +80,8 @@
     {
       "name": "seo-strategist",
       "character": "mariana",
-      "role": "Mapa de palabras clave y briefs",
-      "department": "SEO y blog",
+      "role": "Keyword map and article briefs",
+      "department": "SEO & Blog",
       "status": "active",
       "folder": "marketing/seo/strategist",
       "agentFile": ".claude/agents/seo-strategist.md",
@@ -93,8 +93,8 @@
     {
       "name": "seo-blog-writer",
       "character": "sandra",
-      "role": "Escribe artículos y páginas",
-      "department": "SEO y blog",
+      "role": "Writes articles and pages",
+      "department": "SEO & Blog",
       "status": "active",
       "folder": "marketing/seo/writer",
       "agentFile": ".claude/agents/seo-blog-writer.md",
@@ -106,8 +106,8 @@
     {
       "name": "seo-technical",
       "character": "inesita",
-      "role": "Salud técnica del sitio",
-      "department": "SEO y blog",
+      "role": "Technical site health",
+      "department": "SEO & Blog",
       "status": "active",
       "folder": "marketing/seo/technical",
       "agentFile": ".claude/agents/seo-technical.md",
@@ -119,8 +119,8 @@
     {
       "name": "outreach-gift-guide-pr",
       "character": "mario",
-      "role": "Guías de regalos y prensa",
-      "department": "Alcance y PR",
+      "role": "Gift guides and press",
+      "department": "Outreach & PR",
       "status": "active",
       "folder": "marketing/outreach/gift-guide-pr",
       "agentFile": ".claude/agents/outreach-gift-guide-pr.md",
@@ -132,8 +132,8 @@
     {
       "name": "social-planner",
       "character": "hugo",
-      "role": "Planea las publicaciones de la semana",
-      "department": "Redes",
+      "role": "Plans the week's posts",
+      "department": "Social",
       "status": "active",
       "folder": "marketing/social/planner",
       "agentFile": ".claude/agents/social-planner.md",
@@ -145,8 +145,8 @@
     {
       "name": "social-publisher",
       "character": "freddy",
-      "role": "Programa y verifica publicaciones",
-      "department": "Redes",
+      "role": "Schedules and checks posts",
+      "department": "Social",
       "status": "active",
       "folder": "marketing/social/publisher",
       "agentFile": ".claude/agents/social-publisher.md",
@@ -158,7 +158,7 @@
     {
       "name": "email-flow-optimizer",
       "character": "auramaria",
-      "role": "Mejora los flujos de Omnisend",
+      "role": "Improves the Omnisend flows",
       "department": "Email",
       "status": "active",
       "folder": "marketing/email/flow-optimizer",
@@ -171,7 +171,7 @@
     {
       "name": "email-campaign-writer",
       "character": "marcela",
-      "role": "Campañas de email y plan de temporada",
+      "role": "Email campaigns and holiday plan",
       "department": "Email",
       "status": "active",
       "folder": "marketing/email/campaign-writer",
@@ -184,8 +184,8 @@
     {
       "name": "ads-analyst",
       "character": "daniel",
-      "role": "Revisa anuncios de Meta y propone pruebas",
-      "department": "Analítica",
+      "role": "Reviews Meta ads and proposes tests",
+      "department": "Analytics",
       "status": "planned",
       "displayName": "Daniel",
       "machine": "",
@@ -197,8 +197,8 @@
     {
       "name": "outreach-link-builder",
       "character": "bertha",
-      "role": "Consigue enlaces y menciones",
-      "department": "Alcance y PR",
+      "role": "Earns links and mentions",
+      "department": "Outreach & PR",
       "status": "planned",
       "displayName": "Bertha",
       "machine": "",
@@ -210,8 +210,8 @@
     {
       "name": "outreach-creator-scout",
       "character": "mariabeatriz",
-      "role": "Busca creadores de contenido",
-      "department": "Alcance y PR",
+      "role": "Finds content creators",
+      "department": "Outreach & PR",
       "status": "planned",
       "displayName": "María Beatriz",
       "machine": "",
@@ -223,8 +223,8 @@
     {
       "name": "social-community-manager",
       "character": "patricia",
-      "role": "Responde comentarios y detecta compradores",
-      "department": "Redes",
+      "role": "Answers comments and spots buyers",
+      "department": "Social",
       "status": "planned",
       "displayName": "Patricia",
       "machine": "",
@@ -236,8 +236,8 @@
     {
       "name": "conversion-auditor",
       "character": "wilson",
-      "role": "Prueba el camino de compra",
-      "department": "Conversión",
+      "role": "Tests the checkout path",
+      "department": "Conversion",
       "status": "planned",
       "displayName": "Wilson",
       "machine": "",
@@ -249,8 +249,8 @@
     {
       "name": "conversion-reviews-ugc",
       "character": "margarita",
-      "role": "Reseñas e historias de clientes",
-      "department": "Conversión",
+      "role": "Customer reviews and stories",
+      "department": "Conversion",
       "status": "planned",
       "displayName": "Margarita",
       "machine": "",
@@ -262,8 +262,8 @@
     {
       "name": "customer-support",
       "character": "sofia",
-      "role": "Atención al cliente (más adelante)",
-      "department": "Conversión",
+      "role": "Customer support (later)",
+      "department": "Conversion",
       "status": "planned",
       "displayName": "Sofía",
       "machine": "",
@@ -275,8 +275,8 @@
     {
       "name": "corporate-gifting",
       "character": "roberto",
-      "role": "Regalos corporativos (más adelante)",
-      "department": "Alcance y PR",
+      "role": "Corporate gifts (later)",
+      "department": "Outreach & PR",
       "status": "planned",
       "displayName": "Roberto",
       "machine": "",
@@ -288,8 +288,8 @@
     {
       "name": "order-coordinator",
       "character": "efrain",
-      "role": "Coordinación de pedidos (más adelante)",
-      "department": "Coordinación",
+      "role": "Order coordination (later)",
+      "department": "Coordination",
       "status": "planned",
       "displayName": "Efraín",
       "machine": "",
@@ -301,8 +301,8 @@
     {
       "name": "inventory",
       "character": "saul",
-      "role": "Inventario (más adelante)",
-      "department": "Coordinación",
+      "role": "Inventory (later)",
+      "department": "Coordination",
       "status": "planned",
       "displayName": "Saúl",
       "machine": "",
@@ -314,7 +314,7 @@
     {
       "name": "extra",
       "character": "jenny",
-      "role": "Sin rol por ahora",
+      "role": "No role yet",
       "department": null,
       "status": "extra",
       "displayName": "Jenny",

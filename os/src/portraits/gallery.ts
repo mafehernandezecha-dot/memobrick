@@ -21,7 +21,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 const sheet = document.getElementById('sheet')!;
-sheet.innerHTML = `<h1>Reparto Memobrick</h1><p class="sub">22 minifiguras · un solo constructor · retrato y cuerpo completo</p><div class="grid"></div>`;
+sheet.innerHTML = `<h1>Memobrick cast</h1><p class="sub">22 minifigures · one builder · portrait and full body</p><div class="grid"></div>`;
 const grid = sheet.querySelector('.grid')!;
 const portraits: Record<string, string> = {};
 

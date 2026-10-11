@@ -1,12 +1,12 @@
 # Memobrick OS
 
-Tu oficina de agentes de marketing en LEGO. Corre en tu computadora.
+Your marketing agents' office, in LEGO. It runs on your computer.
 
-## Abrirla
+## Open it
 
-1. Instala Node.js 20 o más nuevo.
-2. Conecta Claude para el chat con Betty (una vez): define `ANTHROPIC_API_KEY` en tu terminal, o corre `ant auth login`.
-3. En la carpeta del repositorio:
+1. Install Node.js 20 or newer.
+2. Connect Claude for the chat with Betty (once): set `ANTHROPIC_API_KEY` in your terminal, or run `ant auth login`.
+3. In the repository folder:
 
 ```bash
 cd os
@@ -14,18 +14,18 @@ npm install
 npm run os
 ```
 
-4. Abre la dirección que aparece (por ejemplo http://localhost:5173).
+4. Open the address it prints (for example http://localhost:5173).
 
-## De dónde salen los datos
+## Where the data comes from
 
-Todo se lee de este repositorio cada vez que la app se actualiza (cada 15 segundos):
+Everything is read from this repository each time the app refreshes (every 15 seconds):
 
-- `os/agents.json`: el equipo. Edítalo para agregar o renombrar un agente.
-- `marketing/approvals/queue.md`: lo que te toca decidir. Aprobar, Editar y Rechazar escriben aquí la línea `Status:` de esa propuesta.
-- `marketing/reports/`: los reportes de cada corrida (Para Eden).
-- `marketing/shared/scorecard.md`: las ventas de la semana.
-- `marketing/status/<agente>.json`: el estado en vivo que cada agente escribe al empezar y terminar.
+- `os/agents.json`: the team. Edit it to add or rename an agent.
+- `marketing/approvals/queue.md`: what is waiting on your decision. Approve, Edit and Reject write that proposal's `Status:` line here.
+- `marketing/reports/`: each run's report (For Eden).
+- `marketing/shared/scorecard.md`: the week's sales.
+- `marketing/status/<agent>.json`: the live status each agent writes when it starts and finishes.
 
-Los agentes trabajan en la rama `main`. Para ver lo último, haz `git pull` en tu copia; para que vean tus decisiones, haz commit y push de `marketing/approvals/queue.md`.
+The agents work on the `main` branch. To see their latest work, run `git pull` in your copy; for them to see your decisions, commit and push `marketing/approvals/queue.md`.
 
-Las decisiones y el chat solo funcionan desde la misma computadora donde corre la app. Las conversaciones con Betty se guardan en `os/data/chats/` (no se suben al repositorio).
+Decisions and chat only work in a browser on the computer running the app. Conversations with Betty are saved in `os/data/chats/` (never pushed to the repository).

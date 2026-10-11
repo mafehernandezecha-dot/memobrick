@@ -3,7 +3,7 @@
 Usage: python3 scripts/contact-sheet.py [closeup_id ...]
 Writes review/contact-sheet.png (every agent) and review/closeups.png
 (the given characters, default betty armando mariana) with the white rounded
-border the UI will use. Missing portraits show as a gray "Pendiente" tile.
+border the UI will use. Missing portraits show as a gray "Pending" tile.
 """
 import json
 import pathlib
@@ -21,7 +21,7 @@ MUTED = (110, 110, 110)
 
 cfg = json.loads((ROOT / "agents.json").read_text())
 dept_color = {d["name"]: d["color"] for d in cfg["departments"]}
-status_label = {"active": "Activo", "planned": "Planeado", "extra": "Extra"}
+status_label = {"active": "Active", "planned": "Planned", "extra": "Extra"}
 
 
 def tile(agent, size):
@@ -40,7 +40,7 @@ def tile(agent, size):
         img = Image.new("RGB", (inner, inner), (205, 205, 205))
         d = ImageDraw.Draw(img)
         f = ImageFont.truetype(BOLD, inner // 9)
-        d.text((inner / 2, inner / 2), "Pendiente", font=f, fill=(120, 120, 120), anchor="mm")
+        d.text((inner / 2, inner / 2), "Pending", font=f, fill=(120, 120, 120), anchor="mm")
     imask = Image.new("L", (inner, inner), 0)
     ImageDraw.Draw(imask).rounded_rectangle((0, 0, inner - 1, inner - 1), radius - border, fill=255)
     canvas.paste(img, (border, border), imask)
@@ -55,9 +55,9 @@ def contact_sheet(agents):
     h = head + rows * (cell + label_h) + (rows + 1) * pad
     sheet = Image.new("RGB", (w, h), BG)
     d = ImageDraw.Draw(sheet)
-    d.text((pad, 34), f"{cfg['appName']}: el equipo", font=ImageFont.truetype(BOLD, 44), fill=INK)
+    d.text((pad, 34), f"{cfg['appName']}: the team", font=ImageFont.truetype(BOLD, 44), fill=INK)
     have = sum((ROOT / a["avatar"]).exists() for a in agents)
-    d.text((pad, 88), f"{have} de {len(agents)} retratos listos", font=ImageFont.truetype(REG, 22), fill=MUTED)
+    d.text((pad, 88), f"{have} of {len(agents)} portraits ready", font=ImageFont.truetype(REG, 22), fill=MUTED)
     name_f, role_f = ImageFont.truetype(BOLD, 24), ImageFont.truetype(REG, 17)
     for i, a in enumerate(agents):
         x = pad + (i % cols) * (cell + pad)
@@ -67,7 +67,7 @@ def contact_sheet(agents):
         color = dept_color.get(a["department"], "#999999")
         d.rounded_rectangle((x, y + cell + 12, x + 10, y + cell + 36), 3, fill=color)
         d.text((x + 18, y + cell + 10), a["displayName"], font=name_f, fill=INK)
-        d.text((x + 18, y + cell + 42), f"{a['department'] or 'Sin área'} · {status_label.get(a['status'], a['status'])}", font=role_f, fill=MUTED)
+        d.text((x + 18, y + cell + 42), f"{a['department'] or 'No department'} · {status_label.get(a['status'], a['status'])}", font=role_f, fill=MUTED)
     return sheet
 
 

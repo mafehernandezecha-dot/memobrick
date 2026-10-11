@@ -25,12 +25,12 @@ export function DocViewer({ path, onClose }: { path: string; onClose: () => void
       <div className="modal doc" role="dialog" aria-label={path} onClick={(e) => e.stopPropagation()}>
         <header className="modal-head">
           <span className="doc-path">{path}</span>
-          <button className="icon-btn" aria-label="Cerrar" onClick={onClose}>
+          <button className="icon-btn" aria-label="Close" onClick={onClose}>
             ✕
           </button>
         </header>
         <div className="doc-body">
-          {error ? <p className="muted">{error}</p> : text === null ? <p className="muted">Abriendo…</p> : <Markdown text={text} />}
+          {error ? <p className="muted">{error}</p> : text === null ? <p className="muted">Opening…</p> : <Markdown text={text} />}
         </div>
       </div>
     </div>

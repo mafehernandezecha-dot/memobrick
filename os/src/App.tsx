@@ -21,7 +21,7 @@ export function App() {
   const refresh = useCallback(
     () =>
       fetch('/api/state')
-        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`El servidor respondió ${r.status}`))))
+        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`The server answered ${r.status}`))))
         .then((s) => {
           setState(s);
           setError(null);
@@ -56,7 +56,7 @@ export function App() {
   if (!state) {
     return (
       <div className="boot">
-        {error ? `No pude leer los datos del equipo: ${error}. Revisa que la app esté corriendo con "npm run os".` : 'Cargando el equipo…'}
+        {error ? `Couldn't read the team data: ${error}. Check that the app is running with "npm run os".` : 'Loading the team…'}
       </div>
     );
   }
@@ -70,7 +70,7 @@ export function App() {
     <ActionsContext.Provider value={actions}>
       <div className={`app ${menuOpen ? 'menu-open' : ''}`}>
         <Sidebar state={state} view={view} onNavigate={go} />
-        <button className="menu-toggle" aria-label="Abrir menú" onClick={() => setMenuOpen((o) => !o)}>
+        <button className="menu-toggle" aria-label="Open menu" onClick={() => setMenuOpen((o) => !o)}>
           <span />
           <span />
           <span />

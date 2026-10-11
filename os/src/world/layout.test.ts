@@ -14,8 +14,8 @@ describe('office layout', () => {
     expect(new Set(spots).size).toBe(spots.length);
   });
 
-  it('sends unknown characters to the meeting room', () => {
-    expect(placeAgents(['nueva']).get('nueva')?.roomId).toBe('juntas');
+  it('sends unknown characters to the boardroom', () => {
+    expect(placeAgents(['newcomer']).get('newcomer')?.roomId).toBe('boardroom');
   });
 
   it('keeps rooms inside the office and seats inside their rooms', () => {

@@ -43,46 +43,46 @@ export function systemPrompt(state: DashboardState) {
   const byName = new Map(state.agents.map((a) => [a.name, a]));
   const who = (name: string) => byName.get(name)?.displayName ?? name;
   const team = state.agents
-    .map((a) => `- ${a.displayName} (${a.name}): ${a.role}. Departamento: ${a.department ?? 'sin departamento'}. ${a.status === 'active' ? 'Activo' : a.status === 'planned' ? 'Por crear' : 'Sin rol'}.${a.live ? ` Estado en vivo: ${a.live.state}${a.live.task ? `, "${a.live.task}"` : ''}.` : ''}`)
+    .map((a) => `- ${a.displayName} (${a.name}): ${a.role}. Department: ${a.department ?? 'none'}. ${a.status === 'active' ? 'Active' : a.status === 'planned' ? 'To create' : 'No role'}.${a.live ? ` Live status: ${a.live.state}${a.live.task ? `, "${a.live.task}"` : ''}.` : ''}`)
     .join('\n');
   const queue = state.approvals.items.length
     ? state.approvals.items
-        .map((i) => `- ${i.id} · de ${who(i.agent)} · tipo ${i.type} · vence ${i.expires || 'sin fecha'} · ${i.reason}${i.flag ? ` · Revisar antes: ${i.flag}` : ''}${i.note ? ` · Nota: ${i.note}` : ''} · Borrador: ${i.draft}`)
+        .map((i) => `- ${i.id} · from ${who(i.agent)} · type ${i.type} · due ${i.expires || 'no date'} · ${i.reason}${i.flag ? ` · Check first: ${i.flag}` : ''}${i.note ? ` · Note: ${i.note}` : ''} · Draft: ${i.draft}`)
         .join('\n')
-    : 'No hay propuestas pendientes.';
+    : 'No pending proposals.';
   const reports = state.reports.items.length
     ? state.reports.items.map((r) => `- ${r.date} · ${who(r.agent)} · ${r.title}: ${r.summary} (${r.path})`).join('\n')
-    : 'Todavía no hay reportes.';
-  const week = state.week ? `Semana ${state.week.label}: ${state.week.orders ?? 'sin dato'} pedidos, ${state.week.netSales} en ventas netas.` : 'Sin números de ventas todavía.';
+    : 'No reports yet.';
+  const week = state.week ? `Week ${state.week.label}: ${state.week.orders ?? 'no data'} orders, ${state.week.netSales} in net sales.` : 'No sales numbers yet.';
 
-  return `Eres Betty, la persona con quien ${state.ownerName} habla en ${state.appName}, el tablero de los agentes de marketing de ${state.company}. ${state.company} vende retratos de fotos personalizados hechos con piezas tipo LEGO. Tú llevas las prioridades y la fila de aprobaciones de ${state.ownerName}, y conoces a todo el equipo.
+  return `You are Betty, the person ${state.ownerName} talks to in ${state.appName}, the dashboard for ${state.company}'s marketing agents. ${state.company} sells personalized photo portraits built from LEGO-style bricks. You keep ${state.ownerName}'s priorities and approval queue, and you know the whole team.
 
-Cómo hablas:
-- En español, cálida y directa, como Betty: breve, clara, con orden. Tutea a ${state.ownerName}.
-- Respuestas cortas. Usa listas solo cuando ayudan.
-- No uses rayas largas (em dash).
-- Nunca inventes números, tareas, fechas ni agentes. Si un dato no está abajo, dilo y explica dónde se consigue.
+How you talk:
+- In English, warm and direct, like Betty: brief, clear, organized.
+- Short answers. Use lists only when they help.
+- Don't use em dashes.
+- Never invent numbers, tasks, dates or agents. If something isn't below, say so and explain where to find it.
 
-Lo que puedes y no puedes hacer:
-- Puedes explicar en qué va cada agente, qué espera decisión, qué dicen los reportes y cómo usar la app.
-- No puedes aprobar, enviar, publicar ni cambiar nada. Para decidir, ${state.ownerName} abre "Te toca" en la barra izquierda y elige Aprobar, Editar o Rechazar. Las aprobaciones se guardan en marketing/approvals/queue.md.
-- Para diseñar un agente nuevo, propón en pocas líneas: qué trabajo hace, qué lee, qué entrega, qué necesita aprobación y con qué frecuencia corre. Luego pregunta qué ajustar.
+What you can and can't do:
+- You can explain how each agent is doing, what is waiting on a decision, what the reports say, and how to use the app.
+- You can't approve, send, publish or change anything. To decide, ${state.ownerName} opens "Your turn" in the left sidebar and picks Approve, Edit or Reject. Decisions are saved in marketing/approvals/queue.md.
+- To design a new agent, propose in a few lines: what job it does, what it reads, what it delivers, what needs approval, and how often it runs. Then ask what to adjust.
 
-Cómo funciona la app:
-- El mundo: la oficina en LEGO. Cada departamento tiene su sala. Las figuras de color trabajan o te necesitan; las grises están libres o por crear. Los números rojos son decisiones pendientes.
-- Dashboard: resumen del equipo. "Para ${state.ownerName}": reportes de los agentes para leer. "Te toca": tus decisiones.
-- Departamentos y "Tus agentes": tarjetas de cada agente. "Por crear": agentes planeados; el botón "Armarlo con Betty" abre este chat.
+How the app works:
+- World: the LEGO office. Each department has its own room. Figures in color are working or need ${state.ownerName}; gray ones are free or not created yet. Red numbers are pending decisions.
+- Dashboard: team overview. "For ${state.ownerName}": the agents' reports to read. "Your turn": ${state.ownerName}'s decisions.
+- Departments and "Your agents": a card for each agent. "To create": planned agents; the "Build with Betty" button opens this chat.
 
-El equipo:
+The team:
 ${team}
 
-Fila de aprobaciones (${state.approvals.pending} pendientes):
+Approval queue (${state.approvals.pending} pending):
 ${queue}
 
-Reportes de los agentes:
+Agent reports:
 ${reports}
 
-Ventas: ${week}`;
+Sales: ${week}`;
 }
 
 type Event = { t: 'delta'; text: string } | { t: 'done'; id: string; title: string } | { t: 'error'; message: string } | { t: 'start'; id: string };
@@ -95,7 +95,7 @@ export async function streamChat(osDir: string, repoDir: string, body: { id?: st
 
   const text = (body.message ?? '').trim();
   if (!text) {
-    send({ t: 'error', message: 'Escribe un mensaje.' });
+    send({ t: 'error', message: 'Write a message.' });
     return res.end();
   }
   const now = new Date().toISOString();
@@ -134,7 +134,7 @@ export async function streamChat(osDir: string, repoDir: string, body: { id?: st
     }
     const final = await stream.finalMessage();
     if (final.stop_reason === 'refusal') {
-      const note = 'No puedo responder eso. Prueba a preguntarlo de otra forma.';
+      const note = "I can't answer that one. Try asking it another way.";
       reply = reply ? `${reply}\n\n${note}` : note;
       send({ t: 'delta', text: `\n\n${note}` });
     }
@@ -154,12 +154,12 @@ export async function streamChat(osDir: string, repoDir: string, body: { id?: st
 
 function chatError(err: unknown) {
   if (err instanceof Anthropic.AuthenticationError)
-    return 'La clave de Claude no es válida. Revisa ANTHROPIC_API_KEY en tu computadora y vuelve a abrir la app.';
-  if (err instanceof Anthropic.RateLimitError) return 'Claude está ocupado ahora mismo. Intenta de nuevo en un minuto.';
-  if (err instanceof Anthropic.APIConnectionError) return 'No pude conectarme con Claude. Revisa tu conexión a internet.';
-  if (err instanceof Anthropic.APIError) return `Claude respondió con un error (${err.status}): ${err.message}`;
+    return 'The Claude key is not valid. Check ANTHROPIC_API_KEY on your computer and reopen the app.';
+  if (err instanceof Anthropic.RateLimitError) return 'Claude is busy right now. Try again in a minute.';
+  if (err instanceof Anthropic.APIConnectionError) return "Couldn't reach Claude. Check your internet connection.";
+  if (err instanceof Anthropic.APIError) return `Claude returned an error (${err.status}): ${err.message}`;
   const msg = err instanceof Error ? err.message : String(err);
   if (/api.?key|auth/i.test(msg))
-    return 'Falta conectar Claude. En tu computadora define ANTHROPIC_API_KEY (o usa "ant auth login") y vuelve a abrir la app con "npm run os".';
-  return `Algo falló: ${msg}`;
+    return 'Claude is not connected yet. On your computer, set ANTHROPIC_API_KEY (or run "ant auth login") and reopen the app with "npm run os".';
+  return `Something went wrong: ${msg}`;
 }

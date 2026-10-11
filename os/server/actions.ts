@@ -18,8 +18,8 @@ export function readMarketingFile(repoDir: string, rel: string) {
   const base = resolve(repoDir, 'marketing');
   const full = resolve(repoDir, rel);
   const inside = relative(base, full);
-  if (!inside || inside.startsWith('..') || inside.includes('\0')) throw new Error('Solo puedo mostrar archivos de la carpeta marketing.');
-  if (!/\.(md|txt|json|csv)$/i.test(full)) throw new Error('Ese tipo de archivo no se puede mostrar.');
-  if (!existsSync(full)) throw new Error(`No existe ${rel}.`);
+  if (!inside || inside.startsWith('..') || inside.includes('\0')) throw new Error('Only files in the marketing folder can be shown.');
+  if (!/\.(md|txt|json|csv)$/i.test(full)) throw new Error("That file type can't be shown.");
+  if (!existsSync(full)) throw new Error(`${rel} doesn't exist.`);
   return readFileSync(full, 'utf8');
 }

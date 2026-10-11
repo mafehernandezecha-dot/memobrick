@@ -30,11 +30,11 @@ Every agent run follows these steps in order.
 The owner's dashboard (Memobrick OS) shows each agent working, idle, or waiting on the owner from `marketing/status/<agent>.json`, where `<agent>` is your agent name (for example `seo-technical`). Write the whole file each time:
 
 ```json
-{"state": "working", "task": "Auditoría técnica del sitio", "updated": "2026-10-11T09:00:00-04:00"}
+{"state": "working", "task": "Technical site audit", "updated": "2026-10-11T09:00:00-04:00"}
 ```
 
 - `state`: `working` while you run, `needs_me` at the end if you proposed items for approval, `idle` otherwise.
-- `task`: a few words in Spanish saying what you are doing, shown in a speech bubble over your figure. Empty when idle.
+- `task`: a few words in English saying what you are doing, shown in a speech bubble over your figure. Empty when idle.
 - `updated`: the current time in ISO 8601 with the ET offset.
 
 This file is the only exception to the write list in step 5. Write it in dry run mode too.

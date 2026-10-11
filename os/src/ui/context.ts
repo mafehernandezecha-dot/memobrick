@@ -15,16 +15,16 @@ export const useActions = () => useContext(ActionsContext)!;
 
 export const agentByName = (state: DashboardState, name: string) => state.agents.find((a) => a.name === name);
 
-const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 export function formatDay(iso: string) {
   const [, m, d] = iso.split('-').map(Number);
-  return m && d ? `${d} ${MONTHS[m - 1]}` : iso;
+  return m && d ? `${MONTHS[m - 1]} ${d}` : iso;
 }
 
 export const TYPE_LABEL: Record<string, string> = {
-  publish: 'Publicar',
-  send: 'Enviar',
-  'site-change': 'Cambio en el sitio',
-  ad: 'Anuncio',
-  offer: 'Oferta',
+  publish: 'Publish',
+  send: 'Send',
+  'site-change': 'Site change',
+  ad: 'Ad',
+  offer: 'Offer',
 };

@@ -79,14 +79,14 @@ describe('setQueueStatus', () => {
     expect(parseQueue(out).map((i) => i.status)).toEqual(['pending', 'approved']);
   });
   it('refuses unknown or already decided items', () => {
-    expect(() => setQueueStatus(md, 'A-9', 'approved')).toThrow(/No encontré/);
-    expect(() => setQueueStatus(setQueueStatus(md, 'A-1', 'rejected'), 'A-1', 'approved')).toThrow(/ya tiene decisión/);
+    expect(() => setQueueStatus(md, 'A-9', 'approved')).toThrow(/Couldn't find/);
+    expect(() => setQueueStatus(setQueueStatus(md, 'A-1', 'rejected'), 'A-1', 'approved')).toThrow(/already has a decision/);
   });
 });
 
 describe('statusFor', () => {
   it('writes changes notes on one line and requires text', () => {
-    expect(statusFor({ decision: 'changes', note: ' más corto\n por favor ' })).toBe('changes: más corto por favor');
+    expect(statusFor({ decision: 'changes', note: ' shorter\n please ' })).toBe('changes: shorter please');
     expect(statusFor({ decision: 'approved' })).toBe('approved');
     expect(() => statusFor({ decision: 'changes', note: '  ' })).toThrow();
   });

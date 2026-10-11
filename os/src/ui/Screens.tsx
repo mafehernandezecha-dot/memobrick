@@ -16,7 +16,7 @@ function Page({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-/** Te toca: every pending proposal, with Approve / Edit / Reject. */
+/** Your turn: every pending proposal, with Approve / Edit / Reject. */
 export function TeToca({ state }: { state: AppState }) {
   const { refresh, openDoc, openAgent } = useActions();
   const [editing, setEditing] = useState<string | null>(null);
@@ -30,9 +30,9 @@ export function TeToca({ state }: { state: AppState }) {
     const res = await fetch(`/api/approvals/${id}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ decision, note }) });
     const body = await res.json().catch(() => ({}));
     setBusy(null);
-    if (!res.ok) return setMessage({ ok: false, text: body.error ?? 'No pude guardar la decisión.' });
-    const label = decision === 'approved' ? 'Aprobada' : decision === 'rejected' ? 'Rechazada' : 'Cambios pedidos';
-    setMessage({ ok: true, text: `${label}: ${id}. Se guardó en la fila de aprobaciones; el agente la verá en su próxima corrida.` });
+    if (!res.ok) return setMessage({ ok: false, text: body.error ?? "Couldn't save the decision." });
+    const label = decision === 'approved' ? 'Approved' : decision === 'rejected' ? 'Rejected' : 'Changes requested';
+    setMessage({ ok: true, text: `${label}: ${id}. Saved to the approval queue; the agent will see it on its next run.` });
     setEditing(null);
     setNote('');
     await refresh();
@@ -40,9 +40,9 @@ export function TeToca({ state }: { state: AppState }) {
 
   const items = [...state.approvals.items].sort((a, b) => (a.expires || '9').localeCompare(b.expires || '9'));
   return (
-    <Page title="Te toca">
+    <Page title="Your turn">
       <p className="page-intro">
-        {items.length ? `${items.length} propuestas esperan tu decisión. Las que vencen antes van primero.` : 'No hay nada esperando tu decisión. Cuando un agente proponga algo, aparece aquí.'}
+        {items.length ? `${items.length} proposals are waiting on your decision. The ones due soonest come first.` : 'Nothing is waiting on your decision. When an agent proposes something, it shows up here.'}
       </p>
       {message && <p className={`notice ${message.ok ? 'ok' : 'bad'}`}>{message.text}</p>}
       <div className="inbox">
@@ -61,19 +61,19 @@ export function TeToca({ state }: { state: AppState }) {
                 <p className="inbox-reason">{i.reason}</p>
                 <p className="inbox-meta">
                   <span className="chip">{TYPE_LABEL[i.type] ?? i.type}</span>
-                  {i.expires && <span className={isSoon(i.expires) ? 'soon' : ''}>Vence {formatDay(i.expires)}</span>}
+                  {i.expires && <span className={isSoon(i.expires) ? 'soon' : ''}>Due {formatDay(i.expires)}</span>}
                 </p>
-                {i.flag && <p className="inbox-flag">Revisa antes: {i.flag}</p>}
+                {i.flag && <p className="inbox-flag">Check first: {i.flag}</p>}
                 {i.note && <p className="inbox-note">{i.note}</p>}
                 {editing === i.id && (
                   <div className="edit-box">
-                    <textarea autoFocus rows={2} value={note} placeholder="¿Qué cambio quieres? El agente lo verá en su próxima corrida." onChange={(e) => setNote(e.target.value)} />
+                    <textarea autoFocus rows={2} value={note} placeholder="What should change? The agent will see it on its next run." onChange={(e) => setNote(e.target.value)} />
                     <div className="edit-actions">
                       <button className="btn-quiet small" onClick={() => setEditing(null)}>
-                        Cancelar
+                        Cancel
                       </button>
                       <button className="btn-dark small" disabled={!note.trim() || busy === i.id} onClick={() => decide(i.id, 'changes')}>
-                        Pedir cambios
+                        Request changes
                       </button>
                     </div>
                   </div>
@@ -82,17 +82,17 @@ export function TeToca({ state }: { state: AppState }) {
               <div className="inbox-actions">
                 {i.draft && (
                   <button className="btn-ghost" onClick={() => openDoc(i.draft)}>
-                    Ver
+                    View
                   </button>
                 )}
                 <button className="btn-approve" disabled={busy === i.id} onClick={() => decide(i.id, 'approved')}>
-                  Aprobar
+                  Approve
                 </button>
                 <button className="btn-quiet" disabled={busy === i.id} onClick={() => { setEditing(i.id); setNote(''); }}>
-                  Editar
+                  Edit
                 </button>
                 <button className="btn-reject" disabled={busy === i.id} onClick={() => decide(i.id, 'rejected')}>
-                  Rechazar
+                  Reject
                 </button>
               </div>
             </article>
@@ -105,14 +105,14 @@ export function TeToca({ state }: { state: AppState }) {
 
 const isSoon = (iso: string) => new Date(`${iso}T23:59:59`).getTime() - Date.now() < 3 * 86400000;
 
-/** Para Eden: the agents' run reports, newest first. */
+/** For Eden: the agents' run reports, newest first. */
 export function ParaTi({ state }: { state: AppState }) {
   const { openDoc } = useActions();
   const byDate = new Map<string, typeof state.reports.items>();
   for (const r of state.reports.items) byDate.set(r.date, [...(byDate.get(r.date) ?? []), r]);
   return (
-    <Page title={`Para ${state.ownerName}`}>
-      <p className="page-intro">{state.reports.items.length ? 'Lo que reportaron tus agentes en cada corrida.' : 'Todavía no hay reportes. Aparecen aquí cuando un agente termina una corrida.'}</p>
+    <Page title={`For ${state.ownerName}`}>
+      <p className="page-intro">{state.reports.items.length ? 'What your agents reported on each run.' : 'No reports yet. They show up here when an agent finishes a run.'}</p>
       {[...byDate].map(([date, list]) => (
         <div key={date} className="report-group">
           <h2 className="group-title">{formatDay(date)}</h2>
@@ -125,7 +125,7 @@ export function ParaTi({ state }: { state: AppState }) {
                   <strong>{a?.displayName ?? r.agent}</strong>
                   <span>{r.summary || r.title}</span>
                 </span>
-                <span className="btn-ghost">Leer</span>
+                <span className="btn-ghost">Read</span>
               </button>
             );
           })}
@@ -144,23 +144,23 @@ export function Dashboard({ state }: { state: AppState }) {
   return (
     <Page title="Dashboard">
       <div className="tiles">
-        <Tile n={state.liveConnected ? working : null} label="trabajando ahora" empty="Estado en vivo sin conectar" />
-        <Tile n={needing} label={needing === 1 ? 'agente te necesita' : 'agentes te necesitan'} tone="red" />
-        <Tile n={state.approvals.pending} label="propuestas por decidir" tone="red" />
-        <Tile n={state.reports.latestCount} label={latest ? `reportes del ${formatDay(latest)}` : 'reportes'} />
+        <Tile n={state.liveConnected ? working : null} label="working now" empty="Live status not connected" />
+        <Tile n={needing} label={needing === 1 ? 'agent needs you' : 'agents need you'} tone="red" />
+        <Tile n={state.approvals.pending} label="proposals to decide" tone="red" />
+        <Tile n={state.reports.latestCount} label={latest ? `reports from ${formatDay(latest)}` : 'reports'} />
       </div>
       {state.week && (
         <p className="week-line">
-          Ventas, semana {state.week.label}: <strong>{state.week.orders ?? 'sin dato'} pedidos</strong> · <strong>{state.week.netSales}</strong>
+          Sales, week {state.week.label}: <strong>{state.week.orders ?? 'no data'} orders</strong> · <strong>{state.week.netSales}</strong>
         </p>
       )}
       <table className="dept-table">
         <thead>
           <tr>
-            <th>Departamento</th>
-            <th>Activos</th>
-            <th>Por crear</th>
-            <th>Te necesitan</th>
+            <th>Department</th>
+            <th>Active</th>
+            <th>To create</th>
+            <th>Need you</th>
           </tr>
         </thead>
         <tbody>
@@ -202,17 +202,17 @@ export function AgentCard({ agent, state }: { agent: AgentView; state: AppState 
         <div className="card-body">
           <h3>{agent.displayName}</h3>
           <p className="role-caps">{agent.role}</p>
-          <span className="chip">{agent.status === 'planned' ? 'Planeado' : 'Sin rol'}</span>
+          <span className="chip">{agent.status === 'planned' ? 'Planned' : 'No role'}</span>
         </div>
         <button className="btn-dark small" onClick={() => openChat(designPrompt(agent.displayName, agent.role))}>
-          Armarlo con Betty
+          Build with Betty
         </button>
       </article>
     );
   }
   const live = agent.live;
   const queueCount = agent.name === APPROVALS_DESK ? state.approvals.pending : agent.pending;
-  const availability = live?.state === 'working' ? 'Trabajando' : agent.pending > 0 || live?.state === 'needs_me' ? 'Te necesita' : live ? 'Disponible' : 'Sin estado en vivo';
+  const availability = live?.state === 'working' ? 'Working' : agent.pending > 0 || live?.state === 'needs_me' ? 'Needs you' : live ? 'Available' : 'No live status';
   return (
     <button className="card" onClick={() => openAgent(agent.name)}>
       <img className="card-avatar" src={`/${agent.avatar}`} alt="" />
@@ -223,11 +223,11 @@ export function AgentCard({ agent, state }: { agent: AgentView; state: AppState 
         </h3>
         <p className="role-caps">{agent.role}</p>
         <p className="card-now">
-          <span className="now-label">Ahora</span> {live?.state === 'working' ? live.task || 'Trabajando' : 'Sin tareas por ahora'}
+          <span className="now-label">Now</span> {live?.state === 'working' ? live.task || 'Working' : 'No tasks right now'}
         </p>
-        <p className={`card-avail ${availability === 'Te necesita' ? 'needs-text' : ''}`}>{availability}</p>
+        <p className={`card-avail ${availability === 'Needs you' ? 'needs-text' : ''}`}>{availability}</p>
         <p className="muted small">
-          {queueCount} en su fila{agent.machine ? ` · ${agent.machine}` : ''}
+          {queueCount} in their queue{agent.machine ? ` · ${agent.machine}` : ''}
         </p>
       </div>
     </button>
@@ -238,7 +238,7 @@ export function DepartmentView({ state, name }: { state: AppState; name: string 
   const list = state.agents.filter((a) => a.department === name).sort((a, b) => (a.status === 'active' ? 0 : 1) - (b.status === 'active' ? 0 : 1));
   return (
     <Page title={name}>
-      {list.length === 0 && <p className="page-intro">Este departamento todavía no tiene agentes.</p>}
+      {list.length === 0 && <p className="page-intro">This department has no agents yet.</p>}
       <div className="cards">
         {list.map((a) => (
           <AgentCard key={a.name} agent={a} state={state} />
@@ -251,8 +251,8 @@ export function DepartmentView({ state, name }: { state: AppState; name: string 
 export function PorCrear({ state }: { state: AppState }) {
   const list = state.agents.filter((a) => a.status !== 'active');
   return (
-    <Page title="Agentes por crear">
-      <p className="page-intro">Personajes reservados para agentes que todavía no existen. Ármalos con Betty cuando quieras.</p>
+    <Page title="Agents to create">
+      <p className="page-intro">Characters saved for agents that don't exist yet. Build them with Betty whenever you like.</p>
       <div className="cards">
         {list.map((a) => (
           <AgentCard key={a.name} agent={a} state={state} />

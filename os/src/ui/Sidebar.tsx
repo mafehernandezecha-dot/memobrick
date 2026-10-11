@@ -38,18 +38,18 @@ export function Sidebar({ state, view, onNavigate }: Props) {
         <span className="brand-name">{state.appName}</span>
       </div>
 
-      <button className="btn-lime" onClick={() => openChat('Necesito un trabajo nuevo: ')}>
-        + Nuevo trabajo
+      <button className="btn-lime" onClick={() => openChat('I need a new task: ')}>
+        + New task
       </button>
 
       <nav className="nav">
-        {nav({ kind: 'mundo' }, 'El mundo', <IconWorld />)}
+        {nav({ kind: 'mundo' }, 'World', <IconWorld />)}
         {nav({ kind: 'dashboard' }, 'Dashboard', <IconGrid />)}
-        {nav({ kind: 'para' }, `Para ${state.ownerName}`, <IconInbox />, { n: state.reports.latestCount, tone: 'blue' })}
-        {nav({ kind: 'tetoca' }, 'Te toca', <IconHand />, { n: state.approvals.pending, tone: 'red' })}
+        {nav({ kind: 'para' }, `For ${state.ownerName}`, <IconInbox />, { n: state.reports.latestCount, tone: 'blue' })}
+        {nav({ kind: 'tetoca' }, 'Your turn', <IconHand />, { n: state.approvals.pending, tone: 'red' })}
       </nav>
 
-      <h2 className="side-heading">Departamentos</h2>
+      <h2 className="side-heading">Departments</h2>
       <div className="dept-list">
         {state.departments.map((d) => (
           <button
@@ -64,7 +64,7 @@ export function Sidebar({ state, view, onNavigate }: Props) {
         ))}
       </div>
 
-      <h2 className="side-heading">Tus agentes</h2>
+      <h2 className="side-heading">Your agents</h2>
       <div className="agent-list">
         {active.map((a) => (
           <AgentRow key={a.name} agent={a} color={deptColor.get(a.department ?? '')} onOpen={openAgent} />
@@ -72,7 +72,7 @@ export function Sidebar({ state, view, onNavigate }: Props) {
       </div>
 
       <button className={`side-heading side-link ${same({ kind: 'porcrear' }, view) ? 'is-active' : ''}`} onClick={() => onNavigate({ kind: 'porcrear' })}>
-        Por crear <span className="count">{toCreate.length}</span>
+        To create <span className="count">{toCreate.length}</span>
       </button>
       <div className="agent-list">
         {toCreate.map((a) => (
@@ -103,7 +103,7 @@ function AgentRow({ agent, ghost, color, onOpen }: { agent: AgentView; ghost?: b
         </span>
         {agent.pending > 0 && (
           <span className="needs">
-            te necesita <span className="needs-n">{agent.pending}</span>
+            needs you <span className="needs-n">{agent.pending}</span>
           </span>
         )}
       </span>
@@ -112,20 +112,20 @@ function AgentRow({ agent, ghost, color, onOpen }: { agent: AgentView; ghost?: b
 }
 
 function liveTitle(a: AgentView) {
-  if (a.live?.state === 'working') return `Trabajando: ${a.live.task}`;
-  if (a.live?.state === 'needs_me') return 'Te necesita';
-  if (a.live?.state === 'idle') return 'Sin tareas por ahora';
-  return 'Sin estado en vivo todavía';
+  if (a.live?.state === 'working') return `Working: ${a.live.task}`;
+  if (a.live?.state === 'needs_me') return 'Needs you';
+  if (a.live?.state === 'idle') return 'No tasks right now';
+  return 'No live status yet';
 }
 
 function EngineFooter({ state }: { state: DashboardState }) {
-  const desk = state.agents.find((a) => a.name === APPROVALS_DESK)?.displayName ?? 'Tu fila';
-  const turn = state.approvals.pending > 0 ? `${desk} espera · tu turno` : `${desk} al día`;
+  const desk = state.agents.find((a) => a.name === APPROVALS_DESK)?.displayName ?? 'Your queue';
+  const turn = state.approvals.pending > 0 ? `${desk} is waiting · your turn` : `${desk} is all caught up`;
   return (
     <footer className="engine">
       <span className={`engine-dot ${state.liveConnected ? 'on' : ''}`} />
       <span className="engine-text">
-        <strong>{state.liveConnected ? 'Motor conectado' : 'Motor sin conectar'}</strong>
+        <strong>{state.liveConnected ? 'Engine connected' : 'Engine not connected'}</strong>
         <span>
           {state.ownerName} · {turn}
         </span>

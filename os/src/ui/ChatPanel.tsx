@@ -60,7 +60,7 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
     setMessages((m) => [...m, { role: 'user', content: message }, { role: 'assistant', content: '' }]);
     try {
       const res = await fetch('/api/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: chatId, message }) });
-      if (!res.body) throw new Error('Sin respuesta del servidor.');
+      if (!res.body) throw new Error('No answer from the server.');
       const reader = res.body.getReader();
       const dec = new TextDecoder();
       let buf = '';
@@ -92,19 +92,19 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
 
   const topAgent = state.agents.find((a) => a.status === 'active' && a.name !== APPROVALS_DESK && a.pending > 0);
   const chips = [
-    '¿Qué me toca hoy?',
-    topAgent ? `¿En qué va ${topAgent.displayName}?` : '¿En qué va el equipo?',
-    '¿Qué dicen los reportes de esta semana?',
-    '¿Cómo apruebo una propuesta?',
-    '¿Qué agente conviene armar primero?',
+    'What do I need to do today?',
+    topAgent ? `How is ${topAgent.displayName} doing?` : 'How is the team doing?',
+    "What do this week's reports say?",
+    'How do I approve a proposal?',
+    'Which agent should I build first?',
   ];
 
   return (
     <div className="chat-wrap">
-      <section className="chat" role="dialog" aria-label="Chat con Betty">
+      <section className="chat" role="dialog" aria-label="Chat with Betty">
         <aside className="chat-history">
-          <p className="history-heading">Conversaciones</p>
-          {chats.length === 0 && <p className="muted small">Aún no hay conversaciones.</p>}
+          <p className="history-heading">Conversations</p>
+          {chats.length === 0 && <p className="muted small">No conversations yet.</p>}
           {chats.map((c) => (
             <button key={c.id} className={`history-item ${c.id === chatId ? 'is-active' : ''}`} onClick={() => open(c.id)}>
               {c.title}
@@ -115,13 +115,13 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
           <header className="chat-head">
             {betty && <img className="avatar" src={`/${betty.avatar}`} alt="" />}
             <div className="chat-title">
-              <strong>{betty?.displayName ?? 'Betty'} · {betty?.department?.toLowerCase() ?? 'dirección'}</strong>
-              <span>Conoce todo {state.appName} · {state.chatModel}</span>
+              <strong>{betty?.displayName ?? 'Betty'} · {betty?.department?.toLowerCase() ?? 'leadership'}</strong>
+              <span>Knows all of {state.appName} · {state.chatModel}</span>
             </div>
             <button className="btn-quiet small" onClick={fresh}>
-              + Nueva
+              + New
             </button>
-            <button className="icon-btn" aria-label="Cerrar chat" onClick={onClose}>
+            <button className="icon-btn" aria-label="Close chat" onClick={onClose}>
               ✕
             </button>
           </header>
@@ -129,8 +129,8 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
           <div className="chat-scroll" ref={scroller}>
             {messages.length === 0 ? (
               <div className="chat-empty">
-                <p className="chat-hello">Hola, {state.ownerName} 👋</p>
-                <p>Pregúntame lo que necesites sobre {state.appName}: cómo hacer algo en la app, en qué va un proyecto, dónde está un material o qué te toca.</p>
+                <p className="chat-hello">Hi, {state.ownerName} 👋</p>
+                <p>Ask me anything about {state.appName}: how to do something in the app, how a project is going, where a file is, or what is waiting on you.</p>
                 <div className="chips">
                   {chips.map((c) => (
                     <button key={c} className="chip-btn" onClick={() => send(c)}>
@@ -160,7 +160,7 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
               ref={inputRef}
               rows={1}
               value={input}
-              placeholder="Escríbele a Betty…"
+              placeholder="Message Betty…"
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
@@ -170,7 +170,7 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
               }}
             />
             <button className="btn-dark" disabled={busy || !input.trim()}>
-              {busy ? '…' : 'Enviar'}
+              {busy ? '…' : 'Send'}
             </button>
           </form>
         </div>

@@ -3,9 +3,9 @@
 Read this first in a new session.
 
 ## Decisions so far
-- App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("El mundo"). UI in Spanish. Owner's name for greetings: Eden.
+- App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("World"). UI, room names, roles and Betty's chat are in English (switched from Spanish at the owner's request after Stage 4). Owner's name for greetings: Eden.
 - Banner and company everywhere: **Memobrick** (all characters work for Memobrick).
-- Cast and roles: `agents.json`. Betty = the approval desk the owner talks to (`aprobaciones`, department Dirección, sits in Presidencia, holds every pending item in `marketing/approvals/queue.md`). Armando = the marketing-coordinator agent (Oficina de Armando Mendoza). Swapped at the owner's request after Stage 3. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
+- Cast and roles: `agents.json`. Betty = the approval desk the owner talks to (`aprobaciones`, department Leadership, sits in President's Office, holds every pending item in `marketing/approvals/queue.md`). Armando = the marketing-coordinator agent (Armando Mendoza's Office). Swapped at the owner's request after Stage 3. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
 - Portrait style: **photographic LEGO macro shots** made with an image model, matching `reference/*.jpg`. The procedural Three.js builder in `src/minifig/` is NOT the portrait style; keep it only for tiny figures in the 3D office if useful.
 - Image generation (current route): the owner generates images for free in the Gemini web app using `prompts/avatars.md` plus the reference images, then pastes them into the chat; save them as `avatars/<id>.png` (1024x1024) and `sprites/raw/<id>.png`. The API route below is kept as a fallback.
 - Image generation (API fallback): Gemini API. The key is a **network secret** (allowed website `generativelanguage.googleapis.com`, header `x-goog-api-key`, no prefix); the proxy adds it, so the session never sees it and the script sends no key. `GEMINI_API_KEY` is only a fallback for local runs. Model override: `GEMINI_IMAGE_MODEL` (default `gemini-2.5-flash-image`). Quick check: `curl -s https://generativelanguage.googleapis.com/v1beta/models | head` should list models, not an auth error.
@@ -30,18 +30,18 @@ All 22 portraits in `avatars/`, figures in `sprites/`. Review images: `python3 s
 
 ## Stage 2: sidebar and UI shell (built, waiting for approval)
 - Run: `cd os && npm install && npm run os`, then open the printed address.
-- `server/state.ts` builds everything the app shows from repo files on each request to `/api/state`: `agents.json`, `marketing/approvals/queue.md` (pending items = Te toca and each agent's "te necesita"; the approval desk, Betty, holds all of them), `marketing/reports/` (latest date = Para Eden), `marketing/shared/scorecard.md` (latest weekly row), and `marketing/status/<agent>.json` (live state, not written by agents yet).
+- `server/state.ts` builds everything the app shows from repo files on each request to `/api/state`: `agents.json`, `marketing/approvals/queue.md` (pending items = Your turn and each agent's "te necesita"; the approval desk, Betty, holds all of them), `marketing/reports/` (latest date = For Eden), `marketing/shared/scorecard.md` (latest weekly row), and `marketing/status/<agent>.json` (live state, not written by agents yet).
 - Parsers in `server/parse.ts`, tested in `server/parse.test.ts`.
-- Screens other than El mundo are placeholders until stage 4. The office scene is stage 3.
+- Screens other than World are placeholders until stage 4. The office scene is stage 3.
 
-## Stage 3: El mundo (built, waiting for approval)
-- `src/world/layout.ts` is the floor plan: 11 rooms named after the show, each holding a Memobrick department. Agents are seated by their `character` in agents.json; anyone new goes to the Sala de juntas (tested in `layout.test.ts`).
+## Stage 3: World (built, waiting for approval)
+- `src/world/layout.ts` is the floor plan: 11 rooms named after places in the show, each holding a Memobrick department. Agents are seated by their `character` in agents.json; anyone new goes to the Boardroom (tested in `layout.test.ts`).
 - `src/world/scene.ts` builds the city block (road loop, buildings, cars, trees, lamps) and the office (walls with studs, floors, furniture, MEMOBRICK pennants) with an orthographic camera. Drag to pan, scroll or pinch to zoom, click a figure to open that agent.
 - Figures use the parametric builder in `src/minifig/` with `src/world/looks.ts` matching each approved portrait. States: working (typing, speech bubble with the task), needs Eden (full color plus red badge), idle or not created (gray ghost). Live "working" needs `marketing/status/<agent>.json`, which comes in stage 4.
 
 ## Stage 4: panels, chat and live data (built, waiting for approval)
-- Agent panel ("Lo que hace"): click a figure or a sidebar row. Shows Ahora, the agent's pending items with "Te necesita" and "Ver" (opens the draft), the last report, and "Chatear aquí" / "Armarlo con Betty".
+- Agent panel ("What they are doing"): click a figure or a sidebar row. Shows Now, the agent's pending items with "Needs you" and "View" (opens the draft), the last report, and "Chat here" / "Build with Betty".
 - Chat with Betty: `server/chat.ts`, official `@anthropic-ai/sdk`, model `claude-opus-5-5`, effort low, server-side refusal fallback on. The system prompt is rebuilt from the repo on every message (team, pending queue, reports, sales week). Credentials come from the owner's environment; chats saved in `os/data/chats/` (gitignored). Not tested against the live API in the cloud session (no key there); the missing-key message was tested.
-- Te toca: Aprobar / Editar (writes `changes: <note>`) / Rechazar, via `server/actions.ts` -> `setQueueStatus`, which only rewrites that item's Status line and refuses already-decided items. Only accepted from localhost.
-- Para Eden (reports), Dashboard, department cards, Agentes por crear, document viewer for any file under `marketing/`.
+- Your turn: Approve / Edit (writes `changes: <note>`) / Reject, via `server/actions.ts` -> `setQueueStatus`, which only rewrites that item's Status line and refuses already-decided items. Only accepted from localhost.
+- For Eden (reports), Dashboard, department cards, Agents to create, document viewer for any file under `marketing/`.
 - Live status convention: `marketing/status/<agent>.json` `{state, task, updated}`, added to the memobrick-run skill and every agent file. A "working" status older than 6 hours shows as idle.

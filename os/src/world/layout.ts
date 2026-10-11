@@ -1,6 +1,6 @@
 // The Memobrick office floor plan, in studs (1 stud = 0.8 scene units).
 // x grows to the right, z grows toward the camera. Rooms follow the show's
-// names ("Oficina de Mario Calderón" style) and hold Memobrick departments.
+// places ("Mario Calderón's Office" style) and hold Memobrick departments.
 
 export type Side = 'n' | 's' | 'e' | 'w';
 export type Floor = 'tile' | 'wood' | 'carpet' | 'red';
@@ -43,7 +43,7 @@ export const OFFICE = { w: 64, d: 44 };
 export const ROOMS: Room[] = [
   {
     id: 'taller',
-    label: 'Taller de Hugo Lombardi',
+    label: "Hugo Lombardi's Studio",
     icon: '✂️',
     x: 0, z: 4, w: 16, d: 14,
     floor: 'wood',
@@ -58,7 +58,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'cuartel',
-    label: 'El cuartel de las feas',
+    label: 'The Ugly Squad HQ',
     icon: '💬',
     x: 16, z: 2, w: 14, d: 16,
     floor: 'tile',
@@ -74,7 +74,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'entrada',
-    label: 'La entrada',
+    label: 'Entrance',
     icon: '🚪',
     x: 30, z: 0, w: 8, d: 10,
     floor: 'tile',
@@ -85,7 +85,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'recepcion',
-    label: 'Recepción',
+    label: 'Reception',
     icon: '🛎️',
     x: 38, z: 0, w: 12, d: 14,
     floor: 'tile',
@@ -100,7 +100,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'marcela',
-    label: 'Oficina de Marcela Valencia',
+    label: "Marcela Valencia's Office",
     icon: '✉️',
     x: 50, z: 4, w: 14, d: 14,
     floor: 'carpet',
@@ -115,7 +115,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'presidencia',
-    label: 'Presidencia',
+    label: "President's Office",
     icon: '👓',
     x: 0, z: 25, w: 14, d: 15,
     floor: 'wood',
@@ -132,7 +132,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'armando',
-    label: 'Oficina de Armando Mendoza',
+    label: "Armando Mendoza's Office",
     icon: '👔',
     x: 14, z: 35, w: 6, d: 9,
     floor: 'tile',
@@ -142,8 +142,8 @@ export const ROOMS: Room[] = [
     furniture: [{ kind: 'cabinet', x: 4.6, z: 7.5 }],
   },
   {
-    id: 'juntas',
-    label: 'Sala de juntas',
+    id: 'boardroom',
+    label: 'Boardroom',
     icon: '🗂️',
     x: 20, z: 25, w: 18, d: 17,
     floor: 'red',
@@ -159,7 +159,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'mario',
-    label: 'Oficina de Mario Calderón',
+    label: "Mario Calderón's Office",
     icon: '📣',
     x: 38, z: 25, w: 14, d: 17,
     floor: 'tile',
@@ -173,7 +173,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'finanzas',
-    label: 'Finanzas de Nicolás Mora',
+    label: "Nicolás Mora's Finance Office",
     icon: '📊',
     x: 52, z: 25, w: 12, d: 11,
     floor: 'tile',
@@ -187,7 +187,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'bodega',
-    label: 'Bodega y despacho',
+    label: 'Warehouse & Shipping',
     icon: '📦',
     x: 52, z: 36, w: 12, d: 8,
     floor: 'tile',
@@ -201,7 +201,7 @@ export const ROOMS: Room[] = [
   },
 ];
 
-/** Overflow seats in the Sala de juntas for agents added later without a room. */
+/** Overflow seats in the Boardroom for agents added later without a room. */
 export const OVERFLOW_SEATS = [
   { x: 4, z: 4 }, { x: 14, z: 4 }, { x: 4, z: 14 }, { x: 14, z: 14 },
   { x: 2.5, z: 9 }, { x: 15.5, z: 9 },
@@ -227,10 +227,10 @@ export function placeAgents(characters: string[]): Map<string, Placement> {
       overflow.push(ch);
     }
   }
-  const juntas = ROOMS.find((r) => r.id === 'juntas')!;
+  const boardroom = ROOMS.find((r) => r.id === 'boardroom')!;
   overflow.forEach((ch, i) => {
     const s = OVERFLOW_SEATS[i % OVERFLOW_SEATS.length];
-    out.set(ch, { roomId: juntas.id, x: juntas.x + s.x, z: juntas.z + s.z });
+    out.set(ch, { roomId: boardroom.id, x: boardroom.x + s.x, z: boardroom.z + s.z });
   });
   return out;
 }

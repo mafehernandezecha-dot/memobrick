@@ -20,13 +20,13 @@ const readBody = (req: IncomingMessage) =>
     let raw = '';
     req.on('data', (c) => {
       raw += c;
-      if (raw.length > 200_000) fail(new Error('Mensaje demasiado largo.'));
+      if (raw.length > 200_000) fail(new Error('Message too long.'));
     });
     req.on('end', () => {
       try {
         ok(raw ? JSON.parse(raw) : {});
       } catch {
-        fail(new Error('JSON inválido.'));
+        fail(new Error('Invalid JSON.'));
       }
     });
   });
@@ -57,24 +57,24 @@ export default defineConfig({
             }
             const decideMatch = url.pathname.match(/^\/api\/approvals\/([A-Za-z0-9-]+)$/);
             if (decideMatch && req.method === 'POST') {
-              if (!local) return json(res, 403, { error: 'Las decisiones solo se toman desde esta computadora.' });
+              if (!local) return json(res, 403, { error: 'Decisions can only be made on this computer.' });
               const body = await readBody(req);
               const decision = body.decision === 'changes' ? { decision: 'changes' as const, note: String(body.note ?? '') } : body.decision === 'approved' || body.decision === 'rejected' ? { decision: body.decision } : null;
-              if (!decision) return json(res, 400, { error: 'Decisión no válida.' });
+              if (!decision) return json(res, 400, { error: 'Invalid decision.' });
               return json(res, 200, decide(repoDir, decideMatch[1], decision));
             }
             if (url.pathname === '/api/chats' && req.method === 'GET') return json(res, 200, listChats(osDir));
             const chatMatch = url.pathname.match(/^\/api\/chats\/([a-z0-9-]+)$/);
             if (chatMatch && req.method === 'GET') {
               const chat = getChat(osDir, chatMatch[1]);
-              return chat ? json(res, 200, chat) : json(res, 404, { error: 'No encontré esa conversación.' });
+              return chat ? json(res, 200, chat) : json(res, 404, { error: "Couldn't find that conversation." });
             }
             if (url.pathname === '/api/chat' && req.method === 'POST') {
-              if (!local) return json(res, 403, { error: 'El chat solo funciona desde esta computadora.' });
+              if (!local) return json(res, 403, { error: 'Chat only works on this computer.' });
               const body = await readBody(req);
               return streamChat(osDir, repoDir, { id: body.id ? String(body.id) : undefined, message: String(body.message ?? '') }, res);
             }
-            return json(res, 404, { error: 'Ruta desconocida.' });
+            return json(res, 404, { error: 'Unknown route.' });
           } catch (err) {
             return json(res, 400, { error: err instanceof Error ? err.message : String(err) });
           }

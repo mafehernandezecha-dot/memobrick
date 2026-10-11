@@ -59,7 +59,7 @@ export type Decision = { decision: 'approved' | 'rejected' } | { decision: 'chan
 export function statusFor(d: Decision): string {
   if (d.decision !== 'changes') return d.decision;
   const note = d.note.replace(/\s+/g, ' ').trim();
-  if (!note) throw new Error('Escribe qué cambiar.');
+  if (!note) throw new Error('Write what should change.');
   return `changes: ${note}`;
 }
 
@@ -70,16 +70,16 @@ export function statusFor(d: Decision): string {
 export function setQueueStatus(md: string, id: string, status: string): string {
   const lines = md.split('\n');
   const start = lines.findIndex((l) => l.trim() === `## ${id}`);
-  if (start < 0) throw new Error(`No encontré la propuesta ${id}.`);
+  if (start < 0) throw new Error(`Couldn't find proposal ${id}.`);
   for (let i = start + 1; i < lines.length && !lines[i].startsWith('## '); i++) {
     const m = lines[i].match(/^(-\s+Status:\s*)(.*)$/);
     if (m) {
-      if (m[2].trim() !== 'pending') throw new Error(`La propuesta ${id} ya tiene decisión: ${m[2].trim()}.`);
+      if (m[2].trim() !== 'pending') throw new Error(`Proposal ${id} already has a decision: ${m[2].trim()}.`);
       lines[i] = `${m[1]}${status}`;
       return lines.join('\n');
     }
   }
-  throw new Error(`La propuesta ${id} no tiene línea Status.`);
+  throw new Error(`Proposal ${id} has no Status line.`);
 }
 
 export type WeekRow = { week: string; netSales: string; orders: number | null };

@@ -58,7 +58,7 @@ export function WorldView({ state, onPick }: Props) {
   return (
     <div className="world-view">
       <div className="world-canvas" ref={host} />
-      {failed && <p className="world-error">No pude dibujar la oficina en este navegador: {failed}</p>}
+      {failed && <p className="world-error">Couldn't draw the office in this browser: {failed}</p>}
       <div className="world-overlay" ref={overlay} aria-hidden={!ready}>
         {ready &&
           ROOMS.map((r) => {
