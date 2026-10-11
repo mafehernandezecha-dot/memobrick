@@ -92,7 +92,7 @@ Efraín, reliable and hardworking: short dark hair, green polo shirt, lanyard wi
 
 ## 21. Wilson (steel blue)
 
-Wilson, the security guard: dark blue uniform with a matching cap, small gold badge, calm expression, holding a handheld radio. Steel-blue backdrop.
+Wilson, the friendly security guard: short dark hair under a bright red beret, wide toothy grin with smile lines, black zip-up jacket over a white T-shirt, black shoulder strap, holding a handheld radio. Steel-blue backdrop.
 
 ## 22. Saúl (lime)
 
