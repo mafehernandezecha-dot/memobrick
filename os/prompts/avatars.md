@@ -96,4 +96,4 @@ Wilson, the friendly security guard: short black hair under a bright red beret, 
 
 ## 22. Saúl (lime)
 
-Saúl, the easygoing guy: messy dark hair, olive jacket over a graphic tee with a simple shape (no words), relaxed smile, holding a laptop covered in colorful stickers. Lime backdrop.
+Saúl, the easygoing guy: short curly black hair, brown goatee and mustache, relaxed half smile, navy suit over a teal shirt with a burgundy patterned tie. Lime backdrop.
