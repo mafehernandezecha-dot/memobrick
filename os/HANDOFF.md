@@ -1,4 +1,4 @@
-# Memobrick OS: where Stage 1 stands
+# Memobrick OS: where the build stands
 
 Read this first in a new session.
 
@@ -24,3 +24,12 @@ Read this first in a new session.
 - mymemobrick.com is blocked by the cloud environment's network policy; agents use Shopify read-only queries instead.
 - api.openai.com is blocked; generativelanguage.googleapis.com is reachable.
 - Headless Chromium: `/opt/pw-browsers/chromium-1194/chrome-linux/chrome` (used by `npm run portraits` and for screenshots).
+
+## Stage 1: done (approved)
+All 22 portraits in `avatars/`, figures in `sprites/`. Review images: `python3 scripts/contact-sheet.py` writes `review/contact-sheet.png` and `review/closeups.png`.
+
+## Stage 2: sidebar and UI shell (built, waiting for approval)
+- Run: `cd os && npm install && npm run os`, then open the printed address.
+- `server/state.ts` builds everything the app shows from repo files on each request to `/api/state`: `agents.json`, `marketing/approvals/queue.md` (pending items = Te toca and each agent's "te necesita"; Armando holds all of them), `marketing/reports/` (latest date = Para Eden), `marketing/shared/scorecard.md` (latest weekly row), and `marketing/status/<agent>.json` (live state, not written by agents yet).
+- Parsers in `server/parse.ts`, tested in `server/parse.test.ts`.
+- Screens other than El mundo are placeholders until stage 4. The office scene is stage 3.
