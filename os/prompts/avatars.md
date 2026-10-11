@@ -76,7 +76,7 @@ Sandra, calm and precise: long black hair pulled back into a high ponytail, roun
 
 ## 17. Mariana (purple)
 
-Mariana: glamorous long dark-brown wavy hair, purple tailored jacket over a black top, statement gold hoop earrings, rose lipstick, eyelashes, warm knowing smile, holding a slim tablet. Purple backdrop.
+Mariana: long dark-brown braided curls with caramel highlights, warm tan minifigure skin tone, deep-red ribbed sleeveless top, dark-blue jeans, beaded red bracelets, bright confident smile, holding a patterned tile like a card deck. Purple backdrop.
 
 ## 18. Freddy (sky blue)
 
