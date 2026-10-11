@@ -73,7 +73,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: e91580d
 - Reason: Open 2026 holiday guide on product exchange, wants pitches by Nov 15; email EmilyReviewsCom@gmail.com listed on the call page
 - Expires: 2026-10-21
-- Status: pending
+- Status: changes: improve the email memobrick is more about creating experiences with families building a special picture together make the email more sentimental
 - From: P-outreach-gift-guide-pr-20261011-1
 - Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address and byline come from search summaries, not the live page.
 
