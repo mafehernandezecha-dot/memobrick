@@ -19,7 +19,7 @@ Use exactly this block for each proposal in your run report:
 ### P-<agent>-<yyyymmdd>-<n>
 - Agent: <your agent name>
 - Type: publish | send | ad-change | offer | site-change
-- Draft: <repo path to the draft file>
+- Draft: <repo path to the draft file, nothing else on the line>
 - Reason: <one line: why this matters now>
 - Expires: <YYYY-MM-DD, the last date this is still useful>
 - Status: pending
@@ -33,7 +33,7 @@ Status values: `pending`, `approved`, `rejected`, or `changes: <note>`.
 
 1. Find your approved items:
    `python3 marketing/tools/check.py approvals marketing/approvals/<current week>.md --agent <your name> --today <YYYY-MM-DD>`
-   It prints the IDs of items that are `approved` and not expired. Also check the previous week's file for items that have not expired.
+   It prints the IDs of items that are `approved` and not expired. Also check the previous two weeks' files, since items are often approved the week before they run.
 2. Act only on those IDs. An item that is `pending`, `rejected`, `changes: ...`, expired, or malformed is never acted on.
 3. For `changes: <note>`, revise the draft and propose it again with a new P- ID.
 4. Before any publish or send, check that it has not already happened (search the tool for an existing post, campaign, or email) to prevent duplicates.

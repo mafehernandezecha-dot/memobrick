@@ -16,6 +16,10 @@ Written by the marketing-coordinator only. To decide, edit each `Status:` line t
 - Expires: <YYYY-MM-DD>
 - Status: pending
 
+## Flagged
+
+(Items copied with a Flag line, and proposals dropped, with reasons.)
+
 ## Missing owner inputs
 
 (From the Facts table in shared/offers-calendar.md.)

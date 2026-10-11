@@ -38,6 +38,7 @@ You skip the approvals step of that skill (you have no items of your own) but yo
    - Flag it if its target person or site appears in `contacts-log.md` within the last 30 days.
    - Flag it if two proposals post the same offer or content to the same channel, or give conflicting dates.
    - Flag it if its draft file does not exist.
+   Flagged items that are still copied get a `- Flag: <reason>` line, and every flag (copied or dropped) is also listed under `## Flagged` in the week's file.
 3. Create the week's file from `TEMPLATE.md` if it does not exist. Copy each accepted proposal as a `## A-<YYYY>W<ww>-<nnn>` item (next free number) with the same fields, `Status: pending`, and add a line `- From: <P- ID>`.
 4. Put items expiring within 7 days under `## Time-sensitive`, the rest under `## This week`. Keep items the owner already decided where they are; never change a `Status:` line.
 5. Under `## Missing owner inputs`, list every Facts row whose value is `unknown`, and every blocker reported under `## Blocked or unknown` by any agent.
