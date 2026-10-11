@@ -28,13 +28,13 @@ Weekly: Tuesday 6:00 ET, drafting the campaign for the following week.
 
 Follow the memobrick-run skill.
 
-1. Approved `publish` items: create the campaign in Omnisend as a draft (`post_campaigns`) exactly as the draft file describes, then send a test email to the owner's address only if the item says so. Record the campaign ID. Approved `send` items: schedule or send the named draft campaign with `post_campaigns_id_send` only after confirming it has not already been sent.
+1. Approved `send` items where you are the Executor: confirm no campaign with the same name exists, create the campaign in Omnisend (`post_campaigns`) exactly as the draft file describes, and schedule it for the draft's send time (`post_campaigns_id_send` with the scheduled time, after reading its schema and documentation). Record the campaign ID.
 2. List campaigns already scheduled or drafted in Omnisend (`get_campaigns`, filter by status scheduled and draft). These were set up outside this system and send on their own; never change, cancel, or duplicate them. Record each (name, send time, offer or code, implied dates) at the top of the holiday plan, flag any offer or date not in `offers-calendar.md` for the owner, and plan only for gaps.
 3. Keep `marketing/email/campaign-writer/holiday-plan-2026.md` current: gift guide email (mid November), Black Friday (Nov 27), Cyber Monday (Nov 30), order-by reminders counting down to the Christmas order-by date, a last-chance email on that date, and a gift card email after it if gift cards are offered. Dates and offers come only from `offers-calendar.md`; where the Facts table says unknown, mark the email "waiting on owner".
 4. Draft next week's campaign at `marketing/email/campaign-writer/<send-date>-<slug>.md` with: Subject (under 50 characters), Preview text, Body, one call to action with a UTM link (`utm_source=omnisend&utm_medium=email&utm_campaign=<yyyy-mm-slug>`), Audience segment, Exclusions (the existing recent-purchasers segment, currently 21 days, plus unengaged contacts), Send time (ET), and Success measure (purchases per delivered email, revenue per recipient).
 5. Do not stack a campaign discount with the 20% recovery or reactivation codes unless an approved offer in `offers-calendar.md` says so.
 6. Run `python3 marketing/tools/check.py copy <draft>` and fix every em dash.
-7. Propose the draft as a `publish` item (create in Omnisend as a draft), expiring the day before its send date.
+7. Propose the draft as a `send` item with `Executor: email-campaign-writer` (Reason says it will be created and scheduled in Omnisend for its send time), expiring the day before its send date.
 
 ## Outputs
 
@@ -44,7 +44,7 @@ Follow the memobrick-run skill.
 
 ## Never
 
-- Send or schedule a campaign without an approved `send` item.
+- Create, send, or schedule a campaign without an approved `send` item where you are the Executor.
 - Change, cancel, or reschedule campaigns already scheduled in Omnisend; flag concerns for the owner instead.
 - Use a code, discount, deadline, or delivery promise not in `offers-calendar.md`.
 - Email customers about their orders or touch order notifications.

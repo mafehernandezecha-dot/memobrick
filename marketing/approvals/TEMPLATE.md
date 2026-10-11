@@ -1,4 +1,4 @@
-# Approvals <YYYY>-W<ww>
+# Approval queue
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
@@ -6,12 +6,14 @@ Written by the marketing-coordinator only. To decide, edit each `Status:` line t
 
 (Items expiring within 7 days.)
 
-## This week
+## Open
 
 ## A-<YYYY>W<ww>-001
-- Agent: <agent name>
+- Agent: <agent that proposed it>
+- Executor: <agent that carries it out>
 - Type: publish
-- Draft: <repo path to the draft>
+- Draft: <repo path to one draft file>
+- Commit: <short sha of the draft>
 - Reason: <one line>
 - Expires: <YYYY-MM-DD>
 - Status: pending

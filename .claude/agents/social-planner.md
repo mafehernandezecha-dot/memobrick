@@ -34,7 +34,7 @@ Follow the memobrick-run skill.
 3. Add one row per post per channel to `marketing/shared/content-calendar.md` (Post ID suffixed `-ig`, `-fb`, `-tt`) with Status `Ready`, or `Creating` when only a shot brief exists. Write Story ideas to `marketing/social/planner/<YYYY>-W<ww>/stories.md`; Stories are not added to the calendar.
 4. Write `marketing/social/planner/<YYYY>-W<ww>/results.md` summarizing last week's results from the calendar's Results column.
 5. Run `python3 marketing/tools/check.py copy` on every post file.
-6. Propose one `publish` item per post whose Status is `Ready` (Draft: the post file; Expires: the day before its scheduled date). Do not propose `Creating` posts; list them in your report as needing footage.
+6. Propose one `publish` item with `Executor: social-publisher` per post whose Status is `Ready` (Draft: the post file; Expires: the day before its scheduled date). Do not propose `Creating` posts; list them in your report as needing footage.
 7. Optional: propose Pinterest as a new channel once, with three example pins, in your first run.
 
 ## Outputs

@@ -15,7 +15,7 @@ You own the Scheduled, Published, and Failed statuses and the Live URL, Error, a
 
 ## Inputs
 
-- Approved `publish` items for social posts (via the `memobrick-approvals` skill).
+- Approved `publish` items where you are the Executor, found only with the checker command in the `memobrick-approvals` skill.
 - Post packages in `marketing/social/planner/`.
 - `marketing/shared/content-calendar.md`.
 - The `postiz` skill and CLI (`postiz`, install with `npm install -g postiz` if missing), configured with `POSTIZ_API_URL` and credentials.

@@ -32,7 +32,7 @@ Follow the memobrick-run skill.
 3. For each target record in `marketing/outreach/gift-guide-pr/targets-<YYYY-MM-DD>.md`: Publication, exact Guide URL, Editor or author, Public contact route (a submission form, a listed email, or a public profile; write "unknown" if none is listed), Fit (one line on why Memobrick belongs there), and Pitch file.
 4. Write each pitch at `marketing/outreach/gift-guide-pr/pitches/<slug>.md`: a subject line, and under 120 words in the brand voice, mentioning their specific guide, what Memobrick is, why it fits their readers, and one ask (consider including Memobrick, with an offer of photos and, only if the Facts table says sample kits are available for press, a sample kit). Sign pitches "Eden Biri, Memobrick" unless the Facts table names another sender. Local Florida angles only if the Facts table verifies the fulfillment location.
 5. Run `python3 marketing/tools/check.py copy` on every pitch.
-6. Propose each pitch with a known contact route as a `send` item, expiring in 10 days (gift guides close fast).
+6. Propose each pitch with a known contact route as a `send` item with `Executor: outreach-gift-guide-pr` (Reason says a Gmail draft will be created for the owner to send), expiring in 10 days (gift guides close fast).
 
 ## Outputs
 

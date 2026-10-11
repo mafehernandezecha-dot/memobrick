@@ -8,13 +8,13 @@ Design: `docs/superpowers/specs/2026-10-11-memobrick-marketing-agents-design.md`
 
 1. Each agent runs on a schedule (or when you ask) and follows the `memobrick-run` skill.
 2. It writes drafts to its own folder under `marketing/` and a run report to `marketing/reports/`.
-3. On Monday the marketing coordinator collects every proposal into one file: `marketing/approvals/<YYYY>-W<ww>.md`.
+3. On Monday the marketing coordinator collects every proposal into one rolling file: `marketing/approvals/queue.md`.
 4. You open that file and change each `Status: pending` line to `approved`, `rejected`, or `changes: <your note>`.
-5. On their next run, agents act only on items marked `approved` that have not expired.
+5. On its next run, the agent named as Executor acts only on items marked `approved` that have not expired and whose draft has not changed since it was queued. Finished, rejected, and expired items move to `marketing/approvals/archive/`.
 
 ## How to approve
 
-Open this week's file in `marketing/approvals/`. Time-sensitive items are at the top. Edit the `Status:` line of each item, then commit. That is all.
+Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor works). Time-sensitive items are at the top. Edit the `Status:` line of each item to exactly `approved`, `rejected`, or `changes: <your note>`, then commit. Each item's Reason says what will happen if you approve it.
 
 ## The team
 
@@ -51,7 +51,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 - `python3 marketing/tools/check.py agents` validates every agent file.
 - `python3 marketing/tools/check.py layout` checks the shared files exist.
 - `python3 marketing/tools/check.py copy <file>` finds em dashes in customer copy.
-- `python3 marketing/tools/check.py approvals <file> --agent <name>` lists that agent's approved items.
+- `python3 marketing/tools/check.py approvals marketing/approvals/queue.md --agent <name>` lists the approved items that agent should carry out.
 - `python3 -m unittest marketing/tools/test_check.py` runs the checker's tests.
 
 ## Shared files
@@ -81,5 +81,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 Put verified facts and offers in `shared/offers-calendar.md`. Anything missing stays "unknown" and agents will not guess it.
 
 ## Scheduled routines
+
+Agents work on the `main` branch: they pull it at the start of every run and push to it at the end, and your approvals must be on main too. Merge this system's branch into main before turning on any schedule.
 
 (Routine IDs are recorded here once the schedules are created.)

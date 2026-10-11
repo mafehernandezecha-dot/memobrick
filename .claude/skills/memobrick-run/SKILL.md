@@ -7,7 +7,7 @@ description: The standard run routine every Memobrick marketing agent follows, i
 
 Every agent run follows these steps in order.
 
-1. **Update.** `git pull` on the current working branch.
+1. **Update.** Work on the repository's default branch: `git checkout main && git pull origin main`.
 2. **Brand.** Load the `memobrick-brand` skill.
 3. **Approvals.** Act on your approved items using the `memobrick-approvals` skill. Skip this step in dry run mode.
 4. **Inputs.** Read the inputs listed in your agent file, plus `marketing/shared/offers-calendar.md`.
@@ -23,7 +23,7 @@ Every agent run follows these steps in order.
    - `## Blocked or unknown` (missing connections, missing owner inputs, unknown facts)
    - `## Next run`
 7. **Copy check.** Run `python3 marketing/tools/check.py copy <file>` on every customer-facing draft you created. Fix em dashes and re-run until it passes.
-8. **Commit.** `git add` your files, commit with message `<agent>: <one-line summary>`, and push. If the push is rejected, `git pull --rebase` and push again.
+8. **Commit.** `git add` your files, commit with message `<agent>: <one-line summary>`, and `git push origin main`. If the push is rejected, `git pull --rebase origin main` and push again. The owner's approvals and every agent's reports live on main, so never leave work on another branch.
 
 ## When the live site is unreachable
 

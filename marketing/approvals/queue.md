@@ -1,4 +1,4 @@
-# Approvals 2026-W41
+# Approval queue
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
@@ -10,8 +10,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-001
 - Agent: social-planner
+- Executor: social-publisher
 - Type: publish
 - Draft: marketing/social/planner/2026-W42/S-20261012-1.md
+- Commit: f6147d2
 - Reason: Transformation Reel opens the week with the core photo to mosaic story.
 - Expires: 2026-10-12
 - Status: pending
@@ -20,8 +22,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-002
 - Agent: social-planner
+- Executor: social-publisher
 - Type: publish
 - Draft: marketing/social/planner/2026-W42/S-20261015-1.md
+- Commit: f6147d2
 - Reason: Building experience video shows the hands-on value ahead of holiday gift planning.
 - Expires: 2026-10-15
 - Status: pending
@@ -30,8 +34,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-003
 - Agent: social-planner
+- Executor: social-publisher
 - Type: publish
 - Draft: marketing/social/planner/2026-W42/S-20261018-1.md
+- Commit: f6147d2
 - Reason: Family transformation video for the family gift audience.
 - Expires: 2026-10-18
 - Status: pending
@@ -42,8 +48,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-004
 - Agent: email-campaign-writer
-- Type: publish
+- Executor: email-campaign-writer
+- Type: send
 - Draft: marketing/email/campaign-writer/2026-10-22-photo-tips.md
+- Commit: 3be95ea
 - Reason: Helpful no-offer email to the Warm segment between the scheduled Oct 20 and Oct 27 sends; creates an Omnisend draft only
 - Expires: 2026-10-21
 - Status: pending
@@ -51,8 +59,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-005
 - Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/emily-reviews-2026.md
+- Commit: c8f2a16
 - Reason: Open 2026 holiday guide on product exchange, wants pitches by Nov 15; email EmilyReviewsCom@gmail.com listed on the call page
 - Expires: 2026-10-21
 - Status: pending
@@ -61,8 +71,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-006
 - Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/shescribes-2026.md
+- Commit: c8f2a16
 - Reason: Open 2026 guide; pitch asks only for the free review option (no $25 listing fee); Kimberly@SheScribes.com listed on page
 - Expires: 2026-10-21
 - Status: pending
@@ -71,8 +83,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-007
 - Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/love-tabitha-2026.md
+- Commit: c8f2a16
 - Reason: Submissions open; kids and families guide already features a brick set; route is the submission page (method to confirm)
 - Expires: 2026-10-21
 - Status: pending
@@ -81,8 +95,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-008
 - Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
+- Commit: c8f2a16
 - Reason: Couples gift roundup; contact page lists general inquiries to Jen (address must be copied from the page)
 - Expires: 2026-10-21
 - Status: pending
@@ -91,8 +107,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-009
 - Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/frugal-ginger.md
+- Commit: c8f2a16
 - Reason: Free sample-based family guides; email on the 2025 submissions page, 2026 call not yet posted
 - Expires: 2026-10-21
 - Status: pending
@@ -101,8 +119,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-010
 - Agent: email-flow-optimizer
+- Executor: email-flow-optimizer
 - Type: send
 - Draft: marketing/email/flow-optimizer/test-cart-last-email-reassurance.md
+- Commit: c37d6a0
 - Reason: The 20% last email in Abandoned Cart got 0 clicks and 0 purchases from 88 delivered. Test a no-discount reassurance version before holiday traffic.
 - Expires: 2026-10-25
 - Status: pending
@@ -111,8 +131,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-011
 - Agent: seo-technical
+- Executor: seo-blog-writer
 - Type: publish
 - Draft: marketing/seo/writer/drafts/personalized-christmas-photo-gifts.md
+- Commit: 9498fd1
 - Reason: New Christmas photo gift hub that links 11 existing Christmas and recipient posts; it needs time to be indexed before mid-November holiday searches peak. Add the JSON-LD from checks/personalized-christmas-photo-gifts.md on publish.
 - Expires: 2026-10-25
 - Status: pending
@@ -121,8 +143,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-012
 - Agent: seo-technical
+- Executor: seo-technical
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes-2026-10-11.md (item 4)
+- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
+- Commit: 22411dc
 - Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
 - Expires: 2026-11-15
 - Status: pending
@@ -130,8 +154,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-013
 - Agent: seo-technical
+- Executor: seo-technical
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes-2026-10-11.md (item 1)
+- Draft: marketing/seo/technical/site-changes/retire-duplicate-holiday-article.md
+- Commit: 22411dc
 - Reason: The duplicate "[Ikram GemPages] Perfect Holiday Gift" article went live 2026-09-10 and splits ranking with `theperfect-holiday` before the holiday peak. The fix is to unpublish it and 301 it to `theperfect-holiday`.
 - Expires: 2026-11-30
 - Status: pending
@@ -140,8 +166,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-014
 - Agent: seo-technical
+- Executor: seo-technical
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes-2026-10-11.md (item 5)
+- Draft: marketing/seo/technical/site-changes/add-article-breadcrumb-schema.md
+- Commit: 22411dc
 - Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
 - Expires: 2026-11-30
 - Status: pending
@@ -149,8 +177,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-015
 - Agent: seo-technical
+- Executor: seo-technical
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes-2026-10-11.md (item 2)
+- Draft: marketing/seo/technical/site-changes/retire-duplicate-summer-souvenirs-page.md
+- Commit: 22411dc
 - Reason: `/pages/blog-post` is a 100% copy of the summer souvenirs article. The fix is to hide the page and 301 it to the article.
 - Expires: 2026-12-31
 - Status: pending
@@ -159,8 +189,10 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## A-2026W41-016
 - Agent: seo-technical
+- Executor: seo-technical
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes-2026-10-11.md (item 3)
+- Draft: marketing/seo/technical/site-changes/fix-redirect-and-broken-link.md
+- Commit: 22411dc
 - Reason: One redirect sends "emotional connections" traffic to the graduation article, which is the wrong page. The graduation article also links to a 404.
 - Expires: 2026-12-31
 - Status: pending

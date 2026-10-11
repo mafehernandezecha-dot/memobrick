@@ -27,7 +27,7 @@ Weekly: Wednesday 6:00 ET.
 
 Follow the memobrick-run skill.
 
-1. Approved items of type `publish`: create the article in Shopify as an unpublished draft (Shopify GraphQL `articleCreate` with `isPublished: false`, found via `graphql_schema` and validated with `validate_graphql_codeblocks` before `graphql_mutation`), on the blog the draft names. Record the article ID. Publishing it live is a separate approved item; never publish live without one.
+1. Approved `publish` items where you are the Executor: publish the checked draft live on the Shopify blog (GraphQL `articleCreate` with `isPublished: true`, found via `graphql_schema` and validated with `validate_graphql_codeblocks` before `graphql_mutation`), including title, handle, meta description, body, and the JSON-LD from the matching `marketing/seo/technical/checks/<slug>.md`. First confirm no article with that handle exists. Record the article ID and live URL.
 2. Pick the oldest brief with `Status: ready for writer`. If there is none, report that and stop.
 3. Write `marketing/seo/writer/drafts/<slug>.md` using `searchfit-seo:create-content`. Start with:
    - `Status: ready for check`
@@ -50,6 +50,6 @@ Follow the memobrick-run skill.
 ## Never
 
 - Write without a brief.
-- Publish anything live without an approved item, or publish at all in dry run mode.
+- Publish anything without an approved item where you are the Executor, or publish at all in dry run mode.
 - Invent statistics, quotes, reviews, delivery dates, or offers.
 - Use em dashes in the draft.

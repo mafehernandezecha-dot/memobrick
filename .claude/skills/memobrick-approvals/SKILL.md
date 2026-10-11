@@ -7,9 +7,10 @@ description: How Memobrick marketing agents propose actions for owner approval a
 
 ## Who writes what
 
-- Agents never write files in `marketing/approvals/`. Only the `marketing-coordinator` agent does.
+- There is one rolling queue: `marketing/approvals/queue.md`. Only the `marketing-coordinator` agent adds, carries, or archives items in it.
 - Agents propose items in their own run report, under `## Proposed for approval`.
-- The owner approves by editing the `Status:` line in the current week's file, `marketing/approvals/<YYYY>-W<ww>.md` (ISO week).
+- The owner approves by editing an item's `Status:` line in `queue.md`.
+- Finished, rejected, and expired items are moved by the coordinator to `marketing/approvals/archive/<YYYY>-W<ww>.md`.
 
 ## Proposal format
 
@@ -18,29 +19,46 @@ Use exactly this block for each proposal in your run report:
 ```markdown
 ### P-<agent>-<yyyymmdd>-<n>
 - Agent: <your agent name>
+- Executor: <the agent that will carry it out once approved>
 - Type: publish | send | ad-change | offer | site-change
-- Draft: <repo path to the draft file, nothing else on the line>
-- Reason: <one line: why this matters now>
+- Draft: <repo path to one draft file, nothing else on the line>
+- Reason: <one line: what happens if approved, and why now>
 - Expires: <YYYY-MM-DD, the last date this is still useful>
 - Status: pending
 ```
 
-The coordinator copies proposals into the weekly file as `## A-<YYYY>W<ww>-<nnn>` items with the same fields.
+One draft file per proposal. Never point two proposals at the same file or add notes after the path.
 
-Status values: `pending`, `approved`, `rejected`, or `changes: <note>`.
+The coordinator copies each proposal into `queue.md` as `## A-<YYYY>W<ww>-<nnn>` with the same fields plus `- Commit: <short sha>` (the last commit that changed the draft) and `- From: <P- ID>`.
+
+Status values: `pending`, `approved`, `rejected`, or `changes: <note>`. Anything else is an error and is never treated as approved.
+
+## What each type means when approved
+
+| Type | Executor does |
+|---|---|
+| publish (article) | seo-blog-writer publishes the article live on the Shopify blog |
+| publish (social post) | social-publisher schedules the post in Postiz for its planned time |
+| send (email campaign) | email-campaign-writer creates the campaign in Omnisend and schedules it for its send time |
+| send (flow test) | email-flow-optimizer makes the flow change exactly as written |
+| send (outreach pitch) | outreach-gift-guide-pr creates a Gmail draft for the owner to send |
+| site-change | seo-technical applies exactly the change in the draft |
+| ad-change, offer | nothing automatic; the owner applies it |
+
+Write the Reason so the owner knows exactly which of these will happen.
 
 ## Acting on approvals
 
 1. Find your approved items:
-   `python3 marketing/tools/check.py approvals marketing/approvals/<current week>.md --agent <your name> --today <YYYY-MM-DD>`
-   It prints the IDs of items that are `approved` and not expired. Also check the previous two weeks' files, since items are often approved the week before they run.
-2. Act only on those IDs. An item that is `pending`, `rejected`, `changes: ...`, expired, or malformed is never acted on.
+   `python3 marketing/tools/check.py approvals marketing/approvals/queue.md --agent <your name> --today <YYYY-MM-DD>`
+   It prints the IDs where you are the Executor, the status is `approved`, the item has not expired, and the draft has not changed since the item's Commit. A draft changed after approval is reported as needing re-approval; do not act on it, propose it again.
+2. Act only on the printed IDs. Anything `pending`, `rejected`, `changes: ...`, expired, malformed, or changed is never acted on.
 3. For `changes: <note>`, revise the draft and propose it again with a new P- ID.
-4. Before any publish or send, check that it has not already happened (search the tool for an existing post, campaign, or email) to prevent duplicates.
-5. Record the outcome for each acted item in your run report under `## Done`: item ID, what happened, and the live URL, campaign ID, draft ID, or error.
+4. Before any publish or send, check that it has not already happened (search the tool for an existing post, campaign, article, or email) to prevent duplicates.
+5. Record the outcome for each acted item in your run report under `## Done`: item ID, what happened, and the live URL, campaign ID, article ID, draft ID, or error. The coordinator archives it from there.
 
 ## Never
 
-- Never act on anything without an approved, unexpired item.
+- Never act on anything without an approved, unexpired, unchanged item where you are the Executor.
 - Never propose anything that touches the order workflow (order emails, Post-Purchase flow, fulfillment, refunds).
-- Never mark your own items approved.
+- Never edit `queue.md` or mark your own items approved.

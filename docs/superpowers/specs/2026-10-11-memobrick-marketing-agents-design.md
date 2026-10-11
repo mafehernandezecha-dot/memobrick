@@ -99,6 +99,8 @@ The theme folders and zip at the repo root stay unchanged.
 
 ### Approval queue
 
+> Updated during build (final review): approvals use one rolling file, `marketing/approvals/queue.md`, with archived items in `marketing/approvals/archive/`, instead of one file per week. Each item names an Executor (the agent that carries it out) and the Commit of its draft; an item whose draft changed after queuing needs re-approval. Agents work on the `main` branch.
+
 - Agents propose; only the coordinator writes the approval file.
 - One file per ISO week, `marketing/approvals/2026-W42.md`. Each item has an ID, the agent, type (publish, send, ad change, offer, site change), a link to the draft, a one-line reason, an expiry date, and a status line the owner edits to `approved`, `rejected`, or `changes: <note>`.
 - Agents never act on an item without `approved`. Expired items are not executed.
