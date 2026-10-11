@@ -60,7 +60,7 @@ Inesita, the sweet eldest of the team: silver-gray hair in a soft bun, gentle sm
 
 ## 13. Aura María (coral)
 
-Aura María, quirky and expressive: big curly auburn hair, colorful patterned blouse, bold earrings, bright lipstick, wide open smile, holding a notebook with doodles. Coral backdrop.
+Aura María, quirky and expressive: big curly caramel-brown hair, teal blouse with orange and purple swirl print, colorful drop earrings, hot-pink lipstick, wide open smile, holding a white notebook covered in doodles. Coral backdrop.
 
 ## 14. Sofía (crimson)
 
