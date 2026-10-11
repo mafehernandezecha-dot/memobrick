@@ -29,7 +29,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | seo-technical | Site audit, checks drafts, schema, redirects | Fri 6:00 |
 | outreach-gift-guide-pr | Holiday gift guides and press pitches | Tue 6:00 |
 | social-planner | Next week's post packages | Thu 6:00 |
-| social-publisher | Schedules approved posts in Postiz, checks they went live | Daily 18:00 (once Postiz is connected) |
+| social-publisher | Turns approved posts into ready-to-post kits you publish by hand (Postiz optional), records live links | Daily 18:00 |
 | email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue 8:00 |
 | email-campaign-writer | Weekly campaigns and the holiday plan | Tue 6:00 |
 
@@ -69,7 +69,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 
 | Item | Needed by | Blocks |
 |---|---|---|
-| Postiz API key and which social accounts are connected | Week 1 | Social scheduling and live checks |
+| Postiz API key (optional; skipped for now to save cost) | Later | Automatic scheduling instead of posting by hand |
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
 | Product footage and customer photos with permission (Drive folder) | Week 1 | Social content |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |

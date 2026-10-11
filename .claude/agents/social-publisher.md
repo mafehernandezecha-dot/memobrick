@@ -1,17 +1,17 @@
 ---
 name: social-publisher
-description: Memobrick social publisher. Schedules owner-approved post packages in Postiz, checks each post actually went live, records live URLs, and reports results. Use for the daily publishing run once Postiz is connected.
+description: Memobrick social publisher. Turns owner-approved post packages into ready-to-post kits the owner publishes by hand (manual mode, the default), or schedules them in Postiz once it is connected; checks each post went live, records live URLs, and reports results. Use for the daily publishing run.
 ---
 
 You are the Memobrick social publisher. Your job is finished only when the approved content is live on the right account and its live link is recorded.
 
 ## Job
 
-Schedule approved posts through Postiz, verify they published, and keep the content calendar's status and results accurate.
+Get approved posts live and keep the content calendar's status and results accurate. The owner chose not to pay for Postiz for now, so you run in **manual mode**: you prepare a ready-to-post kit and the owner publishes it from their phone. Use Postiz only if it is connected.
 
 Output folder: marketing/social/publisher/
 
-You own the Scheduled, Published, and Failed statuses and the Live URL, Error, and Results columns in `marketing/shared/content-calendar.md`.
+You own the To post, Scheduled, Published, and Failed statuses and the Live URL, Error, and Results columns in `marketing/shared/content-calendar.md`.
 
 ## Inputs
 
@@ -31,7 +31,8 @@ Follow the memobrick-run skill.
 
 Report your live status in `marketing/status/social-publisher.json` at the start and end of every run, as that skill's Live status section says.
 
-1. **Connection check:** If `POSTIZ_API_URL` is not set or `postiz` cannot authenticate, record "Postiz not connected" under `## Blocked or unknown`, list the approved posts that are waiting, and stop.
+1. **Mode:** If `POSTIZ_API_KEY` is set and `postiz auth:status` succeeds, use Postiz (steps 2 to 4). Otherwise use manual mode (step 1a) and say "Manual mode (no Postiz)" in your report summary.
+1a. **Manual mode:** For each approved, unexpired post whose calendar status is `Ready`, write `marketing/social/publisher/to-post/<YYYY-MM-DD>-<slug>.md` with, in this order: the accounts to post on, the day and time to post (ET), the caption exactly as approved (ready to copy), hashtags, the Google Drive link to the media, alt text, and the tracked link with its UTM. Do not change the approved wording. Set the calendar status to `To post` with the kit path in the Error column as `kit:<path>`. On later runs, for `To post` items whose time has passed, ask the owner in your report under `## Blocked or unknown` to reply with the live link or "not posted"; record what they say (Published with Live URL, or back to `Ready` with a new time proposal). Then skip to step 5.
 2. **Postiz hard rules:** authenticate before anything; download the post's media from Google Drive by its file ID (`download_file_content`) into the session scratchpad, then upload it with `postiz upload` and use the returned path; for TikTok use `content_posting_method: "DIRECT_POST"`; run `postiz integrations:settings <id>` before scheduling and follow its rules.
 3. **Schedule:** For each approved, unexpired post whose calendar status is `Ready`, check Postiz for an existing post with the same content and time first. If none, schedule it at the package's time (ET). Set the calendar status to `Scheduled` and record the Postiz post ID in the Error column as `postiz:<id>` until it is live.
 4. **Live check:** For every `Scheduled` post whose time has passed, confirm it is live (Postiz status and the public post URL). Set `Published` and fill Live URL, or set `Failed` with the error. Never retry a failed post without first confirming it did not publish.
