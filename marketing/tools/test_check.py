@@ -114,6 +114,12 @@ class CheckTests(unittest.TestCase):
         self.assertEqual(items, [])
         self.assertTrue(any("A-4" in e for e in errors), errors)
 
+    def test_section_headings_are_not_items(self):
+        text = "## Time-sensitive\n\n(none)\n\n" + approval("A-2026W42-002") + "\n## Missing owner inputs\n- Order-by date\n"
+        items, errors = check.parse_approvals(text)
+        self.assertEqual(errors, [])
+        self.assertEqual([i["id"] for i in items], ["A-2026W42-002"])
+
     def test_approved_items_for_filters(self):
         text = (
             approval("A-5", status="approved")

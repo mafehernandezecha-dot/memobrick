@@ -21,6 +21,7 @@ RUN_LINE = "Follow the memobrick-run skill."
 APPROVAL_FIELDS = ["agent", "type", "draft", "reason", "expires", "status"]
 APPROVAL_TYPES = {"publish", "send", "ad-change", "offer", "site-change"}
 EM_DASH = "—"
+ITEM_ID = re.compile(r"^[A-Z]-\S+$")
 
 REQUIRED_LAYOUT = [
     "marketing/README.md",
@@ -92,6 +93,8 @@ def parse_approvals(text):
     for block in re.split(r"^## ", text, flags=re.MULTILINE)[1:]:
         lines = block.splitlines()
         item_id = lines[0].strip()
+        if not ITEM_ID.match(item_id):
+            continue
         fields = {}
         for line in lines[1:]:
             match = re.match(r"^- (\w[\w ]*?):(.*)$", line)
