@@ -172,7 +172,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 22411dc
 - Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
 - Expires: 2026-11-30
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-5
 
 ## A-2026W41-015
