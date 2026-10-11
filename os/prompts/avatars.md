@@ -4,11 +4,11 @@ Shared style block (prepended to every portrait prompt):
 
 >Macro product photograph of a real LEGO minifigure, chest-up portrait, square composition, slight three-quarter angle, shallow depth of field, soft studio key light with gentle rim light, glossy ABS plastic with crisp specular highlights, tiny realistic imperfections, classic yellow minifigure head with a detailed printed face (arched eyebrows, glossy eyes with catchlights, expressive smile), sculpted molded hair piece with visible strand texture, printed torso details, solid seamless saturated backdrop with a soft vignette. Looks like a physical toy photographed in a studio, not a person, not a cartoon, no text, no logo.
 
-Sprite style (full body, background removed afterwards):
+Full-body follow-up (same Gemini chat):
 
->Macro product photograph of the same real LEGO minifigure, full body standing, three-quarter view from slightly above, both legs and feet visible, holding the same prop, same face print, hair piece, torso print and plastic finish as the reference portrait, centered with generous margin, on a plain flat light gray seamless background with even soft lighting and no cast shadow on the background. Physical toy, not a person, not a cartoon, no text, no logo.
+>Now the same minifigure full body standing, three-quarter view from slightly above, holding the same prop, on a plain flat light gray seamless background.
 
-Reference images: `reference/betty.jpg`, `reference/armando.jpg`, `reference/marcela.jpg`, plus the approved `avatars/betty.png` for everyone after Betty.
+Style reference: attach the approved `avatars/betty.png`.
 
 ## 1. Betty (mustard yellow)
 
@@ -20,7 +20,7 @@ Armando, the boss: slicked-back black hair with glossy highlights, thin rectangu
 
 ## 3. Marcela (dusty rose)
 
-Marcela: elegant blonde high ponytail with side-swept bangs, beige tailored blazer over a red turtleneck, small gold pendant necklace, gold stud earrings, red lipstick, confident smile, holding a slim tablet. Dusty-rose backdrop.
+Marcela: sleek shoulder-length black hair with a side part, lilac blazer over a black top, gold chain necklace, gold stud earring, brown lipstick, poised serious expression with arched brows, holding a black notebook. Dusty-rose backdrop.
 
 ## 4. Patricia (soft pink)
 
@@ -76,7 +76,7 @@ Sandra, friendly and warm: shoulder-length chestnut hair, mustard cardigan, smal
 
 ## 17. Mariana (purple)
 
-Mariana, the fashion-forward young employee: sleek black bob with a side part, purple blazer over a black top, gold chain necklace, confident smile, holding a notebook. Purple backdrop.
+Mariana: elegant blonde high ponytail with side-swept bangs, beige tailored blazer over a red turtleneck, small gold pendant necklace, gold stud earrings, red lipstick, confident smile, holding a slim tablet. Purple backdrop.
 
 ## 18. Freddy (sky blue)
 
