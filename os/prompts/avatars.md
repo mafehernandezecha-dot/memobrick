@@ -44,7 +44,7 @@ Nicolás, Betty's loyal friend and numbers whiz: neat black hair, tortoiseshell 
 
 ## 9. Roberto (deep brown)
 
-Roberto, the distinguished older gentleman: gray hair, gray mustache, dark three-piece suit with a gold pocket watch chain, calm wise expression, holding a leather document folder. Deep-brown backdrop.
+Roberto, the distinguished older gentleman: swept-back gray hair, thin round gold glasses, forehead wrinkles and gray brows, calm serious expression, navy suit with a bright blue shirt and blue tie. Deep-brown backdrop.
 
 ## 10. Margarita (blush rose)
 
