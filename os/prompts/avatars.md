@@ -38,9 +38,9 @@ Hugo, the flamboyant designer: styled dark hair, colorful thin glasses, bold pat
 
 Mario, the polished vice president: short brown hair, mid-gray suit, white shirt, light-blue tie, warm charming smile, holding a tablet. Slate-green backdrop.
 
-## 8. Nicolás (sand)
+## 8. Nicolás (olive green)
 
-Nicolás, the relaxed charmer and numbers whiz: tousled light-brown hair, camel jacket, loosened tie, cheeky grin, holding a phone showing a small chart. Sand backdrop.
+Nicolás, Betty's loyal friend and numbers whiz: neat black hair, tortoiseshell rectangular glasses, nervous lopsided grin, camel blazer over a green plaid shirt, khaki trousers. Olive-green backdrop.
 
 ## 9. Roberto (deep brown)
 
