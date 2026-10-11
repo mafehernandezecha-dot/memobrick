@@ -1,3 +1,4 @@
+import { APPROVALS_DESK } from '../../server/parse';
 import type { DashboardState } from '../../server/state';
 import { WorldView } from './WorldView';
 
@@ -10,7 +11,7 @@ const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one :
 
 export function Mundo({ state, onPick }: { state: DashboardState; onPick: (agent: string) => void }) {
   const working = state.agents.filter((a) => a.live?.state === 'working').length;
-  const needing = state.agents.filter((a) => a.character !== 'armando' && (a.pending > 0 || a.live?.state === 'needs_me')).length;
+  const needing = state.agents.filter((a) => a.name !== APPROVALS_DESK && (a.pending > 0 || a.live?.state === 'needs_me')).length;
 
   const workingText = state.liveConnected ? plural(working, 'agente trabajando', 'agentes trabajando') : 'Estado en vivo sin conectar';
 

@@ -1,6 +1,9 @@
 // Pure parsers for the repo files the dashboard reads. No file access here, so
 // they are easy to test; server/state.ts does the reading.
 
+/** agents.json name of the approval desk: the character who holds every pending item. */
+export const APPROVALS_DESK = 'aprobaciones';
+
 export type ApprovalItem = {
   id: string;
   agent: string;

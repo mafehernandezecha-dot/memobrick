@@ -4,6 +4,10 @@
   "ownerName": "Eden",
   "departments": [
     {
+      "name": "Dirección",
+      "color": "#4B5563"
+    },
+    {
       "name": "Coordinación",
       "color": "#9AA0A6"
     },
@@ -34,26 +38,26 @@
   ],
   "agents": [
     {
-      "name": "marketing-coordinator",
+      "name": "aprobaciones",
       "character": "betty",
-      "role": "Coordina el equipo y arma tu fila de aprobaciones",
-      "department": "Coordinación",
+      "role": "Te habla y lleva tus prioridades y aprobaciones",
+      "department": "Dirección",
       "status": "active",
-      "folder": "marketing/coordination/coordinator",
-      "agentFile": ".claude/agents/marketing-coordinator.md",
+      "folder": "marketing/approvals",
+      "agentFile": null,
       "displayName": "Betty",
       "machine": "",
       "avatar": "avatars/betty.png",
       "sprite": "sprites/betty.png"
     },
     {
-      "name": "aprobaciones",
+      "name": "marketing-coordinator",
       "character": "armando",
-      "role": "Tus decisiones: prioridades y aprobaciones",
+      "role": "Coordina el equipo y arma tu fila de aprobaciones",
       "department": "Coordinación",
       "status": "active",
-      "folder": "marketing/approvals",
-      "agentFile": null,
+      "folder": "marketing/coordination/coordinator",
+      "agentFile": ".claude/agents/marketing-coordinator.md",
       "note": "Not an AI agent: shows marketing/approvals/queue.md",
       "displayName": "Armando",
       "machine": "",

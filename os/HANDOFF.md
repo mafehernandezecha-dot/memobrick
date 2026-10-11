@@ -5,7 +5,7 @@ Read this first in a new session.
 ## Decisions so far
 - App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("El mundo"). UI in Spanish. Owner's name for greetings: Eden.
 - Banner and company everywhere: **Memobrick** (all characters work for Memobrick).
-- Cast and roles: `agents.json`. Betty = marketing-coordinator (the one the owner chats with). Armando = the approvals desk (`marketing/approvals/queue.md`), not an AI agent. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
+- Cast and roles: `agents.json`. Betty = the approval desk the owner talks to (`aprobaciones`, department Dirección, sits in Presidencia, holds every pending item in `marketing/approvals/queue.md`). Armando = the marketing-coordinator agent (Oficina de Armando Mendoza). Swapped at the owner's request after Stage 3. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
 - Portrait style: **photographic LEGO macro shots** made with an image model, matching `reference/*.jpg`. The procedural Three.js builder in `src/minifig/` is NOT the portrait style; keep it only for tiny figures in the 3D office if useful.
 - Image generation (current route): the owner generates images for free in the Gemini web app using `prompts/avatars.md` plus the reference images, then pastes them into the chat; save them as `avatars/<id>.png` (1024x1024) and `sprites/raw/<id>.png`. The API route below is kept as a fallback.
 - Image generation (API fallback): Gemini API. The key is a **network secret** (allowed website `generativelanguage.googleapis.com`, header `x-goog-api-key`, no prefix); the proxy adds it, so the session never sees it and the script sends no key. `GEMINI_API_KEY` is only a fallback for local runs. Model override: `GEMINI_IMAGE_MODEL` (default `gemini-2.5-flash-image`). Quick check: `curl -s https://generativelanguage.googleapis.com/v1beta/models | head` should list models, not an auth error.
@@ -30,7 +30,7 @@ All 22 portraits in `avatars/`, figures in `sprites/`. Review images: `python3 s
 
 ## Stage 2: sidebar and UI shell (built, waiting for approval)
 - Run: `cd os && npm install && npm run os`, then open the printed address.
-- `server/state.ts` builds everything the app shows from repo files on each request to `/api/state`: `agents.json`, `marketing/approvals/queue.md` (pending items = Te toca and each agent's "te necesita"; Armando holds all of them), `marketing/reports/` (latest date = Para Eden), `marketing/shared/scorecard.md` (latest weekly row), and `marketing/status/<agent>.json` (live state, not written by agents yet).
+- `server/state.ts` builds everything the app shows from repo files on each request to `/api/state`: `agents.json`, `marketing/approvals/queue.md` (pending items = Te toca and each agent's "te necesita"; the approval desk, Betty, holds all of them), `marketing/reports/` (latest date = Para Eden), `marketing/shared/scorecard.md` (latest weekly row), and `marketing/status/<agent>.json` (live state, not written by agents yet).
 - Parsers in `server/parse.ts`, tested in `server/parse.test.ts`.
 - Screens other than El mundo are placeholders until stage 4. The office scene is stage 3.
 

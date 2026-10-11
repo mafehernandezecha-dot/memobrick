@@ -53,10 +53,7 @@ export function WorldView({ state, onPick }: Props) {
   }, [ready, figures]);
 
   const byCharacter = new Map(state.agents.map((a) => [a.character, a]));
-  const roomPending = (cast: string[], id: string) =>
-    id === 'presidencia'
-      ? byCharacter.get('armando')?.pending ?? 0
-      : cast.reduce((n, c) => n + (c === 'armando' ? 0 : byCharacter.get(c)?.pending ?? 0), 0);
+  const roomPending = (cast: string[]) => cast.reduce((n, c) => n + (byCharacter.get(c)?.pending ?? 0), 0);
 
   return (
     <div className="world-view">
@@ -65,7 +62,7 @@ export function WorldView({ state, onPick }: Props) {
       <div className="world-overlay" ref={overlay} aria-hidden={!ready}>
         {ready &&
           ROOMS.map((r) => {
-            const n = roomPending(r.cast, r.id);
+            const n = roomPending(r.cast);
             return (
               <div key={r.id} className="room-label" data-anchor={`room:${r.id}`} data-align="left">
                 <span className="room-icon">{r.icon}</span>

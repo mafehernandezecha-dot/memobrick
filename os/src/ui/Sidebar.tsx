@@ -1,3 +1,4 @@
+import { APPROVALS_DESK } from '../../server/parse';
 import type { AgentView, DashboardState } from '../../server/state';
 import { Logo } from './Logo';
 
@@ -118,8 +119,8 @@ function liveTitle(a: AgentView) {
 }
 
 function EngineFooter({ state }: { state: DashboardState }) {
-  const armando = state.agents.find((a) => a.character === 'armando');
-  const turn = state.approvals.pending > 0 ? `Don ${armando?.displayName ?? 'Armando'} espera · tu turno` : `Don ${armando?.displayName ?? 'Armando'} al día`;
+  const desk = state.agents.find((a) => a.name === APPROVALS_DESK)?.displayName ?? 'Tu fila';
+  const turn = state.approvals.pending > 0 ? `${desk} espera · tu turno` : `${desk} al día`;
   return (
     <footer className="engine">
       <span className={`engine-dot ${state.liveConnected ? 'on' : ''}`} />

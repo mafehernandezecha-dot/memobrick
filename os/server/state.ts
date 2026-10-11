@@ -2,7 +2,7 @@
 // comes from here; nothing is invented. Missing files give empty values.
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { isPending, parseQueue, parseReportName, parseScorecardLatestWeek, parseStatus } from './parse';
+import { APPROVALS_DESK, isPending, parseQueue, parseReportName, parseScorecardLatestWeek, parseStatus } from './parse';
 import type { AgentStatus } from './parse';
 
 type AgentConfig = {
@@ -36,7 +36,6 @@ export type DashboardState = {
 };
 
 const read = (p: string) => (existsSync(p) ? readFileSync(p, 'utf8') : null);
-const APPROVALS_DESK = 'aprobaciones';
 
 export function buildState(osDir: string, repoDir: string): DashboardState {
   const cfg = JSON.parse(readFileSync(join(osDir, 'agents.json'), 'utf8'));
@@ -63,7 +62,7 @@ export function buildState(osDir: string, repoDir: string): DashboardState {
     const statusJson = read(join(statusDir, `${a.name}.json`));
     return {
       ...a,
-      // The approvals desk (Armando) holds every pending item.
+      // The approval desk holds every pending item.
       pending: a.name === APPROVALS_DESK ? pendingItems.length : pendingBy.get(a.name) ?? 0,
       live: statusJson ? parseStatus(statusJson) : null,
       lastReport: lastReportBy.get(a.name) ?? null,
