@@ -80,7 +80,7 @@ Mariana: long dark-brown braided curls with caramel highlights, warm tan minifig
 
 ## 18. Freddy (sky blue)
 
-Freddy, the cheerful messenger: blue cap, light-blue work shirt, backpack strap over one shoulder, big friendly grin, holding a delivery envelope. Sky-blue backdrop.
+Freddy, the cheerful messenger: swept-back dark-brown hair, confident lopsided grin, neon-yellow reflective safety vest with light stripes over a white shirt and mustard tie, black sleeves and black trousers. Sky-blue backdrop.
 
 ## 19. Jenny (peach)
 
