@@ -68,7 +68,7 @@ Sofía: big voluminous red-brown curls with bangs, thin glasses, red blazer, pea
 
 ## 15. Bertha (mint)
 
-Bertha, the no-nonsense assistant: tight dark bun, rectangular glasses, teal blouse, strict but kind expression, holding a ring binder. Mint backdrop.
+Bertha, the cheerful assistant: long straight dark-brown hair with a center part, bright yellow suit over a black top, silver heart pendant necklace, red lipstick, big friendly smile. Mint backdrop.
 
 ## 16. Sandra (honey)
 
