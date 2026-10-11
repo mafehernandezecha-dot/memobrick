@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/personalized-christmas-photo-gifts.md
 Title: Personalized Christmas Photo Gifts: A Brick Mosaic Guide
 Meta description: Turn a favorite photo into a personalized Christmas gift. See how a custom brick mosaic works, who it suits, and what comes in the kit.

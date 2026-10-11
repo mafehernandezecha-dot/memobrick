@@ -25,6 +25,7 @@
 - **Wrote `marketing/seo/technical/site-changes-2026-10-11.md`:** exact before and after for every proposal below.
 - **Draft checks:** there are no drafts with `Status: ready for check` to check. `marketing/seo/writer/drafts/` holds no `.md` files.
 - **Copy check:** no customer-facing draft was created or edited, so `check.py copy` was not needed.
+- **Draft check (later the same day):** `personalized-christmas-photo-gifts` was marked `ready for check` after the first pass. Checked with `searchfit-seo:on-page-seo`; wrote `marketing/seo/technical/checks/personalized-christmas-photo-gifts.md` (Article and FAQPage JSON-LD, link checks, no redirect needed). No technical fixes were needed. Set the draft to `Status: checked`. `check.py copy` passed (exit 0). Link targets were verified through read-only Shopify queries.
 
 ## Proposed for approval
 
@@ -66,6 +67,14 @@
 - Draft: marketing/seo/technical/site-changes-2026-10-11.md (item 5)
 - Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
 - Expires: 2026-11-30
+- Status: pending
+
+### P-seo-technical-20261011-6
+- Agent: seo-technical
+- Type: publish
+- Draft: marketing/seo/writer/drafts/personalized-christmas-photo-gifts.md
+- Reason: New Christmas photo gift hub that links 11 existing Christmas and recipient posts; it needs time to be indexed before mid-November holiday searches peak. Add the JSON-LD from checks/personalized-christmas-photo-gifts.md on publish.
+- Expires: 2026-10-25
 - Status: pending
 
 ## Blocked or unknown
