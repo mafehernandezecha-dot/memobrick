@@ -160,7 +160,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 22411dc
 - Reason: The duplicate "[Ikram GemPages] Perfect Holiday Gift" article went live 2026-09-10 and splits ranking with `theperfect-holiday` before the holiday peak. The fix is to unpublish it and 301 it to `theperfect-holiday`.
 - Expires: 2026-11-30
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-1
 - Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
 
