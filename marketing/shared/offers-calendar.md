@@ -17,4 +17,7 @@ Only the owner edits this file. Agents may propose offers through the approval q
 | Fulfillment location claim (Miami, Florida) | unknown | |
 | Holiday ad budget | unknown | |
 | Product margins | unknown | |
-| Gift cards offered | unknown | |
+| Gift cards offered | unknown (a gift card product is active in Shopify; owner to confirm) | |
+| Sample kits available for press | unknown | |
+| Outreach sender name and email | unknown (default: Eden Biri) | |
+| Faces per size and build time | unknown | |
