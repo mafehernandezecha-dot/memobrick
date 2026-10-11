@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 import { decide, readMarketingFile } from './server/actions';
 import { CHAT_MODEL_LABEL, getChat, listChats, streamChat } from './server/chat';
 import { buildState } from './server/state';
+import { decideAndSync, pullLatest } from './server/sync';
 
 const osDir = __dirname;
 const repoDir = resolve(osDir, '..');
@@ -40,6 +41,11 @@ export default defineConfig({
     {
       name: 'memobrick-api',
       configureServer(server) {
+        // Bring in the agents' latest work now and every few minutes (not in tests).
+        if (!process.env.VITEST) {
+          pullLatest(repoDir);
+          setInterval(() => pullLatest(repoDir), 3 * 60_000).unref();
+        }
         server.middlewares.use(async (req, res, next) => {
           const url = new URL(req.url ?? '/', 'http://local');
           if (!url.pathname.startsWith('/api/')) return next();
@@ -61,7 +67,9 @@ export default defineConfig({
               const body = await readBody(req);
               const decision = body.decision === 'changes' ? { decision: 'changes' as const, note: String(body.note ?? '') } : body.decision === 'approved' || body.decision === 'rejected' ? { decision: body.decision } : null;
               if (!decision) return json(res, 400, { error: 'Invalid decision.' });
-              return json(res, 200, decide(repoDir, decideMatch[1], decision));
+              const label = `${decideMatch[1]} ${decision.decision === 'changes' ? 'changes requested' : decision.decision}`;
+              const { result, sync } = await decideAndSync(repoDir, label, () => decide(repoDir, decideMatch[1], decision));
+              return json(res, 200, { ...result, sync });
             }
             if (url.pathname === '/api/chats' && req.method === 'GET') return json(res, 200, listChats(osDir));
             const chatMatch = url.pathname.match(/^\/api\/chats\/([a-z0-9-]+)$/);
