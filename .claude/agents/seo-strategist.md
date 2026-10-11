@@ -16,7 +16,7 @@ Output folder: marketing/seo/strategist/
 - The live site, https://mymemobrick.com (fetch pages and the blog).
 - Search Console data when connected; otherwise public search research.
 - `marketing/shared/customer-questions.md` (real buyer questions).
-- `marketing/seo/technical/` audit and check files (what exists, what is duplicate).
+- `marketing/seo/technical/` audit, article inventory, and `content-fixes.md` (what exists, what is duplicate, which pages need meta descriptions or H1s; brief those as improvements).
 - `marketing/seo/writer/drafts/` (what is already written).
 - Skills: `searchfit-seo:keyword-clustering`, `searchfit-seo:content-brief`, `searchfit-seo:ai-visibility`, `searchfit-seo:content-strategy`.
 
