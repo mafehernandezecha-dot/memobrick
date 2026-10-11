@@ -1,6 +1,6 @@
 // The Memobrick office floor plan, in studs (1 stud = 0.8 scene units).
-// x grows to the right, z grows toward the camera. Rooms follow the show's
-// places ("Mario Calderón's Office" style) and hold Memobrick departments.
+// x grows to the right, z grows toward the camera. Rooms keep the show's Spanish
+// names ("Oficina de Mario Calderón" style) and hold Memobrick departments.
 
 export type Side = 'n' | 's' | 'e' | 'w';
 export type Floor = 'tile' | 'wood' | 'carpet' | 'red';
@@ -43,7 +43,7 @@ export const OFFICE = { w: 64, d: 44 };
 export const ROOMS: Room[] = [
   {
     id: 'taller',
-    label: "Hugo Lombardi's Studio",
+    label: 'Taller de Hugo Lombardi',
     icon: '✂️',
     x: 0, z: 4, w: 16, d: 14,
     floor: 'wood',
@@ -58,7 +58,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'cuartel',
-    label: 'The Ugly Squad HQ',
+    label: 'El cuartel de las feas',
     icon: '💬',
     x: 16, z: 2, w: 14, d: 16,
     floor: 'tile',
@@ -74,7 +74,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'entrada',
-    label: 'Entrance',
+    label: 'La entrada',
     icon: '🚪',
     x: 30, z: 0, w: 8, d: 10,
     floor: 'tile',
@@ -85,7 +85,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'recepcion',
-    label: 'Reception',
+    label: 'Recepción',
     icon: '🛎️',
     x: 38, z: 0, w: 12, d: 14,
     floor: 'tile',
@@ -100,7 +100,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'marcela',
-    label: "Marcela Valencia's Office",
+    label: 'Oficina de Marcela Valencia',
     icon: '✉️',
     x: 50, z: 4, w: 14, d: 14,
     floor: 'carpet',
@@ -115,7 +115,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'presidencia',
-    label: "President's Office",
+    label: 'Presidencia',
     icon: '👓',
     x: 0, z: 25, w: 14, d: 15,
     floor: 'wood',
@@ -132,7 +132,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'armando',
-    label: "Armando Mendoza's Office",
+    label: 'Oficina de Armando Mendoza',
     icon: '👔',
     x: 14, z: 35, w: 6, d: 9,
     floor: 'tile',
@@ -143,7 +143,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'boardroom',
-    label: 'Boardroom',
+    label: 'Sala de juntas',
     icon: '🗂️',
     x: 20, z: 25, w: 18, d: 17,
     floor: 'red',
@@ -159,7 +159,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'mario',
-    label: "Mario Calderón's Office",
+    label: 'Oficina de Mario Calderón',
     icon: '📣',
     x: 38, z: 25, w: 14, d: 17,
     floor: 'tile',
@@ -173,7 +173,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'finanzas',
-    label: "Nicolás Mora's Finance Office",
+    label: 'Finanzas de Nicolás Mora',
     icon: '📊',
     x: 52, z: 25, w: 12, d: 11,
     floor: 'tile',
@@ -187,7 +187,7 @@ export const ROOMS: Room[] = [
   },
   {
     id: 'bodega',
-    label: 'Warehouse & Shipping',
+    label: 'Bodega y despacho',
     icon: '📦',
     x: 52, z: 36, w: 12, d: 8,
     floor: 'tile',
@@ -201,7 +201,7 @@ export const ROOMS: Room[] = [
   },
 ];
 
-/** Overflow seats in the Boardroom for agents added later without a room. */
+/** Overflow seats in the Sala de juntas for agents added later without a room. */
 export const OVERFLOW_SEATS = [
   { x: 4, z: 4 }, { x: 14, z: 4 }, { x: 4, z: 14 }, { x: 14, z: 14 },
   { x: 2.5, z: 9 }, { x: 15.5, z: 9 },

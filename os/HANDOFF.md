@@ -3,7 +3,7 @@
 Read this first in a new session.
 
 ## Decisions so far
-- App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("World"). UI, room names, roles and Betty's chat are in English (switched from Spanish at the owner's request after Stage 4). Owner's name for greetings: Eden.
+- App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("World"). UI, roles and Betty's chat are in English (switched from Spanish at the owner's request after Stage 4); office names stay in Spanish, as in the show. Owner's name for greetings: Eden.
 - Banner and company everywhere: **Memobrick** (all characters work for Memobrick).
 - Cast and roles: `agents.json`. Betty = the approval desk the owner talks to (`aprobaciones`, department Leadership, sits in President's Office, holds every pending item in `marketing/approvals/queue.md`). Armando = the marketing-coordinator agent (Armando Mendoza's Office). Swapped at the owner's request after Stage 3. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
 - Portrait style: **photographic LEGO macro shots** made with an image model, matching `reference/*.jpg`. The procedural Three.js builder in `src/minifig/` is NOT the portrait style; keep it only for tiny figures in the 3D office if useful.
