@@ -3,11 +3,12 @@
 Read this first in a new session.
 
 ## Decisions so far
-- App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("El mundo"). UI in Spanish. Owner's name for greetings: not given yet.
+- App: Memobrick OS, a local dashboard where the marketing agents are a LEGO-style office ("El mundo"). UI in Spanish. Owner's name for greetings: Eden.
 - Banner and company everywhere: **Memobrick** (all characters work for Memobrick).
 - Cast and roles: `agents.json`. Betty = marketing-coordinator (the one the owner chats with). Armando = the approvals desk (`marketing/approvals/queue.md`), not an AI agent. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
 - Portrait style: **photographic LEGO macro shots** made with an image model, matching `reference/*.jpg`. The procedural Three.js builder in `src/minifig/` is NOT the portrait style; keep it only for tiny figures in the 3D office if useful.
-- Image generation: Gemini API. The key is a **network secret** (allowed website `generativelanguage.googleapis.com`, header `x-goog-api-key`, no prefix); the proxy adds it, so the session never sees it and the script sends no key. `GEMINI_API_KEY` is only a fallback for local runs. Model override: `GEMINI_IMAGE_MODEL` (default `gemini-2.5-flash-image`). Quick check: `curl -s https://generativelanguage.googleapis.com/v1beta/models | head` should list models, not an auth error.
+- Image generation (current route): the owner generates images for free in the Gemini web app using `prompts/avatars.md` plus the reference images, then pastes them into the chat; save them as `avatars/<id>.png` (1024x1024) and `sprites/raw/<id>.png`. The API route below is kept as a fallback.
+- Image generation (API fallback): Gemini API. The key is a **network secret** (allowed website `generativelanguage.googleapis.com`, header `x-goog-api-key`, no prefix); the proxy adds it, so the session never sees it and the script sends no key. `GEMINI_API_KEY` is only a fallback for local runs. Model override: `GEMINI_IMAGE_MODEL` (default `gemini-2.5-flash-image`). Quick check: `curl -s https://generativelanguage.googleapis.com/v1beta/models | head` should list models, not an auth error.
 
 ## Next steps (do not skip the approvals)
 1. `cd os && node scripts/gen-avatars.mjs --only betty` → `avatars/betty.png`. Show it to the owner. **Wait for approval.** Regenerate with `--force` if they want changes (edit `prompts/avatars.json`).
