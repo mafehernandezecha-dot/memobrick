@@ -67,7 +67,7 @@ def contact_sheet(agents):
         color = dept_color.get(a["department"], "#999999")
         d.rounded_rectangle((x, y + cell + 12, x + 10, y + cell + 36), 3, fill=color)
         d.text((x + 18, y + cell + 10), a["displayName"], font=name_f, fill=INK)
-        d.text((x + 18, y + cell + 42), f"{a["department"] or "Sin área"} · {status_label.get(a['status'], a['status'])}", font=role_f, fill=MUTED)
+        d.text((x + 18, y + cell + 42), f"{a['department'] or 'Sin área'} · {status_label.get(a['status'], a['status'])}", font=role_f, fill=MUTED)
     return sheet
 
 
