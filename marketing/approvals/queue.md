@@ -149,7 +149,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 22411dc
 - Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
 - Expires: 2026-11-15
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-4
 
 ## A-2026W41-013
