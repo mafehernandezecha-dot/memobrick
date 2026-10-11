@@ -54,9 +54,9 @@ Margarita, the elegant older matriarch: silver bob, lavender suit, pearl necklac
 
 María Beatriz, the high-society woman: voluminous blonde-gray updo, burgundy blazer, pearl necklace, red lipstick, poised smile, holding a small clutch bag. Wine-colored backdrop.
 
-## 12. Inesita (pale blue)
+## 12. Inesita (lilac)
 
-Inesita, shy and sweet: short dark bob with a headband, round thin glasses, soft cardigan, gentle smile, holding a neat stack of papers. Pale-blue backdrop.
+Inesita, the sweet eldest of the team: silver-gray hair in a soft bun, gentle smile with smile lines, silver hoop earrings, blue-gray jacket with a collar and silver buttons. Lilac backdrop.
 
 ## 13. Aura María (coral)
 
