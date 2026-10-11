@@ -40,6 +40,7 @@ Google organic is the largest known channel. Social is about 13 percent of order
 - **Where agents run:** Claude Code agent files in this repo, started by scheduled cloud routines, with shared records stored as files in the repo (option A).
 - **Autonomy:** Agents prepare, the owner approves. Agents may read data, research, and draft on their own. Publishing, sending email or outreach, any ad or budget change, discounts, and changes to the live website need owner approval. Refunds, budgets, and unusual customer commitments always stay with the owner. Autonomy can widen after the week 4 accuracy review.
 - **Brand rules:** Taken from the playbook and enforced on every customer-facing draft: warm, personal, clear voice; short sentences; one call to action per message; approved terms ("custom brick mosaic", "personalized photo gift", "DIY brick mosaic kit", "40+ colors", 1×1 bricks); no em dashes in customer copy; no fake reviews, invented scarcity, expired codes, or unverified delivery promises; mockups labeled as such; the Miami, Florida shipping claim used only after the owner verifies it.
+- **Order workflow is off limits:** Agents send nothing to customers about their orders and never touch the Shopify order workflow (order confirmations, shipping and delivery notifications, fulfillment, the Post-Purchase: Build & Delight flow, refunds). Shopify handles it as it does today. Agents work only on marketing to subscribers and prospects, content, SEO, and outreach.
 - **Tool choice:** Claude Code, because Shopify, Meta Ads, Omnisend, Gmail, Google Drive, Postiz, and the SEO skills are already available to it.
 
 - **Team structure:** One agent per task (16 agents in 6 teams) so every job is organized, separated, and easy to check. A coordinator agent prevents overlap and builds the single weekly approval file. Agents are switched on in two waves (section 6).
@@ -50,23 +51,23 @@ Google organic is the largest known channel. Social is about 13 percent of order
 
 ```
 .claude/
-  agents/
-    coordination/marketing-coordinator.md
-    analytics/growth-analyst.md
-    analytics/ads-analyst.md
-    seo/seo-strategist.md
-    seo/blog-writer.md
-    seo/technical-seo.md
-    outreach/gift-guide-pr.md
-    outreach/link-builder.md
-    outreach/creator-scout.md
-    social/social-planner.md
-    social/social-publisher.md
-    social/community-manager.md
-    email/flow-optimizer.md
-    email/campaign-writer.md
-    conversion/conversion-auditor.md
-    conversion/reviews-ugc.md
+  agents/                 flat files, team is the name prefix
+    marketing-coordinator.md
+    growth-analyst.md
+    ads-analyst.md
+    seo-strategist.md
+    seo-blog-writer.md
+    seo-technical.md
+    outreach-gift-guide-pr.md
+    outreach-link-builder.md
+    outreach-creator-scout.md
+    social-planner.md
+    social-publisher.md
+    social-community-manager.md
+    email-flow-optimizer.md
+    email-campaign-writer.md
+    conversion-auditor.md
+    conversion-reviews-ugc.md
   skills/
     memobrick-brand/SKILL.md      shared brand voice, terms, honesty rules, product facts
     memobrick-approvals/SKILL.md  how to propose items and act on approved ones
@@ -221,7 +222,7 @@ Current Omnisend setup (read 2026-10-11, reworked 2026-09-28):
 | Browse Abandonment (viewed product) | On | Exits on add to cart or order |
 | Abandoned Cart (3 emails, 20% in last) | On | Exits on checkout started or order, so it hands off to the checkout flow |
 | Abandoned Checkout (3 emails, 20% in last) | On | Exits on order. The customer's design shows in cart and checkout emails |
-| Post-Purchase: Build & Delight | On | Paid order trigger |
+| Post-Purchase: Build & Delight | On | Order workflow, off limits to agents |
 | Customer Reactivation, Next Memory (20%) | On | 20% code valid 14 days |
 | Back in Stock | On | |
 | Old design-to-cart flow, Copy of Order Confirmation | Off | Replaced, leave off |
@@ -229,6 +230,7 @@ Current Omnisend setup (read 2026-10-11, reworked 2026-09-28):
 **13. Flow optimizer** (wave 1)
 - **Job:** Improve the existing flows, not rebuild them.
 - **Cadence:** First run is a 90-day performance review; then Tue 8:00 weekly.
+- **Scope:** Welcome, Browse Abandonment, Abandoned Cart, Abandoned Checkout, Customer Reactivation, and Back in Stock. Post-Purchase and any order notifications are out of scope.
 - **Does:** Purchases per delivered email, revenue per recipient, unsubscribes, and complaints per flow and per email. Checks links, mobile rendering, and that the design image shows. Proposes one test at a time, starting with a reassurance version (size help, kit contents, delivery date) against the 20% discount in one recovery flow.
 - **Never:** Enable, disable, or edit flows without approval.
 
@@ -247,9 +249,9 @@ Current Omnisend setup (read 2026-10-11, reworked 2026-09-28):
 - **Never:** Place real orders or change the theme or design engine.
 
 **16. Reviews and UGC** (wave 2)
-- **Job:** Collect honest reviews and reusable customer stories.
+- **Job:** Find the best honest reviews and customer stories already collected, for use in marketing.
 - **Cadence:** Wed 6:00 weekly.
-- **Does:** Confirms whether Loox or Omnisend sends review requests (one, not both), drafts permission requests to reuse customer photos and videos, and keeps `approved-stories.md` with the permission recorded for each.
+- **Does:** Reads reviews and photos customers already shared through Loox, picks the strongest stories, and keeps `approved-stories.md` listing only content with reuse permission already given (for example through Loox's photo review terms or a customer's own public post). It sends nothing to customers; if a story needs permission, it flags it for the owner.
 - **Never:** Use a customer photo or quote without recorded permission, or write fake reviews.
 
 ### Later (not in this design)
