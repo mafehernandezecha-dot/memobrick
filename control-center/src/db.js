@@ -12,6 +12,10 @@ export function getPool(){
   if (pool) return pool;
   const url = process.env.DATABASE_URL;
   if (!url) throw new Error("DATABASE_URL is not set");
+  // a pasted connection string that lost its beginning parses as a host
+  // called "base" — say what's wrong instead of a DNS error
+  if (!/^postgres(ql)?:\/\/[^/\s]+@[^/\s]+/.test(url.trim()))
+    throw new Error("DATABASE_URL looks incomplete. It must be the full connection string, starting with postgresql://user:password@host — copy it again from your database provider (Neon → Connect → Copy snippet).");
   pool = new pg.Pool({
     connectionString: url,
     max: Number(process.env.DB_POOL_SIZE || 10),
