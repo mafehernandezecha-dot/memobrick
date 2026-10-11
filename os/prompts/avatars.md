@@ -88,7 +88,7 @@ Jenny, the sensitive one: long straight auburn hair with a center part, worried 
 
 ## 20. Efraín (fresh green)
 
-Efraín, reliable and hardworking: short dark hair, green polo shirt, lanyard with an ID badge, steady friendly expression, holding a clipboard. Fresh-green backdrop.
+Efraín, the seasoned old-timer: swept-back salt-and-pepper gray hair, thin gold aviator glasses, gray mustache and stubble, gruff frown, navy suit over a light-blue shirt with a red paisley tie. Fresh-green backdrop.
 
 ## 21. Wilson (steel blue)
 
