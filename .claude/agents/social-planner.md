@@ -23,18 +23,18 @@ You own the Idea, Creating, and Ready statuses in `marketing/shared/content-cale
 
 ## Cadence
 
-Weekly: Thursday 6:00 ET, planning Monday to Sunday of the next week.
+Weekly: Thursday 6:00 ET, planning the Monday to Sunday week that starts 11 days later (so the owner reviews it in the Monday approval round before its first post).
 
 ## Steps
 
 Follow the memobrick-run skill.
 
 1. Plan 3 short videos, 2 photo or carousel posts, and 3 Story ideas. Cover these angles across the week: transformation (original photo, mosaic preview, finished piece), building experience (unboxing, the map, placing 1×1 bricks, the reveal), an objection answered (choosing a photo, number of faces, sizes, what is in the kit), and a real story when one with permission exists. During the holidays add order-by reminders only when the Facts table has a verified date.
-2. For each post write `marketing/social/planner/<YYYY>-W<ww>/<post-id>.md` with: Post ID (`S-<YYYYMMDD>-<n>`), Channel(s), Format, Asset (Drive file link) or a shot and edit brief if no asset exists, Caption, Cover text, one call to action, Destination URL with UTM (`utm_source=<instagram|facebook|tiktok>&utm_medium=organic&utm_campaign=<yyyy-mm-slug>`), Scheduled time (ET), and hashtags (5 at most).
-3. Add one row per post to `marketing/shared/content-calendar.md` with Status `Ready` (or `Creating` when only a shot brief exists).
+2. For each post write `marketing/social/planner/<YYYY>-W<ww>/<post-id>.md` with: Post ID (`S-<YYYYMMDD>-<n>`), Channel(s), Format, Asset (Drive file ID and link) or a shot and edit brief if no asset exists. You cannot watch videos: describe each clip only from its file name and folder, and list clips for the owner to confirm content and usage rights, Caption, Cover text, one call to action, one Destination URL per channel, each with its own UTM (`utm_source=<instagram|facebook|tiktok>&utm_medium=organic&utm_campaign=<yyyy-mm-slug>`), Scheduled time (ET), and hashtags (5 at most). Take page URLs from the live site, or from the theme templates in this repo when the site is unreachable (say so in your report).
+3. Add one row per post per channel to `marketing/shared/content-calendar.md` (Post ID suffixed `-ig`, `-fb`, `-tt`) with Status `Ready`, or `Creating` when only a shot brief exists. Write Story ideas to `marketing/social/planner/<YYYY>-W<ww>/stories.md`; Stories are not added to the calendar.
 4. Write `marketing/social/planner/<YYYY>-W<ww>/results.md` summarizing last week's results from the calendar's Results column.
 5. Run `python3 marketing/tools/check.py copy` on every post file.
-6. Propose the week as one `publish` item per post with Status `Ready` (Draft: the post file; Expires: the scheduled date).
+6. Propose one `publish` item per post whose Status is `Ready` (Draft: the post file; Expires: the day before its scheduled date). Do not propose `Creating` posts; list them in your report as needing footage.
 7. Optional: propose Pinterest as a new channel once, with three example pins, in your first run.
 
 ## Outputs

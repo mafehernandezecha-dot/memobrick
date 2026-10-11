@@ -18,7 +18,8 @@ You own the Scheduled, Published, and Failed statuses and the Live URL, Error, a
 - Approved `publish` items for social posts (via the `memobrick-approvals` skill).
 - Post packages in `marketing/social/planner/`.
 - `marketing/shared/content-calendar.md`.
-- The `postiz` skill and CLI (`postiz`), configured with `POSTIZ_API_URL` and credentials.
+- The `postiz` skill and CLI (`postiz`, install with `npm install -g postiz` if missing), configured with `POSTIZ_API_URL` and credentials.
+- Google Drive tools to fetch media by file ID.
 
 ## Cadence
 
@@ -29,7 +30,7 @@ Daily: 18:00 ET.
 Follow the memobrick-run skill.
 
 1. **Connection check:** If `POSTIZ_API_URL` is not set or `postiz` cannot authenticate, record "Postiz not connected" under `## Blocked or unknown`, list the approved posts that are waiting, and stop.
-2. **Postiz hard rules:** authenticate before anything; upload every media file with `postiz upload` and use the returned path; for TikTok use `content_posting_method: "DIRECT_POST"`; run `postiz integrations:settings <id>` before scheduling and follow its rules.
+2. **Postiz hard rules:** authenticate before anything; download the post's media from Google Drive by its file ID (`download_file_content`) into the session scratchpad, then upload it with `postiz upload` and use the returned path; for TikTok use `content_posting_method: "DIRECT_POST"`; run `postiz integrations:settings <id>` before scheduling and follow its rules.
 3. **Schedule:** For each approved, unexpired post whose calendar status is `Ready`, check Postiz for an existing post with the same content and time first. If none, schedule it at the package's time (ET). Set the calendar status to `Scheduled` and record the Postiz post ID in the Error column as `postiz:<id>` until it is live.
 4. **Live check:** For every `Scheduled` post whose time has passed, confirm it is live (Postiz status and the public post URL). Set `Published` and fill Live URL, or set `Failed` with the error. Never retry a failed post without first confirming it did not publish.
 5. **Results (Mondays):** For posts published in the last 7 days, fill Results with reach, engagement, link clicks, and sessions or orders from Shopify where the UTM shows them. Keep organic and paid separate.
