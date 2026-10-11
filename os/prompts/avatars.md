@@ -72,7 +72,7 @@ Bertha, the cheerful assistant: long straight dark-brown hair with a center part
 
 ## 16. Sandra (honey)
 
-Sandra, friendly and warm: shoulder-length chestnut hair, mustard cardigan, small gold hoop earrings, warm smile, holding a coffee mug. Honey backdrop.
+Sandra, calm and precise: long black hair pulled back into a high ponytail, round red-brown glasses, silver hoop earrings, coral lipstick, gentle smile, light blue-gray button-up jacket with a mandarin collar. Honey backdrop.
 
 ## 17. Mariana (purple)
 
