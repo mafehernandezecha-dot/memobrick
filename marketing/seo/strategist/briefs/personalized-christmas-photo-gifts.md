@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: personalized christmas photo gifts
 Hub: Christmas
 Page type: hub

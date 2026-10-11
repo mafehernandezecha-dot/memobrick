@@ -113,7 +113,7 @@ Frames are optional and only available where offered. You can check the options 
 
 ### When should I order for Christmas?
 
-As early as you can. Each kit is made from your own photo, so starting your design in October or early November gives you the most breathing room. Check our [frequently asked questions](https://mymemobrick.com/pages/faqs) for current details.
+As early as you can. Each kit is made from your own photo, so starting your design now gives you the most breathing room. Check our [frequently asked questions](https://mymemobrick.com/pages/faqs) for current details.
 
 ## Start your Christmas mosaic
 
