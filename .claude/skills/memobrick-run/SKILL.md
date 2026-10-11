@@ -25,6 +25,10 @@ Every agent run follows these steps in order.
 7. **Copy check.** Run `python3 marketing/tools/check.py copy <file>` on every customer-facing draft you created. Fix em dashes and re-run until it passes.
 8. **Commit.** `git add` your files, commit with message `<agent>: <one-line summary>`, and push. If the push is rejected, `git pull --rebase` and push again.
 
+## When the live site is unreachable
+
+If https://mymemobrick.com cannot be fetched (the environment's network policy may block it), read the same content through read-only Shopify queries instead (`search_products`, `get-product`, and `graphql_query` for `pages`, `blogs`, and `articles` with their handles, titles, and body HTML). Say in your report that the live site was unreachable and which fallback you used. Never write to Shopify in this fallback.
+
 ## When a tool fails
 
 Record the failure under `## Blocked or unknown`, finish everything you can without it, and never retry a publish or send blindly. Check whether the action already happened before any retry.

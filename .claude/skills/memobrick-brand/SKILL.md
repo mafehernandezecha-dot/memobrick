@@ -18,6 +18,8 @@ Memobrick turns personal photos into custom brick mosaic kits. Customers upload 
 - Website-generated designs and previews that help customers see their photo as a mosaic before ordering. Personal assistance is available when a customer needs help.
 - Custom and corporate projects, quoted according to size, quantity, design work, assembly, and delivery requirements.
 
+Sizes, prices, and variant options come from the live Shopify product data (read-only queries); quote them exactly as Shopify lists them on the day you write. Faces per size and build time are unknown until the owner adds them to the Facts table.
+
 The website creates the design. Never say a designer personally created a customer's design, and never imply a manual proof is required.
 
 ## Brand description (use as written)
