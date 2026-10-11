@@ -22,9 +22,9 @@ Armando, the boss: slicked-back black hair with glossy highlights, thin rectangu
 
 Marcela: sleek shoulder-length black hair with a side part, lilac blazer over a black top, gold chain necklace, gold stud earring, brown lipstick, poised serious expression with arched brows, holding a black notebook. Dusty-rose backdrop.
 
-## 4. Patricia (soft pink)
+## 4. Patricia (raspberry pink)
 
-Patricia: glamorous long dark-brown wavy hair, pink tailored jacket, statement gold earrings, glossy pink lips, eyelashes, self-satisfied smile, holding a phone. Soft-pink backdrop.
+Patricia: blonde high ponytail with long side-swept strands, beige tailored blazer over a red top, small gold pendant necklace, gold earrings, red lipstick, big confident smile, holding a phone. Raspberry-pink backdrop.
 
 ## 5. Daniel (teal)
 
@@ -76,7 +76,7 @@ Sandra, friendly and warm: shoulder-length chestnut hair, mustard cardigan, smal
 
 ## 17. Mariana (purple)
 
-Mariana: elegant blonde high ponytail with side-swept bangs, beige tailored blazer over a red turtleneck, small gold pendant necklace, gold stud earrings, red lipstick, confident smile, holding a slim tablet. Purple backdrop.
+Mariana: glamorous long dark-brown wavy hair, purple tailored jacket over a black top, statement gold hoop earrings, rose lipstick, eyelashes, warm knowing smile, holding a slim tablet. Purple backdrop.
 
 ## 18. Freddy (sky blue)
 
