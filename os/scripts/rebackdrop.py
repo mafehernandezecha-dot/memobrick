@@ -4,6 +4,9 @@ Usage: python3 scripts/rebackdrop.py <input> <output.png> <hex color>
 """
 import sys
 
+import numpy as np
+from scipy import ndimage
+
 from PIL import Image, ImageDraw, ImageFilter
 from rembg import new_session, remove
 
@@ -12,9 +15,19 @@ base = tuple(int(color[i:i + 2], 16) for i in (0, 2, 4))
 im = Image.open(src).convert('RGBA')
 w, h = im.size
 fig = remove(im, session=new_session('isnet-general-use'), alpha_matting=True)
+# The figure must be fully opaque inside its outline: clothes the same color as the
+# old backdrop can otherwise come out see-through. Fill holes in a solid mask, treating
+# the bottom edge (where the torso is cropped) as part of the figure.
+solid = np.array(fig.getchannel('A')) > 128
+padded = np.pad(solid, ((0, 1), (0, 0)), constant_values=True)
+padded[-1] = padded[-2] | padded[-1]
+filled = ndimage.binary_fill_holes(padded)[:-1]
+filled = ndimage.binary_opening(filled, iterations=2)
+mask = Image.fromarray((filled * 255).astype('uint8'))
 # Pull the edge in slightly so no fringe of the old backdrop color survives.
-alpha = fig.getchannel('A').filter(ImageFilter.MinFilter(5)).filter(ImageFilter.GaussianBlur(1.2))
-fig.putalpha(alpha)
+mask = mask.filter(ImageFilter.MinFilter(5)).filter(ImageFilter.GaussianBlur(1.2))
+fig = im.copy()
+fig.putalpha(mask)
 
 # Backdrop: lighter center, darker edges, like the studio shots.
 light = tuple(min(255, int(c * 1.12 + 10)) for c in base)

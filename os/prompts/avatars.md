@@ -32,11 +32,11 @@ Daniel, the cold finance vice president: slicked-back dark brown hair, stern fro
 
 ## 6. Hugo (orange)
 
-Hugo, the flamboyant designer: styled dark hair, colorful thin glasses, bold patterned shirt, silk scarf, a yellow measuring tape draped around his neck, theatrical smile, holding a fabric swatch. Orange backdrop.
+Hugo, the flamboyant designer: bald yellow head, pink square sunglasses with rose lenses, big open grin, lime-green suit with a tall popped collar and pink buttons, pink silk neckerchief, colorful wristwatch. Orange backdrop.
 
 ## 7. Mario (slate green)
 
-Mario, the polished vice president: short brown hair, mid-gray suit, white shirt, light-blue tie, warm charming smile, holding a tablet. Slate-green backdrop.
+Mario, the vice president: neatly combed dark brown hair, worried grimace with raised brows, gray suit over a black shirt with a purple patterned tie. Slate-green backdrop.
 
 ## 8. Nicolás (olive green)
 
