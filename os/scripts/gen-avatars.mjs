@@ -1,6 +1,7 @@
 // Generates LEGO-photo portraits (avatars/<id>.png) and full-body figures
 // (sprites/raw/<id>.png) with the Gemini image API, using reference images for
-// style consistency. Requires GEMINI_API_KEY in the environment.
+// style consistency. Auth: a network secret for generativelanguage.googleapis.com
+// (header x-goog-api-key), or GEMINI_API_KEY when run outside Claude Code.
 //
 //   node scripts/gen-avatars.mjs --only betty            portrait for Betty
 //   node scripts/gen-avatars.mjs --all                   portraits for everyone except approved ones
@@ -17,11 +18,10 @@ const args = process.argv.slice(2);
 const flag = (n) => args.includes(n);
 const opt = (n) => (args.includes(n) ? args[args.indexOf(n) + 1] : undefined);
 
+// The key normally arrives as a Claude Code network secret: the environment's proxy
+// adds the x-goog-api-key header to requests for generativelanguage.googleapis.com,
+// so the key never appears here. GEMINI_API_KEY is only a fallback for local runs.
 const key = process.env.GEMINI_API_KEY;
-if (!key) {
-  console.error('GEMINI_API_KEY is not set. Add it in the environment settings (Network secrets) and start a new session.');
-  process.exit(1);
-}
 const model = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
 const sprites = flag('--sprites');
 const only = opt('--only');
@@ -54,7 +54,7 @@ async function generate(c) {
   for (let attempt = 1; attempt <= 3; attempt++) {
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
+      headers: { 'content-type': 'application/json', ...(key ? { 'x-goog-api-key': key } : {}) },
       body: JSON.stringify(body),
     });
     const json = await res.json();

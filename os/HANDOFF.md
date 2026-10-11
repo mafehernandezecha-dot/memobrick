@@ -7,7 +7,7 @@ Read this first in a new session.
 - Banner and company everywhere: **Memobrick** (all characters work for Memobrick).
 - Cast and roles: `agents.json`. Betty = marketing-coordinator (the one the owner chats with). Armando = the approvals desk (`marketing/approvals/queue.md`), not an AI agent. Mariana = seo-strategist. Machine tags are blank until the owner sets them.
 - Portrait style: **photographic LEGO macro shots** made with an image model, matching `reference/*.jpg`. The procedural Three.js builder in `src/minifig/` is NOT the portrait style; keep it only for tiny figures in the 3D office if useful.
-- Image generation: Gemini API. Key in env var `GEMINI_API_KEY` (added by the owner in the environment's Network secrets). Model override: `GEMINI_IMAGE_MODEL` (default `gemini-2.5-flash-image`).
+- Image generation: Gemini API. The key is a **network secret** (allowed website `generativelanguage.googleapis.com`, header `x-goog-api-key`, no prefix); the proxy adds it, so the session never sees it and the script sends no key. `GEMINI_API_KEY` is only a fallback for local runs. Model override: `GEMINI_IMAGE_MODEL` (default `gemini-2.5-flash-image`). Quick check: `curl -s https://generativelanguage.googleapis.com/v1beta/models | head` should list models, not an auth error.
 
 ## Next steps (do not skip the approvals)
 1. `cd os && node scripts/gen-avatars.mjs --only betty` → `avatars/betty.png`. Show it to the owner. **Wait for approval.** Regenerate with `--force` if they want changes (edit `prompts/avatars.json`).
