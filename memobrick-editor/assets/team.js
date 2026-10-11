@@ -158,6 +158,8 @@
       lastSig = sig;
       showSaved("Saved " + new Date(rec.updatedAt).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }));
       syncBar();
+      // inventory-sync.js listens: the saved brick grid goes to the Control Center
+      if (rec.design) document.dispatchEvent(new CustomEvent("studio:saved", { detail: projectEvent(rec) }));
       return true;
     } catch (e){
       console.error("[MemoBrick Studio] save failed", e);
@@ -168,6 +170,17 @@
   setInterval(() => { saveNow(false); }, 3000);
   document.addEventListener("visibilitychange", () => { if (document.hidden) saveNow(false); });
   window.addEventListener("beforeunload", () => { saveNow(false); });
+
+  // what other modules (inventory-sync.js) get about a saved project
+  function projectEvent(rec){
+    const z = S.size;
+    return {
+      id: rec.id, name: rec.name, ref: rec.ref || "", customer: rec.customer || "", status: rec.status,
+      size: { id: z.id, label: z.label, gw: z.gw, gh: z.gh, bx: z.bx, by: z.by },
+      design: rec.design,
+    };
+  }
+  window.MB_STUDIO_CURRENT = () => (current && current.design ? projectEvent(current) : null);
 
   function showSaved(t){ const el = $("#teamSaved"); if (el) el.textContent = t; }
 
@@ -263,6 +276,7 @@
       downloadPDF();
       T.openInstructions();
       T.toast("Finished — instructions generated and downloaded.");
+      document.dispatchEvent(new CustomEvent("studio:finished", { detail: projectEvent(rec) }));
     } finally { finishing = false; }
   }
   // every "Order / Finish" button in the editor finishes the project instead

@@ -72,6 +72,21 @@ browsers.
   for example on a new computer. Make backups regularly, because clearing the browser's site
   data deletes stored projects.
 
+## Inventory (MEMOBRICK CONTROL CENTER)
+
+The Studio can send every project's exact brick grid to the shared inventory
+system in `../control-center`. Click **Inventory** in the top bar →
+*Control Center connection*, then paste the Control Center address and a Studio
+API key (Control Center → Settings). Once connected:
+
+- every save syncs the project's exact bricks per color;
+- **Finish** also sends the project to production and reserves its materials.
+  Put the Shopify order number in the project's *Order number* field to attach
+  it to that order instead of creating a new one;
+- the **Inventory** panel shows the exact requirements and live stock.
+
+Without a connection the Studio works exactly as before.
+
 ## Internet use
 
 The app runs from its own files. The PDF library is bundled, so instructions work offline. Two
@@ -89,6 +104,7 @@ assets/memobrick.js        editor engine (team copy of the website editor)
 assets/memobrick.css       editor styles
 assets/memobrick-size-zoom.js
 assets/team.js             projects, autosave, custom sizes, finish → instructions, exports
+assets/inventory-sync.js   connection to the MEMOBRICK CONTROL CENTER (optional)
 assets/team.css            team screens and dialogs
 assets/jspdf.umd.min.js    PDF library (MIT, see jspdf-LICENSE.txt)
 assets/*.jpg, *.webp       sample portrait, photo-tip images, room photos, backgrounds

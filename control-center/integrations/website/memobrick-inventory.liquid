@@ -1,0 +1,11 @@
+{%- comment -%}
+  MEMOBRICK CONTROL CENTER connector for the website editor.
+  1. Upload memobrick-inventory.js to the theme's assets.
+  2. Save this file as snippets/memobrick-inventory.liquid.
+  3. In layout/theme.liquid, add this line right AFTER the memobrick.js script tag:
+       {% render 'memobrick-inventory' %}
+  4. Replace the address below with your Control Center's address.
+  It only reads the editor's design at add-to-cart time; checkout is unchanged.
+{%- endcomment -%}
+<script>window.MB_INVENTORY = { url: "https://YOUR-CONTROL-CENTER-ADDRESS" };</script>
+<script src="{{ 'memobrick-inventory.js' | asset_url }}" defer></script>

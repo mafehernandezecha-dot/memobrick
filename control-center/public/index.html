@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Memobrick Control Center</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="login" class="login" hidden>
+    <form class="login-card" id="loginForm">
+      <div class="brand big"><span class="logo-mark" aria-hidden="true"></span><span>MEMOBRICK <b>CONTROL CENTER</b></span></div>
+      <p class="muted">Inventory, orders and production in one place.</p>
+      <label class="field"><span>Email</span><input name="email" type="email" autocomplete="username" required></label>
+      <label class="field"><span>Password</span><input name="password" type="password" autocomplete="current-password" required></label>
+      <p class="err" id="loginErr" role="alert"></p>
+      <button class="btn primary full" type="submit">Sign in</button>
+    </form>
+  </div>
+
+  <div id="app" class="shell" hidden>
+    <aside class="side" id="side">
+      <div class="brand"><span class="logo-mark" aria-hidden="true"></span><span>MEMOBRICK<br><b>CONTROL CENTER</b></span></div>
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#/dashboard" data-v="dashboard">Dashboard</a>
+        <a href="#/bricks" data-v="bricks">Brick Inventory</a>
+        <a href="#/boards" data-v="boards">Boards &amp; Tools</a>
+        <a href="#/orders" data-v="orders">Orders</a>
+        <a href="#/production" data-v="production">Production</a>
+        <a href="#/designs" data-v="designs">Designs</a>
+        <a href="#/history" data-v="history">Inventory History</a>
+        <a href="#/restock" data-v="restock">Restocking</a>
+        <a href="#/reports" data-v="reports">Reports</a>
+        <a href="#/setup" data-v="setup">Initial Stock Setup</a>
+        <a href="#/settings" data-v="settings" data-admin>Settings</a>
+      </nav>
+      <div class="me">
+        <span id="meName"></span>
+        <button class="link" id="logout" type="button">Sign out</button>
+      </div>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <button class="btn ghost menu" id="menuBtn" type="button" aria-label="Menu">☰</button>
+        <h1 id="title">Dashboard</h1>
+        <span class="live" id="live" title="Live updates"><i></i><span>Live</span></span>
+      </header>
+      <main id="view" class="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div class="drawer" id="drawer" hidden role="dialog" aria-modal="true">
+    <div class="drawer-card">
+      <button class="x" type="button" data-close aria-label="Close">×</button>
+      <div id="drawerBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
