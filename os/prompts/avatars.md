@@ -48,7 +48,7 @@ Roberto, the distinguished older gentleman: swept-back gray hair, thin round gol
 
 ## 10. Margarita (blush rose)
 
-Margarita, the elegant older matriarch: coiffed short champagne-blonde hair, rose-pink tailored suit, pearl necklace, small gold brooch, pearl earrings, rose lipstick, composed gracious smile. Blush-rose backdrop.
+Margarita, the elegant older matriarch: voluminous wavy auburn-brown hair, lilac skirt suit over a black top, pearl necklace, silver earrings, plum lipstick, forehead and smile lines, stern composed expression with arched brows. Blush-rose backdrop.
 
 ## 11. María Beatriz (wine)
 
