@@ -1,4 +1,5 @@
 import type { DashboardState } from '../../server/state';
+import { WorldView } from './WorldView';
 
 function greeting(d = new Date()) {
   const h = d.getHours();
@@ -7,7 +8,7 @@ function greeting(d = new Date()) {
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-export function Mundo({ state }: { state: DashboardState }) {
+export function Mundo({ state, onPick }: { state: DashboardState; onPick: (agent: string) => void }) {
   const working = state.agents.filter((a) => a.live?.state === 'working').length;
   const needing = state.agents.filter((a) => a.character !== 'armando' && (a.pending > 0 || a.live?.state === 'needs_me')).length;
 
@@ -20,8 +21,7 @@ export function Mundo({ state }: { state: DashboardState }) {
       </header>
 
       <div className="world-stage" aria-label="Oficina de Memobrick">
-        <div className="baseplate" />
-        <p className="stage-note">La oficina en LEGO se arma en la etapa 3.</p>
+        <WorldView state={state} onPick={onPick} />
       </div>
 
       <div className="greet-card">

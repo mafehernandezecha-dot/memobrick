@@ -55,6 +55,8 @@ export interface MinifigSpec {
   accessory: Accessory;
   accessoryColor?: string;
   pose?: Pose;
+  /** Head and hands color; classic yellow when unset. */
+  skin?: string;
   /** Portrait background. */
   background: string;
 }

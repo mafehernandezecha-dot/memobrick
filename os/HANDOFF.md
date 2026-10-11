@@ -33,3 +33,8 @@ All 22 portraits in `avatars/`, figures in `sprites/`. Review images: `python3 s
 - `server/state.ts` builds everything the app shows from repo files on each request to `/api/state`: `agents.json`, `marketing/approvals/queue.md` (pending items = Te toca and each agent's "te necesita"; Armando holds all of them), `marketing/reports/` (latest date = Para Eden), `marketing/shared/scorecard.md` (latest weekly row), and `marketing/status/<agent>.json` (live state, not written by agents yet).
 - Parsers in `server/parse.ts`, tested in `server/parse.test.ts`.
 - Screens other than El mundo are placeholders until stage 4. The office scene is stage 3.
+
+## Stage 3: El mundo (built, waiting for approval)
+- `src/world/layout.ts` is the floor plan: 11 rooms named after the show, each holding a Memobrick department. Agents are seated by their `character` in agents.json; anyone new goes to the Sala de juntas (tested in `layout.test.ts`).
+- `src/world/scene.ts` builds the city block (road loop, buildings, cars, trees, lamps) and the office (walls with studs, floors, furniture, MEMOBRICK pennants) with an orthographic camera. Drag to pan, scroll or pinch to zoom, click a figure to open that agent.
+- Figures use the parametric builder in `src/minifig/` with `src/world/looks.ts` matching each approved portrait. States: working (typing, speech bubble with the task), needs Eden (full color plus red badge), idle or not created (gray ghost). Live "working" needs `marketing/status/<agent>.json`, which comes in stage 4.

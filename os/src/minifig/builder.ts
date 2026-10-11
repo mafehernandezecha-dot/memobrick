@@ -116,14 +116,14 @@ function hand(mat: THREE.Material) {
 
 /** Arm pivoting at the shoulder. Rotation is set by the pose. */
 function arm(spec: MinifigSpec, side: 1 | -1) {
-  const sleeve = plastic(spec.sleeves === 'short' ? SKIN : spec.torsoColor);
+  const sleeve = plastic(spec.sleeves === 'short' ? spec.skin ?? SKIN : spec.torsoColor);
   const g = new THREE.Group();
   g.name = side === 1 ? 'armR' : 'armL';
   g.add(mesh(new THREE.SphereGeometry(0.22, 20, 16), plastic(spec.torsoColor)));
   const upper = mesh(new THREE.CylinderGeometry(0.2, 0.22, 0.85, 20), sleeve, 0, -0.42, 0.04);
   upper.rotation.x = -0.12;
   g.add(upper);
-  const h = hand(plastic(SKIN));
+  const h = hand(plastic(spec.skin ?? SKIN));
   h.position.set(0, -0.98, 0.16);
   h.rotation.x = -0.35;
   h.name = 'hand';
@@ -484,7 +484,7 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
 
 export function buildMinifig(spec: MinifigSpec): THREE.Group {
   const fig = new THREE.Group();
-  const skin = plastic(SKIN);
+  const skin = plastic(spec.skin ?? SKIN);
   const legsMat = plastic(spec.legsColor);
   const shoes = plastic(spec.shoesColor ?? spec.legsColor);
 
@@ -518,7 +518,7 @@ export function buildMinifig(spec: MinifigSpec): THREE.Group {
 
   const head = new THREE.Group();
   head.name = 'head';
-  head.add(mesh(headGeometry(0.44, 0.86), plastic('#ffffff', { map: texture(drawFace(spec.face)) }), 0, 2.72, 0));
+  head.add(mesh(headGeometry(0.44, 0.86), plastic('#ffffff', { map: texture(drawFace(spec.face, spec.skin ?? SKIN)) }), 0, 2.72, 0));
   if (spec.hair === 'receding') head.add(mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.16, 24), skin, 0, 3.66, 0));
   head.add(hair(spec));
   if (spec.face.glasses3d) head.add(glasses3d(spec.face.glasses3d.shape, spec.face.glasses3d.color));

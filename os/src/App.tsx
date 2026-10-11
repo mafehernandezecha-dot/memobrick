@@ -47,7 +47,7 @@ export function App() {
         <span />
       </button>
       <div className="scrim" onClick={() => setMenuOpen(false)} />
-      <main className="main">{view.kind === 'mundo' ? <Mundo state={state} /> : <ComingSoon state={state} view={view} />}</main>
+      <main className="main">{view.kind === 'mundo' ? <Mundo state={state} onPick={(name) => go({ kind: 'agent', name })} /> : <ComingSoon state={state} view={view} />}</main>
     </div>
   );
 }
