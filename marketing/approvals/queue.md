@@ -40,7 +40,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: f6147d2
 - Reason: Family transformation video for the family gift audience.
 - Expires: 2026-10-18
-- Status: pending
+- Status: approved
 - From: P-social-planner-20261011-3
 - Note: Clip appears to be Billo creator content. Confirm the license covers organic posting on Instagram, Facebook, and TikTok.
 
