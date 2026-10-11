@@ -50,7 +50,7 @@ Google organic is the largest known channel. Social is about 13 percent of order
 .claude/
   agents/
     growth-analyst.md
-    email-recovery.md
+    email-optimization.md
     content-social.md
     seo-blog.md
     backlinks-pr-creators.md
@@ -107,15 +107,28 @@ Each agent file states its job, inputs, tools, weekly job, outputs, and what it 
 - **Never:** Change budgets or campaigns. Add revenue across platforms as if orders were unique.
 - **Gap:** Google Ads and Google Analytics are not connected. Search Console access is needed for organic data.
 
-### 4.2 Email and sales recovery (priority 1)
+### 4.2 Email optimization and campaigns (priority 1)
 
-- **Job:** Turn existing interest into orders through Omnisend, and ask for reviews after delivery.
-- **Inputs:** Omnisend flows, campaigns, and reports; Shopify orders and abandoned checkouts; `offers-calendar.md`.
-- **First run:** Audit active flows (welcome, abandoned checkout, post-purchase, review request), entry rules, purchase suppression, overlaps, and links. Report the top three issues.
-- **Weekly (Tue 6:00):** Draft one campaign for the coming week and one flow improvement, with audience, exclusions, test design, and success measure (purchases per delivered email, revenue per recipient).
-- **Holiday campaign plan:** Gift-guide email, Black Friday and Cyber Monday, order-by reminders, a last-chance message timed to the confirmed cutoff, and a gift-card or "give the experience" angle for after the cutoff if gift cards are offered.
-- **Design recovery:** Only enabled after the site is verified to save design activity tied to a contactable customer with a working return link (playbook rule). Until then, recovery uses abandoned checkouts only.
-- **Never:** Send without approval. Imply a designer made the customer's design by hand. Use offers not in `offers-calendar.md`.
+- **Job:** Improve the recovery flows already running in Omnisend (not rebuild them), run holiday campaigns, and grow repeat purchases.
+- **Current Omnisend setup (read 2026-10-11, reworked 2026-09-28):**
+
+  | Flow | Status | Notes |
+  |---|---|---|
+  | Welcome for memobrick | On | Signup-form subscribers, exits on order |
+  | Browse Abandonment (viewed product) | On | Exits on add to cart or order |
+  | Abandoned Cart (3 emails, 20% in last) | On | Exits on checkout started or order, so it hands off to the checkout flow |
+  | Abandoned Checkout (3 emails, 20% in last) | On | Exits on order. The customer's design now shows in cart and checkout emails |
+  | Post-Purchase: Build & Delight | On | Paid order trigger |
+  | Customer Reactivation, Next Memory (20%) | On | 20% code valid 14 days |
+  | Back in Stock | On | |
+  | Old design-to-cart flow, Copy of Order Confirmation | Off | Replaced, leave off |
+
+- **Inputs:** Omnisend flows, campaigns, analytics, and segments; Shopify orders; `offers-calendar.md`.
+- **First run:** Pull 90 days of performance per flow and per email (purchases per delivered email, revenue per recipient, unsubscribes, complaints). Check links, mobile rendering, and that the design image appears correctly. Confirm whether review requests are sent by Loox or Omnisend and that customers do not get both. Report the top three improvements.
+- **Test candidates:** Both recovery flows give 20% in the last email. Test a reassurance version (size help, kit contents, delivery date) against the discount on one flow, since the playbook warns against discounting by default. Test send delays during the holiday peak.
+- **Weekly (Tue 6:00):** Draft one campaign for the coming week and one flow improvement, with audience, exclusions, test design, and success measure.
+- **Holiday campaign plan:** Gift-guide email, Black Friday and Cyber Monday, order-by reminders, a last-chance message timed to the confirmed cutoff, and a gift-card angle for after the cutoff if gift cards are offered. Holiday flows must not stack discounts with the 20% recovery codes unless the owner approves.
+- **Never:** Send campaigns, enable, disable, or edit flows without approval. Imply a designer made the customer's design by hand. Use offers not in `offers-calendar.md`.
 
 ### 4.3 Content and social (priority 1)
 
@@ -163,7 +176,7 @@ Customer support, order coordinator, inventory, and corporate gifting sales. The
 | Agent | Cadence | Day and time (ET) |
 |---|---|---|
 | Growth analyst | Weekly, plus daily Nov 16 to Dec 20 | Mon 6:00; daily 8:00 |
-| Email and recovery | Weekly | Tue 6:00 |
+| Email optimization | Weekly | Tue 6:00 |
 | SEO and blog | Weekly | Wed 6:00 |
 | Conversion | Every two weeks | Wed 9:00 |
 | Content and social | Weekly, plus daily live check once enabled | Thu 6:00; daily 18:00 |
@@ -173,7 +186,7 @@ The owner reviews the approval file once a week (suggested Monday) and approves 
 
 ## 6. Rollout
 
-- **Week 1 (Oct 12 to 18):** Build agent files, brand and approval skills, and records. Growth analyst baseline. SEO audit. Email audit. First gift-guide target list and pitches. Conversion first run.
+- **Week 1 (Oct 12 to 18):** Build agent files, brand and approval skills, and records. Growth analyst baseline. SEO audit. Omnisend flow performance review. First gift-guide target list and pitches. Conversion first run.
 - **Week 2 (Oct 19 to 25):** First approved outputs go live. Holiday offer calendar and order-by date confirmed by owner. First social calendar. First Christmas hub page drafted.
 - **Weeks 3 to 4 (Oct 26 to Nov 8):** Black Friday and Cyber Monday email and social plan approved. Creator pilot if budget allows. Duplicate articles consolidated.
 - **Week 4 review (around Nov 8):** Check agent accuracy, approval workload, and early results. Decide whether to allow scheduled social publishing without per-post approval.
@@ -185,7 +198,6 @@ The owner reviews the approval file once a week (suggested Monday) and approves 
 | Item | Needed by | Blocks |
 |---|---|---|
 | Postiz API key and which social accounts are connected | Week 1 | Social scheduling and live checks |
-| Confirm Omnisend is the email platform in use | Week 1 | Email agent |
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |
 | Christmas order-by date, current offers and codes | Week 2 | Holiday emails and posts |
