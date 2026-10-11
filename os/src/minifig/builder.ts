@@ -1,30 +1,48 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
-import { drawFace, drawTorso } from './prints';
-import { Accessory, MinifigSpec, SKIN } from './types';
+import { drawFace, drawHairTexture, drawTorso } from './prints';
+import { Accessory, MinifigSpec, Pose, SKIN } from './types';
 
 /**
  * One parametric LEGO-style minifigure. Units: the figure stands on y = 0 and is
- * about 4 units tall, facing +z. Named children ('head', 'armL', 'armR', 'torso')
- * are animated by the scene.
+ * about 4 units tall, facing +z. Named children ('head', 'armL', 'armR', 'torso',
+ * 'prop') are animated by the scene.
  */
 
 const plastic = (color: string, opts: Partial<THREE.MeshPhysicalMaterialParameters> = {}) =>
   new THREE.MeshPhysicalMaterial({
     color,
-    roughness: 0.32,
+    roughness: 0.3,
     metalness: 0,
-    clearcoat: 0.7,
-    clearcoatRoughness: 0.18,
+    clearcoat: 0.8,
+    clearcoatRoughness: 0.15,
     ...opts,
   });
 
-const texture = (c: HTMLCanvasElement) => {
+const texture = (c: HTMLCanvasElement, repeat = 1) => {
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.SRGBColorSpace;
   t.anisotropy = 8;
+  if (repeat !== 1) {
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.repeat.set(repeat, 1);
+  }
   return t;
 };
+
+function hairMaterial(color: string) {
+  const [map, bump] = drawHairTexture(color);
+  const bumpTex = new THREE.CanvasTexture(bump);
+  bumpTex.wrapS = bumpTex.wrapT = THREE.RepeatWrapping;
+  bumpTex.repeat.set(3, 1);
+  return plastic('#ffffff', {
+    map: texture(map, 3),
+    bumpMap: bumpTex,
+    bumpScale: 1.6,
+    roughness: 0.36,
+    side: THREE.DoubleSide,
+  });
+}
 
 function mesh(geo: THREE.BufferGeometry, mat: THREE.Material, x = 0, y = 0, z = 0) {
   const m = new THREE.Mesh(geo, mat);
@@ -41,9 +59,7 @@ function torsoGeometry(topW: number, botW: number, h: number, d: number) {
     [-b, 0, z], [b, 0, z], [t, h, z], [-t, h, z],
     [-b, 0, -z], [b, 0, -z], [t, h, -z], [-t, h, -z],
   ];
-  const faces = [
-    [0, 1, 2, 3], [5, 4, 7, 6], [4, 0, 3, 7], [1, 5, 6, 2], [3, 2, 6, 7], [4, 5, 1, 0],
-  ];
+  const faces = [[0, 1, 2, 3], [5, 4, 7, 6], [4, 0, 3, 7], [1, 5, 6, 2], [3, 2, 6, 7], [4, 5, 1, 0]];
   const pos: number[] = [];
   for (const [a, bb, c, dd] of faces) for (const i of [a, bb, c, a, c, dd]) pos.push(...v[i]);
   const g = new THREE.BufferGeometry();
@@ -83,7 +99,6 @@ function headGeometry(r: number, h: number) {
   }
   pts.push(new THREE.Vector2(0, h));
   const g = new THREE.LatheGeometry(pts, 48, Math.PI, Math.PI * 2);
-  // Remap v so the face texture spans the straight side only.
   const p = g.attributes.position;
   const uv = g.attributes.uv;
   for (let i = 0; i < p.count; i++) uv.setY(i, THREE.MathUtils.clamp((p.getY(i) - bev) / (h - 2 * bev), 0, 1));
@@ -92,25 +107,23 @@ function headGeometry(r: number, h: number) {
 
 function hand(mat: THREE.Material) {
   const g = new THREE.Group();
-  const claw = mesh(new THREE.TorusGeometry(0.15, 0.07, 12, 24, Math.PI * 1.55), mat);
+  const claw = mesh(new THREE.TorusGeometry(0.15, 0.075, 12, 24, Math.PI * 1.55), mat);
   claw.rotation.set(Math.PI / 2, 0, Math.PI * 0.72);
   g.add(claw);
-  const wrist = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.16, 12), mat, 0, 0.14, 0);
-  g.add(wrist);
+  g.add(mesh(new THREE.CylinderGeometry(0.075, 0.075, 0.16, 12), mat, 0, 0.14, 0));
   return g;
 }
 
+/** Arm pivoting at the shoulder. Rotation is set by the pose. */
 function arm(spec: MinifigSpec, side: 1 | -1) {
   const sleeve = plastic(spec.sleeves === 'short' ? SKIN : spec.torsoColor);
-  const skin = plastic(SKIN);
   const g = new THREE.Group();
   g.name = side === 1 ? 'armR' : 'armL';
-  const shoulder = mesh(new THREE.SphereGeometry(0.22, 20, 16), plastic(spec.torsoColor));
-  g.add(shoulder);
+  g.add(mesh(new THREE.SphereGeometry(0.22, 20, 16), plastic(spec.torsoColor)));
   const upper = mesh(new THREE.CylinderGeometry(0.2, 0.22, 0.85, 20), sleeve, 0, -0.42, 0.04);
   upper.rotation.x = -0.12;
   g.add(upper);
-  const h = hand(skin);
+  const h = hand(plastic(SKIN));
   h.position.set(0, -0.98, 0.16);
   h.rotation.x = -0.35;
   h.name = 'hand';
@@ -120,114 +133,215 @@ function arm(spec: MinifigSpec, side: 1 | -1) {
   return g;
 }
 
+function applyPose(torso: THREE.Object3D, pose: Pose) {
+  const L = torso.getObjectByName('armL')!;
+  const R = torso.getObjectByName('armR')!;
+  switch (pose) {
+    case 'hold':
+      L.rotation.set(-0.95, 0, 0.36);
+      R.rotation.set(-0.95, 0, -0.36);
+      break;
+    case 'type':
+      L.rotation.set(-1.15, 0, 0.26);
+      R.rotation.set(-1.15, 0, -0.26);
+      break;
+    case 'phone':
+      L.rotation.set(-0.35, 0, -0.12);
+      R.rotation.set(-2.45, 0, -0.5);
+      break;
+    case 'idle':
+      L.rotation.set(-0.1, 0, -0.12);
+      R.rotation.set(-0.1, 0, 0.12);
+      break;
+  }
+}
+
+// Head straight side spans y 2.82..3.48, top at 3.58; brows sit near 3.32.
+const RIM = 3.36;
+const R = 0.475;
+
 function hair(spec: MinifigSpec): THREE.Group {
   const g = new THREE.Group();
-  const m = plastic(spec.hairColor, { roughness: 0.38 });
-  // Head straight side spans y 2.82..3.48 and its top is 3.58; brows sit near 3.3.
-  const top = 3.58;
-  void top;
-  const R = 0.475;
-  const rimY = 3.33;
-  const cap = (scaleY = 1.08, r = R) => {
-    const c = mesh(new THREE.SphereGeometry(r, 36, 18, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, rimY, -0.01);
+  const m = hairMaterial(spec.hairColor);
+  const cap = (scaleY = 1.08, r = R, y = RIM) => {
+    const c = mesh(new THREE.SphereGeometry(r, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2), m, 0, y, -0.01);
     c.scale.set(1, scaleY, 1);
     return c;
   };
-  const back = (yBottom: number, arc = Math.PI, r = R) => {
-    const h = rimY + 0.02 - yBottom;
-    const b = mesh(
-      new THREE.CylinderGeometry(r, r + 0.02, h, 36, 1, true, Math.PI / 2, arc),
-      m,
-      0,
-      yBottom + h / 2,
-      -0.01,
-    );
-    (b.material as THREE.MeshPhysicalMaterial).side = THREE.DoubleSide;
-    b.position.y = yBottom + h / 2;
-    return b;
+  const back = (yBottom: number, arc = Math.PI, r = R, rBottom = r + 0.02) => {
+    const h = RIM + 0.02 - yBottom;
+    return mesh(new THREE.CylinderGeometry(r, rBottom, h, 40, 1, true, Math.PI / 2, arc), m, 0, yBottom + h / 2, -0.01);
   };
-  const bangs = () => {
-    const b = mesh(new THREE.CylinderGeometry(R + 0.006, R + 0.006, 0.09, 36, 1, true, -Math.PI * 0.36, Math.PI * 0.72), m, 0, rimY - 0.02, 0);
-    (b.material as THREE.MeshPhysicalMaterial).side = THREE.DoubleSide;
-    return b;
-  };
+  // Fringe hangs at most 0.06 below the rim, ending above the brows.
+  const fringe = (h: number, arc: number, start = -arc / 2, r = R + 0.01) =>
+    mesh(new THREE.CylinderGeometry(r, r + 0.01, h, 40, 1, true, start, arc), m, 0, RIM - 0.06 + h / 2, 0);
 
   switch (spec.hair) {
     case 'short':
       g.add(cap(), back(3.0));
       break;
-    case 'slick': {
-      const c = cap(1.1);
-      g.add(c, back(3.05));
+    case 'slick':
+      g.add(cap(1.1), back(3.05));
+      break;
+    case 'wavy': {
+      // Voluminous textured hair swept up and back (Armando): a raised quiff
+      // plus swept ridges running front to back.
+      g.add(cap(1.22, 0.49), back(3.02, Math.PI * 1.05, 0.48));
+      for (let i = 0; i < 5; i++) {
+        const x = -0.28 + i * 0.14;
+        const ridge = mesh(new THREE.SphereGeometry(0.2, 18, 14), m, x, RIM + 0.4 - Math.abs(x) * 0.25, 0.02);
+        ridge.scale.set(0.55, 0.5, 1.9);
+        ridge.rotation.x = -0.25;
+        g.add(ridge);
+      }
+      const quiff = mesh(new THREE.SphereGeometry(0.22, 18, 14), m, 0.06, RIM + 0.44, 0.26);
+      quiff.scale.set(1.6, 0.6, 0.9);
+      g.add(quiff);
       break;
     }
     case 'ponytail': {
       g.add(cap(), back(3.05));
-      const tie = mesh(new THREE.SphereGeometry(0.17, 16, 12), m, 0, rimY + 0.08, -0.48);
-      const tail = mesh(new THREE.CapsuleGeometry(0.13, 0.62, 6, 14), m, 0, rimY - 0.38, -0.6);
+      g.add(mesh(new THREE.SphereGeometry(0.17, 16, 12), m, 0, RIM + 0.08, -0.48));
+      const tail = mesh(new THREE.CapsuleGeometry(0.13, 0.62, 6, 14), m, 0, RIM - 0.38, -0.6);
       tail.rotation.x = 0.22;
-      const band = mesh(new THREE.TorusGeometry(0.12, 0.04, 8, 16), plastic('#c0392b'), 0, rimY + 0.02, -0.54);
-      g.add(tie, tail, band);
+      g.add(tail);
       break;
     }
     case 'long':
-      g.add(cap(), back(2.45, Math.PI * 1.3, 0.49));
+      g.add(cap(1.1, 0.49), back(2.45, Math.PI * 1.3, 0.49, 0.53));
       break;
     case 'bob':
-      g.add(cap(1.06, 0.49), back(2.85, Math.PI * 1.35, 0.49));
+      g.add(cap(1.08, 0.49), back(2.85, Math.PI * 1.35, 0.49, 0.53));
       break;
-    case 'bun': {
-      g.add(cap(1.02), back(3.1));
-      const bun = mesh(new THREE.SphereGeometry(0.25, 20, 16), m, 0, rimY + 0.36, -0.3);
-      g.add(bun);
+    case 'sideswept': {
+      g.add(cap(1.1, 0.49), back(2.88, Math.PI * 1.32, 0.49, 0.53));
+      const sweep = fringe(0.16, Math.PI * 0.45, -Math.PI * 0.45, 0.5);
+      sweep.rotation.z = 0.1;
+      g.add(sweep);
+      break;
+    }
+    case 'bun':
+      g.add(cap(1.02), back(3.1), mesh(new THREE.SphereGeometry(0.25, 20, 16), m, 0, RIM + 0.36, -0.3));
+      break;
+    case 'updo': {
+      // Dark hair piled up with volume on top.
+      g.add(cap(1.2, 0.49), back(3.0, Math.PI * 1.25, 0.49));
+      for (let i = 0; i < 6; i++) {
+        const a = (i / 6) * Math.PI * 2;
+        g.add(mesh(new THREE.SphereGeometry(0.16, 14, 10), m, Math.sin(a) * 0.18, RIM + 0.52, Math.cos(a) * 0.16 - 0.08));
+      }
       break;
     }
     case 'curly': {
       g.add(cap(1.1, 0.49), back(2.9, Math.PI * 1.25, 0.49));
       for (let i = 0; i < 14; i++) {
         const a = (i / 14) * Math.PI * 2;
-        const s = mesh(new THREE.SphereGeometry(0.16, 12, 10), m, Math.sin(a) * 0.45, rimY + 0.12 - (i % 2) * 0.12, Math.cos(a) * 0.45 - 0.03);
         if (Math.cos(a) > 0.55) continue;
+        g.add(mesh(new THREE.SphereGeometry(0.16, 12, 10), m, Math.sin(a) * 0.45, RIM + 0.12 - (i % 2) * 0.12, Math.cos(a) * 0.45 - 0.03));
+      }
+      break;
+    }
+    case 'longcurly':
+    case 'feathered': {
+      // Big layered hair falling past the shoulders, with bangs.
+      const vol = spec.hair === 'feathered' ? 0.56 : 0.52;
+      g.add(cap(1.18, vol), back(2.4, Math.PI * 1.36, vol, vol + 0.1));
+      g.add(fringe(0.2, Math.PI * 0.7, -Math.PI * 0.35, vol - 0.02));
+      for (let i = 0; i < 2; i++) for (let k = 0; k < 9; k++) {
+        const a = Math.PI * 0.3 + k * (Math.PI * 1.4 / 8);
+        const y = i === 0 ? RIM - 0.05 : 2.75;
+        const s = mesh(new THREE.SphereGeometry(0.17, 12, 10), m, Math.sin(a) * (vol + 0.04), y, Math.cos(a) * (vol + 0.04) - 0.02);
+        s.scale.set(1, 1.4, 1);
         g.add(s);
       }
       break;
     }
-    case 'voluminous': {
-      const c = cap(1.12, 0.5);
-      c.scale.set(1.16, 0.95, 1.12);
-      g.add(c, back(2.5, Math.PI * 1.35, 0.56));
+    case 'voluminous':
+      g.add(cap(1.15, 0.52), back(2.5, Math.PI * 1.35, 0.54, 0.6));
+      break;
+    case 'highponytail': {
+      // Patricia: hair swept up into a big high ponytail, side bangs, long sides.
+      g.add(cap(1.2, 0.49), back(2.75, Math.PI * 1.3, 0.49, 0.54));
+      const sweep = fringe(0.16, Math.PI * 0.42, -Math.PI * 0.42, 0.5);
+      sweep.rotation.z = 0.12;
+      g.add(sweep);
+      g.add(mesh(new THREE.SphereGeometry(0.2, 18, 14), m, 0, RIM + 0.5, -0.32));
+      const tail = mesh(new THREE.CapsuleGeometry(0.19, 0.75, 8, 16), m, 0, RIM + 0.15, -0.68);
+      tail.rotation.x = 0.55;
+      g.add(tail);
+      for (let i = 0; i < 4; i++) {
+        g.add(mesh(new THREE.SphereGeometry(0.17 - i * 0.02, 14, 10), m, 0, RIM + 0.55 - i * 0.28, -0.55 - i * 0.12));
+      }
       break;
     }
-    case 'receding': {
-      const c = mesh(new THREE.CylinderGeometry(R + 0.01, R + 0.01, 0.42, 32, 1, true, Math.PI * 0.62, Math.PI * 0.76), m, 0, rimY - 0.12, 0);
-      (c.material as THREE.MeshPhysicalMaterial).side = THREE.DoubleSide;
-      g.add(c);
+    case 'braids': {
+      // Betty: long dark hair parted in the middle, straight bangs, two thick braids.
+      g.add(cap(1.12, 0.49), back(2.9, Math.PI * 1.3, 0.49, 0.52));
+      g.add(fringe(0.17, Math.PI * 0.62, -Math.PI * 0.31, 0.495));
+      for (const s of [-1, 1]) {
+        for (let i = 0; i < 7; i++) {
+          const b = mesh(new THREE.SphereGeometry(0.12 - i * 0.004, 14, 10), m, s * (0.48 + i * 0.01), 2.95 - i * 0.19, 0.16 + i * 0.05);
+          b.scale.set(1, 1.25, 1);
+          b.rotation.z = s * (i % 2 ? 0.4 : -0.4);
+          g.add(b);
+        }
+        g.add(mesh(new THREE.TorusGeometry(0.07, 0.03, 8, 14), plastic('#c0392b'), s * 0.55, 1.72, 0.48));
+      }
       break;
     }
+    case 'receding':
+      g.add(mesh(new THREE.CylinderGeometry(R + 0.01, R + 0.01, 0.42, 32, 1, true, Math.PI * 0.62, Math.PI * 0.76), m, 0, RIM - 0.12, 0));
+      break;
     case 'guardcap':
     case 'messengercap': {
       const capColor = plastic(spec.accentColor);
-      const crown = mesh(new THREE.CylinderGeometry(0.46, 0.49, 0.34, 32), capColor, 0, rimY + 0.2, 0);
-      const brim = mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.05, 24, 1, false, -Math.PI / 2, Math.PI), capColor, 0, rimY + 0.06, 0.36);
+      g.add(mesh(new THREE.CylinderGeometry(0.46, 0.49, 0.34, 32), capColor, 0, RIM + 0.2, 0));
+      const brim = mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.05, 24, 1, false, -Math.PI / 2, Math.PI), capColor, 0, RIM + 0.06, 0.36);
       brim.scale.set(1.15, 1, 0.9);
-      g.add(crown, brim, back(3.05));
+      g.add(brim, back(3.05));
       if (spec.hair === 'guardcap') {
-        const badge = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.03, 12), plastic('#e8c547'), 0, rimY + 0.24, 0.47);
+        const badge = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.03, 12), plastic('#e8c547'), 0, RIM + 0.24, 0.47);
         badge.rotation.x = Math.PI / 2;
         g.add(badge);
       }
       break;
     }
   }
-  if (spec.bangs) g.add(bangs());
   if (spec.face.glasses === 'sunglassesOnHead') {
     const glass = plastic('#1d1d1d');
     for (const s of [-1, 1]) {
-      const lens = mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.05, 16), glass, s * 0.17, rimY + 0.36, 0.24);
+      const lens = mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.05, 16), glass, s * 0.17, RIM + 0.4, 0.26);
       lens.rotation.x = Math.PI / 2.6;
       g.add(lens);
     }
   }
+  return g;
+}
+
+/** 3D glasses frames sitting on the printed eyes (eye line near y 3.17). */
+function glasses3d(shape: 'round' | 'rect', color: string) {
+  const g = new THREE.Group();
+  const rim = plastic(color, { roughness: 0.25 });
+  const y = 3.15;
+  for (const s of [-1, 1]) {
+    const lensGroup = new THREE.Group();
+    lensGroup.position.set(s * 0.16, y, 0.445);
+    lensGroup.rotation.y = s * 0.34;
+    if (shape === 'round') {
+      lensGroup.add(mesh(new THREE.TorusGeometry(0.125, 0.026, 10, 30), rim));
+    } else {
+      const w = 0.24, h = 0.15, t = 0.024;
+      lensGroup.add(
+        mesh(new THREE.BoxGeometry(w, t, t), rim, 0, h / 2, 0),
+        mesh(new THREE.BoxGeometry(w, t, t), rim, 0, -h / 2, 0),
+        mesh(new THREE.BoxGeometry(t, h, t), rim, -w / 2, 0, 0),
+        mesh(new THREE.BoxGeometry(t, h, t), rim, w / 2, 0, 0),
+      );
+    }
+    lensGroup.add(mesh(new THREE.CircleGeometry(0.11, 24), plastic('#ffffff', { transparent: true, opacity: 0.1, roughness: 0.05 }), 0, 0, -0.005));
+    g.add(lensGroup);
+  }
+  g.add(mesh(new THREE.BoxGeometry(0.07, 0.024, 0.024), rim, 0, y + 0.02, 0.47));
   return g;
 }
 
@@ -241,12 +355,32 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
       g.add(mesh(new RoundedBoxGeometry(0.7, 0.9, 0.08, 2, 0.02), c));
       g.add(mesh(new THREE.BoxGeometry(0.62, 0.82, 0.04), white, 0.02, 0.01, 0.04));
       break;
+    case 'book':
+      g.add(mesh(new RoundedBoxGeometry(0.62, 0.84, 0.16, 2, 0.03), c));
+      g.add(mesh(new THREE.BoxGeometry(0.58, 0.8, 0.12), white, 0.03, 0, 0));
+      break;
+    case 'tabletBooks': {
+      // Betty: tablet with a smiley in front, red and blue books behind.
+      const t = new THREE.Group();
+      t.add(mesh(new RoundedBoxGeometry(0.62, 0.8, 0.06, 2, 0.03), plastic('#8a8f98')));
+      const smile = mesh(new THREE.TorusGeometry(0.07, 0.015, 6, 16, Math.PI), plastic('#f4c430'), 0, -0.02, 0.035);
+      smile.rotation.z = Math.PI;
+      t.add(smile);
+      t.position.set(-0.18, 0, 0.08);
+      t.rotation.z = 0.1;
+      g.add(t);
+      g.add(mesh(new RoundedBoxGeometry(0.56, 0.78, 0.12, 2, 0.02), plastic('#c0392b'), 0.24, 0.02, -0.04));
+      g.add(mesh(new RoundedBoxGeometry(0.56, 0.74, 0.1, 2, 0.02), plastic('#2e5aa8'), 0.3, 0, -0.14));
+      break;
+    }
     case 'laptop': {
-      g.add(mesh(new RoundedBoxGeometry(0.9, 0.06, 0.6, 2, 0.02), plastic('#c9ccd2'), 0, 0, 0));
-      const lid = mesh(new RoundedBoxGeometry(0.9, 0.6, 0.05, 2, 0.02), plastic('#c9ccd2'), 0, 0.3, -0.3);
-      lid.rotation.x = -0.25;
+      // Screen faces the figure; the viewer sees the lid's back, as in the reference.
+      const metal = plastic('#a3a8b0', { metalness: 0.3, roughness: 0.35 });
+      g.add(mesh(new RoundedBoxGeometry(1.2, 0.06, 0.8, 2, 0.02), metal));
+      g.add(mesh(new THREE.BoxGeometry(1.0, 0.01, 0.4), plastic('#4a4f57'), 0, 0.035, -0.12));
+      const lid = mesh(new RoundedBoxGeometry(1.2, 0.8, 0.05, 2, 0.02), metal, 0, 0.38, 0.4);
+      lid.rotation.x = 0.28;
       g.add(lid);
-      g.add(mesh(new THREE.SphereGeometry(0.05, 10, 8), white, 0, 0.32, -0.36));
       break;
     }
     case 'tablet':
@@ -254,7 +388,7 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
       g.add(mesh(new THREE.BoxGeometry(0.5, 0.68, 0.01), plastic('#7fb3e6', { emissive: '#3a6ea8', emissiveIntensity: 0.3 }), 0, 0, 0.035));
       break;
     case 'phone':
-      g.add(mesh(new RoundedBoxGeometry(0.26, 0.48, 0.05, 2, 0.03), color === '#d9534f' ? dark : c));
+      g.add(mesh(new RoundedBoxGeometry(0.24, 0.5, 0.06, 2, 0.03), color === '#d9534f' ? dark : c));
       break;
     case 'envelope':
       g.add(mesh(new RoundedBoxGeometry(0.75, 0.5, 0.05, 2, 0.01), plastic('#f3e3b5')));
@@ -267,11 +401,12 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
         g.add(card);
       }
       break;
-    case 'tapemeasure':
-      g.add(mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.16, 20), plastic('#f1c40f')));
-      g.children[0].rotation.x = Math.PI / 2;
-      g.add(mesh(new THREE.BoxGeometry(0.7, 0.08, 0.02), plastic('#f7e7a0'), 0.4, -0.16, 0));
+    case 'tapemeasure': {
+      const disk = mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.16, 20), plastic('#f1c40f'));
+      disk.rotation.x = Math.PI / 2;
+      g.add(disk, mesh(new THREE.BoxGeometry(0.7, 0.08, 0.02), plastic('#f7e7a0'), 0.4, -0.16, 0));
       break;
+    }
     case 'sketchbook': {
       g.add(mesh(new RoundedBoxGeometry(0.8, 0.6, 0.06, 2, 0.02), c));
       g.add(mesh(new THREE.BoxGeometry(0.7, 0.5, 0.02), white, 0, 0, 0.035));
@@ -281,7 +416,7 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
       break;
     }
     case 'headset':
-      return null; // drawn on the head instead
+      return null;
     case 'walkie':
       g.add(mesh(new RoundedBoxGeometry(0.24, 0.46, 0.14, 2, 0.04), dark));
       g.add(mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.3, 8), dark, 0.06, 0.35, 0));
@@ -305,12 +440,13 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
       g.add(mesh(new THREE.CylinderGeometry(0.16, 0.13, 0.36, 18), white));
       g.add(mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.08, 18), c, 0, 0.16, 0));
       break;
-    case 'magnifier':
+    case 'magnifier': {
       g.add(mesh(new THREE.TorusGeometry(0.2, 0.05, 10, 24), dark));
-      g.add(mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.02, 20), plastic('#bfe3ff', { transparent: true, opacity: 0.5 })));
-      g.children[1].rotation.x = Math.PI / 2;
-      g.add(mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.4, 10), c, 0, -0.38, 0));
+      const lens = mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.02, 20), plastic('#bfe3ff', { transparent: true, opacity: 0.5 }));
+      lens.rotation.x = Math.PI / 2;
+      g.add(lens, mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.4, 10), c, 0, -0.38, 0));
       break;
+    }
     case 'shoppingbag':
       g.add(mesh(new RoundedBoxGeometry(0.6, 0.6, 0.26, 2, 0.03), c));
       g.add(mesh(new THREE.TorusGeometry(0.14, 0.025, 8, 16, Math.PI), dark, 0, 0.3, 0));
@@ -335,10 +471,9 @@ function accessory(kind: Accessory, color = '#d9534f'): THREE.Object3D | null {
       g.add(mesh(new RoundedBoxGeometry(0.4, 0.22, 0.24, 2, 0.05), plastic('#f39c12'), 0, 0.3, 0.06));
       break;
     case 'pen': {
-      const p = mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.6, 10), c);
+      const p = mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.6, 10), c, 0.12, 0.05, 0.06);
       p.rotation.z = 0.5;
-      g.add(p);
-      g.add(mesh(new RoundedBoxGeometry(0.56, 0.72, 0.05, 2, 0.02), white, -0.32, -0.1, -0.06));
+      g.add(p, mesh(new RoundedBoxGeometry(0.56, 0.72, 0.05, 2, 0.02), white, -0.1, -0.05, 0));
       break;
     }
     case 'none':
@@ -353,7 +488,6 @@ export function buildMinifig(spec: MinifigSpec): THREE.Group {
   const legsMat = plastic(spec.legsColor);
   const shoes = plastic(spec.shoesColor ?? spec.legsColor);
 
-  // Legs and hips
   const legs = new THREE.Group();
   legs.name = 'legs';
   if (spec.skirt) {
@@ -371,54 +505,63 @@ export function buildMinifig(spec: MinifigSpec): THREE.Group {
   legs.add(mesh(new RoundedBoxGeometry(1.6, 0.3, 0.8, 3, 0.06), legsMat, 0, 1.25, 0));
   fig.add(legs);
 
-  // Torso with printed front
   const torso = new THREE.Group();
   torso.name = 'torso';
   const topW = 1.18, botW = 1.6, h = 1.2, d = 0.8;
   const body = mesh(torsoGeometry(topW, botW, h, d), plastic(spec.torsoColor));
   body.position.y = 1.4;
   torso.add(body);
-  const front = mesh(
-    torsoFront(topW, botW, h),
-    plastic('#ffffff', { map: texture(drawTorso(spec)) }),
-    0,
-    1.4,
-    d / 2 + 0.002,
-  );
-  torso.add(front);
+  torso.add(mesh(torsoFront(topW, botW, h), plastic('#ffffff', { map: texture(drawTorso(spec)) }), 0, 1.4, d / 2 + 0.002));
   torso.add(mesh(new THREE.CylinderGeometry(0.24, 0.28, 0.12, 20), skin, 0, 2.66, 0));
   torso.add(arm(spec, -1), arm(spec, 1));
   fig.add(torso);
 
-  // Head
   const head = new THREE.Group();
   head.name = 'head';
-  const headMat = plastic('#ffffff', { map: texture(drawFace(spec.face)) });
-  const headMesh = mesh(headGeometry(0.44, 0.86), headMat, 0, 2.72, 0);
-  head.add(headMesh);
-  // The top stud is hidden under hair pieces; only a receding hairline shows it.
+  head.add(mesh(headGeometry(0.44, 0.86), plastic('#ffffff', { map: texture(drawFace(spec.face)) }), 0, 2.72, 0));
   if (spec.hair === 'receding') head.add(mesh(new THREE.CylinderGeometry(0.26, 0.26, 0.16, 24), skin, 0, 3.66, 0));
   head.add(hair(spec));
+  if (spec.face.glasses3d) head.add(glasses3d(spec.face.glasses3d.shape, spec.face.glasses3d.color));
+  if (spec.earrings && spec.earrings !== 'none') {
+    const metal = spec.earrings === 'pearls'
+      ? plastic('#fbf7ee')
+      : plastic('#d8b04a', { metalness: 0.6, roughness: 0.25 });
+    for (const s of [-1, 1]) {
+      const e = spec.earrings === 'hoops'
+        ? mesh(new THREE.TorusGeometry(0.07, 0.015, 8, 18), metal, s * 0.45, 2.96, 0.04)
+        : mesh(new THREE.SphereGeometry(0.05, 12, 10), metal, s * 0.45, 3.0, 0.04);
+      if (spec.earrings === 'hoops') e.rotation.y = Math.PI / 2;
+      head.add(e);
+    }
+  }
   if (spec.accessory === 'headset') {
-    const band = mesh(new THREE.TorusGeometry(0.52, 0.04, 8, 32, Math.PI), plastic('#2b2f36'), 0, 3.25, 0);
+    const band = mesh(new THREE.TorusGeometry(0.54, 0.04, 8, 32, Math.PI), plastic('#2b2f36'), 0, 3.25, 0);
     band.rotation.y = Math.PI / 2;
     const mic = mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.42, 8), plastic('#2b2f36'), 0.36, 3.0, 0.3);
     mic.rotation.set(0, 0, 1.2);
-    const pad = mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.08, 16), plastic('#2b2f36'), 0.47, 3.15, 0);
+    const pad = mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.08, 16), plastic('#2b2f36'), 0.5, 3.15, 0);
     pad.rotation.z = Math.PI / 2;
     head.add(band, mic, pad);
   }
   fig.add(head);
 
-  // Prop held in the right hand
+  const pose: Pose = spec.pose ?? (spec.accessory === 'laptop' ? 'type' : spec.accessory === 'phone' ? 'phone' : 'hold');
+  applyPose(torso, pose);
   const prop = accessory(spec.accessory, spec.accessoryColor);
   if (prop) {
     prop.name = 'prop';
-    const armR = torso.getObjectByName('armR')!;
-    prop.position.set(0.06, -1.15, 0.42);
-    prop.rotation.y = -0.3;
-    armR.add(prop);
-    armR.rotation.x = -0.55;
+    if (pose === 'phone') {
+      prop.position.set(-0.05, -0.95, 0.22);
+      prop.rotation.set(0.1, 0.9, 0);
+      torso.getObjectByName('armR')!.add(prop);
+    } else if (pose === 'type') {
+      prop.position.set(0, 1.9, 0.95);
+      torso.add(prop);
+    } else {
+      prop.position.set(0.05, 1.95, 0.95);
+      prop.rotation.set(-0.25, 0, 0);
+      torso.add(prop);
+    }
   }
   return fig;
 }

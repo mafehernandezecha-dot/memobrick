@@ -1,0 +1,324 @@
+{
+  "company": "Memobrick",
+  "appName": "Memobrick OS",
+  "ownerName": "",
+  "departments": [
+    {
+      "name": "Coordinación",
+      "color": "#9AA0A6"
+    },
+    {
+      "name": "Analítica",
+      "color": "#F06A9B"
+    },
+    {
+      "name": "SEO y blog",
+      "color": "#34A853"
+    },
+    {
+      "name": "Alcance y PR",
+      "color": "#C9A227"
+    },
+    {
+      "name": "Redes",
+      "color": "#8E5BD9"
+    },
+    {
+      "name": "Email",
+      "color": "#3B82F6"
+    },
+    {
+      "name": "Conversión",
+      "color": "#14B8A6"
+    }
+  ],
+  "agents": [
+    {
+      "name": "marketing-coordinator",
+      "character": "betty",
+      "role": "Coordina el equipo y arma tu fila de aprobaciones",
+      "department": "Coordinación",
+      "status": "active",
+      "folder": "marketing/coordination/coordinator",
+      "agentFile": ".claude/agents/marketing-coordinator.md",
+      "displayName": "Betty",
+      "machine": "",
+      "avatar": "avatars/betty.png",
+      "sprite": "sprites/betty.png"
+    },
+    {
+      "name": "aprobaciones",
+      "character": "armando",
+      "role": "Tus decisiones: prioridades y aprobaciones",
+      "department": "Coordinación",
+      "status": "active",
+      "folder": "marketing/approvals",
+      "agentFile": null,
+      "note": "Not an AI agent: shows marketing/approvals/queue.md",
+      "displayName": "Armando",
+      "machine": "",
+      "avatar": "avatars/armando.png",
+      "sprite": "sprites/armando.png"
+    },
+    {
+      "name": "growth-analyst",
+      "character": "nicolas",
+      "role": "Números de ventas cada semana",
+      "department": "Analítica",
+      "status": "active",
+      "folder": "marketing/analytics/growth-analyst",
+      "agentFile": ".claude/agents/growth-analyst.md",
+      "displayName": "Nicolás",
+      "machine": "",
+      "avatar": "avatars/nicolas.png",
+      "sprite": "sprites/nicolas.png"
+    },
+    {
+      "name": "seo-strategist",
+      "character": "mariana",
+      "role": "Mapa de palabras clave y briefs",
+      "department": "SEO y blog",
+      "status": "active",
+      "folder": "marketing/seo/strategist",
+      "agentFile": ".claude/agents/seo-strategist.md",
+      "displayName": "Mariana",
+      "machine": "",
+      "avatar": "avatars/mariana.png",
+      "sprite": "sprites/mariana.png"
+    },
+    {
+      "name": "seo-blog-writer",
+      "character": "sandra",
+      "role": "Escribe artículos y páginas",
+      "department": "SEO y blog",
+      "status": "active",
+      "folder": "marketing/seo/writer",
+      "agentFile": ".claude/agents/seo-blog-writer.md",
+      "displayName": "Sandra",
+      "machine": "",
+      "avatar": "avatars/sandra.png",
+      "sprite": "sprites/sandra.png"
+    },
+    {
+      "name": "seo-technical",
+      "character": "inesita",
+      "role": "Salud técnica del sitio",
+      "department": "SEO y blog",
+      "status": "active",
+      "folder": "marketing/seo/technical",
+      "agentFile": ".claude/agents/seo-technical.md",
+      "displayName": "Inesita",
+      "machine": "",
+      "avatar": "avatars/inesita.png",
+      "sprite": "sprites/inesita.png"
+    },
+    {
+      "name": "outreach-gift-guide-pr",
+      "character": "mario",
+      "role": "Guías de regalos y prensa",
+      "department": "Alcance y PR",
+      "status": "active",
+      "folder": "marketing/outreach/gift-guide-pr",
+      "agentFile": ".claude/agents/outreach-gift-guide-pr.md",
+      "displayName": "Mario",
+      "machine": "",
+      "avatar": "avatars/mario.png",
+      "sprite": "sprites/mario.png"
+    },
+    {
+      "name": "social-planner",
+      "character": "hugo",
+      "role": "Planea las publicaciones de la semana",
+      "department": "Redes",
+      "status": "active",
+      "folder": "marketing/social/planner",
+      "agentFile": ".claude/agents/social-planner.md",
+      "displayName": "Hugo",
+      "machine": "",
+      "avatar": "avatars/hugo.png",
+      "sprite": "sprites/hugo.png"
+    },
+    {
+      "name": "social-publisher",
+      "character": "freddy",
+      "role": "Programa y verifica publicaciones",
+      "department": "Redes",
+      "status": "active",
+      "folder": "marketing/social/publisher",
+      "agentFile": ".claude/agents/social-publisher.md",
+      "displayName": "Freddy",
+      "machine": "",
+      "avatar": "avatars/freddy.png",
+      "sprite": "sprites/freddy.png"
+    },
+    {
+      "name": "email-flow-optimizer",
+      "character": "auramaria",
+      "role": "Mejora los flujos de Omnisend",
+      "department": "Email",
+      "status": "active",
+      "folder": "marketing/email/flow-optimizer",
+      "agentFile": ".claude/agents/email-flow-optimizer.md",
+      "displayName": "Aura María",
+      "machine": "",
+      "avatar": "avatars/auramaria.png",
+      "sprite": "sprites/auramaria.png"
+    },
+    {
+      "name": "email-campaign-writer",
+      "character": "marcela",
+      "role": "Campañas de email y plan de temporada",
+      "department": "Email",
+      "status": "active",
+      "folder": "marketing/email/campaign-writer",
+      "agentFile": ".claude/agents/email-campaign-writer.md",
+      "displayName": "Marcela",
+      "machine": "",
+      "avatar": "avatars/marcela.png",
+      "sprite": "sprites/marcela.png"
+    },
+    {
+      "name": "ads-analyst",
+      "character": "daniel",
+      "role": "Revisa anuncios de Meta y propone pruebas",
+      "department": "Analítica",
+      "status": "planned",
+      "displayName": "Daniel",
+      "machine": "",
+      "avatar": "avatars/daniel.png",
+      "sprite": "sprites/daniel.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "outreach-link-builder",
+      "character": "bertha",
+      "role": "Consigue enlaces y menciones",
+      "department": "Alcance y PR",
+      "status": "planned",
+      "displayName": "Bertha",
+      "machine": "",
+      "avatar": "avatars/bertha.png",
+      "sprite": "sprites/bertha.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "outreach-creator-scout",
+      "character": "mariabeatriz",
+      "role": "Busca creadores de contenido",
+      "department": "Alcance y PR",
+      "status": "planned",
+      "displayName": "María Beatriz",
+      "machine": "",
+      "avatar": "avatars/mariabeatriz.png",
+      "sprite": "sprites/mariabeatriz.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "social-community-manager",
+      "character": "patricia",
+      "role": "Responde comentarios y detecta compradores",
+      "department": "Redes",
+      "status": "planned",
+      "displayName": "Patricia",
+      "machine": "",
+      "avatar": "avatars/patricia.png",
+      "sprite": "sprites/patricia.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "conversion-auditor",
+      "character": "wilson",
+      "role": "Prueba el camino de compra",
+      "department": "Conversión",
+      "status": "planned",
+      "displayName": "Wilson",
+      "machine": "",
+      "avatar": "avatars/wilson.png",
+      "sprite": "sprites/wilson.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "conversion-reviews-ugc",
+      "character": "margarita",
+      "role": "Reseñas e historias de clientes",
+      "department": "Conversión",
+      "status": "planned",
+      "displayName": "Margarita",
+      "machine": "",
+      "avatar": "avatars/margarita.png",
+      "sprite": "sprites/margarita.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "customer-support",
+      "character": "sofia",
+      "role": "Atención al cliente (más adelante)",
+      "department": "Conversión",
+      "status": "planned",
+      "displayName": "Sofía",
+      "machine": "",
+      "avatar": "avatars/sofia.png",
+      "sprite": "sprites/sofia.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "corporate-gifting",
+      "character": "roberto",
+      "role": "Regalos corporativos (más adelante)",
+      "department": "Alcance y PR",
+      "status": "planned",
+      "displayName": "Roberto",
+      "machine": "",
+      "avatar": "avatars/roberto.png",
+      "sprite": "sprites/roberto.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "order-coordinator",
+      "character": "efrain",
+      "role": "Coordinación de pedidos (más adelante)",
+      "department": "Coordinación",
+      "status": "planned",
+      "displayName": "Efraín",
+      "machine": "",
+      "avatar": "avatars/efrain.png",
+      "sprite": "sprites/efrain.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "inventory",
+      "character": "saul",
+      "role": "Inventario (más adelante)",
+      "department": "Coordinación",
+      "status": "planned",
+      "displayName": "Saúl",
+      "machine": "",
+      "avatar": "avatars/saul.png",
+      "sprite": "sprites/saul.png",
+      "folder": null,
+      "agentFile": null
+    },
+    {
+      "name": "extra",
+      "character": "jenny",
+      "role": "Sin rol por ahora",
+      "department": null,
+      "status": "extra",
+      "displayName": "Jenny",
+      "machine": "",
+      "avatar": "avatars/jenny.png",
+      "sprite": "sprites/jenny.png",
+      "folder": null,
+      "agentFile": null
+    }
+  ]
+}

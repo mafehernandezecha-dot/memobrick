@@ -52,47 +52,34 @@ export function renderPortrait(spec: MinifigSpec, size = 512): string {
   const r = getRenderer(size);
   const scene = studioScene();
   const fig = buildMinifig(spec);
-  fig.rotation.y = -0.32;
+  fig.rotation.y = -0.28;
   scene.add(fig);
-  const cam = new THREE.PerspectiveCamera(19, 1, 0.1, 100);
-  cam.position.set(1.15, 3.35, 6.4);
-  cam.lookAt(0, 2.98, 0);
+  const cam = new THREE.PerspectiveCamera(22, 1, 0.1, 100);
+  cam.position.set(1.2, 3.4, 8.6);
+  cam.lookAt(0, 2.62, 0);
   r.render(scene, cam);
 
+  // Sticker-style tile: thick white rounded border around a solid color square.
   const out = document.createElement('canvas');
   out.width = out.height = size;
   const g = out.getContext('2d')!;
-  const radius = size * 0.2;
-  g.save();
+  const border = size * 0.045;
+  const radius = size * 0.16;
+  g.fillStyle = '#ffffff';
   g.beginPath();
   g.roundRect(0, 0, size, size, radius);
+  g.fill();
+  g.save();
+  g.beginPath();
+  g.roundRect(border, border, size - border * 2, size - border * 2, radius - border * 0.6);
   g.clip();
-  const grad = g.createLinearGradient(0, 0, 0, size);
-  grad.addColorStop(0, lighten(spec.background, 0.28));
+  const grad = g.createRadialGradient(size * 0.5, size * 0.35, size * 0.1, size * 0.5, size * 0.5, size * 0.75);
+  grad.addColorStop(0, lighten(spec.background, 0.12));
   grad.addColorStop(1, spec.background);
   g.fillStyle = grad;
   g.fillRect(0, 0, size, size);
-  // Soft floor glow behind the figure
-  const glow = g.createRadialGradient(size / 2, size * 0.55, size * 0.05, size / 2, size * 0.55, size * 0.6);
-  glow.addColorStop(0, 'rgba(255,255,255,0.35)');
-  glow.addColorStop(1, 'rgba(255,255,255,0)');
-  g.fillStyle = glow;
-  g.fillRect(0, 0, size, size);
   g.drawImage(r.domElement, 0, 0, size, size);
-  // Glossy top highlight
-  const gloss = g.createLinearGradient(0, 0, 0, size * 0.45);
-  gloss.addColorStop(0, 'rgba(255,255,255,0.28)');
-  gloss.addColorStop(1, 'rgba(255,255,255,0)');
-  g.fillStyle = gloss;
-  g.beginPath();
-  g.ellipse(size / 2, size * 0.05, size * 0.62, size * 0.32, 0, 0, Math.PI * 2);
-  g.fill();
   g.restore();
-  g.strokeStyle = 'rgba(255,255,255,0.6)';
-  g.lineWidth = size * 0.008;
-  g.beginPath();
-  g.roundRect(size * 0.004, size * 0.004, size * 0.992, size * 0.992, radius);
-  g.stroke();
   disposeScene(scene);
   return out.toDataURL('image/png');
 }
