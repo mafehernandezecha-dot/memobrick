@@ -34,7 +34,7 @@ You skip the approvals step of that skill (you have no items of your own) but yo
 1. Collect every block under `## Proposed for approval` in reports since your last run. Skip blocks already copied (match by P- ID in `queue.md` or the archive) and proposals whose Draft path already has an open item in `queue.md`.
 2. For each new proposal, check it before copying:
    - Drop it and flag it under `## Flagged` if it touches the order workflow (order emails, Post-Purchase flow, fulfillment, refunds) or sends anything to customers about their orders.
-   - Flag it if it uses an offer or code not listed as active in `offers-calendar.md`, or a date not in its Facts table.
+   - Flag it if it uses an offer or code not listed as active in `offers-calendar.md`, or a date not in its Facts table. Exception: improvements to the owner's existing Omnisend campaigns keep those campaigns' own offers and dates; do not flag those.
    - Flag it if its target person or site appears in `contacts-log.md` within the last 30 days.
    - Flag it if two proposals post the same offer or content to the same channel, or give conflicting dates.
    - Drop it and flag it if its draft file does not exist, or if it shares a draft file with another proposal.

@@ -39,7 +39,7 @@ Status values: `pending`, `approved`, `rejected`, or `changes: <note>`. Anything
 |---|---|
 | publish (article) | seo-blog-writer publishes the article live on the Shopify blog |
 | publish (social post) | social-publisher schedules the post in Postiz for its planned time |
-| send (email campaign) | email-campaign-writer creates the campaign in Omnisend and schedules it for its send time |
+| send (email campaign) | email-campaign-writer creates the campaign in Omnisend and schedules it for its send time, or applies the approved edit to an existing scheduled campaign |
 | send (flow test) | email-flow-optimizer makes the flow change exactly as written |
 | send (outreach pitch) | outreach-gift-guide-pr creates a Gmail draft for the owner to send |
 | site-change | seo-technical applies exactly the change in the draft |
