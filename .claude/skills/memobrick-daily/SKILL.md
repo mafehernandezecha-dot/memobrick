@@ -23,7 +23,7 @@ Then add, in this order:
 
 - growth-analyst every day, first (its daily sales pulse feeds the dashboard and tells everyone the weak points).
 - ads-analyst every day from November 16 to December 20 (its daily pacing check), if not already due.
-- marketing-coordinator on Mondays, and every day from November 16 to December 20.
+- marketing-coordinator every day, so proposals reach the owner's Your turn the same day (the Sales Plan is still written on Mondays).
 - social-publisher every day, last.
 
 Order of the run: growth-analyst first, then the day's other agents in the table order, then marketing-coordinator, then social-publisher.
