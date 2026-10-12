@@ -22,3 +22,5 @@ Only the owner edits this file. Agents may propose offers through the approval q
 | Sample kits available for press | Yes, case by case: only for strong outlets, and each kit offer needs the owner's approval in the queue | 2026-10-11 |
 | Outreach sender name and email | Eden Biri; sender email still to confirm | 2026-10-11 |
 | Faces per size and build time | unknown | |
+| Shipping rates | Keep the current carrier rates; no flat rate. Free shipping over $125 (as set in Shopify). Show the cost clearly before checkout instead of changing rates | 2026-10-12 |
+| Free design proof | Offered on request: Memobrick's designers create the design and send a free proof before production. Optional, never required | 2026-10-12 |
