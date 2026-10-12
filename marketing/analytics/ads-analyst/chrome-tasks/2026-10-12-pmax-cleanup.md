@@ -1,3 +1,5 @@
+Status: ready
+
 # Claude in Chrome task: finish the PMax #2 cleanup (approved item A-2026W42-001)
 
 How to use: open Google Ads (account 672-499-4049) in Chrome, open the Claude extension, and paste everything inside the box below.
@@ -28,4 +30,4 @@ Leave the paused groups 6703639661, 6703639667 and 6703639670 alone, and do not 
 If Google says a group would fall below its minimum number of headlines or descriptions, stop and tell me instead of saving. If anything does not match what I described, stop and ask me. When done, list each group and confirm the texts are gone.
 ```
 
-After it finishes, tell Claude Code (or Betty) "PMax cleanup done" so Daniel can close A-2026W42-001.
+The Memobrick Chrome routine on the owner's Mac runs ready tasks like this one automatically. To run it by hand instead, paste the box into the Claude extension.
