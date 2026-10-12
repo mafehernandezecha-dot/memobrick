@@ -185,8 +185,8 @@
     font-weight:600;margin:0 30px 4px 0;line-height:1.2}
   .mbeg-slide p{margin:0 0 10px;font-size:14px;color:var(--ink-2,#5E636C);line-height:1.4}
   .mbeg-slide form{display:flex;gap:8px}
-  .mbeg-slide input[type=email]{padding:11px 12px;font-size:16px}
-  .mbeg-slide .mbeg-go{padding:11px 14px;font-size:15px}
+  .mbeg-slide input[type=email]{padding:11px 12px;font-size:16px;flex:1 1 auto;width:auto}
+  .mbeg-slide .mbeg-go{padding:11px 14px;font-size:15px;flex:0 0 auto}
   .mbeg-slide .mbeg-x{top:6px;right:6px}
   .mbeg-slide .mbeg-err{margin-top:6px}
   @media (max-width:600px){
