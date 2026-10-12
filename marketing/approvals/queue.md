@@ -104,7 +104,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: e91580d
 - Reason: Building experience video shows the hands-on value ahead of holiday gift planning.
 - Expires: 2026-10-15
-- Status: pending
+- Status: changes: generate a video or publish a video that is not in the instagram account yet
 - From: P-social-planner-20261011-2
 - Note: Confirm the Drive clip content and usage rights (the planner could not play it).
 
