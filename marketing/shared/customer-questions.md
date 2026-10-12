@@ -8,3 +8,5 @@ Append-only for all agents. Social planner and SEO strategist turn these into po
 | 2026-10-11 | seo-strategist: Shopify catalog (frames sold as separate products) | Is a frame included with the kit? | 1 | brief: personalized-christmas-photo-gifts (FAQ) |
 | 2026-10-11 | seo-strategist: blog post "Don't Wait Until December" and offers-calendar (order-by date unknown) | When do I need to order to have it before Christmas? | 1 | brief: personalized-christmas-photo-gifts (FAQ) |
 | 2026-10-11 | seo-strategist: agent buyer-question list | What should I get for someone who has everything? | 1 | page plan rank 3 |
+| 2026-10-12 | seo-strategist: buyer-question list; SERP pattern for "gift for someone who has everything" | Will a photo mosaic work as a gift if they already own everything? What if I do not know their taste? | 1 | brief: gift-for-someone-who-has-everything |
+| 2026-10-12 | seo-strategist: Shopify catalog (frames sold separately, some below zero inventory) | Is a frame available for every size, and can I order the frame with the kit? | 1 | page plan rank 7 (sizes) |

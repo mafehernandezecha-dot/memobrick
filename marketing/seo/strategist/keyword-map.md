@@ -1,6 +1,6 @@
 # Keyword map
 
-Updated: 2026-10-11 (dry run). Owner: seo-strategist.
+Updated: 2026-10-12 (live run). Owner: seo-strategist. Changes this run: owner facts now known (Christmas order-by Dec 15, 2026; sizes, pieces and build times in product-facts.md), so the sizes and build-time articles are unblocked; the gift-for-someone-who-has-everything article is briefed.
 
 Search volumes are "unknown": Search Console is not connected and no keyword volume tool is available. Evidence codes:
 
@@ -24,7 +24,7 @@ Target URLs are relative to https://mymemobrick.com. "planned" means the page do
 | order personalized christmas gifts early | commercial | /blogs/news/dont-wait-until-december-personalized-christmas-gifts-to-order-now | B | unknown |
 | holiday gift for mindful creativity | commercial | /blogs/news/theperfect-holiday (duplicate exists, see page plan) | B | unknown |
 | thanksgiving family gift | commercial | /blogs/news/thoughtful-thanksgiving-gifts-that-bring-families-closer-together-aug-8-10 | B | unknown |
-| gift for someone who has everything | commercial | /blogs/news/gift-for-someone-who-has-everything (planned) | A, S | unknown |
+| gift for someone who has everything | commercial | /blogs/news/gift-for-someone-who-has-everything (briefed 2026-10-12) | A, S | unknown |
 
 ## Hub: Couples and anniversaries
 
@@ -82,9 +82,9 @@ Target URLs are relative to https://mymemobrick.com. "planned" means the page do
 | Keyword | Intent | Target URL | Evidence | Volume |
 |---|---|---|---|---|
 | best photo for a brick mosaic | informational | /blogs/news/best-photo-for-a-brick-mosaic (planned) | A | unknown |
-| brick mosaic sizes and how many faces fit | informational | /blogs/news/brick-mosaic-sizes (planned; needs owner-verified size facts) | A, C | unknown |
+| brick mosaic sizes and how many faces fit | informational | /blogs/news/brick-mosaic-sizes (planned; sizes, pieces, build times now in product-facts.md; faces per size still unknown for 16×16 to 30×20) | A, C | unknown |
 | what is in a brick mosaic kit | informational | /blogs/news/whats-in-a-memobrick-kit (planned) | A | unknown |
-| how long does a brick mosaic take to build | informational | /blogs/news/how-long-to-build-a-brick-mosaic (planned; build time unknown) | A | unknown |
+| how long does a brick mosaic take to build | informational | /blogs/news/how-long-to-build-a-brick-mosaic (planned; Shopify build-time estimates now in product-facts.md) | A | unknown |
 | gift for someone who has everything | commercial | /blogs/news/gift-for-someone-who-has-everything (planned) | A | unknown |
 
 ## Product and support pages (existing, link targets)
