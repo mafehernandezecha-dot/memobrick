@@ -34,13 +34,15 @@ Decisions and chat only work in a browser on the computer running the app. Conve
 
 The **Sales** page and the card on the World view show today, this week, and this month against the goals in `marketing/shared/sales-goals.json`, as trophies that fill with gold. History, the funnel, and the weak points the team is fixing come from `marketing/sales/latest.json`, which the growth analyst rewrites every day from Shopify.
 
-Every new sale is celebrated with falling bricks, confetti, a rising trophy, and the whole office dancing for 5 seconds (three dance styles: disco, arms-up waving, running man); reaching the daily goal gets a 10-second dance party with jumps and spins. Without a live connection the dashboard celebrates yesterday's sales once each morning. For live, sale-by-sale celebrations, give the app a read-only Shopify token on this computer:
+Every new sale is celebrated with falling bricks, confetti, a rising trophy, and the whole office dancing for 5 seconds (three dance styles: disco, arms-up waving, running man); reaching the daily goal gets a 10-second dance party with jumps and spins. Without a live connection the dashboard celebrates yesterday's sales once each morning. For live, sale-by-sale celebrations, connect a read-only Shopify app on this computer:
 
-1. In Shopify admin: Settings → Apps and sales channels → Develop apps → Create an app. Under Admin API scopes choose only `read_orders`, install the app, and copy the Admin API access token (it starts with `shpat_`).
-2. In Terminal (stop the app first with Control+C), run this and paste the token when asked:
+1. At dev.shopify.com (Shopify's Dev Dashboard), create an app, give its version the Admin API scope `read_orders` only, release it, and install it on the Memobrick store. Copy its Client ID and Client secret from the app's settings.
+2. In Terminal (stop the app first with Control+C), run this and paste each value when asked:
    ```
-   read -s "k?Paste your Shopify token and press Enter: " && printf 'export SHOPIFY_STORE="photobrickusa.myshopify.com"\nexport SHOPIFY_ADMIN_TOKEN="%s"\n' "$k" >> ~/.zshrc && source ~/.zshrc && echo "Saved"
+   read "i?Client ID: " && read -s "k?Client secret: " && printf 'export SHOPIFY_STORE="photobrickusa.myshopify.com"\nexport SHOPIFY_CLIENT_ID="%s"\nexport SHOPIFY_CLIENT_SECRET="%s"\n' "$i" "$k" >> ~/.zshrc && source ~/.zshrc && echo "Saved"
    ```
-3. Start the app again with `npm run os`.
+3. Start the app again with `npm run os`. If Shopify refuses, the Sales page says why.
+
+(An older Admin API token that starts with `shpat_` also works, as `SHOPIFY_ADMIN_TOKEN`.)
 
 The app reads only order numbers, amounts, and product titles for today, never customer details, and checks every 30 seconds.

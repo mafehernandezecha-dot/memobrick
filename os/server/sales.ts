@@ -1,8 +1,9 @@
 // Sales and goals for the dashboard. Daily history comes from
 // marketing/sales/latest.json (written by the growth analyst from Shopify) and
-// goals from marketing/shared/sales-goals.json. When the owner's computer has a
-// read-only Shopify token (SHOPIFY_STORE + SHOPIFY_ADMIN_TOKEN), today's orders
-// are read live so each new sale can be celebrated as it happens. Only order
+// goals from marketing/shared/sales-goals.json. When the owner's computer has
+// Shopify access (SHOPIFY_STORE plus either a Dev Dashboard app's
+// SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET, or a SHOPIFY_ADMIN_TOKEN), today's
+// orders are read live so each new sale can be celebrated as it happens. Only order
 // numbers, amounts and product titles are read, never customer details.
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -99,6 +100,24 @@ const round = (n: number) => Math.round(n * 100) / 100;
 // Live orders, cached briefly so polling the dashboard doesn't hammer Shopify.
 let cache: { at: number; key: string; orders: LiveOrder[] } | null = null;
 
+// Dev Dashboard apps installed on the owner's own store get a short-lived token
+// with the client credentials grant; it is refreshed before it expires.
+let tokenCache: { token: string; until: number } | null = null;
+
+async function accessToken(env: NodeJS.ProcessEnv): Promise<string> {
+  if (env.SHOPIFY_ADMIN_TOKEN) return String(env.SHOPIFY_ADMIN_TOKEN);
+  if (tokenCache && Date.now() < tokenCache.until) return tokenCache.token;
+  const res = await fetch(`https://${env.SHOPIFY_STORE}/admin/oauth/access_token`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ grant_type: 'client_credentials', client_id: String(env.SHOPIFY_CLIENT_ID), client_secret: String(env.SHOPIFY_CLIENT_SECRET) }),
+  });
+  if (!res.ok) throw new Error(`Shopify refused the app's credentials (${res.status}). Check the app is installed on the store and has read_orders.`);
+  const body = (await res.json()) as { access_token: string; expires_in?: number };
+  tokenCache = { token: body.access_token, until: Date.now() + Math.max(60, (body.expires_in ?? 3600) - 300) * 1000 };
+  return body.access_token;
+}
+
 async function fetchTodayOrders(store: string, token: string, tz: string, today: string): Promise<LiveOrder[]> {
   if (cache && cache.key === today && Date.now() - cache.at < 45_000) return cache.orders;
   // Start of today in the store's time zone, as an offset timestamp.
@@ -106,6 +125,7 @@ async function fetchTodayOrders(store: string, token: string, tz: string, today:
   const since = `${today}T00:00:00${offset === '' ? '+00:00' : offset}`;
   const url = `https://${store}/admin/api/2025-07/orders.json?status=any&limit=250&created_at_min=${encodeURIComponent(since)}&fields=id,name,created_at,current_subtotal_price,cancelled_at,line_items`;
   const res = await fetch(url, { headers: { 'X-Shopify-Access-Token': token } });
+  if (res.status === 401 || res.status === 403) tokenCache = null;
   if (!res.ok) throw new Error(`Shopify answered ${res.status}`);
   const body = (await res.json()) as { orders: { id: number; name: string; created_at: string; current_subtotal_price: string; cancelled_at: string | null; line_items: { title: string }[] }[] };
   const orders = body.orders
@@ -124,10 +144,10 @@ export async function buildSales(repoDir: string, env = process.env): Promise<Sa
 
   let recent: LiveOrder[] = [];
   let liveError: string | null = null;
-  const live = Boolean(env.SHOPIFY_STORE && env.SHOPIFY_ADMIN_TOKEN);
+  const live = Boolean(env.SHOPIFY_STORE && (env.SHOPIFY_ADMIN_TOKEN || (env.SHOPIFY_CLIENT_ID && env.SHOPIFY_CLIENT_SECRET)));
   if (live) {
     try {
-      recent = await fetchTodayOrders(String(env.SHOPIFY_STORE), String(env.SHOPIFY_ADMIN_TOKEN), tz, today);
+      recent = await fetchTodayOrders(String(env.SHOPIFY_STORE), await accessToken(env), tz, today);
     } catch (err) {
       liveError = err instanceof Error ? err.message : String(err);
     }
