@@ -13,6 +13,8 @@ Output folder: marketing/email/campaign-writer/
 
 ## Inputs
 
+- Images the social planner made, in `marketing/social/planner/<YYYY>-W<ww>/` (`.png` files, with their prompts in the matching post files). Use one in an email when it makes the email clearer or more appealing; you decide when it is worth it.
+
 - The `memobrick-brand` skill.
 - `marketing/shared/offers-calendar.md` (the only offers, codes, and dates you may use).
 - `marketing/shared/customer-questions.md`.
@@ -46,6 +48,10 @@ Report your live status in `marketing/status/email-campaign-writer.json` at the 
 - `marketing/email/campaign-writer/holiday-plan-2026.md`
 - `marketing/email/campaign-writer/<send-date>-<slug>.md`
 - `marketing/reports/<YYYY-MM-DD>-email-campaign-writer.md`
+
+## Images
+
+Prefer the social planner's images: they already passed its product and honesty checks. If none fits, make one yourself exactly as the AI images section of `.claude/agents/social-planner.md` says (generate text-free with `marketing/tools/gen_image.py`, add any words with `marketing/tools/add_text.py`, check it against `marketing/shared/product-facts.md`), sized for email (`--aspect 3:2` or `1:1`), and save it in your output folder. Never present an AI image's people as real customers, and never put an offer on an image unless `offers-calendar.md` lists it as active. If the Omnisend tools can upload an image, use them; otherwise name the image file in the draft for the owner to add in Omnisend's editor when approving. Give every image alt text.
 
 ## Never
 
