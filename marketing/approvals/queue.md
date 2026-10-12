@@ -24,7 +24,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: aee1580
 - Reason: If approved, ads-analyst unlinks 19 assets from PMax #2 asset groups (EARLYHOLIDAY20, which does not exist in Shopify, the unlisted 20% sale, LEGO trademark and unsupported claims) so shoppers stop failing a code at checkout.
 - Expires: 2026-10-17
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261012-1
 - Note: Removes an invalid code; it does not add one. If you would rather create EARLYHOLIDAY20 in Shopify and list it as active in offers-calendar.md first, the draft explains the `changes: keep code rows` option.
 
@@ -48,7 +48,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: aee1580
 - Reason: If approved, ads-analyst replaces the text of the 2 Holiday Gifts search ads so they stop promising code EARLYHOLIDAY20, keeping the verified Dec 15 order-by date.
 - Expires: 2026-10-17
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261012-2
 
 ## A-2026W42-003
@@ -59,7 +59,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: aee1580
 - Reason: If approved, ads-analyst pauses Google NonBrand Photo-to-Brick (24319578231): $139.89 in 7 days, 0 conversions, LEGO-brand queries; saves about $20 a day.
 - Expires: 2026-10-17
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261012-3
 
 ## A-2026W42-005
@@ -70,7 +70,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: aee1580
 - Reason: If approved, ads-analyst lowers Meta ALWAYON PROMO -v1 (120252425110090597) from $40 to $20 a day; Shopify ROAS 1.09 over 28 days and 0.69 last week.
 - Expires: 2026-10-17
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261012-5
 
 ## A-2026W42-004
