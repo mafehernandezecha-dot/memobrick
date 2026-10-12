@@ -64,6 +64,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 | `shared/content-calendar.md` | Every social post and its status | social-planner, social-publisher |
 | `shared/customer-questions.md` | Recurring questions and objections | Any agent (append only) |
 | `shared/contacts-log.md` | Everyone contacted for outreach | Outreach agents (append only) |
+| `shared/product-facts.md` | Sizes, pieces, prices, kit contents, and how the product looks | Any agent may update it from live Shopify data |
 | `social/footage-rights.md` | Who appears in each Drive clip and whether it may be used | social-planner adds clips; only the owner marks them `ok` |
 
 ## What the owner needs to provide
@@ -85,7 +86,7 @@ Put verified facts and offers in `shared/offers-calendar.md`. Anything missing s
 
 Agents work on the `main` branch: they pull it at the start of every run and push to it at the end, and your approvals must be on main too. Merge this system's branch into main before turning on any schedule.
 
-One routine runs everything: every morning at about 5:45 ET it follows the `memobrick-daily` skill, which works out who is due that day (the Day column above) and runs those agents one after another. The routine is created in claude.ai (Routines), with this repository, the cloud environment, and the Shopify, Omnisend, Google Drive and Gmail connectors attached. Its prompt:
+One routine runs everything: every morning at about 5:45 ET it follows the `memobrick-daily` skill, which works out who is due that day (the Day column above) and runs those agents one after another. The routine is created in claude.ai (Routines), with this repository, the cloud environment, and the Shopify, Omnisend, Google Drive, Gmail and Facebook connectors attached. Its prompt:
 
 > Follow the memobrick-daily skill in this repository. Live run.
 

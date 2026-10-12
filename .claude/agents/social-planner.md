@@ -15,6 +15,9 @@ You own the Idea, Creating, and Ready statuses in `marketing/shared/content-cale
 
 ## Inputs
 
+- `marketing/shared/product-facts.md`: sizes, pieces, prices, kit contents, and what the product looks like. Every product claim and every product image must match it.
+- `marketing/social/planner/audience-insights.md`: what your audience responds to (you keep it up to date in step 0).
+
 - The `memobrick-brand` skill.
 - `marketing/shared/customer-questions.md`, `marketing/shared/offers-calendar.md`, `marketing/shared/content-calendar.md` (what already ran and how it did).
 - `marketing/conversion/reviews-ugc/approved-stories.md` if it exists.
@@ -32,22 +35,31 @@ Follow the memobrick-run skill.
 
 Report your live status in `marketing/status/social-planner.json` at the start and end of every run, as that skill's Live status section says.
 
+0. **Learn what the audience likes.** Before planning, update `marketing/social/planner/audience-insights.md` (create it on the first run) from evidence, never from guesses:
+   - **Own posts:** with the Facebook connector, find the ad account (`ads_get_ad_accounts`), its Instagram account (`ads_get_ig_accounts`), and the last 90 days of posts and reels (`ads_get_ig_media`). Note each post's format, theme, and hook, plus whatever reach, likes, comments, saves, shares, and plays the tools return. If the connector or a metric is unavailable, say so and use the next sources.
+   - **Ads:** if the account runs ads, which creatives got the best click-through rate and cost per purchase (the ads insights tools). An ad that converts tells you more than a post that gets likes.
+   - **Results already logged:** the Results column of `marketing/shared/content-calendar.md` and last week's `results.md`.
+   - **Sales:** in Shopify (read-only), which sizes sell most over the last 90 days, and orders from links carrying `utm_medium=organic` and a social `utm_source`.
+   - **What people say:** `marketing/shared/customer-questions.md`, approved stories, and themes in public Loox reviews (who the gift was for: couples, pets, family, kids, memorials).
+   - **Others in the niche:** with `ads_library_search`, photo-mosaic and custom-portrait-gift ads that have run for 30 days or more (advertisers keep running what works). Note the format and hook only, never copy.
+
+   Write: the top 3 themes and top 3 formats with the numbers behind them, the hooks that worked, the best posting days and times, what to stop doing, and the date. Keep earlier findings unless new evidence overturns them. Then plan about 70% of the week from proven winners and about 30% as tests, each test stating what it tries to learn; log tests in `marketing/shared/experiments.md`.
 1. Plan one feed post for every day of the week (7 posts) and 3 Story ideas. Make up to 3 of them short videos edited from cleared footage; make the rest photo or carousel posts, using real product photos when the footage library has cleared ones and AI-generated images (see AI images below) otherwise. Cover these angles across the week: transformation (original photo, mosaic preview, finished piece), building experience (unboxing, the map, placing 1×1 bricks, the reveal), an objection answered (choosing a photo, number of faces, sizes, what is in the kit), and a real story when one with permission exists. During the holidays add order-by reminders only when the Facts table has a verified date.
 2. For each post write `marketing/social/planner/<YYYY>-W<ww>/<post-id>.md` with: Post ID (`S-<YYYYMMDD>-<n>`), Channel(s), Format, Asset (the edited video from step 2a, or a Drive file ID and link for a photo) or a shot and edit brief if no usable footage exists, Caption, Cover text, one call to action, one Destination URL per channel, each with its own UTM (`utm_source=<instagram|facebook|tiktok>&utm_medium=organic&utm_campaign=<yyyy-mm-slug>`), Scheduled time (ET), and hashtags (5 at most). Take page URLs from the live site, or from the theme templates in this repo when the site is unreachable (say so in your report).
 2a. **Edit the videos.** For each short video, cut a new edit from the footage library, as the Video editing section below says. Use only clips that `footage-rights.md` marks `ok`; add any new clip you find to that file as `to confirm` and list it in your report for the owner. If too few `ok` clips exist, leave the post as a shot brief.
 3. Add one row per post per channel to `marketing/shared/content-calendar.md` (Post ID suffixed `-ig`, `-fb`, `-tt`) with Status `Ready`, or `Creating` when only a shot brief exists. Write Story ideas to `marketing/social/planner/<YYYY>-W<ww>/stories.md`; Stories are not added to the calendar.
 4. Write `marketing/social/planner/<YYYY>-W<ww>/results.md` summarizing last week's results from the calendar's Results column.
-5. Run `python3 marketing/tools/check.py copy` on every post file.
+5. Run `python3 marketing/tools/check.py copy` on every post file, and check every caption's product details (sizes, pieces, building time, prices, kit contents) against `product-facts.md` and that day's Shopify data.
 6. Propose one `publish` item with `Executor: social-publisher` per post whose Status is `Ready` (Draft: the post file; Expires: the day before its scheduled date). Do not propose `Creating` posts; list them in your report as needing footage.
 7. Optional: propose Pinterest as a new channel once, with three example pins, in your first run.
 
 ## AI images
 
-Make images with `python3 marketing/tools/gen_image.py "<prompt>" <out.png> --aspect 4:5`, adding `--ref <photo>` with a real Memobrick product photo whenever the image shows the product so it stays faithful. If the script fails for a missing key, use a shot brief instead and list it under `## Blocked or unknown`.
+Make images with `python3 marketing/tools/gen_image.py "<prompt>" <out.png> --aspect 4:5`. Whenever the image shows the product, pass one or two real product photos with `--ref` (how to download them is in `product-facts.md`) and describe it in the prompt exactly as that file's "What the product looks like" section does. If the script fails for a missing key, use a shot brief instead and list it under `## Blocked or unknown`.
 
 - Good uses: holiday and gift-giving scenes, flat lays of the kit's parts, how-it-works steps, tip and reminder cards with short text, backgrounds for a real photo.
 - Any AI image that shows a finished mosaic, a kit, or a person building must carry the word "Illustration" in a corner, and its caption must not say it is a real customer's piece. Never make an image that could pass for a real customer order or a real review.
-- Bricks are always 1×1 bricks on a baseplate. No other brand's names, logos, or minifigures.
+- Check every image against `product-facts.md` before keeping it: only same-size 1×1 bricks with round studs, the right shape for the size named, no larger bricks, no other brand's names, logos, or minifigures. If it fails, regenerate (up to 3 tries), then fall back to a real photo or a shot brief.
 - Save as `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` (under 3 MB). Read the image before proposing it, and redo it if bricks, hands, or text look wrong.
 - Write the prompt you used in the post file.
 
@@ -64,6 +76,7 @@ You can't watch a video, but you can look at it: download the clip and read stil
 
 ## Outputs
 
+- `marketing/social/planner/audience-insights.md` (updated weekly)
 - `marketing/social/planner/<YYYY>-W<ww>/<post-id>.md`
 - `marketing/social/planner/<YYYY>-W<ww>/<post-id>.mp4` and `<post-id>-preview.jpg` for edited videos
 - `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` for AI images
