@@ -64,6 +64,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 | `shared/content-calendar.md` | Every social post and its status | social-planner, social-publisher |
 | `shared/customer-questions.md` | Recurring questions and objections | Any agent (append only) |
 | `shared/contacts-log.md` | Everyone contacted for outreach | Outreach agents (append only) |
+| `social/footage-rights.md` | Who appears in each Drive clip and whether it may be used | social-planner adds clips; only the owner marks them `ok` |
 
 ## What the owner needs to provide
 
@@ -71,7 +72,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 |---|---|---|
 | Postiz API key (optional; skipped for now to save cost) | Later | Automatic scheduling instead of posting by hand |
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
-| Product footage and customer photos with permission (Drive folder) | Week 1 | Social content |
+| Product footage in the Drive footage library, with each clip's rights confirmed in `social/footage-rights.md` | Week 1 | Edited social videos |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |
 | Christmas order-by date, current offers and codes | Week 2 | Holiday emails and posts |
 | Fulfillment location claim (Miami, Florida) verified | Week 2 | Shipping copy, local PR |
