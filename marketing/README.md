@@ -23,7 +23,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | Agent | Job | Day |
 |---|---|---|
 | marketing-coordinator | Builds the weekly approval file, catches overlaps | Mon; daily Nov 16 to Dec 20 (after the day's other agents) |
-| growth-analyst | Weekly sales scorecard | Mon; daily Nov 16 to Dec 20 (first) |
+| growth-analyst | Daily sales pulse against the goals and the weak points; weekly scorecard | Daily (first); scorecard Mon |
 | seo-strategist | Keyword map and one article brief a week | Mon |
 | seo-blog-writer | Writes the briefed article or hub page | Wed |
 | seo-technical | Site audit, checks drafts, schema, redirects | Fri |

@@ -6,6 +6,7 @@ import { Logo } from './Logo';
 export type View =
   | { kind: 'mundo' }
   | { kind: 'dashboard' }
+  | { kind: 'sales' }
   | { kind: 'para' }
   | { kind: 'tetoca' }
   | { kind: 'porcrear' }
@@ -45,6 +46,7 @@ export function Sidebar({ state, view, onNavigate }: Props) {
       <nav className="nav">
         {nav({ kind: 'mundo' }, 'World', <IconWorld />)}
         {nav({ kind: 'dashboard' }, 'Dashboard', <IconGrid />)}
+        {nav({ kind: 'sales' }, 'Sales', <IconSales />)}
         {nav({ kind: 'para' }, `For ${state.ownerName}`, <IconInbox />, { n: state.reports.latestCount, tone: 'blue' })}
         {nav({ kind: 'tetoca' }, 'Your turn', <IconHand />, { n: state.approvals.pending, tone: 'red' })}
       </nav>
@@ -139,6 +141,14 @@ const IconWorld = () => (
   <svg {...svg}>
     <path d="M3 9l9-5 9 5-9 5-9-5z" />
     <path d="M3 9v6l9 5 9-5V9" />
+  </svg>
+);
+const IconSales = () => (
+  <svg {...svg}>
+    <path d="M4 19V10" />
+    <path d="M10 19V5" />
+    <path d="M16 19v-7" />
+    <path d="M21 19H3" />
   </svg>
 );
 const IconGrid = () => (

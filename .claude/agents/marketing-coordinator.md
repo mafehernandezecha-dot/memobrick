@@ -46,7 +46,8 @@ You skip the approvals step of that skill (you have no items of your own) but yo
 4. Keep items expiring within 7 days under `## Time-sensitive` and the rest under `## Open`. Move to `marketing/approvals/archive/<YYYY>-W<ww>.md` (current week) any item that is rejected, expired, or that its Executor reported as done. Pending and approved items stay in `queue.md` until then. Never change a `Status:` line.
 5. Under `## Missing owner inputs`, list every Facts row whose value is `unknown`, and every blocker reported under `## Blocked or unknown` by any agent.
 6. Run `python3 marketing/tools/check.py approvals marketing/approvals/queue.md`. Fix formatting errors you introduced. If the owner wrote a Status the checker does not accept (for example "yes" or "Approved."), do not change it; list it at the top of `queue.md` under `## Needs your attention` and in your report.
-7. In your report, summarize: items added, items flagged and why, items the owner approved since last run that agents have not yet acted on, and expired items.
+7. Order the items within each section of `queue.md` by expected sales impact, highest first (a fix for a named weak point or a holiday deadline ranks above nice-to-haves), and say in your report which weak points in `marketing/sales/latest.json` have no proposal working on them.
+8. In your report, summarize: items added, items flagged and why, items the owner approved since last run that agents have not yet acted on, and expired items.
 
 ## Outputs
 

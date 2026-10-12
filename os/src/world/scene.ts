@@ -41,6 +41,7 @@ export class OfficeWorld {
   private target = new THREE.Vector3(0, 0, 2);
   private frustum = 60;
   private figures = new Map<string, { group: THREE.Group; info: FigureInfo; phase: number }>();
+  private partyAt = -100;
   private figureRoot = new THREE.Group();
   private cars: { obj: THREE.Object3D; t: number; speed: number; lane: number }[] = [];
   private roadPath: { a: THREE.Vector2; b: THREE.Vector2; len: number }[] = [];
@@ -124,6 +125,11 @@ export class OfficeWorld {
         this.figures.delete(agent);
         this.anchors.delete(`agent:${agent}`);
       }
+  }
+
+  /** Everyone jumps for a few seconds: a sale just came in. */
+  celebrate() {
+    this.partyAt = this.clock.getElapsedTime();
   }
 
   dispose() {
@@ -523,7 +529,31 @@ export class OfficeWorld {
         d -= seg.len;
       }
     }
+    const party = t - this.partyAt;
     for (const f of this.figures.values()) {
+      if (party < 3.5) {
+        // Hop with arms up; ghosts join in too, it's a sale.
+        f.group.position.y = FLOOR_Y + Math.max(0, Math.sin(party * 9 + f.phase)) * 0.45 * (1 - party / 3.5);
+        const torso = f.group.getObjectByName('torso');
+        for (const arm of ['armL', 'armR']) {
+          const a = torso?.getObjectByName(arm);
+          if (!a) continue;
+          if (a.userData.rest === undefined) a.userData.rest = a.rotation.x;
+          a.rotation.x = -2.6 + Math.sin(party * 12 + f.phase) * 0.3;
+        }
+        continue;
+      }
+      if (f.group.position.y !== FLOOR_Y) {
+        f.group.position.y = FLOOR_Y;
+        const torso = f.group.getObjectByName('torso');
+        for (const arm of ['armL', 'armR']) {
+          const a = torso?.getObjectByName(arm);
+          if (a && a.userData.rest !== undefined) {
+            a.rotation.x = a.userData.rest;
+            delete a.userData.rest;
+          }
+        }
+      }
       if (f.info.state !== 'working') continue;
       const torso = f.group.getObjectByName('torso');
       const l = torso?.getObjectByName('armL');

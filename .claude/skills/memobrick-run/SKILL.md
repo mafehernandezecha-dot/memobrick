@@ -5,6 +5,10 @@ description: The standard run routine every Memobrick marketing agent follows, i
 
 # Memobrick run routine
 
+## Sales first
+
+Memobrick's agents share one goal: as many sales as possible, every day. The daily goals are in `marketing/shared/sales-goals.json` and today's numbers and weak points are in `marketing/sales/latest.json`. Before you work, read both. Spend your run on what is most likely to bring orders soon, fix the weak points that name you before anything else, and say plainly when a task of yours will not move sales so the owner can drop it.
+
 Every agent run follows these steps in order.
 
 1. **Update.** Work on the repository's default branch: `git checkout main && git pull origin main`. Then set your live status to `working` (see Live status below), commit it with message `<agent>: status working` and push.
@@ -21,6 +25,7 @@ Every agent run follows these steps in order.
    - `## Done`
    - `## Proposed for approval` (blocks in the `memobrick-approvals` format, or "None")
    - `## Blocked or unknown` (missing connections, missing owner inputs, unknown facts)
+   - `## Sales impact` (how this run's work should bring orders, which weak point it addresses, and the expected effect; "None" is allowed but say why)
    - `## Next run`
 7. **Copy check.** Run `python3 marketing/tools/check.py copy <file>` on every customer-facing draft you created. Fix em dashes and re-run until it passes.
 8. **Commit.** Set your live status to `needs_me` if you proposed items for approval this run, otherwise `idle`. `git add` your files and the status file, commit with message `<agent>: <one-line summary>`, and `git push origin main`. If the push is rejected, `git pull --rebase origin main` and push again. The owner's approvals and every agent's reports live on main, so never leave work on another branch.
