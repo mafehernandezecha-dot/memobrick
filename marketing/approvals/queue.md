@@ -2,7 +2,7 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Rebuilt 2026-10-12 from agent run reports. Proposals still come from the 2026-10-11 reports; the 2026-10-12 reports proposed nothing. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-12.md`.
+Updated 2026-10-12 (second run). Added A-2026W42-001 to 006 from the 2026-10-12 ads-analyst report: six Google and Meta ad changes, all expiring Oct 17. The top one removes a discount code (EARLYHOLIDAY20) that live Google ads promise but Shopify does not have. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-12.md`.
 
 ## Needs your attention
 
@@ -14,7 +14,19 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 
 ## Time-sensitive
 
-(Items expiring within 7 days.)
+(Items expiring within 7 days, highest expected sales impact first.)
+
+## A-2026W42-001
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-pmax-remove-invalid-code-and-claims.md
+- Commit: aee1580
+- Reason: If approved, ads-analyst unlinks 19 assets from PMax #2 asset groups (EARLYHOLIDAY20, which does not exist in Shopify, the unlisted 20% sale, LEGO trademark and unsupported claims) so shoppers stop failing a code at checkout.
+- Expires: 2026-10-17
+- Status: pending
+- From: P-ads-analyst-20261012-1
+- Note: Removes an invalid code; it does not add one. If you would rather create EARLYHOLIDAY20 in Shopify and list it as active in offers-calendar.md first, the draft explains the `changes: keep code rows` option.
 
 ## A-2026W41-001
 - Agent: social-planner
@@ -26,7 +38,63 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Expires: 2026-10-12
 - Status: changes: change the video
 - From: P-social-planner-20261011-1
-- Note: Scheduled Mon 2026-10-12 19:00 ET, so it must be decided before then. Confirm the Drive clip content, that no customer face or name appears without permission, and usage rights (the planner could not play it).
+- Note: Scheduled Mon 2026-10-12 19:00 ET, so it must be decided before then. The owner cleared the "Memobrick videos" folder for posts and ads on 2026-10-12 (footage-rights.md); still confirm the clip shows the photo to mosaic story with no customer face or name. The same clip is proposed as a paused Meta ad in A-2026W42-006 (paid, a different channel).
+
+## A-2026W42-002
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-rsa-copy-fix.md
+- Commit: aee1580
+- Reason: If approved, ads-analyst replaces the text of the 2 Holiday Gifts search ads so they stop promising code EARLYHOLIDAY20, keeping the verified Dec 15 order-by date.
+- Expires: 2026-10-17
+- Status: pending
+- From: P-ads-analyst-20261012-2
+
+## A-2026W42-003
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-pause-nonbrand-photo-to-brick.md
+- Commit: aee1580
+- Reason: If approved, ads-analyst pauses Google NonBrand Photo-to-Brick (24319578231): $139.89 in 7 days, 0 conversions, LEGO-brand queries; saves about $20 a day.
+- Expires: 2026-10-17
+- Status: pending
+- From: P-ads-analyst-20261012-3
+
+## A-2026W42-005
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/meta-cut-alwayon-promo-v1-budget.md
+- Commit: aee1580
+- Reason: If approved, ads-analyst lowers Meta ALWAYON PROMO -v1 (120252425110090597) from $40 to $20 a day; Shopify ROAS 1.09 over 28 days and 0.69 last week.
+- Expires: 2026-10-17
+- Status: pending
+- From: P-ads-analyst-20261012-5
+
+## A-2026W42-004
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-pmax-brand-negatives.md
+- Commit: aee1580
+- Reason: If approved, ads-analyst adds 5 "memobrick" negatives to PMax #2 so it stops paying for our own brand searches (45% of its search spend) and its real non-brand result shows.
+- Expires: 2026-10-17
+- Status: pending
+- From: P-ads-analyst-20261012-4
+
+## A-2026W42-006
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/meta-new-ad-photo-to-mosaic-reel.md
+- Commit: aee1580
+- Reason: If approved, ads-analyst creates one new Meta ad, PAUSED, from the planner's photo-to-mosaic reel in the Proven Videos ad set, linking to the editor; launching it is a separate approval.
+- Expires: 2026-10-17
+- Status: pending
+- From: P-ads-analyst-20261012-6
+- Note: Same clip as the organic post in A-2026W41-001 (a different channel, so not a duplicate). It lands on /pages/editor; the SEO audit notes two creator pages (/pages/create and /pages/editor), so check the editor works well on mobile before the later launch approval.
 
 ## A-2026W41-002
 - Agent: social-planner
@@ -54,6 +122,32 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 
 ## Open
 
+(Highest expected sales impact first.)
+
+## A-2026W41-010
+- Agent: email-flow-optimizer
+- Executor: email-flow-optimizer
+- Type: send
+- Draft: marketing/email/flow-optimizer/test-cart-last-email-reassurance.md
+- Commit: e91580d
+- Reason: The 20% last email in Abandoned Cart got 0 clicks and 0 purchases from 88 delivered. Test a no-discount reassurance version before holiday traffic.
+- Expires: 2026-10-25
+- Status: pending
+- From: P-email-flow-optimizer-20261011-1
+- Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
+
+## A-2026W41-011
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/personalized-christmas-photo-gifts.md
+- Commit: 9498fd1
+- Reason: New Christmas photo gift hub that links 11 existing Christmas and recipient posts; it needs time to be indexed before mid-November holiday searches peak. Add the JSON-LD from checks/personalized-christmas-photo-gifts.md on publish.
+- Expires: 2026-10-25
+- Status: approved
+- From: P-seo-technical-20261011-6
+- Note: Needs an owner-approved hero image (real mosaic or a labeled illustration).
+
 ## A-2026W41-004
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
@@ -64,6 +158,40 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Expires: 2026-10-21
 - Status: pending
 - From: P-email-campaign-writer-20261011-1
+
+## A-2026W41-012
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
+- Commit: 22411dc
+- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
+- Expires: 2026-11-15
+- Status: approved
+- From: P-seo-technical-20261011-4
+
+## A-2026W41-013
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/retire-duplicate-holiday-article.md
+- Commit: 22411dc
+- Reason: The duplicate "[Ikram GemPages] Perfect Holiday Gift" article went live 2026-09-10 and splits ranking with `theperfect-holiday` before the holiday peak. The fix is to unpublish it and 301 it to `theperfect-holiday`.
+- Expires: 2026-11-30
+- Status: approved
+- From: P-seo-technical-20261011-1
+- Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
+
+## A-2026W41-014
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/add-article-breadcrumb-schema.md
+- Commit: 22411dc
+- Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
+- Expires: 2026-11-30
+- Status: approved
+- From: P-seo-technical-20261011-5
 
 ## A-2026W41-005
 - Agent: outreach-gift-guide-pr
@@ -125,64 +253,6 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - From: P-outreach-gift-guide-pr-20261011-5
 - Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address not captured, and the 2026 call is not posted yet.
 
-## A-2026W41-010
-- Agent: email-flow-optimizer
-- Executor: email-flow-optimizer
-- Type: send
-- Draft: marketing/email/flow-optimizer/test-cart-last-email-reassurance.md
-- Commit: e91580d
-- Reason: The 20% last email in Abandoned Cart got 0 clicks and 0 purchases from 88 delivered. Test a no-discount reassurance version before holiday traffic.
-- Expires: 2026-10-25
-- Status: pending
-- From: P-email-flow-optimizer-20261011-1
-- Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
-
-## A-2026W41-011
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/personalized-christmas-photo-gifts.md
-- Commit: 9498fd1
-- Reason: New Christmas photo gift hub that links 11 existing Christmas and recipient posts; it needs time to be indexed before mid-November holiday searches peak. Add the JSON-LD from checks/personalized-christmas-photo-gifts.md on publish.
-- Expires: 2026-10-25
-- Status: approved
-- From: P-seo-technical-20261011-6
-- Note: Needs an owner-approved hero image (real mosaic or a labeled illustration).
-
-## A-2026W41-012
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
-- Commit: 22411dc
-- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
-- Expires: 2026-11-15
-- Status: approved
-- From: P-seo-technical-20261011-4
-
-## A-2026W41-013
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/retire-duplicate-holiday-article.md
-- Commit: 22411dc
-- Reason: The duplicate "[Ikram GemPages] Perfect Holiday Gift" article went live 2026-09-10 and splits ranking with `theperfect-holiday` before the holiday peak. The fix is to unpublish it and 301 it to `theperfect-holiday`.
-- Expires: 2026-11-30
-- Status: approved
-- From: P-seo-technical-20261011-1
-- Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
-
-## A-2026W41-014
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/add-article-breadcrumb-schema.md
-- Commit: 22411dc
-- Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
-- Expires: 2026-11-30
-- Status: approved
-- From: P-seo-technical-20261011-5
-
 ## A-2026W41-015
 - Agent: seo-technical
 - Executor: seo-technical
@@ -214,6 +284,8 @@ No proposal was dropped: none touches the order workflow, and every draft file e
 - A-2026W41-010 (cart flow test): the shared blocks state "2-4 business days", which is not in the Facts table. The Miami claim is now verified.
 - Approved items 003, 011, 012, 013, 014 cannot be acted on yet (see Needs your attention).
 
+The six ad changes A-2026W42-001 to 006 passed every check: no order workflow, no unlisted offer or code (they remove EARLYHOLIDAY20 rather than use it), only the Facts-table date Dec 15, every draft file exists and none is shared, and the Executor (ads-analyst) is correct for ad-change.
+
 No contacts-log matches (the log is empty). No two proposals post the same content to the same channel, and none give conflicting dates.
 
 ## Missing owner inputs
@@ -239,6 +311,8 @@ No contacts-log matches (the log is empty). No two proposals post the same conte
 
   Add these to offers-calendar or pause them in Omnisend.
 - **Offers and codes:**
+  - EARLYHOLIDAY20 is promised in live Google ads (PMax #2, Holiday Gifts, NonBrand) but does not exist in Shopify. Either create it and list it as active, or approve A-2026W42-001 and 002 to remove it (ads-analyst).
+  - EXTRA10 is active in Shopify (515 uses) but not in offers-calendar; it sits only in paused PMax asset groups, which must not be resumed with it (ads-analyst).
   - Black Friday and Cyber Monday offers are unknown (email-campaign-writer).
   - The Welcome 20% code is live but not listed as active (email-flow-optimizer).
   - "Additional 10% off when buying from 2 pcs" appears in the Baby's First Year article (seo-technical).
@@ -266,6 +340,10 @@ No contacts-log matches (the log is empty). No two proposals post the same conte
   - The Omnisend API split block is unconfirmed, and the automations reference tool is not allowed (email-flow-optimizer).
   - The Omnisend connection was unstable (email-flow-optimizer).
   - The search tool refuses major glossy publishers (outreach-gift-guide-pr).
+  - Google Ads has no UTM tracking template, so paid and organic Google orders cannot be separated in Shopify (ads-analyst).
+  - Adspirer quota: about 140 of 150 monthly calls used; daily pacing from Nov 16 may need a higher plan (ads-analyst).
+  - Meta performance-trend tool returns no data, so creative fatigue cannot be measured (ads-analyst).
+  - Two Smart campaign call conversion actions (532070521, 830348821) are set as primary in Google Ads; no change proposed (ads-analyst).
 - **Unknown facts and data:**
   - The upload page URL is not recorded; the email CTA uses the homepage (email-campaign-writer).
   - No 14-day recent-purchaser segment exists (email-campaign-writer).
