@@ -8,6 +8,7 @@ import unittest
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 import check  # noqa: E402
+import email_preview  # noqa: E402
 
 AGENT_TEMPLATE = """---
 name: {name}
@@ -192,9 +193,150 @@ class CheckTests(unittest.TestCase):
         self.assertFalse(check.draft_unchanged(self.root, "draft.md", sha))
         self.assertFalse(check.draft_unchanged(self.root, "draft.md", "0000000"))
 
+    def test_preview_section_does_not_count_as_draft_change(self):
+        run = lambda *a: subprocess.run(["git", "-C", str(self.root), *a], check=True, capture_output=True, text=True)
+        run("init", "-q")
+        run("config", "user.email", "t@t")
+        run("config", "user.name", "t")
+        draft = self.root / "draft.md"
+        draft.write_text("# Draft\n\n## Subject\n\nHi\n")
+        run("add", "draft.md")
+        run("commit", "-qm", "v1")
+        sha = run("rev-parse", "HEAD").stdout.strip()
+        draft.write_text(email_preview.add_preview_section(draft.read_text(), "draft-preview.png"))
+        self.assertTrue(check.draft_unchanged(self.root, "draft.md", sha))
+        draft.write_text(draft.read_text().replace("Hi", "Hello"))
+        self.assertFalse(check.draft_unchanged(self.root, "draft.md", sha))
+
     def test_layout_reports_missing(self):
         errors = check.check_layout(self.root)
         self.assertEqual(len(errors), len(check.REQUIRED_LAYOUT))
+
+
+DRAFT = """# Campaign draft: test
+
+- Status: draft
+
+## Subject
+
+Which photo makes the best mosaic?
+
+## Preview text
+
+A few simple tips.
+
+## Body
+
+Hi [[contact.first_name|there]],
+
+**Pick a clear photo.** It *really* helps.
+
+- Good light
+- Simple background
+
+![Kit](images/kit.png)
+
+[Try your photo](https://mymemobrick.com/?utm_source=omnisend)
+
+Warmly,
+The Memobrick team
+
+## Offer
+
+None.
+"""
+
+
+class EmailPreviewTests(unittest.TestCase):
+    def test_sections_parsed(self):
+        parsed = email_preview.parse_draft(DRAFT)
+        self.assertEqual(parsed["subject"], "Which photo makes the best mosaic?")
+        self.assertEqual(parsed["preview"], "A few simple tips.")
+        self.assertTrue(parsed["body"].startswith("Hi [[contact.first_name|there]],"))
+        self.assertTrue(parsed["body"].endswith("The Memobrick team"))
+        self.assertIsNone(parsed["cta"])
+
+    def test_missing_sections_are_not_an_email(self):
+        parsed = email_preview.parse_draft("# Flow review\n\n## Summary\n\nNumbers.\n")
+        self.assertFalse(email_preview.is_email(parsed))
+        self.assertEqual(parsed["preview"], "")
+
+    def test_call_to_action_section(self):
+        text = DRAFT + "\n## Call to action\n\n- Button: Shop now\n- Link: https://mymemobrick.com/x\n"
+        self.assertEqual(email_preview.parse_draft(text)["cta"], ("Shop now", "https://mymemobrick.com/x"))
+
+    def test_inline_flow_draft(self):
+        text = (
+            "# Test\n\n## Original copy (control, live today)\n\nSubject: `Old`\n\n"
+            "## New copy (variant)\n\nSubject: `[[contact.first_name|default:\"Hey\"]], hi`\n\n"
+            "Preheader: `Inside.`\n\nHeadline: `Still deciding?`\n\nBlock 1, heading: `Kit`\n\n"
+            "Block 1, body: `All bricks.`\n\nBlock 2, heading: `When?`\n\nBlock 2, body: omitted.\n\n"
+            "Button: `Finish my order` (link: the cart link)\n"
+        )
+        parsed = email_preview.parse_draft(text)
+        self.assertEqual(email_preview.merge_tags(parsed["subject"]), "Hey, hi")
+        self.assertEqual(parsed["preview"], "Inside.")
+        self.assertEqual(parsed["body"], "# Still deciding?\n\n## Kit\n\nAll bricks.\n\n[Finish my order](#)")
+        self.assertEqual(parsed["cta"], ("Finish my order", "#"))
+
+    def test_merge_tags_show_fallback(self):
+        self.assertEqual(email_preview.merge_tags("Hi [[contact.first_name|there]],"), "Hi there,")
+        self.assertEqual(email_preview.merge_tags('[[contact.first_name|default:"there"]]'), "there")
+        self.assertEqual(email_preview.merge_tags("[[contact.email]]"), "")
+
+    def test_inline_markdown(self):
+        out = email_preview.inline_html("**Bold** and *italic* & [link](https://a.com/?x=1&y=2)")
+        self.assertIn("<strong>Bold</strong>", out)
+        self.assertIn("<em>italic</em>", out)
+        self.assertIn("&amp; ", out)
+        self.assertIn('href="https://a.com/?x=1&amp;y=2"', out)
+
+    def test_images_resolve_relative_to_draft(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            (pathlib.Path(tmp) / "images").mkdir()
+            (pathlib.Path(tmp) / "images/kit.png").write_bytes(b"")
+            out = email_preview.inline_html("![Kit](images/kit.png)", tmp)
+        self.assertIn('src="images/kit.png"', out)
+        self.assertIn('alt="Kit"', out)
+        out = email_preview.inline_html("![Kit](https://cdn.example.com/k.png)", "/repo")
+        self.assertIn('src="https://cdn.example.com/k.png"', out)
+
+    def test_body_blocks_and_button(self):
+        out = email_preview.body_to_html(email_preview.parse_draft(DRAFT)["body"])
+        self.assertIn("Hi there,", out)
+        self.assertIn("<ul", out)
+        self.assertEqual(out.count("<li"), 2)
+        self.assertIn("<img", out)
+        self.assertIn(email_preview.PINK, out)
+        self.assertIn("border-radius:999px;\">Try your photo</a>", out)
+        self.assertLess(out.index("Try your photo"), out.index("Warmly"))
+        self.assertIn("Warmly,<br>The Memobrick team", out)
+
+    def test_last_link_is_the_button(self):
+        out = email_preview.body_to_html("See [a](https://a.com) first.\n\n[Go](https://b.com)")
+        self.assertIn('text-decoration:underline;">a</a>', out)
+        self.assertIn("border-radius:999px;\">Go</a>", out)
+
+    def test_cta_button_added_when_not_in_body(self):
+        out = email_preview.body_to_html("Hello.\n\nMore.\n\nThanks,\nTeam", cta=("Shop", "https://s.com"))
+        self.assertLess(out.index("Shop"), out.index("Thanks"))
+        self.assertGreater(out.index("Shop"), out.index("More."))
+
+    def test_email_html_has_inbox_and_footer(self):
+        page = email_preview.email_html(email_preview.parse_draft(DRAFT))
+        self.assertIn("Memobrick", page)
+        self.assertIn("Which photo makes the best mosaic?", page)
+        self.assertIn("A few simple tips.", page)
+        self.assertIn("mymemobrick.com", page)
+        self.assertIn("Unsubscribe", page)
+        self.assertIn("width: 600px", page)
+
+    def test_preview_section_added_once(self):
+        once = email_preview.add_preview_section(DRAFT, "test-preview.png")
+        self.assertTrue(once.startswith(
+            "# Campaign draft: test\n\n## Preview\n\n![Email preview](test-preview.png)\n\n- Status"))
+        self.assertEqual(email_preview.add_preview_section(once, "test-preview.png"), once)
+        self.assertEqual(check.strip_preview(once), DRAFT)
 
 
 if __name__ == "__main__":

@@ -54,8 +54,9 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 - `python3 marketing/tools/check.py agents` validates every agent file.
 - `python3 marketing/tools/check.py layout` checks the shared files exist.
 - `python3 marketing/tools/check.py copy <file>` finds em dashes in customer copy.
+- `python3 marketing/tools/email_preview.py <draft>` renders an email draft as the subscriber will see it (`<draft>-preview.png` and `.html` next to it) and adds the image to the top of the draft. The email agents run it on every email draft.
 - `python3 marketing/tools/check.py approvals marketing/approvals/queue.md --agent <name>` lists the approved items that agent should carry out.
-- `python3 -m unittest marketing/tools/test_check.py` runs the checker's tests.
+- `python3 -m unittest marketing/tools/test_check.py` runs the tests for the checker and the email preview tool.
 
 ## Shared files
 

@@ -1,5 +1,9 @@
 # Test: Abandoned Cart last email, reassurance vs 20% discount
 
+## Preview
+
+![Email preview](test-cart-last-email-reassurance-preview.png)
+
 DRY RUN draft. Experiment ID: EFO-20261011-01. Status: proposed, not started.
 
 ## Where

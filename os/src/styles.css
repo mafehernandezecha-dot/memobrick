@@ -1427,6 +1427,15 @@ button:focus-visible {
   font-size: 13.5px;
 }
 
+.md img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 8px 0 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(27, 38, 79, 0.14);
+}
+
 .md code {
   font-size: 12px;
   background: rgba(0, 0, 0, 0.05);

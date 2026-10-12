@@ -165,7 +165,22 @@ def draft_unchanged(repo_root, draft, commit):
     if _git(repo_root, "cat-file", "-e", f"{commit}^{{commit}}").returncode != 0:
         if _git(repo_root, "rev-parse", "--is-shallow-repository").stdout.strip() == "true":
             _git(repo_root, "fetch", "--quiet", "--unshallow")
-    return _git(repo_root, "diff", "--quiet", commit, "--", draft).returncode == 0
+    if _git(repo_root, "diff", "--quiet", commit, "--", draft).returncode == 0:
+        return True
+    # Adding or refreshing the email preview image (email_preview.py) does not
+    # change the copy that was approved.
+    before = _git(repo_root, "show", f"{commit}:{draft}")
+    path = pathlib.Path(repo_root) / draft
+    if before.returncode != 0 or not path.exists():
+        return False
+    return strip_preview(before.stdout) == strip_preview(path.read_text())
+
+
+PREVIEW_SECTION = re.compile(r"^## Preview[ \t]*\n\s*!\[Email preview\]\([^)]*\)[ \t]*\n*", re.M)
+
+
+def strip_preview(text):
+    return PREVIEW_SECTION.sub("", text, count=1)
 
 
 def approved_items_for(items, agent, today):

@@ -43,12 +43,13 @@ Report your live status in `marketing/status/email-campaign-writer.json` at the 
 4. Draft next week's campaign at `marketing/email/campaign-writer/<send-date>-<slug>.md` with: Subject (under 50 characters), Preview text, Body, one call to action with a UTM link (`utm_source=omnisend&utm_medium=email&utm_campaign=<yyyy-mm-slug>`), Audience segment, Exclusions (the existing recent-purchasers segment, currently 21 days, plus unengaged contacts), Send time (ET), and Success measure (purchases per delivered email, revenue per recipient).
 5. Do not stack a campaign discount with the 20% recovery or reactivation codes unless an approved offer in `offers-calendar.md` says so.
 6. Run `python3 marketing/tools/check.py copy <draft>` and fix every em dash.
-7. Propose the draft as a `send` item with `Executor: email-campaign-writer` (Reason says it will be created and scheduled in Omnisend for its send time), expiring the day before its send date.
+7. **Email preview.** After writing or changing any email draft (new campaigns and `improve-*.md` after-copy alike), run `python3 marketing/tools/email_preview.py <draft>`. It renders the Subject, Preview text and Body as the subscriber will see them, writes `<draft>-preview.html` and `<draft>-preview.png` next to the draft, and adds a `## Preview` image at the top of the draft. Put any email image in the Body as `![alt text](image.png)` (path relative to the draft) so it shows in the preview. Look at the PNG yourself; fix anything that looks wrong and re-run. Commit the `-preview.png` and `-preview.html` with the draft, so every email in the owner's "Your turn" shows exactly how it will look. Re-run it whenever the draft changes, before proposing or re-proposing it.
+8. Propose the draft as a `send` item with `Executor: email-campaign-writer` (Reason says it will be created and scheduled in Omnisend for its send time), expiring the day before its send date.
 
 ## Outputs
 
 - `marketing/email/campaign-writer/holiday-plan-2026.md`
-- `marketing/email/campaign-writer/<send-date>-<slug>.md`
+- `marketing/email/campaign-writer/<send-date>-<slug>.md` with its `-preview.png` and `-preview.html`
 - `marketing/reports/<YYYY-MM-DD>-email-campaign-writer.md`
 
 ## Images

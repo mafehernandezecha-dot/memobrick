@@ -50,11 +50,12 @@ Report your live status in `marketing/status/email-flow-optimizer.json` at the s
 3. **Test design:** Change one variable per test. The first candidate: in one recovery flow, test a reassurance version of the last email (size help, what is in the kit, and delivery timing only if the Facts table has it) against the current 20% discount. If live emails contain claims the brand skill does not allow (unverified shipping times or locations, press mentions, review counts, unpermitted customer quotes), list them for the owner before proposing a test, so both versions share an approved base. If the test needs more than 12 weeks at current volume, say so and propose a faster alternative. Write the test as `marketing/email/flow-optimizer/test-<slug>.md` with hypothesis, the exact original and new copy, audience split, primary metric (purchases per delivered email), guardrails (unsubscribes, complaints, discount cost), minimum run time, and decision rule. Append it to `experiments.md` with Result blank, and propose it as a `send` item with `Executor: email-flow-optimizer`.
 4. When a test item is approved, make the change in Omnisend exactly as written (`get_automations_id` first, then the edit tool after reading its schema and documentation). Record the before and after in your report.
 5. Run `python3 marketing/tools/check.py copy` on every new email copy file.
+6. **Email preview.** After writing or changing any email draft (a test's new copy, or any rewritten email), run `python3 marketing/tools/email_preview.py <draft>`. It reads `## Subject`, `## Preview text` and `## Body` sections, or, in a test file, the inline `Subject:`, `Preheader:`, `Headline:`, `Body:`, `Block N, heading:`/`Block N, body:`, `Button:` and `Closing line:` lines (each value in backticks) under the "New copy (variant)" section. It writes `<draft>-preview.html` and `<draft>-preview.png` next to the draft and adds a `## Preview` image at the top of the draft. Look at the PNG yourself; fix anything that looks wrong and re-run. Commit the `-preview.png` and `-preview.html` with the draft, so every email in the owner's "Your turn" shows exactly how it will look. Re-run it whenever the draft changes, before proposing or re-proposing it.
 
 ## Outputs
 
 - `marketing/email/flow-optimizer/review-<YYYY-MM-DD>.md`
-- `marketing/email/flow-optimizer/test-<slug>.md`
+- `marketing/email/flow-optimizer/test-<slug>.md` with its `-preview.png` and `-preview.html`
 - Rows in `marketing/shared/experiments.md`
 - `marketing/reports/<YYYY-MM-DD>-email-flow-optimizer.md`
 

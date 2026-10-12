@@ -2,7 +2,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import { decide, readMarketingFile } from './server/actions';
+import { decide, readMarketingFile, readMarketingMedia } from './server/actions';
 import { CHAT_MODEL_LABEL, getChat, listChats, streamChat } from './server/chat';
 import { buildSales } from './server/sales';
 import { buildState } from './server/state';
@@ -64,6 +64,14 @@ export default defineConfig({
             }
             if (url.pathname === '/api/file' && req.method === 'GET') {
               return json(res, 200, { path: url.searchParams.get('path'), text: readMarketingFile(repoDir, url.searchParams.get('path') ?? '') });
+            }
+            if (url.pathname === '/api/media' && req.method === 'GET') {
+              const media = readMarketingMedia(repoDir, url.searchParams.get('path') ?? '');
+              res.statusCode = 200;
+              res.setHeader('content-type', media.type);
+              res.setHeader('cache-control', 'no-cache');
+              res.setHeader('x-content-type-options', 'nosniff');
+              return res.end(media.data);
             }
             const decideMatch = url.pathname.match(/^\/api\/approvals\/([A-Za-z0-9-]+)$/);
             if (decideMatch && req.method === 'POST') {

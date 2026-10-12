@@ -1,5 +1,9 @@
 # Campaign draft: 2026-10-22 photo tips
 
+## Preview
+
+![Email preview](2026-10-22-photo-tips-preview.png)
+
 - Status: draft (dry run, not created in Omnisend)
 - Campaign name (Omnisend): Q4 | Oct 22 | Which Photo Makes the Best Mosaic (Warm)
 

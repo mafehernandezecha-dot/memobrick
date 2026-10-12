@@ -30,7 +30,7 @@ export function DocViewer({ path, onClose }: { path: string; onClose: () => void
           </button>
         </header>
         <div className="doc-body">
-          {error ? <p className="muted">{error}</p> : text === null ? <p className="muted">Opening…</p> : <Markdown text={text} />}
+          {error ? <p className="muted">{error}</p> : text === null ? <p className="muted">Opening…</p> : <Markdown text={text} base={path} />}
         </div>
       </div>
     </div>
