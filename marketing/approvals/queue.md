@@ -94,7 +94,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Expires: 2026-10-17
 - Status: pending
 - From: P-ads-analyst-20261012-6
-- Note: Same clip as the organic post in A-2026W41-001 (a different channel, so not a duplicate). It lands on /pages/editor; the SEO audit notes two creator pages (/pages/create and /pages/editor), so check the editor works well on mobile before the later launch approval.
+- Note: Same clip as the organic post in A-2026W41-001 (a different channel, so not a duplicate). On 2026-10-12 you asked for a different video on A-2026W41-001 ("change the video"); if that applies here too, reply `changes:` on this item. It lands on /pages/editor; the SEO audit notes two creator pages (/pages/create and /pages/editor), so check the editor works well on mobile before the later launch approval.
 
 ## A-2026W41-002
 - Agent: social-planner

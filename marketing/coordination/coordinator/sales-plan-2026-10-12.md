@@ -40,8 +40,8 @@ At last week's pace we miss this week's goal by about 15 orders. Source: growth-
 
 - **What:** post this week's transformation reels, all linking to /pages/editor. Create the same reel as a paused Meta ad in Proven Videos, with no budget increase. The owner fills in the holiday 20% code, dates and exclusions so email and ads can announce it before November. Also decide on the unapproved Omnisend sends (Re-engagement 10% on Oct 14, Early Bird 15% on Oct 20).
 - **Who:** social-publisher (posts), ads-analyst (Meta ad), owner (offer and Omnisend decisions), then email-campaign-writer.
-- **By:** reel tonight, Mon Oct 12 at 19:00 (A-2026W41-001 expires today). Second reel Thu Oct 15. Meta ad created by Wed Oct 14. Offer decision before the Oct 14 Omnisend send.
-- **Approval:** A-2026W41-001 and A-2026W41-002 (pending). A-2026W41-003 (approved, but blocked by a stale commit). A-2026W42-006. An offer row in offers-calendar.md.
+- **By:** reel Thu Oct 15. You asked for a different video on the Oct 12 reel (A-2026W41-001), so the planner has to revise it. Meta ad created by Wed Oct 14. Offer decision before the Oct 14 Omnisend send.
+- **Approval:** A-2026W41-002 (pending), a revised A-2026W41-001 (changes requested). A-2026W41-003 (approved, but blocked by a stale commit). A-2026W42-006. An offer row in offers-calendar.md.
 - **Expected orders:** 0 to 1 a week from organic posts, since there are no results yet. The Meta reel ad's bar is 1 order per $110 of spend once launched. The holiday offer is the largest lever but cannot be estimated until its terms exist. Last year the same week had 40 orders.
 
 ## Honest outlook

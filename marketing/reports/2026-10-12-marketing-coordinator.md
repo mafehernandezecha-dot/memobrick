@@ -15,7 +15,7 @@ Last week: 20 orders and $2,269.56 net sales, against a goal of 35 orders and $3
    - Approval: A-2026W41-010, after you decide on the "2–4 business days" blocks.
    - Expected effect: about +1 order a week.
 3. **Send people into the editor, and decide the holiday offer.** social-publisher, ads-analyst, and you.
-   - Reel tonight at 19:00 (A-2026W41-001 expires today) and another on Oct 15 (A-2026W41-002).
+   - Reel on Oct 15 (A-2026W41-002). You asked for a different video on tonight's reel (A-2026W41-001, "changes: change the video"), so the social-planner needs to revise it.
    - Paused Meta reel ad (A-2026W42-006).
    - You set the 20% holiday code, dates and exclusions, and decide the Oct 14 and Oct 20 Omnisend sends.
    - Expected effect: 0 to 1 order a week now. The offer is the largest lever but cannot be estimated yet.
@@ -25,7 +25,7 @@ Together these add about 2 to 3 orders. They do not close the gap. The main loss
 ## Summary
 
 - Added 6 items, A-2026W42-001 to 006, from today's ads-analyst report. None was flagged or dropped. All 6 expire Oct 17 and sit under Time-sensitive.
-- The queue now holds 22 items, 9 of them time-sensitive. A-2026W41-001 (the reel at 19:00 tonight) expires today, still pending.
+- The queue now holds 22 items, 9 of them time-sensitive. During this run you decided three items: A-2026W41-001 changes (change the video), A-2026W41-005 changes (a more sentimental email), and A-2026W41-015 approved. Your decisions are kept as written.
 - Five approved items (003, 011, 012, 013, 014) remain blocked by stale Commit lines. No conversion-auditor report exists.
 
 ## Done
@@ -41,7 +41,7 @@ Together these add about 2 to 3 orders. They do not close the gap. The main loss
 - Copied them into `queue.md` with Commit aee1580. Reordered both sections by expected sales impact.
 - Refreshed the A-2026W41-001 note: the owner cleared the footage folders on 2026-10-12.
 - Added the ads-analyst blockers to Missing owner inputs.
-- No Status line changed. The owner made no status edits since the earlier run.
+- No Status line changed. Your three decisions arrived during the run (commits e4bede6, 316d864, 3e0af97) and were kept through the rebase. A-2026W42-006 uses the same video as A-2026W41-001, so I added a note there pointing to your "change the video" request.
 - Archive: nothing to move. Nothing was rejected, done, or past expiry. A-2026W41-001 expires at the end of today.
 - Checker: `check.py approvals queue.md` exit 0.
 - Wrote the sales plan and appended a second-run section to `overlaps-2026-10-12.md`.
@@ -59,9 +59,14 @@ Together these add about 2 to 3 orders. They do not close the gap. The main loss
 
 **Flagged:** no new flags. Carried flags: A-2026W41-005 to 009 (sample kits, sender email) and A-2026W41-010 (delivery-time blocks).
 
-**Approved, not yet acted on:** A-2026W41-003 (social-publisher), A-2026W41-011 (seo-blog-writer), A-2026W41-012 to 014 (seo-technical). All are blocked: the recorded commits are missing from history, so you need to confirm the drafts are unchanged.
+**Approved, not yet acted on:**
 
-**Expired:** none yet. A-2026W41-001 expires today.
+- A-2026W41-015 (seo-technical, approved today) can be acted on: its commit is current.
+- A-2026W41-003 (social-publisher), A-2026W41-011 (seo-blog-writer), and A-2026W41-012 to 014 (seo-technical) are blocked. Their recorded commits are missing from history, so you need to confirm the drafts are unchanged.
+
+**Changes requested:** A-2026W41-001 (social-planner to revise) and A-2026W41-005 (outreach-gift-guide-pr to revise). Each agent proposes a new version with a new ID.
+
+**Expired:** none.
 
 **Weak points with no proposal working on them:**
 
