@@ -2,7 +2,15 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10-11. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-11.md`.
+Rebuilt 2026-10-12 from agent run reports. Proposals still come from the 2026-10-11 reports; the 2026-10-12 reports proposed nothing. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-12.md`.
+
+## Needs your attention
+
+Approved items that agents cannot act on yet. The checker reports "draft changed since commit": the commit recorded when each item was copied no longer exists in git history (history was rewritten on 2026-10-11), so the checker cannot confirm the draft is the one you approved. I did not change these Commit lines or any Status. To release them, re-read each draft and confirm it is unchanged; the coordinator will not rewrite the Commit line of an approved item on its own.
+
+- A-2026W41-003 (social-publisher)
+- A-2026W41-011 (seo-blog-writer)
+- A-2026W41-012, A-2026W41-013, A-2026W41-014 (seo-technical)
 
 ## Time-sensitive
 
@@ -13,7 +21,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Executor: social-publisher
 - Type: publish
 - Draft: marketing/social/planner/2026-W42/S-20261012-1.md
-- Commit: f6147d2
+- Commit: e91580d
 - Reason: Transformation Reel opens the week with the core photo to mosaic story.
 - Expires: 2026-10-12
 - Status: pending
@@ -25,7 +33,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Executor: social-publisher
 - Type: publish
 - Draft: marketing/social/planner/2026-W42/S-20261015-1.md
-- Commit: f6147d2
+- Commit: e91580d
 - Reason: Building experience video shows the hands-on value ahead of holiday gift planning.
 - Expires: 2026-10-15
 - Status: pending
@@ -44,14 +52,14 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - From: P-social-planner-20261011-3
 - Note: Clip appears to be Billo creator content. Confirm the license covers organic posting on Instagram, Facebook, and TikTok.
 
-## This week
+## Open
 
 ## A-2026W41-004
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
 - Type: send
 - Draft: marketing/email/campaign-writer/2026-10-22-photo-tips.md
-- Commit: 3be95ea
+- Commit: e91580d
 - Reason: Helpful no-offer email to the Warm segment between the scheduled Oct 20 and Oct 27 sends; creates an Omnisend draft only
 - Expires: 2026-10-21
 - Status: pending
@@ -62,72 +70,72 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/emily-reviews-2026.md
-- Commit: c8f2a16
+- Commit: e91580d
 - Reason: Open 2026 holiday guide on product exchange, wants pitches by Nov 15; email EmilyReviewsCom@gmail.com listed on the call page
 - Expires: 2026-10-21
 - Status: pending
 - From: P-outreach-gift-guide-pr-20261011-1
-- Flag: Offers a free sample kit, but "Sample kits available for press" is unknown in the Facts table. Sender name and email are also unknown. Address and byline come from search summaries, not the live page.
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address and byline come from search summaries, not the live page.
 
 ## A-2026W41-006
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/shescribes-2026.md
-- Commit: c8f2a16
+- Commit: e91580d
 - Reason: Open 2026 guide; pitch asks only for the free review option (no $25 listing fee); Kimberly@SheScribes.com listed on page
 - Expires: 2026-10-21
 - Status: pending
 - From: P-outreach-gift-guide-pr-20261011-2
-- Flag: Offers a sample kit, but "Sample kits available for press" is unknown in the Facts table. Sender unknown. The site sells paid placements; do not pay.
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. The site sells paid placements; do not pay.
 
 ## A-2026W41-007
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/love-tabitha-2026.md
-- Commit: c8f2a16
+- Commit: e91580d
 - Reason: Submissions open; kids and families guide already features a brick set; route is the submission page (method to confirm)
 - Expires: 2026-10-21
 - Status: pending
 - From: P-outreach-gift-guide-pr-20261011-3
-- Flag: Offers a sample kit, but "Sample kits available for press" is unknown in the Facts table. Sender unknown. Contact route and address not captured.
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Contact route and address not captured.
 
 ## A-2026W41-008
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
-- Commit: c8f2a16
+- Commit: e91580d
 - Reason: Couples gift roundup; contact page lists general inquiries to Jen (address must be copied from the page)
 - Expires: 2026-10-21
 - Status: pending
 - From: P-outreach-gift-guide-pr-20261011-4
-- Flag: Offers a sample kit, but "Sample kits available for press" is unknown in the Facts table. Sender unknown. Address not captured.
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address not captured.
 
 ## A-2026W41-009
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/frugal-ginger.md
-- Commit: c8f2a16
+- Commit: e91580d
 - Reason: Free sample-based family guides; email on the 2025 submissions page, 2026 call not yet posted
 - Expires: 2026-10-21
 - Status: pending
 - From: P-outreach-gift-guide-pr-20261011-5
-- Flag: Offers a sample kit, but "Sample kits available for press" is unknown in the Facts table. Sender unknown. Address not captured, and the 2026 call is not posted yet.
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address not captured, and the 2026 call is not posted yet.
 
 ## A-2026W41-010
 - Agent: email-flow-optimizer
 - Executor: email-flow-optimizer
 - Type: send
 - Draft: marketing/email/flow-optimizer/test-cart-last-email-reassurance.md
-- Commit: c37d6a0
+- Commit: e91580d
 - Reason: The 20% last email in Abandoned Cart got 0 clicks and 0 purchases from 88 delivered. Test a no-discount reassurance version before holiday traffic.
 - Expires: 2026-10-25
 - Status: pending
 - From: P-email-flow-optimizer-20261011-1
-- Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table and the unverified Miami claim. The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
+- Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
 
 ## A-2026W41-011
 - Agent: seo-technical
@@ -180,7 +188,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Executor: seo-technical
 - Type: site-change
 - Draft: marketing/seo/technical/site-changes/retire-duplicate-summer-souvenirs-page.md
-- Commit: 22411dc
+- Commit: e91580d
 - Reason: `/pages/blog-post` is a 100% copy of the summer souvenirs article. The fix is to hide the page and 301 it to the article.
 - Expires: 2026-12-31
 - Status: pending
@@ -192,7 +200,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Executor: seo-technical
 - Type: site-change
 - Draft: marketing/seo/technical/site-changes/fix-redirect-and-broken-link.md
-- Commit: 22411dc
+- Commit: e91580d
 - Reason: One redirect sends "emotional connections" traffic to the graduation article, which is the wrong page. The graduation article also links to a 404.
 - Expires: 2026-12-31
 - Status: pending
@@ -200,27 +208,23 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 
 ## Flagged
 
-No proposal was dropped: none touches the order workflow, and every draft file exists. Six items are copied with a `- Flag:` line:
+No proposal was dropped: none touches the order workflow, and every draft file exists. Six items carry a `- Flag:` line, and five approved items are blocked:
 
-- A-2026W41-005 to 009 (outreach pitches): each offers a sample kit, but "Sample kits available for press" is unknown in the Facts table. The sender name and email are unknown too.
-- A-2026W41-010 (cart flow test): the shared blocks state a delivery time and the Miami claim, and neither is in the Facts table.
+- A-2026W41-005 to 009 (outreach pitches): each offers a sample kit. Kits are allowed case by case, so your approval of the item is the kit approval. Sender email is still to confirm.
+- A-2026W41-010 (cart flow test): the shared blocks state "2-4 business days", which is not in the Facts table. The Miami claim is now verified.
+- Approved items 003, 011, 012, 013, 014 cannot be acted on yet (see Needs your attention).
 
 No contacts-log matches (the log is empty). No two proposals post the same content to the same channel, and none give conflicting dates.
 
 ## Missing owner inputs
 
-(From the Facts table in shared/offers-calendar.md.)
+**Facts marked unknown or incomplete:**
 
-**Facts marked unknown:**
-
-- Christmas order-by date
-- Fulfillment location claim (Miami, Florida)
 - Holiday ad budget
-- Product margins (also "Margin checked: unknown" for both automated offers)
-- Gift cards offered (a gift card product is active in Shopify)
-- Sample kits available for press
-- Outreach sender name and email (default: Eden Biri)
+- Product margins (also "Margin checked: unknown" for all three offers)
 - Faces per size and build time
+- Outreach sender email (name is Eden Biri; email still to confirm)
+- Holiday 20% offer: code, dates and exclusions to confirm
 
 **Blockers reported by agents:**
 
