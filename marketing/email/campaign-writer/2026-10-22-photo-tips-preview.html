@@ -3,12 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Which photo makes the best mosaic?</title>
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light only">
+<title>The photo your family will build together</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
+  :root { color-scheme: light only; }
   html, body { margin: 0; padding: 0; background: #F4EFEA; }
   body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1B264F; -webkit-font-smoothing: antialiased; }
-  .wrap { width: 600px; margin: 0 auto; padding: 24px 0 32px; }
-  .inbox { background: #ffffff; border-radius: 12px; padding: 14px 18px; margin-bottom: 16px;
+  .wrap { width: 600px; max-width: 100%; margin: 0 auto; padding: 24px 0 32px; }
+  .inbox { background: #ffffff; border-radius: 12px; padding: 14px 18px; margin: 0 0 16px;
            box-shadow: 0 1px 3px rgba(27,38,79,0.10); display: flex; gap: 12px; align-items: center; }
   .avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; background: #1B264F; color: #fff;
             font-weight: 800; font-size: 18px; display: flex; align-items: center; justify-content: center; }
@@ -16,16 +20,26 @@
   .from { font-size: 14px; font-weight: 700; }
   .subject { font-size: 15px; font-weight: 700; margin-top: 2px; }
   .preheader { font-size: 13px; color: #6B7190; margin-top: 2px; }
-  .card { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(27,38,79,0.08); }
-  .brand { padding: 26px 40px 18px; text-align: center; border-bottom: 1px solid #F0E8E3; }
+  .card { background: #ffffff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 14px rgba(27,38,79,0.10); }
+  .card-table { width: 100%; border-collapse: collapse; }
+  .brand { padding: 22px 40px 18px; text-align: center; background: #ffffff; }
   .logo { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #1B264F; }
   .logo span { color: #D66A7E; }
-  .content { padding: 32px 40px 16px; font-size: 16px; line-height: 1.6; color: #1B264F; }
-  .content strong { color: #1B264F; }
   .footer { padding: 22px 40px 28px; text-align: center; font-size: 12px; line-height: 1.6; color: #6B7190;
             border-top: 1px solid #F0E8E3; background: #FCFAF8; }
   .footer a { color: #6B7190; }
   .label { text-align: center; font-size: 11px; color: #9A9DB0; margin-top: 14px; letter-spacing: 0.3px; }
+  @media only screen and (max-width: 620px) {
+    .wrap { padding: 12px 10px 24px; box-sizing: border-box; }
+  }
+  @media only screen and (max-width: 620px) {
+    .card-table { width: 100% !important; }
+    td.pad { padding-left: 22px !important; padding-right: 22px !important; }
+    td.col { display: block !important; width: 100% !important; padding: 0 0 22px !important; }
+    td.col img { max-width: 100% !important; }
+    .hero-title { font-size: 30px !important; }
+    .band-text { font-size: 22px !important; }
+  }
 </style>
 </head>
 <body>
@@ -34,24 +48,39 @@
     <div class="avatar">M</div>
     <div class="meta">
       <div class="from">Memobrick</div>
-      <div class="subject">Which photo makes the best mosaic?</div>
-      <div class="preheader">A few simple tips before you upload your favorite picture.</div>
+      <div class="subject">The photo your family will build together</div>
+      <div class="preheader">Four simple tips for choosing it, so every face appears brick by brick.</div>
     </div>
   </div>
   <div class="card">
     <div class="brand"><div class="logo">Memo<span>brick</span></div></div>
-    <div class="content">
-<p style="margin:0 0 18px;">Hi there,</p>
-<p style="margin:0 0 18px;">Choosing the photo is the most personal part of making a Memobrick. It is also the part people ask us about most. Here are a few simple tips that help a photo turn into a custom brick mosaic you will love.</p>
-<p style="margin:0 0 18px;"><strong>Pick a clear, close photo.</strong> Faces and pets read best when they fill most of the picture. If you can, crop in close before you upload.</p>
-<p style="margin:0 0 18px;"><strong>Look for good light.</strong> Daylight photos with soft, even light keep the details and colors easy to see.</p>
-<p style="margin:0 0 18px;"><strong>Keep the background simple.</strong> A plain wall, the sky, or a soft blur lets your people or pets stand out.</p>
-<p style="margin:0 0 18px;"><strong>Choose a moment that matters.</strong> A favorite trip, a first day home, a family laugh. The best gifts start with a photo that already means something.</p>
-<p style="margin:0 0 18px;">The nice part is that you do not have to guess. Upload your photo on our website and you will see it as a mosaic right away, in 40+ colors of 1×1 bricks. Try a couple of photos, compare them, and pick the one that feels right. Personal help is available if you would like a second opinion.</p>
-<p style="margin:0 0 18px;">When you are ready, your DIY brick mosaic kit becomes a personalized photo gift that someone builds, displays, and keeps.</p>
-<table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px auto;"><tr><td style="background:#D66A7E;border-radius:999px;"><a href="https://mymemobrick.com/?utm_source=omnisend&amp;utm_medium=email&amp;utm_campaign=2026-10-photo-tips" style="display:inline-block;padding:15px 34px;color:#ffffff;font-weight:700;font-size:16px;text-decoration:none;border-radius:999px;">Try your photo</a></td></tr></table>
+    <table role="presentation" class="card-table" width="600" cellpadding="0" cellspacing="0" border="0">
+<tr><td bgcolor="#ffffff" style="padding:0;background-color:#ffffff;"><img src="https://mymemobrick.com/cdn/shop/files/Art-Gift-Kit-_-Buy-Now_-Personalise-Later-Memobrick-62824746.png?crop=region&amp;crop_left=0&amp;crop_top=472&amp;crop_width=1024&amp;crop_height=604&amp;width=1200" alt="A mother, father and toddler around a table, passing a single brick over their half-built photo mosaic" width="600" style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none;border-radius:0px;margin:0 auto;"></td></tr>
+<tr><td class="pad" bgcolor="#FBF6F1" style="padding:34px 40px 10px;background-color:#FBF6F1;"><div style="text-align:center;"><h1 class="hero-title" style="margin:0;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-size:36px;line-height:1.15;font-weight:600;color:#1B264F;">The photo your family will build together</h1><p style="margin:14px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;line-height:1.5;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#D66A7E;">A few simple tips for choosing it</p></div></td></tr>
+<tr><td class="pad" bgcolor="#FBF6F1" style="padding:0 40px 30px;background-color:#FBF6F1;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto;"><tr><td width="14" height="14" bgcolor="#D66A7E" style="width:14px;height:14px;background:#D66A7E;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td><td width="6" style="width:6px;font-size:0;line-height:0;">&nbsp;</td><td width="14" height="14" bgcolor="#1B264F" style="width:14px;height:14px;background:#1B264F;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td><td width="6" style="width:6px;font-size:0;line-height:0;">&nbsp;</td><td width="14" height="14" bgcolor="#F2B8C3" style="width:14px;height:14px;background:#F2B8C3;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td><td width="6" style="width:6px;font-size:0;line-height:0;">&nbsp;</td><td width="14" height="14" bgcolor="#E9B949" style="width:14px;height:14px;background:#E9B949;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td><td width="6" style="width:6px;font-size:0;line-height:0;">&nbsp;</td><td width="14" height="14" bgcolor="#8FB3D9" style="width:14px;height:14px;background:#8FB3D9;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td><td width="6" style="width:6px;font-size:0;line-height:0;">&nbsp;</td><td width="14" height="14" bgcolor="#D66A7E" style="width:14px;height:14px;background:#D66A7E;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td><td width="6" style="width:6px;font-size:0;line-height:0;">&nbsp;</td><td width="14" height="14" bgcolor="#1B264F" style="width:14px;height:14px;background:#1B264F;border-radius:3px;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+<tr><td class="pad" bgcolor="#ffffff" style="padding:30px 40px 14px;background-color:#ffffff;"><div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:17px;line-height:1.65;color:#1B264F;"><p style="margin:0 0 18px;">Hi there,</p>
+<p style="margin:0 0 18px;">Picture a quiet evening at the table. The bricks wait in little bags sorted by color, someone reads the next row from the color map, and a small hand reaches across for one more brick.</p>
+<p style="margin:0 0 18px;">Then somebody says it: <em>"Wait, that's us!"</em> A face has appeared, one tiny brick at a time.</p>
+<p style="margin:0 0 18px;">That moment starts long before the kit arrives. It starts with the photo you choose.</p>
+<h3 style="margin:6px 0 10px;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;line-height:1.4;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#D66A7E;">Four little secrets</h3>
+<h2 style="margin:10px 0 16px;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-size:26px;line-height:1.2;font-weight:600;color:#1B264F;">How to choose the photo</h2>
+<p style="margin:0 0 18px;"><strong>Get close.</strong> Faces and pets come alive when they fill most of the picture. If you can, crop in close before you upload.</p>
+<p style="margin:0 0 18px;"><strong>Find the soft light.</strong> Daylight photos with gentle, even light keep every smile and every color easy to see.</p>
+<p style="margin:0 0 18px;"><strong>Keep the background simple.</strong> A plain wall, the sky, or a soft blur lets your people and pets be the whole story.</p>
+<p style="margin:0 0 18px;"><strong>Choose a moment that matters.</strong> A favorite trip, a first day home, a family laugh. The best gifts start with a photo that already means something.</p></div></td></tr>
+<tr><td class="pad" bgcolor="#FBF6F1" style="padding:26px 32px 28px;background-color:#FBF6F1;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="col" width="50%" valign="top" style="width:50%;padding-right:8px;"><img src="https://mymemobrick.com/cdn/shop/files/Custom-Bricked-Mosaic-Portrait-60x30_-Memobrick-59299574.png?crop=region&amp;crop_left=125&amp;crop_top=375&amp;crop_width=500&amp;crop_height=375" alt="The photo: Close faces, soft light, big smiles. The same moment, now in bricks." width="252" style="display:block;width:100%;max-width:252px;height:auto;border:0;outline:none;border-radius:10px;margin:0 auto;"><p style="margin:12px 0 0;text-align:center;"><span style="display:inline-block;padding:5px 14px;border-radius:999px;background:#FBECEE;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#D66A7E;">The photo</span></p></td><td class="col" width="50%" valign="top" style="width:50%;padding-left:8px;"><img src="https://mymemobrick.com/cdn/shop/files/Custom-Bricked-Mosaic-Portrait-60x30_-Memobrick-59299574.png?crop=region&amp;crop_left=197&amp;crop_top=50&amp;crop_width=327&amp;crop_height=245" alt="The mosaic: Close faces, soft light, big smiles. The same moment, now in bricks." width="252" style="display:block;width:100%;max-width:252px;height:auto;border:0;outline:none;border-radius:10px;margin:0 auto;"><p style="margin:12px 0 0;text-align:center;"><span style="display:inline-block;padding:5px 14px;border-radius:999px;background:#FBECEE;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#D66A7E;">The mosaic</span></p></td></tr></table><p style="margin:18px 0 0;text-align:center;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-style:italic;font-size:18px;line-height:1.5;color:#1B264F;">Close faces, soft light, big smiles. The same moment, now in bricks.</p></td></tr>
+<tr><td class="pad" bgcolor="#1B264F" style="padding:40px 48px;background-color:#1B264F;"><p class="band-text" style="margin:0;text-align:center;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-style:italic;font-size:26px;line-height:1.35;font-weight:500;color:#ffffff;">You do not have to guess. You will see your photo as a mosaic before you order.</p></td></tr>
+<tr><td class="pad" bgcolor="#ffffff" style="padding:30px 40px 14px;background-color:#ffffff;"><div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:17px;line-height:1.65;color:#1B264F;"><h3 style="margin:6px 0 10px;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:13px;line-height:1.4;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#D66A7E;">How it works</h3>
+<h2 style="margin:10px 0 16px;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-size:26px;line-height:1.2;font-weight:600;color:#1B264F;">From your camera roll to your wall</h2></div></td></tr>
+<tr><td class="pad" bgcolor="#FBECEE" style="padding:30px 24px 32px;background-color:#FBECEE;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="col step" width="33%" valign="top" style="width:33%;padding:0 10px;text-align:center;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="52" height="52" align="center" valign="middle" bgcolor="#D66A7E" style="width:52px;height:52px;border-radius:12px;background:#D66A7E;color:#ffffff;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-size:24px;font-weight:600;line-height:52px;text-align:center;">1</td></tr></table><p style="margin:14px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.35;font-weight:700;color:#1B264F;">Upload your photo</p><p style="margin:6px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;line-height:1.5;color:#5A6182;">Pick the one that already means something.</p></td><td class="col step" width="33%" valign="top" style="width:33%;padding:0 10px;text-align:center;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="52" height="52" align="center" valign="middle" bgcolor="#1B264F" style="width:52px;height:52px;border-radius:12px;background:#1B264F;color:#ffffff;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-size:24px;font-weight:600;line-height:52px;text-align:center;">2</td></tr></table><p style="margin:14px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.35;font-weight:700;color:#1B264F;">See it in bricks</p><p style="margin:6px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;line-height:1.5;color:#5A6182;">Your mosaic appears right away, in 40+ colors.</p></td><td class="col step" width="33%" valign="top" style="width:33%;padding:0 10px;text-align:center;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="52" height="52" align="center" valign="middle" bgcolor="#D66A7E" style="width:52px;height:52px;border-radius:12px;background:#D66A7E;color:#ffffff;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-size:24px;font-weight:600;line-height:52px;text-align:center;">3</td></tr></table><p style="margin:14px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:16px;line-height:1.35;font-weight:700;color:#1B264F;">Build it together</p><p style="margin:6px 0 0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;line-height:1.5;color:#5A6182;">Bags sorted by color and a printed color map guide every row.</p></td></tr></table></td></tr>
+<tr><td class="pad" bgcolor="#ffffff" style="padding:30px 40px 14px;background-color:#ffffff;"><div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:17px;line-height:1.65;color:#1B264F;"><p style="margin:0 0 18px;">Try a couple of photos, compare them side by side, and keep the one that makes you smile. Would you like a second opinion? Our designers can create the design for you and send a free proof before production.</p></div></td></tr>
+<tr><td bgcolor="#ffffff" style="padding:6px 0 0;background-color:#ffffff;"><img src="https://mymemobrick.com/cdn/shop/files/Art-Gift-Kit-_-Buy-Now_-Personalise-Later-Memobrick-62824746.png?crop=region&amp;crop_left=0&amp;crop_top=1090&amp;crop_width=1024&amp;crop_height=446&amp;width=1200" alt="A couple smiling at their finished family photo mosaic, framed and held up between them" width="600" style="display:block;width:100%;max-width:600px;height:auto;border:0;outline:none;border-radius:0px;margin:0 auto;"></td></tr>
+<tr><td class="pad" bgcolor="#ffffff" style="padding:14px 40px 4px;background-color:#ffffff;"><p style="margin:0;text-align:center;font-family:'Playfair Display', Georgia, 'Times New Roman', serif;font-style:italic;font-size:17px;line-height:1.5;color:#5A6182;">The last brick goes in. The memory stays.</p></td></tr>
+<tr><td class="pad" bgcolor="#ffffff" style="padding:30px 40px 20px;background-color:#ffffff;"><div style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:17px;line-height:1.65;color:#1B264F;"><p style="margin:0 0 18px;">When the last brick clicks into place, you have more than a picture. You have the evening you spent making it, and a personalized photo gift that hangs on the wall for years of "remember when".</p>
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:28px auto;"><tr><td bgcolor="#D66A7E" style="background:#D66A7E;border-radius:999px;"><a href="https://mymemobrick.com/?utm_source=omnisend&amp;utm_medium=email&amp;utm_campaign=2026-10-photo-tips" style="display:inline-block;padding:16px 38px;color:#ffffff;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight:700;font-size:17px;letter-spacing:0.2px;text-decoration:none;border-radius:999px;">See your photo in bricks</a></td></tr></table>
 <p style="margin:0 0 18px;">Warmly,<br>The Memobrick team</p>
-    </div>
+<p style="margin:0 0 18px;font-size:15px;line-height:1.6;color:#5A6182;"><strong style="color:#D66A7E;">P.S.</strong> Not sure your favorite photo is clear enough? Upload it anyway. The preview shows you right away how it will look in bricks.</p></div></td></tr>
+    </table>
     <div class="footer">
       <div><a href="https://mymemobrick.com">mymemobrick.com</a></div>
       <div>You are receiving this email because you signed up at mymemobrick.com.</div>

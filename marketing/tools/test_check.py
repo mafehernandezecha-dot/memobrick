@@ -339,5 +339,177 @@ class EmailPreviewTests(unittest.TestCase):
         self.assertEqual(check.strip_preview(once), DRAFT)
 
 
+DESIGN_DRAFT = """# Campaign draft: design
+
+## Subject
+
+The photo your family will build together
+
+## Subject options
+
+1. Another subject
+
+## Preview text
+
+Tips inside.
+
+## Body
+
+<!-- hero: https://mymemobrick.com/cdn/shop/files/a.png?width=1200&crop=region | The photo you will build | Simple tips | A family at the table -->
+
+Hi [[contact.first_name|there]],
+
+## How to choose the photo
+
+**Get close.** Faces fill the frame.
+
+<!-- divider -->
+
+[See your photo in bricks](https://mymemobrick.com/?utm_source=omnisend)
+
+Warmly,
+The Memobrick team
+
+P.S. Upload it anyway.
+
+## Call to action
+
+- Button: See your photo in bricks
+- Link: https://mymemobrick.com/?utm_source=omnisend
+"""
+
+
+class DesignBlockTests(unittest.TestCase):
+    def body(self, text):
+        return email_preview.body_to_html(text)
+
+    def test_exact_section_beats_prefix(self):
+        parsed = email_preview.parse_draft(DESIGN_DRAFT)
+        self.assertEqual(parsed["subject"], "The photo your family will build together")
+
+    def test_body_keeps_its_own_headlines(self):
+        parsed = email_preview.parse_draft(DESIGN_DRAFT)
+        self.assertIn("## How to choose the photo", parsed["body"])
+        self.assertTrue(parsed["body"].endswith("P.S. Upload it anyway."))
+        self.assertNotIn("Button:", parsed["body"])
+
+    def test_serif_headlines(self):
+        out = self.body("# Big\n\n## Medium\n\n### Eyebrow")
+        self.assertIn("<h1", out)
+        self.assertIn("<h2", out)
+        self.assertEqual(out.count(email_preview.SERIF), 2)
+        self.assertIn("text-transform:uppercase", out.split("<h3")[1])
+
+    def test_hero(self):
+        out = self.body("<!-- hero: https://x.com/a.png?w=1&h=2 | Big headline | small line | Family at the table -->")
+        self.assertIn('src="https://x.com/a.png?w=1&amp;h=2"', out)
+        self.assertIn('alt="Family at the table"', out)
+        self.assertIn('width="600"', out)
+        self.assertIn("Big headline</h1>", out)
+        self.assertIn("small line", out)
+        self.assertIn(email_preview.SERIF, out)
+
+    def test_hero_alt_defaults_to_headline(self):
+        out = self.body("<!-- hero: a.png | Big headline -->")
+        self.assertIn('alt="Big headline"', out)
+
+    def test_image(self):
+        out = self.body("<!-- image: https://x.com/b.png | Couple holding the mosaic | The memory stays. -->")
+        self.assertIn('alt="Couple holding the mosaic"', out)
+        self.assertIn("The memory stays.", out)
+
+    def test_pair(self):
+        out = self.body("<!-- pair: before.jpg | after.jpg | Same smiles, in bricks. -->")
+        self.assertIn('src="before.jpg"', out)
+        self.assertIn('src="after.jpg"', out)
+        self.assertIn('alt="Your photo: Same smiles, in bricks."', out)
+        self.assertIn("Your mosaic", out)
+        self.assertEqual(out.count('class="col"'), 2)
+        out = self.body("<!-- pair: a.jpg | b.jpg | | The photo | The mosaic -->")
+        self.assertIn('alt="The photo"', out)
+        self.assertIn('alt="The mosaic"', out)
+
+    def test_steps(self):
+        out = self.body("<!-- steps: Upload your photo | We design it: in 40+ colors | You build it together -->")
+        self.assertEqual(out.count('class="col step"'), 3)
+        self.assertIn(">Upload your photo</p>", out)
+        self.assertIn(">We design it</p>", out)
+        self.assertIn(">in 40+ colors</p>", out)
+        for number in ("1", "2", "3"):
+            self.assertIn(f">{number}</td>", out)
+
+    def test_band(self):
+        out = self.body("<!-- band: The best gifts start with a photo. -->")
+        self.assertIn(f'bgcolor="{email_preview.NAVY}"', out)
+        self.assertIn("The best gifts start with a photo.", out)
+        self.assertIn("color:#ffffff", out)
+
+    def test_quote(self):
+        out = self.body("<!-- quote: Built together, kept forever | Memobrick -->")
+        self.assertIn("&ldquo;", out)
+        self.assertIn("Built together, kept forever", out)
+        self.assertIn("Memobrick</p>", out)
+
+    def test_divider(self):
+        out = self.body("Hi.\n\n<!-- divider -->\n\nBye.")
+        self.assertEqual(out.count('width="14" height="14"'), len(email_preview.BRICKS))
+        self.assertLess(out.index("Hi."), out.index('width="14"'))
+        self.assertLess(out.index('width="14"'), out.index("Bye."))
+
+    def test_products(self):
+        out = self.body("<!-- products:\n"
+                        "a.png | 20×20 kit | 4,096 bricks | https://mymemobrick.com/a\n"
+                        "b.png | 30×30 kit | 9,216 bricks | https://mymemobrick.com/b\n-->")
+        self.assertEqual(out.count('class="col"'), 2)
+        self.assertIn("20×20 kit", out)
+        self.assertIn("9,216 bricks", out)
+        self.assertIn('href="https://mymemobrick.com/b"', out)
+        self.assertIn('alt="30×30 kit"', out)
+
+    def test_unknown_block_and_plain_comment_skipped(self):
+        import contextlib
+        import io
+        with contextlib.redirect_stderr(io.StringIO()):
+            out = self.body("Hi.\n\n<!-- sparkles: x -->\n\n<!-- just a note -->")
+        self.assertNotIn("sparkles", out)
+        self.assertNotIn("note", out)
+        self.assertIn("Hi.", out)
+
+    def test_block_links_are_not_the_button(self):
+        out = self.body("<!-- products: a.png | Kit | x | https://k.com -->\n\nText [Go](https://go.com)")
+        self.assertIn("border-radius:999px;\">Go</a>", out)
+
+    def test_ps_stays_below_signoff_and_button(self):
+        out = email_preview.body_to_html("Hello.\n\nWarmly,\nTeam\n\nP.S. One more thing.", cta=("Shop", "https://s.com"))
+        self.assertLess(out.index("Shop"), out.index("Warmly"))
+        self.assertLess(out.index("Warmly"), out.index("P.S."))
+        self.assertIn(f'color:{email_preview.PINK};">P.S.</strong>', out)
+
+    def test_every_image_has_alt_text(self):
+        page = email_preview.email_html(email_preview.parse_draft(DESIGN_DRAFT))
+        import re
+        for tag in re.findall(r"<img[^>]*>", page):
+            self.assertRegex(tag, r'alt="[^"]+"')
+
+    def test_omnisend_html_is_inline_and_table_based(self):
+        out = email_preview.omnisend_html(email_preview.parse_draft(DESIGN_DRAFT))
+        self.assertIn('<table role="presentation"', out)
+        self.assertIn('width="600"', out)
+        self.assertIn("The photo you will build", out)
+        self.assertIn("See your photo in bricks", out)
+        self.assertNotIn("Unsubscribe", out)  # Omnisend adds its own footer
+        self.assertNotIn('class="inbox"', out)
+        self.assertNotIn("Upload these images", out)
+        out = email_preview.omnisend_html(email_preview.parse_draft(DRAFT))
+        self.assertIn("Upload these images to Omnisend", out)
+        self.assertIn("images/kit.png", out)
+
+    def test_page_is_phone_ready_and_light_only(self):
+        page = email_preview.email_html(email_preview.parse_draft(DESIGN_DRAFT))
+        self.assertIn('name="color-scheme" content="light only"', page)
+        self.assertIn("max-width: 620px", page)
+        self.assertIn("fonts.googleapis.com", page)
+
+
 if __name__ == "__main__":
     unittest.main()
