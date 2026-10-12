@@ -24,7 +24,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: e91580d
 - Reason: Transformation Reel opens the week with the core photo to mosaic story.
 - Expires: 2026-10-12
-- Status: pending
+- Status: changes: change the video
 - From: P-social-planner-20261011-1
 - Note: Scheduled Mon 2026-10-12 19:00 ET, so it must be decided before then. Confirm the Drive clip content, that no customer face or name appears without permission, and usage rights (the planner could not play it).
 
