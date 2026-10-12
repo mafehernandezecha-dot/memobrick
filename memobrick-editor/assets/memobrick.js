@@ -6070,13 +6070,14 @@ function drawRealBrick(x, px, py, s, c){
    Generated from the finished design: cover, spec sheet, one page per
    baseplate, and a picking list with pack quantities.
    ===================================================================== */
-const BRICK_MM = 254/32;     // one stud, in mm — 32 studs = 10" exactly (254mm),
-                              // matching the site's own sizing rule everywhere
-                              // else (SIZES: 32 studs per 10"). 8mm was close
-                              // but not exact — 0.0625mm off per stud, which
-                              // adds up to a real 2mm gap over a 32-stud board.
-                              // This print is meant to have a real baseplate
-                              // set on top of it, so it has to be exact.
+const BRICK_MM = 8;          // one stud, in mm: the standard brick stud pitch, which
+                              // is what the physical baseplates are made to (a
+                              // 32×32 board measures 256mm, a 50×50 board 400mm).
+                              // "32 studs = 10 inches" is the product NAME's
+                              // rounding, not the board — printing at 254/32mm
+                              // made the grid drift a quarter stud by the last
+                              // row of every board. This print is laid under a
+                              // real baseplate, so it must match the real one.
 const PACK_SIZE = 100;       // bricks per pack
 const packs = (n) => Math.ceil(n / PACK_SIZE);
 
@@ -6682,6 +6683,14 @@ function buildInstructionsPDF(doc){
         doc.text(noteLines, PDF_MARGIN_X+w1, sy);
         doc.setDrawColor(...PDF_RED); doc.setLineWidth(0.6);
         doc.line(PDF_MARGIN_X, sy+4, PDF_MARGIN_X+25.4, sy+4);
+        // a second check that needs no ruler: 10 studs of a real baseplate
+        // should line up with these 11 ticks exactly
+        const bx0 = PDF_MARGIN_X + 34, tick = BRICK_MM;
+        doc.setLineWidth(0.3);
+        doc.line(bx0, sy+4, bx0 + 10*tick, sy+4);
+        for (let k = 0; k <= 10; k++) doc.line(bx0 + k*tick, sy+2.4, bx0 + k*tick, sy+5.6);
+        doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(7.5);
+        doc.text(`\u2190 10 studs = ${10*BRICK_MM} mm: lay a baseplate row on it, each stud between two ticks`, bx0 + 10*tick + 3, sy+5);
       } else {
         doc.setTextColor(...PDF_RED); doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
         doc.text(`Reduced to ${Math.round(scale*100)}% of true size`, PDF_MARGIN_X, sy);
