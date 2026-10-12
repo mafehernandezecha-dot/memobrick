@@ -184,15 +184,15 @@
     {
       "name": "ads-analyst",
       "character": "daniel",
-      "role": "Reviews Meta ads and proposes tests",
+      "role": "Manages Google and Meta ads for profitable sales",
       "department": "Analytics",
-      "status": "planned",
+      "status": "active",
       "displayName": "Daniel",
       "machine": "",
       "avatar": "avatars/daniel.png",
       "sprite": "sprites/daniel.png",
-      "folder": null,
-      "agentFile": null
+      "folder": "marketing/analytics/ads-analyst",
+      "agentFile": ".claude/agents/ads-analyst.md"
     },
     {
       "name": "outreach-link-builder",
@@ -236,15 +236,15 @@
     {
       "name": "conversion-auditor",
       "character": "wilson",
-      "role": "Tests the checkout path",
+      "role": "Finds what stops visitors from buying",
       "department": "Conversion",
-      "status": "planned",
+      "status": "active",
       "displayName": "Wilson",
       "machine": "",
       "avatar": "avatars/wilson.png",
       "sprite": "sprites/wilson.png",
-      "folder": null,
-      "agentFile": null
+      "folder": "marketing/conversion/auditor",
+      "agentFile": ".claude/agents/conversion-auditor.md"
     },
     {
       "name": "conversion-reviews-ugc",

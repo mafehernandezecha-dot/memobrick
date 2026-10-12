@@ -15,13 +15,14 @@ Use today's date and weekday in America/New_York.
 |---|---|
 | Monday | seo-strategist |
 | Tuesday | outreach-gift-guide-pr, email-campaign-writer, email-flow-optimizer |
-| Wednesday | seo-blog-writer |
+| Wednesday | seo-blog-writer, conversion-auditor |
 | Thursday | social-planner |
-| Friday | seo-technical |
+| Friday | seo-technical, ads-analyst |
 
 Then add, in this order:
 
 - growth-analyst every day, first (its daily sales pulse feeds the dashboard and tells everyone the weak points).
+- ads-analyst every day from November 16 to December 20 (its daily pacing check), if not already due.
 - marketing-coordinator on Mondays, and every day from November 16 to December 20.
 - social-publisher every day, last.
 
