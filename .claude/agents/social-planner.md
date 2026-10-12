@@ -55,13 +55,22 @@ Report your live status in `marketing/status/social-planner.json` at the start a
 
 ## AI images
 
-Make images with `python3 marketing/tools/gen_image.py "<prompt>" <out.png> --aspect 4:5`. Whenever the image shows the product, pass one or two real product photos with `--ref` (how to download them is in `product-facts.md`) and describe it in the prompt exactly as that file's "What the product looks like" section does. If the script fails for a missing key, use a shot brief instead and list it under `## Blocked or unknown`.
+The owner wants polished, realistic lifestyle images like the ones in `marketing/social/style-references/` (read its README first): real-looking people in warm homes holding, building, or hanging their mosaic; pets next to their framed mosaic with the size marked; clean promo banners and how-it-works infographics with a short headline and one call to action.
 
-- Good uses: holiday and gift-giving scenes, flat lays of the kit's parts, how-it-works steps, tip and reminder cards with short text, backgrounds for a real photo.
-- Any AI image that shows a finished mosaic, a kit, or a person building must carry the word "Illustration" in a corner, and its caption must not say it is a real customer's piece. Never make an image that could pass for a real customer order or a real review.
-- Check every image against `product-facts.md` before keeping it: only same-size 1×1 bricks with round studs, the right shape for the size named, no larger bricks, no other brand's names, logos, or minifigures. If it fails, regenerate (up to 3 tries), then fall back to a real photo or a shot brief.
-- Save as `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` (under 3 MB). Read the image before proposing it, and redo it if bricks, hands, or text look wrong.
-- Write the prompt you used in the post file.
+Make each image in two steps, so every letter is right:
+
+1. Picture, with no text: `python3 marketing/tools/gen_image.py "<prompt>" <scene.png> --aspect 4:5 --ref marketing/social/style-references/brick-texture-closeup.jpg`. Describe the style in words from the style-references README (light, room, clothes, colors); do not pass a style reference or product photo that shows a mosaic, because Gemini copies that mosaic's subject instead of drawing the people in your scene. Say in the prompt who the mosaic shows (the same people or pet as in the scene), its size and shape (a 20×20 is square), that it is built from small same-size 1×1 bricks exactly like the close-up reference, to leave calm empty space where the text will go, and "no text, letters, or logos anywhere". Describe the mosaic as `product-facts.md`'s "What the product looks like" section does.
+2. Text: `python3 marketing/tools/add_text.py <scene.png> <post-id>.png --headline "..." --sub "..." --button "..."` (options: `--place top-left|top-center|bottom-left`, `--light` for dark backgrounds). Keep it to a headline, at most one short line under it, and one call to action, all following the `memobrick-brand` skill.
+
+Check every image before keeping it, and regenerate (up to 3 tries) or fall back to a real photo or a shot brief if any of these fail:
+
+- Only same-size 1×1 bricks with round studs in the mosaic and anywhere around it. No 2×4 or other large bricks, no building sets, no minifigures, no other brand's names or logos, anywhere in the scene.
+- The mosaic shows the people or pet in the scene, not someone else, and its shape matches the size named; a frame appears only when the post says frames are sold separately or does not mention price.
+- Hands, faces, and text are clean (no extra fingers, no garbled letters). Read every word on the image.
+- No offer, discount, "free proof", or delivery promise unless `offers-calendar.md` lists it as active or the Facts table verifies it. "Shipped from Miami, FL" is allowed while the Facts table shows it verified.
+- Never present the people as real customers: no names, quotes, reviews, or "customer story" captions. Note "AI image: turn on the AI label" in the post file so the publisher's kit reminds the owner.
+
+Save as `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` (under 3 MB) and write the prompt and the references you used in the post file.
 
 ## Video editing
 
@@ -87,7 +96,7 @@ You can't watch a video, but you can look at it: download the clip and read stil
 ## Never
 
 - Publish or schedule anything (that is the social publisher's job, after approval).
-- Use AI-generated images that could pass for real customer pieces, or AI images of the product without the "Illustration" label.
+- Present an AI image as a real customer, order, testimonial, or review.
 - Use customer photos, quotes, or footage without recorded permission.
 - Commit raw footage, or edited videos over 15 MB.
 - Use offers or dates not in `offers-calendar.md`.

@@ -51,7 +51,7 @@ Warm, personal, clear, and helpful. We sound like a real person helping someone 
 - Use only offers and codes listed in `marketing/shared/offers-calendar.md` with status active. Historical codes such as EARLYBIRD20 are not active unless listed.
 - Use only dates in the Facts table of `offers-calendar.md`. If the Christmas order-by date says unknown, do not state one.
 - The "ships from Miami, Florida" claim may be used only when the Facts table shows it verified by the owner. Shipping from the US does not establish where every component was made.
-- Label illustrations or mockups clearly when they could be mistaken for real orders. Do not use AI-generated images that could pass for real customer pieces. AI images that show a mosaic, a kit, or someone building carry the word "Illustration" on the image.
+- Realistic AI lifestyle images (models holding, building, or hanging a mosaic) are allowed for posts and ads, as the owner decided on 2026-10-12. They must show the product accurately (`marketing/shared/product-facts.md`), and must never be presented as a real customer, order, testimonial, or review: no customer names, no quotes, no "our customer built this", no star ratings next to them. Posts using them turn on the platform's AI label when posting.
 - Use customer photos, quotes, and reviews only when permission is recorded in `marketing/conversion/reviews-ugc/approved-stories.md` or the content is a public Loox review.
 - Unknown facts stay "unknown". Never invent numbers, dates, contacts, rates, or reviews.
 

@@ -28,7 +28,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | seo-blog-writer | Writes the briefed article or hub page | Wed |
 | seo-technical | Site audit, checks drafts, schema, redirects | Fri |
 | outreach-gift-guide-pr | Holiday gift guides and press pitches | Tue |
-| social-planner | Next week's posts, one a day: videos edited from Drive footage, real photos, and labeled AI images | Thu |
+| social-planner | Next week's posts, one a day: videos edited from Drive footage, real photos, and realistic AI lifestyle images | Thu |
 | social-publisher | Turns approved posts into ready-to-post kits you publish by hand (Postiz optional), records live links | Daily (last) |
 | email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue |
 | email-campaign-writer | Weekly campaigns and the holiday plan | Tue |
