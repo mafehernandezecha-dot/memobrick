@@ -21,7 +21,7 @@ All folders cleared by the owner on 2026-10-12 ("all folders"), for posts and ad
 | Noah and I | 1LT12Lo3IImJhwCuRpcLIZJ0BeFzNc_r- | Personal footage, 2022 | ok |  |
 | Legoc8tor videos | 1-0bZd89g9PP5MKaSDSL9XaYumfwh06-a | Another creator, 2023 | ok | Cut out any other brand's names, logos, or sets |
 
-A file named `videoplayback.mp4` in "video 2026 billo" looks downloaded from a video site: do not use it unless the owner confirms Memobrick owns it.
+`videoplayback.mp4` in "video 2026 billo": the owner confirmed on 2026-10-12 it is Memobrick's own video, so it may be used.
 
 ## Clips
 

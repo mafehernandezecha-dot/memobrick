@@ -9,23 +9,24 @@ The reference every agent checks before writing about the product or making an i
 - Free proof (owner confirmed 2026-10-12): customers who prefer help can have Memobrick's designers create the design and receive a free proof before production. It is optional.
 - In the kit: 1×1 bricks, white baseplates, personalized building instructions (a printed color map), and the building tool. Bricks come in small labeled bags sorted by color (seen in owner footage: a color name and number on each bag).
 - Packaging: a white box with a colorful pixel-mosaic graphic and the MEMOBRICK logo (seen in owner footage).
-- Frames are sold separately (see Frames). A "Yes" option on most sizes costs more than the build-at-home kit; its exact meaning (most likely delivered already built) is unconfirmed, so do not describe it until the owner confirms.
+- Frames are sold separately (see Frames).
+- Only the build-at-home kit is offered (the "No (Build at home)" option). Shopify still lists a pricier "Yes" option on most sizes; the owner said on 2026-10-12 it is not offered, so never mention, show, or link to it.
 
 ## Sizes
 
-| Size (inches) | Baseplates | Pieces | Building time | Fits | Build-at-home kit | "Yes" option |
-|---|---|---|---|---|---|---|
-| 16×16 | 1 | 2,500 | 2.5 h | unknown | $69.88 | not offered |
-| 20×20 | 4 | 4,096 | 4 h | unknown | $99.88 | $169.00 |
-| 20×30 and 30×20 | 6 | 6,144 | 6 h | unknown | $149.00 | $230.00 |
-| 40×20 | 8 | 8,192 | 8 h | 1 to 3 people | $189.99 | $280.00 |
-| 30×30 | 9 | 9,216 | 9 h | 1 to 4 people | $209.99 | $310.00 |
-| 20×50 and 50×20 | 10 | 10,240 | 10 h | 1 to 4 people | $234.99 | $345.00 (20×50), $350.00 (50×20) |
-| 30×40 | 12 | 12,288 | 12 h | 1 to 5 people | $279.00 | $415.00 |
-| 40×30 | 12 | 12,288 | 12 h | 1 to 5 people | $278.00 | $415.00 |
-| 30×50 and 50×30 | 15 | 15,360 | 15 h | 1 to 5 people | $334.99 | $505.00 |
-| 40×40 | 16 | 16,384 | 16 h | 1 to 5 people | $348.00 | $540.00 |
-| 40×50 | 20 | 20,480 | 20 h | 1 to 6 people | $431.98 | $655.00 |
+| Size (inches) | Baseplates | Pieces | Building time | Fits | Kit price |
+|---|---|---|---|---|---|
+| 16×16 | 1 | 2,500 | 2.5 h | unknown | $69.88 |
+| 20×20 | 4 | 4,096 | 4 h | unknown | $99.88 |
+| 20×30 and 30×20 | 6 | 6,144 | 6 h | unknown | $149.00 |
+| 40×20 | 8 | 8,192 | 8 h | 1 to 3 people | $189.99 |
+| 30×30 | 9 | 9,216 | 9 h | 1 to 4 people | $209.99 |
+| 20×50 and 50×20 | 10 | 10,240 | 10 h | 1 to 4 people | $234.99 |
+| 30×40 | 12 | 12,288 | 12 h | 1 to 5 people | $279.00 |
+| 40×30 | 12 | 12,288 | 12 h | 1 to 5 people | $278.00 |
+| 30×50 and 50×30 | 15 | 15,360 | 15 h | 1 to 5 people | $334.99 |
+| 40×40 | 16 | 16,384 | 16 h | 1 to 5 people | $348.00 |
+| 40×50 | 20 | 20,480 | 20 h | 1 to 6 people | $431.98 |
 
 The first 20 active products were checked; Shopify may list other sizes, so check Shopify before naming one not shown here. "Fits" is the number of people Shopify lists for a photo of that size. Building times are Shopify's estimates.
 
@@ -49,5 +50,4 @@ The first 20 active products were checked; Shopify may list other sizes, so chec
 
 ## Not settled (do not claim)
 
-- What the "Yes" option is.
 - How many faces fit the 16×16 to 30×20 sizes.
