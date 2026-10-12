@@ -20,9 +20,13 @@ export function App() {
   const [doc, setDoc] = useState<string | null>(null);
   const salesFeed = useSales();
   const [partyKey, setPartyKey] = useState(0);
+  const [partyKind, setPartyKind] = useState<'sale' | 'goal' | 'recap'>('sale');
   const party = salesFeed.party;
   useEffect(() => {
-    if (party) setPartyKey(party.key);
+    if (party) {
+      setPartyKind(party.kind);
+      setPartyKey(party.key);
+    }
   }, [party]);
 
   const refresh = useCallback(
@@ -84,7 +88,7 @@ export function App() {
         </button>
         <div className="scrim" onClick={() => setMenuOpen(false)} />
         <main className="main">
-          {view.kind === 'mundo' && <Mundo state={state} onPick={actions.openAgent} sales={salesFeed.sales} partyKey={partyKey} onOpenSales={() => go({ kind: 'sales' })} />}
+          {view.kind === 'mundo' && <Mundo state={state} onPick={actions.openAgent} sales={salesFeed.sales} partyKey={partyKey} partyKind={partyKind} onOpenSales={() => go({ kind: 'sales' })} />}
           {view.kind === 'sales' && <SalesPage sales={salesFeed.sales} state={state} sound={salesFeed.sound} onToggleSound={salesFeed.toggleSound} />}
           {view.kind === 'dashboard' && <Dashboard state={state} />}
           {view.kind === 'para' && <ParaTi state={state} />}
