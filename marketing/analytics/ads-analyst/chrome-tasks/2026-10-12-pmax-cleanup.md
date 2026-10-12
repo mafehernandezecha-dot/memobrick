@@ -1,4 +1,4 @@
-Status: ready
+Status: needs owner: Google Ads account 672-499-4049 is not accessible in this Chrome session (signed in as mafehernandezecha2@gmail.com, which only sees manager account 583-062-6129 with no linked accounts), so no asset-group texts were removed.
 
 # Claude in Chrome task: finish the PMax #2 cleanup (approved item A-2026W42-001)
 
