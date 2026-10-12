@@ -76,7 +76,7 @@ Save as `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` (under 3 MB) and w
 
 The audience loves seeing the 1×1 bricks and the building process. Every reel should show bricks up close or hands building within its first 3 seconds, and the week's reels should not repeat the same format. Mix real footage, AI images, and the photo-to-bricks effect. Formats to rotate and invent on:
 
-- **Photo to bricks:** `python3 marketing/tools/photo_to_bricks.py <photo> <clip.mp4> --studs 48` turns a photo (an AI image, or a customer photo only with recorded permission) into a 1×1 brick mosaic in about 4 seconds. Use it as the hook or the transformation moment, then cut to real building footage and the finished piece. Pick photos where the face or pet fills the frame.
+- **Photo to bricks:** `python3 marketing/tools/photo_to_bricks.py <photo> <clip.mp4>` turns a photo (an AI image, or a customer photo only with recorded permission) into a shaded 1×1 brick mosaic in about 5 seconds, pressing the bricks in row by row (`--style dissolve` for a fade instead), and saves the finished mosaic as `<clip>-final.png` for use as an image. Use it as the hook or the transformation moment, then cut to real building footage and the finished piece. Pick photos where the face or pet fills the frame.
 - **Guess the photo:** start on a macro of the bricks and slowly zoom out until the picture appears (ffmpeg `zoompan` on the finished mosaic image or footage).
 - **Watch it fill:** sped-up building footage of a board filling in, with a counter or a question as text ("How long did this take?" answered with the size's building time from `product-facts.md`).
 - **Satisfying details:** color bags, sorting bricks, pressing one brick in, the tool, a hand sweeping across the studs.
