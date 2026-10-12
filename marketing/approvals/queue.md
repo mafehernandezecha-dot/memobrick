@@ -273,7 +273,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: e91580d
 - Reason: One redirect sends "emotional connections" traffic to the graduation article, which is the wrong page. The graduation article also links to a 404.
 - Expires: 2026-12-31
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-3
 
 ## Flagged
