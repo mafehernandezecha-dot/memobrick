@@ -43,7 +43,8 @@ Status values: `pending`, `approved`, `rejected`, or `changes: <note>`. Anything
 | send (flow test) | email-flow-optimizer makes the flow change exactly as written |
 | send (outreach pitch) | outreach-gift-guide-pr creates a Gmail draft for the owner to send |
 | site-change | seo-technical applies exactly the change in the draft |
-| ad-change, offer | nothing automatic; the owner applies it |
+| ad-change | ads-analyst applies exactly the change in the draft through the Google Ads or Meta connector (new campaigns and ads are created paused unless the item says to launch) |
+| offer | nothing automatic; the owner applies it |
 
 Write the Reason so the owner knows exactly which of these will happen.
 

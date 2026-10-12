@@ -26,5 +26,6 @@ export const TYPE_LABEL: Record<string, string> = {
   send: 'Send',
   'site-change': 'Site change',
   ad: 'Ad',
+  'ad-change': 'Ad change',
   offer: 'Offer',
 };

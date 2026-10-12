@@ -22,7 +22,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 
 | Agent | Job | Day |
 |---|---|---|
-| marketing-coordinator | Builds the weekly approval file, catches overlaps | Mon; daily Nov 16 to Dec 20 (after the day's other agents) |
+| marketing-coordinator | Builds the weekly approval file and the Monday Sales Plan, catches overlaps | Mon; daily Nov 16 to Dec 20 (after the day's other agents) |
 | growth-analyst | Daily sales pulse against the goals and the weak points; weekly scorecard | Daily (first); scorecard Mon |
 | seo-strategist | Keyword map and one article brief a week | Mon |
 | seo-blog-writer | Writes the briefed article or hub page | Wed |
@@ -32,10 +32,12 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | social-publisher | Turns approved posts into ready-to-post kits you publish by hand (Postiz optional), records live links | Daily (last) |
 | email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue |
 | email-campaign-writer | Weekly campaigns and the holiday plan | Tue |
+| ads-analyst | Google and Meta ads judged on Shopify sales; budget moves, pauses, new ads (applies approved changes) | Fri; daily Nov 16 to Dec 20 |
+| conversion-auditor | Walks the store like a customer, finds what stops people buying, proposes fixes | Wed |
 
 ### Wave 2 (after the week 4 review)
 
-ads-analyst, outreach-link-builder, outreach-creator-scout, social-community-manager, conversion-auditor, conversion-reviews-ugc.
+outreach-link-builder, outreach-creator-scout, social-community-manager, conversion-reviews-ugc. (ads-analyst and conversion-auditor started early, on 2026-10-12.)
 
 ## Run an agent yourself
 
