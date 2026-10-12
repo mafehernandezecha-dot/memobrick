@@ -22,5 +22,5 @@ Only the owner edits this file. Agents may propose offers through the approval q
 | Sample kits available for press | Yes, case by case: only for strong outlets, and each kit offer needs the owner's approval in the queue | 2026-10-11 |
 | Outreach sender name and email | Eden Biri; sender email still to confirm | 2026-10-11 |
 | Faces per size and build time | unknown | |
-| Shipping rates | Keep the current carrier rates; no flat rate. Free shipping over $125 (as set in Shopify). Show the cost clearly before checkout instead of changing rates | 2026-10-12 |
+| Shipping rates | Checked in Shopify on 2026-10-12. US: free shipping on orders of $125 or more (automatic discount "Free Shipping on US Orders Over $125", active since 2026-08-11, no end date). US orders under $125: live carrier rates by address and package (USPS Ground Advantage; UPS Ground, Ground Saver, 3 Day Select, Standard), so there is no single price to quote. Alaska, Hawaii, Puerto Rico: USPS Ground Advantage. Colombia: $35 flat or DHL. Other countries: live USPS, DHL, or UPS rates. Owner decision: keep these rates (no flat rate); show the real cost before checkout | 2026-10-12 |
 | Free design proof | Offered on request: Memobrick's designers create the design and send a free proof before production. Optional, never required | 2026-10-12 |
