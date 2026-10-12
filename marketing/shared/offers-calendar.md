@@ -8,7 +8,7 @@ Only the owner edits this file. Agents may propose offers through the approval q
 |---|---|---|---|---|---|---|
 | (automated) | 20% in last Abandoned Cart and Abandoned Checkout email | ongoing | ongoing | Omnisend-generated | unknown | active |
 | (automated) | 20% Customer Reactivation, valid 14 days | ongoing | ongoing | Omnisend-generated | unknown | active |
-| to confirm | 20% off holiday offer | to confirm | to confirm | to confirm | unknown | planned (owner confirmed 20%; dates, code and exclusions to confirm) |
+| EARLYHOLIDAY20 | 20% off holiday offer (Shopify code, no minimum) | 2026-10-12 | none set in Shopify (owner to confirm end date) | none set in Shopify | unknown | active (created by owner in Shopify 2026-10-12, verified) |
 
 ## Facts
 
