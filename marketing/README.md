@@ -20,18 +20,18 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 
 ### Wave 1 (active)
 
-| Agent | Job | Schedule (ET) |
+| Agent | Job | Day |
 |---|---|---|
-| marketing-coordinator | Builds the weekly approval file, catches overlaps | Mon 7:00; daily 9:00 Nov 16 to Dec 20 |
-| growth-analyst | Weekly sales scorecard | Mon 6:00; daily 8:00 Nov 16 to Dec 20 |
-| seo-strategist | Keyword map and one article brief a week | Mon 8:00 |
-| seo-blog-writer | Writes the briefed article or hub page | Wed 6:00 |
-| seo-technical | Site audit, checks drafts, schema, redirects | Fri 6:00 |
-| outreach-gift-guide-pr | Holiday gift guides and press pitches | Tue 6:00 |
-| social-planner | Next week's post packages | Thu 6:00 |
-| social-publisher | Turns approved posts into ready-to-post kits you publish by hand (Postiz optional), records live links | Daily 18:00 |
-| email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue 8:00 |
-| email-campaign-writer | Weekly campaigns and the holiday plan | Tue 6:00 |
+| marketing-coordinator | Builds the weekly approval file, catches overlaps | Mon; daily Nov 16 to Dec 20 (after the day's other agents) |
+| growth-analyst | Weekly sales scorecard | Mon; daily Nov 16 to Dec 20 (first) |
+| seo-strategist | Keyword map and one article brief a week | Mon |
+| seo-blog-writer | Writes the briefed article or hub page | Wed |
+| seo-technical | Site audit, checks drafts, schema, redirects | Fri |
+| outreach-gift-guide-pr | Holiday gift guides and press pitches | Tue |
+| social-planner | Next week's posts, one a day: videos edited from Drive footage, real photos, and labeled AI images | Thu |
+| social-publisher | Turns approved posts into ready-to-post kits you publish by hand (Postiz optional), records live links | Daily (last) |
+| email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue |
+| email-campaign-writer | Weekly campaigns and the holiday plan | Tue |
 
 ### Wave 2 (after the week 4 review)
 
@@ -85,4 +85,8 @@ Put verified facts and offers in `shared/offers-calendar.md`. Anything missing s
 
 Agents work on the `main` branch: they pull it at the start of every run and push to it at the end, and your approvals must be on main too. Merge this system's branch into main before turning on any schedule.
 
-(Routine IDs are recorded here once the schedules are created.)
+One routine runs everything: every morning at about 5:45 ET it follows the `memobrick-daily` skill, which works out who is due that day (the Day column above) and runs those agents one after another. The routine is created in claude.ai (Routines), with this repository, the cloud environment, and the Shopify, Omnisend, Google Drive and Gmail connectors attached. Its prompt:
+
+> Follow the memobrick-daily skill in this repository. Live run.
+
+AI images need a `GEMINI_API_KEY` environment variable in the cloud environment's settings.
