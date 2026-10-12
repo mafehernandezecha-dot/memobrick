@@ -5,7 +5,7 @@ description: Runs the owner-approved Google Ads changes that the ads analyst pre
 
 # Memobrick Chrome tasks
 
-This runs on the owner's Mac (a local scheduled task in the Claude desktop app, or a scheduled task in the Claude in Chrome extension using `extension-prompt.md`), because Google Ads changes are made in the owner's own Chrome, through Claude in Chrome, at no extra connector cost.
+This runs on the owner's Mac, every day at 21:07, from the `com.memobrick.chrome-tasks` launchd job that `os/scripts/install-mac-tasks.sh` installs (Claude Code with `--chrome`). The scheduled task in the Claude in Chrome extension using `extension-prompt.md` is the fallback if that job is not installed. It runs there because Google Ads changes are made in the owner's own Chrome, through Claude in Chrome, at no extra connector cost.
 
 ## Steps
 

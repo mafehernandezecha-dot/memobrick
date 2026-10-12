@@ -29,7 +29,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | seo-technical | Site audit, checks drafts, schema, redirects | Fri |
 | outreach-gift-guide-pr | Holiday gift guides and press pitches | Tue |
 | social-planner | Next week's posts, one a day: videos edited from Drive footage, real photos, and realistic AI lifestyle images | Thu |
-| social-publisher | Turns approved posts into ready-to-post kits you publish by hand (Postiz optional), records live links | Daily (last) |
+| social-publisher | Turns approved posts into ready-to-post kits that your Mac posts itself at post time (Postiz optional), records live links | Daily (last) |
 | email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue |
 | email-campaign-writer | Weekly campaigns and the holiday plan | Tue |
 | ads-analyst | Google and Meta ads judged on Shopify sales; budget moves, pauses, new ads (applies approved changes) | Fri; daily Nov 16 to Dec 20 |
@@ -39,6 +39,16 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 ### Wave 2 (after the week 4 review)
 
 outreach-link-builder, outreach-creator-scout, social-community-manager, conversion-reviews-ugc. (ads-analyst and conversion-auditor started early, on 2026-10-12.)
+
+## Social publishing
+
+Approved posts publish themselves from your Mac, free (no Postiz or other app). The social publisher writes a kit for each approved post in `social/publisher/to-post/` at least a day ahead, starting with `Status: ready` and the post time. A job on your Mac checks every hour from 8:07 am to 9:07 pm, and when a kit's time arrives it posts it with Claude in Chrome (the `memobrick-social-post` skill) on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, then writes the live links into the kit and the content calendar.
+
+- **Install once**, in Terminal: `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh` (it also schedules the Google Ads Chrome tasks at 9:07 pm).
+- **Keep** the Mac awake and on power during those hours, with Chrome open, the Claude in Chrome extension signed in, and you logged in to Meta Business Suite, TikTok, Pinterest and Google Ads.
+- **Needs you:** a login page, CAPTCHA, a video over 10 MB, or a kit more than 2 days late is marked `Status: needs owner: <reason>`, and the publisher lists it in its report under Blocked or unknown.
+- **Logs:** `~/Library/Logs/memobrick-social-post.log` (and `memobrick-chrome-tasks.log`).
+- **Stop:** `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall`. Without the Mac job you can still post a kit by hand and reply with the live links.
 
 ## Run an agent yourself
 
@@ -75,7 +85,8 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 
 | Item | Needed by | Blocks |
 |---|---|---|
-| Postiz API key (optional; skipped for now to save cost) | Later | Automatic scheduling instead of posting by hand |
+| Postiz API key (optional; not needed, the Mac posts for free) | Never | Nothing |
+| Mac posting jobs installed (see Social publishing) | Before the first approved post | Automatic posting |
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
 | Product footage in the Drive footage library, with each clip's rights confirmed in `social/footage-rights.md` | Week 1 | Edited social videos |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |

@@ -38,7 +38,7 @@ Status values: `pending`, `approved`, `rejected`, or `changes: <note>`. Anything
 | Type | Executor does |
 |---|---|
 | publish (article) | seo-blog-writer publishes the article live on the Shopify blog |
-| publish (social post) | social-publisher prepares a ready-to-post kit the owner publishes by hand (or schedules it in Postiz if connected) |
+| publish (social post) | social-publisher prepares a ready-to-post kit that the owner's Mac posts itself at the post time through Claude in Chrome (or schedules it in Postiz if connected) |
 | send (email campaign) | email-campaign-writer creates the campaign in Omnisend and schedules it for its send time, or applies the approved edit to an existing scheduled campaign |
 | send (flow test) | email-flow-optimizer makes the flow change exactly as written |
 | send (outreach pitch) | outreach-gift-guide-pr creates a Gmail draft for the owner to send |

@@ -56,3 +56,17 @@ bash scripts/install-mac-app.sh
 ```
 
 It creates **Memobrick OS** in Applications with the brick icon. Double-click it (or keep it in the Dock) and it starts the dashboard in the background if needed and opens it in its own window. **Stop Memobrick OS** turns the dashboard off. The dashboard's log is in `~/Library/Logs/memobrick-os.log`. Run the script again if you move the memobrick folder.
+
+### Automatic posting and Google Ads tasks (free, no extra apps)
+
+Your Mac can post the approved social kits itself and run the approved Google Ads Chrome tasks, using Claude Code (signed in with your plan) and Claude in Chrome. Install once, in Terminal:
+
+```
+bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh
+```
+
+- **Social posts:** every hour at :07 from 8:07 am to 9:07 pm, it posts any approved kit in `marketing/social/publisher/to-post/` whose time has arrived, on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, and writes the live links back to the kit and the content calendar.
+- **Google Ads tasks:** every day at 9:07 pm, it runs approved Chrome tasks (the Claude in Chrome extension shortcut is the fallback).
+- **What it needs:** the Mac awake and on power during those hours, Google Chrome open with the Claude in Chrome extension signed in, and you logged in to Meta Business Suite, TikTok, Pinterest and Google Ads in that Chrome. If a login page, CAPTCHA or anything unexpected appears, it stops and marks the kit `Status: needs owner: <reason>`; the publisher lists those in its report.
+- **Logs:** `~/Library/Logs/memobrick-social-post.log` and `~/Library/Logs/memobrick-chrome-tasks.log`.
+- **Stop it:** `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall`. Run the install command again to turn it back on, or after moving the memobrick folder.
