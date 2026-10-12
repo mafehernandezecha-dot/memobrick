@@ -43,7 +43,7 @@ Report your live status in `marketing/status/social-planner.json` at the start a
 
 ## AI images
 
-Make images with `python3 marketing/tools/gen_image.py "<prompt>" <out.png> --aspect 4:5`, adding `--ref <photo>` with a real Memobrick product photo whenever the image shows the product so it stays faithful. If the script reports the key is missing, use a shot brief instead and list it under `## Blocked or unknown`.
+Make images with `python3 marketing/tools/gen_image.py "<prompt>" <out.png> --aspect 4:5`, adding `--ref <photo>` with a real Memobrick product photo whenever the image shows the product so it stays faithful. If the script fails for a missing key, use a shot brief instead and list it under `## Blocked or unknown`.
 
 - Good uses: holiday and gift-giving scenes, flat lays of the kit's parts, how-it-works steps, tip and reminder cards with short text, backgrounds for a real photo.
 - Any AI image that shows a finished mosaic, a kit, or a person building must carry the word "Illustration" in a corner, and its caption must not say it is a real customer's piece. Never make an image that could pass for a real customer order or a real review.

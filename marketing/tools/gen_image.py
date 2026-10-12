@@ -2,8 +2,9 @@
 
 Usage: python3 marketing/tools/gen_image.py "<prompt>" <out.png> [--aspect 4:5] [--ref photo.jpg ...]
 
-Reads the key from GEMINI_API_KEY (an environment variable set in the cloud
-environment's settings, never in the repo). GEMINI_IMAGE_MODEL overrides the
+The key comes from the cloud environment's settings, never the repo: either a
+network secret the proxy adds to requests to generativelanguage.googleapis.com,
+or a GEMINI_API_KEY environment variable. GEMINI_IMAGE_MODEL overrides the
 model. --ref adds real product photos for the model to stay faithful to.
 """
 import argparse
@@ -27,8 +28,6 @@ def main():
     args = ap.parse_args()
 
     key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        sys.exit("GEMINI_API_KEY is not set. The owner adds it in the cloud environment's settings.")
 
     parts = [{"text": args.prompt}]
     for path in args.ref:
@@ -42,13 +41,14 @@ def main():
     req = urllib.request.Request(
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
         data=json.dumps(body).encode(),
-        headers={"content-type": "application/json", "x-goog-api-key": key},
+        headers={"content-type": "application/json", **({"x-goog-api-key": key} if key else {})},
     )
     try:
         with urllib.request.urlopen(req, timeout=180) as res:
             data = json.load(res)
     except urllib.error.HTTPError as e:
-        sys.exit(f"Gemini returned {e.code}: {e.read().decode()[:500]}")
+        hint = "" if key else " No key found: the owner adds a Gemini network secret (or GEMINI_API_KEY) in the cloud environment's settings."
+        sys.exit(f"Gemini returned {e.code}: {e.read().decode()[:500]}{hint}")
 
     for cand in data.get("candidates", []):
         for part in cand.get("content", {}).get("parts", []):

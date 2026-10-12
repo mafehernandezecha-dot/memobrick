@@ -89,4 +89,4 @@ One routine runs everything: every morning at about 5:45 ET it follows the `memo
 
 > Follow the memobrick-daily skill in this repository. Live run.
 
-AI images need a `GEMINI_API_KEY` environment variable in the cloud environment's settings.
+AI images need a Gemini API key saved as a secret in the cloud environment's settings (host `generativelanguage.googleapis.com`, header `x-goog-api-key`), or as a `GEMINI_API_KEY` environment variable.
