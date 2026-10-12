@@ -47,7 +47,7 @@ def main():
         with urllib.request.urlopen(req, timeout=180) as res:
             data = json.load(res)
     except urllib.error.HTTPError as e:
-        hint = "" if key else " No key found: the owner adds a Gemini network secret (or GEMINI_API_KEY) in the cloud environment's settings."
+        hint = "" if key or e.code not in (400, 401, 403) else " No key found: the owner adds a Gemini network secret (or GEMINI_API_KEY) in the cloud environment's settings."
         sys.exit(f"Gemini returned {e.code}: {e.read().decode()[:500]}{hint}")
 
     for cand in data.get("candidates", []):
