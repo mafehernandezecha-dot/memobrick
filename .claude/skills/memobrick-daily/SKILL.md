@@ -13,7 +13,7 @@ Use today's date and weekday in America/New_York.
 
 | Day | Agents |
 |---|---|
-| Monday | growth-analyst, seo-strategist |
+| Monday | seo-strategist |
 | Tuesday | outreach-gift-guide-pr, email-campaign-writer, email-flow-optimizer |
 | Wednesday | seo-blog-writer |
 | Thursday | social-planner |
@@ -21,11 +21,11 @@ Use today's date and weekday in America/New_York.
 
 Then add, in this order:
 
-- From November 16 to December 20, growth-analyst every day (its daily holiday pulse) if it is not already due.
+- growth-analyst every day, first (its daily sales pulse feeds the dashboard and tells everyone the weak points).
 - marketing-coordinator on Mondays, and every day from November 16 to December 20.
 - social-publisher every day, last.
 
-Order of the run: growth-analyst first when due, then the day's other agents in the table order, then marketing-coordinator, then social-publisher.
+Order of the run: growth-analyst first, then the day's other agents in the table order, then marketing-coordinator, then social-publisher.
 
 ## 2. Run them
 

@@ -5,6 +5,7 @@ import { ActionsContext } from './ui/context';
 import type { Actions, AppState } from './ui/context';
 import { DocViewer } from './ui/DocViewer';
 import { Mundo } from './ui/Mundo';
+import { Celebration, SalesPage, useSales } from './ui/Sales';
 import { Dashboard, DepartmentView, ParaTi, PorCrear, TeToca } from './ui/Screens';
 import { Sidebar } from './ui/Sidebar';
 import type { View } from './ui/Sidebar';
@@ -17,6 +18,12 @@ export function App() {
   const [agent, setAgent] = useState<string | null>(null);
   const [chat, setChat] = useState<{ prefill?: string; key: number } | null>(null);
   const [doc, setDoc] = useState<string | null>(null);
+  const salesFeed = useSales();
+  const [partyKey, setPartyKey] = useState(0);
+  const party = salesFeed.party;
+  useEffect(() => {
+    if (party) setPartyKey(party.key);
+  }, [party]);
 
   const refresh = useCallback(
     () =>
@@ -77,7 +84,8 @@ export function App() {
         </button>
         <div className="scrim" onClick={() => setMenuOpen(false)} />
         <main className="main">
-          {view.kind === 'mundo' && <Mundo state={state} onPick={actions.openAgent} />}
+          {view.kind === 'mundo' && <Mundo state={state} onPick={actions.openAgent} sales={salesFeed.sales} partyKey={partyKey} onOpenSales={() => go({ kind: 'sales' })} />}
+          {view.kind === 'sales' && <SalesPage sales={salesFeed.sales} state={state} sound={salesFeed.sound} onToggleSound={salesFeed.toggleSound} />}
           {view.kind === 'dashboard' && <Dashboard state={state} />}
           {view.kind === 'para' && <ParaTi state={state} />}
           {view.kind === 'tetoca' && <TeToca state={state} />}
@@ -87,6 +95,7 @@ export function App() {
         </main>
         {chat && <ChatPanel key={chat.key} state={state} prefill={chat.prefill} onClose={() => setChat(null)} />}
         {doc && <DocViewer path={doc} onClose={() => setDoc(null)} />}
+        {party && <Celebration key={party.key} party={party} onDone={salesFeed.next} />}
       </div>
     </ActionsContext.Provider>
   );

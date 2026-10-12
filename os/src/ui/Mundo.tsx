@@ -1,6 +1,8 @@
 import { APPROVALS_DESK } from '../../server/parse';
 import type { DashboardState } from '../../server/state';
 import { formatDay } from './context';
+import type { SalesView } from '../../server/sales';
+import { SalesCard } from './Sales';
 import { WorldView } from './WorldView';
 
 function greeting(d = new Date()) {
@@ -10,7 +12,7 @@ function greeting(d = new Date()) {
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-export function Mundo({ state, onPick }: { state: DashboardState; onPick: (agent: string) => void }) {
+export function Mundo({ state, onPick, sales, partyKey, onOpenSales }: { state: DashboardState; onPick: (agent: string) => void; sales: SalesView | null; partyKey: number; onOpenSales: () => void }) {
   const working = state.agents.filter((a) => a.live?.state === 'working').length;
   const needing = state.agents.filter((a) => a.name !== APPROVALS_DESK && (a.pending > 0 || a.live?.state === 'needs_me')).length;
 
@@ -19,8 +21,10 @@ export function Mundo({ state, onPick }: { state: DashboardState; onPick: (agent
   return (
     <section className="mundo">
       <div className="world-stage" aria-label="Memobrick office">
-        <WorldView state={state} onPick={onPick} />
+        <WorldView state={state} onPick={onPick} partyKey={partyKey} />
       </div>
+
+      <SalesCard sales={sales} onOpen={onOpenSales} />
 
       <div className="greet-card">
         <p className="greet-title">

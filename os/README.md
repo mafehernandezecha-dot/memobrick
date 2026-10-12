@@ -29,3 +29,18 @@ Everything is read from this repository each time the app refreshes (every 15 se
 The agents work on the `main` branch, and the app keeps your copy in step with it on its own: it pulls the agents' latest work when it starts and every 3 minutes, and each Approve, Edit or Reject is committed and pushed right away (only `marketing/approvals/queue.md` is committed). If a push can't go through, for example when you're offline, the decision stays saved and committed on your computer, the app says so, and it is sent on the next sync; you can also click Push origin in GitHub Desktop. Syncing only happens when your copy is on `main`.
 
 Decisions and chat only work in a browser on the computer running the app. Conversations with Betty are saved in `os/data/chats/` (never pushed to the repository).
+
+## Sales, goals, and celebrations
+
+The **Sales** page and the card on the World view show today, this week, and this month against the goals in `marketing/shared/sales-goals.json`, as trophies that fill with gold. History, the funnel, and the weak points the team is fixing come from `marketing/sales/latest.json`, which the growth analyst rewrites every day from Shopify.
+
+Every new sale is celebrated with falling bricks, confetti, and the office jumping; reaching the daily goal gets a bigger one. Without a live connection the dashboard celebrates yesterday's sales once each morning. For live, sale-by-sale celebrations, give the app a read-only Shopify token on this computer:
+
+1. In Shopify admin: Settings → Apps and sales channels → Develop apps → Create an app. Under Admin API scopes choose only `read_orders`, install the app, and copy the Admin API access token (it starts with `shpat_`).
+2. In Terminal (stop the app first with Control+C), run this and paste the token when asked:
+   ```
+   read -s "k?Paste your Shopify token and press Enter: " && printf 'export SHOPIFY_STORE="photobrickusa.myshopify.com"\nexport SHOPIFY_ADMIN_TOKEN="%s"\n' "$k" >> ~/.zshrc && source ~/.zshrc && echo "Saved"
+   ```
+3. Start the app again with `npm run os`.
+
+The app reads only order numbers, amounts, and product titles for today, never customer details, and checks every 30 seconds.

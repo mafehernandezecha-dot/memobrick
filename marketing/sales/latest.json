@@ -1,0 +1,808 @@
+{
+ "updated": "2026-10-12T08:30:00-04:00",
+ "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
+ "days": [
+  {
+   "date": "2026-08-13",
+   "orders": 4,
+   "netSales": 621.76
+  },
+  {
+   "date": "2026-08-14",
+   "orders": 3,
+   "netSales": 297.88
+  },
+  {
+   "date": "2026-08-15",
+   "orders": 1,
+   "netSales": 194.02
+  },
+  {
+   "date": "2026-08-16",
+   "orders": 2,
+   "netSales": 262.97
+  },
+  {
+   "date": "2026-08-17",
+   "orders": 6,
+   "netSales": 908.5
+  },
+  {
+   "date": "2026-08-18",
+   "orders": 2,
+   "netSales": 315.56
+  },
+  {
+   "date": "2026-08-19",
+   "orders": 3,
+   "netSales": 79.0
+  },
+  {
+   "date": "2026-08-20",
+   "orders": 0,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-08-21",
+   "orders": 1,
+   "netSales": 278.01
+  },
+  {
+   "date": "2026-08-22",
+   "orders": 1,
+   "netSales": -36.6
+  },
+  {
+   "date": "2026-08-23",
+   "orders": 4,
+   "netSales": 302.76
+  },
+  {
+   "date": "2026-08-24",
+   "orders": 1,
+   "netSales": 99.88
+  },
+  {
+   "date": "2026-08-25",
+   "orders": 3,
+   "netSales": 370.66
+  },
+  {
+   "date": "2026-08-26",
+   "orders": 3,
+   "netSales": 278.76
+  },
+  {
+   "date": "2026-08-27",
+   "orders": 1,
+   "netSales": 31.5
+  },
+  {
+   "date": "2026-08-28",
+   "orders": 2,
+   "netSales": 169.76
+  },
+  {
+   "date": "2026-08-29",
+   "orders": 6,
+   "netSales": 592.29
+  },
+  {
+   "date": "2026-08-30",
+   "orders": 2,
+   "netSales": 139.76
+  },
+  {
+   "date": "2026-08-31",
+   "orders": 1,
+   "netSales": 92.9
+  },
+  {
+   "date": "2026-09-01",
+   "orders": 2,
+   "netSales": 298.0
+  },
+  {
+   "date": "2026-09-02",
+   "orders": 6,
+   "netSales": 352.52
+  },
+  {
+   "date": "2026-09-03",
+   "orders": 1,
+   "netSales": 248.0
+  },
+  {
+   "date": "2026-09-04",
+   "orders": 2,
+   "netSales": 170.98
+  },
+  {
+   "date": "2026-09-05",
+   "orders": 1,
+   "netSales": 209.99
+  },
+  {
+   "date": "2026-09-06",
+   "orders": 2,
+   "netSales": 243.89
+  },
+  {
+   "date": "2026-09-07",
+   "orders": 2,
+   "netSales": 190.38
+  },
+  {
+   "date": "2026-09-08",
+   "orders": 2,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-09-09",
+   "orders": 3,
+   "netSales": 254.08
+  },
+  {
+   "date": "2026-09-10",
+   "orders": 1,
+   "netSales": 149.0
+  },
+  {
+   "date": "2026-09-11",
+   "orders": 1,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-09-12",
+   "orders": 1,
+   "netSales": -20.88
+  },
+  {
+   "date": "2026-09-13",
+   "orders": 2,
+   "netSales": 159.78
+  },
+  {
+   "date": "2026-09-14",
+   "orders": 1,
+   "netSales": 209.99
+  },
+  {
+   "date": "2026-09-15",
+   "orders": 1,
+   "netSales": 89.1
+  },
+  {
+   "date": "2026-09-16",
+   "orders": 0,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-09-17",
+   "orders": 1,
+   "netSales": -46.0
+  },
+  {
+   "date": "2026-09-18",
+   "orders": 1,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-09-19",
+   "orders": 0,
+   "netSales": 99.1
+  },
+  {
+   "date": "2026-09-20",
+   "orders": 1,
+   "netSales": 9.0
+  },
+  {
+   "date": "2026-09-21",
+   "orders": 2,
+   "netSales": 234.88
+  },
+  {
+   "date": "2026-09-22",
+   "orders": 0,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-09-23",
+   "orders": 1,
+   "netSales": 125.79
+  },
+  {
+   "date": "2026-09-24",
+   "orders": 2,
+   "netSales": 35.0
+  },
+  {
+   "date": "2026-09-25",
+   "orders": 1,
+   "netSales": 153.68
+  },
+  {
+   "date": "2026-09-26",
+   "orders": 4,
+   "netSales": 289.78
+  },
+  {
+   "date": "2026-09-27",
+   "orders": 0,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-09-28",
+   "orders": 1,
+   "netSales": 119.2
+  },
+  {
+   "date": "2026-09-29",
+   "orders": 1,
+   "netSales": 99.88
+  },
+  {
+   "date": "2026-09-30",
+   "orders": 0,
+   "netSales": 0.0
+  },
+  {
+   "date": "2026-10-01",
+   "orders": 1,
+   "netSales": 139.76
+  },
+  {
+   "date": "2026-10-02",
+   "orders": 3,
+   "netSales": 318.08
+  },
+  {
+   "date": "2026-10-03",
+   "orders": 5,
+   "netSales": 731.11
+  },
+  {
+   "date": "2026-10-04",
+   "orders": 2,
+   "netSales": 193.5
+  },
+  {
+   "date": "2026-10-05",
+   "orders": 4,
+   "netSales": 461.16
+  },
+  {
+   "date": "2026-10-06",
+   "orders": 5,
+   "netSales": 394.69
+  },
+  {
+   "date": "2026-10-07",
+   "orders": 2,
+   "netSales": 163.08
+  },
+  {
+   "date": "2026-10-08",
+   "orders": 3,
+   "netSales": 697.87
+  },
+  {
+   "date": "2026-10-09",
+   "orders": 3,
+   "netSales": 251.88
+  },
+  {
+   "date": "2026-10-10",
+   "orders": 1,
+   "netSales": 99.88
+  },
+  {
+   "date": "2026-10-11",
+   "orders": 2,
+   "netSales": 201.0
+  }
+ ],
+ "lastYear": [
+  {
+   "date": "2025-10-01",
+   "orders": 1,
+   "netSales": 224.9
+  },
+  {
+   "date": "2025-10-02",
+   "orders": 6,
+   "netSales": 675.4
+  },
+  {
+   "date": "2025-10-03",
+   "orders": 8,
+   "netSales": 764.06
+  },
+  {
+   "date": "2025-10-04",
+   "orders": 1,
+   "netSales": 183.22
+  },
+  {
+   "date": "2025-10-05",
+   "orders": 5,
+   "netSales": 372.42
+  },
+  {
+   "date": "2025-10-06",
+   "orders": 11,
+   "netSales": 1162.4
+  },
+  {
+   "date": "2025-10-07",
+   "orders": 1,
+   "netSales": 288.9
+  },
+  {
+   "date": "2025-10-08",
+   "orders": 13,
+   "netSales": 1311.58
+  },
+  {
+   "date": "2025-10-09",
+   "orders": 10,
+   "netSales": 758.78
+  },
+  {
+   "date": "2025-10-10",
+   "orders": 5,
+   "netSales": 515.47
+  },
+  {
+   "date": "2025-10-11",
+   "orders": 5,
+   "netSales": 473.2
+  },
+  {
+   "date": "2025-10-12",
+   "orders": 3,
+   "netSales": 493.1
+  },
+  {
+   "date": "2025-10-13",
+   "orders": 13,
+   "netSales": 1926.63
+  },
+  {
+   "date": "2025-10-14",
+   "orders": 2,
+   "netSales": 122.3
+  },
+  {
+   "date": "2025-10-15",
+   "orders": 9,
+   "netSales": 855.77
+  },
+  {
+   "date": "2025-10-16",
+   "orders": 5,
+   "netSales": 616.39
+  },
+  {
+   "date": "2025-10-17",
+   "orders": 3,
+   "netSales": 422.02
+  },
+  {
+   "date": "2025-10-18",
+   "orders": 5,
+   "netSales": 485.78
+  },
+  {
+   "date": "2025-10-19",
+   "orders": 2,
+   "netSales": 191.94
+  },
+  {
+   "date": "2025-10-20",
+   "orders": 7,
+   "netSales": 487.43
+  },
+  {
+   "date": "2025-10-21",
+   "orders": 7,
+   "netSales": 770.29
+  },
+  {
+   "date": "2025-10-22",
+   "orders": 8,
+   "netSales": 673.18
+  },
+  {
+   "date": "2025-10-23",
+   "orders": 14,
+   "netSales": 1126.22
+  },
+  {
+   "date": "2025-10-24",
+   "orders": 5,
+   "netSales": 290.9
+  },
+  {
+   "date": "2025-10-25",
+   "orders": 4,
+   "netSales": 231.14
+  },
+  {
+   "date": "2025-10-26",
+   "orders": 1,
+   "netSales": 69.88
+  },
+  {
+   "date": "2025-10-27",
+   "orders": 5,
+   "netSales": 780.92
+  },
+  {
+   "date": "2025-10-28",
+   "orders": 4,
+   "netSales": 334.38
+  },
+  {
+   "date": "2025-10-29",
+   "orders": 5,
+   "netSales": 562.51
+  },
+  {
+   "date": "2025-10-30",
+   "orders": 5,
+   "netSales": 553.66
+  },
+  {
+   "date": "2025-10-31",
+   "orders": 9,
+   "netSales": 703.25
+  },
+  {
+   "date": "2025-11-01",
+   "orders": 1,
+   "netSales": 141.55
+  },
+  {
+   "date": "2025-11-02",
+   "orders": 9,
+   "netSales": 772.57
+  },
+  {
+   "date": "2025-11-03",
+   "orders": 7,
+   "netSales": 1278.03
+  },
+  {
+   "date": "2025-11-04",
+   "orders": 7,
+   "netSales": 879.9
+  },
+  {
+   "date": "2025-11-05",
+   "orders": 4,
+   "netSales": 499.07
+  },
+  {
+   "date": "2025-11-06",
+   "orders": 7,
+   "netSales": 684.79
+  },
+  {
+   "date": "2025-11-07",
+   "orders": 6,
+   "netSales": 738.7
+  },
+  {
+   "date": "2025-11-08",
+   "orders": 5,
+   "netSales": 731.89
+  },
+  {
+   "date": "2025-11-09",
+   "orders": 8,
+   "netSales": 827.33
+  },
+  {
+   "date": "2025-11-10",
+   "orders": 18,
+   "netSales": 1967.05
+  },
+  {
+   "date": "2025-11-11",
+   "orders": 6,
+   "netSales": 431.52
+  },
+  {
+   "date": "2025-11-12",
+   "orders": 14,
+   "netSales": 1541.92
+  },
+  {
+   "date": "2025-11-13",
+   "orders": 20,
+   "netSales": 2042.32
+  },
+  {
+   "date": "2025-11-14",
+   "orders": 5,
+   "netSales": 375.19
+  },
+  {
+   "date": "2025-11-15",
+   "orders": 20,
+   "netSales": 2412.7
+  },
+  {
+   "date": "2025-11-16",
+   "orders": 18,
+   "netSales": 1750.09
+  },
+  {
+   "date": "2025-11-17",
+   "orders": 14,
+   "netSales": 1717.29
+  },
+  {
+   "date": "2025-11-18",
+   "orders": 13,
+   "netSales": 1234.84
+  },
+  {
+   "date": "2025-11-19",
+   "orders": 7,
+   "netSales": 864.46
+  },
+  {
+   "date": "2025-11-20",
+   "orders": 17,
+   "netSales": 1448.16
+  },
+  {
+   "date": "2025-11-21",
+   "orders": 15,
+   "netSales": 1633.13
+  },
+  {
+   "date": "2025-11-22",
+   "orders": 14,
+   "netSales": 2146.54
+  },
+  {
+   "date": "2025-11-23",
+   "orders": 14,
+   "netSales": 1212.87
+  },
+  {
+   "date": "2025-11-24",
+   "orders": 30,
+   "netSales": 2965.81
+  },
+  {
+   "date": "2025-11-25",
+   "orders": 9,
+   "netSales": 1487.5
+  },
+  {
+   "date": "2025-11-26",
+   "orders": 10,
+   "netSales": 1354.25
+  },
+  {
+   "date": "2025-11-27",
+   "orders": 15,
+   "netSales": 1687.96
+  },
+  {
+   "date": "2025-11-28",
+   "orders": 25,
+   "netSales": 2442.0
+  },
+  {
+   "date": "2025-11-29",
+   "orders": 14,
+   "netSales": 1652.03
+  },
+  {
+   "date": "2025-11-30",
+   "orders": 19,
+   "netSales": 1695.6
+  },
+  {
+   "date": "2025-12-01",
+   "orders": 58,
+   "netSales": 5433.56
+  },
+  {
+   "date": "2025-12-02",
+   "orders": 23,
+   "netSales": 1604.42
+  },
+  {
+   "date": "2025-12-03",
+   "orders": 54,
+   "netSales": 4830.57
+  },
+  {
+   "date": "2025-12-04",
+   "orders": 32,
+   "netSales": 3624.49
+  },
+  {
+   "date": "2025-12-05",
+   "orders": 29,
+   "netSales": 6989.5
+  },
+  {
+   "date": "2025-12-06",
+   "orders": 35,
+   "netSales": 3733.53
+  },
+  {
+   "date": "2025-12-07",
+   "orders": 16,
+   "netSales": 1201.32
+  },
+  {
+   "date": "2025-12-08",
+   "orders": 36,
+   "netSales": 3099.98
+  },
+  {
+   "date": "2025-12-09",
+   "orders": 28,
+   "netSales": 3146.12
+  },
+  {
+   "date": "2025-12-10",
+   "orders": 42,
+   "netSales": 3468.01
+  },
+  {
+   "date": "2025-12-11",
+   "orders": 13,
+   "netSales": 947.45
+  },
+  {
+   "date": "2025-12-12",
+   "orders": 29,
+   "netSales": 2734.15
+  },
+  {
+   "date": "2025-12-13",
+   "orders": 39,
+   "netSales": 3671.95
+  },
+  {
+   "date": "2025-12-14",
+   "orders": 21,
+   "netSales": 1753.83
+  },
+  {
+   "date": "2025-12-15",
+   "orders": 28,
+   "netSales": 2676.3
+  },
+  {
+   "date": "2025-12-16",
+   "orders": 36,
+   "netSales": 3779.61
+  },
+  {
+   "date": "2025-12-17",
+   "orders": 23,
+   "netSales": 1461.82
+  },
+  {
+   "date": "2025-12-18",
+   "orders": 30,
+   "netSales": 2181.38
+  },
+  {
+   "date": "2025-12-19",
+   "orders": 24,
+   "netSales": 2356.43
+  },
+  {
+   "date": "2025-12-20",
+   "orders": 17,
+   "netSales": 2105.12
+  },
+  {
+   "date": "2025-12-21",
+   "orders": 9,
+   "netSales": 1484.66
+  },
+  {
+   "date": "2025-12-22",
+   "orders": 25,
+   "netSales": 2619.65
+  },
+  {
+   "date": "2025-12-23",
+   "orders": 13,
+   "netSales": 1546.14
+  },
+  {
+   "date": "2025-12-24",
+   "orders": 6,
+   "netSales": 537.66
+  },
+  {
+   "date": "2025-12-25",
+   "orders": 10,
+   "netSales": 1840.94
+  },
+  {
+   "date": "2025-12-26",
+   "orders": 7,
+   "netSales": 549.17
+  },
+  {
+   "date": "2025-12-27",
+   "orders": 7,
+   "netSales": 602.22
+  },
+  {
+   "date": "2025-12-28",
+   "orders": 9,
+   "netSales": 631.54
+  },
+  {
+   "date": "2025-12-29",
+   "orders": 14,
+   "netSales": 1390.69
+  },
+  {
+   "date": "2025-12-30",
+   "orders": 8,
+   "netSales": 563.56
+  },
+  {
+   "date": "2025-12-31",
+   "orders": 7,
+   "netSales": 889.4
+  }
+ ],
+ "funnel": {
+  "period": "Last 30 days vs the same 30 days last year",
+  "now": {
+   "sessions": 10648,
+   "addedToCart": 258,
+   "reachedCheckout": 213,
+   "purchased": 56
+  },
+  "lastYear": {
+   "sessions": 8655,
+   "addedToCart": 616,
+   "reachedCheckout": 577,
+   "purchased": 123
+  }
+ },
+ "weakPoints": [
+  {
+   "title": "Visitors stopped adding to cart",
+   "detail": "Traffic is up 23% on last year, but only 2.4% of visits add to cart, down from 7.1%. Orders follow: 56 in the last 30 days vs 123 last year. The product page and the photo editor are the first place to look.",
+   "owners": [
+    "seo-technical",
+    "owner"
+   ]
+  },
+  {
+   "title": "Most checkouts are abandoned",
+   "detail": "213 visits reached checkout and 56 bought (26%). Shipping cost, delivery date and payment options are the usual reasons; the checkout-abandonment email is the quickest lever.",
+   "owners": [
+    "email-flow-optimizer"
+   ]
+  },
+  {
+   "title": "Holiday plan not ready",
+   "detail": "Last year November averaged 12 orders a day and December 1 to 15 averaged 32. The holiday offer's dates and code are still unknown, so emails and posts cannot announce it.",
+   "owners": [
+    "owner",
+    "email-campaign-writer"
+   ]
+  }
+ ]
+}

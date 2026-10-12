@@ -3,9 +3,9 @@ import type { DashboardState } from '../../server/state';
 import { ROOMS } from '../world/layout';
 import type { FigureInfo, OfficeWorld } from '../world/scene';
 
-type Props = { state: DashboardState; onPick: (agent: string) => void };
+type Props = { state: DashboardState; onPick: (agent: string) => void; partyKey?: number };
 
-export function WorldView({ state, onPick }: Props) {
+export function WorldView({ state, onPick, partyKey = 0 }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const overlay = useRef<HTMLDivElement>(null);
   const world = useRef<OfficeWorld | null>(null);
@@ -51,6 +51,11 @@ export function WorldView({ state, onPick }: Props) {
   useEffect(() => {
     if (ready) world.current?.setFigures(figures);
   }, [ready, figures]);
+
+  // A sale: everyone in the office jumps.
+  useEffect(() => {
+    if (ready && partyKey) world.current?.celebrate();
+  }, [ready, partyKey]);
 
   // Only rooms where an active agent works get a name plate; empty rooms, the
   // entrance and the meeting room stay unlabeled to keep the office calm.

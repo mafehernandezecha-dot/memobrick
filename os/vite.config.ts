@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { decide, readMarketingFile } from './server/actions';
 import { CHAT_MODEL_LABEL, getChat, listChats, streamChat } from './server/chat';
+import { buildSales } from './server/sales';
 import { buildState } from './server/state';
 import { decideAndSync, pullLatest } from './server/sync';
 
@@ -57,6 +58,9 @@ export default defineConfig({
           try {
             if (url.pathname === '/api/state' && req.method === 'GET') {
               return json(res, 200, { ...buildState(osDir, repoDir), chatModel: CHAT_MODEL_LABEL });
+            }
+            if (url.pathname === '/api/sales' && req.method === 'GET') {
+              return json(res, 200, await buildSales(repoDir));
             }
             if (url.pathname === '/api/file' && req.method === 'GET') {
               return json(res, 200, { path: url.searchParams.get('path'), text: readMarketingFile(repoDir, url.searchParams.get('path') ?? '') });

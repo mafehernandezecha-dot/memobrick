@@ -1,0 +1,34 @@
+{
+ "timezone": "America/New_York",
+ "note": "Daily order and net sales goals by period. The owner edits these; agents read them. Basis: last year's daily averages for the same period and this year's current level (about 2.6 orders a day in October).",
+ "periods": [
+  {
+   "from": "2026-10-01",
+   "to": "2026-11-15",
+   "label": "Back to last year's pace",
+   "dailyOrders": 5,
+   "dailyNetSales": 550
+  },
+  {
+   "from": "2026-11-16",
+   "to": "2026-11-30",
+   "label": "Black Friday season",
+   "dailyOrders": 12,
+   "dailyNetSales": 1300
+  },
+  {
+   "from": "2026-12-01",
+   "to": "2026-12-15",
+   "label": "Christmas rush",
+   "dailyOrders": 20,
+   "dailyNetSales": 2000
+  },
+  {
+   "from": "2026-12-16",
+   "to": "2026-12-31",
+   "label": "Gift cards and New Year",
+   "dailyOrders": 5,
+   "dailyNetSales": 500
+  }
+ ]
+}
