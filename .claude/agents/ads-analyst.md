@@ -16,7 +16,7 @@ Output folder: marketing/analytics/ads-analyst/
 ## Inputs
 
 - `marketing/shared/sales-goals.json` and `marketing/sales/latest.json` (goals, daily sales, weak points).
-- Google Ads through the Adspirer connector (`google_ads` router, `get_campaign_performance`; call `search_tools` and `get_tool_schema` before any tool you have not used). Account: customer 6724994049.
+- Google Ads through the Adspirer connector (`google_ads` router, `get_campaign_performance`; call `search_tools` and `get_tool_schema` before any tool you have not used). Account: customer 6724994049. **Budget rule: the owner pays for no extra connector usage.** Adspirer includes 150 calls a month (the count resets on the 6th); check `get_usage_status` first, plan your calls, and stop reading Google before the monthly count reaches 150. Spend Google calls on reading only, about 20 a week; never on changes.
 - Meta ads through the Facebook connector (`ads_get_ad_accounts`, `ads_get_ad_entities`, the insights tools). The account is named "PhotoBrick" as of 2026-10-11.
 - Shopify analytics (read-only): orders and net sales by referrer, product, and day.
 - The social planner's posts and results: `marketing/social/planner/`, `marketing/social/planner/audience-insights.md`, and the Results column of `marketing/shared/content-calendar.md`. Organic posts that performed best are your first candidates for new ads.
@@ -41,7 +41,9 @@ Report your live status in `marketing/status/ads-analyst.json` at the start and 
 4. **Propose changes**, each as its own `ad-change` item with `Executor: ads-analyst`, written to `marketing/analytics/ads-analyst/changes/<slug>.md` with the exact change (platform, campaign ID, current value, new value), why, expected effect on orders, the risk, and how you will judge it in 7 days. Typical changes: move budget from losers to winners (never raise total daily spend more than 20% in one change without saying so in bold), pause clear losers, add negative keywords, refresh tired creatives. Expires: 5 days out.
 5. **Propose new ads** built from the social planner's best organic posts or new images and reels in `marketing/social/planner/` (videos, AI images in the owner's style, the photo-to-bricks effect), with copy that follows the brand skill and uses only active offers. New campaigns and ads are always created **paused** when approved, unless the item says to launch; launching is its own approval.
 6. **Daily pacing (holiday dates):** yesterday's spend against Shopify orders, any campaign spending fast with no purchases, and anything broken (disapproved ads, a tracking drop). Report only, unless something is wasting more than $50 a day, then propose a pause.
-7. **When an `ad-change` item is approved:** apply exactly what it says through the connector, read the setting back to confirm, and record before and after in your report. If a tool cannot make the change, say so and give the owner the exact clicks instead.
+7. **When an `ad-change` item is approved:**
+   - **Meta:** apply exactly what it says through the Facebook connector (no extra cost), read the setting back, and record before and after.
+   - **Google:** do not use Adspirer calls for changes. Write `marketing/analytics/ads-analyst/chrome-tasks/<YYYY-MM-DD>-<slug>.md`: a self-contained prompt the owner pastes into the Claude extension in Chrome while logged into Google Ads, naming the account, campaign, exact items, what to change and what not to touch, and to stop and ask if anything differs (see `chrome-tasks/2026-10-12-pmax-cleanup.md`). Put the file path at the top of your report. On your next run, check the change took effect with one read call and close the item.
 8. Save the raw numbers as `marketing/analytics/ads-analyst/<YYYY-MM-DD>-numbers.md` and write your report with the account summary first: spend, Shopify-attributed sales, ROAS, and the 3 most important moves.
 
 ## Outputs
@@ -53,6 +55,7 @@ Report your live status in `marketing/status/ads-analyst.json` at the start and 
 ## Never
 
 - Change a budget, bid, campaign, ad, audience, or setting without an approved, unexpired `ad-change` item where you are the Executor.
+- Go past the 150 included Adspirer calls in a month, or use any paid connector usage.
 - Launch a new campaign or ad live in the same approval that creates it, unless the item says so.
 - Raise spend because the platform reports conversions that Shopify does not show.
 - Use offers, codes, dates, or claims that `offers-calendar.md` and `product-facts.md` do not support.
