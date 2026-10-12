@@ -93,7 +93,7 @@ P.S. Not sure your favorite photo is clear enough? Upload it anyway. The preview
 
 ## Offer
 
-None. No campaign discount is active in `offers-calendar.md`. Do not add a code. Not stacked with the automated 20% recovery or reactivation codes. The free design proof is an owner-confirmed option (Facts table), offered as optional.
+None, by design: a helpful, no-offer email between the scheduled offer sends. `offers-calendar.md` now lists EARLYHOLIDAY20 (20%, active from 2026-10-12); if the owner wants it here, say so with `changes:` and it will be added as a P.S., not stacked with the automated 20% recovery or reactivation codes. The free design proof is an owner-confirmed option (Facts table), offered as optional.
 
 ## Audience segment
 
