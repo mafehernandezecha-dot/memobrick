@@ -40,7 +40,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: f6147d2
 - Reason: Family transformation video for the family gift audience.
 - Expires: 2026-10-18
-- Status: pending
+- Status: approved
 - From: P-social-planner-20261011-3
 - Note: Clip appears to be Billo creator content. Confirm the license covers organic posting on Instagram, Facebook, and TikTok.
 
@@ -137,7 +137,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 9498fd1
 - Reason: New Christmas photo gift hub that links 11 existing Christmas and recipient posts; it needs time to be indexed before mid-November holiday searches peak. Add the JSON-LD from checks/personalized-christmas-photo-gifts.md on publish.
 - Expires: 2026-10-25
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-6
 - Note: Needs an owner-approved hero image (real mosaic or a labeled illustration).
 
@@ -149,7 +149,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 22411dc
 - Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
 - Expires: 2026-11-15
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-4
 
 ## A-2026W41-013
@@ -160,7 +160,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 22411dc
 - Reason: The duplicate "[Ikram GemPages] Perfect Holiday Gift" article went live 2026-09-10 and splits ranking with `theperfect-holiday` before the holiday peak. The fix is to unpublish it and 301 it to `theperfect-holiday`.
 - Expires: 2026-11-30
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-1
 - Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
 
@@ -172,7 +172,7 @@ DRY RUN build, 2026-10-11. All proposals come from dry-run reports dated 2026-10
 - Commit: 22411dc
 - Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
 - Expires: 2026-11-30
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261011-5
 
 ## A-2026W41-015
