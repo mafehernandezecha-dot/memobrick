@@ -5,7 +5,7 @@ Your marketing agents' office, in LEGO. It runs on your computer.
 ## Open it
 
 1. Install Node.js 20 or newer.
-2. Connect Claude for the chat with Betty (once): set `ANTHROPIC_API_KEY` in your terminal, or run `ant auth login`.
+2. Connect Claude for the chat with Betty (once): install Claude Code (`curl -fsSL https://claude.ai/install.sh | bash`), then run `claude` and sign in with your Claude account. Betty then runs on your Claude plan, with no API credit needed. Without Claude Code, she falls back to `ANTHROPIC_API_KEY` if one is set.
 3. In the repository folder:
 
 ```bash

@@ -5,11 +5,12 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import type { ServerResponse } from 'node:http';
 import { join } from 'node:path';
 import Anthropic from '@anthropic-ai/sdk';
+import { askClaudeCode, findClaude } from './claudeCli';
 import { buildState } from './state';
 import type { DashboardState } from './state';
 
 export const CHAT_MODEL = 'claude-opus-5-5';
-export const CHAT_MODEL_LABEL = 'Claude Opus 5.5';
+export const CHAT_MODEL_LABEL = 'Claude Opus';
 
 export type ChatMessage = { role: 'user' | 'assistant'; content: string; at: string };
 export type Chat = { id: string; title: string; created: string; updated: string; messages: ChatMessage[] };
@@ -113,6 +114,17 @@ export async function streamChat(osDir: string, repoDir: string, body: { id?: st
 
   let reply = '';
   try {
+    // Prefer Claude Code on this computer: it runs on the owner's Claude plan, no API credit needed.
+    const claude = findClaude();
+    if (claude) {
+      reply = await askClaudeCode(claude, systemPrompt(buildState(osDir, repoDir)), chat.messages, (t) => send({ t: 'delta', text: t }), osDir);
+      chat.messages.push({ role: 'assistant', content: reply, at: new Date().toISOString() });
+      chat.updated = new Date().toISOString();
+      saveChat(osDir, chat);
+      send({ t: 'done', id: chat.id, title: chat.title });
+      return res.end();
+    }
+    if (!process.env.ANTHROPIC_API_KEY) throw new Error('NO_ENGINE');
     const client = new Anthropic();
     const stream = client.beta.messages.stream({
       model: CHAT_MODEL,
@@ -153,6 +165,8 @@ export async function streamChat(osDir: string, repoDir: string, body: { id?: st
 }
 
 function chatError(err: unknown) {
+  if (err instanceof Error && err.message === 'NO_ENGINE')
+    return 'Betty needs Claude Code on this computer. In Terminal run: curl -fsSL https://claude.ai/install.sh | bash, then type claude and sign in, then reopen the app.';
   if (err instanceof Anthropic.AuthenticationError)
     return 'The Claude key is not valid. Check ANTHROPIC_API_KEY on your computer and reopen the app.';
   if (err instanceof Anthropic.RateLimitError) return 'Claude is busy right now. Try again in a minute.';
