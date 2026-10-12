@@ -23,8 +23,8 @@ def cover(im):
 
 def bricks(im, cols, studs):
     rows = round(cols * H / W)
-    # A limited palette, like a real kit's 40+ brick colors.
-    small = im.resize((cols, rows), Image.BILINEAR).quantize(colors=40, method=Image.Quantize.MEDIANCUT).convert("RGB")
+    # A limited palette, like a real kit's 40+ brick colors (octree keeps small accents such as a pink tongue).
+    small = im.resize((cols, rows), Image.BILINEAR).quantize(colors=48, method=Image.Quantize.FASTOCTREE).convert("RGB")
     cell = W / cols
     out = Image.new("RGB", (W, H))
     d = ImageDraw.Draw(out)
