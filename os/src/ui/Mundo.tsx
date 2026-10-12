@@ -12,7 +12,7 @@ function greeting(d = new Date()) {
 
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-export function Mundo({ state, onPick, sales, partyKey, onOpenSales }: { state: DashboardState; onPick: (agent: string) => void; sales: SalesView | null; partyKey: number; onOpenSales: () => void }) {
+export function Mundo({ state, onPick, sales, partyKey, partyKind, onOpenSales }: { state: DashboardState; onPick: (agent: string) => void; sales: SalesView | null; partyKey: number; partyKind: 'sale' | 'goal' | 'recap'; onOpenSales: () => void }) {
   const working = state.agents.filter((a) => a.live?.state === 'working').length;
   const needing = state.agents.filter((a) => a.name !== APPROVALS_DESK && (a.pending > 0 || a.live?.state === 'needs_me')).length;
 
@@ -21,7 +21,7 @@ export function Mundo({ state, onPick, sales, partyKey, onOpenSales }: { state: 
   return (
     <section className="mundo">
       <div className="world-stage" aria-label="Memobrick office">
-        <WorldView state={state} onPick={onPick} partyKey={partyKey} />
+        <WorldView state={state} onPick={onPick} partyKey={partyKey} partyKind={partyKind} />
       </div>
 
       <SalesCard sales={sales} onOpen={onOpenSales} />

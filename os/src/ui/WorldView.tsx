@@ -3,9 +3,9 @@ import type { DashboardState } from '../../server/state';
 import { ROOMS } from '../world/layout';
 import type { FigureInfo, OfficeWorld } from '../world/scene';
 
-type Props = { state: DashboardState; onPick: (agent: string) => void; partyKey?: number };
+type Props = { state: DashboardState; onPick: (agent: string) => void; partyKey?: number; partyKind?: 'sale' | 'goal' | 'recap' };
 
-export function WorldView({ state, onPick, partyKey = 0 }: Props) {
+export function WorldView({ state, onPick, partyKey = 0, partyKind = 'sale' }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const overlay = useRef<HTMLDivElement>(null);
   const world = useRef<OfficeWorld | null>(null);
@@ -52,9 +52,10 @@ export function WorldView({ state, onPick, partyKey = 0 }: Props) {
     if (ready) world.current?.setFigures(figures);
   }, [ready, figures]);
 
-  // A sale: everyone in the office jumps.
+  // A sale: everyone in the office dances (longer and bigger when the goal is reached).
   useEffect(() => {
-    if (ready && partyKey) world.current?.celebrate();
+    if (ready && partyKey) world.current?.celebrate(partyKind);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, partyKey]);
 
   // Only rooms where an active agent works get a name plate; empty rooms, the

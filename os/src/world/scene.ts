@@ -42,6 +42,8 @@ export class OfficeWorld {
   private frustum = 60;
   private figures = new Map<string, { group: THREE.Group; info: FigureInfo; phase: number }>();
   private partyAt = -100;
+  private partyLen = 0;
+  private partyBig = false;
   private figureRoot = new THREE.Group();
   private cars: { obj: THREE.Object3D; t: number; speed: number; lane: number }[] = [];
   private roadPath: { a: THREE.Vector2; b: THREE.Vector2; len: number }[] = [];
@@ -127,9 +129,11 @@ export class OfficeWorld {
       }
   }
 
-  /** Everyone jumps for a few seconds: a sale just came in. */
-  celebrate() {
+  /** Everyone dances: a sale just came in (5 s), or the goal was reached (10 s, bigger moves). */
+  celebrate(kind: 'sale' | 'goal' | 'recap' = 'sale') {
     this.partyAt = this.clock.getElapsedTime();
+    this.partyBig = kind === 'goal';
+    this.partyLen = this.partyBig ? 10 : 5;
   }
 
   dispose() {
@@ -530,37 +534,67 @@ export class OfficeWorld {
       }
     }
     const party = t - this.partyAt;
+    const dancing = party < this.partyLen;
+    let i = 0;
     for (const f of this.figures.values()) {
-      if (party < 3.5) {
-        // Hop with arms up; ghosts join in too, it's a sale.
-        f.group.position.y = FLOOR_Y + Math.max(0, Math.sin(party * 9 + f.phase)) * 0.45 * (1 - party / 3.5);
-        const torso = f.group.getObjectByName('torso');
-        for (const arm of ['armL', 'armR']) {
-          const a = torso?.getObjectByName(arm);
-          if (!a) continue;
-          if (a.userData.rest === undefined) a.userData.rest = a.rotation.x;
-          a.rotation.x = -2.6 + Math.sin(party * 12 + f.phase) * 0.3;
+      i++;
+      const torso = f.group.getObjectByName('torso');
+      const head = f.group.getObjectByName('head');
+      const armL = torso?.getObjectByName('armL');
+      const armR = torso?.getObjectByName('armR');
+      const parts = [armL, armR, head].filter((o): o is THREE.Object3D => Boolean(o));
+      if (dancing) {
+        // Remember the resting pose once, then dance around it. Ghosts dance too: it's a sale.
+        if (f.group.userData.restRotY === undefined) {
+          f.group.userData.restRotY = f.group.rotation.y;
+          for (const o of parts) o.userData.rest = { x: o.rotation.x, z: o.rotation.z };
         }
+        const fade = Math.min(1, party / 0.3, (this.partyLen - party) / 0.4);
+        const beat = party * Math.PI * 4 + f.phase; // about 120 beats a minute
+        const move = i % 3; // three dance styles around the office
+        const big = this.partyBig;
+        const restY = f.group.userData.restRotY as number;
+        f.group.position.y = FLOOR_Y + Math.abs(Math.sin(beat)) * (big ? 0.5 : 0.28) * fade;
+        // Hip sway, and on the goal a full spin every few beats.
+        const spin = big && Math.floor(party * 2 + i) % 4 === 0 ? ((party * 2 + i) % 1) * Math.PI * 2 : 0;
+        f.group.rotation.y = restY + (Math.sin(beat / 2) * 0.45 + spin) * fade;
+        const rest = (o?: THREE.Object3D) => (o?.userData.rest as { x: number; z: number } | undefined) ?? { x: 0, z: 0 };
+        if (armL && armR) {
+          const l = rest(armL), r = rest(armR);
+          if (move === 0) {
+            // Disco: one arm points up while the other comes down.
+            armL.rotation.x = l.x + (-2.8 * (0.5 + 0.5 * Math.sin(beat))) * fade;
+            armR.rotation.x = r.x + (-2.8 * (0.5 - 0.5 * Math.sin(beat))) * fade;
+          } else if (move === 1) {
+            // Both arms up, waving.
+            armL.rotation.x = l.x + (-2.7 + Math.sin(beat) * 0.35) * fade;
+            armR.rotation.x = r.x + (-2.7 - Math.sin(beat) * 0.35) * fade;
+          } else {
+            // Running man arms.
+            armL.rotation.x = l.x + Math.sin(beat) * 1.1 * fade;
+            armR.rotation.x = r.x - Math.sin(beat) * 1.1 * fade;
+          }
+        }
+        if (head) head.rotation.z = rest(head).z + Math.sin(beat) * 0.22 * fade;
         continue;
       }
-      if (f.group.position.y !== FLOOR_Y) {
+      if (f.group.userData.restRotY !== undefined) {
         f.group.position.y = FLOOR_Y;
-        const torso = f.group.getObjectByName('torso');
-        for (const arm of ['armL', 'armR']) {
-          const a = torso?.getObjectByName(arm);
-          if (a && a.userData.rest !== undefined) {
-            a.rotation.x = a.userData.rest;
-            delete a.userData.rest;
+        f.group.rotation.y = f.group.userData.restRotY;
+        delete f.group.userData.restRotY;
+        for (const o of parts) {
+          const r = o.userData.rest as { x: number; z: number } | undefined;
+          if (r) {
+            o.rotation.x = r.x;
+            o.rotation.z = r.z;
+            delete o.userData.rest;
           }
         }
       }
       if (f.info.state !== 'working') continue;
-      const torso = f.group.getObjectByName('torso');
-      const l = torso?.getObjectByName('armL');
-      const r = torso?.getObjectByName('armR');
       const k = Math.sin(t * 10 + f.phase) * 0.12;
-      if (l) l.rotation.x = -1.2 + k;
-      if (r) r.rotation.x = -1.2 - k;
+      if (armL) armL.rotation.x = -1.2 + k;
+      if (armR) armR.rotation.x = -1.2 - k;
     }
   }
 
