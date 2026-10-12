@@ -132,7 +132,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: e91580d
 - Reason: The 20% last email in Abandoned Cart got 0 clicks and 0 purchases from 88 delivered. Test a no-discount reassurance version before holiday traffic.
 - Expires: 2026-10-25
-- Status: pending
+- Status: approved
 - From: P-email-flow-optimizer-20261011-1
 - Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
 
