@@ -20,7 +20,7 @@ Memobrick turns personal photos into custom brick mosaic kits. Customers upload 
 
 `marketing/shared/product-facts.md` summarizes sizes, pieces, building times, kit contents, and what the product looks like. Sizes, prices, and variant options come from the live Shopify product data (read-only queries); quote them exactly as Shopify lists them on the day you write. Faces per size and build time are unknown until the owner adds them to the Facts table.
 
-The website creates the design. Never say a designer personally created a customer's design, and never imply a manual proof is required.
+Customers create their design in the website's editor. If they prefer help, Memobrick's designers can create it for them and send a free proof before production (the owner confirmed this offer on 2026-10-12). You may offer that free proof as an option; never say it is required, and never say a designer made a design the customer made in the editor.
 
 ## Brand description (use as written)
 

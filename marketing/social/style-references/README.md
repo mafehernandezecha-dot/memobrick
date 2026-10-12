@@ -14,4 +14,4 @@ AI images the owner made and likes. Hugo matches this look for AI image posts by
 
 Shared look: warm natural light, cream and soft wood interiors, real-looking people in casual clothes, the mosaic large and sharp in the frame, soft pink, navy and pastel accents, short warm headlines.
 
-Not used as references (examples the owner shared that break the rules): shelves of another brand's building sets and minifigures in the background, bigger 2×4 bricks floating around, a "returning customers" offer that is not in the offers calendar, and a "free proof" promise.
+Not used as references (examples the owner shared that break the rules): shelves of another brand's building sets and minifigures in the background, bigger 2×4 bricks floating around, and a "returning customers" offer that is not in the offers calendar. (The free proof idea is fine: the owner confirmed the offer.)

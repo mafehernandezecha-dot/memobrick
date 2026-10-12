@@ -67,19 +67,20 @@ Check every image before keeping it, and regenerate (up to 3 tries) or fall back
 - Only same-size 1×1 bricks with round studs in the mosaic and anywhere around it. No 2×4 or other large bricks, no building sets, no minifigures, no other brand's names or logos, anywhere in the scene.
 - The mosaic shows the people or pet in the scene, not someone else, and its shape matches the size named; a frame appears only when the post says frames are sold separately or does not mention price.
 - Hands, faces, and text are clean (no extra fingers, no garbled letters). Read every word on the image.
-- No offer, discount, "free proof", or delivery promise unless `offers-calendar.md` lists it as active or the Facts table verifies it. "Shipped from Miami, FL" is allowed while the Facts table shows it verified.
+- No offer, discount, or delivery promise unless `offers-calendar.md` lists it as active or the Facts table verifies it. "Shipped from Miami, FL" is allowed while the Facts table shows it verified, and so is the optional free proof ("Not sure how it will look? Get a free proof"), worded as the brand skill says.
 - Never present the people as real customers: no names, quotes, reviews, or "customer story" captions. Note "AI image: turn on the AI label" in the post file so the publisher's kit reminds the owner.
 
 Save as `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` (under 3 MB) and write the prompt and the references you used in the post file.
 
 ## Reels: be creative
 
-The audience loves seeing the 1×1 bricks and the building process. Every reel should show bricks up close or hands building within its first 3 seconds, and the week's reels should not repeat the same format. Mix real footage, AI images, and the photo-to-bricks effect. Formats to rotate and invent on:
+The audience loves seeing the 1×1 bricks and the building process, so be inventive and keep surprising them: change pace, angles, and reveals from reel to reel. Every reel should show bricks up close or hands building within its first 3 seconds, and the week's reels should not repeat the same format. Mix real footage, AI images, and the photo-to-bricks effect. Formats to rotate and invent on:
 
 - **Photo to bricks:** `python3 marketing/tools/photo_to_bricks.py <photo> <clip.mp4>` turns a photo (an AI image, or a customer photo only with recorded permission) into a shaded 1×1 brick mosaic in about 5 seconds, pressing the bricks in row by row (`--style dissolve` for a fade instead), and saves the finished mosaic as `<clip>-final.png` for use as an image. Use it as the hook or the transformation moment, then cut to real building footage and the finished piece. Pick photos where the face or pet fills the frame.
 - **Guess the photo:** start on a macro of the bricks and slowly zoom out until the picture appears (ffmpeg `zoompan` on the finished mosaic image or footage).
 - **Watch it fill:** sped-up building footage of a board filling in, with a counter or a question as text ("How long did this take?" answered with the size's building time from `product-facts.md`).
-- **Satisfying details:** color bags, sorting bricks, pressing one brick in, the tool, a hand sweeping across the studs.
+- **Slow motion building:** real footage of fingers pressing 1×1 bricks in, slowed down 2 to 4 times and kept smooth: `ffmpeg -i <clip> -vf "setpts=3*PTS,minterpolate=fps=30:mi_mode=mci" -an <slow.mp4>` (use it on 1 to 3 second moments, then trim). Mix slow motion with sped-up building in the same reel for rhythm: slow on the satisfying press, fast on the board filling.
+- **Satisfying details:** color bags, sorting bricks, pressing one brick in, the tool, a hand sweeping across the studs, macro shots where a single stud fills the screen.
 - **Camera roll to wall:** a phone photo, the website preview, the kit, the build, the framed piece (AI images for the parts you have no footage of).
 - **Size check:** the same photo at 16×16, 30×30, and 40×50 on a wall (AI images), with sizes from `product-facts.md`.
 - **Image story:** 4 to 6 AI images in the owner's style with slow push-ins (`zoompan=z='min(zoom+0.0015,1.15)':d=<frames>:s=1080x1920`) and cuts every 1 to 2 seconds, timed so a trending sound fits.
