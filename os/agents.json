@@ -312,17 +312,17 @@
       "agentFile": null
     },
     {
-      "name": "extra",
+      "name": "site-developer",
       "character": "jenny",
-      "role": "No role yet",
-      "department": null,
-      "status": "extra",
+      "role": "Fixes the store so more visitors buy",
+      "department": "Conversion",
+      "status": "active",
       "displayName": "Jenny",
       "machine": "",
       "avatar": "avatars/jenny.png",
       "sprite": "sprites/jenny.png",
-      "folder": null,
-      "agentFile": null
+      "folder": "marketing/conversion/site-developer",
+      "agentFile": ".claude/agents/site-developer.md"
     }
   ]
 }

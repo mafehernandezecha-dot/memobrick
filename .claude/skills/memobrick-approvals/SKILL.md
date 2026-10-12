@@ -42,7 +42,7 @@ Status values: `pending`, `approved`, `rejected`, or `changes: <note>`. Anything
 | send (email campaign) | email-campaign-writer creates the campaign in Omnisend and schedules it for its send time, or applies the approved edit to an existing scheduled campaign |
 | send (flow test) | email-flow-optimizer makes the flow change exactly as written |
 | send (outreach pitch) | outreach-gift-guide-pr creates a Gmail draft for the owner to send |
-| site-change | seo-technical applies exactly the change in the draft |
+| site-change | site-developer (store and conversion fixes) or seo-technical (SEO fixes) applies exactly the change in the draft, after saving a backup |
 | ad-change | Meta: ads-analyst applies exactly the change through the Meta connector. Google: ads-analyst writes a ready-to-paste task for the owner to run with the Claude extension in Chrome. New campaigns and ads are created paused unless the item says to launch |
 | offer | nothing automatic; the owner applies it |
 

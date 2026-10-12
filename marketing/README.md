@@ -34,6 +34,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | email-campaign-writer | Weekly campaigns and the holiday plan | Tue |
 | ads-analyst | Google and Meta ads judged on Shopify sales; budget moves, pauses, new ads (applies approved changes) | Fri; daily Nov 16 to Dec 20 |
 | conversion-auditor | Walks the store like a customer, finds what stops people buying, proposes fixes | Wed |
+| site-developer | Builds store fixes in a theme copy, tests them on phone and desktop, applies approved ones with a backup | Daily |
 
 ### Wave 2 (after the week 4 review)
 

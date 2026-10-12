@@ -38,7 +38,7 @@ Last 7 days: phone 791 sessions, 38 carts (4.8%) and 16 orders, against 1,778, 1
 
 ### P-conversion-auditor-20261012-1
 - Agent: conversion-auditor
-- Executor: seo-technical
+- Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/auditor/site-changes/home-phone-cta-above-fold.md
 - Reason: seo-technical adds the Create My MemoBrick button and "Kits from $35" under the home headline on phones only. Today the button sits below the first phone screen on our biggest landing page, and home-page phone visitors add to cart at 6.6% against 12.5% last year.
@@ -47,7 +47,7 @@ Last 7 days: phone 791 sessions, 38 carts (4.8%) and 16 orders, against 1,778, 1
 
 ### P-conversion-auditor-20261012-2
 - Agent: conversion-auditor
-- Executor: seo-technical
+- Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/auditor/site-changes/desktop-editor-sticky-topbar.md
 - Reason: seo-technical makes the desktop editor's price and Finish Editing bar sticky. After upload it scrolls off screen, so desktop visitors see no way to order (desktop add to cart is 5.1% against 8.0%).
@@ -56,7 +56,7 @@ Last 7 days: phone 791 sessions, 38 carts (4.8%) and 16 orders, against 1,778, 1
 
 ### P-conversion-auditor-20261012-3
 - Agent: conversion-auditor
-- Executor: seo-technical
+- Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/auditor/site-changes/email-gate-defer-ab-test.md
 - Reason: seo-technical starts a 50/50 test that moves the "save your design" email ask from right after upload to a later slide-in, with a decision rule by 2026-11-15. Today two pop-ups in a row block the editor and phone add to cart is down.
@@ -65,7 +65,7 @@ Last 7 days: phone 791 sessions, 38 carts (4.8%) and 16 orders, against 1,778, 1
 
 ### P-conversion-auditor-20261012-4
 - Agent: conversion-auditor
-- Executor: seo-technical
+- Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/auditor/site-changes/cart-show-design-and-delivery.md
 - Reason: seo-technical makes the cart show the customer's own mosaic instead of a stock photo, hides raw internal fields (including a file URL that runs off phone screens), and adds the verified "Order by December 15" line before the holiday rush.
@@ -74,7 +74,7 @@ Last 7 days: phone 791 sessions, 38 carts (4.8%) and 16 orders, against 1,778, 1
 
 ### P-conversion-auditor-20261012-5
 - Agent: conversion-auditor
-- Executor: seo-technical
+- Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/auditor/site-changes/pro-design-keep-size.md
 - Reason: seo-technical makes the Pro Design page keep the size chosen on the product page instead of asking again. This is a small fix on the path for visitors who want design help.
