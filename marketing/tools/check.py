@@ -155,12 +155,17 @@ def check_approval_drafts(items, repo_root):
     ]
 
 
+def _git(repo_root, *args):
+    return subprocess.run(["git", "-C", str(repo_root), *args], capture_output=True, text=True)
+
+
 def draft_unchanged(repo_root, draft, commit):
-    result = subprocess.run(
-        ["git", "-C", str(repo_root), "diff", "--quiet", commit, "--", draft],
-        capture_output=True,
-    )
-    return result.returncode == 0
+    # Cloud runs clone with shallow history; fetch the rest before deciding,
+    # so an old approval commit is not mistaken for a changed draft.
+    if _git(repo_root, "cat-file", "-e", f"{commit}^{{commit}}").returncode != 0:
+        if _git(repo_root, "rev-parse", "--is-shallow-repository").stdout.strip() == "true":
+            _git(repo_root, "fetch", "--quiet", "--unshallow")
+    return _git(repo_root, "diff", "--quiet", commit, "--", draft).returncode == 0
 
 
 def approved_items_for(items, agent, today):
