@@ -46,3 +46,13 @@ Every new sale is celebrated with falling bricks, confetti, a rising trophy, and
 (An older Admin API token that starts with `shpat_` also works, as `SHOPIFY_ADMIN_TOKEN`.)
 
 The app reads only order numbers, amounts, and product titles for today, never customer details, and checks every 30 seconds.
+
+## A Mac app for one-click access
+
+Run once, from the `os` folder in Terminal:
+
+```
+bash scripts/install-mac-app.sh
+```
+
+It creates **Memobrick OS** in Applications with the brick icon. Double-click it (or keep it in the Dock) and it starts the dashboard in the background if needed and opens it in its own window. **Stop Memobrick OS** turns the dashboard off. The dashboard's log is in `~/Library/Logs/memobrick-os.log`. Run the script again if you move the memobrick folder.
