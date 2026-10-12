@@ -139,3 +139,82 @@ Paused campaigns already stopped most of the 90-day waste: Meta "CHRISTMAS SET U
 
 - Friday 2026-10-16: weekly run (7 and 28 days). Apply any approved items, read back and record before and after. Judge Proven Videos and the PMax brand split.
 - Nov 16 to Dec 20: daily pacing check (step 6).
+
+## Approved changes applied
+
+Applied 2026-10-12, after the owner's approval in commit e64b4b5. `check.py approvals --agent ads-analyst --today 2026-10-12` printed A-2026W42-001, 002, 003 and 005. Items 004 and 006 are still pending and were not touched. Nothing else was changed.
+
+### A-2026W42-003: pause Google NonBrand Photo-to-Brick (24319578231). Applied.
+
+| | Before | After |
+|---|---|---|
+| Status | ENABLED | PAUSED |
+| Budget | $20.00/day | $20.00/day (unchanged, so it can be resumed as is) |
+
+Tool: `pause_campaign`. It reported ENABLED -> PAUSED, read from the API. I did not spend a separate list call on a second read-back (see the Adspirer quota note below). Friday's run will confirm PAUSED.
+
+### A-2026W42-002: replace the text of the 2 Holiday Gifts RSAs (24325020428). Applied.
+
+Tool: `update_ad_content`, then a read-back of each ad with `get_ad_creative` (fresh, not cached). Final URL (https://mymemobrick.com/products/2-2-boards), path1 "products", budget and bidding are unchanged. Both ads are ENABLED and back under Google review (ad strength PENDING).
+
+Ad 827188828472 (Gifts For Family & Couples, 199189087365):
+- Removed: headlines "Early Holiday Sale: 20% Off", "Use Code EARLYHOLIDAY20", "Free Design Preview"; descriptions "Save 20% with code EARLYHOLIDAY20. A Christmas gift they'll never forget." and "Order by Dec 15 for Christmas. Free design preview before you buy."
+- Added: headlines "See Your Photo As A Mosaic", "40+ Brick Colors", "Free Design Proof On Request"; descriptions "Upload your photo, see it as a mosaic right away, and pick the kit size you want." and "Order by Dec 15 for Christmas. Preview your mosaic for free before you buy."
+- Read-back: the 15 headlines and 4 descriptions exactly match the draft, and no EARLYHOLIDAY20 or "20% Off" text is left.
+
+Ad 827188857755 (Christmas Photo Gifts, 197804230541):
+- Same removals and additions. It keeps "Personalized Christmas Gift" as headline 5, as the draft says.
+- Read-back: the 15 headlines and 4 descriptions exactly match the draft, and no code or 20% text is left.
+
+### A-2026W42-005: Meta ALWAYON PROMO -v1 (120252425110090597) daily budget. Applied.
+
+| | Before | After |
+|---|---|---|
+| daily_budget | $40.00 | $20.00 |
+| Status | ACTIVE | ACTIVE (IN_PROCESS right after the edit, which is normal) |
+
+Tool: `ads_update_entity` (daily_budget 2000 cents). The response said is_draft false and status_forced_to_paused false, so the change is live, not staged. Read back with `ads_get_ad_entities`: daily_budget 20 USD. Meta's total daily budget goes from $80 to $60.
+
+### A-2026W42-001: unlink invalid-code, 20% sale, LEGO and claim assets from PMax #2 (23775628961). Partly applied: 8 of 19 unlinks.
+
+Why only 8: Adspirer showed 141 of 150 included calls used this month (the quota resets 2026-11-06). Past 150, each call costs $0.50, and the owner did not approve that cost. I spent the 9 included calls on the most harmful links (8 unlinks plus 1 read-back): every link that tells shoppers to use EARLYHOLIDAY20, and four of the five "20% Off" headlines. The tool requires `confirm_delete: true`. It only unlinks: the assets stay in the account's asset library.
+
+Unlinked (confirmed by the `list_pmax_asset_group_assets` read-back):
+
+| Asset | Text | Unlinked from |
+|---|---|---|
+| 428141051824 | Use Code EARLYHOLIDAY20 | 6703759164 |
+| 428043431642 | Save 20% with code EARLYHOLIDAY20. Turn your favorite photo into a brick mosaic kit. | 6703639373, 6703639664, 6703639691 |
+| 428231204820 | Early Holiday Sale: 20% Off | 6703639373, 6703639664, 6703639691, 6703758861 |
+
+The read-back shows no EARLYHOLIDAY20 text left in any asset group. Every group still meets Google's minimums.
+
+**Still linked. The owner can remove these by hand in about 5 minutes, or I will do them on Friday through Adspirer if the owner accepts about $5.50 in extra calls (11 x $0.50):**
+
+| Asset group | Asset | Field | Text |
+|---|---|---|---|
+| 6703759164 (Products - Retargeting) | 428231204820 | Headline | Early Holiday Sale: 20% Off |
+| 6703759164 (Products - Retargeting) | 342152803808 | Headline | Best Gift of 2026 - Shop Now |
+| 6703759164 (Products - Retargeting) | 342152803829 | Description | Upload your photo and get a custom brick art kit delivered fast. Build lasting memories. |
+| 6703758774 (Products - Demographics) | 323306358581 | Headline | Custom Lego Mosaic Portrait |
+| 6703758774 (Products - Demographics) | 323306358602 | Headline | LEGO Mosaics: Build Memories |
+| 6703758774 (Products - Demographics) | 323306358608 | Headline | Your Personalized Lego Art |
+| 6703758861 (Products - Full Audience) | 259246896350 | Headline | Custom LEGO Mosaic Kit |
+| 6703758861 (Products - Full Audience) | 259246896359 | Headline | Unique LEGO-style Gift |
+| 6703639373 (Full Asset - Full Audience) | 240187201546 | Long headline | Create Photo Art With Meaning Using Memobricks DIY Kits And Artist Reviewed Designs |
+| 6703639664 (Full Asset - Retargeting) | 240187201546 | Long headline | (same) |
+| 6703639691 (Full Asset - Demographic) | 240187201546 | Long headline | (same) |
+
+Exact clicks in Google Ads (account 672-499-4049):
+1. Go to Campaigns, open "USA - PMAX #2- Custom Photo Bricks - Sales - Maximize Conv", then click Asset groups.
+2. Open the asset group named in the table and click Edit asset group.
+3. Under Headlines, Long headlines or Descriptions, hover over the text in the table and click the X next to it. Do this for each row in that group.
+4. Click Save. Repeat for the other groups: 6703759164 (3 rows), 6703758774 (3), 6703758861 (2), and 6703639373, 6703639664, 6703639691 (1 each).
+5. Leave the paused groups 6703639661, 6703639667 and 6703639670 alone. Groups 6703639661 and 6703639667 still say EXTRA10; do not resume them as they are.
+
+## Done (approved items)
+
+- A-2026W42-003: applied. Google campaign 24319578231 ENABLED -> PAUSED.
+- A-2026W42-002: applied. RSAs 827188828472 and 827188857755 rewritten and read back. No code or 20% text left. Under Google review.
+- A-2026W42-005: applied. Meta campaign 120252425110090597 daily_budget $40 -> $20, live, read back.
+- A-2026W42-001: partly applied. 8 of 19 unlinks done (all EARLYHOLIDAY20 links, plus "20% Off" in 4 of 5 groups). 11 links are left for the owner (clicks above) because the Adspirer free call quota ran out. Do not archive this item until the rest are done.
