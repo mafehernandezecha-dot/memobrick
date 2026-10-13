@@ -1,50 +1,44 @@
 # Holiday campaign plan 2026
 
-Updated: 2026-10-11 (dry run). Owner: email-campaign-writer.
+Updated: 2026-10-13. Owner: email-campaign-writer.
 
-Dates and offers come only from `marketing/shared/offers-calendar.md`. As of today its Offers table lists only the two automated 20% codes (abandoned cart/checkout and reactivation, both flow-only), and every Fact (Christmas order-by date, gift cards, Miami claim) is unknown. So every holiday email below that depends on an offer or a deadline is **waiting on owner**.
+Dates and offers come only from `marketing/shared/offers-calendar.md`. Facts now verified by the owner: Christmas order-by date Dec 15, 2026; Miami fulfillment claim; gift cards offered; free design proof; free US shipping over $125. Active offers: EARLYHOLIDAY20 (20%, from Oct 12, end date unconfirmed) and the two automated 20% flow codes.
 
-## Read this first: campaigns already scheduled in Omnisend
+## Existing Omnisend campaigns (owner-approved, all email, Warm audiences exclude Unengaged 180d)
 
-Omnisend already holds these Q4 campaigns, created 2026-09-23/24 outside this agent system. They are `scheduled`, so they will send on their own without an approval item. Several use offers or deadlines that are **not** in `offers-calendar.md`. This plan does not duplicate them, and this agent has not changed them.
-
-| Send (ET) | Omnisend name | Campaign ID | Audience | Offer or deadline it implies | In offers-calendar? |
+| Send (ET) | Name | ID | Audience | Offer it implies | Note |
 |---|---|---|---|---|---|
-| Oct 13, 11:00 | Q4, Real Customer Builds (Warm) | 6ab3ae43a46e779522c64464 | Warm | None in name. Needs approved-stories permission for customer builds | Permission file does not exist |
-| Oct 14, 11:00 | Q4, Re-engagement 10% (Unengaged 180d) | 6ab3ae634dae2e28118748a1 | Unengaged 180d | 10% | No |
-| Oct 20, 11:00 | Q4, Early Bird 15% (Warm + Past Buyers) | 6ab3ae8ca46e779522c6446f | Warm + Past Buyers | 15% | No |
-| Oct 27, 11:00 | Q4, Early Bird LAST CALL 15% | 6ab5038abbe86b0610261a72 | Warm + Past Buyers | 15% | No |
-| Nov 3, 11:00 | Q4, Gift Ideas By Person (Warm) | 6ab3aee64dae2e28118748af | Warm | None in name | n/a |
-| Nov 19, 11:00 | Q4, VIP Early Access 20% (Past Buyers) | 6ab3af384dae2e28118748b8 | Past Buyers | 20% | No |
-| Nov 27, 09:00 | Q4, Black Friday 20% (Warm) | 6ab3af11a46e779522c64477 | Warm | 20% | No |
-| Nov 30, 10:00 | Q4, Cyber Monday LAST DAY 20% | 6ab50397de9e4985592a5cb0 | Warm | 20% | No |
-| Dec 3, 11:00 | Q4, 12 Days Left (Warm) | 6ab4c08e15171123c190f03b | Warm | Countdown implies a Dec 15 order-by date | No (date unknown) |
-| Dec 8, 11:00 | Q4, One Week Left | 6ab4c0b6b1163aea2da5e15b | Warm + Past Buyers | Countdown | No |
-| Dec 11, 11:00 | Q4, 4 Days Left | 6ab4c0dddbf3bedf3768c51b | Warm | Countdown | No |
-| Dec 14, 12:00 | Q4, Last Call | 6ab4c10215171123c190f03f | Warm + Past Buyers | Countdown | No |
+| Oct 13, 11:00 | Q4 Real Customer Builds | 6ab3ae43a46e779522c64464 | Warm | none | Has an unverified "Thousands of satisfied customers" banner; sends before any approval can land |
+| Oct 14, 11:00 | Q4 Re-engagement 10% | 6ab3ae634dae2e28118748a1 | Unengaged 180d | 10% personal code | |
+| Oct 20, 11:00 | Q4 Early Bird 15% | 6ab3ae8ca46e779522c6446f | Warm + Past Buyers | 15%, "this week only" | Conflicts with live 20% EARLYHOLIDAY20. Improvement proposed: `improve-oct20-early-bird.md` |
+| Oct 27, 11:00 | Q4 Early Bird LAST CALL 15% | 6ab5038abbe86b0610261a72 | Warm + Past Buyers | 15%, "ends tomorrow" | Same conflict; follow the Oct 20 decision |
+| Nov 3, 11:00 | Q4 Gift Ideas By Person | 6ab3aee64dae2e28118748af | Warm | none | Covers the gift guide idea |
+| Nov 19, 11:00 | Q4 VIP Early Access 20% | 6ab3af384dae2e28118748b8 | Past Buyers | 20% | |
+| Nov 27, 09:00 | Q4 Black Friday 20% | 6ab3af11a46e779522c64477 | Warm | 20% | |
+| Nov 30, 10:00 | Q4 Cyber Monday LAST DAY 20% | 6ab50397de9e4985592a5cb0 | Warm | 20% | |
+| Dec 3, 11:00 | Q4 12 Days Left | 6ab4c08e15171123c190f03b | Warm | countdown to Dec 15 | Dec 15 is now verified |
+| Dec 8, 11:00 | Q4 One Week Left | 6ab4c0b6b1163aea2da5e15b | Warm + Past Buyers | countdown | |
+| Dec 11, 11:00 | Q4 4 Days Left | 6ab4c0dddbf3bedf3768c51b | Warm | countdown | |
+| Dec 14, 12:00 | Q4 Last Call | 6ab4c10215171123c190f03f | Warm + Past Buyers | countdown | Day before the order-by date |
 
-Owner decision needed (see run report): either add these offers and the order-by date to `offers-calendar.md` so the plan below can adopt them, or pause the scheduled campaigns in Omnisend. Until then this agent treats the offers and deadlines as unknown.
+Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early Holiday Sale HOLIDAY20, Shop Early & Save 20%, Your 15% Bundle Deal, and a cancelled SMS.
 
-## Plan
+## Gaps this agent fills (drafted nearer the date)
 
-Default audience: Warm Audience segment (6ab3a047d52351bd34134eb5). Default exclusions: Unengaged 180d (6ab3a050426f40d1edc2e691), recent purchasers, unsubscribed. No 14-day purchaser segment exists; the closest is "Ordered in last 21 days" (6ab4c0626a51901673723534).
-
-| # | Email | Target date | Offer | Status | Notes |
-|---|---|---|---|---|---|
-| 1 | Gift guide: personalized photo gifts by person and occasion | Mid November (Tue Nov 17 suggested) | None needed | Ready to draft | Already overlaps "Gift Ideas By Person" (Nov 3) and the Oct 6 gift guide launch. Draft as a no-offer guide unless the owner drops the Nov 3 send. Link to SEO gift guide hub once it is published |
-| 2 | Black Friday | Fri Nov 27 | unknown | **Waiting on owner** | Needs an active offer in offers-calendar. Omnisend already has a 20% BF send scheduled that is not approved there |
-| 3 | Cyber Monday | Mon Nov 30 | unknown | **Waiting on owner** | Same as BF. Omnisend already has a 20% CM send scheduled |
-| 4 | Order-by reminder 1 (about two weeks out) | Christmas order-by date minus 12 to 14 days | None needed | **Waiting on owner** | Christmas order-by date is unknown. Do not state a date |
-| 5 | Order-by reminder 2 (one week out) | Order-by date minus 7 days | None needed | **Waiting on owner** | Same |
-| 6 | Order-by reminder 3 (a few days out) | Order-by date minus 3 to 4 days | None needed | **Waiting on owner** | Same |
-| 7 | Last chance | On the order-by date | None needed | **Waiting on owner** | Same |
-| 8 | Gift card email | After the order-by date | n/a | **Waiting on owner** | Only if gift cards are offered. Gift cards: unknown |
+| # | Email | Target date | Status | Notes |
+|---|---|---|---|---|
+| 1 | Photo tips, no offer | Thu Oct 22 | Drafted, proposal pending (A-2026W41-004 replaced by P-20261012-1) | Fourth send in 9 days to Warm if the Oct 20 and 27 sends stay; owner may prefer to swap it for the Oct 20 slot |
+| 2 | Order-by day last chance | Tue Dec 15 | Not drafted yet (draft by Dec 8) | Existing countdown ends Dec 14; the order-by date itself has no send. Use only Dec 15 and verified shipping facts |
+| 3 | Gift card email | Wed Dec 16 | Not drafted yet (draft by Dec 9) | Gift cards are offered (Facts). Instant gift for people past the order-by date. Check the gift card product and delivery method in Shopify before drafting |
+| 4 | Mid-November gift guide | n/a | Covered by the Nov 3 Gift Ideas send. Skip unless the owner drops it | |
+| 5 | EARLYHOLIDAY20 announcement | n/a | Covered by the Oct 20 improvement if approved | No separate send: it would stack on Oct 20 and 22 |
 
 ## Rules for every holiday email
 
 - No discount stacking with the automated 20% recovery or reactivation codes unless an approved offer says so.
-- No delivery promise, no "ships from Miami", no order-by date until the Facts table has them verified.
-- No customer photos or quotes until `marketing/conversion/reviews-ugc/approved-stories.md` records permission (or the content is a public Loox review).
+- State no EARLYHOLIDAY20 end date until the owner adds one.
+- Delivery promises only as in the Facts table (order by Dec 15 for Christmas).
+- No customer photos or quotes until `approved-stories.md` records permission (or a public Loox review).
 - One call to action. UTM: `utm_source=omnisend&utm_medium=email&utm_campaign=<yyyy-mm-slug>`.
 - Success measure: purchases per delivered email and revenue per recipient.
 
