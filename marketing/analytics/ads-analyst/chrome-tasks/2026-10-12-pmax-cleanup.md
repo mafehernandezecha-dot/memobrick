@@ -9,7 +9,7 @@ You are helping me in my Google Ads account 672-499-4049 (Memobrick). I approved
 
 Campaign: "USA - PMAX #2- Custom Photo Bricks - Sales - Maximize Conv". Go to Campaigns, open it, then Asset groups.
 
-Remove ONLY these texts from these asset groups (open the group, click Edit asset group, hover the text, click the X, then Save). Do not delete anything else, do not add anything, do not change budgets, bids, audiences or any other setting.
+Remove ONLY these texts from these asset groups (open the group, click Edit asset group, clear that text field completely, then Save; Google Ads drops empty fields). Do not delete anything else, do not add anything, do not change budgets, bids, audiences or any other setting.
 
 1. Group "Products - Retargeting" (6703759164):
    - Headline: Early Holiday Sale: 20% Off
