@@ -123,14 +123,21 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
     const bySize = new Map(cat.sizes.map((s) => [String(s.id), s]));
     SIZES.forEach((size) => {
       const rec = bySize.get(String(size.id));
-      if (!rec || !rec.variants) return;
+      // in a real catalog but missing from it (product renamed, unpublished
+      // or not found by the Liquid lookup): checkout can't find a variant for
+      // it, so stop offering it at a stale hard-coded price — dropUnbuyableSizes
+      // below removes it. An empty catalog leaves every static size alone.
+      if (!rec || !rec.variants || !rec.variants.length){ if (cat.sizes.length) size.v = ""; return; }
       const kit = rec.variants.find((v) => !v.service && v.available) || rec.variants.find((v) => !v.service);
       const build = rec.variants.find((v) => v.service && v.available) || rec.variants.find((v) => v.service);
       if (kit && kit.price != null){
         size.price = Math.round((typeof kit.price === "number" ? kit.price : parseFloat(kit.price))) / 100;
-        size.was = (kit.compareAtPrice != null)
+        // a compare-at price that isn't above the price is no saving: showing it
+        // printed "Save 0%" (or a negative saving) next to the price
+        const cap = (kit.compareAtPrice != null)
           ? Math.round((typeof kit.compareAtPrice === "number" ? kit.compareAtPrice : parseFloat(kit.compareAtPrice))) / 100
-          : undefined;
+          : 0;
+        size.was = cap > size.price ? cap : undefined;
       }
       if (build && build.price != null){
         size.build = Math.round((typeof build.price === "number" ? build.price : parseFloat(build.price))) / 100;
@@ -140,7 +147,7 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
       // don't exist and render as broken images. The live product's own
       // featured_image is guaranteed to exist (it's how the product shows
       // up in Shopify at all), so it wins whenever the catalog has it.
-      if (rec.image) size.img = rec.image;
+      if (rec.image){ size.imgStatic = size.img; size.img = rec.image; }
       // variant ids and handle come from the live store too, so a size can
       // be added (or its product re-created) in Shopify without editing JS
       if (rec.handle) size.handle = rec.handle;
@@ -260,7 +267,27 @@ const dims = () => ({ gw: S.size.gw, gh: S.size.gh, bx: S.size.bx, by: S.size.by
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 const fmt = (n) => n.toLocaleString("en-US");
-const money = (n) => "$" + (Number.isInteger(n) ? n : n.toFixed(2));
+/* PRICES IN THE SHOPPER'S CURRENCY. With Shopify Markets a visitor abroad
+   gets prices in their own currency (an Israeli visitor sees shekels),
+   but every price here used to be printed with a hard-coded "$", so a
+   ₪129 kit showed as "$129", about 3.7x too much. The catalog now says
+   which currency its prices are in, and every price is labelled with it. */
+const MB_CURRENCY = (() => {
+  try {
+    const el = document.querySelector("#memobrick-catalog");
+    const c = el && JSON.parse(el.textContent).currency;
+    if (c) return String(c);
+  } catch (e){}
+  try { if (window.Shopify && Shopify.currency && Shopify.currency.active) return String(Shopify.currency.active); } catch (e){}
+  return "USD";
+})();
+const money = (n) => {
+  const whole = Math.abs(n - Math.round(n)) < 0.005;
+  try {
+    return new Intl.NumberFormat("en-US", { style: "currency", currency: MB_CURRENCY,
+      minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: whole ? 0 : 2 }).format(whole ? Math.round(n) : n);
+  } catch (e){ return "$" + (whole ? Math.round(n) : n.toFixed(2)); }
+};
 const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
 
 function hex2rgb(h){ return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)]; }
@@ -291,7 +318,7 @@ function rgb2lab(r,g,b){
 window.DEBUG_MEMOBRICK_PROCESSING = false;
 
 const AUTO_START = { bri: 20, con: -10, sat: 41, temp: 0, detail: 150,
-                     dither: 74, shadows: -100, warm: 35, auto: true };
+                     dither: 74, shadows: 0, warm: 35, auto: true };
 
 const CACHE = {};
 function pal(){
@@ -926,6 +953,84 @@ function drawSource(ctx, W, H){
 /* MediaPipe face boxes are stored normalised to the whole photo; this maps
    them onto the board grid through the same crop maths drawSource() uses,
    dropping any face that's been cropped out of view. */
+/* FACIAL FEATURES. The eyes, brows and mouth are what make a mosaic look
+   like the person, and at 15-25 bricks across a face they are only a few
+   bricks each: the general smoothing, the skin rules and dithering tend to
+   wash them into the skin. Using the detector's landmarks (eyes, mouth),
+   mapped onto the board through the current crop, this gently deepens
+   the darks and adds contrast around the eyes and brows and on the lips,
+   and returns a mask of those bricks so dithering leaves them solid. Only
+   inside small regions around each landmark; never on the rest of the
+   face, so skin stays even. */
+function faceFeaturesInGrid(gw, gh){
+  if (!S.mlFaces || S.mlFacesImg !== S.imgId || !S.img) return null;
+  const img = S.img, iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  if (!iw || !ih) return null;
+  const sc = Math.max(gw/iw, gh/ih) * S.zoom;
+  const dw = iw*sc, dh = ih*sc;
+  const ox = (gw-dw)/2 + S.ox*Math.abs(dw - gw)/2, oy = (gh-dh)/2 + S.oy*Math.abs(dh - gh)/2;
+  const out = [];
+  for (const f of S.mlFaces){
+    if (!f.kp) continue;
+    const P = (q) => ({ x: ox + q.x*dw, y: oy + q.y*dh });
+    const fw = (f.x1 - f.x0)*dw;
+    if (fw < 9) continue;                         // too small for features to be drawn at all
+    const eyes = [P(f.kp[0]), P(f.kp[1])], mouth = P(f.kp[3]);
+    // landmarks from the tilted detector passes are already mapped back to
+    // the photo, so they're valid; only a face lying on its side is left
+    // out, where "the brow is above the eye" no longer holds
+    if (Math.abs(eyes[1].y - eyes[0].y) > Math.abs(eyes[1].x - eyes[0].x)) continue;
+    if (eyes.every((e) => e.x < 0 || e.y < 0 || e.x >= gw || e.y >= gh)) continue;
+    out.push({ fw, eyes, mouth });
+  }
+  return out.length ? out : null;
+}
+function enhanceFaceFeatures(buf, gw, gh, feats){
+  const mask = new Uint8Array(gw*gh);
+  const lum = (o) => 0.299*buf[o] + 0.587*buf[o+1] + 0.114*buf[o+2];
+  // one elliptical region: local contrast on luminance (chroma kept), darks
+  // pushed a little deeper, strongest in the middle, fading at the edge
+  const region = (cx, cy, rx, ry, k, deepen, satBoost) => {
+    const x0 = Math.max(0, Math.floor(cx - rx)), x1 = Math.min(gw - 1, Math.ceil(cx + rx));
+    const y0 = Math.max(0, Math.floor(cy - ry)), y1 = Math.min(gh - 1, Math.ceil(cy + ry));
+    if (x1 < x0 || y1 < y0) return;
+    let sum = 0, n = 0;
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++){ sum += lum((y*gw + x)*3); n++; }
+    const m = sum / Math.max(1, n);
+    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++){
+      const dx = (x + 0.5 - cx)/rx, dy = (y + 0.5 - cy)/ry, d2 = dx*dx + dy*dy;
+      if (d2 > 1) continue;
+      const w = 1 - d2*0.6;                       // full strength in the middle
+      const o = (y*gw + x)*3, L = lum(o);
+      // the dark side (pupils, lashes, brows, the lip line) gets the full
+      // contrast; the light side only a little, or skin beside the eye turns
+      // into stray pale bricks
+      const kk = L < m ? k : 1 + (k - 1)*0.25;
+      let L2 = m + (L - m)*(1 + (kk - 1)*w);
+      if (L < m) L2 -= (m - L)*deepen*w;
+      L2 = clamp(L2, 0, 255);
+      const t = L > 0.5 ? L2 / L : 1, sb = 1 + (satBoost - 1)*w;
+      for (let c = 0; c < 3; c++){
+        const v = buf[o+c]*t;
+        buf[o+c] = clamp(L2 + (v - L2)*sb, 0, 255);
+      }
+      mask[y*gw + x] = 1;
+    }
+  };
+  const FK = window.MB_FEAT_K || 1, sk = (k) => 1 + (k - 1)*FK;
+  for (const f of feats){
+    const ex = Math.abs(f.eyes[1].x - f.eyes[0].x) || f.fw*0.4;
+    for (const e of f.eyes){
+      region(e.x, e.y, ex*0.34, ex*0.24, sk(1.45), 0.25*FK, 1);                 // eye: iris, lash line, white
+      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, sk(1.30), 0.20*FK, 1);      // brow just above it
+    }
+    // lips: a narrow, gentle region — a wider or stronger one also deepened
+    // the soft shadow under the lower lip into a dark patch
+    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, sk(1.15), 0.05*FK, 1.12);
+  }
+  return mask;
+}
+
 function mlFacesInGrid(gw, gh){
   if (!S.mlFaces || S.mlFacesImg !== S.imgId || !S.img) return null;
   const img = S.img;
@@ -976,6 +1081,313 @@ function humanSkinInGrid(gw, gh){
   }
   return out;
 }
+
+/* =====================================================================
+   SITE-WIDE PARTS — run on every page, before the Creator.
+   memobrick.js loads on every page (layout/theme.liquid), but only the
+   homepage and /pages/editor contain the Creator. The Creator code below
+   assumes its canvases exist, and used to throw on the first line of it
+   on product, cart, collection and blog pages — taking the phone menu,
+   the cart drawer and the product-page reviews down with it. These parts
+   need nothing from the Creator, so they run first; then pages without
+   the Creator stop cleanly.
+   ===================================================================== */
+/* keep every timing mention in step with the single constant */
+document.querySelectorAll("[data-prodtime]").forEach((el) => { el.textContent = PRODUCTION_TIME_TEXT; });
+
+const REVIEWS = [{"n":"Richard J.","r":5,"d":"August 14, 2026","t":"Always such a great and unique gift to give to friends and family","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg"},{"n":"Donna K.","r":5,"d":"August 9, 2026","t":"Excellent","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/8/9/o3XA6i-fF_mid.jpg"},{"n":"Steve B.","r":5,"d":"July 16, 2026","t":"My son loves it!!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/7/16/ik1scdnFM_mid.jpg"},{"n":"Tim R.","r":5,"d":"July 8, 2026","t":"Another spectacular job turning a photo into art. She's already asking when we're going to do another one.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/7/8/_MtiAWOcs_mid.jpg"},{"n":"Nicole N.","r":5,"d":"June 18, 2026","t":"Absolutely love my memobrick order. Will definitely recommend to family and friends.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/6/18/30vbX20BQ_mid.jpg"},{"n":"Brian B.","r":5,"d":"June 4, 2026","t":"great product, great gift ! my wife loved putting the mosaic together, and the instruction sheet and whole kit are great quality ! we are going to order again !","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/6/5/vnVn9uYJ5_mid.jpg"},{"n":"Ellen S.","r":5,"d":"May 28, 2026","t":"This was so much fun to do with my boyfriend! We loved doing it and can't wait to hang it in our house. It came out so good!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg"},{"n":"Lauren D.","r":5,"d":"May 28, 2026","t":"This was so much fun to do! I just love how it turned out! I'm just waiting until I can get a shadow box for it, and then I'll hang it on my wall 😁","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/31/RHKvYxUPr_mid.jpg"},{"n":"Mary S.","r":3,"d":"May 24, 2026","t":"It looks blurry to me but it is ok","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/5/24/QsvJ3JsVf_mid.jpg"},{"n":"Giselle D.","r":4,"d":"April 25, 2026","t":"A little hard to snap in sometimes and see the letters through the block but it came out great","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/4/26/NMq2OMbuu_mid.jpg"},{"n":"Melanie B.","r":5,"d":"April 9, 2026","t":"Very cool picture and everyone loves it!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/4/19/J_v2xITlk_mid.jpg"},{"n":"Jennifer H.","r":5,"d":"March 17, 2026","t":"Was a fun and a little bit challenging project to do. Can't wait to do another one","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/18/DePzXpS4A_mid.jpg"},{"n":"Jennifer M.","r":5,"d":"March 7, 2026","t":"Love, love, love!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg"},{"n":"Lucy W.","r":5,"d":"March 6, 2026","t":"Loved putting it together","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/3/11/2kZnl5hIp_mid.jpg"},{"n":"Donnie M.","r":4,"d":"February 27, 2026","t":"I really enjoyed hose it turned out and the only thing that I didn't like too well was the word we're not as legible as I thought they would be.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/3/2/FrAR14A8Ss_mid.jpg"},{"n":"Donnie M.","r":5,"d":"February 25, 2026","t":"I just love the way this turned out. It won't be my last purchase.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2026/2/26/-jmr6H1Gp_mid.jpg"},{"n":"Marsha W.","r":5,"d":"February 24, 2026","t":"This was fun!!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/24/XV14cLgqn_mid.jpg"},{"n":"Tim R.","r":5,"d":"February 23, 2026","t":"Another beautiful picture. Thank you again","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/27/9TvgauJIm_mid.jpg"},{"n":"Erica C.","r":5,"d":"February 21, 2026","t":"Love it ! Came out soo good ! Very happy with the purchase !","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/21/Zm2Bhe1Jq_mid.jpg"},{"n":"Halley D.","r":5,"d":"February 13, 2026","t":"Turned out better than I ever expected! Definitely will order again :)","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/2/14/foeLiecYb_mid.jpg"},{"n":"Allison H.","r":5,"d":"February 11, 2026","t":"The frame worked out great.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2026/2/12/eNaxDI0Nk_mid.jpg"},{"n":"Kelsey M.","r":5,"d":"February 8, 2026","t":"I love these memo bricks! I ordered a smaller size, but when they emailed the mockup they showed me the difference of what it would look like compared to the bigger size. I was offered to upgrade to the bigger size, which I did. I am so glad I did! These were fun to put together and see how the final product came out. It is interesting to see how they use different colors to create shadows. I had one picture that was mostly black and white in a dark setting with a lot of shadows. A light purple color was used to help show those. Definitely recommend!","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/9/7xFZPGgJq_mid.jpg"},{"n":"Kris C.","r":5,"d":"February 3, 2026","t":"It was difficult to get the board to stick together so I had to get my own joiner pieces so it stays together better but I really loved making it and watching it come together!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg"},{"n":"Aaron M.","r":5,"d":"January 25, 2026","t":"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form.","p":"Custom Bricked Mosaic Portrait 30x20\"","img":"https://images.loox.io/uploads/2026/1/25/GwlS7rLfA_mid.jpg"},{"n":"Nadeana T.","r":5,"d":"January 24, 2026","t":"Absolutely incredible! Pattern is simple to follow and portrait turned out fantastic!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/1/24/wj6s-qpgI_mid.jpg"},{"n":"Kellie G.","r":5,"d":"January 14, 2026","t":"My son-in-law who builds and collects all the adult Star Wars Lego kits love this. Said it was easily the hardest build he has done.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/14/V-UHmIaiB_mid.jpg"},{"n":"Teri M.","r":5,"d":"January 9, 2026","t":"It was great","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/10/S2qR_raR0_mid.jpg"},{"n":"Elizabeth P.","r":5,"d":"January 3, 2026","t":"I got this for my son for Christmas. He thought it was the coolest thing ever. He's been putting it together since he got it and is almost done. He really likes it.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/1/3/sdpzAIsdg_mid.jpg"},{"n":"Jacob P.","r":5,"d":"December 31, 2025","t":"I loved building it and my girlfriend loved the finished project. It was her favorite picture and I was so excited to bring it to life in this unique way","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/1/1/UcXoh1baeq_mid.jpg"},{"n":"Emily S.","r":5,"d":"December 29, 2025","t":"Love this!","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/12/30/c_KH7WMJEG_mid.jpg"},{"n":"John R.","r":4,"d":"November 28, 2025","t":"The frame works well enough. It could have been a little simpler to assemble. Also I suggest the it be made with a back that the picture can lock into.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/11/28/GM4kRymqx_mid.jpg"},{"n":"Jennifer B.","r":5,"d":"November 11, 2025","t":"Loved it! Will be ordering again soon!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/11/11/u5E39DACF_mid.jpg"},{"n":"John R.","r":5,"d":"November 2, 2025","t":"It was a fun relaxing task. My wife and I are thrilled to have our wedding photo in such an interesting style.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2025/11/3/yWOhEH0xx-_mid.jpg"},{"n":"Michael F.","r":5,"d":"October 27, 2025","t":"Perfect and unique gift for grandson. Kept him off electronics.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/10/27/BEA1z2h7l_mid.jpg"},{"n":"Kimberly W.","r":5,"d":"October 17, 2025","t":"I gave this to my son for his birthday. He loved putting it together and the frame was super easy to install.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2025/10/17/fkwmMBB3R_mid.jpg"},{"n":"Candice L.","r":5,"d":"October 7, 2025","t":"I split the photo in half so I could get 2 of the 60x20 so I could fill my wall more and its turned out AMAZING!","p":"Custom Bricked Mosaic Portrait 60x20\"","img":"https://images.loox.io/uploads/2025/10/8/gsJn-GTlj_mid.jpg"},{"n":"Athena P.","r":5,"d":"October 7, 2025","t":"I really enjoyed doing this one of my girls and I. I had issues with the tool not working for me. I wish that the frames weren't so expensive.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/10/7/0bJe8d7-A_mid.jpg"},{"n":"Athena P.","r":4,"d":"September 30, 2025","t":"I love this picture. However I wish that it wasn't so close up. I wish that it was able to capture more of her and her beauty.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/9/30/CoZGC-fD9_mid.jpg"},{"n":"Carol J.","r":5,"d":"September 30, 2025","t":"I love it","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2025/9/30/-uiTZ8ev3_mid.jpg"},{"n":"Norma G.","r":5,"d":"September 12, 2025","t":"We LOVE the way the portrait looks! I have shown it off to all of my friends and family. It is a great memory that will be kept for a long time. It was very easy to put together and the result is fantastic! I highly recommend this to everyone.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/9/12/Q14hvAZ8s_mid.jpg"}];
+
+/* Every review here was written by a real customer and is reproduced verbatim
+   from memobrick.com, photo included. The store has 747 reviews in total;
+   these are the ones published publicly on the site. The rest live in Loox,
+   so the section links out rather than inventing any.  */
+/* Shared between the two review-rendering blocks below: these are the
+   specific reviews used in the small "transformations" teaser near the
+   top of the page. The full rail (paint(), just below) excludes them so
+   a visitor doesn't scroll down and see the exact same reviews twice —
+   it starts with whatever comes next instead. */
+const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
+
+(function realReviews(){
+  const track = document.querySelector("#revTrack");
+  if (!track || typeof REVIEWS === "undefined") return;
+  // with the teaser on the page, the rail skips its picks so nobody sees the
+  // same review twice; without it, the rail leads with those picks instead
+  const others = REVIEWS.filter((r, i) => !TRANSFORM_PICKS.includes(i));
+  const rest = document.querySelector("#transformTrack") ? others
+    : TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean).concat(others);
+  let shown = 12;
+
+  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
+
+  function paint(){
+    track.innerHTML = rest.slice(0, shown).map((r) =>
+      '<figure class="rev">' +
+        '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
+        'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
+        '<figcaption>' +
+          '<span class="stars">' + stars(r.r) + "</span>" +
+          "<p>" + esc(r.t) + "</p>" +
+          "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
+          '<span class="rev-prod">' + esc(r.p) + "</span>" +
+        "</figcaption></figure>").join("");
+    const more = document.querySelector("#revMore");
+    if (more) more.hidden = shown >= rest.length;
+  }
+
+  const more = document.querySelector("#revMore");
+  if (more) more.addEventListener("click", () => { shown = rest.length; paint(); });
+  paint();
+})();
+
+/* Compact "transformations" teaser near the top of the homepage — the same
+   real review data and escaping as the full rail above, just 6 specific,
+   strongly positive examples rather than the first 6 by date, so the
+   earliest thing a visitor sees is representative of what people love
+   about it. Nothing here is invented: same REVIEWS array, same esc(). */
+(function transformTeaser(){
+  const track = document.querySelector("#transformTrack");
+  if (!track || typeof REVIEWS === "undefined") return;
+  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
+  const picks = TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean);
+  track.innerHTML = picks.map((r) =>
+    '<figure class="rev">' +
+      '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
+      'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
+      '<figcaption>' +
+        '<span class="stars">' + stars(r.r) + "</span>" +
+        "<p>" + esc(r.t) + "</p>" +
+        "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
+        '<span class="rev-prod">' + esc(r.p) + "</span>" +
+      "</figcaption></figure>").join("");
+})();
+
+/* phones: keep a create button on screen once the hero's own button has
+   scrolled away; step aside again near the final button and the footer so
+   it never covers them. Only on the homepage, where #mobCta exists. */
+(function stickyCreate(){
+  const cta = document.querySelector("#mobCta");
+  const hero = document.querySelector(".hero-cta");
+  if (!cta || !hero || !("IntersectionObserver" in window)) return;
+  const ends = [document.querySelector("#faq .btn-red"), document.querySelector("footer")].filter(Boolean);
+  let pastHero = false;
+  const endVisible = new Set();
+  const sync = () => { cta.hidden = !pastHero || endVisible.size > 0; };
+  new IntersectionObserver(([e]) => {
+    pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; sync();
+  }).observe(hero);
+  const io = new IntersectionObserver((list) => {
+    list.forEach((e) => { if (e.isIntersecting) endVisible.add(e.target); else endVisible.delete(e.target); });
+    sync();
+  });
+  ends.forEach((el) => io.observe(el));
+})();
+
+/* the reviews rail */
+const revTrack = document.querySelector("#revTrack");
+if (revTrack){
+  const step = () => Math.max(280, revTrack.clientWidth * 0.8);
+  const sync = () => {
+    const prev = document.querySelector("#revPrev"), next = document.querySelector("#revNext");
+    if (!prev || !next) return;
+    prev.disabled = revTrack.scrollLeft < 8;
+    next.disabled = revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 8;
+  };
+  document.querySelector("#revPrev").addEventListener("click", () =>
+    revTrack.scrollBy({ left: -step(), behavior: "smooth" }));
+  document.querySelector("#revNext").addEventListener("click", () =>
+    revTrack.scrollBy({ left: step(), behavior: "smooth" }));
+  revTrack.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", sync);
+  sync();
+}
+
+/* ---------------- mobile navigation ---------------- */
+const burger = $("#burger"), navLinks = $("#navLinks");
+if (burger && navLinks){
+  burger.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open);
+  });
+  navLinks.addEventListener("click", (e) => {
+    if (e.target.closest("a,button")){
+      navLinks.classList.remove("open");
+      burger.setAttribute("aria-expanded", false);
+    }
+  });
+}
+
+/* =====================================================================
+   CART DROPDOWN — click the cart icon to open a live-updating panel
+   instead of leaving the page. Falls back to the real /cart page via
+   the icon's href if JS fails for any reason.
+   ===================================================================== */
+(function cartDrawerModule(){
+  const btn = document.querySelector("#cartIconBtn");
+  const drawer = document.querySelector("#cartDrawer");
+  const itemsEl = document.querySelector("#cartDrawerItems");
+  const footEl = document.querySelector("#cartDrawerFoot");
+  const totalEl = document.querySelector("#cartDrawerTotal");
+  const countEl = document.querySelector("#cartCount");
+  const closeBtn = document.querySelector("#cartDrawerClose");
+  if (!btn || !drawer) return;
+
+  const fmt = (cents) => money(cents / 100);
+
+  function renderCart(cart){
+    if (!cart.items.length){
+      itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+      footEl.hidden = true;
+    } else {
+      itemsEl.innerHTML = "";
+      cart.items.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "cart-drawer-item";
+        if (item.image){
+          const img = document.createElement("img");
+          img.src = item.image + "&width=120";
+          img.alt = "";
+          img.loading = "lazy";
+          row.appendChild(img);
+        }
+        const info = document.createElement("div");
+        info.className = "cart-drawer-item-info";
+        const title = document.createElement("b");
+        title.textContent = item.product_title;
+        info.appendChild(title);
+        if (item.variant_title && item.variant_title !== "Default Title"){
+          const variant = document.createElement("span");
+          variant.textContent = item.variant_title;
+          info.appendChild(variant);
+        }
+        const row2 = document.createElement("div");
+        row2.className = "cart-drawer-item-row";
+        const qty = document.createElement("span");
+        qty.textContent = "Qty " + item.quantity + " · " + fmt(item.final_line_price);
+        const rm = document.createElement("button");
+        rm.className = "cart-drawer-remove"; rm.type = "button"; rm.textContent = "Remove";
+        rm.dataset.key = item.key;
+        row2.appendChild(qty); row2.appendChild(rm);
+        info.appendChild(row2);
+        row.appendChild(info);
+        itemsEl.appendChild(row);
+      });
+      footEl.hidden = false;
+      totalEl.textContent = fmt(cart.total_price);
+    }
+    // free-shipping progress bar — threshold comes from the theme setting
+    // (window.MB_FREE_SHIPPING_THRESHOLD, set in layout/theme.liquid), not
+    // hardcoded, so it stays correct if the merchant ever changes it
+    const shipBar = document.querySelector("#cartShipBar");
+    if (shipBar){
+      // the setting is in the store's dollars; a shopper paying in another
+      // currency (Shopify Markets) has a cart total in that currency, so the
+      // threshold is converted with Shopify's own rate before comparing
+      let rate = 1;
+      try { rate = parseFloat(window.Shopify && Shopify.currency && Shopify.currency.rate) || 1; } catch (e){}
+      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100 * rate; // dollars -> cents in the cart's currency
+      // free shipping is for United States orders only: shoppers Shopify
+      // places in another country don't see the bar at all
+      let country = "";
+      try { country = String((window.Shopify && Shopify.country) || "").toUpperCase(); } catch (e){}
+      const usShopper = country ? country === "US" : String(cart.currency || "USD").toUpperCase() === "USD";
+      if (!threshold || !cart.items.length || !usShopper){
+        shipBar.hidden = true;
+      } else {
+        shipBar.hidden = false;
+        const msg = document.querySelector("#cartShipMsg");
+        const fill = document.querySelector("#cartShipFill");
+        const pct = Math.max(0, Math.min(100, (cart.total_price / threshold) * 100));
+        if (fill) fill.style.width = pct + "%";
+        if (msg){
+          if (cart.total_price >= threshold){
+            msg.textContent = "You've unlocked free shipping! 🎉";
+          } else {
+            const remaining = fmt(threshold - cart.total_price);
+            msg.textContent = "Add " + remaining + " more for free shipping";
+          }
+        }
+      }
+    }
+  }
+
+  function updateBadge(count){
+    if (!countEl) return;
+    countEl.textContent = count;
+    countEl.hidden = count === 0;
+  }
+
+  async function loadCart(){
+    itemsEl.innerHTML = '<p class="cart-empty">Loading…</p>';
+    try {
+      const res = await fetch("/cart.js");
+      const cart = await res.json();
+      renderCart(cart);
+      updateBadge(cart.item_count);
+    } catch (e){
+      itemsEl.innerHTML = '<p class="cart-empty">Couldn' + "'" + 't load your cart. <a href="' + btn.getAttribute("href") + '">Open cart page</a></p>';
+    }
+  }
+
+  async function removeItem(key){
+    const row = itemsEl.querySelector('[data-key="' + key + '"]');
+    if (row) row.closest(".cart-drawer-item").style.opacity = ".4";
+    try {
+      const res = await fetch("/cart/change.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: key, quantity: 0 })
+      });
+      const cart = await res.json();
+      renderCart(cart);
+      updateBadge(cart.item_count);
+    } catch (e){ loadCart(); }
+  }
+
+  function openDrawer(){
+    drawer.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    loadCart();
+    document.addEventListener("click", onOutsideClick, true);
+    document.addEventListener("keydown", onEscape);
+  }
+  window.MB_openCartDrawer = openDrawer;
+  function closeDrawer(){
+    drawer.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    document.removeEventListener("click", onOutsideClick, true);
+    document.removeEventListener("keydown", onEscape);
+  }
+  function onOutsideClick(e){
+    if (!drawer.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDrawer();
+  }
+  function onEscape(e){ if (e.key === "Escape") closeDrawer(); }
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    drawer.hidden ? openDrawer() : closeDrawer();
+  });
+  closeBtn.addEventListener("click", closeDrawer);
+  itemsEl.addEventListener("click", (e) => {
+    const rm = e.target.closest("[data-key]");
+    if (rm) removeItem(rm.dataset.key);
+  });
+
+  // any add-to-cart flow elsewhere on the site (editor checkout, designer
+  // service, free proof) can refresh the badge without a full reload
+  document.addEventListener("memobrick:added", () => {
+    fetch("/cart.js").then((r) => r.json()).then((cart) => updateBadge(cart.item_count)).catch(() => {});
+  });
+})();
+
+
+/* no Creator on this page (product, cart, blog…): the site-wide parts above
+   are all it needs */
+if (!document.getElementById("mosaic")) return;
 
 /* ---------------------------- render ---------------------------- */
 const mos = $("#mosaic"), mctx = mos.getContext("2d");
@@ -1523,6 +1935,60 @@ function sharpen(buf, gw, gh, amount, skinMask){
    every photo — a photo that's already warm gets little to none, which
    is what stops faces drifting orange, pink or red; a photo with a real
    blue cast still gets a meaningful counter-push. */
+/* FACE DETAIL. Brightness-only unsharp mask (3x3) inside each detected
+   face. At 15-25 bricks across a face, an eye or the nose is one to three
+   bricks; the general sharpening deliberately goes easy on skin, which
+   also softens exactly those features. Here the face as a whole gets a
+   brightness-only pass, so colour stays clean while edges (eyes, nose,
+   mouth, jaw) hold. */
+function faceDetail(buf, gw, gh, boxes, amount){
+  if (!(amount > 0)) return;
+  const Y = (o) => 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
+  for (const b of boxes){
+    const x0 = Math.max(0, b.x0 - 1), x1 = Math.min(gw - 1, b.x1 + 1), y0 = Math.max(0, b.y0 - 1), y1 = Math.min(gh - 1, b.y1 + 1);
+    const w = x1 - x0 + 1, h = y1 - y0 + 1, lum = new Float32Array(w*h);
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) lum[y*w + x] = Y(((y0 + y)*gw + (x0 + x))*3);
+    const K = [1,2,1, 2,4,2, 1,2,1];
+    for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++){
+      let s = 0, k = 0;
+      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++, k++) s += lum[(y + dy)*w + (x + dx)]*K[k];
+      const d = clamp((lum[y*w + x] - s/16)*amount, -40, 40);
+      const o = ((y0 + y)*gw + (x0 + x))*3;
+      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
+    }
+  }
+}
+/* FACE SHADING. The skin bricks are about 10 L apart (Caramel 73, Nougat
+   66, Toffee 56, Coffee 47), while the light and shadow that shape a face
+   (cheek and forehead highlights, the shadow under the nose, the sides of
+   the face, the smile lines) span only a few L. Quantized as is, a whole
+   face lands on one brick and reads flat: no nose, no smile. Inside each
+   detected face, skin pixels have their brightness spread away from the
+   face's own median, so highlights reach the next lighter skin brick and
+   shadows the next darker one, the way hand-made brick portraits are
+   shaded. Brightness only (colour offsets are kept), capped, and the
+   median itself doesn't move, so the overall skin tone stays as it is. */
+function faceShading(buf, gw, skinMask, boxes){
+  if (!boxes || !boxes.length) return;
+  const K = window.MB_FACE_K || 1.7, CAP = 24;
+  for (const b of boxes){
+    const ys = [];
+    for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
+      const p = y*gw + x; if (!skinMask[p]) continue;
+      const o = p*3; ys.push(0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2]);
+    }
+    if (ys.length < 20) continue;
+    ys.sort((u, v) => u - v);
+    const med = ys[ys.length >> 1];
+    for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
+      const p = y*gw + x; if (!skinMask[p]) continue;
+      const o = p*3;
+      const Y = 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
+      const d = clamp((Y - med)*(K - 1), -CAP, CAP);
+      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
+    }
+  }
+}
 function protectSkinColors(buf, skinMask){
   if (!skinMask) return;
   const N = skinMask.length;
@@ -2033,10 +2499,17 @@ function detectFacesTiled(img, detector){
         const px1 = sx + (b.originX + b.width)/k, py1 = sy + (b.originY + b.height)/k;
         const pts = [[px0, py0], [px1, py0], [px0, py1], [px1, py1]].map(([x, y]) => toImg(x, y));
         const xs = pts.map((q) => q[0]), ys = pts.map((q) => q[1]);
+        // the detector's six landmarks (right eye, left eye, nose tip, mouth,
+        // two ears), normalised to the photo like the box — used to bring out
+        // the eyes, brows and mouth in the mosaic (enhanceFaceFeatures)
+        const kp = ((d.keypoints) || []).map((q) => {
+          const [x, y] = toImg(sx + q.x*c.width/k, sy + q.y*c.height/k);
+          return { x: clamp(x/iw, 0, 1), y: clamp(y/ih, 0, 1) };
+        });
         const f = {
           x0: clamp(Math.min(...xs)/iw, 0, 1), y0: clamp(Math.min(...ys)/ih, 0, 1),
           x1: clamp(Math.max(...xs)/iw, 0, 1), y1: clamp(Math.max(...ys)/ih, 0, 1),
-          score: sc, rotated: toImg !== same,
+          score: sc, rotated: toImg !== same, kp: kp.length >= 4 ? kp : null,
         };
         if (f.x1 - f.x0 > 0.005 && f.y1 - f.y0 > 0.005) found.push(f);
       }
@@ -2177,7 +2650,108 @@ async function verifyHumanFaces(img, faces){
     } catch (e){ /* can't judge this one: leave it out */ }
     await new Promise((r) => setTimeout(r, 0));               // keep the page responsive between faces
   }
+  if (out.length) bodySkinMap(img, seg);
   return out;
+}
+
+/* BODY SKIN. The close-ups above only cover each face and a face-width
+   around it, so arms, hands, shoulders and chests were never treated as
+   skin: under warm light (sunset, indoor bulbs) they were free to take
+   any brick and came out solid orange and yellow (order #21054). One
+   more pass of the same person model over the whole photo marks body
+   and face skin; draw() adds it to the skin map, so the body gets the
+   same skin bricks and the same "never more orange than the photo"
+   rules as the face. */
+let BODY_SKIN = null;
+function bodySkinMap(img, seg){
+  BODY_SKIN = null;
+  try {
+    const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+    const k = 512 / Math.max(iw, ih);
+    const c = document.createElement("canvas");
+    c.width = Math.max(1, Math.round(iw*k)); c.height = Math.max(1, Math.round(ih*k));
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+    const res = seg.segment(c);
+    const body = res.confidenceMasks[MP_CAT.bodySkin].getAsFloat32Array();
+    const face = res.confidenceMasks[MP_CAT.faceSkin].getAsFloat32Array();
+    const mask = new Uint8Array(c.width*c.height), fm = new Uint8Array(c.width*c.height);
+    for (let q = 0; q < mask.length; q++){
+      if (body[q] > 0.6 || face[q] > 0.5) mask[q] = 1;
+      if (face[q] > 0.5) fm[q] = 1;
+    }
+    if (res.close) res.close();
+    BODY_SKIN = { img, w: c.width, h: c.height, mask, faces: faceSkinBlobs(fm, c.width, c.height, mask) };
+  } catch (e){ BODY_SKIN = null; }
+}
+/* Faces from the person model's face-skin pixels, for when the face
+   detector finds none (side profiles, faces looking up). Without a face
+   box the face-detail steps (sharpening, shading, less dithering) never
+   ran and the faces came out flat. Each solid patch of face skin becomes
+   a face box, in the same form as the detector's. */
+function faceSkinBlobs(fm, w, h, skin){
+  const seen = new Uint8Array(w*h), blobs = [];
+  const stack = [];
+  for (let s0 = 0; s0 < w*h; s0++){
+    if (!fm[s0] || seen[s0]) continue;
+    let n = 0, x0 = w, y0 = h, x1 = 0, y1 = 0;
+    stack.push(s0); seen[s0] = 1;
+    while (stack.length){
+      const q = stack.pop(), x = q % w, y = (q / w) | 0;
+      n++; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
+      if (x > 0 && fm[q-1] && !seen[q-1]){ seen[q-1] = 1; stack.push(q-1); }
+      if (x < w-1 && fm[q+1] && !seen[q+1]){ seen[q+1] = 1; stack.push(q+1); }
+      if (y > 0 && fm[q-w] && !seen[q-w]){ seen[q-w] = 1; stack.push(q-w); }
+      if (y < h-1 && fm[q+w] && !seen[q+w]){ seen[q+w] = 1; stack.push(q+w); }
+    }
+    blobs.push({ n, x0, y0, x1, y1 });
+  }
+  if (!blobs.length) return [];
+  const big = Math.max(...blobs.map((b) => b.n));
+  return blobs
+    .filter((b) => b.n >= w*h*0.0015 && b.n >= big/20)
+    .filter((b) => { const bw = b.x1 - b.x0 + 1, bh = b.y1 - b.y0 + 1; return bw/bh < 2.5 && bh/bw < 2.5; })
+    .sort((a, b) => b.n - a.n).slice(0, 10)
+    .map((b) => ({ x0: b.x0/w, y0: b.y0/h, x1: (b.x1 + 1)/w, y1: (b.y1 + 1)/h, score: 0.9, fromSkin: true,
+                   skin: { x0: 0, y0: 0, x1: 1, y1: 1, w, h, mask: skin } }));
+}
+/* the whole-photo skin map on the board grid, through the current crop */
+function bodySkinInGrid(gw, gh){
+  if (window.MB_BODY_SKIN === false || !BODY_SKIN || BODY_SKIN.img !== S.img) return null;
+  const img = S.img, m = BODY_SKIN;
+  const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  const sc = Math.max(gw/iw, gh/ih) * S.zoom;
+  const dw = iw*sc, dh = ih*sc;
+  const ox = (gw-dw)/2 + S.ox*Math.abs(dw - gw)/2, oy = (gh-dh)/2 + S.oy*Math.abs(dh - gh)/2;
+  const out = new Uint8Array(gw*gh);
+  for (let y = 0; y < gh; y++){
+    const v = (y + 0.5 - oy)/dh;
+    if (v < 0 || v >= 1) continue;
+    for (let x = 0; x < gw; x++){
+      const u = (x + 0.5 - ox)/dw;
+      if (u < 0 || u >= 1) continue;
+      if (m.mask[Math.min(m.h-1, (v*m.h) | 0)*m.w + Math.min(m.w-1, (u*m.w) | 0)]) out[y*gw + x] = 1;
+    }
+  }
+  return out;
+}
+/* add body skin to the face skin map, with the same colour checks the
+   face cells get (no pupils/deep shadow, no neutrals, no vivid objects) */
+function addBodySkin(buf, gw, gh, mask){
+  const body = bodySkinInGrid(gw, gh);
+  if (!body || !mask) return;
+  for (let p = 0; p < gw*gh; p++){
+    if (mask[p] || !body[p]) continue;
+    const x = p % gw, y = (p / gw) | 0;
+    if (!isSubjectCellForSkin(x, y, gw, gh)) continue;
+    const o = p*3;
+    const [L, a, b] = rgb2lab(buf[o], buf[o+1], buf[o+2]);
+    if (L < 22) continue;
+    const C = Math.sqrt(a*a + b*b);
+    if (C < 7 || C > 62) continue;
+    let hue = Math.atan2(b, a) * 180/Math.PI; if (hue < 0) hue += 360;
+    if (hue > 112 && hue < 330) continue;
+    mask[p] = 1;
+  }
 }
 
 function currentSegKey(){
@@ -2475,10 +3049,34 @@ function ensureHumanFaces(){
       faces = (await detectFacesTiled(img, detector)).filter((f) => f.score >= HUMAN_FACE_MIN_SCORE);
     } catch (err){
       faces = [];                     // detector unavailable: no skin rules, full colors
+      // a slow connection only: the model is still downloading. Don't give
+      // up on this photo — when it arrives, find the faces and redraw, so
+      // the design still gets the proper face and skin treatment
+      if (err && err.message === "face-detector-load-timeout"){
+        loadFaceDetector().then(async (detector) => {
+          if (S.imgId !== id) return;
+          const late = (await detectFacesTiled(img, detector)).filter((f) => f.score >= HUMAN_FACE_MIN_SCORE);
+          if (S.imgId !== id || !late.length) return;
+          S.mlFaces = late; S.mlFacesImg = id; S.baseKey = ""; render();
+        }).catch(() => {});
+      }
     }
     if (S.imgId !== id) return;       // a different photo was loaded meanwhile
+    // no face found (side profiles, faces looking up or away, heads cut
+    // off): the person model can still see the skin, so skin gets the
+    // skin-tone rules anyway instead of none at all
+    if (!faces.length && window.MB_BODY_SKIN !== false){
+      try {
+        const seg = await Promise.race([loadSegmenter(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), 10000))]);
+        if (S.imgId !== id) return;
+        bodySkinMap(img, seg);
+      } catch (e){ BODY_SKIN = null; }
+      if (S.imgId !== id) return;
+      if (BODY_SKIN && BODY_SKIN.img === img && BODY_SKIN.faces.length) faces = BODY_SKIN.faces;
+    }
     S.mlFaces = faces; S.mlFacesImg = id;
-    if (faces.length){ S.baseKey = ""; render(); }
+    if (faces.length || (BODY_SKIN && BODY_SKIN.img === img)){ S.baseKey = ""; render(); }
   })();
 }
 
@@ -2514,8 +3112,8 @@ const EXPO_SHADOW = 0.18, EXPO_CLIP = 0.95;
 function expoStats(hist, total){
   if (!total) return null;
   let sum = 0, acc = 0, shadow = 0, clip = 0;
-  const q = { p5: null, median: null, p75: null, p90: null, p95: null };
-  const at = { p5: 0.05, median: 0.5, p75: 0.75, p90: 0.90, p95: 0.95 };
+  const q = { p5: null, median: null, p75: null, p90: null, p95: null, p99: null };
+  const at = { p5: 0.05, median: 0.5, p75: 0.75, p90: 0.90, p95: 0.95, p99: 0.99 };
   for (let i = 0; i < 256; i++){
     const n = hist[i], v = i/255;
     sum += n*v; acc += n;
@@ -2535,8 +3133,8 @@ function analyzeExposure(img, faces){
   const cx = c.getContext("2d", { willReadFrequently: true });
   cx.drawImage(img, 0, 0, w, h);
   const d = cx.getImageData(0, 0, w, h).data;
-  const all = new Uint32Array(256), subj = new Uint32Array(256);
-  let subjN = 0;
+  const all = new Uint32Array(256), subj = new Uint32Array(256), fullFace = new Uint32Array(256);
+  let subjN = 0, fullN = 0;
   const useFaces = faces && faces.length;
   // faces: the inner part of each box (mostly skin, not hair or background)
   const inFace = (u, v) => faces.some((f) => {
@@ -2552,6 +3150,12 @@ function analyzeExposure(img, faces){
       const u = (x + 0.5)/w;
       if (useFaces){
         if (inFace(u, v)){ subj[Y]++; subjN++; }
+        // an oval inside the face box: eyes, nose and mouth, not the
+        // background in the box's corners
+        if (faces.some((f) => {
+          const ex = (u - (f.x0 + f.x1)/2) / ((f.x1 - f.x0)*0.38), ey = (v - (f.y0 + f.y1)/2 - (f.y1 - f.y0)*0.04) / ((f.y1 - f.y0)*0.42);
+          return ex*ex + ey*ey <= 1;
+        })){ fullFace[Y]++; fullN++; }
       } else if (u > 0.2 && u < 0.8 && v > 0.12 && v < 0.82){
         subj[Y]++; subjN++;                       // centre-weighted: where the subject usually is
       }
@@ -2559,6 +3163,10 @@ function analyzeExposure(img, faces){
   }
   const whole = expoStats(all, w*h);
   const faceBased = !!(useFaces && subjN > 30);
+  // the brightest 1% of the whole face box: eye whites, teeth, the shine on
+  // a forehead. In good light these are bright whatever the skin tone; in a
+  // backlit or shaded face even they are dim
+  const faceHi = fullN > 30 ? expoStats(fullFace, fullN).p99 : null;
   const subject = (subjN > 30 ? expoStats(subj, subjN) : null) || whole;
   const sm = subject.median;
   /* A dark subject alone is not proof of a dark photo: people with dark
@@ -2569,17 +3177,42 @@ function analyzeExposure(img, faces){
      bright, clipping background (backlight). The same test keeps a
      well-exposed low-key scene with real highlights from being lifted. */
   const underexposed = whole.p95 < (faceBased ? 0.80 : 0.85);
-  const backlit = whole.clipPct > 0.03 && sm < 0.5*whole.p90;
+  // backlight: most of the frame is bright and clipping while the subject
+  // is far darker. A few white pixels (a white shirt) are not backlight —
+  // otherwise dark skin in good light next to something white got lifted
+  const backlitClipped = whole.clipPct > 0.05 && whole.median > 0.50 && sm < 0.5*whole.median;
+  // backlight without clipping (a bright wall, a window or sky a phone kept
+  // just below white): a very bright scene, a face far below it, AND even
+  // the face's brightest spots (eye whites, teeth, shine) are dim. Dark skin
+  // in good light still has bright eyes and teeth, so it isn't caught here.
+  const backlitSoft = faceBased && faceHi !== null && whole.median > 0.65 && sm < 0.4*whole.median && faceHi < 0.40;
+  const backlit = backlitClipped || backlitSoft;
+  /* The dark classes are tested FIRST: a backlit photo (dark person in
+     front of a bright window or sky) has a very bright frame median, and
+     checking "too bright" first called it overexposed and left the person
+     dark. "Too bright" now also requires the subject itself to be bright. */
+  /* Face in shade: a well-exposed, sunny scene where the person stands in
+     shade (under a tree, a canopy, a hat brim). The photo is fine, but the
+     face sits a clear step below the scene, and the brick palette turns
+     that level into Brown/Coffee bricks — a fair-skinned child reads as
+     dark-skinned in the mosaic. It gets the gentle "slightly dark" fill.
+     The band keeps dark skin in good light out of it: such a face sits
+     much further below the scene (under 60% of the frame median) and
+     below the 0.28 floor, and is left exactly as it is. */
+  const shadedFace = faceBased && !underexposed && !backlit &&
+    sm >= 0.28 && sm < 0.46 && sm < whole.median - 0.08 && sm > 0.6*whole.median;
   let cls = "ok";
-  if (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06 && sm > 0.45)) cls = "bright";
-  else if (faceBased){
+  if (faceBased){
     if (sm < 0.26 && (underexposed || backlit)) cls = "veryDark";
-    else if (sm < 0.40 && (underexposed || backlit)) cls = "dark";
+    else if ((sm < 0.40 && (underexposed || backlit)) || shadedFace) cls = "dark";
   } else {
-    if ((sm < 0.22 && underexposed) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
-    else if ((sm < 0.38 && underexposed) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
+    if ((sm < 0.22 && (underexposed || backlit)) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
+    else if ((sm < 0.38 && (underexposed || backlit)) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
   }
+  if (cls === "ok" && sm > 0.45 &&
+      (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06))) cls = "bright";
   return { cls, apply: cls === "dark" || cls === "veryDark", whole, subject, faceBased, backlit, underexposed,
+           shaded: shadedFace && cls === "dark", faceHi,
            faceKey: useFaces ? faces.length : 0 };
 }
 /* Step 3: the correction itself, computed on the working image AFTER the
@@ -2587,7 +3220,7 @@ function analyzeExposure(img, faces){
    where it lands — the white-point stretch alone already lifts an evenly
    dark photo, and a curve sized without knowing that either doubled the
    lift or was cancelled by it. Returns the applied curve info or null. */
-function brightenSubject(buf, gw, gh, skinMask, cls){
+function brightenSubject(buf, gw, gh, skinMask, cls, shaded){
   const faceBased = !!(skinMask && skinMask.some((v) => v));
   const hist = new Uint32Array(256); let n = 0;
   for (let y = 0; y < gh; y++){
@@ -2601,10 +3234,13 @@ function brightenSubject(buf, gw, gh, skinMask, cls){
   const st = expoStats(hist, n);
   if (!st) return null;
   const now = st.median;
-  const target = cls === "veryDark" ? (faceBased ? 0.50 : 0.42) : (faceBased ? 0.46 : 0.38);
+  // a face in shade in a well-lit photo is brought up to the light the
+  // rest of the scene has, a little further than a generally dark photo
+  const shadedFace = !!(shaded && faceBased && cls === "dark");
+  const target = shadedFace ? 0.52 : cls === "veryDark" ? (faceBased ? 0.50 : 0.42) : (faceBased ? 0.46 : 0.38);
   if (now >= target - 0.02) return { before: now, after: now, e: 1, faceBased, curve: null };   // already there
   let e = Math.log(target) / Math.log(Math.max(0.04, now));
-  e = cls === "veryDark" ? clamp(e, 0.55, 1) : clamp(e, 0.72, 1);
+  e = cls === "veryDark" ? clamp(e, 0.55, 1) : clamp(e, shadedFace ? 0.60 : 0.72, 1);
   // highlight protection: brighter photos (real highlights) get an earlier shoulder
   let whole = 0, clipN = 0;
   for (let i = 0; i < buf.length; i += 3) if (0.2126*buf[i] + 0.7152*buf[i+1] + 0.0722*buf[i+2] >= 242) clipN++;
@@ -2624,7 +3260,7 @@ function brightenSubject(buf, gw, gh, skinMask, cls){
     }
   }
   if (!curve || e >= 0.985) return { before: now, after: now, e: 1, faceBased, curve: null };
-  applyExposureCurve(buf, curve);
+  applyExposureCurve(buf, curve, faceBased ? skinMask : null);
   return { before: now, after: curve[Math.round(now*255)]/255, e: +e.toFixed(3), faceBased, curve };
 }
 // 256-entry luminance curve: power lift, capped shadow gain (toe) and a
@@ -2646,21 +3282,41 @@ function expoCurve(e, maxGain, knee){
 }
 // apply to a working RGB buffer (0..255 floats). Hue is kept exactly and
 // saturation is kept as it LOOKS: the new luminance comes from the curve,
-// and each channel's distance from grey grows by the square root of the
+// and each channel's distance from grey grows by a power of the
 // brightening ratio. Scaling colour fully with the ratio (plain gain)
 // makes lifted shadows over-saturated — dark skin turns orange, brown
-// hair turns yellow; not scaling it at all washes colours out. Channels
-// are pulled back together (same hue) if any would clip.
-function applyExposureCurve(buf, lut){
-  for (let i = 0; i < buf.length; i += 3){
+// hair turns yellow; not scaling it at all washes colours out. Skin
+// (when the people's faces are known) uses the square root of the ratio;
+// everything else uses ratio^0.75 so clothing, sky and other colours keep
+// enough saturation to land on the right palette brick rather than a
+// greyer neighbour. Channels are pulled back together (same hue) if any
+// would clip.
+function applyExposureCurve(buf, lut, skinMask){
+  for (let i = 0, p = 0; i < buf.length; i += 3, p++){
     const r = buf[i], g = buf[i+1], b = buf[i+2];
     const Y = 0.2126*r + 0.7152*g + 0.0722*b;
     if (Y <= 0.5) continue;
     const yi = Math.min(254.999, Y), lo = yi | 0, fr = yi - lo;
-    const Y2 = lut[lo] + (lut[lo+1] - lut[lo])*fr;
+    let Y2 = lut[lo] + (lut[lo+1] - lut[lo])*fr;
     if (Y2 <= Y + 0.05) continue;
-    const s = Math.sqrt(Y2 / Y);                      // chroma growth: between "none" and "full gain"
-    let nr = Y2 + (r - Y)*s, ng = Y2 + (g - Y)*s, nb = Y2 + (b - Y)*s;
+    const cpow = (skinMask && skinMask[p]) ? 0.5 : 0.75;   // chroma growth: between "none" and "full gain"
+    const lift = (Yn) => {
+      const s = Math.pow(Yn / Y, cpow);
+      return [Yn + (r - Y)*s, Yn + (g - Y)*s, Yn + (b - Y)*s];
+    };
+    let [nr, ng, nb] = lift(Y2);
+    if (Math.max(nr, ng, nb) > 255){
+      // a saturated bright colour (pink top, blue sky) would clip: give it
+      // less brightening rather than less colour, so it neither blows out
+      // nor fades toward grey
+      let a = Y, z = Y2;
+      for (let k = 0; k < 8; k++){
+        const m = (a + z)/2;
+        if (Math.max(...lift(m)) > 255) z = m; else a = m;
+      }
+      [nr, ng, nb] = lift(a);
+      Y2 = a;
+    }
     const hi = Math.max(nr, ng, nb), low = Math.min(nr, ng, nb);
     if (hi > 255 || low < 0){
       // shrink the colour offset (not the luminance) until it fits
@@ -2671,6 +3327,59 @@ function applyExposureCurve(buf, lut){
       nr = Y2 + (nr - Y2)*t; ng = Y2 + (ng - Y2)*t; nb = Y2 + (nb - Y2)*t;
     }
     buf[i] = nr; buf[i+1] = ng; buf[i+2] = nb;
+  }
+}
+/* Skin level guard. The black/white-point step is meant to add contrast,
+   but on a photo with bright window light and no real blacks it raises the
+   black point a long way, and the mid-tones, where skin sits, come out
+   darker: a child's face measured L 50 in the photo and L 39 after levels,
+   and the palette answered with Brown and Dark Brown bricks. Auto-
+   brightness can't catch it, because it judges the original photo (where
+   the face is fine). So once the people's skin is known: if levels left
+   the skin darker than it is in the photo, a mid-tone curve (black and
+   white points stay put) lifts it back to the photo's own skin level. */
+function holdSkinLevel(buf, pre, skinMask){
+  if (!skinMask) return null;
+  const hb = new Uint32Array(256), hp = new Uint32Array(256); let n = 0;
+  for (let p = 0, i = 0; p < skinMask.length; p++, i += 3){
+    if (!skinMask[p]) continue;
+    hb[clamp(Math.round(0.2126*buf[i] + 0.7152*buf[i+1] + 0.0722*buf[i+2]), 0, 255)]++;
+    hp[clamp(Math.round(0.2126*pre[i] + 0.7152*pre[i+1] + 0.0722*pre[i+2]), 0, 255)]++;
+    n++;
+  }
+  if (n < 20) return null;
+  const now = expoStats(hb, n).median, was = expoStats(hp, n).median;
+  if (!(now > 0.04 && was > now + 0.01)) return null;
+  const g = clamp(Math.log(was) / Math.log(now), 0.55, 1);
+  if (g >= 0.995) return null;
+  const lut = new Float32Array(256);
+  for (let k = 0; k < 256; k++) lut[k] = 255*Math.pow(k/255, g);
+  applyExposureCurve(buf, lut, skinMask);
+  return { was, now, g: +g.toFixed(3) };
+}
+/* Skin saturation guard. The black/white-point step stretches each colour
+   channel on its own: right for the photo as a whole, but on skin it
+   pushes red up and blue down, so natural skin (e.g. 130,90,73) comes out
+   as saturated orange-brown (125,75,52) and the palette answers with
+   Coffee/Brown bricks. For skin pixels only, the colour's strength
+   relative to its brightness is held to what the photo itself had (plus
+   5%); the new brightness and the white-balance hue are kept. Only ever
+   reduces saturation, never adds it. */
+function keepSkinSaturation(buf, pre, skinMask){
+  if (!skinMask) return;
+  for (let p = 0, i = 0; p < skinMask.length; p++, i += 3){
+    if (!skinMask[p]) continue;
+    const r0 = pre[i], g0 = pre[i+1], b0 = pre[i+2];
+    const Y0 = 0.2126*r0 + 0.7152*g0 + 0.0722*b0;
+    const r = buf[i], g = buf[i+1], b = buf[i+2];
+    const Y = 0.2126*r + 0.7152*g + 0.0722*b;
+    if (Y0 < 1 || Y < 1) continue;
+    const c0 = Math.hypot(r0 - Y0, g0 - Y0, b0 - Y0) / Y0;
+    const c = Math.hypot(r - Y, g - Y, b - Y) / Y;
+    const cap = c0 * 1.05;
+    if (c <= cap || c <= 0) continue;
+    const t = cap / c;
+    buf[i] = Y + (r - Y)*t; buf[i+1] = Y + (g - Y)*t; buf[i+2] = Y + (b - Y)*t;
   }
 }
 // analyse lazily on the first render of a photo (i.e. straight after
@@ -2719,7 +3428,7 @@ function syncBrightPill(){
     ? '<span aria-hidden="true">☀</span> Auto brightness applied <u>Undo</u>'
     : '<span aria-hidden="true">☀</span> Original brightness <u>Brighten</u>';
   brightPill.title = on
-    ? "Your photo was " + (S.expo.cls === "veryDark" ? "quite dark" : "a little dark") + ", so it was brightened automatically. Tap to use the original brightness."
+    ? (S.expo.shaded ? "The face was in shade" : "Your photo was " + (S.expo.cls === "veryDark" ? "quite dark" : "a little dark")) + ", so it was brightened automatically. Tap to use the original brightness."
     : "Tap to brighten this photo automatically again.";
 }
 
@@ -2807,6 +3516,9 @@ function draw(reuse){
     // stretch is itself a brightness gain, so smart auto-brightness governs
     // it: a TOO BRIGHT photo, or a dark photo the customer switched back to
     // "Original brightness", keeps only the black point (no gain)
+    // the photo's own colours before levels, kept so skin can be held to
+    // its natural saturation once the people's skin is known (below)
+    const preLevels = S.auto ? Float32Array.from(buf) : null;
     if (S.auto){
       const lev = measureLevels(toneSrc);
       const cls = expoCls();
@@ -2825,14 +3537,23 @@ function draw(reuse){
     // in the UI telling the customer that's what "Auto off" also did.
     const faceAlreadyConfirmed = !!(S.faceBoxes && S.faceBoxes.length);
     const face = analyzeFaceRegions(buf, gw, gh, faceAlreadyConfirmed, mlFacesInGrid(gw, gh) || [], humanSkinInGrid(gw, gh));  // 1. human faces only; skin follows the real outline
+    addBodySkin(buf, gw, gh, face.mask);          // arms, hands, shoulders: skin too, not just the face
+    if (!face.mask){                              // no face found, but the person model saw skin
+      const m = new Uint8Array(gw*gh);
+      addBodySkin(buf, gw, gh, m);
+      let n = 0; for (let p = 0; p < m.length; p++) n += m[p];
+      if (n >= Math.max(20, gw*gh*0.01)) face.mask = m;
+    }
     S.skinMask = face.mask; S.faceBoxes = face.boxes;
     S.regionMap = classifyRegions(buf, gw, gh, S.skinMask, S.faceBoxes);  // skin/hair/clothing/background — still used for photo enhancement below
+    if (preLevels) keepSkinSaturation(buf, preLevels, S.skinMask);  // levels must not turn skin orange
+    if (preLevels) holdSkinLevel(buf, preLevels, S.skinMask);       // ...or darker than the photo
 
     // 3. smart auto-brightness: only for photos the upload analysis found
     // dark, sized on the subject (the real skin of the people, when there
     // are any) as it stands after step 2, before highlight recovery, HDR,
     // skin protection, sharpening and the palette/mosaic conversion
-    S.expoApplied = autoBrightActive() ? brightenSubject(buf, gw, gh, S.skinMask, S.expo.cls) : null;
+    S.expoApplied = autoBrightActive() ? brightenSubject(buf, gw, gh, S.skinMask, S.expo.cls, S.expo.shaded) : null;
 
     if (S.auto){
       recoverHighlights(buf, gw, gh, 35);                      // highlight recovery — keeps bright faces from clipping to white
@@ -2872,7 +3593,18 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
+  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 1.6);
+  // face shading spread skin into pale cream highlights and brown shadows;
+  // the Studio-style even, warm skin looks better, so it is off by default
+  // (window.MB_FACE_K = 1.7 turns it back on for testing)
+  if (S.auto && S.skinMask && window.MB_FACE_K > 1) faceShading(buf, gw, S.skinMask, S.faceBoxes);
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
+  // bring out eyes, brows and mouth (auto only); their bricks stay undithered
+  let featureMask = null;
+  if (S.auto && window.MB_FACE_FEATURES !== false){
+    const feats = faceFeaturesInGrid(gw, gh);
+    if (feats) featureMask = enhanceFaceFeatures(buf, gw, gh, feats);
+  }
 
   const hasSkin = S.regionMap ? S.regionMap.includes(1) : false;
   const key = S.pal + "|" + gw + "x" + gh + "|" + [...S.excludedColors].sort().join(",") + "|" + (S.paletteCount || "auto") + "|" + (hasSkin ? "skin" : "noskin");
@@ -2902,12 +3634,19 @@ function draw(reuse){
   const regionMapForDither = S.auto ? S.regionMap : null;
   // background 0, skin 1, hair 2, clothing 3
   const REGION_DITHER = [0.22, 0.28, 0.30, 0.30];
+  // inside a face, dithering speckles are as big as an eye at small sizes
+  const FACE_DITHER = window.MB_FACE_DITHER != null ? window.MB_FACE_DITHER : 0.3;
+  let faceGridDither = null;
+  if (FACE_DITHER !== 1 && S.auto && S.faceBoxes && S.faceBoxes.length){
+    faceGridDither = new Uint8Array(gw*gh);
+    for (const b of S.faceBoxes) for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) faceGridDither[y*gw + x] = 1;
+  }
   // which PAL indices are approved skin-tone bricks — computed once, not
   // per pixel. choosePalette() above guarantees these are present in PAL
   // whenever hasSkin is true, so this should reliably find all 8 (or as
   // many as choosePalette could fit).
   const skinHexSet = new Set(SKIN_PALETTE.map((c) => c[1]));
-  const skinIndices = [];
+  let skinIndices = [];
   for (let pi = 0; pi < PAL.length; pi++) if (skinHexSet.has(PAL[pi].hex)) skinIndices.push(pi);
   // Region-classified skin pixels already can't land on a non-skin color —
   // the hard restriction above only offers the 8 SKIN_PALETTE bricks. The
@@ -2942,6 +3681,35 @@ function draw(reuse){
   const hasBgSwap = !!(S.bgEffect && S.bgEffect !== "original" && S.subjectMask);
   const subjectAlphaGrid = hasBgSwap ? resampleAlpha(S.subjectMask, S.segW, S.segH, gw, gh) : null;
   const isSubjectPixel = (x, y) => !subjectAlphaGrid || subjectAlphaGrid[y*gw + x] > 0.5;
+  /* SKIN TONE BAND. Every skin pixel could take any of the 8 skin bricks,
+     Cream to Dark Brown, and dithering spreads error between neighbours,
+     so a fair face in soft shade picked up isolated Brown / Dark Brown
+     bricks mid-cheek and read as blotchy or darker than it is. The band is
+     measured from THIS photo's own skin (lightness, 8th to 92nd
+     percentile) and only the skin bricks inside it, plus a small margin,
+     stay allowed (never fewer than 3, so shading survives). Dark skin
+     keeps its dark bricks and is never pushed paler: the band comes from
+     the photo, not a target. Eyes, brows and lips are not skin pixels and
+     keep the full palette. */
+  if (S.auto && regionMapForDither && skinIndices.length > 3 && window.MB_SKIN_BAND === true){   // off by default: all 8 skin bricks give warmer, more natural skin
+    const Ls = [];
+    for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++){
+      const p = y*gw + x;
+      if (regionMapForDither[p] !== 1 || !isSubjectPixel(x, y)) continue;
+      const o = p*3;
+      Ls.push(rgb2lab(clamp(buf[o],0,255), clamp(buf[o+1],0,255), clamp(buf[o+2],0,255))[0]);
+    }
+    if (Ls.length >= 30){
+      Ls.sort((u, v) => u - v);
+      const lo = Ls[Math.floor(Ls.length*0.08)] - 6, hi = Ls[Math.floor(Ls.length*0.92)] + 6;
+      const mid = (lo + hi)/2;
+      let band = skinIndices.filter((pi) => PAL[pi].lab[0] >= lo && PAL[pi].lab[0] <= hi);
+      if (band.length < 3){
+        band = skinIndices.slice().sort((u, v) => Math.abs(PAL[u].lab[0] - mid) - Math.abs(PAL[v].lab[0] - mid)).slice(0, 3);
+      }
+      skinIndices = band;
+    }
+  }
   // White and yellow are never acceptable on skin either — unlike red
   // (which lips legitimately need, so it reroutes to "any other color"),
   // these reroute straight to the nearest of the 8 approved skin tones,
@@ -3042,7 +3810,8 @@ function draw(reuse){
     for (let k = 0; k < gw; k++){
       const x = ltr ? k : gw-1-k, i = (y*gw + x)*3;
       const regionMult = regionMapForDither ? REGION_DITHER[regionMapForDither[y*gw + x]] : 1;
-      const strength = baseStrength * regionMult;
+      const faceMult = (faceGridDither && faceGridDither[y*gw + x]) ? FACE_DITHER : 1;
+      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult * faceMult;
       const r = clamp(buf[i],0,255), g = clamp(buf[i+1],0,255), b = clamp(buf[i+2],0,255);
       const isSkinPixel = regionMapForDither ? (regionMapForDither[y*gw + x] === 1 && isSubjectPixel(x, y)) : false;
       let n = nearest(r, g, b, PAL, true, isSkinPixel ? skinIndices : null);
@@ -3415,6 +4184,9 @@ function tally(cells, P){
 }
 
 function meta(){
+  // keep the saved copy current: it used to be written once, 400 ms after
+  // upload, so a reload brought back the first size and crop, not the design
+  if (S.uploaded){ clearTimeout(meta._save); meta._save = setTimeout(saveSession, 1500); }
   const { gw, gh, bx, by } = dims(), pieces = gw*gh;
   const canBuild = !!S.size.build;
   const total = (S.build && canBuild) ? S.size.build : S.size.price;
@@ -3695,6 +4467,12 @@ function showView(name){
     try { history.replaceState(null, "", location.pathname + location.search); }
     catch (e) { location.hash = ""; }
   }
+  // #editor marks "the editor is open" so a reload comes back to the design
+  // (restoreSession only restores there); leaving the editor drops it
+  try {
+    if (name === "editor" && location.hash !== "#editor") history.replaceState(null, "", location.pathname + location.search + "#editor");
+    else if (name !== "editor" && location.hash === "#editor") history.replaceState(null, "", location.pathname + location.search);
+  } catch (e){}
   if (name === "editor"){
     const panels = document.querySelectorAll("[data-acc]");
     if (panels.length){
@@ -3709,6 +4487,7 @@ function showView(name){
     if (el) el.hidden = (v !== name);
   });
   document.body.classList.toggle("in-app", name !== "home");
+  document.body.classList.toggle("in-editor", name === "editor");   // phones: the editor's own sticky bar owns the top edge
   window.scrollTo({ top: 0, behavior: "auto" });
   if (name === "editor") renderIfNeeded();     // never rebuild an existing design
 }
@@ -3755,6 +4534,19 @@ document.addEventListener("click", (e) => {
   requestAnimationFrame(() => {
     if (id === "top"){ window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // photos above the target (the reviews rail) finish loading during the
+    // smooth scroll and push the section down, so it used to stop short.
+    // Once the scroll settles, line it up again if it has moved.
+    let tries = 0, last = -1;
+    const settle = setInterval(() => {
+      const y = Math.round(window.scrollY);
+      if (y !== last){ last = y; return; }               // still scrolling
+      const want = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+      const off = el.getBoundingClientRect().top - want;
+      if (Math.abs(off) > 12 && tries++ < 2){ last = -1; el.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+      clearInterval(settle);
+    }, 250);
+    setTimeout(() => clearInterval(settle), 6000);
   });
 });
 
@@ -4232,6 +5024,9 @@ if (foxThumb){
    and send a proof before production. Sizes and prices come from the same
    SIZES catalogue the creator uses — there is no second price list.
    ===================================================================== */
+// filled in by designerService() below: hands an uploaded photo (and the
+// size it was previewed at) to the Pro Design Service form
+let svcPrefill = null;
 (function designerService(){
   const drop = document.querySelector("#svcDrop"),
         input = document.querySelector("#svcFile"),
@@ -4253,7 +5048,6 @@ if (foxThumb){
     "30x20": "Great for couples and families", "30x30": "Statement piece",
   };
 
-  function money(n){ return "$" + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, ""); }
 
   function sizeList(){
     return svc.showAll ? SIZES : SIZES.filter((z) => POPULAR.indexOf(z.id) > -1);
@@ -4370,7 +5164,10 @@ if (foxThumb){
       return;
     }
     const z = SIZES.find((x) => x.id === svc.sizeId);
-    const onShopify = /myshopify|mymemobrick/.test(location.hostname);
+    // the Shopify catalog is printed into every storefront page (live domain,
+    // *.myshopify.com, theme preview); a hostname test missed preview and any
+    // other domain and faked a "Ready to send" without adding to cart
+    const onShopify = !!document.querySelector("#memobrick-catalog") || /myshopify|mymemobrick/.test(location.hostname);
     if (!onShopify){
       toast("Ready to send: " + z.label + " with your photo attached. On the live shop this posts to checkout.");
       return;
@@ -4396,7 +5193,103 @@ if (foxThumb){
   }
   if (checkout) checkout.addEventListener("click", submit);
 
+  svcPrefill = (f, sizeId) => {
+    takeFile(f);
+    if (sizeId && SIZES.some((z) => z.id === sizeId)){
+      svc.sizeId = sizeId;
+      if (POPULAR.indexOf(sizeId) < 0) svc.showAll = true;   // keep the chosen size visible
+    }
+    drawSizes(); summary();
+  };
+
   drawSizes(); summary();
+})();
+
+/* =====================================================================
+   DESIGN CHOICE  (#designChoice)
+   Right after a photo is uploaded, its brick preview opens with a choice
+   on top: design it yourself in the Creator, or let our artist design it
+   (Pro Design Service: photo and size carried over, one tap from checkout).
+   Asked every time the customer uploads their own file from the upload
+   screen; a photo changed from inside the editor after they already chose
+   "myself" on this page is not asked again. The "Save your design" email
+   popup waits for this choice (memobrick:designchoice) and only follows
+   "myself".
+   ===================================================================== */
+const designChoice = (function(){
+  const sheet = document.querySelector("#designChoice");
+  if (!sheet) return { offer(){} };
+  const thumb = sheet.querySelector("#dcThumb");
+  const card = sheet.querySelector(".dchoice-card");
+  let file = null, lastFocus = null;
+  let choseSelf = false;              // on this page load
+
+  function announce(choice){
+    try { document.dispatchEvent(new CustomEvent("memobrick:designchoice", { detail: { choice } })); } catch (e) {}
+  }
+  function close(){
+    sheet.hidden = true;
+    if (card) card.removeAttribute("aria-modal");
+    document.documentElement.classList.remove("dchoice-open");
+    if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {}
+  }
+  function self(){
+    choseSelf = true;
+    close();
+    track("design_choice", { choice: "self" });
+    announce("self");
+  }
+  function artist(){
+    close();
+    track("design_choice", { choice: "artist" });
+    announce("artist");
+    if (svcPrefill && file) svcPrefill(file, S.size && S.size.id);
+    showView("design");
+    // the photo and size are already filled in: land on the order summary
+    requestAnimationFrame(() => {
+      const buy = document.querySelector("#view-design .svc-buy");
+      if (buy) buy.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+  function track(name, data){
+    try { if (window.dataLayer) window.dataLayer.push(Object.assign({ event: "memobrick_" + name }, data)); } catch (e) {}
+  }
+
+  sheet.querySelector("#dcSelf").addEventListener("click", self);
+  sheet.querySelector("#dcClose").addEventListener("click", self);
+  sheet.querySelector("#dcArtist").addEventListener("click", artist);
+  sheet.addEventListener("click", (e) => { if (e.target === sheet) self(); });
+  sheet.addEventListener("keydown", (e) => {
+    if (e.key === "Escape"){ e.preventDefault(); self(); return; }
+    if (e.key !== "Tab") return;                       // keep focus inside the dialog
+    const f = [...sheet.querySelectorAll("button")].filter((b) => b.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+
+  return {
+    // fromStart: the upload came from the upload screen (always asked);
+    // otherwise it is a photo change inside the editor
+    offer(f, fromStart){
+      if (!f || !(f instanceof Blob)) return;
+      if (choseSelf && !fromStart) return;
+      file = f;
+      if (thumb){
+        const url = URL.createObjectURL(f);
+        thumb.onload = () => URL.revokeObjectURL(url);
+        thumb.onerror = () => { thumb.style.display = "none"; };
+        thumb.style.display = "";
+        thumb.src = url;
+      }
+      lastFocus = document.activeElement;
+      sheet.hidden = false;
+      if (card) card.setAttribute("aria-modal", "true");
+      document.documentElement.classList.add("dchoice-open");
+      setTimeout(() => { const b = sheet.querySelector("#dcSelf"); if (b) b.focus(); }, 50);
+    }
+  };
 })();
 
 /* =====================================================================
@@ -4868,76 +5761,6 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
   });
 })();
 
-/* keep every timing mention in step with the single constant */
-document.querySelectorAll("[data-prodtime]").forEach((el) => { el.textContent = PRODUCTION_TIME_TEXT; });
-
-const REVIEWS = [{"n":"Richard J.","r":5,"d":"August 14, 2026","t":"Always such a great and unique gift to give to friends and family","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg"},{"n":"Donna K.","r":5,"d":"August 9, 2026","t":"Excellent","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/8/9/o3XA6i-fF_mid.jpg"},{"n":"Steve B.","r":5,"d":"July 16, 2026","t":"My son loves it!!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/7/16/ik1scdnFM_mid.jpg"},{"n":"Tim R.","r":5,"d":"July 8, 2026","t":"Another spectacular job turning a photo into art. She's already asking when we're going to do another one.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/7/8/_MtiAWOcs_mid.jpg"},{"n":"Nicole N.","r":5,"d":"June 18, 2026","t":"Absolutely love my memobrick order. Will definitely recommend to family and friends.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/6/18/30vbX20BQ_mid.jpg"},{"n":"Brian B.","r":5,"d":"June 4, 2026","t":"great product, great gift ! my wife loved putting the mosaic together, and the instruction sheet and whole kit are great quality ! we are going to order again !","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/6/5/vnVn9uYJ5_mid.jpg"},{"n":"Ellen S.","r":5,"d":"May 28, 2026","t":"This was so much fun to do with my boyfriend! We loved doing it and can't wait to hang it in our house. It came out so good!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg"},{"n":"Lauren D.","r":5,"d":"May 28, 2026","t":"This was so much fun to do! I just love how it turned out! I'm just waiting until I can get a shadow box for it, and then I'll hang it on my wall 😁","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/31/RHKvYxUPr_mid.jpg"},{"n":"Mary S.","r":3,"d":"May 24, 2026","t":"It looks blurry to me but it is ok","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/5/24/QsvJ3JsVf_mid.jpg"},{"n":"Giselle D.","r":4,"d":"April 25, 2026","t":"A little hard to snap in sometimes and see the letters through the block but it came out great","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/4/26/NMq2OMbuu_mid.jpg"},{"n":"Melanie B.","r":5,"d":"April 9, 2026","t":"Very cool picture and everyone loves it!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/4/19/J_v2xITlk_mid.jpg"},{"n":"Jennifer H.","r":5,"d":"March 17, 2026","t":"Was a fun and a little bit challenging project to do. Can't wait to do another one","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/18/DePzXpS4A_mid.jpg"},{"n":"Jennifer M.","r":5,"d":"March 7, 2026","t":"Love, love, love!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg"},{"n":"Lucy W.","r":5,"d":"March 6, 2026","t":"Loved putting it together","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/3/11/2kZnl5hIp_mid.jpg"},{"n":"Donnie M.","r":4,"d":"February 27, 2026","t":"I really enjoyed hose it turned out and the only thing that I didn't like too well was the word we're not as legible as I thought they would be.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/3/2/FrAR14A8Ss_mid.jpg"},{"n":"Donnie M.","r":5,"d":"February 25, 2026","t":"I just love the way this turned out. It won't be my last purchase.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2026/2/26/-jmr6H1Gp_mid.jpg"},{"n":"Marsha W.","r":5,"d":"February 24, 2026","t":"This was fun!!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/24/XV14cLgqn_mid.jpg"},{"n":"Tim R.","r":5,"d":"February 23, 2026","t":"Another beautiful picture. Thank you again","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/27/9TvgauJIm_mid.jpg"},{"n":"Erica C.","r":5,"d":"February 21, 2026","t":"Love it ! Came out soo good ! Very happy with the purchase !","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/21/Zm2Bhe1Jq_mid.jpg"},{"n":"Halley D.","r":5,"d":"February 13, 2026","t":"Turned out better than I ever expected! Definitely will order again :)","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/2/14/foeLiecYb_mid.jpg"},{"n":"Allison H.","r":5,"d":"February 11, 2026","t":"The frame worked out great.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2026/2/12/eNaxDI0Nk_mid.jpg"},{"n":"Kelsey M.","r":5,"d":"February 8, 2026","t":"I love these memo bricks! I ordered a smaller size, but when they emailed the mockup they showed me the difference of what it would look like compared to the bigger size. I was offered to upgrade to the bigger size, which I did. I am so glad I did! These were fun to put together and see how the final product came out. It is interesting to see how they use different colors to create shadows. I had one picture that was mostly black and white in a dark setting with a lot of shadows. A light purple color was used to help show those. Definitely recommend!","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/9/7xFZPGgJq_mid.jpg"},{"n":"Kris C.","r":5,"d":"February 3, 2026","t":"It was difficult to get the board to stick together so I had to get my own joiner pieces so it stays together better but I really loved making it and watching it come together!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg"},{"n":"Aaron M.","r":5,"d":"January 25, 2026","t":"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form.","p":"Custom Bricked Mosaic Portrait 30x20\"","img":"https://images.loox.io/uploads/2026/1/25/GwlS7rLfA_mid.jpg"},{"n":"Nadeana T.","r":5,"d":"January 24, 2026","t":"Absolutely incredible! Pattern is simple to follow and portrait turned out fantastic!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/1/24/wj6s-qpgI_mid.jpg"},{"n":"Kellie G.","r":5,"d":"January 14, 2026","t":"My son-in-law who builds and collects all the adult Star Wars Lego kits love this. Said it was easily the hardest build he has done.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/14/V-UHmIaiB_mid.jpg"},{"n":"Teri M.","r":5,"d":"January 9, 2026","t":"It was great","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/10/S2qR_raR0_mid.jpg"},{"n":"Elizabeth P.","r":5,"d":"January 3, 2026","t":"I got this for my son for Christmas. He thought it was the coolest thing ever. He's been putting it together since he got it and is almost done. He really likes it.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/1/3/sdpzAIsdg_mid.jpg"},{"n":"Jacob P.","r":5,"d":"December 31, 2025","t":"I loved building it and my girlfriend loved the finished project. It was her favorite picture and I was so excited to bring it to life in this unique way","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/1/1/UcXoh1baeq_mid.jpg"},{"n":"Emily S.","r":5,"d":"December 29, 2025","t":"Love this!","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/12/30/c_KH7WMJEG_mid.jpg"},{"n":"John R.","r":4,"d":"November 28, 2025","t":"The frame works well enough. It could have been a little simpler to assemble. Also I suggest the it be made with a back that the picture can lock into.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/11/28/GM4kRymqx_mid.jpg"},{"n":"Jennifer B.","r":5,"d":"November 11, 2025","t":"Loved it! Will be ordering again soon!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/11/11/u5E39DACF_mid.jpg"},{"n":"John R.","r":5,"d":"November 2, 2025","t":"It was a fun relaxing task. My wife and I are thrilled to have our wedding photo in such an interesting style.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2025/11/3/yWOhEH0xx-_mid.jpg"},{"n":"Michael F.","r":5,"d":"October 27, 2025","t":"Perfect and unique gift for grandson. Kept him off electronics.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/10/27/BEA1z2h7l_mid.jpg"},{"n":"Kimberly W.","r":5,"d":"October 17, 2025","t":"I gave this to my son for his birthday. He loved putting it together and the frame was super easy to install.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2025/10/17/fkwmMBB3R_mid.jpg"},{"n":"Candice L.","r":5,"d":"October 7, 2025","t":"I split the photo in half so I could get 2 of the 60x20 so I could fill my wall more and its turned out AMAZING!","p":"Custom Bricked Mosaic Portrait 60x20\"","img":"https://images.loox.io/uploads/2025/10/8/gsJn-GTlj_mid.jpg"},{"n":"Athena P.","r":5,"d":"October 7, 2025","t":"I really enjoyed doing this one of my girls and I. I had issues with the tool not working for me. I wish that the frames weren't so expensive.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/10/7/0bJe8d7-A_mid.jpg"},{"n":"Athena P.","r":4,"d":"September 30, 2025","t":"I love this picture. However I wish that it wasn't so close up. I wish that it was able to capture more of her and her beauty.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/9/30/CoZGC-fD9_mid.jpg"},{"n":"Carol J.","r":5,"d":"September 30, 2025","t":"I love it","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2025/9/30/-uiTZ8ev3_mid.jpg"},{"n":"Norma G.","r":5,"d":"September 12, 2025","t":"We LOVE the way the portrait looks! I have shown it off to all of my friends and family. It is a great memory that will be kept for a long time. It was very easy to put together and the result is fantastic! I highly recommend this to everyone.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/9/12/Q14hvAZ8s_mid.jpg"}];
-
-/* Every review here was written by a real customer and is reproduced verbatim
-   from memobrick.com, photo included. The store has 747 reviews in total;
-   these are the ones published publicly on the site. The rest live in Loox,
-   so the section links out rather than inventing any.  */
-/* Shared between the two review-rendering blocks below: these are the
-   specific reviews used in the small "transformations" teaser near the
-   top of the page. The full rail (paint(), just below) excludes them so
-   a visitor doesn't scroll down and see the exact same reviews twice —
-   it starts with whatever comes next instead. */
-const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
-
-(function realReviews(){
-  const track = document.querySelector("#revTrack");
-  if (!track || typeof REVIEWS === "undefined") return;
-  const rest = REVIEWS.filter((r, i) => !TRANSFORM_PICKS.includes(i));
-  let shown = 12;
-
-  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
-  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
-    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
-
-  function paint(){
-    track.innerHTML = rest.slice(0, shown).map((r) =>
-      '<figure class="rev">' +
-        '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
-        'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
-        '<figcaption>' +
-          '<span class="stars">' + stars(r.r) + "</span>" +
-          "<p>" + esc(r.t) + "</p>" +
-          "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
-          '<span class="rev-prod">' + esc(r.p) + "</span>" +
-        "</figcaption></figure>").join("");
-    const more = document.querySelector("#revMore");
-    if (more) more.hidden = shown >= rest.length;
-  }
-
-  const more = document.querySelector("#revMore");
-  if (more) more.addEventListener("click", () => { shown = rest.length; paint(); });
-  paint();
-})();
-
-/* Compact "transformations" teaser near the top of the homepage — the same
-   real review data and escaping as the full rail above, just 6 specific,
-   strongly positive examples rather than the first 6 by date, so the
-   earliest thing a visitor sees is representative of what people love
-   about it. Nothing here is invented: same REVIEWS array, same esc(). */
-(function transformTeaser(){
-  const track = document.querySelector("#transformTrack");
-  if (!track || typeof REVIEWS === "undefined") return;
-  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
-  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
-    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
-  const picks = TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean);
-  track.innerHTML = picks.map((r) =>
-    '<figure class="rev">' +
-      '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
-      'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
-      '<figcaption>' +
-        '<span class="stars">' + stars(r.r) + "</span>" +
-        "<p>" + esc(r.t) + "</p>" +
-        "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
-        '<span class="rev-prod">' + esc(r.p) + "</span>" +
-      "</figcaption></figure>").join("");
-})();
-
 /* =====================================================================
    REMOTE MEDIA SAFETY NET
    Opened as a local file — which is how this build is tested on a phone —
@@ -4948,6 +5771,8 @@ const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
    ===================================================================== */
 (function mediaSafety(){
   function fallback(img){
+    // size-card photos try their backup photo first (their own onerror)
+    if (img.classList.contains("size-img")) return;
     const card = img.closest(".rev, .gal-item, .shopcard");
     if (card){
       // a customer photo that will not load is the whole point of the card:
@@ -4975,25 +5800,11 @@ const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
     new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
   } catch (e) {}
 
-  /* the banner video: if it cannot play, show its poster instead of a black box */
-  const vid = document.querySelector("#heroVid");
-  if (vid){
-    const posterOnly = () => {
-      const src = vid.getAttribute("poster");
-      if (!src) { vid.style.display = "none"; return; }
-      const im = new Image();
-      im.src = src; im.alt = "Building a MemoBrick photo mosaic, brick by brick";
-      im.className = "hero-poster";
-      im.style.cssText = "width:100%;height:auto;display:block;border-radius:inherit";
-      if (vid.parentElement) vid.parentElement.insertBefore(im, vid);
-      vid.style.display = "none";
-    };
-    vid.addEventListener("error", posterOnly);
-    // iOS refuses data: video outright; give it a moment, then fall back
-    setTimeout(() => {
-      if (vid.readyState === 0 && !vid.videoWidth) posterOnly();
-    }, 2500);
-  }
+  /* the banner video's own fallback lives in heroVideo(): it retries a failed
+     load once and only then shows the poster. A second fallback here used to
+     swap the video for its poster whenever it hadn't started loading after
+     2.5 seconds, which on a slower phone connection hid the video for good
+     (and could stack a second poster image on top). */
 })();
 
 /* =====================================================================
@@ -5063,25 +5874,6 @@ function diag(msg){
   window.__memobrickDiag = show;
 })();
 
-/* the reviews rail */
-const revTrack = document.querySelector("#revTrack");
-if (revTrack){
-  const step = () => Math.max(280, revTrack.clientWidth * 0.8);
-  const sync = () => {
-    const prev = document.querySelector("#revPrev"), next = document.querySelector("#revNext");
-    if (!prev || !next) return;
-    prev.disabled = revTrack.scrollLeft < 8;
-    next.disabled = revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 8;
-  };
-  document.querySelector("#revPrev").addEventListener("click", () =>
-    revTrack.scrollBy({ left: -step(), behavior: "smooth" }));
-  document.querySelector("#revNext").addEventListener("click", () =>
-    revTrack.scrollBy({ left: step(), behavior: "smooth" }));
-  revTrack.addEventListener("scroll", sync, { passive: true });
-  window.addEventListener("resize", sync);
-  sync();
-}
-
 /* the strip at the top of the editor opens the full guide below */
 function revealTips(){
   const body = document.querySelector("#tipsBody"), btn = document.querySelector("#tipsToggle");
@@ -5122,21 +5914,6 @@ if (tipsToggle && tipsBody){
     tipsToggle.setAttribute("aria-expanded", open);
     tipsToggle.setAttribute("aria-expanded", open);
     if (open) tipsBody.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  });
-}
-
-/* ---------------- mobile navigation ---------------- */
-const burger = $("#burger"), navLinks = $("#navLinks");
-if (burger && navLinks){
-  burger.addEventListener("click", () => {
-    const open = navLinks.classList.toggle("open");
-    burger.setAttribute("aria-expanded", open);
-  });
-  navLinks.addEventListener("click", (e) => {
-    if (e.target.closest("a,button")){
-      navLinks.classList.remove("open");
-      burger.setAttribute("aria-expanded", false);
-    }
   });
 }
 
@@ -5215,6 +5992,8 @@ function setSize(id){
 let sizeFilter = "all";
 const BY_AREA = SIZES.slice().sort((a, b) => (a.gw*a.gh) - (b.gw*b.gh));
 
+// size cards shown before "Show more": one row on desktop, keeps the homepage short
+const SIZES_SHOWN = 4;
 function renderSizes(){
   const list = BY_AREA.filter((x) => sizeFilter === "all" || x.shape === sizeFilter);
   $("#sizeCards").innerHTML = list.map((x, i) => {
@@ -5222,9 +6001,9 @@ function renderSizes(){
     const per = (x.price/pieces*100);
     const ar = Math.min(56, 56*w/Math.max(w,h)), arh = Math.min(56, 56*h/Math.max(w,h));
     return `
-    <article class="size${x.id===S.size.id?" pick":""}${i>7?" extra":""}" data-id="${x.id}">
+    <article class="size${x.id===S.size.id?" pick":""}${i>=SIZES_SHOWN?" extra":""}" data-id="${x.id}">
       ${x.id===S.size.id?'<span class="tag now">In the creator</span>':(x.id==="16x16"?'<span class="tag">Most ordered</span>':"")}
-      <img class="size-img" referrerpolicy="no-referrer" src="${x.img}" alt="MemoBrick ${x.label} mosaic" loading="lazy" onerror="this.style.display='none'">
+      <img class="size-img" referrerpolicy="no-referrer" src="${x.img}"${x.imgStatic && x.imgStatic !== x.img ? ` data-fallback="${x.imgStatic}"` : ""} alt="MemoBrick ${x.label} mosaic" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}else{this.style.display='none'}">
       <div class="size-head">
         <span class="ratio" style="width:${ar}px;height:${arh}px" aria-hidden="true"></span>
         <div>
@@ -5241,10 +6020,10 @@ function renderSizes(){
         ${x.build?`<li><span>Built for you</span><span>${money(x.build)}</span></li>`:""}
       </ul>
       <button class="btn${x.id===S.size.id?"":" btn-ghost"}" data-try="${x.id}">${x.id===S.size.id?"Now in the creator":"Try this size"}</button>
-      <a class="viewlink" href="${url(x, false)}" target="_blank" rel="noopener">View on memobrick.com →</a>
+      <a class="viewlink" href="${url(x, false)}" target="_blank" rel="noopener">View product page →</a>
     </article>`;
   }).join("");
-  const extra = list.length - 8;
+  const extra = list.length - SIZES_SHOWN;
   const mb = $("#moreSizes");
   if (mb){
     mb.hidden = extra <= 0;
@@ -5425,11 +6204,15 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
 
   let ux = ux0, uy = uy0, uw = ux1-ux0, uh = uy1-uy0;
 
-  // margin: expand 12% on each side so the crop doesn't hug the face(s)
-  // tightly, then clamp back within the photo
-  const marginX = uw*0.12, marginY = uh*0.12;
-  ux = Math.max(0, ux-marginX); uy = Math.max(0, uy-marginY);
-  const ex1 = Math.min(1, ux1+marginX), ey1 = Math.min(1, uy1+marginY);
+  // margin: frame the whole head with a little shoulder, not just the face.
+  // The detector's box runs roughly brow to chin, so a flat 12% cut off hair
+  // and chin and zoomed in so far that features became a few big bricks (a
+  // real review: "I wish that it wasn't so close up"). Tested side by side
+  // on portraits: much more room than this (60% above, 80% below) pulled in
+  // so much background on a square board that the face got small again.
+  const padTop = uh*0.35, padSide = uw*0.20, padBottom = uh*0.40;
+  ux = Math.max(0, ux-padSide); uy = Math.max(0, uy-padTop);
+  const ex1 = Math.min(1, ux1+padSide), ey1 = Math.min(1, uy1+padBottom);
   uw = ex1-ux; uh = ey1-uy;
 
   // reshape to the board's own aspect ratio, growing whichever side is
@@ -5444,7 +6227,7 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
   // zoom: how much to scale so this reshaped box fills the whole visible
   // crop — my own S.zoom is a multiplier on top of "cover", exactly
   // matching what 1/max(width,height) gives here
-  const zoomPct = clamp(Math.round((1/Math.max(rw, rh))*100), 100, 300);
+  const zoomPct = clamp(Math.round((1/Math.max(rw, rh))*100), 100, 240);   // was 300: deep zooms made faces blocky
   S.zoom = zoomPct/100;
 
   // convert the desired centre (cx0, cy0, normalised 0-1 in photo space)
@@ -5457,7 +6240,13 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
   const wantX = cx0*iw, wantY = cy0*ih;       // desired centre, in photo pixel space
   S.ox = slackX > 0.001 ? clamp(((iw/2 - wantX)*sc)/slackX, -1, 1) : 0;
   S.oy = slackY > 0.001 ? clamp(((ih/2 - wantY)*sc)/slackY, -1, 1) : 0;
+  // how wide the largest face now is, as a share of the board's width — the
+  // size suggestion uses it to say how many bricks across a face gets
+  const faces = (S.mlFaces && S.mlFacesImg === S.imgId) ? S.mlFaces : null;
+  const faceW = faces && faces.length ? Math.max(...faces.map((f) => f.x1 - f.x0)) : 0;
+  S.faceFrac = faceW > 0 ? Math.min(1, faceW*dw/W) : null;
   setZoom(zoomPct, false, true);
+  if (typeof updateSizeRecommendation === "function") updateSizeRecommendation();
 }
 
 /* Face-aware auto-crop. Detects every face in the FULL original photo —
@@ -5478,8 +6267,12 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
    runs rather than leaving the customer stuck. */
 async function autoCropToFaces(silent){
   const img = S.img; if (!img) { if (!silent) toast("Upload a photo first."); return; }
-  const { gw, gh } = dims();
+  let { gw, gh } = dims();
   const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
+  // what the framing was when detection started: detection can take 8 s+,
+  // and an automatic crop must not undo a zoom, pan or size the customer
+  // chose in the meantime
+  const framingAtStart = [S.size.id, S.zoom, S.ox, S.oy].join("|");
   if (!iw || !ih) return;
   if (!silent) toast("Finding faces…");
 
@@ -5515,6 +6308,27 @@ async function autoCropToFaces(silent){
     console.error("MemoBrick: MediaPipe face detection unavailable, falling back —", err);
   }
 
+  if (!union && !detectorRan && window.MB_BODY_SKIN !== false){
+    // the face model didn't load (slow connection): ask the person model
+    // where the faces are before falling back to guessing from colour —
+    // the colour guess framed a shirt instead of the face (customer order)
+    try {
+      if (!BODY_SKIN || BODY_SKIN.img !== img){
+        const seg = await Promise.race([loadSegmenter(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), 10000))]);
+        if (S.img !== img) return;
+        bodySkinMap(img, seg);
+      }
+      const sf = (BODY_SKIN && BODY_SKIN.img === img) ? BODY_SKIN.faces : [];
+      if (sf.length){
+        let ux0 = Infinity, uy0 = Infinity, ux1 = -Infinity, uy1 = -Infinity;
+        for (const f of sf){ ux0 = Math.min(ux0, f.x0); uy0 = Math.min(uy0, f.y0); ux1 = Math.max(ux1, f.x1); uy1 = Math.max(uy1, f.y1); }
+        if (ux1 > ux0){ union = { x0: ux0, y0: uy0, x1: ux1, y1: uy1 }; faceCount = sf.length; }
+        if (!(S.mlFaces && S.mlFacesImg === S.imgId && S.mlFaces.length)){ S.mlFaces = sf; S.mlFacesImg = S.imgId; }
+      }
+    } catch (e){ /* person model unavailable too: colour guess below */ }
+  }
+
   if (!union && !detectorRan){
     // fallback: the skin-color heuristic, at a smaller analysis size —
     // this is a much cruder signal, so a real, isolated face rarely
@@ -5544,6 +6358,12 @@ async function autoCropToFaces(silent){
       union = { x0: ux0, y0: uy0, x1: ux1, y1: uy1 }; faceCount = boxes.length;
     }
   }
+
+  // the photo may have been replaced while faces were found (the fallback
+  // path had no check), or the customer may already have framed it
+  if (S.img !== img) return;
+  if (silent && [S.size.id, S.zoom, S.ox, S.oy].join("|") !== framingAtStart) return;
+  ({ gw, gh } = dims());          // the board may have changed shape during detection
 
   if (!union){ if (!silent){ fitWholePhoto(true); toast("No face found — fit the whole photo instead."); } return; }
 
@@ -5588,6 +6408,40 @@ function recommendedSizeForFaces(n){
   return best;
 }
 
+/* The size to suggest for this photo, with the reason in words. Starts
+   from the face count (recommendedSizeForFaces), then makes sure the
+   largest face gets enough bricks across for clear eyes (FACE_MIN_STUDS),
+   preferring the photo's own shape. Only ever a suggestion: the board is
+   never switched automatically. */
+const FACE_MIN_STUDS = 18;
+function recommendedSizeForPhoto(){
+  const n = S.detectedFaceCount;
+  const byCount = recommendedSizeForFaces(n);
+  if (!byCount) return null;
+  const img = S.img, iw = img && (img.naturalWidth || img.width), ih = img && (img.naturalHeight || img.height);
+  const ratio = iw && ih ? iw/ih : 1;
+  const shape = ratio > 1.15 ? "landscape" : ratio < 0.87 ? "portrait" : "square";
+  const frac = S.faceFrac || 0;
+  const fitsCount = (z) => { const f = FITS[z.id]; const nums = f && f.match(/\d+/g); return !nums || Number(nums[nums.length - 1]) >= n; };
+  const studs = (z) => Math.round(frac * z.gw);
+  // never suggest a smaller board than the one already chosen: the old
+  // face-count rule recommended 16x16 to someone on 20x20
+  const floor = Math.max(byCount.gw*byCount.gh, S.size.gw*S.size.gh);
+  const pool = SIZES.filter((z) => z.id !== "10x10" && fitsCount(z) && z.gw*z.gh >= floor);
+  const ok = (z) => !frac || studs(z) >= FACE_MIN_STUDS;
+  const byArea = (a, b) => a.gw*a.gh - b.gw*b.gh;
+  const best = pool.filter((z) => z.shape === shape && ok(z)).sort(byArea)[0]
+            || pool.filter(ok).sort(byArea)[0] || S.size;
+  let why;
+  if (frac && studs(best) >= FACE_MIN_STUDS && studs(S.size) < FACE_MIN_STUDS)
+    why = "The face gets about " + studs(best) + " bricks across on this size (" + studs(S.size) + " now), so eyes and smile stay clear.";
+  else if (best.shape === shape && S.size.shape !== shape)
+    why = "Matches your photo\u2019s " + (shape === "portrait" ? "tall" : "wide") + " shape, so less of it is cropped.";
+  else
+    why = "Your photo has " + n + (n === 1 ? " face" : " faces") + " \u2014 this size keeps more detail.";
+  return { size: best, why: why };
+}
+
 /* Desktop-only counterpart to the mobile size panel's own inline
    recommendation banner (built fresh each time that panel renders).
    #sizeGrid renders once at script load rather than per-photo, so
@@ -5595,14 +6449,13 @@ function recommendedSizeForFaces(n){
    slot right above it — purely additive, sizeGrid/sizeAll untouched. */
 function updateSizeRecommendation(){
   const el = $("#sizeRec"); if (!el) return;
-  const rec = recommendedSizeForFaces(S.detectedFaceCount);
+  const pick = recommendedSizeForPhoto(), rec = pick && pick.size;
   if (!rec || rec.id === S.size.id){ el.hidden = true; el.innerHTML = ""; return; }
-  const n = S.detectedFaceCount;
   el.hidden = false;
   el.innerHTML = '<span class="size-rec-k">✨ Recommended for your photo</span>' +
     '<button type="button" class="size-rec-pick" data-id="' + rec.id + '">' +
       '<b>' + rec.label + '</b>' +
-      '<span>Your photo has ' + n + (n === 1 ? ' face' : ' faces') + ' — this size keeps more detail.</span>' +
+      '<span>' + pick.why + '</span>' +
     '</button>';
   el.querySelector(".size-rec-pick").addEventListener("click", () => setSize(rec.id));
 }
@@ -5838,7 +6691,7 @@ function saveSession(){
     c.getContext("2d").drawImage(S.img, 0, 0, c.width, c.height);
     sessionStorage.setItem("mb_photo", c.toDataURL("image/jpeg", 0.82));
     sessionStorage.setItem("mb_state", JSON.stringify({
-      sizeId: S.size.id, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
+      sizeId: S.size.id, build: !!S.build, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
       bri: S.bri, con: S.con, sat: S.sat, temp: S.temp, detail: S.detail,
       dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, pal: S.pal,
       excludedColors: S.excludedColors ? [...S.excludedColors] : [],
@@ -5849,6 +6702,12 @@ function saveSession(){
 
 function restoreSession(){
   try {
+    // only bring the saved design back where the customer is designing (the
+    // editor page, #editor, or a ?size= deep link). Restoring on every visit
+    // turned the homepage into the editor for the rest of the tab, and the
+    // logo, Sizes and FAQ links could no longer reach it.
+    const qs = new URLSearchParams(location.search);
+    if (!(window.MB_LANDING_VIEW === "upload" || location.hash === "#editor" || qs.get("size"))) return false;
     const data = sessionStorage.getItem("mb_photo");
     if (!data) return false;
     const st = JSON.parse(sessionStorage.getItem("mb_state") || "{}");
@@ -5861,14 +6720,19 @@ function restoreSession(){
       // returning visitor, rather than just quietly starting fresh.
       try {
         adopt(im, { name: "restored.jpg", type: "image/jpeg" }, { skipAutoCrop: !st.fresh });
-        const z = SIZES.find((x) => x.id === st.sizeId);
+        // a size in the link (a product page's "design this size") wins
+        const z = SIZES.find((x) => x.id === (qs.get("size") || st.sizeId));
         if (z) S.size = z;
+        if (z && st.build && z.build && !qs.get("size")) S.build = true;
+        // a value missing from an older saved copy keeps the current one
+        // instead of becoming undefined (sliders read "undefined")
+        const pick = (k) => (st[k] == null ? S[k] : st[k]);
         Object.assign(S, {
           zoom: st.zoom || 1, ox: st.ox || 0, oy: st.oy || 0,
           bg: st.bg || S.bg, bgEffect: st.bgEffect || S.bgEffect,
-          bri: st.bri, con: st.con, sat: st.sat, temp: st.temp, detail: st.detail,
-          dither: st.dither, shadows: st.shadows, warm: st.warm,
-          auto: st.auto, pal: st.pal || S.pal,
+          bri: pick("bri"), con: pick("con"), sat: pick("sat"), temp: pick("temp"), detail: pick("detail"),
+          dither: pick("dither"), shadows: pick("shadows"), warm: pick("warm"),
+          auto: pick("auto"), pal: st.pal || S.pal,
         });
         if (st.excludedColors && st.excludedColors.length) S.excludedColors = new Set(st.excludedColors);
         if (st.edits && st.edits.length) S.edits = new Map(st.edits);
@@ -5882,7 +6746,12 @@ function restoreSession(){
         // an error for something the customer never asked to happen
       }
     };
-    im.onerror = () => {};
+    // an unreadable saved photo: restoreSession already returned true, so
+    // without this no view was ever shown (a blank page)
+    im.onerror = () => {
+      try { sessionStorage.removeItem("mb_photo"); sessionStorage.removeItem("mb_state"); } catch (x){}
+      showView(window.MB_LANDING_VIEW || "home");
+    };
     im.src = data;
     return true;
   } catch (e){ return false; }
@@ -5922,6 +6791,7 @@ function adopt(img, f, opts){
   S.imgId = (S.imgId || 0) + 1;
   S.baseBuf = null; S.baseKey = ""; S.cells = null; S.cacheKey = "";
   S.pickedPal = null; S.palKey = "";
+  S.faceFrac = null;
   S.detectedFaceCount = null;   // belongs to the previous photo — cleared until this one's own detection resolves
   S.mlFaces = null; S.mlFacesImg = -1;
   S.expo = null; S.autoBright = true;   // each photo gets its own exposure analysis
@@ -5979,6 +6849,8 @@ function adopt(img, f, opts){
 }
 
 function loadFile(f){
+  const upView = document.querySelector("#view-upload");
+  const fromStart = !!(upView && !upView.hidden);
   if (!looksLikeImage(f)){
     toast("That doesn't look like an image. JPG, PNG, HEIC, WebP, AVIF, GIF, BMP, TIFF and SVG all work.");
     return;
@@ -5989,7 +6861,7 @@ function loadFile(f){
     .then(() => { diag("trying createImageBitmap"); return decodeViaBitmap(f); })
     .catch((e) => { diag("bitmap failed: " + e.message + " — trying FileReader"); return decodeViaDataURL(f); })
     .catch((e) => { diag("FileReader failed: " + e.message + " — trying object URL"); return decodeViaImage(f); })
-    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); return adopt(img, f); })
+    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); adopt(img, f); try { designChoice.offer(f, fromStart); } catch (e) {} })
     .catch(() => {
       const name = (f.name || "") + " " + (f.type || "");
       if (/heic|heif|hif/i.test(name))
@@ -6287,12 +7159,13 @@ function instructionsHTML(){
         }
         grid += tr + `<th>${y+1}</th></tr>`;
       }
-      const plateLegend = legend.filter((L) => used.has(L.id));
+      // this section's own counts decide the order: most used here first
+      const plateLegend = legend.filter((L) => used.has(L.id)).sort((a, b) => used.get(b.id) - used.get(a.id));
       const scale = sectionScale(w, h);
       const cellMm = (BRICK_MM * scale).toFixed(3);
       const scaleNote = scale >= 0.999
-        ? `<p class="scale-note"><span class="ruler"></span> Printed at <b>true size</b> — this ruler mark measures exactly 1 inch. If it doesn't, set your printer to "Actual size" / 100%, not "Fit to page".</p>`
-        : `<p class="scale-note"><span class="ruler"></span> <span class="scale-warn">Reduced to ${Math.round(scale*100)}% of true size</span> — this baseplate is larger than an 11×17" sheet. Use the printed grid for brick placement, not as a physical size reference.</p>`;
+        ? `<p class="scale-note"><span class="ruler"></span><span>Printed at <b>true size</b> — this ruler mark measures exactly 1 inch. If it doesn't, set your printer to "Actual size" / 100%, not "Fit to page".</span></p>`
+        : `<p class="scale-note"><span class="ruler"></span><span><span class="scale-warn">Reduced to ${Math.round(scale*100)}% of true size</span> — this baseplate is larger than an 11×17" sheet. Use the printed grid for brick placement, not as a physical size reference.</span></p>`;
       out += `<section class="sheet">
         ${head(page, "Section " + idx)}
         <div class="bk-head">
@@ -6309,18 +7182,27 @@ function instructionsHTML(){
           <em>${idx} of ${nSections} sections</em></div>
         ${scaleNote}
         <table class="grid" style="--cell-mm:${cellMm}">${grid}</table>
-        <div class="sec-foot">
-          <table class="legend small">
-            <tr><th></th><th>Code</th><th>Color</th><th>Here</th></tr>
-            ${plateLegend.map((L) => `<tr><td><span class="sw" style="background:${L.hex}"></span></td>
-              <td class="code">${L.id}</td><td>${L.name}</td>
-              <td class="num">${fmt(used.get(L.id))}</td></tr>`).join("")}
-          </table>
-          <div class="tipbox">
-            <b>Tip</b>
-            <p>${TIPS[(idx - 1) % TIPS.length]}</p>
-            <label class="done"><span></span>Section ${idx} finished</label>
+        <div class="sec-colors">
+          <div class="sc-head">
+            <b>Colors for this section</b>
+            <span>${plateLegend.length} colors · ${fmt(w*h)} bricks · most used first</span>
           </div>
+          <!-- color cards instead of a long table: a single column of up to
+               18 colors pushed the page past 17" and split the list across
+               two printed sheets. The swatch carries the code exactly as
+               the grid squares do, so a card matches a square at a glance -->
+          <div class="sc-grid">
+            ${plateLegend.map((L) => `<div class="sc" title="${L.name}">
+              <span class="sc-sw" style="background:${L.hex};color:${readable(L.hex)}">${L.id}</span>
+              <span class="sc-n">${fmt(used.get(L.id))}</span>
+              <span class="sc-tick"></span>
+            </div>`).join("")}
+          </div>
+        </div>
+        <div class="sec-tip">
+          <span class="st-label">Tip</span>
+          <p>${TIPS[(idx - 1) % TIPS.length]}</p>
+          <label class="done"><span></span>Section ${idx} finished</label>
         </div>
       </section>`;
     });
@@ -6373,26 +7255,145 @@ const PDF_CONTENT_W = PDF_PAGE_W - 2*PDF_MARGIN_X;
 const PDF_INK = [0x14,0x16,0x1A], PDF_INK2 = [0x5A,0x60,0x68], PDF_INK3 = [0x8C,0x91,0x99];
 const PDF_LINE = [0xDC,0xDB,0xD6], PDF_LINE_SOFT = [0xE4,0xE2,0xDC];
 const PDF_RED = [0xE2,0x38,0x2B], PDF_YELLOW = [0xFF,0xC7,0x2C];
+const PDF_CREAM = [0xFF,0xF8,0xEC];
 const PDF_RAINBOW = [[0xE2,0x38,0x2B],[0xF5,0x82,0x20],[0xFF,0xC7,0x2C],[0x34,0xA8,0x53],
                       [0x12,0xA9,0xA0],[0x0F,0x9B,0xD7],[0xB0,0x4A,0xA0]];
+// one color per section badge, map tile and accent, cycling
+const PDF_FUN = [[0xE2,0x38,0x2B],[0x0F,0x9B,0xD7],[0xFF,0xC7,0x2C],[0x34,0xA8,0x53],
+                 [0xF5,0x82,0x20],[0xB0,0x4A,0xA0],[0x12,0xA9,0xA0]];
 
 function pdfHexRgb(hex){ return [parseInt(hex.slice(1,3),16), parseInt(hex.slice(3,5),16), parseInt(hex.slice(5,7),16)]; }
 function pdfReadable(hex){ return readable(hex) === "#14161A" ? PDF_INK : [255,255,255]; }
+function pdfOnColor(rgb){ return (0.299*rgb[0] + 0.587*rgb[1] + 0.114*rgb[2]) > 150 ? PDF_INK : [255,255,255]; }
+// text in an outline's colour: light colours (yellow) are darkened enough to read
+function pdfInkOf(rgb){ return pdfShade(rgb, (0.299*rgb[0] + 0.587*rgb[1] + 0.114*rgb[2]) > 170 ? 0.45 : 0.12); }
+function pdfTint(rgb, k){ return rgb.map((v) => Math.round(v + (255 - v)*k)); }
+function pdfShade(rgb, k){ return rgb.map((v) => Math.round(v*(1 - k))); }
 function pdfRainbowBar(doc, y, h){
   const w = PDF_CONTENT_W / PDF_RAINBOW.length;
   PDF_RAINBOW.forEach((c, i) => { doc.setFillColor(...c); doc.rect(PDF_MARGIN_X + i*w, y, w + 0.3, h, "F"); });
 }
-function pdfHeader(doc, label, ref, pageNum){
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
-  doc.text("MEMOBRICK", PDF_MARGIN_X, PDF_MARGIN_Y - 4);
-  doc.setFont("courier", "normal"); doc.setFontSize(8.5); doc.setTextColor(...PDF_INK2);
-  doc.text(`${label} \u00B7 ${ref} \u00B7 ${pageNum}`, PDF_PAGE_W - PDF_MARGIN_X, PDF_MARGIN_Y - 4, { align: "right" });
-  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-  doc.line(PDF_MARGIN_X, PDF_MARGIN_Y - 1.5, PDF_PAGE_W - PDF_MARGIN_X, PDF_MARGIN_Y - 1.5);
-}
 function pdfWrap(doc, text, maxWidth, size, font = "helvetica", style = "normal"){
   doc.setFont(font, style); doc.setFontSize(size);
   return doc.splitTextToSize(text, maxWidth);
+}
+
+/* A toy brick seen from the front, drawn as a coloured outline only
+   (no fills) so the booklet stays light on printer ink. */
+function pdfBrick(doc, x, y, w, h, rgb, studs){
+  const n = studs || Math.max(1, Math.round(w / (h*0.9)));
+  const sw = Math.min(w / n * 0.56, h*0.62), sh = h*0.26;
+  doc.setDrawColor(...rgb); doc.setLineWidth(Math.min(0.9, Math.max(0.35, h*0.05)));
+  for (let i = 0; i < n; i++){
+    const cx = x + (i + 0.5) * (w / n);
+    doc.roundedRect(cx - sw/2, y - sh, sw, sh, sh*0.35, sh*0.35, "S");
+  }
+  doc.setFillColor(255,255,255);
+  doc.roundedRect(x, y, w, h, Math.min(2.2, h*0.2), Math.min(2.2, h*0.2), "FD");
+}
+/* Outline brick badge with a big number in the badge colour. */
+function pdfBadge(doc, x, y, size, rgb, label, fontSize){
+  pdfBrick(doc, x, y, size, size*0.78, rgb, 2);
+  doc.setTextColor(...pdfInkOf(rgb)); doc.setFont("helvetica", "bold"); doc.setFontSize(fontSize || size*1.45);
+  doc.text(String(label), x + size/2, y + size*0.39 + (fontSize || size*1.45)*0.14, { align: "center" });
+}
+/* Bricky, the booklet's guide: a smiling brick, line drawing only. */
+function pdfMascot(doc, x, y, s, rgb, wave){
+  const lw = Math.max(0.5, s*0.035);
+  doc.setFillColor(255,255,255);
+  // arms
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(lw);
+  doc.line(x + s*0.04, y + s*0.62, x - s*0.12, y + s*0.82);
+  if (wave){ doc.line(x + s*0.96, y + s*0.55, x + s*1.14, y + s*0.25); }
+  else { doc.line(x + s*0.96, y + s*0.62, x + s*1.12, y + s*0.82); }
+  // studs, body, legs
+  doc.setDrawColor(...rgb); doc.setLineWidth(lw*1.2);
+  doc.roundedRect(x + s*0.17, y + s*0.06, s*0.24, s*0.16, s*0.05, s*0.05, "FD");
+  doc.roundedRect(x + s*0.59, y + s*0.06, s*0.24, s*0.16, s*0.05, s*0.05, "FD");
+  doc.roundedRect(x, y + s*0.18, s, s*0.78, s*0.12, s*0.12, "FD");
+  doc.roundedRect(x + s*0.2, y + s*0.96, s*0.18, s*0.1, s*0.04, s*0.04, "S");
+  doc.roundedRect(x + s*0.62, y + s*0.96, s*0.18, s*0.1, s*0.04, s*0.04, "S");
+  // face
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(lw*0.8);
+  doc.ellipse(x + s*0.34, y + s*0.48, s*0.1, s*0.12, "S");
+  doc.ellipse(x + s*0.66, y + s*0.48, s*0.1, s*0.12, "S");
+  doc.setFillColor(...PDF_INK);
+  doc.circle(x + s*0.36, y + s*0.5, s*0.035, "F");
+  doc.circle(x + s*0.68, y + s*0.5, s*0.035, "F");
+  doc.setDrawColor(0xF0,0x7A,0x98); doc.setLineWidth(lw*0.7);
+  doc.ellipse(x + s*0.18, y + s*0.66, s*0.06, s*0.035, "S");
+  doc.ellipse(x + s*0.82, y + s*0.66, s*0.06, s*0.035, "S");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(lw);
+  doc.lines([[s*0.08, s*0.09, s*0.28, s*0.09, s*0.36, 0]], x + s*0.32, y + s*0.68, [1,1], "S", false);
+}
+/* A hand-drawn style tick. */
+function pdfTick(doc, x, y, s, rgb){
+  doc.setDrawColor(...(rgb || PDF_INK)); doc.setLineWidth(s*0.18);
+  doc.lines([[s*0.3, s*0.35], [s*0.6, -s*0.8]], x, y + s*0.45, [1,1], "S", false);
+}
+function pdfCheckbox(doc, x, y, s){
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.35);
+  doc.roundedRect(x, y, s, s, s*0.22, s*0.22, "S");
+}
+/* Speech bubble (outline) with a tail pointing left. */
+function pdfBubble(doc, x, y, w, h, rgb){
+  doc.setDrawColor(...rgb); doc.setLineWidth(0.7); doc.setFillColor(255,255,255);
+  doc.roundedRect(x, y, w, h, 4, 4, "S");
+  doc.triangle(x + 0.5, y + h*0.45 + 0.3, x + 0.5, y + h*0.45 + 5.7, x - 0.2, y + h*0.45 + 3, "F");
+  doc.line(x, y + h*0.45, x - 5, y + h*0.45 + 7);
+  doc.line(x - 5, y + h*0.45 + 7, x, y + h*0.45 + 6);
+}
+/* Deterministic confetti so the same order always prints the same page. */
+function pdfConfetti(doc, x, y, w, h, count, seed, avoid){
+  let s = seed || 7;
+  const rnd = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+  const blocked = (px, py) => (avoid || []).some(([ax, ay, aw, ah]) => px > ax - 3 && px < ax + aw + 3 && py > ay - 3 && py < ay + ah + 3);
+  for (let i = 0; i < count; i++){
+    const c = PDF_FUN[Math.floor(rnd()*PDF_FUN.length)];
+    const px = x + rnd()*w, py = y + rnd()*h, k = rnd();
+    if (blocked(px, py)) continue;
+    doc.setDrawColor(...c); doc.setLineWidth(0.45);
+    if (k < 0.4) doc.circle(px, py, 0.9 + rnd()*1.2, "S");
+    else if (k < 0.8) doc.roundedRect(px, py, 1.8 + rnd()*2.6, 1.2 + rnd()*1.2, 0.4, 0.4, "S");
+    else doc.triangle(px, py, px + 2.8, py + 0.6, px + 0.8, py + 2.8, "S");
+  }
+}
+/* Top of every inside page: studs + wordmark left, a colored page pill right. */
+function pdfHeader(doc, label, ref, pageNum, rgb){
+  const accent = rgb || PDF_RED;
+  PDF_FUN.slice(0, 4).forEach((c, i) => {
+    doc.setDrawColor(...c); doc.setLineWidth(0.7); doc.circle(PDF_MARGIN_X + 2 + i*5, PDF_MARGIN_Y - 5.2, 1.7, "S");
+  });
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(13);
+  doc.text("MEMOBRICK", PDF_MARGIN_X + 21, PDF_MARGIN_Y - 3.8);
+  doc.setFont("helvetica", "bold"); doc.setFontSize(8.5);
+  const pill = `${label}  ·  page ${pageNum}`;
+  const pw = doc.getTextWidth(pill) + 10;
+  doc.setDrawColor(...accent); doc.setLineWidth(0.7);
+  doc.roundedRect(PDF_PAGE_W - PDF_MARGIN_X - pw, PDF_MARGIN_Y - 9.5, pw, 7.4, 3.7, 3.7, "S");
+  doc.setTextColor(...pdfInkOf(accent));
+  doc.text(pill, PDF_PAGE_W - PDF_MARGIN_X - pw/2, PDF_MARGIN_Y - 4.6, { align: "center" });
+  doc.setTextColor(...PDF_INK3); doc.setFont("courier", "normal"); doc.setFontSize(7);
+  doc.text(ref, PDF_PAGE_W - PDF_MARGIN_X - pw - 3, PDF_MARGIN_Y - 4.6, { align: "right" });
+}
+/* Bottom of every page: a row of little bricks. */
+function pdfFooter(doc){
+  const n = 14, w = PDF_CONTENT_W / n, y = PDF_PAGE_H - 7;
+  for (let i = 0; i < n; i++) pdfBrick(doc, PDF_MARGIN_X + i*w + 0.6, y, w - 1.2, 3.6, PDF_FUN[i % PDF_FUN.length], 2);
+}
+function pdfNewPage(doc){ doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pdfFooter(doc); }
+/* Big page title with a colored highlight behind one word. */
+function pdfTitle(doc, before, hi, after, x, y, size, rgb){
+  doc.setFont("helvetica", "bold"); doc.setFontSize(size);
+  let cx = x;
+  if (before){ doc.setTextColor(...PDF_INK); doc.text(before, cx, y); cx += doc.getTextWidth(before); }
+  if (hi){
+    const w = doc.getTextWidth(hi);
+    doc.setDrawColor(...(rgb || PDF_YELLOW)); doc.setLineWidth(Math.max(1, size*0.07));
+    doc.line(cx, y + size*0.07, cx + w, y + size*0.07);
+    doc.setTextColor(...PDF_INK); doc.text(hi, cx, y); cx += w;
+  }
+  if (after){ doc.setTextColor(...PDF_INK); doc.text(after, cx, y); }
 }
 
 function buildInstructionsPDF(doc){
@@ -6407,269 +7408,367 @@ function buildInstructionsPDF(doc){
   const legend = P.map((c) => ({ ...c, n: counts.get(c.id) || 0 }))
                   .filter((c) => c.n > 0).sort((a, b) => b.n - a.n);
   const ref = orderRef();
-  const date = new Date().toLocaleDateString("en-GB", { day:"numeric", month:"long", year:"numeric" });
+  const date = new Date().toLocaleDateString("en-US", { month:"long", day:"numeric", year:"numeric" });
   const cm = (n) => (n*BRICK_MM/10).toFixed(1);
   const cols = tiles(gw, bx), rows = tiles(gh, by);
   const nSections = cols.length * rows.length;
   const totalPacks = legend.reduce((a, c) => a + packs(c.n), 0);
   const hours = S.size.hours;
   const sizeLabel = S.size.label;
+  const secColor = (idx) => PDF_FUN[(idx - 1) % PDF_FUN.length];
   let preview = null;
   try { preview = mos.toDataURL("image/png"); } catch (e) {}
 
   let pageNum = 1;
+  let y;
 
   /* ---- 1. cover ---- */
-  pdfRainbowBar(doc, 0, 2.2);
-  doc.setTextColor(...PDF_INK3); doc.setFont("courier", "normal"); doc.setFontSize(9);
-  doc.text("TURN MEMORIES INTO ART", PDF_MARGIN_X, 22);
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(40);
-  doc.text("Build", PDF_MARGIN_X, 38);
-  doc.text("instructions", PDF_MARGIN_X, 50);
+  // a dotted line of studs instead of a solid colour band
 
-  const frameY = 62, frameH = 190;
-  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.8);
-  doc.roundedRect(PDF_MARGIN_X, frameY, PDF_CONTENT_W, frameH, 3, 3, "S");
+  // a wavy edge of studs between the two colors
+  for (let x = PDF_MARGIN_X + 3, i = 0; x < PDF_PAGE_W - PDF_MARGIN_X; x += 9, i++){ doc.setDrawColor(...PDF_FUN[i % PDF_FUN.length]); doc.setLineWidth(0.7); doc.circle(x, 112, 2.6, "S"); }
+  pdfConfetti(doc, 8, 6, PDF_PAGE_W - 16, 100, 70, 11, [[PDF_MARGIN_X, 16, 70, 13], [PDF_MARGIN_X, 36, 150, 54], [PDF_PAGE_W - PDF_MARGIN_X - 52, 34, 52, 50]]);
+  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
+  doc.roundedRect(PDF_MARGIN_X, 18, 64, 9, 4.5, 4.5, "FD");
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
+  doc.text("YOUR BUILD INSTRUCTIONS", PDF_MARGIN_X + 32, 24, { align: "center" });
+  doc.setFont("helvetica", "bold"); doc.setFontSize(46);
+  doc.text("Let's build", PDF_MARGIN_X, 52);
+  doc.text("your MemoBrick!", PDF_MARGIN_X, 70);
+  doc.setFont("helvetica", "normal"); doc.setFontSize(13); doc.setTextColor(...PDF_INK);
+  doc.text(`${fmt(total)} tiny bricks are about to become your favorite photo.`, PDF_MARGIN_X, 84);
+  pdfMascot(doc, PDF_PAGE_W - PDF_MARGIN_X - 44, 40, 38, PDF_RED, true);
+
+  const frameY = 132, frameH = 196, frameX = PDF_MARGIN_X + 14, frameW = PDF_CONTENT_W - 28;
+  doc.setDrawColor(...PDF_RED); doc.setLineWidth(1); doc.roundedRect(frameX + 4, frameY + 4, frameW, frameH, 5, 5, "S");
+  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(1);
+  doc.roundedRect(frameX, frameY, frameW, frameH, 5, 5, "FD");
   if (preview){
     try {
       const props = doc.getImageProperties(preview);
-      const pad = 8, maxW = PDF_CONTENT_W - pad*2, maxH = frameH - pad*2;
+      const pad = 9, maxW = frameW - pad*2, maxH = frameH - pad*2;
       let w = maxW, h = w * props.height / props.width;
       if (h > maxH){ h = maxH; w = h * props.width / props.height; }
-      doc.addImage(preview, "PNG", PDF_MARGIN_X + (PDF_CONTENT_W-w)/2, frameY + (frameH-h)/2, w, h);
+      doc.addImage(preview, "PNG", frameX + (frameW - w)/2, frameY + (frameH - h)/2, w, h);
     } catch (e) {}
   }
+  // sticker on the corner of the frame
+  const stX = frameX + frameW - 6, stY = frameY + 4;
+  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_YELLOW); doc.setLineWidth(1.4);
+  doc.circle(stX, stY, 17, "FD");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4); doc.circle(stX, stY, 14.6, "S");
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
+  doc.text("MADE FROM", stX, stY - 4, { align: "center" });
+  doc.text("YOUR PHOTO", stX, stY + 1, { align: "center" });
+  doc.setFontSize(7); doc.setFont("helvetica", "normal");
+  doc.text("just for you", stX, stY + 6, { align: "center" });
 
-  const statY = frameY + frameH + 14;
+  const statY = frameY + frameH + 26;
   const stats = [[sizeLabel, "finished size"], [fmt(total), "bricks"],
                  [String(legend.length), "colors"], [String(nSections), nSections === 1 ? "section" : "sections"]];
-  const colW = PDF_CONTENT_W / 4;
+  const tileW = (PDF_CONTENT_W - 18) / 4, tileH = 30;
   stats.forEach(([big, small], i) => {
-    const x = PDF_MARGIN_X + i*colW;
-    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
-    doc.line(x, statY, x + colW - 6, statY);
-    doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(17);
-    doc.text(big, x, statY + 8);
-    doc.setTextColor(...PDF_INK3); doc.setFont("courier", "normal"); doc.setFontSize(7);
-    doc.text(small.toUpperCase(), x, statY + 13);
+    const x = PDF_MARGIN_X + i*(tileW + 6), c = PDF_FUN[i];
+    pdfBrick(doc, x, statY, tileW, tileH, c, 3);
+    doc.setTextColor(...pdfInkOf(c)); doc.setFont("helvetica", "bold"); doc.setFontSize(20);
+    doc.text(big, x + tileW/2, statY + 15, { align: "center" });
+    doc.setFont("helvetica", "bold"); doc.setFontSize(8);
+    doc.text(small.toUpperCase(), x + tileW/2, statY + 22.5, { align: "center" });
   });
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica", "normal"); doc.setFontSize(10);
+  doc.text(`About ${hours} ${hours === 1 ? "hour" : "hours"} of happy building  ·  one section at a time  ·  no experience needed`,
+           PDF_PAGE_W/2, statY + tileH + 14, { align: "center" });
   doc.setTextColor(...PDF_INK3); doc.setFont("courier", "normal"); doc.setFontSize(8);
-  doc.text(`${ref} \u00B7 ${date}`, PDF_MARGIN_X, PDF_PAGE_H - PDF_MARGIN_Y);
+  doc.text(`${ref} · ${date}`, PDF_PAGE_W/2, PDF_PAGE_H - 14, { align: "center" });
+  pdfFooter(doc);
 
   /* ---- 2. welcome ---- */
-  doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-  pdfHeader(doc, "Welcome", ref, pageNum);
-  let y = PDF_MARGIN_Y + 12;
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(21);
-  doc.text("Hello, and congratulations.", PDF_MARGIN_X, y);
-  y += 10;
+  pdfNewPage(doc); pageNum++;
+  pdfHeader(doc, "Welcome", ref, pageNum, PDF_FUN[1]);
+  y = PDF_MARGIN_Y + 16;
+  pdfTitle(doc, "Hello, ", "builder!", "", PDF_MARGIN_X, y, 30, PDF_YELLOW);
+  y += 11;
   doc.setTextColor(...PDF_INK2);
   const introLines = pdfWrap(doc,
-    `Somewhere in this box is a photo you love, taken apart into ${fmt(total)} pieces. Putting it back together takes about ${hours} hours \u2014 longer if people keep wandering over to help, which they will.`,
-    PDF_CONTENT_W, 10.5);
+    `Somewhere in this box is a photo you love, taken apart into ${fmt(total)} little pieces. Putting it back together takes about ${hours} ${hours === 1 ? "hour" : "hours"} — longer if people keep wandering over to help, which they will.`,
+    PDF_CONTENT_W - 50, 11.5);
   doc.text(introLines, PDF_MARGIN_X, y);
-  y += introLines.length*5 + 8;
+  pdfMascot(doc, PDF_PAGE_W - PDF_MARGIN_X - 34, PDF_MARGIN_Y + 4, 30, PDF_FUN[1], true);
+  y += Math.max(introLines.length*5.6, 22) + 12;
 
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12.5);
-  doc.text("What's in the box", PDF_MARGIN_X, y); y += 7;
-  const boxItems = [["15 bags of bricks","labelled with the color code"], ["1 baseplate",'1 \u00D7 1, they clip together'],
-                     ["1 brick separator","for the piece in the wrong square"], ["This booklet","1 section, one page each"]];
-  const bw = (PDF_CONTENT_W - 6)/2, bh = 22;
-  boxItems.forEach(([t,s], i) => {
-    const bx_ = PDF_MARGIN_X + (i%2)*(bw+6), by_ = y + Math.floor(i/2)*(bh+6);
-    doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.4);
-    doc.roundedRect(bx_, by_, bw, bh, 2, 2, "S");
-    doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(11);
-    doc.text(t, bx_+6, by_+10);
-    doc.setTextColor(...PDF_INK3); doc.setFont("helvetica", "normal"); doc.setFontSize(8.5);
-    doc.text(s, bx_+6, by_+16);
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(15);
+  doc.text("What's in the box", PDF_MARGIN_X, y); y += 8;
+  const boxItems = [[`${legend.length} bags of bricks`, "each bag is labeled with its color code", "bag"],
+                    [`${bx*by} baseplate${bx*by === 1 ? "" : "s"}`, `${bx} × ${by}, they clip together`, "plate"],
+                    ["1 brick separator", "for the brick that landed in the wrong spot", "tool"],
+                    ["This booklet", `${nSections} section${nSections === 1 ? "" : "s"}, one page each`, "book"]];
+  const bw = (PDF_CONTENT_W - 8)/2, bh = 32;
+  boxItems.forEach(([t, s, icon], i) => {
+    const c = PDF_FUN[i], bx_ = PDF_MARGIN_X + (i%2)*(bw + 8), by_ = y + Math.floor(i/2)*(bh + 8);
+    doc.setDrawColor(...c); doc.setLineWidth(0.9);
+    doc.roundedRect(bx_, by_, bw, bh, 4, 4, "S");
+    // icon tile
+    const ix = bx_ + 6, iy = by_ + 6, is = bh - 12;
+    doc.setFillColor(255,255,255); doc.setDrawColor(...c); doc.setLineWidth(0.6);
+    if (icon === "bag"){
+      doc.roundedRect(ix + 5, iy + 6, is - 10, is - 9, 1.5, 1.5, "S");
+      doc.line(ix + 5, iy + 9, ix + is - 5, iy + 9);
+      doc.roundedRect(ix + 8, iy + 12, is - 16, 5, 1, 1, "S");
+    } else if (icon === "plate"){
+      doc.roundedRect(ix + 3, iy + 5, is - 6, is - 10, 1, 1, "S");
+      doc.setLineWidth(0.4);
+      for (let r = 0; r < 3; r++) for (let q = 0; q < 4; q++) doc.circle(ix + 6.5 + q*((is - 13)/3), iy + 8.5 + r*((is - 17)/2), 1.1, "S");
+    } else if (icon === "tool"){
+      doc.roundedRect(ix + 4, iy + is/2 - 3, is - 8, 6, 2, 2, "S");
+      doc.roundedRect(ix + is - 10, iy + is/2 - 6, 6, 12, 1.5, 1.5, "FD");
+    } else {
+      doc.roundedRect(ix + 5, iy + 3, is - 10, is - 6, 1, 1, "S");
+      doc.setLineWidth(0.5);
+      for (let k = 0; k < 3; k++) doc.line(ix + 8, iy + 8 + k*3.5, ix + is - 8, iy + 8 + k*3.5);
+    }
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12.5);
+    doc.text(t, ix + is + 6, by_ + 14);
+    doc.setTextColor(...PDF_INK2); doc.setFont("helvetica", "normal"); doc.setFontSize(9);
+    doc.text(pdfWrap(doc, s, bw - is - 18, 9), ix + is + 6, by_ + 20);
   });
-  y += 2*(bh+6) + 6;
+  y += 2*(bh + 8) + 8;
 
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12.5);
-  doc.text("Four rules and you're away", PDF_MARGIN_X, y); y += 8;
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(15);
+  doc.text("Four golden rules", PDF_MARGIN_X, y); y += 10;
   const rules = [
     ["One section at a time.", "Finish a whole baseplate before you start the next. Half-finished plates are how bricks end up in the wrong square."],
-    ["Left to right, top to bottom.", "Same as reading. Your place is easier to find again."],
-    ["Match the code, not the color.", "Two browns look identical under a lamp. Their codes don't."],
-    ["Look from across the room.", "Up close it's a grid of dots. Six feet back it's a face."],
+    ["Left to right, top to bottom.", "Same as reading. Your place is easier to find again after a snack break."],
+    ["Match the code, not the color.", "Two browns can look identical under a lamp. Their codes never do."],
+    ["Look from across the room.", "Up close it's a grid of dots. Six feet back it's a face. That moment is the best part."],
   ];
   rules.forEach(([lead, rest], i) => {
-    doc.setFillColor(...PDF_INK); doc.circle(PDF_MARGIN_X+3, y-1.5, 3, "F");
-    doc.setTextColor(255,255,255); doc.setFont("helvetica","normal"); doc.setFontSize(8);
-    doc.text(String(i+1), PDF_MARGIN_X+3, y, { align:"center" });
-    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10);
-    doc.text(lead, PDF_MARGIN_X+9, y);
-    const leadW = doc.getTextWidth(lead+" ");
-    doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal");
-    const restLines = pdfWrap(doc, rest, PDF_CONTENT_W-9-leadW, 10);
-    doc.text(restLines[0], PDF_MARGIN_X+9+leadW, y);
-    for (let k=1;k<restLines.length;k++) doc.text(restLines[k], PDF_MARGIN_X+9, y+k*5);
-    y += Math.max(5, restLines.length*5) + 5;
-    doc.setDrawColor(...PDF_LINE_SOFT); doc.setLineWidth(0.3);
-    doc.line(PDF_MARGIN_X, y-2.5, PDF_PAGE_W-PDF_MARGIN_X, y-2.5);
+    const c = PDF_FUN[(i + 2) % PDF_FUN.length];
+    doc.setDrawColor(...c); doc.setLineWidth(0.6);
+    doc.roundedRect(PDF_MARGIN_X, y - 2, PDF_CONTENT_W, 22, 4, 4, "S");
+    pdfBadge(doc, PDF_MARGIN_X + 5, y + 4.5, 14, c, i + 1, 15);
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(12);
+    doc.text(lead, PDF_MARGIN_X + 26, y + 6);
+    doc.setTextColor(...PDF_INK2);
+    const restLines = pdfWrap(doc, rest, PDF_CONTENT_W - 32, 9.5);
+    doc.text(restLines, PDF_MARGIN_X + 26, y + 12);
+    y += 26;
   });
   y += 4;
-  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-  doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 16, 1.5, 1.5, "S");
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
-  doc.text("WARNING: CHOKING HAZARD \u2014 contains small parts. Not for children under 3 years.", PDF_PAGE_W/2, y+7, { align:"center" });
-  doc.setFont("helvetica","normal");
-  doc.text("All MemoBrick products are sold as decorative art objects.", PDF_PAGE_W/2, y+12, { align:"center" });
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
+  doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 18, 3, 3, "S");
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
+  doc.triangle(PDF_MARGIN_X + 6, y + 14, PDF_MARGIN_X + 12, y + 4, PDF_MARGIN_X + 18, y + 14, "S");
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
+  doc.text("!", PDF_MARGIN_X + 12, y + 12.6, { align: "center" });
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(9);
+  doc.text("WARNING: CHOKING HAZARD — contains small parts. Not for children under 3 years.", PDF_MARGIN_X + 24, y + 7.5);
+  doc.setFont("helvetica", "normal");
+  doc.text("All MemoBrick products are sold as decorative art objects.", PDF_MARGIN_X + 24, y + 12.8);
+  y += 30;
+
+  // a little build log to fill in
+  if (y + 74 < PDF_PAGE_H - 16){
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica", "bold"); doc.setFontSize(15);
+    doc.text("Meet the build crew", PDF_MARGIN_X, y); y += 6;
+    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
+    doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, 62, 4, 4, "S");
+    const fields = [["Head builder", "Started on"], ["Brick sorter", "Snack of choice"], ["Official cheerleader", "Soundtrack"]];
+    const fx2 = (PDF_CONTENT_W - 24) / 2;
+    fields.forEach(([l, rgt], i) => {
+      const ly = y + 18 + i*16;
+      [[l, PDF_MARGIN_X + 8], [rgt, PDF_MARGIN_X + 16 + fx2]].forEach(([lab, lx], j) => {
+        doc.setDrawColor(...PDF_FUN[(i*2 + j) % PDF_FUN.length]); doc.setLineWidth(0.6); doc.circle(lx + 1.5, ly - 1.5, 1.4, "S");
+        doc.setTextColor(...PDF_INK2); doc.setFont("helvetica", "bold"); doc.setFontSize(8.5);
+        doc.text(lab.toUpperCase(), lx + 5, ly);
+        doc.setDrawColor(...PDF_INK3); doc.setLineWidth(0.35);
+        doc.line(lx + 5 + doc.getTextWidth(lab.toUpperCase()) + 3, ly + 0.5, lx + fx2, ly + 0.5);
+      });
+    });
+  }
 
   /* ---- 3. how to read a page ---- */
-  doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-  pdfHeader(doc, "How to read a page", ref, pageNum);
-  y = PDF_MARGIN_Y + 12;
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(19);
-  doc.text("Every section page works the same way.", PDF_MARGIN_X, y); y += 7;
-  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
-  doc.text("Once you've read this once, you can ignore it forever.", PDF_MARGIN_X, y); y += 10;
+  pdfNewPage(doc); pageNum++;
+  pdfHeader(doc, "How it works", ref, pageNum, PDF_FUN[3]);
+  y = PDF_MARGIN_Y + 16;
+  pdfTitle(doc, "Every page works ", "the same way.", "", PDF_MARGIN_X, y, 26, PDF_FUN[3]);
+  y += 9;
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica", "normal"); doc.setFontSize(11);
+  doc.text("Read this once and you're a pro. Promise.", PDF_MARGIN_X, y); y += 14;
 
-  const demoCell = 9, demoCodes = ["022","004","017","028"];
+  const demoCell = 11, demoCodes = ["022","004","017","028"];
   const demoColors = { "022":"#4AA357", "004":"#FCF188", "017":"#8D8F68", "028":"#A2BA45" };
-  const gx0 = PDF_MARGIN_X, gy0 = y;
-  doc.setFont("courier","normal"); doc.setFontSize(6);
-  for (let r=0;r<8;r++) for (let c=0;c<8;c++){
-    const code = demoCodes[(r+c)%4], hex = demoColors[code];
+  const gx0 = PDF_MARGIN_X + 8, gy0 = y + 4;
+
+  doc.setFont("courier","bold"); doc.setFontSize(7);
+  for (let r = 0; r < 8; r++) for (let c = 0; c < 8; c++){
+    const code = demoCodes[(r + c) % 4], hex = demoColors[code];
     doc.setFillColor(...pdfHexRgb(hex));
-    const cx = gx0+6+c*demoCell, cy = gy0+r*demoCell;
+    const cx = gx0 + 4 + c*demoCell, cy = gy0 + r*demoCell;
     doc.rect(cx, cy, demoCell, demoCell, "F");
     doc.setTextColor(...pdfReadable(hex));
-    doc.text(code, cx+demoCell/2, cy+demoCell/2+1.2, { align:"center" });
+    doc.text(code, cx + demoCell/2, cy + demoCell/2 + 1.3, { align:"center" });
   }
-  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.3);
-  doc.rect(gx0+6, gy0, demoCell*8, demoCell*8, "S");
-  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(7);
-  for (let c=0;c<8;c++) doc.text(String(c+1), gx0+6+c*demoCell+demoCell/2, gy0-2, { align:"center" });
-  for (let r=0;r<8;r++) doc.text(String(r+1), gx0+2, gy0+r*demoCell+demoCell/2+1, { align:"center" });
+  doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
+  doc.rect(gx0 + 4, gy0, demoCell*8, demoCell*8, "S");
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+  for (let c = 0; c < 8; c++) doc.text(String(c + 1), gx0 + 4 + c*demoCell + demoCell/2, gy0 - 2, { align:"center" });
+  for (let r = 0; r < 8; r++) doc.text(String(r + 1), gx0, gy0 + r*demoCell + demoCell/2 + 1, { align:"center" });
+  // numbered markers on the demo, matching the callouts
+  const marker = (n, mx, my) => {
+    const c = PDF_FUN[(n - 1) % PDF_FUN.length];
+    doc.setFillColor(255,255,255); doc.setDrawColor(...c); doc.setLineWidth(0.8);
+    doc.circle(mx, my, 3.6, "FD");
+    doc.setTextColor(...pdfInkOf(c)); doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
+    doc.text(String(n), mx, my + 1.2, { align:"center" });
+  };
+  marker(1, gx0 + 4 + demoCell*5.5, gy0 - 7);
+  marker(2, gx0 - 5, gy0 + demoCell*5.5);
+  marker(3, gx0 + 4 + demoCell*2.5, gy0 + demoCell*2.5);
 
-  const calloutX = gx0+6+demoCell*8+12, calloutW = PDF_PAGE_W-PDF_MARGIN_X-calloutX;
+  const calloutX = gx0 + 4 + demoCell*8 + 20, calloutW = PDF_PAGE_W - PDF_MARGIN_X - calloutX;
   const callouts = [
-    "Column numbers run across the top. They match the studs on the plate, counting from the left edge.",
-    "Row numbers on both sides. Cover the page with a ruler under the row you're on and slide it down.",
-    "The number in each square is the color code printed on the bag \u2014 not a quantity. One square, one brick.",
-    "Heavy lines every 8 studs. Count in eights and you'll never lose your place mid-row.",
-    "The little map in the corner shows which section of the whole picture you're building.",
+    ["Columns across the top", "They match the studs on the plate, counting from the left edge."],
+    ["Rows down the side", "Lay a ruler under the row you're on and slide it down as you go."],
+    ["The code in each square", "It's the color code printed on the bag — not a quantity. One square, one brick."],
+    ["Bold lines every 8 studs", "Count in eights and you'll never lose your place mid-row."],
+    ["The little map", "Top right of each section page: it shows which part of the picture you're building."],
   ];
-  let cy2 = gy0+2;
-  callouts.forEach((txt, i) => {
-    doc.setFillColor(...PDF_YELLOW); doc.circle(calloutX+3, cy2, 3, "F");
-    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","normal"); doc.setFontSize(8);
-    doc.text(String(i+1), calloutX+3, cy2+1, { align:"center" });
-    const lines = pdfWrap(doc, txt, calloutW-8, 8.5);
+  let cy2 = gy0 + 2;
+  callouts.forEach(([lead, txt], i) => {
+    marker(i + 1, calloutX + 3.6, cy2);
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10.5);
+    doc.text(lead, calloutX + 10, cy2 + 1.3);
+    const lines = pdfWrap(doc, txt, calloutW - 10, 9);
     doc.setTextColor(...PDF_INK2);
-    doc.text(lines, calloutX+8, cy2+1.5);
-    cy2 += Math.max(7, lines.length*4) + 4;
+    doc.text(lines, calloutX + 10, cy2 + 6.5);
+    cy2 += 8 + lines.length*4.2 + 4;
   });
 
-  y = gy0 + demoCell*8 + 14;
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11);
-  doc.text("Build order", PDF_MARGIN_X, y); y += 6;
-  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
-  doc.text("Work through the sections in this order \u2014 it keeps finished plates out of your way.", PDF_MARGIN_X, y); y += 8;
-  const tileSize = 15;
-  for (let r=0;r<rows.length;r++) for (let c=0;c<cols.length;c++){
-    const idx = r*cols.length+c+1;
-    const tx = PDF_MARGIN_X+c*(tileSize+3), ty = y+r*(tileSize+3);
-    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-    doc.roundedRect(tx, ty, tileSize, tileSize, 1.5, 1.5, "S");
+  y = gy0 + demoCell*8 + 22;
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(15);
+  doc.text("Your build order", PDF_MARGIN_X, y); y += 7;
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10);
+  doc.text("Work through the sections in number order — it keeps finished plates out of your way.", PDF_MARGIN_X, y); y += 12;
+  const tileSize = Math.min(30, (PDF_CONTENT_W - 8*(cols.length - 1)) / Math.max(cols.length, 1));
+  for (let r = 0; r < rows.length; r++) for (let c = 0; c < cols.length; c++){
+    const idx = r*cols.length + c + 1;
+    pdfBadge(doc, PDF_MARGIN_X + c*(tileSize + 8), y + r*(tileSize*0.78 + 10), tileSize, secColor(idx), idx, tileSize*0.75);
+  }
+  y += rows.length*(tileSize*0.78 + 10) + 10;
+  if (y + 40 < PDF_PAGE_H - 20){
+    pdfBubble(doc, PDF_MARGIN_X + 44, y, PDF_CONTENT_W - 44, 26, PDF_YELLOW);
+    pdfMascot(doc, PDF_MARGIN_X + 4, y - 2, 28, PDF_FUN[3], false);
     doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11);
-    doc.text(String(idx), tx+3, ty+7);
-    doc.setFont("courier","normal"); doc.setFontSize(6.5); doc.setTextColor(...PDF_INK3);
-    doc.text(`${c+1},${r+1}`, tx+3, ty+12);
+    doc.text("Pro tip from Bricky:", PDF_MARGIN_X + 52, y + 10);
+    doc.setFont("helvetica","normal"); doc.setFontSize(10);
+    doc.text("Pour one bag at a time into a small bowl. Fishing one brick out of a mixed pile is nobody's idea of fun.", PDF_MARGIN_X + 52, y + 17, { maxWidth: PDF_CONTENT_W - 60 });
   }
 
   /* ---- 4. your bricks (paginated) ---- */
-  doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-  pdfHeader(doc, "Your bricks", ref, pageNum);
-  y = PDF_MARGIN_Y + 12;
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(19);
-  doc.text(`${legend.length} colors, ${fmt(total)} bricks.`, PDF_MARGIN_X, y); y += 7;
-  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10);
-  const yb = pdfWrap(doc, `Tick each bag off as you open it. Packs hold ${PACK_SIZE} bricks and are rounded up, so every kit arrives with spares \u2014 keep them, they're the free replacements.`, PDF_CONTENT_W, 10);
-  doc.text(yb, PDF_MARGIN_X, y); y += yb.length*5 + 8;
+  pdfNewPage(doc); pageNum++;
+  pdfHeader(doc, "Your bricks", ref, pageNum, PDF_FUN[4]);
+  y = PDF_MARGIN_Y + 16;
+  pdfTitle(doc, "", `${legend.length} colors,`, ` ${fmt(total)} bricks.`, PDF_MARGIN_X, y, 26, PDF_FUN[4]);
+  y += 9;
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
+  const yb = pdfWrap(doc, `Tick each bag off as you open it. Packs hold ${PACK_SIZE} bricks and are rounded up, so every kit arrives with spares — keep them, they're your free replacements.`, PDF_CONTENT_W, 10.5);
+  doc.text(yb, PDF_MARGIN_X, y); y += yb.length*5 + 9;
 
-  const colX = { sw: PDF_MARGIN_X, code: PDF_MARGIN_X+8, color: PDF_MARGIN_X+26, brick: PDF_MARGIN_X+90,
-                 bricks: PDF_MARGIN_X+150, packs2: PDF_MARGIN_X+185, opened: PDF_PAGE_W-PDF_MARGIN_X-8 };
+  const colX = { sw: PDF_MARGIN_X + 3, code: PDF_MARGIN_X + 22, color: PDF_MARGIN_X + 42, brick: PDF_MARGIN_X + 104,
+                 bricks: PDF_MARGIN_X + 162, packs2: PDF_MARGIN_X + 196, opened: PDF_PAGE_W - PDF_MARGIN_X - 6 };
   const bigHeader = () => {
-    doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(7.5);
+    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6); doc.roundedRect(PDF_MARGIN_X, y - 5.5, PDF_CONTENT_W, 8.5, 2.5, 2.5, "S");
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
     doc.text("CODE", colX.code, y); doc.text("COLOR", colX.color, y);
     doc.text("BRICK", colX.brick, y); doc.text("BRICKS", colX.bricks, y, { align:"right" });
-    doc.text("PACKS", colX.packs2, y, { align:"right" }); doc.text("OPENED", colX.opened, y, { align:"right" });
-    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
-    doc.line(PDF_MARGIN_X, y+2, PDF_PAGE_W-PDF_MARGIN_X, y+2);
-    y += 8;
+    doc.text("PACKS", colX.packs2, y, { align:"right" }); doc.text("OPENED", colX.opened + 1, y, { align:"right" });
+    y += 9;
   };
   bigHeader();
-  const rowH = 8;
+  const rowH = 9.5;
   const checkSpace4 = (needed, label) => {
-    if (y + needed > PDF_PAGE_H - PDF_MARGIN_Y){
-      doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-      pdfHeader(doc, label, ref, pageNum);
-      y = PDF_MARGIN_Y + 8;
+    if (y + needed > PDF_PAGE_H - PDF_MARGIN_Y - 4){
+      pdfNewPage(doc); pageNum++;
+      pdfHeader(doc, label, ref, pageNum, PDF_FUN[4]);
+      y = PDF_MARGIN_Y + 10;
       bigHeader();
     }
   };
-  for (const c of legend){
+  legend.forEach((c, i) => {
     checkSpace4(rowH, "Your bricks");
-    doc.setFillColor(...pdfHexRgb(c.hex)); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.15);
-    doc.roundedRect(colX.sw, y-4, 5, 5, 1, 1, "FD");
-    doc.setTextColor(...PDF_INK); doc.setFont("courier","normal"); doc.setFontSize(9);
+    doc.setDrawColor(...PDF_LINE_SOFT); doc.setLineWidth(0.25);
+    doc.line(PDF_MARGIN_X, y + 3.9, PDF_PAGE_W - PDF_MARGIN_X, y + 3.9);
+    // the swatch is the one place colour is the information itself
+    doc.setFillColor(...pdfHexRgb(c.hex)); doc.setDrawColor(0xB4,0xB4,0xB4); doc.setLineWidth(0.2);
+    doc.roundedRect(colX.sw, y - 3.8, 9, 4.8, 1, 1, "FD");
+    doc.setTextColor(...PDF_INK); doc.setFont("courier","bold"); doc.setFontSize(10);
     doc.text(c.id, colX.code, y);
-    doc.setFont("helvetica","normal"); doc.text(c.name, colX.color, y);
+    doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.text(c.name, colX.color, y);
     doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(8);
     doc.text(String(c.brick), colX.brick, y);
-    doc.setTextColor(...PDF_INK); doc.setFont("courier","normal"); doc.setFontSize(9);
+    doc.setTextColor(...PDF_INK); doc.setFont("courier","bold"); doc.setFontSize(10);
     doc.text(fmt(c.n), colX.bricks, y, { align:"right" });
     doc.text(String(packs(c.n)), colX.packs2, y, { align:"right" });
-    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.3);
-    doc.rect(colX.opened-3.5, y-3.5, 3.5, 3.5, "S");
-    doc.setDrawColor(...PDF_LINE_SOFT); doc.setLineWidth(0.2);
-    doc.line(PDF_MARGIN_X, y+2.5, PDF_PAGE_W-PDF_MARGIN_X, y+2.5);
+    pdfCheckbox(doc, colX.opened - 4, y - 3.8, 4.6);
     y += rowH;
-  }
-  checkSpace4(10, "Your bricks");
+  });
+  checkSpace4(12, "Your bricks");
   doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.6);
-  doc.line(PDF_MARGIN_X, y-4, PDF_PAGE_W-PDF_MARGIN_X, y-4);
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10);
-  doc.text("Total", colX.color, y);
-  doc.setFont("courier","normal");
-  doc.text(fmt(total), colX.bricks, y, { align:"right" });
-  doc.text(String(totalPacks), colX.packs2, y, { align:"right" });
-  y += 14;
+  doc.line(PDF_MARGIN_X, y - 4.5, PDF_PAGE_W - PDF_MARGIN_X, y - 4.5);
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11);
+  doc.text("Total", colX.color, y + 1);
+  doc.setFont("courier","bold");
+  doc.text(fmt(total), colX.bricks, y + 1, { align:"right" });
+  doc.text(String(totalPacks), colX.packs2, y + 1, { align:"right" });
+  y += 16;
 
-  checkSpace4(28, "Your bricks");
+  checkSpace4(34, "Your bricks");
   const factW = (PDF_CONTENT_W - 18) / 4;
-  const facts = [[`${cm(gw)} \u00D7 ${cm(gh)} cm`,"finished size"], [`${gw} \u00D7 ${gh}`,"studs"],
-                 [`${BRICK_MM.toFixed(2)} mm`,"per brick"], [`~${hours} h`,"build time"]];
+  const facts = [[`${cm(gw)} × ${cm(gh)} cm`, "finished size"], [`${gw} × ${gh}`, "studs"],
+                 [`${BRICK_MM.toFixed(2)} mm`, "per brick"], [`~${hours} h`, "build time"]];
   facts.forEach(([big, small], i) => {
-    const fx = PDF_MARGIN_X + i*(factW+6);
-    doc.setFillColor(0xF2,0xF1,0xED);
-    doc.roundedRect(fx, y, factW, 20, 1.5, 1.5, "F");
-    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(12);
-    doc.text(big, fx+4, y+9);
-    doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(6.5);
-    doc.text(small.toUpperCase(), fx+4, y+15);
+    const fx = PDF_MARGIN_X + i*(factW + 6), c = PDF_FUN[(i + 3) % PDF_FUN.length];
+    pdfBrick(doc, fx, y + 4, factW, 22, c, 3);
+    doc.setTextColor(...pdfInkOf(c)); doc.setFont("helvetica","bold"); doc.setFontSize(13);
+    doc.text(big, fx + factW/2, y + 15, { align: "center" });
+    doc.setFontSize(7);
+    doc.text(small.toUpperCase(), fx + factW/2, y + 21, { align: "center" });
   });
 
   /* ---- 5..n section pages ---- */
   rows.forEach(([y0, y1], r) => {
     cols.forEach(([x0, x1], c) => {
       const idx = r*cols.length + c + 1;
+      const accent = secColor(idx);
       const w = x1 - x0, h = y1 - y0;
-      doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-      pdfHeader(doc, `Section ${idx}`, ref, pageNum);
-      let sy = PDF_MARGIN_Y + 12;
+      const secSet = new Set();
+      for (let yy = 0; yy < h; yy++) for (let xx = 0; xx < w; xx++) secSet.add(P[cellsArr[(y0 + yy)*gw + (x0 + xx)]].id);
+      const secColors = secSet.size;
+      pdfNewPage(doc); pageNum++;
+      pdfHeader(doc, `Section ${idx} of ${nSections}`, ref, pageNum, accent);
+      let sy = PDF_MARGIN_Y + 6;
 
-      doc.setFillColor(...PDF_INK); doc.roundedRect(PDF_MARGIN_X, sy-7, 11, 11, 2, 2, "F");
-      doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(13);
-      doc.text(String(idx), PDF_MARGIN_X+5.5, sy, { align:"center" });
-      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(17);
-      doc.text(`Section ${idx}`, PDF_MARGIN_X+16, sy-1);
-      doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(8);
-      doc.text(`Studs ${x0+1}\u2013${x1} across \u00B7 ${y0+1}\u2013${y1} down \u00B7 ${fmt(w*h)} bricks \u00B7 ${legend.length} colors`, PDF_MARGIN_X+16, sy+5);
-      sy += 12;
+      pdfBadge(doc, PDF_MARGIN_X, sy + 3, 20, accent, idx, 20);
+      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(22);
+      doc.text(`Section ${idx}`, PDF_MARGIN_X + 26, sy + 10);
+      doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(9);
+      doc.text(`Studs ${x0 + 1}–${x1} across  ·  ${y0 + 1}–${y1} down  ·  ${fmt(w*h)} bricks  ·  ${secColors} colors`, PDF_MARGIN_X + 26, sy + 16);
+
+      // the little map: where this section sits in the whole picture
+      const mapCell = Math.min(7, 30 / Math.max(cols.length, rows.length));
+      const mapW = cols.length*mapCell, mapX = PDF_PAGE_W - PDF_MARGIN_X - mapW, mapY = sy + 1;
+      for (let rr = 0; rr < rows.length; rr++) for (let cc = 0; cc < cols.length; cc++){
+        const k = rr*cols.length + cc + 1;
+        const tx = mapX + cc*mapCell, ty = mapY + rr*mapCell;
+        if (k === idx){ doc.setDrawColor(...accent); doc.setLineWidth(1); }
+        else { doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.3); }
+        doc.roundedRect(tx + 0.5, ty + 0.5, mapCell - 1, mapCell - 1, 0.8, 0.8, "S");
+        if (k === idx){ doc.setTextColor(...pdfInkOf(accent)); doc.setFont("helvetica","bold"); doc.setFontSize(mapCell*1.6); doc.text(String(k), tx + mapCell/2, ty + mapCell*0.68, { align: "center" }); }
+        if (k < idx) pdfTick(doc, tx + mapCell*0.25, ty + mapCell*0.35, mapCell*0.5, pdfShade(secColor(k), 0.3));
+      }
+      doc.setTextColor(...PDF_INK3); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+      doc.text("YOU ARE HERE", mapX + mapW/2, mapY + rows.length*mapCell + 3.5, { align: "center" });
+      sy += Math.max(26, rows.length*mapCell + 8);
 
       const scale = sectionScale(w, h);
       const cellMm = BRICK_MM * scale;
@@ -6678,135 +7777,177 @@ function buildInstructionsPDF(doc){
         doc.text("Printed at true size", PDF_MARGIN_X, sy);
         const w1 = doc.getTextWidth("Printed at true size ");
         doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal");
-        const noteLines = pdfWrap(doc, "\u2014 this 1-inch mark measures exactly 25.4mm. If it doesn't, your printer changed the scale.", PDF_CONTENT_W-w1, 8.5);
-        doc.text(noteLines, PDF_MARGIN_X+w1, sy);
-        doc.setDrawColor(...PDF_RED); doc.setLineWidth(0.6);
-        doc.line(PDF_MARGIN_X, sy+4, PDF_MARGIN_X+25.4, sy+4);
+        const noteLines = pdfWrap(doc, "— this 1-inch mark measures exactly 25.4mm. If it doesn't, your printer changed the scale.", PDF_CONTENT_W - w1 - 30, 8.5);
+        doc.text(noteLines, PDF_MARGIN_X + w1, sy);
+        doc.setDrawColor(...PDF_RED); doc.setLineWidth(0.8);
+        doc.line(PDF_MARGIN_X, sy + 3.5, PDF_MARGIN_X + 25.4, sy + 3.5);
+        doc.line(PDF_MARGIN_X, sy + 2.3, PDF_MARGIN_X, sy + 4.7);
+        doc.line(PDF_MARGIN_X + 25.4, sy + 2.3, PDF_MARGIN_X + 25.4, sy + 4.7);
       } else {
         doc.setTextColor(...PDF_RED); doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
         doc.text(`Reduced to ${Math.round(scale*100)}% of true size`, PDF_MARGIN_X, sy);
         const w1 = doc.getTextWidth(`Reduced to ${Math.round(scale*100)}% of true size `);
         doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal");
-        const noteLines = pdfWrap(doc, "\u2014 this baseplate is larger than an 11\u00D717\" sheet. Use the printed grid for brick placement, not as a physical size reference.", PDF_CONTENT_W-w1, 8.5);
-        doc.text(noteLines, PDF_MARGIN_X+w1, sy);
+        const noteLines = pdfWrap(doc, "— this baseplate is larger than an 11×17\" sheet. Use the printed grid for brick placement, not as a physical size reference.", PDF_CONTENT_W - w1, 8.5);
+        doc.text(noteLines, PDF_MARGIN_X + w1, sy);
       }
-      sy += 10;
+      sy += 9;
 
       const gx = PDF_MARGIN_X, gy = sy + 4;
+      // a colored frame around the grid, like the edge of a baseplate
+      doc.setDrawColor(...accent); doc.setLineWidth(1);
+      doc.roundedRect(gx - 1.6, gy - 1.6, w*cellMm + 3.2, h*cellMm + 3.2, 1.6, 1.6, "S");
       doc.setFont("courier","normal");
       const fontPt = Math.max(3.2, Math.min(6.5, cellMm*1.15));
       doc.setFontSize(fontPt);
-      for (let yy=0; yy<h; yy++){
-        for (let xx=0; xx<w; xx++){
-          const code = P[cellsArr[(y0+yy)*gw + (x0+xx)]];
-          const cx = gx+xx*cellMm, cy = gy+yy*cellMm;
+      for (let yy = 0; yy < h; yy++){
+        for (let xx = 0; xx < w; xx++){
+          const code = P[cellsArr[(y0 + yy)*gw + (x0 + xx)]];
+          const cx = gx + xx*cellMm, cy = gy + yy*cellMm;
           doc.setFillColor(...pdfHexRgb(code.hex));
-          doc.rect(cx, cy, cellMm+0.05, cellMm+0.05, "F");
+          doc.rect(cx, cy, cellMm + 0.05, cellMm + 0.05, "F");
           doc.setTextColor(...pdfReadable(code.hex));
-          doc.text(code.id, cx+cellMm/2, cy+cellMm/2+fontPt*0.32, { align:"center" });
+          doc.text(code.id, cx + cellMm/2, cy + cellMm/2 + fontPt*0.32, { align:"center" });
         }
       }
-      for (let xx=0; xx<=w; xx++){
-        doc.setDrawColor(...(xx%8===0 ? PDF_INK : PDF_LINE_SOFT)); doc.setLineWidth(xx%8===0 ? 0.5 : 0.1);
-        doc.line(gx+xx*cellMm, gy, gx+xx*cellMm, gy+h*cellMm);
+      for (let xx = 0; xx <= w; xx++){
+        doc.setDrawColor(...(xx%8 === 0 ? PDF_INK : PDF_LINE_SOFT)); doc.setLineWidth(xx%8 === 0 ? 0.5 : 0.1);
+        doc.line(gx + xx*cellMm, gy, gx + xx*cellMm, gy + h*cellMm);
       }
-      for (let yy=0; yy<=h; yy++){
-        doc.setDrawColor(...(yy%8===0 ? PDF_INK : PDF_LINE_SOFT)); doc.setLineWidth(yy%8===0 ? 0.5 : 0.1);
-        doc.line(gx, gy+yy*cellMm, gx+w*cellMm, gy+yy*cellMm);
+      for (let yy = 0; yy <= h; yy++){
+        doc.setDrawColor(...(yy%8 === 0 ? PDF_INK : PDF_LINE_SOFT)); doc.setLineWidth(yy%8 === 0 ? 0.5 : 0.1);
+        doc.line(gx, gy + yy*cellMm, gx + w*cellMm, gy + yy*cellMm);
       }
       sy = gy + h*cellMm + 8;
 
       const used = new Map();
-      for (let yy=0; yy<h; yy++) for (let xx=0; xx<w; xx++){
-        const code = P[cellsArr[(y0+yy)*gw + (x0+xx)]];
+      for (let yy = 0; yy < h; yy++) for (let xx = 0; xx < w; xx++){
+        const code = P[cellsArr[(y0 + yy)*gw + (x0 + xx)]];
         used.set(code.id, (used.get(code.id) || 0) + 1);
       }
-      const plateLegend = legend.filter((L) => used.has(L.id)).map((L) => ({ ...L, here: used.get(L.id) }));
+      const plateLegend = legend.filter((L) => used.has(L.id)).map((L) => ({ ...L, here: used.get(L.id) }))
+                                .sort((a, b) => b.here - a.here);
 
       const checkSpace5 = (needed) => {
-        if (sy + needed > PDF_PAGE_H - PDF_MARGIN_Y){
-          doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-          pdfHeader(doc, `Section ${idx}`, ref, pageNum);
+        if (sy + needed > PDF_PAGE_H - PDF_MARGIN_Y - 4){
+          pdfNewPage(doc); pageNum++;
+          pdfHeader(doc, `Section ${idx} of ${nSections}`, ref, pageNum, accent);
           sy = PDF_MARGIN_Y + 8;
         }
       };
-      doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(7.5);
-      doc.text("CODE", PDF_MARGIN_X+8, sy); doc.text("COLOR", PDF_MARGIN_X+26, sy);
-      doc.text("HERE", PDF_MARGIN_X+90, sy, { align:"right" });
-      doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4);
-      doc.line(PDF_MARGIN_X, sy+2, PDF_MARGIN_X+100, sy+2);
-      sy += 7;
-      for (const c of plateLegend){
-        checkSpace5(6.5);
-        doc.setFillColor(...pdfHexRgb(c.hex)); doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.15);
-        doc.roundedRect(PDF_MARGIN_X, sy-3.5, 4.5, 4.5, 1, 1, "FD");
-        doc.setTextColor(...PDF_INK); doc.setFont("courier","normal"); doc.setFontSize(8.5);
-        doc.text(c.id, PDF_MARGIN_X+8, sy);
-        doc.setFont("helvetica","normal"); doc.text(c.name, PDF_MARGIN_X+26, sy);
-        doc.setFont("courier","normal");
-        doc.text(fmt(c.here), PDF_MARGIN_X+90, sy, { align:"right" });
-        sy += 6.5;
-      }
+      // color cards: the code on a swatch (as on the grid), the count, a
+      // tick box — nine per row, so even 18 colors take two rows and stay
+      // on the section's page
+      const perRow = 9, gap = 2.2, pad = 4;
+      const cardW = (PDF_CONTENT_W - pad*2 - gap*(perRow - 1)) / perRow, cardH = 11;
+      const nRows = Math.ceil(plateLegend.length / perRow);
+      const boxH = 15 + nRows*cardH + (nRows - 1)*gap + pad;
+      checkSpace5(boxH + 2);
+      doc.setDrawColor(...accent); doc.setLineWidth(0.9);
+      doc.roundedRect(PDF_MARGIN_X, sy, PDF_CONTENT_W, boxH, 4, 4, "S");
+      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11.5);
+      doc.text("Bricks for this section", PDF_MARGIN_X + pad, sy + 8);
+      doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(8);
+      doc.text(`${plateLegend.length} colors · ${fmt(w*h)} bricks · most used first`, PDF_PAGE_W - PDF_MARGIN_X - pad, sy + 8, { align:"right" });
+      plateLegend.forEach((col, i) => {
+        const cx = PDF_MARGIN_X + pad + (i % perRow)*(cardW + gap);
+        const cy = sy + 12 + Math.floor(i / perRow)*(cardH + gap);
+        doc.setDrawColor(...PDF_LINE); doc.setLineWidth(0.3); doc.roundedRect(cx, cy, cardW, cardH, 2, 2, "S");
+        const sw = 8;
+        doc.setFillColor(...pdfHexRgb(col.hex)); doc.setDrawColor(0xB4,0xB4,0xB4); doc.setLineWidth(0.15);
+        doc.roundedRect(cx + 1.5, cy + 1.5, sw, sw, 1.4, 1.4, "FD");
+        doc.setTextColor(...pdfReadable(col.hex)); doc.setFont("courier","bold"); doc.setFontSize(7);
+        doc.text(col.id, cx + 1.5 + sw/2, cy + 1.5 + sw/2 + 0.9, { align:"center" });
+        doc.setTextColor(...PDF_INK); doc.setFont("courier","bold"); doc.setFontSize(9.5);
+        doc.text(fmt(col.here), cx + sw + 3.5, cy + cardH/2 + 1.3);
+        doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.3);
+        doc.roundedRect(cx + cardW - 4.5, cy + cardH/2 - 1.5, 3, 3, 0.6, 0.6, "S");
+      });
+      sy += boxH;
 
-      checkSpace5(24);
+      // Bricky's tip and the "section done" box
+      checkSpace5(30);
       const tip = TIPS[idx % TIPS.length];
-      const tipY = sy + 4, tipH = 20;
-      doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4);
-      doc.roundedRect(PDF_MARGIN_X, tipY, PDF_CONTENT_W, tipH, 1.5, 1.5, "S");
-      doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(7);
-      doc.text("TIP", PDF_MARGIN_X+4, tipY+6);
-      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","normal"); doc.setFontSize(8.5);
-      const tipLines = pdfWrap(doc, tip, PDF_CONTENT_W-8, 8.5);
-      doc.text(tipLines, PDF_MARGIN_X+4, tipY+11);
-      doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.3);
-      doc.rect(PDF_MARGIN_X+4, tipY+tipH-6, 3, 3, "S");
-      doc.setTextColor(...PDF_INK2); doc.setFontSize(8);
-      doc.text(`Section ${idx} finished`, PDF_MARGIN_X+9, tipY+tipH-3.3);
+      const tipY = sy + 6, tipH = 22, bubX = PDF_MARGIN_X + 30, bubW = PDF_CONTENT_W - 30 - 62;
+      pdfMascot(doc, PDF_MARGIN_X + 2, tipY - 1, 21, accent, idx % 2 === 0);
+      pdfBubble(doc, bubX, tipY, bubW, tipH, PDF_YELLOW);
+      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(9);
+      doc.text("Bricky says:", bubX + 5, tipY + 7);
+      doc.setFont("helvetica","normal"); doc.setFontSize(9);
+      doc.text(pdfWrap(doc, tip, bubW - 10, 9), bubX + 5, tipY + 12.5);
+      const doneX = PDF_PAGE_W - PDF_MARGIN_X - 56;
+      doc.setDrawColor(...PDF_FUN[3]); doc.setLineWidth(0.9);
+      doc.roundedRect(doneX, tipY, 56, tipH, 4, 4, "S");
+      pdfCheckbox(doc, doneX + 5, tipY + tipH/2 - 4, 8);
+      doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10);
+      doc.text(`Section ${idx}`, doneX + 17, tipY + tipH/2 - 1);
+      doc.text("done!", doneX + 17, tipY + tipH/2 + 4.5);
     });
   });
 
   /* ---- final. finished ---- */
-  doc.addPage([PDF_PAGE_W, PDF_PAGE_H], "portrait"); pageNum++;
-  pdfHeader(doc, "Finished", ref, pageNum);
-  y = PDF_MARGIN_Y + 14;
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(24);
-  doc.text("You did it.", PDF_MARGIN_X, y); y += 9;
-  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10.5);
-  const fin = pdfWrap(doc, `${fmt(total)} bricks, ${legend.length} colors, placed one at a time by hand. Here's what to do with it now.`, PDF_CONTENT_W, 10.5);
-  doc.text(fin, PDF_MARGIN_X, y); y += fin.length*5 + 10;
+  pdfNewPage(doc); pageNum++;
+  pdfHeader(doc, "You did it!", ref, pageNum, PDF_FUN[5]);
+  pdfConfetti(doc, PDF_MARGIN_X, PDF_MARGIN_Y + 4, PDF_CONTENT_W, 110, 110, 23, [[PDF_MARGIN_X + 36, PDF_MARGIN_Y + 22, PDF_CONTENT_W - 72, 36], [PDF_PAGE_W/2 - 30, PDF_MARGIN_Y + 60, 60, 52]]);
+  y = PDF_MARGIN_Y + 40;
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(48);
+  doc.text("You did it!", PDF_PAGE_W/2, y, { align: "center" });
+  y += 12;
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(12);
+  doc.text(`${fmt(total)} bricks. ${legend.length} colors. Placed one at a time, by hand. Take a bow.`, PDF_PAGE_W/2, y, { align: "center" });
+  pdfMascot(doc, PDF_PAGE_W/2 - 20, y + 10, 40, PDF_FUN[5], true);
+  y += 66;
+
+  // certificate
+  const certH = 70;
+  doc.setDrawColor(...PDF_YELLOW); doc.setLineWidth(1.2); doc.roundedRect(PDF_MARGIN_X + 4, y + 4, PDF_CONTENT_W, certH, 6, 6, "S");
+  doc.setFillColor(255,255,255); doc.setDrawColor(...PDF_INK); doc.setLineWidth(1);
+  doc.roundedRect(PDF_MARGIN_X, y, PDF_CONTENT_W, certH, 6, 6, "FD");
+  doc.setDrawColor(...PDF_YELLOW); doc.setLineWidth(0.8);
+  doc.roundedRect(PDF_MARGIN_X + 4, y + 4, PDF_CONTENT_W - 8, certH - 8, 4, 4, "S");
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(9);
+  doc.text("OFFICIAL", PDF_PAGE_W/2, y + 13, { align: "center" });
+  doc.setFontSize(22);
+  doc.text("Master Builder Certificate", PDF_PAGE_W/2, y + 24, { align: "center" });
+  const signW = (PDF_CONTENT_W - 50) / 2;
+  [["Built by", PDF_MARGIN_X + 18], ["Finished on", PDF_MARGIN_X + 32 + signW]].forEach(([label, sx]) => {
+    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.5);
+    doc.line(sx, y + 50, sx + signW, y + 50);
+    doc.setTextColor(...PDF_INK3); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+    doc.text(label.toUpperCase(), sx, y + 56);
+  });
+  y += certH + 16;
 
   const finItems = [
-    ["Hang it at 57 inches", 'Galleries hang the centre of a picture at 57" (145 cm) from the floor. It looks right because it meets the eye. Clip the baseplates together first, then mount the whole panel.'],
-    ["Dust, don't wipe", "A soft brush or a hairdryer on cool. Water gets under the studs and takes days to leave."],
-    ["Missing a brick?", "Tell us the color code from your bag label and we'll post replacements free, for as long as you own the kit."],
-    ["Show it off", "Tag @memobrick \u2014 we share builds every week, and yours took real hours."],
+    ["Hang it at 57 inches", 'Galleries hang the center of a picture at 57" (145 cm) from the floor. It looks right because it meets the eye. Clip the baseplates together first, then mount the whole panel.', "frame"],
+    ["Dust, don't wipe", "A soft brush or a hairdryer on cool. Water gets under the studs and takes days to leave.", "brush"],
+    ["Missing a brick?", "Tell us the color code from your bag label and we'll post replacements free, for as long as you own the kit.", "brick"],
+    ["Show it off", "Tag @memobrick — we share builds every week, and yours took real hours.", "star"],
   ];
-  const fw = (PDF_CONTENT_W - 8) / 2;
-  finItems.forEach(([t,s], i) => {
-    const fx = PDF_MARGIN_X + (i%2)*(fw+8), fy = y + Math.floor(i/2)*32;
-    doc.setDrawColor(...PDF_RED); doc.setLineWidth(1.2);
-    doc.line(fx, fy-4, fx, fy+22);
-    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(10.5);
-    doc.text(t, fx+5, fy);
-    doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(8.5);
-    const lines = pdfWrap(doc, s, fw-5, 8.5);
-    doc.text(lines, fx+5, fy+5);
+  const fw = (PDF_CONTENT_W - 8) / 2, fh = 36;
+  finItems.forEach(([t, s, icon], i) => {
+    const c = PDF_FUN[i], fx = PDF_MARGIN_X + (i%2)*(fw + 8), fy = y + Math.floor(i/2)*(fh + 8);
+    doc.setDrawColor(...c); doc.setLineWidth(0.9);
+    doc.roundedRect(fx, fy, fw, fh, 4, 4, "S");
+    const ix = fx + 5, iy = fy + 6;
+    doc.setFillColor(255,255,255); doc.setDrawColor(...c); doc.setLineWidth(0.6);
+    if (icon === "frame"){ doc.roundedRect(ix, iy, 14, 11, 1, 1, "S"); doc.rect(ix + 3, iy + 3, 8, 5, "S"); doc.line(ix + 4, iy, ix + 7, iy - 3); doc.line(ix + 10, iy, ix + 7, iy - 3); }
+    else if (icon === "brush"){ doc.roundedRect(ix + 5, iy - 2, 4, 9, 1, 1, "FD"); doc.roundedRect(ix + 2, iy + 7, 10, 6, 1.5, 1.5, "FD"); }
+    else if (icon === "brick"){ pdfBrick(doc, ix, iy + 2, 14, 8, c, 2); }
+    else {
+      const pts = []; for (let k = 0; k < 10; k++){ const a = -Math.PI/2 + k*Math.PI/5, rr = k%2 ? 3 : 7.2; pts.push([ix + 7 + rr*Math.cos(a), iy + 6 + rr*Math.sin(a)]); }
+      doc.lines(pts.slice(1).map((p, k) => [p[0] - pts[k][0], p[1] - pts[k][1]]), pts[0][0], pts[0][1], [1,1], "S", true);
+    }
+    doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(12);
+    doc.text(t, fx + 24, fy + 10);
+    doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(8.8);
+    doc.text(pdfWrap(doc, s, fw - 29, 8.8), fx + 24, fy + 16);
   });
-  y += 32*2 + 14;
-
-  const signW = (PDF_CONTENT_W - 12) / 2;
-  [["Built by", PDF_MARGIN_X], ["Finished on", PDF_MARGIN_X+signW+12]].forEach(([label, sx]) => {
-    doc.setTextColor(...PDF_INK3); doc.setFont("courier","normal"); doc.setFontSize(7);
-    doc.text(label.toUpperCase(), sx, y);
-    doc.setDrawColor(...PDF_INK); doc.setLineWidth(0.4);
-    doc.line(sx, y+8, sx+signW, y+8);
-  });
-  y += 24;
-  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
+  y += 2*(fh + 8) + 12;
+  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(14);
   doc.text("Thank you for building with us.", PDF_PAGE_W/2, y, { align:"center" });
-  doc.setTextColor(...PDF_INK); doc.setFont("helvetica","bold"); doc.setFontSize(11);
-  doc.text("MEMOBRICK \u00B7 Turn memories into art", PDF_PAGE_W/2, y+6, { align:"center" });
-  pdfRainbowBar(doc, PDF_PAGE_H - 6, 3);
+  doc.setTextColor(...PDF_INK2); doc.setFont("helvetica","normal"); doc.setFontSize(10);
+  doc.text("MEMOBRICK · Turn memories into art", PDF_PAGE_W/2, y + 7, { align:"center" });
 
   return doc;
 }
@@ -7396,6 +8537,8 @@ if (!restoreSession()){
     params.get("size") ? "upload" :
     location.hash === "#editor" ? "editor" :
     location.hash === "#freeproof" ? "freeproof" :
+    // the header/footer "Corporate & bulk" links on other pages point here
+    (location.hash === "#view-corporate" || location.hash === "#corporate") ? "corporate" :
     window.MB_LANDING_VIEW || "home"));
 }
 meta();
@@ -7561,11 +8704,17 @@ meta();
 body{background:#8a8f96;margin:0;padding:20px 0}
 .sheet{width:279.4mm;min-height:431.8mm;margin:0 auto 22px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
 .ins-sheets{max-width:none}
+/* one sheet = one printed 11x17" page. The sheet already carries its own
+   14mm/11mm padding, so the page itself has no margin — a 10mm page
+   margin on top of a full-size sheet pushed the bottom of every sheet
+   (and every section's color list) onto a second, mostly blank page */
 @media print{
   body{background:#fff;padding:0}
-  .sheet{box-shadow:none;page-break-after:always;margin:0 auto}
-  .sheet:last-child{page-break-after:auto}
-  @page{size:11in 17in;margin:10mm}
+  @page{size:11in 17in;margin:0}
+  .ins-sheets{padding:0}
+  .sheet{width:279.4mm;min-height:431.8mm;height:auto;padding:14mm 11mm;margin:0;box-shadow:none;
+    break-inside:avoid;break-after:page;page-break-after:always}
+  .sheet:last-child{break-after:auto;page-break-after:auto}
 }
 </style></head><body><div class="ins-sheets">${body}</div></body></html>`;
   }
@@ -7595,7 +8744,10 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     try { saveSession(); } catch (e){}
 
     const id = o.designId || designId();
-    const props = designProperties(o.state, id);
+    // the label production reads must match the variant actually charged:
+    // the editor's state calls it S.build, never buildForMe, so the old
+    // lookup marked every "we build it" order as "Build at home"
+    const props = designProperties(Object.assign({}, o.state, { buildForMe: !!variant.service }), id);
 
     const fd = new FormData();
     fd.append("id", variant.id);
@@ -7615,15 +8767,63 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     // Prefixed with an underscore: Shopify's convention for a line-item
     // property that's stored on the order and visible to the merchant in
     // admin, but never rendered in the customer-facing cart or checkout.
+    // A real PDF (the same one the customer can download): it opens and
+    // prints like any PDF, one 11x17" page per sheet. The HTML version
+    // relied on the browser honouring its 11x17" page size; Safari and a
+    // Letter-size print dialog don't, so every sheet spilled onto a second,
+    // blank page. The HTML is only sent if the PDF library isn't loaded.
     try {
-      const doc = await buildInstructionsDocument();
-      if (doc){
-        const htmlBlob = new Blob([doc], { type: "text/html" });
-        fd.append("properties[_Build Instructions]", htmlBlob, "memobrick-instructions-" + id + ".html");
+      let attached = false;
+      if (window.jspdf && window.jspdf.jsPDF && S.cells && S.usedPal){
+        try {
+          const pdf = new window.jspdf.jsPDF({ unit: "mm", format: [PDF_PAGE_W, PDF_PAGE_H], orientation: "portrait" });
+          buildInstructionsPDF(pdf);
+          const pdfBlob = pdf.output("blob");
+          if (pdfBlob && pdfBlob.size){
+            fd.append("properties[_Build Instructions]", pdfBlob, "memobrick-instructions-" + id + ".pdf");
+            attached = true;
+          }
+        } catch (e){ /* fall back to the HTML booklet below */ }
+      }
+      if (!attached){
+        const doc = await buildInstructionsDocument();
+        if (doc){
+          const htmlBlob = new Blob([doc], { type: "text/html" });
+          fd.append("properties[_Build Instructions]", htmlBlob, "memobrick-instructions-" + id + ".html");
+        }
       }
     } catch (e){ /* instructions failed to build — the order still has the design image and settings */ }
 
-    const res = await fetch("/cart/add.js", { method: "POST", body: fd });
+    // The PNG and the booklet make this a multi-MB upload. A stalled phone
+    // connection used to leave the button on "Preparing…" forever, and a
+    // rejected attachment failed the whole order. Now: a time limit, then
+    // one retry without the files (the design settings production needs
+    // still go with the order). Before retrying, check the first try didn't
+    // land after all, so the design is never added to the cart twice.
+    const post = (body) => {
+      const ac = (typeof AbortController === "function") ? new AbortController() : null;
+      const t = ac ? setTimeout(() => ac.abort(), 90000) : 0;
+      return fetch("/cart/add.js", { method: "POST", body: body, signal: ac ? ac.signal : undefined })
+        .finally(() => clearTimeout(t));
+    };
+    const alreadyInCart = async () => {
+      try {
+        const cart = await (await fetch("/cart.js")).json();
+        return (cart.items || []).find((it) => it.properties && it.properties["Design ID"] === id) || null;
+      } catch (e){ return null; }
+    };
+    let res = await post(fd).catch(() => null);
+    if (!res || (!res.ok && res.status !== 422)){          // 422 = a real stock/variant answer: keep it
+      const landed = await alreadyInCart();
+      if (landed){
+        document.dispatchEvent(new CustomEvent("memobrick:added", { detail: { line: landed, designId: id } }));
+        return { line: landed, designId: id, variant: variant };
+      }
+      const lite = new FormData();
+      for (const [k, v] of fd.entries()) if (!(v instanceof Blob)) lite.append(k, v);
+      res = await post(lite).catch(() => null);
+      if (!res) throw new Error("cart-failed");
+    }
     if (!res.ok){
       let msg = "";
       try { msg = (await res.json()).description || ""; } catch (e){}
@@ -7854,16 +9054,14 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     },
     size(){
       const list = SIZES.slice().sort((a, b) => (a.gw * a.gh) - (b.gw * b.gh) || a.price - b.price);
-      const rec = recommendedSizeForFaces(S.detectedFaceCount);
+      const pick = recommendedSizeForPhoto(), rec = pick && pick.size;
       let html = "";
       if (rec && rec.id !== (S.size && S.size.id)){
-        const n = S.detectedFaceCount;
         html += '<div class="mob-size-rec">' +
           '<span class="mob-size-rec-k">✨ Recommended for your photo</span>' +
           '<button type="button" class="mob-size-rec-pick" data-size="' + rec.id + '">' +
             '<b>' + rec.label + '</b>' +
-            '<span>Your photo has ' + n + (n === 1 ? ' face' : ' faces') +
-              ' — this size keeps more detail.</span>' +
+            '<span>' + pick.why + '</span>' +
           '</button></div>';
       }
       html += '<div class="mob-sizes">' + list.map((z) => {
@@ -8446,159 +9644,6 @@ body{background:#8a8f96;margin:0;padding:20px 0}
   // per browser via localStorage[TOUR_KEY].)
 
   document.querySelectorAll("[data-tour-replay]").forEach((b) => b.addEventListener("click", start));
-})();
-
-/* =====================================================================
-   CART DROPDOWN — click the cart icon to open a live-updating panel
-   instead of leaving the page. Falls back to the real /cart page via
-   the icon's href if JS fails for any reason.
-   ===================================================================== */
-(function cartDrawerModule(){
-  const btn = document.querySelector("#cartIconBtn");
-  const drawer = document.querySelector("#cartDrawer");
-  const itemsEl = document.querySelector("#cartDrawerItems");
-  const footEl = document.querySelector("#cartDrawerFoot");
-  const totalEl = document.querySelector("#cartDrawerTotal");
-  const countEl = document.querySelector("#cartCount");
-  const closeBtn = document.querySelector("#cartDrawerClose");
-  if (!btn || !drawer) return;
-
-  const fmt = (cents) => "$" + (cents / 100).toFixed(2);
-
-  function renderCart(cart){
-    if (!cart.items.length){
-      itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
-      footEl.hidden = true;
-    } else {
-      itemsEl.innerHTML = "";
-      cart.items.forEach((item) => {
-        const row = document.createElement("div");
-        row.className = "cart-drawer-item";
-        if (item.image){
-          const img = document.createElement("img");
-          img.src = item.image + "&width=120";
-          img.alt = "";
-          img.loading = "lazy";
-          row.appendChild(img);
-        }
-        const info = document.createElement("div");
-        info.className = "cart-drawer-item-info";
-        const title = document.createElement("b");
-        title.textContent = item.product_title;
-        info.appendChild(title);
-        if (item.variant_title && item.variant_title !== "Default Title"){
-          const variant = document.createElement("span");
-          variant.textContent = item.variant_title;
-          info.appendChild(variant);
-        }
-        const row2 = document.createElement("div");
-        row2.className = "cart-drawer-item-row";
-        const qty = document.createElement("span");
-        qty.textContent = "Qty " + item.quantity + " · " + fmt(item.final_line_price);
-        const rm = document.createElement("button");
-        rm.className = "cart-drawer-remove"; rm.type = "button"; rm.textContent = "Remove";
-        rm.dataset.key = item.key;
-        row2.appendChild(qty); row2.appendChild(rm);
-        info.appendChild(row2);
-        row.appendChild(info);
-        itemsEl.appendChild(row);
-      });
-      footEl.hidden = false;
-      totalEl.textContent = fmt(cart.total_price);
-    }
-    // free-shipping progress bar — threshold comes from the theme setting
-    // (window.MB_FREE_SHIPPING_THRESHOLD, set in layout/theme.liquid), not
-    // hardcoded, so it stays correct if the merchant ever changes it
-    const shipBar = document.querySelector("#cartShipBar");
-    if (shipBar){
-      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100; // dollars -> cents, matching cart.total_price
-      if (!threshold || !cart.items.length){
-        shipBar.hidden = true;
-      } else {
-        shipBar.hidden = false;
-        const msg = document.querySelector("#cartShipMsg");
-        const fill = document.querySelector("#cartShipFill");
-        const pct = Math.max(0, Math.min(100, (cart.total_price / threshold) * 100));
-        if (fill) fill.style.width = pct + "%";
-        if (msg){
-          if (cart.total_price >= threshold){
-            msg.textContent = "You've unlocked free shipping! 🎉";
-          } else {
-            const remaining = fmt(threshold - cart.total_price);
-            msg.textContent = "Add " + remaining + " more for free shipping";
-          }
-        }
-      }
-    }
-  }
-
-  function updateBadge(count){
-    if (!countEl) return;
-    countEl.textContent = count;
-    countEl.hidden = count === 0;
-  }
-
-  async function loadCart(){
-    itemsEl.innerHTML = '<p class="cart-empty">Loading…</p>';
-    try {
-      const res = await fetch("/cart.js");
-      const cart = await res.json();
-      renderCart(cart);
-      updateBadge(cart.item_count);
-    } catch (e){
-      itemsEl.innerHTML = '<p class="cart-empty">Couldn' + "'" + 't load your cart. <a href="' + btn.getAttribute("href") + '">Open cart page</a></p>';
-    }
-  }
-
-  async function removeItem(key){
-    const row = itemsEl.querySelector('[data-key="' + key + '"]');
-    if (row) row.closest(".cart-drawer-item").style.opacity = ".4";
-    try {
-      const res = await fetch("/cart/change.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: key, quantity: 0 })
-      });
-      const cart = await res.json();
-      renderCart(cart);
-      updateBadge(cart.item_count);
-    } catch (e){ loadCart(); }
-  }
-
-  function openDrawer(){
-    drawer.hidden = false;
-    btn.setAttribute("aria-expanded", "true");
-    loadCart();
-    document.addEventListener("click", onOutsideClick, true);
-    document.addEventListener("keydown", onEscape);
-  }
-  window.MB_openCartDrawer = openDrawer;
-  function closeDrawer(){
-    drawer.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-    document.removeEventListener("click", onOutsideClick, true);
-    document.removeEventListener("keydown", onEscape);
-  }
-  function onOutsideClick(e){
-    if (!drawer.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDrawer();
-  }
-  function onEscape(e){ if (e.key === "Escape") closeDrawer(); }
-
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    drawer.hidden ? openDrawer() : closeDrawer();
-  });
-  closeBtn.addEventListener("click", closeDrawer);
-  itemsEl.addEventListener("click", (e) => {
-    const rm = e.target.closest("[data-key]");
-    if (rm) removeItem(rm.dataset.key);
-  });
-
-  // any add-to-cart flow elsewhere on the site (editor checkout, designer
-  // service, free proof) can refresh the badge without a full reload
-  document.addEventListener("memobrick:added", () => {
-    fetch("/cart.js").then((r) => r.json()).then((cart) => updateBadge(cart.item_count)).catch(() => {});
-  });
 })();
 
 /* =====================================================================

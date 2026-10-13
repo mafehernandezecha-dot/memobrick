@@ -74,10 +74,23 @@
   function esc(s){ return String(s || "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
 
   /* ---------- 1st ask: right after upload ---------- */
+  // The theme first asks how they want to design it (#designChoice): wait
+  // for that answer, and only ask for the email if they design it
+  // themselves. Choosing our artist goes straight on to checkout.
+  function choiceOpen(){ const d = $("#designChoice"); return !!(d && !d.hidden); }
   document.addEventListener("memobrick:photo", () => {
     if (asks > 0 || known()) return;
     asks = 1;
-    setTimeout(() => showModal(1), FIRST_DELAY_MS);
+    setTimeout(function tryAsk(){
+      if (choiceOpen()){
+        document.addEventListener("memobrick:designchoice", (e) => {
+          if (e.detail && e.detail.choice === "artist"){ asks = 0; return; }
+          setTimeout(() => showModal(1), 700);
+        }, { once: true });
+        return;
+      }
+      showModal(1);
+    }, FIRST_DELAY_MS);
   });
 
   /* ---------- 2nd ask: a calm moment, or leaving (desktop) ---------- */
