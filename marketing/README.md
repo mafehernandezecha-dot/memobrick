@@ -44,11 +44,22 @@ outreach-link-builder, outreach-creator-scout, social-community-manager, convers
 
 Approved posts publish themselves from your Mac, free (no Postiz or other app). The social publisher writes a kit for each approved post in `social/publisher/to-post/` at least a day ahead, starting with `Status: ready` and the post time. A job on your Mac checks every hour from 8:07 am to 9:07 pm, and when a kit's time arrives it posts it with Claude in Chrome (the `memobrick-social-post` skill) on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, then writes the live links into the kit and the content calendar.
 
-- **Install once**, in Terminal: `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh` (it also schedules the Google Ads Chrome tasks at 9:07 pm).
+- **Install once**, in Terminal: `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh` (it also schedules the Google Ads Chrome tasks at 9:07 pm and the data pull at 7:07 am; run it again to update).
 - **Keep** the Mac awake and on power during those hours, with Chrome open, the Claude in Chrome extension signed in, and you logged in to Meta Business Suite, TikTok, Pinterest and Google Ads.
 - **Needs you:** a login page, CAPTCHA, a video over 10 MB, or a kit more than 2 days late is marked `Status: needs owner: <reason>`, and the publisher lists it in its report under Blocked or unknown.
-- **Logs:** `~/Library/Logs/memobrick-social-post.log` (and `memobrick-chrome-tasks.log`).
+- **Logs:** `~/Library/Logs/memobrick-social-post.log` (and `memobrick-chrome-tasks.log`, `memobrick-data-pull.log`).
 - **Stop:** `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall`. Without the Mac job you can still post a kit by hand and reply with the live links.
+
+## Data snapshots (Google and Meta numbers, free)
+
+The Adspirer connector gives only 150 free calls a month, so the agents read Google and Meta numbers from `data/` instead. Every morning at 7:07 the third Mac job (the `memobrick-data-pull` skill) opens your own dashboards in Chrome, read-only, and saves:
+
+- `data/google-ads/`: campaigns (last 7 and 30 days and the same 30 days last year: cost, clicks, conversions, value, impression share and lost share), search terms (30 days), Performance Max asset groups and assets.
+- `data/ga4/`: sessions, add-to-carts, purchases and revenue by channel and landing page, 30 days vs last year.
+- `data/search-console/`: top queries and pages, 28 days vs last year.
+- `data/meta/`, `data/tiktok/`, `data/pinterest/`: posts and reels of the last 30 days with reach, likes, comments, saves, shares, plays, and follower change.
+
+`data/latest.md` lists what was pulled, the exact dates, and anything that needs you. Agents ask for extra data in `data/requests.md`; the next pull fetches it and clears the line. Adspirer is used only when a snapshot is missing and free calls remain, never paid calls. Stay logged in, in the Mac's Chrome, to Google Ads, Google Analytics and Search Console (with the Google account that owns them), Meta Business Suite, TikTok and Pinterest. It never changes a setting, and customer emails, names and phone numbers never go into the repository (`python3 marketing/tools/check.py data` checks). Log: `~/Library/Logs/memobrick-data-pull.log`.
 
 ## Run an agent yourself
 
@@ -63,6 +74,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 
 - `python3 marketing/tools/check.py agents` validates every agent file.
 - `python3 marketing/tools/check.py layout` checks the shared files exist.
+- `python3 marketing/tools/check.py data` checks `marketing/data/` for personal data (emails, phone numbers, name columns). `python3 marketing/tools/clean_csv.py <download> <repo file>` copies a report export into the repo without them.
 - `python3 marketing/tools/check.py copy <file>` finds em dashes in customer copy.
 - `python3 marketing/tools/email_preview.py --phone <draft>` renders an email draft as the subscriber will see it, including its design blocks (hero image, photo-to-mosaic pair, steps, feeling band, product cards, brick divider): `<draft>-preview.png`, `<draft>-preview-phone.png` and `.html` next to it, plus `<draft>-omnisend.html` to paste into an Omnisend custom HTML block. It adds the image to the top of the draft. The email agents (Marcela and Aura María) design every email with the `memobrick-email-design` skill and run this on every draft.
 - `python3 marketing/tools/check.py approvals marketing/approvals/queue.md --agent <name>` lists the approved items that agent should carry out.
@@ -79,6 +91,8 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 | `shared/customer-questions.md` | Recurring questions and objections | Any agent (append only) |
 | `shared/contacts-log.md` | Everyone contacted for outreach | Outreach agents (append only) |
 | `shared/product-facts.md` | Sizes, pieces, prices, kit contents, and how the product looks | Any agent may update it from live Shopify data |
+| `data/latest.md` and `data/<source>/` | Google Ads, GA4, Search Console, Meta, TikTok and Pinterest snapshots | The Mac data pull only |
+| `data/requests.md` | Data the agents need that the snapshots lack | Any agent adds; the data pull clears |
 | `social/footage-rights.md` | Who appears in each Drive clip and whether it may be used | social-planner adds clips; only the owner marks them `ok` |
 
 ## What the owner needs to provide
@@ -86,7 +100,8 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 | Item | Needed by | Blocks |
 |---|---|---|
 | Postiz API key (optional; not needed, the Mac posts for free) | Never | Nothing |
-| Mac posting jobs installed (see Social publishing) | Before the first approved post | Automatic posting |
+| Mac jobs installed (see Social publishing) | Before the first approved post | Automatic posting, Google and Meta data |
+| Logged in, in the Mac's Chrome, to Google Ads, Analytics, Search Console, Meta Business Suite, TikTok and Pinterest | Always | Daily data snapshots |
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
 | Product footage in the Drive footage library, with each clip's rights confirmed in `social/footage-rights.md` | Week 1 | Edited social videos |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |

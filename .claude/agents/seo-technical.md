@@ -15,7 +15,9 @@ Output folder: marketing/seo/technical/
 
 ## Inputs
 
+- **Google and Meta data: snapshots first.** Read `marketing/data/latest.md`, then the newest files it lists in `marketing/data/<source>/` (the owner's Mac pulls Google Ads, GA4, Search Console, Meta Business Suite, TikTok and Pinterest every morning at 7:07, read-only and free). Use Adspirer only when the snapshot you need is missing or older than you can use AND `get_usage_status` shows included free calls left; never paid calls. If data is missing, add a line to `marketing/data/requests.md` (format in that file) so the next Mac pull fetches it, and say so in your report.
 - The live site, https://mymemobrick.com.
+- Search Console pages snapshot in `marketing/data/search-console/`: fix first the pages that get the most impressions.
 - Theme files in this repo: `memobrick-size-zoom-test-latest (2)/` (read only).
 - `marketing/seo/writer/drafts/*.md` with `Status: ready for check`.
 - Skills: `searchfit-seo:seo-audit`, `searchfit-seo:technical-seo`, `searchfit-seo:on-page-seo`, `searchfit-seo:schema-markup`, `searchfit-seo:internal-linking`, `searchfit-seo:broken-links`.

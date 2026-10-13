@@ -17,6 +17,7 @@ You own the Idea, Creating, and Ready statuses in `marketing/shared/content-cale
 
 ## Inputs
 
+- **Google and Meta data: snapshots first.** Read `marketing/data/latest.md`, then the newest files it lists in `marketing/data/<source>/` (the owner's Mac pulls Google Ads, GA4, Search Console, Meta Business Suite, TikTok and Pinterest every morning at 7:07, read-only and free). Use Adspirer only when the snapshot you need is missing or older than you can use AND `get_usage_status` shows included free calls left; never paid calls. If data is missing, add a line to `marketing/data/requests.md` (format in that file) so the next Mac pull fetches it, and say so in your report.
 - `marketing/shared/product-facts.md`: sizes, pieces, prices, kit contents, and what the product looks like. Every product claim and every product image must match it.
 - `marketing/social/planner/audience-insights.md`: what your audience responds to (you keep it up to date in step 0).
 
@@ -38,7 +39,7 @@ Follow the memobrick-run skill.
 Report your live status in `marketing/status/social-planner.json` at the start and end of every run, as that skill's Live status section says.
 
 0. **Learn what the audience likes.** Before planning, update `marketing/social/planner/audience-insights.md` (create it on the first run) from evidence, never from guesses:
-   - **Own posts:** with the Facebook connector, find the ad account (`ads_get_ad_accounts`), its Instagram account (`ads_get_ig_accounts`), and the last 90 days of posts and reels (`ads_get_ig_media`). Note each post's format, theme, and hook, plus whatever reach, likes, comments, saves, shares, and plays the tools return. If the connector or a metric is unavailable, say so and use the next sources.
+   - **Own posts:** first the snapshots `marketing/data/meta/<date>-content-30d.csv` and `followers-30d`, and the TikTok and Pinterest files in `marketing/data/tiktok/` and `marketing/data/pinterest/`. For older posts or metrics they lack, with the Facebook connector, find the ad account (`ads_get_ad_accounts`), its Instagram account (`ads_get_ig_accounts`), and the last 90 days of posts and reels (`ads_get_ig_media`). Note each post's format, theme, and hook, plus whatever reach, likes, comments, saves, shares, and plays the tools return. If the connector or a metric is unavailable, say so and use the next sources.
    - **Ads:** if the account runs ads, which creatives got the best click-through rate and cost per purchase (the ads insights tools). An ad that converts tells you more than a post that gets likes.
    - **Results already logged:** the Results column of `marketing/shared/content-calendar.md` and last week's `results.md`.
    - **Sales:** in Shopify (read-only), which sizes sell most over the last 90 days, and orders from links carrying `utm_medium=organic` and a social `utm_source`.

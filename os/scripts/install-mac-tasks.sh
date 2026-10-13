@@ -2,10 +2,12 @@
 # Installs the free Memobrick Mac jobs (launchd, no extra apps):
 #   com.memobrick.social-post   every hour at :07 from 8:07 to 21:07, posts approved social kits
 #   com.memobrick.chrome-tasks  every day at 21:07, runs approved Google Ads Chrome tasks
-# Both run Claude Code with Claude in Chrome on this Mac, signed in with the owner's plan.
+#   com.memobrick.data-pull     every day at 7:07, reads Google Ads, Analytics, Search Console,
+#                               Meta, TikTok and Pinterest numbers into marketing/data/ (read-only)
+# All three run Claude Code with Claude in Chrome on this Mac, signed in with the owner's plan.
 #
 # Install or update (safe to run again):  bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh
-# Stop and remove both jobs:              bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall
+# Stop and remove all jobs:               bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
@@ -15,7 +17,7 @@ AGENTS_DIR="$HOME/Library/LaunchAgents"
 LOG_DIR="$HOME/Library/Logs"
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.local/bin/claude}"
 DOMAIN="gui/$(id -u)"
-JOBS="social-post chrome-tasks"
+JOBS="social-post chrome-tasks data-pull"
 
 unload_job() {
   local label="com.memobrick.$1" plist="$AGENTS_DIR/com.memobrick.$1.plist"
@@ -28,9 +30,9 @@ if [ "${1:-}" = "--uninstall" ]; then
     rm -f "$AGENTS_DIR/com.memobrick.$job.plist"
   done
   rm -f "$WRAPPER"
-  rm -rf "$SUPPORT_DIR"/*.lock
-  echo "Memobrick Mac jobs stopped and removed. Nothing will post automatically now."
-  echo "Logs are kept in $LOG_DIR/memobrick-social-post.log and memobrick-chrome-tasks.log."
+  rm -rf "$SUPPORT_DIR"/*.lock "$SUPPORT_DIR/data-pull-raw"
+  echo "Memobrick Mac jobs stopped and removed. Nothing will post or pull data automatically now."
+  echo "Logs are kept in $LOG_DIR/memobrick-social-post.log, memobrick-chrome-tasks.log and memobrick-data-pull.log."
   echo "To turn them back on: bash \"$REPO_DIR/os/scripts/install-mac-tasks.sh\""
   exit 0
 fi
@@ -45,17 +47,21 @@ mkdir -p "$SUPPORT_DIR" "$AGENTS_DIR" "$LOG_DIR"
 # The wrapper launchd runs. Values from this install are filled in below.
 cat > "$WRAPPER" <<'WRAP'
 #!/bin/bash
-# Memobrick Mac task runner. Usage: run-task.sh social-post | chrome-tasks
+# Memobrick Mac task runner. Usage: run-task.sh social-post | chrome-tasks | data-pull
 # Written by os/scripts/install-mac-tasks.sh; run that script again to update it.
 TASK="${1:-}"
 REPO="__REPO_DIR__"
 CLAUDE="__CLAUDE_BIN__"
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# EXTRA: tools only this task needs, on top of the shared list below.
+EXTRA=()
 case "$TASK" in
   social-post)  SKILL="memobrick-social-post";  LIMIT=3000 ;;
   chrome-tasks) SKILL="memobrick-chrome-tasks"; LIMIT=5400 ;;
-  *) echo "Usage: run-task.sh social-post | chrome-tasks" >&2; exit 2 ;;
+  data-pull)    SKILL="memobrick-data-pull";    LIMIT=3000
+                EXTRA=("Bash(mv:*)" "Bash(mkdir:*)" "Bash(python3 marketing/tools/clean_csv.py:*)") ;;
+  *) echo "Usage: run-task.sh social-post | chrome-tasks | data-pull" >&2; exit 2 ;;
 esac
 
 LOG="$HOME/Library/Logs/memobrick-$TASK.log"
@@ -98,11 +104,20 @@ if [ "$TASK" = "social-post" ]; then
     t="${t:0:16}"
     if [ -n "$t" ] && [[ ! "$t" > "$now" ]]; then due=1; break; fi
   done
-else
+elif [ "$TASK" = "chrome-tasks" ]; then
   for f in marketing/analytics/ads-analyst/chrome-tasks/*.md; do
     [ -f "$f" ] || continue
     if [ "$(head -n 1 "$f" | tr -d '\r')" = "Status: ready" ]; then due=1; break; fi
   done
+else
+  # data-pull: once a day; skip when latest.md already says it was updated today.
+  if [ "$(head -n 1 marketing/data/latest.md 2>/dev/null | tr -d '\r' | cut -c 1-19)" != "Updated: $(date '+%Y-%m-%d')" ]; then
+    due=1
+    # Raw downloads (may hold personal data) stay outside the repo and are kept 14 days.
+    RAW="$HOME/Library/Application Support/Memobrick/data-pull-raw"
+    mkdir -p "$RAW/$(date '+%Y-%m-%d')"
+    find "$RAW" -mindepth 1 -maxdepth 1 -type d -mtime +14 -exec rm -rf {} + 2>/dev/null
+  fi
 fi
 [ -n "$due" ] || exit 0
 
@@ -117,7 +132,7 @@ env -u ANTHROPIC_API_KEY perl -e 'alarm shift; exec @ARGV' "$LIMIT" \
   "$CLAUDE" -p "Follow the $SKILL skill in this folder." --chrome \
   --allowedTools "mcp__claude-in-chrome__*" "Bash(git:*)" \
   "Bash(python3 marketing/tools/check.py:*)" "Bash(TZ=America/New_York date:*)" "Bash(date:*)" "Bash(ls:*)" \
-  "Read" "Edit" "Write" "Glob" "Grep" \
+  "Read" "Edit" "Write" "Glob" "Grep" ${EXTRA[@]+"${EXTRA[@]}"} \
   < /dev/null >> "$LOG" 2>&1
 log "Finished (exit $?)"
 WRAP
@@ -164,12 +179,15 @@ PLIST
 
 write_plist social-post "8 9 10 11 12 13 14 15 16 17 18 19 20 21"
 write_plist chrome-tasks "21"
+write_plist data-pull "7"
 
 cat <<NEXT
 
 Memobrick Mac jobs installed.
   Social posts:       every hour at :07 from 8:07 to 21:07 (posts approved kits when their time arrives)
   Google Ads tasks:   every day at 21:07 (runs approved Chrome tasks)
+  Data pull:          every day at 7:07 (reads Google Ads, Analytics, Search Console, Meta,
+                      TikTok and Pinterest numbers into marketing/data/, changes nothing)
   Memobrick folder:   $REPO_DIR
 NEXT
 
@@ -181,19 +199,23 @@ fi
 cat <<NEXT
 
 Next steps:
-  1. Keep the Mac awake and on power from 8 am to 9 pm, with Google Chrome open and the
-     Claude in Chrome extension signed in. Stay logged in to Meta Business Suite
-     (Instagram and Facebook), TikTok, Pinterest, and Google Ads in that Chrome.
+  1. Keep the Mac awake and on power from 7 am to 9 pm, with Google Chrome open and the
+     Claude in Chrome extension signed in. Stay logged in, in that Chrome, to:
+     Google Ads, Google Analytics and Search Console (with the Google account that owns
+     them), Meta Business Suite (Instagram and Facebook), TikTok and Pinterest.
+     If Chrome asks whether the site may download multiple files, click Allow.
      (System Settings > Battery or Energy: prevent automatic sleeping when on power.)
   2. Try it once now (posts only kits that are approved and due):
        bash "$WRAPPER" social-post
      If macOS asks to let bash access the Documents folder, click Allow.
      Also check that 'git push' works from Terminal in the memobrick folder.
+     To test the data pull now:  bash "$WRAPPER" data-pull
   3. Logs:
        $LOG_DIR/memobrick-social-post.log
        $LOG_DIR/memobrick-chrome-tasks.log
+       $LOG_DIR/memobrick-data-pull.log
      Anything that needs you shows up as 'Status: needs owner' in the kit and in the
-     publisher's report.
-  4. To stop both jobs:
+     publisher's report, and for the data pull under 'Needs owner' in marketing/data/latest.md.
+  4. To stop all three jobs:
        bash "$REPO_DIR/os/scripts/install-mac-tasks.sh" --uninstall
 NEXT

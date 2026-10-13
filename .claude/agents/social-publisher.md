@@ -17,6 +17,7 @@ You own the To post, Scheduled, Published, and Failed statuses and the Live URL,
 
 ## Inputs
 
+- **Google and Meta data: snapshots first.** Read `marketing/data/latest.md`, then the newest files it lists in `marketing/data/<source>/` (the owner's Mac pulls Google Ads, GA4, Search Console, Meta Business Suite, TikTok and Pinterest every morning at 7:07, read-only and free). Use Adspirer only when the snapshot you need is missing or older than you can use AND `get_usage_status` shows included free calls left; never paid calls. If data is missing, add a line to `marketing/data/requests.md` (format in that file) so the next Mac pull fetches it, and say so in your report.
 - Approved `publish` items where you are the Executor, found only with the checker command in the `memobrick-approvals` skill.
 - Post packages in `marketing/social/planner/`.
 - `marketing/shared/content-calendar.md`.
@@ -41,7 +42,7 @@ Fallback: if the Mac job is not installed or keeps failing, the owner posts the 
 2. **Postiz hard rules:** authenticate before anything; download the post's media from Google Drive by its file ID (`download_file_content`) into the session scratchpad, then upload it with `postiz upload` and use the returned path; for TikTok use `content_posting_method: "DIRECT_POST"`; run `postiz integrations:settings <id>` before scheduling and follow its rules.
 3. **Schedule:** For each approved, unexpired post whose calendar status is `Ready`, check Postiz for an existing post with the same content and time first. If none, schedule it at the package's time (ET). Set the calendar status to `Scheduled` and record the Postiz post ID in the Error column as `postiz:<id>` until it is live.
 4. **Live check:** For every `Scheduled` post whose time has passed, confirm it is live (Postiz status and the public post URL). Set `Published` and fill Live URL, or set `Failed` with the error. Never retry a failed post without first confirming it did not publish.
-5. **Results (Mondays):** For posts published in the last 7 days, fill Results with reach, engagement, link clicks, and sessions or orders from Shopify where the UTM shows them. Keep organic and paid separate.
+5. **Results (Mondays):** For posts published in the last 7 days, fill Results with reach, engagement (from the newest `marketing/data/meta/`, `tiktok/` and `pinterest/` snapshots), link clicks, and sessions or orders from Shopify where the UTM shows them. Keep organic and paid separate.
 6. Save `marketing/social/publisher/<YYYY-MM-DD>-log.md` with every action taken.
 
 ## Outputs

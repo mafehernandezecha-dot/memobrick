@@ -57,9 +57,9 @@ bash scripts/install-mac-app.sh
 
 It creates **Memobrick OS** in Applications with the brick icon. Double-click it (or keep it in the Dock) and it starts the dashboard in the background if needed and opens it in its own window. **Stop Memobrick OS** turns the dashboard off. The dashboard's log is in `~/Library/Logs/memobrick-os.log`. Run the script again if you move the memobrick folder.
 
-### Automatic posting and Google Ads tasks (free, no extra apps)
+### Automatic posting, Google Ads tasks and data pull (free, no extra apps)
 
-Your Mac can post the approved social kits itself and run the approved Google Ads Chrome tasks, using Claude Code (signed in with your plan) and Claude in Chrome. Install once, in Terminal:
+Your Mac can post the approved social kits itself, run the approved Google Ads Chrome tasks, and pull the numbers the agents need, using Claude Code (signed in with your plan) and Claude in Chrome. Install once, in Terminal:
 
 ```
 bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh
@@ -67,6 +67,8 @@ bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh
 
 - **Social posts:** every hour at :07 from 8:07 am to 9:07 pm, it posts any approved kit in `marketing/social/publisher/to-post/` whose time has arrived, on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, and writes the live links back to the kit and the content calendar.
 - **Google Ads tasks:** every day at 9:07 pm, it runs approved Chrome tasks (the Claude in Chrome extension shortcut is the fallback).
-- **What it needs:** the Mac awake and on power during those hours, Google Chrome open with the Claude in Chrome extension signed in, and you logged in to Meta Business Suite, TikTok, Pinterest and Google Ads in that Chrome. If a login page, CAPTCHA or anything unexpected appears, it stops and marks the kit `Status: needs owner: <reason>`; the publisher lists those in its report.
-- **Logs:** `~/Library/Logs/memobrick-social-post.log` and `~/Library/Logs/memobrick-chrome-tasks.log`.
+- **Data pull:** every day at 7:07 am, it reads Google Ads (account 672-499-4049), Google Analytics, Search Console, Meta Business Suite insights, and TikTok and Pinterest analytics, and saves small snapshots in `marketing/data/` with an index in `marketing/data/latest.md` (the `memobrick-data-pull` skill). It only reads and changes nothing; it skips the day once `latest.md` is updated. Downloads are moved out of Downloads and kept 14 days in `~/Library/Application Support/Memobrick/data-pull-raw/`; only cleaned files, without customer emails, names or phone numbers, go into the repository. The agents use these instead of the Adspirer connector's 150 free calls a month, and ask for anything extra in `marketing/data/requests.md`.
+- **What it needs:** the Mac awake and on power from 7 am to 9 pm, Google Chrome open with the Claude in Chrome extension signed in, and you logged in, in that Chrome, to Google Ads, Google Analytics and Search Console (with the Google account that owns them), Meta Business Suite, TikTok and Pinterest. If a login page, CAPTCHA, 2-step verification or anything unexpected appears, it stops and marks the kit `Status: needs owner: <reason>` (the publisher lists those in its report), or for the data pull, lists it under Needs owner in `marketing/data/latest.md`.
+- **Logs:** `~/Library/Logs/memobrick-social-post.log`, `~/Library/Logs/memobrick-chrome-tasks.log` and `~/Library/Logs/memobrick-data-pull.log`.
+- **Update:** after a change to these jobs, run the install command again; it replaces the jobs in place.
 - **Stop it:** `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall`. Run the install command again to turn it back on, or after moving the memobrick folder.

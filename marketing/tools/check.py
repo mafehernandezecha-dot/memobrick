@@ -5,10 +5,12 @@ Usage:
   python3 marketing/tools/check.py layout
   python3 marketing/tools/check.py copy <file> [<file> ...]
   python3 marketing/tools/check.py approvals <file> [--agent NAME --today YYYY-MM-DD]
+  python3 marketing/tools/check.py data [<folder>]
 
 Exits 0 when everything passes, 1 when errors are found.
 """
 
+import csv
 import datetime
 import pathlib
 import re
@@ -37,6 +39,8 @@ REQUIRED_LAYOUT = [
     ".claude/skills/memobrick-brand/SKILL.md",
     ".claude/skills/memobrick-approvals/SKILL.md",
     ".claude/skills/memobrick-run/SKILL.md",
+    "marketing/data/latest.md",
+    "marketing/data/requests.md",
 ]
 
 
@@ -195,6 +199,31 @@ def check_layout(repo_root):
     return [f"missing {rel}" for rel in REQUIRED_LAYOUT if not (root / rel).is_file()]
 
 
+def check_data(folder):
+    """Finds personal data (email, phone, people's names) in the data snapshots."""
+    import clean_csv
+
+    errors = []
+    folder = pathlib.Path(folder)
+    for path in sorted(p for p in folder.rglob("*") if p.is_file()):
+        rel = path.relative_to(folder)
+        if path.suffix.lower() not in {".csv", ".md", ".txt", ".tsv", ".json"}:
+            errors.append(f"{rel}: only .csv, .md, .txt, .tsv or .json files belong in the data folder")
+            continue
+        text = path.read_text(errors="replace")
+        if path.suffix.lower() in {".csv", ".tsv"}:
+            rows = [row for row in csv.reader(line for line in text.splitlines() if line and not line.startswith("#"))]
+            for name in rows[0] if rows else []:
+                if clean_csv.PII_HEADER.search(name):
+                    errors.append(f"{rel}: column {name!r} may hold personal data; drop it")
+        for number, line in enumerate(text.splitlines(), 1):
+            if clean_csv.EMAIL.search(line):
+                errors.append(f"{rel}:{number}: email address")
+            elif any(not clean_csv._is_number(cell) for cell in clean_csv.PHONE.findall(line)):
+                errors.append(f"{rel}:{number}: phone number")
+    return errors
+
+
 def _option(args, name):
     if name in args:
         index = args.index(name)
@@ -214,6 +243,8 @@ def main(argv):
             errors += check_agent_file(path, REPO_ROOT)
     elif command == "layout":
         errors = check_layout(REPO_ROOT)
+    elif command == "data":
+        errors = check_data(pathlib.Path(args[0]) if args else REPO_ROOT / "marketing/data")
     elif command == "copy":
         if not args:
             errors.append("copy: give at least one file")

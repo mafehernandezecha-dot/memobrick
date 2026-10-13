@@ -1,13 +1,17 @@
+import contextlib
 import datetime
+import io
 import pathlib
 import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 
 import check  # noqa: E402
+import clean_csv  # noqa: E402
 import email_preview  # noqa: E402
 
 AGENT_TEMPLATE = """---
@@ -509,6 +513,61 @@ class DesignBlockTests(unittest.TestCase):
         self.assertIn('name="color-scheme" content="light only"', page)
         self.assertIn("max-width: 620px", page)
         self.assertIn("fonts.googleapis.com", page)
+
+
+class DataSnapshotTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = pathlib.Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_google_ads_export_keeps_title_lines_as_comments(self):
+        text = ("Campaign report\nSeptember 13, 2026 - October 12, 2026\n"
+                "Campaign,Cost,Clicks\nPMax #2,\"1,204.50\",310\nSearch Campaign #1 - 2026,88.10,41\n")
+        preamble, header, body, dropped = clean_csv.clean(text)
+        self.assertEqual(preamble, ["Campaign report", "September 13, 2026 - October 12, 2026"])
+        self.assertEqual(header, ["Campaign", "Cost", "Clicks"])
+        self.assertEqual(body[0], ["PMax #2", "1,204.50", "310"])
+        self.assertEqual(dropped, [])
+
+    def test_personal_columns_and_values_are_removed(self):
+        text = ("# GA4 export\nLanding page,Email,Customer name,Sessions,Note\n"
+                "/products/kit,ana@example.com,Ana Ruiz,12,call 305-555-0142\n")
+        _, header, body, dropped = clean_csv.clean(text)
+        self.assertEqual(header, ["Landing page", "Sessions", "Note"])
+        self.assertEqual(dropped, ["Email", "Customer name"])
+        self.assertEqual(body[0], ["/products/kit", "12", "call [removed]"])
+
+    def test_ids_and_numbers_are_not_mistaken_for_phones(self):
+        text = "Campaign ID,Campaign,Impr.\n23775628961,PMax #2,3055550142\n"
+        _, _, body, _ = clean_csv.clean(text)
+        self.assertEqual(body[0], ["23775628961", "PMax #2", "3055550142"])
+
+    def test_utf16_tab_export_and_zip_member(self):
+        raw = self.root / "Queries.csv"
+        raw.write_bytes("Top queries\tClicks\nlego photo mosaic\t40\n".encode("utf-16"))
+        zipped = self.root / "export.zip"
+        with zipfile.ZipFile(zipped, "w") as archive:
+            archive.write(raw, "Queries.csv")
+        dest = self.root / "data/search-console/2026-10-13-queries-28d-yoy.csv"
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(clean_csv.main([str(zipped), str(dest), "--member", "Queries.csv"]), 0)
+        self.assertEqual(dest.read_text(), "Top queries,Clicks\nlego photo mosaic,40\n")
+
+    def test_check_data_flags_personal_data_and_raw_files(self):
+        data = self.root / "data"
+        (data / "ga4").mkdir(parents=True)
+        (data / "latest.md").write_text("Updated: 2026-10-13 07:20\n")
+        (data / "ga4/ok.csv").write_text("Channel,Sessions\nOrganic Search,120\n")
+        self.assertEqual(check.check_data(data), [])
+        (data / "ga4/bad.csv").write_text("Channel,E-mail\nEmail,x@y.com\n")
+        (data / "export.xlsx").write_bytes(b"x")
+        errors = check.check_data(data)
+        self.assertTrue(any("export.xlsx" in error for error in errors))
+        self.assertTrue(any("'E-mail'" in error for error in errors))
+        self.assertTrue(any("bad.csv:2: email address" in error for error in errors))
 
 
 if __name__ == "__main__":

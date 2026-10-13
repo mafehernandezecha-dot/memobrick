@@ -15,9 +15,11 @@ Output folder: marketing/conversion/auditor/
 
 ## Inputs
 
+- **Google and Meta data: snapshots first.** Read `marketing/data/latest.md`, then the newest files it lists in `marketing/data/<source>/` (the owner's Mac pulls Google Ads, GA4, Search Console, Meta Business Suite, TikTok and Pinterest every morning at 7:07, read-only and free). Use Adspirer only when the snapshot you need is missing or older than you can use AND `get_usage_status` shows included free calls left; never paid calls. If data is missing, add a line to `marketing/data/requests.md` (format in that file) so the next Mac pull fetches it, and say so in your report.
 - `marketing/sales/latest.json` (funnel and weak points) and `marketing/shared/sales-goals.json`.
 - The live store, https://mymemobrick.com, tested with Playwright (Chromium is installed; launch it with `executablePath: '/opt/pw-browsers/chromium'` if the default path fails) at phone size (390×844) and desktop size (1440×900).
 - Shopify analytics (read-only): `FROM sessions SHOW sessions, sessions_with_cart_additions, sessions_that_reached_checkout, sessions_that_completed_checkout` grouped by `session_device_type`, by landing page, and by referrer, now and the same period last year; add-to-cart by product.
+- GA4 snapshots in `marketing/data/ga4/` (channels and landing pages: sessions, add-to-carts, purchases, vs last year) as a cross-check of the Shopify funnel; Shopify stays the source of truth.
 - Theme files in this repo (`memobrick-size-zoom-test-latest (2)/`, read only), `marketing/shared/product-facts.md`, `marketing/shared/customer-questions.md`, and the `memobrick-brand` skill.
 
 ## Cadence

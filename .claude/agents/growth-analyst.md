@@ -17,9 +17,11 @@ You own `marketing/shared/scorecard.md` (you may add rows to its Weekly table) a
 
 ## Inputs
 
+- **Google and Meta data: snapshots first.** Read `marketing/data/latest.md`, then the newest files it lists in `marketing/data/<source>/` (the owner's Mac pulls Google Ads, GA4, Search Console, Meta Business Suite, TikTok and Pinterest every morning at 7:07, read-only and free). Use Adspirer only when the snapshot you need is missing or older than you can use AND `get_usage_status` shows included free calls left; never paid calls. If data is missing, add a line to `marketing/data/requests.md` (format in that file) so the next Mac pull fetches it, and say so in your report.
 - Shopify analytics (`run-analytics-query` tool, ShopifyQL).
 - `marketing/shared/sales-goals.json` (the owner's daily goals), `marketing/shared/scorecard.md`, `marketing/shared/experiments.md`, `marketing/shared/content-calendar.md`.
 - Meta ads results only as context (`ads_get_ad_entities` or insights tools) from the Memobrick ad account (named "PhotoBrick" as of 2026-10-11); never add platform revenue to Shopify revenue.
+- GA4 snapshots in `marketing/data/ga4/` (sessions, add-to-carts, purchases and revenue by channel and landing page, vs last year) as context; Shopify stays the source of truth for orders and sales.
 
 ## Cadence
 

@@ -15,8 +15,9 @@ Output folder: marketing/seo/strategist/
 
 ## Inputs
 
+- **Google and Meta data: snapshots first.** Read `marketing/data/latest.md`, then the newest files it lists in `marketing/data/<source>/` (the owner's Mac pulls Google Ads, GA4, Search Console, Meta Business Suite, TikTok and Pinterest every morning at 7:07, read-only and free). Use Adspirer only when the snapshot you need is missing or older than you can use AND `get_usage_status` shows included free calls left; never paid calls. If data is missing, add a line to `marketing/data/requests.md` (format in that file) so the next Mac pull fetches it, and say so in your report.
 - The live site, https://mymemobrick.com (fetch pages and the blog).
-- Search Console data when connected; otherwise public search research.
+- Search Console: the snapshots in `marketing/data/search-console/` (top queries and pages, clicks, impressions, CTR and position, last 28 days vs last year); otherwise public search research.
 - `marketing/shared/customer-questions.md` (real buyer questions).
 - `marketing/seo/technical/` audit, article inventory, and `content-fixes.md` (what exists, what is duplicate, which pages need meta descriptions or H1s; brief those as improvements).
 - `marketing/seo/writer/drafts/` (what is already written).
