@@ -1,6 +1,6 @@
-Status: draft
+Status: ready
 
-# Claude in Chrome task: Holiday Gifts landing page and code (approval item: pending, from P-ads-analyst-20261013-1)
+# Claude in Chrome task: Holiday Gifts landing page and code (approval item: A-2026W42-019, from P-ads-analyst-20261013-1)
 
 Change file: `marketing/analytics/ads-analyst/changes/google-holiday-gifts-gift-page-and-code.md`. Do not run until the queue shows the item approved; the ads analyst then sets the first line to `Status: ready` and adds the A- ID here.
 

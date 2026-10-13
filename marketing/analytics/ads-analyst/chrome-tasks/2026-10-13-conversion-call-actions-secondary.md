@@ -1,6 +1,6 @@
-Status: draft
+Status: ready
 
-# Claude in Chrome task: call conversion actions to secondary (approval item: pending, from P-ads-analyst-20261013-2)
+# Claude in Chrome task: call conversion actions to secondary (approval item: A-2026W42-020, from P-ads-analyst-20261013-2)
 
 Change file: `marketing/analytics/ads-analyst/changes/google-conversion-call-actions-secondary.md`. Do not run until the queue shows the item approved; the ads analyst then sets the first line to `Status: ready` and adds the A- ID here.
 

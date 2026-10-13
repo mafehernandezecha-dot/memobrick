@@ -27,6 +27,28 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Status: approved
 - From: Owner approval in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis")
 
+## A-2026W42-019
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-gift-page-and-code.md
+- Commit: cc3b0de
+- Reason: Holiday Gifts ads point to the gift collection page (6.3% checkout last holiday) and add the live EARLYHOLIDAY20 headline. No budget change. Applied by the owner's Mac via chrome-tasks/2026-10-13-holiday-gifts-gift-page-and-code.md.
+- Expires: 2026-10-20
+- Status: approved
+- From: P-ads-analyst-20261013-1 (owner approved in chat 2026-10-13)
+
+## A-2026W42-020
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-conversion-call-actions-secondary.md
+- Commit: cc3b0de
+- Reason: Sets the 2 old Smart campaign call conversions to secondary so Purchase is the only primary conversion before the holidays. Applied by the owner's Mac via chrome-tasks/2026-10-13-conversion-call-actions-secondary.md.
+- Expires: 2026-10-20
+- Status: approved
+- From: P-ads-analyst-20261013-2 (owner approved in chat 2026-10-13)
+
 ## A-2026W42-001
 - Agent: ads-analyst
 - Executor: ads-analyst
