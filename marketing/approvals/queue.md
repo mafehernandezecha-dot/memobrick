@@ -154,7 +154,7 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Commit: aee1580
 - Reason: If approved, ads-analyst adds 5 "memobrick" negatives to PMax #2 so it stops paying for our own brand searches (45% of its search spend) and its real non-brand result shows.
 - Expires: 2026-10-17
-- Status: approved
+- Status: rejected
 - From: P-ads-analyst-20261012-4
 
 ## A-2026W42-006
