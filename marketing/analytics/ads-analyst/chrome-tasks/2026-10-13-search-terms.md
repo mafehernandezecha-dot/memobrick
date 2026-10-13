@@ -1,4 +1,4 @@
-Status: ready
+Status: needs owner (2026-10-13: Google Ads opened a sign-in account chooser; the signed-in login memobrickofficial@gmail.com lists no Ads accounts, so 672-499-4049 is under a different Google login. Sign Chrome in to that login, then set back to ready.)
 
 # Claude in Chrome task: search terms cleanup and new buyer keywords (Approved by owner in chat 2026-10-13)
 
