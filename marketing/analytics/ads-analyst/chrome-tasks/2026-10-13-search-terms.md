@@ -2,7 +2,7 @@ Status: ready
 
 # Claude in Chrome task: search terms cleanup and new buyer keywords (Approved by owner in chat 2026-10-13)
 
-Approval: Approved by owner in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis of what would work best for Memobrick"). There is no A- queue ID for this item. Analysis: `marketing/analytics/ads-analyst/google-audit-2026-10-13.md`, section 2. Change record: `marketing/analytics/ads-analyst/changes/google-search-terms-2026-10-13.md`.
+Approval: Approved by owner in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis of what would work best for Memobrick"). Queue ID: A-2026W42-018 (logged from the chat approval). Analysis: `marketing/analytics/ads-analyst/google-audit-2026-10-13.md`, section 2. Change record: `marketing/analytics/ads-analyst/changes/google-search-terms-2026-10-13.md`.
 
 Scope: negative keywords, pausing non-converting non-brand keywords, and adding new keywords. No budget, bid strategy, campaign status, ad text, asset, audience or setting changes. PMax #2 brand negatives (A-2026W42-004) are NOT part of this task, and the PMax text refresh (A-2026W42-001) is handled in its own task.
 

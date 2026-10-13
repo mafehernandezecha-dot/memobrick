@@ -16,6 +16,17 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W42-018
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-search-terms-2026-10-13.md
+- Commit: cc3b0de
+- Reason: Google search terms cleanup: blocks non-converting LEGO and freebie searches, pauses 5 keywords with spend and no sales, adds gift and product keywords to Holiday Gifts and old brand names to the brand campaign. No budget or bid changes. Applied by the owner's Mac via chrome-tasks/2026-10-13-search-terms.md.
+- Expires: 2026-10-20
+- Status: approved
+- From: Owner approval in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis")
+
 ## A-2026W42-001
 - Agent: ads-analyst
 - Executor: ads-analyst
