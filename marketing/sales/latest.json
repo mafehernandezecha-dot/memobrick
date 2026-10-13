@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-12T08:30:00-04:00",
+ "updated": "2026-10-13T08:30:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -301,6 +301,11 @@
    "date": "2026-10-11",
    "orders": 2,
    "netSales": 201.0
+  },
+  {
+   "date": "2026-10-12",
+   "orders": 3,
+   "netSales": 215.73
   }
  ],
  "lastYear": [
@@ -766,42 +771,45 @@
   }
  ],
  "funnel": {
-  "period": "Last 30 days vs the same 30 days last year",
+  "period": "Last 30 days (Sep 13 to Oct 12), referred sessions only (direct excluded because bots inflate it), vs the same 30 days last year",
   "now": {
-   "sessions": 10648,
-   "addedToCart": 258,
-   "reachedCheckout": 213,
-   "purchased": 56
+   "sessions": 1982,
+   "addedToCart": 106,
+   "reachedCheckout": 60,
+   "purchased": 31
   },
   "lastYear": {
-   "sessions": 8655,
-   "addedToCart": 616,
-   "reachedCheckout": 577,
-   "purchased": 123
+   "sessions": 5560,
+   "addedToCart": 402,
+   "reachedCheckout": 157,
+   "purchased": 68
   }
  },
  "weakPoints": [
   {
-   "title": "Visitors stopped adding to cart",
-   "detail": "Traffic is up 23% on last year, but only 2.4% of visits add to cart, down from 7.1%. Orders follow: 56 in the last 30 days vs 123 last year. The product page and the photo editor are the first place to look.",
+   "title": "Referred traffic fell by almost two thirds",
+   "detail": "Referred (non-direct) sessions in the last 30 days: 1,982 vs 5,560 last year (-64%). Social 1,189, search 687, email 11. Add-to-cart rate is 5.3% vs 7.2%, so fewer visitors and weaker carts. Last year's paid and social reach is not being matched.",
    "owners": [
-    "seo-technical",
-    "owner"
+    "ads-analyst",
+    "social-publisher",
+    "seo-strategist"
    ]
   },
   {
-   "title": "Most checkouts are abandoned",
-   "detail": "213 visits reached checkout and 56 bought (26%). Shipping cost, delivery date and payment options are the usual reasons; the checkout-abandonment email is the quickest lever.",
-   "owners": [
-    "email-flow-optimizer"
-   ]
-  },
-  {
-   "title": "Holiday plan not ready",
-   "detail": "Last year November averaged 12 orders a day and December 1 to 15 averaged 32. The holiday offer's dates and code are still unknown, so emails and posts cannot announce it.",
+   "title": "Draft orders (designer proof, then invoice) collapsed",
+   "detail": "Draft orders were 4 in the last 30 days vs 71 last year, which is 67 of the 127 lost orders (181 vs 54 in total). Online Store orders are 49 vs 107. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
-    "email-campaign-writer"
+    "site-developer"
+   ]
+  },
+  {
+   "title": "Daily goal missed: 34 orders in October vs 60 goal",
+   "detail": "October 1 to 12: 34 orders and $3,868 net sales vs goal 60 and $6,600 (gap 26 orders, $2,732). Yesterday 3 orders, $216 vs 5 and $550. Last year the same 12 days had 69 orders and $7,223. EARLYHOLIDAY20 started Oct 12 and is not yet announced on every channel; its end date is unconfirmed.",
+   "owners": [
+    "owner",
+    "email-campaign-writer",
+    "marketing-coordinator"
    ]
   }
  ]
