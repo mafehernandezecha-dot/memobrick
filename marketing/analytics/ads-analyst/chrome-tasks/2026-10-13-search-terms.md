@@ -1,10 +1,12 @@
-Status: needs owner (2026-10-13: Google Ads opened a sign-in account chooser; the signed-in login memobrickofficial@gmail.com lists no Ads accounts, so 672-499-4049 is under a different Google login. Sign Chrome in to that login, then set back to ready.)
+Status: ready
 
 # Claude in Chrome task: search terms cleanup and new buyer keywords (Approved by owner in chat 2026-10-13)
 
 Approval: Approved by owner in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis of what would work best for Memobrick"). Queue ID: A-2026W42-018 (logged from the chat approval). Analysis: `marketing/analytics/ads-analyst/google-audit-2026-10-13.md`, section 2. Change record: `marketing/analytics/ads-analyst/changes/google-search-terms-2026-10-13.md`.
 
 Scope: negative keywords, pausing non-converting non-brand keywords, and adding new keywords. No budget, bid strategy, campaign status, ad text, asset, audience or setting changes. PMax #2 brand negatives (A-2026W42-004) are NOT part of this task, and the PMax text refresh (A-2026W42-001) is handled in its own task.
+
+Google login: Chrome has several Google accounts signed in. If Google Ads shows an account chooser or the wrong account, open the chooser and try each signed-in Google account until one lists 672-499-4049 (it is not memobrickofficial@gmail.com and not mafehernandezecha2@gmail.com). Never sign in or out, never enter a password.
 
 ```
 You are helping me in my Google Ads account 672-499-4049 (Memobrick). I approved these changes in chat on 2026-10-13. Do exactly this and nothing else.

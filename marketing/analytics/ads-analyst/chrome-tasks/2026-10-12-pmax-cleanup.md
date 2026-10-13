@@ -1,4 +1,4 @@
-Status: needs owner (2026-10-13: Google Ads opened a sign-in account chooser; the signed-in login memobrickofficial@gmail.com lists no Ads accounts, so 672-499-4049 is under a different Google login. Sign Chrome in to that login, then set back to ready.)
+Status: done 2026-10-13
 
 # Claude in Chrome task: refresh PMax #2 texts (approved item A-2026W42-001, updated by owner 2026-10-13)
 
@@ -29,3 +29,7 @@ For each text below: open the group, click Edit asset group, click into the fiel
 
 Leave paused asset groups alone and do not resume anything. If an OLD text is not found, skip it and tell me. If Google rejects a NEW text or shows a policy warning, stop and tell me. When done, list each group with what changed.
 ```
+
+## Result
+
+Done by the owner with the Claude in Chrome extension on 2026-10-13. All listed texts replaced as written (Retargeting: "Use Code EARLYHOLIDAY20" and the new description, "Early Holiday Sale: 20% Off" kept; Demographics: 3 LEGO headlines replaced; Full Audience: 2 replaced; Full Asset groups: long headline replaced). The "Save as A/B test" switch stayed off; paused groups untouched; no budgets, bids, audiences, images or settings changed.

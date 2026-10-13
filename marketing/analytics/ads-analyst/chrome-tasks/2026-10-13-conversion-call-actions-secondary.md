@@ -1,8 +1,10 @@
-Status: needs owner (2026-10-13: Google Ads opened a sign-in account chooser; the signed-in login memobrickofficial@gmail.com lists no Ads accounts, so 672-499-4049 is under a different Google login. Sign Chrome in to that login, then set back to ready.)
+Status: ready
 
 # Claude in Chrome task: call conversion actions to secondary (approval item: A-2026W42-020, from P-ads-analyst-20261013-2)
 
 Change file: `marketing/analytics/ads-analyst/changes/google-conversion-call-actions-secondary.md`. Do not run until the queue shows the item approved; the ads analyst then sets the first line to `Status: ready` and adds the A- ID here.
+
+Google login: Chrome has several Google accounts signed in. If Google Ads shows an account chooser or the wrong account, open the chooser and try each signed-in Google account until one lists 672-499-4049 (it is not memobrickofficial@gmail.com and not mafehernandezecha2@gmail.com). Never sign in or out, never enter a password.
 
 ```
 You are helping me in my Google Ads account 672-499-4049 (Memobrick). I approved this change; do exactly this and nothing else.
