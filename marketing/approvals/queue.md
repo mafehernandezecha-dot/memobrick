@@ -2,7 +2,7 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-12 (second run). Added A-2026W42-001 to 006 from the 2026-10-12 ads-analyst report: six Google and Meta ad changes, all expiring Oct 17. The top one removes a discount code (EARLYHOLIDAY20) that live Google ads promise but Shopify does not have. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-12.md`.
+Updated 2026-10-13. Added A-2026W42-007 to 017: the Oct 20 Early Bird email fix, six site fixes from site-developer and conversion-auditor, the redesigned photo tips email, and three rewritten gift guide pitches. Items they replace are marked Superseded. A-2026W41-001 expired and moved to the archive. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-13.md`.
 
 ## Needs your attention
 
@@ -28,17 +28,57 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - From: P-ads-analyst-20261012-1
 - Note: Removes an invalid code; it does not add one. If you would rather create EARLYHOLIDAY20 in Shopify and list it as active in offers-calendar.md first, the draft explains the `changes: keep code rows` option.
 
-## A-2026W41-001
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W42/S-20261012-1.md
-- Commit: e91580d
-- Reason: Transformation Reel opens the week with the core photo to mosaic story.
-- Expires: 2026-10-12
-- Status: changes: change the video
-- From: P-social-planner-20261011-1
-- Note: Scheduled Mon 2026-10-12 19:00 ET, so it must be decided before then. The owner cleared the "Memobrick videos" folder for posts and ads on 2026-10-12 (footage-rights.md); still confirm the clip shows the photo to mosaic story with no customer face or name. The same clip is proposed as a paused Meta ad in A-2026W42-006 (paid, a different channel).
+## A-2026W42-007
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/improve-oct20-early-bird.md
+- Commit: d52dbf5
+- Reason: Edits the scheduled Omnisend campaign "Q4 | Oct 20 | Early Bird 15%" (about 5,000 Warm contacts): restores it to draft, swaps in the 20% EARLYHOLIDAY20 version, and reschedules it for the same time (Tue Oct 20, 11:00 ET).
+- Expires: 2026-10-19
+- Status: pending
+- From: P-email-campaign-writer-20261013-1
+- Note: This improves one of your existing Omnisend campaigns. EARLYHOLIDAY20 is active in offers-calendar.md, but its end date is unconfirmed; the draft states no end date. If the code will end before Oct 20, do not approve and tell the coordinator the end date. The Oct 27 'LAST CALL 15%' campaign still needs the same decision.
+
+
+## A-2026W42-009
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/home-phone-cta-above-fold.md
+- Commit: d33ffe8
+- Reason: If approved, site-developer saves a backup and puts the tested home page change on the live theme so phone visitors see "Create My MemoBrick" and "Kits from $35" without scrolling.
+- Expires: 2026-10-19
+- Status: pending
+- From: P-site-developer-20261012-2
+- Note: Site-developer rates this and the email pop-up fix above the desktop bar fix for orders (its estimate: 10 to 20 and 5 to 15 a month). Owner may need to paste 17 lines.
+
+
+## A-2026W42-008
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/desktop-editor-sticky-topbar.md
+- Commit: 15912ed
+- Reason: If approved, site-developer saves a backup and puts the tested change on the live theme's memobrick.js so desktop visitors see the price and Finish Editing after upload (desktop add to cart 5.1% vs 8.0% last year).
+- Expires: 2026-10-20
+- Status: pending
+- From: P-site-developer-20261013-1
+- Note: This is the built and tested version of A-2026W42-011 (same fix). Approve this one, not both. Owner may need to paste two edits.
+
+
+## A-2026W42-010
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/email-gate-ab-no-keyboard.md
+- Commit: d33ffe8
+- Reason: If approved, site-developer saves a backup and puts the tested email pop-up change on the live theme: phones stop opening the keyboard over the design, and A/B test CA-20261012-01 starts in time to finish before Black Friday.
+- Expires: 2026-10-19
+- Status: pending
+- From: P-site-developer-20261012-1
+- Note: The test writes an `ab_email_gate` attribute to the cart (carried onto the order for reporting only). It changes no order email, fulfillment or checkout step, so it was not dropped. Owner may need to paste one file.
+
 
 ## A-2026W42-002
 - Agent: ads-analyst
@@ -136,6 +176,19 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - From: P-email-flow-optimizer-20261011-1
 - Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
 
+## A-2026W42-012
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/cart-show-design-and-delivery.md
+- Commit: 768c71e
+- Reason: site-developer makes the cart show the customer's own mosaic instead of a stock photo, hides raw internal fields, and adds the verified "Order by December 15" line.
+- Expires: 2026-12-10
+- Status: pending
+- From: P-conversion-auditor-20261012-4
+- Note: Cart page display only; it does not touch checkout, order emails or fulfillment. Remove the Dec 15 line after Dec 15.
+
+
 ## A-2026W41-011
 - Agent: seo-technical
 - Executor: seo-blog-writer
@@ -148,16 +201,18 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - From: P-seo-technical-20261011-6
 - Note: Needs an owner-approved hero image (real mosaic or a labeled illustration).
 
-## A-2026W41-004
+## A-2026W42-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
 - Type: send
 - Draft: marketing/email/campaign-writer/2026-10-22-photo-tips.md
-- Commit: e91580d
-- Reason: Helpful no-offer email to the Warm segment between the scheduled Oct 20 and Oct 27 sends; creates an Omnisend draft only
+- Commit: 0e70384
+- Reason: Redesigned no-offer photo tips email (real product photos, new subject) to the Warm segment; creates the Omnisend campaign and schedules it for Thu Oct 22, 11:00 ET.
 - Expires: 2026-10-21
 - Status: pending
-- From: P-email-campaign-writer-20261011-1
+- From: P-email-campaign-writer-20261012-1
+- Note: Replaces A-2026W41-004, whose draft changed after it was queued. Decide this one; A-2026W41-004 cannot be acted on.
+
 
 ## A-2026W41-012
 - Agent: seo-technical
@@ -193,6 +248,31 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Status: approved
 - From: P-seo-technical-20261011-5
 
+## A-2026W42-013
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/pro-design-keep-size.md
+- Commit: 768c71e
+- Reason: site-developer makes the Pro Design page keep the size chosen on the product page instead of asking again.
+- Expires: 2026-12-15
+- Status: pending
+- From: P-conversion-auditor-20261012-5
+
+
+## A-2026W42-011
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/desktop-editor-sticky-topbar.md
+- Commit: 768c71e
+- Reason: site-developer makes the desktop editor's price and Finish Editing bar sticky; after upload it scrolls off screen, so desktop visitors see no way to order.
+- Expires: 2026-11-15
+- Status: pending
+- From: P-conversion-auditor-20261012-2
+- Flag: Same fix as A-2026W42-008 (site-developer's built and tested version). Approve only one; A-2026W42-008 is the one ready to apply.
+
+
 ## A-2026W41-005
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
@@ -205,41 +285,44 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - From: P-outreach-gift-guide-pr-20261011-1
 - Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address and byline come from search summaries, not the live page.
 
-## A-2026W41-006
+## A-2026W42-015
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/shescribes-2026.md
-- Commit: e91580d
-- Reason: Open 2026 guide; pitch asks only for the free review option (no $25 listing fee); Kimberly@SheScribes.com listed on page
-- Expires: 2026-10-21
-- Status: changes: edit the email to make it feel more real and emotional, memobrick talk more about an experience qieth the family
-- From: P-outreach-gift-guide-pr-20261011-2
-- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. The site sells paid placements; do not pay.
+- Commit: 5e4cad8
+- Reason: Replaces A-2026W41-006 with your requested changes (family experience, photos, HTML version). If approved, a Gmail draft to Kimberly@SheScribes.com is created for you to send; free review option only.
+- Expires: 2026-10-22
+- Status: pending
+- From: P-outreach-gift-guide-pr-20261012-1
+- Flag: Offers a sample kit; approving this item is the kit approval (case by case per the Facts table). Sender email still to confirm. The site sells paid placements; do not pay.
 
-## A-2026W41-007
+
+## A-2026W42-016
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/love-tabitha-2026.md
-- Commit: e91580d
-- Reason: Submissions open; kids and families guide already features a brick set; route is the submission page (method to confirm)
-- Expires: 2026-10-21
+- Commit: 5e4cad8
+- Reason: Replaces A-2026W41-007 with the rewritten family-night pitch. If approved, a Gmail draft is created if the submission page lists an email; if it is a form, the report gives the text to paste.
+- Expires: 2026-10-22
 - Status: pending
-- From: P-outreach-gift-guide-pr-20261011-3
-- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Contact route and address not captured.
+- From: P-outreach-gift-guide-pr-20261012-2
+- Flag: Offers a sample kit; approving this item is the kit approval. Sender email still to confirm. Contact route not captured.
 
-## A-2026W41-008
+
+## A-2026W42-017
 - Agent: outreach-gift-guide-pr
 - Executor: outreach-gift-guide-pr
 - Type: send
 - Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
-- Commit: e91580d
-- Reason: Couples gift roundup; contact page lists general inquiries to Jen (address must be copied from the page)
-- Expires: 2026-10-21
+- Commit: 5e4cad8
+- Reason: Replaces A-2026W41-008 with the rewritten couples pitch. If approved, a Gmail draft to Jen at Green Wedding Shoes is created for you to send, using the address on their contact page.
+- Expires: 2026-10-22
 - Status: pending
-- From: P-outreach-gift-guide-pr-20261011-4
-- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address not captured.
+- From: P-outreach-gift-guide-pr-20261012-3
+- Flag: Offers a sample kit; approving this item is the kit approval. Sender email still to confirm. Address not captured.
+
 
 ## A-2026W41-009
 - Agent: outreach-gift-guide-pr
@@ -276,17 +359,74 @@ Approved items that agents cannot act on yet. The checker reports "draft changed
 - Status: approved
 - From: P-seo-technical-20261011-3
 
+## A-2026W41-004
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/2026-10-22-photo-tips.md
+- Commit: e91580d
+- Reason: Helpful no-offer email to the Warm segment between the scheduled Oct 20 and Oct 27 sends; creates an Omnisend draft only
+- Expires: 2026-10-21
+- Status: pending
+- From: P-email-campaign-writer-20261011-1
+- Note: Superseded by A-2026W42-014 (the draft changed after this item was queued). Ignore this item.
+
+
+## A-2026W41-006
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/shescribes-2026.md
+- Commit: e91580d
+- Reason: Open 2026 guide; pitch asks only for the free review option (no $25 listing fee); Kimberly@SheScribes.com listed on page
+- Expires: 2026-10-21
+- Status: changes: edit the email to make it feel more real and emotional, memobrick talk more about an experience qieth the family
+- From: P-outreach-gift-guide-pr-20261011-2
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. The site sells paid placements; do not pay.
+- Note: Superseded by A-2026W42-015 (your requested changes were applied).
+
+
+## A-2026W41-007
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/love-tabitha-2026.md
+- Commit: e91580d
+- Reason: Submissions open; kids and families guide already features a brick set; route is the submission page (method to confirm)
+- Expires: 2026-10-21
+- Status: pending
+- From: P-outreach-gift-guide-pr-20261011-3
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Contact route and address not captured.
+- Note: Superseded by A-2026W42-016.
+
+
+## A-2026W41-008
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
+- Commit: e91580d
+- Reason: Couples gift roundup; contact page lists general inquiries to Jen (address must be copied from the page)
+- Expires: 2026-10-21
+- Status: pending
+- From: P-outreach-gift-guide-pr-20261011-4
+- Flag: Offers a sample kit. The Facts table says kits go out case by case and each kit offer needs your approval here, so approving this item is that approval. Sender is Eden Biri; the sender email is still to confirm. Address not captured.
+- Note: Superseded by A-2026W42-017.
+
+
 ## Flagged
 
-No proposal was dropped: none touches the order workflow, and every draft file exists. Six items carry a `- Flag:` line, and five approved items are blocked:
+No proposal was dropped: none touches the order workflow, and every draft file exists and is used by one proposal. Items copied with a flag or note:
 
-- A-2026W41-005 to 009 (outreach pitches): each offers a sample kit. Kits are allowed case by case, so your approval of the item is the kit approval. Sender email is still to confirm.
-- A-2026W41-010 (cart flow test): the shared blocks state "2-4 business days", which is not in the Facts table. The Miami claim is now verified.
-- Approved items 003, 011, 012, 013, 014 cannot be acted on yet (see Needs your attention).
+- A-2026W42-011 (auditor sticky bar) duplicates A-2026W42-008 (site-developer's built version). Approve only one.
+- A-2026W42-015 to 017 and A-2026W41-005, 009 (outreach pitches): each offers a sample kit, so approving is the kit approval. Sender email is still to confirm.
+- A-2026W41-010 (cart flow test): the shared blocks state "2-4 business days", which is not in the Facts table. It is approved but on hold.
+- A-2026W42-007 (Early Bird fix): uses EARLYHOLIDAY20, which is active, but its end date is unconfirmed.
+- A-2026W42-010 writes a cart attribute for the A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
+- Superseded, still listed: A-2026W41-004 (by 014), A-2026W41-006 (by 015), A-2026W41-007 (by 016), A-2026W41-008 (by 017). Their drafts changed after queueing, so they cannot be acted on. I did not change their Status lines.
+- Approved items A-2026W41-003, 011, 012, 013, 014 cannot be acted on yet (see Needs your attention).
 
-The six ad changes A-2026W42-001 to 006 passed every check: no order workflow, no unlisted offer or code (they remove EARLYHOLIDAY20 rather than use it), only the Facts-table date Dec 15, every draft file exists and none is shared, and the Executor (ads-analyst) is correct for ad-change.
-
-No contacts-log matches (the log is empty). No two proposals post the same content to the same channel, and none give conflicting dates.
+The six ad changes A-2026W42-001 to 006 passed every check earlier. No contacts-log matches (the log is empty). No two proposals post the same content to the same channel, and none give conflicting dates.
 
 ## Missing owner inputs
 
@@ -296,9 +436,14 @@ No contacts-log matches (the log is empty). No two proposals post the same conte
 - Product margins (also "Margin checked: unknown" for all three offers)
 - Faces per size and build time
 - Outreach sender email (name is Eden Biri; email still to confirm)
-- Holiday 20% offer: code, dates and exclusions to confirm
+- EARLYHOLIDAY20 (active since 2026-10-12): end date and exclusions to confirm. The Oct 20 and Oct 27 Early Bird emails, and any "ends" wording, depend on it
 
 **Blockers reported by agents:**
+
+- **New today:**
+  - Outreach: no public contact route for Dogster, The Mom Edit and GMA Shop; check their contact or editor pages and tell outreach-gift-guide-pr.
+  - Site-developer: EARLYBIRD20 is still advertised on the home page but is not in offers-calendar.md. Live theme writes may be refused by the connector.
+  - Draft orders fell to 4 in 30 days from 71 last year (growth-analyst weak point, owner action: why proof requests are not coming in or not being invoiced).
 
 - **Urgent (email-campaign-writer):** Omnisend has campaigns scheduled with no approval item, using offers that are not in offers-calendar:
   - Re-engagement 10% (Oct 14)
