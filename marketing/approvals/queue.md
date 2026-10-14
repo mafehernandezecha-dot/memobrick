@@ -264,7 +264,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: e91580d
 - Reason: Helpful no-offer email to the Warm segment between the scheduled Oct 20 and Oct 27 sends; creates an Omnisend draft only
 - Expires: 2026-10-21
-- Status: pending
+- Status: changes: change first picture
 - From: P-email-campaign-writer-20261011-1
 - Note: Superseded by A-2026W42-014 (the draft changed after this item was queued). Ignore this item.
 
