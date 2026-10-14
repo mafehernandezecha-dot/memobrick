@@ -109,7 +109,7 @@ Also waiting on you (not a Status edit):
 - Commit: 500e180
 - Reason: If approved, ads-analyst readies a Chrome task that adds and launches one buyer-occasion search ad (mom, partner, grandparents, pet, Christmas) per Holiday Gifts ad group, landing on the gift collection, same $10/day.
 - Expires: 2026-10-21
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261014-3
 - Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Same campaign as approved A-2026W42-019, which is stuck until you allow the Google Ads save click (see Needs your attention). Estimate with 019: +1 order a week now, +3 to 5 a week from Nov 16.
 
