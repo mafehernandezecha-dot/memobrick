@@ -1,4 +1,4 @@
-Status: ready
+Status: done 2026-10-14
 
 # Claude in Chrome task: call conversion actions to secondary (approval item: A-2026W42-020, from P-ads-analyst-20261013-2)
 
@@ -25,7 +25,20 @@ When done, list every conversion action that is Primary.
 
 ## Result
 
-(2026-10-14 run: filled in by the owner's Chrome routine)
+2026-10-14 run (Google account photobrickusa@gmail.com, authuser=1, account 672-499-4049 confirmed in the account menu). Nothing was changed.
+
+- Step 1, "Calls from Smart Campaign Ads": the Action optimization cell says Primary. Clicking it opens no menu. The row has a lock icon and a greyed-out checkbox, so it can't be edited. Not changed.
+- Step 2, "Smart campaign ad clicks to call": same as step 1 (Primary, locked, no menu). Not changed.
+- Step 3, goal "Phone call lead" (Goals > Summary, read only):
+  - Not "Account-default". Only Purchase is marked Account-default.
+  - Conversion actions in the goal: 1, "Calls from Smart Campaign Ads" (Primary, Call from Ads, Awaiting conversions, 0 conversions).
+  - Campaigns using it: 0 of 45. Status: Needs attention.
+  - "Smart campaign ad clicks to call" is not in this goal. In the All conversions list it is grouped under "Contacts" (Included in account-level goals: Yes). There is no "Contacts" goal card on the Summary page; the cards there are Purchase, Add to cart, Begin checkout, Phone call lead, Other and Page view, plus Custom goals.
+- Not touched: "Google Shopping App Purchase" and every other conversion action. No goal was edited or removed.
+- Primary conversion actions (Status: All, 23 rows):
+  - Active: Google Shopping App Purchase (Needs attention); Calls from Smart Campaign Ads (locked, Awaiting conversions); Smart campaign ad clicks to call (locked, Awaiting conversions).
+  - Removed: Transactions (All Web Site Data), Purcharse_Photobrick, CompraFinal, Compra_Photobrick, Agregar al carrito, AddCart, Clicks to call, Local actions - Directions, Android installs (all other apps), Local actions - Other engagements, Local actions - Website visits.
+- Still to do: the two Google-created Smart campaign call actions stay Primary because Google Ads doesn't let you edit them. "Phone call lead" is used by 0 campaigns. "Smart campaign ad clicks to call" counts toward the account-level goals, but the Purchase goal on all 45 campaigns has 1 primary action. The ads analyst should check whether this still matters for bidding, or try "Edit goal" on the account-level goals. That would be a new task.
 
 Previous run:
 

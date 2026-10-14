@@ -1,4 +1,4 @@
-Status: ready
+Status: needs owner (Claude Code's permission check blocked the first Google Ads write, creating the negative list; nothing was changed)
 
 # Claude in Chrome task: search terms cleanup and new buyer keywords (Approved by owner in chat 2026-10-13)
 
@@ -120,4 +120,27 @@ When done, list: every negative added and where, every keyword paused (with its 
 
 ## Result
 
-(filled in by the owner's Chrome routine)
+2026-10-14 run (Google account photobrickusa@gmail.com, authuser=1, account 672-499-4049 confirmed). **Nothing in Google Ads was changed.**
+
+Why it stopped: in B1, clicking "+" under Tools > Shared library > Exclusion lists > Negative keyword lists was denied by Claude Code's auto-mode permission check ("Modify Shared Resources"). Every Part B step is a write, so the task stopped there instead of trying a workaround. To run it, the owner needs to allow Google Ads writes for the launchd chrome-tasks job, or run the task in an interactive session and approve each write. Part C (read only) was not done this run.
+
+Part A, safety check (done, read only, Jul 15 to Oct 13, 2026):
+- A1/A2, account search terms report (10,054 rows, 66.85 conversions). Listed negatives with 1 or more conversions, which must NOT be added:
+  - [lego portrait]: 1.00 conversion (Search #2, exact) and 0.50 (Sales-Search-aug 26).
+  - [lego portrait maker]: 1.00 (Performance Max|Sales|All Products|All Devices) and 1.00 (Search Campaign #1 - 2026, AI Max).
+  - Borderline, kept on the list: [custom lego photo], only 0.02 conversions (PMax #2).
+- A3, PMax #2 search terms insights (same dates). Categories that match a listed negative and converted:
+  - "custom lego mosaic": 1.50 conversions, 70 clicks. Skip [custom lego mosaic].
+  - "turn picture into lego set": 4.00 conversions, $698.99 conversion value. The phrase negative "lego set" would block it. Skip "lego set".
+  - "lego photos": 2.00 conversions. The category didn't expand, so I couldn't see whether it holds "custom lego photo". The ads analyst should decide on [custom lego photo].
+  - "album cover legos", "make your own lego set", "create your own lego set online": 0 conversions.
+- Negatives that pass the check (31 of 35): everything on the NEGATIVES list except [lego portrait], [lego portrait maker], [custom lego mosaic] and "lego set".
+
+Campaign names differ from the task. The rule says to stop the parts that use them:
+- "MB, Search, Holiday Gifts, Q4 2026" is shown in Google Ads as "MB | Search | Holiday Gifts | Purchases | Q4 2026".
+- "MB, Search, NonBrand, Photo-to-Brick" is shown as "MB | Search | NonBrand | Photo-to-Brick | Purchases".
+- B2 (for these two campaigns) and B4 would have been skipped for this reason even without the permission block. The ads analyst should put the exact names in the task. "Search Campaign #1 - 2026" and "USA - PMAX #2- Custom Photo Bricks - Sales - Maximize Conv" match.
+- Other Search campaigns that showed converting search terms in the period: "Search #2" and "Sales-Search-aug 26" (B3's "any Search campaign" sweep would include them).
+- Existing negative keyword lists: "brand searches" (4,682 keywords, 5 campaigns), "Keywords Negativas" (2,923, 11), "Keywords Negativas Photobrick" (11, 4). No "MB negatives 2026-10-13" list exists.
+
+Not done: B1, B2, B3, B4, B5 and Part C.
