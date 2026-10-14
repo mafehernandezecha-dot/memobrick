@@ -1,3 +1,5 @@
+> STALE 2026-10-14: built on theme v25. The live theme is now v27 and its memobrick.js differs, so do not apply this file. Use fixes/desktop-editor-sticky-topbar-v27.md.
+
 # Site fix: keep the price and "Finish Editing" in view on desktop
 
 Built and tested by: site-developer (Jenny), 2026-10-13
