@@ -57,3 +57,15 @@ Proven Videos' learning resets with a 50% budget change; delivery can swing for 
 
 - Read-back: PROMO -v1 paused, Proven Videos $60/day, two new ads active, pinkdog ad paused.
 - Proven Videos: Shopify orders with utm_campaign 120252562193330597 of at least 3 in 7 days and a Shopify ROAS of 1.5 or better (from 1.06 for PROMO -v1). If cost per Meta purchase is above $80 after $300 of spend, I propose cutting back.
+
+## Applied 2026-10-14 (A-2026W42-024, owner approved in chat 2026-10-14)
+
+| # | Change | Before | After (read back) |
+|---|---|---|---|
+| 1 | ALWAYON PROMO -v1 (120252425110090597) | ACTIVE, $20/day | PAUSED |
+| 2 | Proven Videos (120252562193330597) daily budget | $40 | $60, ACTIVE. The budget edit force-paused the campaign for about a minute; I reactivated it right away. |
+| 3 | Ad "PV, pinkdog_video" (120252562205030597) | ACTIVE | PAUSED |
+| 4 | New ad "PV, MEN post" | none | **Not created.** Meta refused it: creative 1119742773912869 is a page post with no website link or button, which a Sales campaign requires. Nothing was spent. |
+| 5 | New ad "PV, POV reasons" (120252612708140597, creative 1622993222707677) | none | ACTIVE, in review |
+
+Total Meta daily budget: $60 before, $60 after (Proven Videos is the only active Meta campaign).

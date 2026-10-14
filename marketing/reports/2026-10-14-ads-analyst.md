@@ -93,3 +93,42 @@ Weak point addressed: "Referred traffic fell by almost two thirds" (names ads-an
 ## Next run
 
 Friday 2026-10-16: weekly review; apply any approved items from today (Meta via connector, Google tasks set to ready); create the A-2026W42-006 paused ad; read the data pull (Google impression share, Search Console) if it ran; ask Hugo for 4:5 and 9:16 cuts before proposing the Christmas ads' launch for Oct 20.
+
+
+# ads-analyst 2026-10-14, second run (approved changes applied)
+
+Chrome tasks set to ready: `marketing/analytics/ads-analyst/chrome-tasks/2026-10-14-holiday-gifts-occasion-ads.md` (A-2026W42-026) and `marketing/analytics/ads-analyst/chrome-tasks/2026-10-14-pmax-christmas-signals.md` (A-2026W42-027).
+
+## Summary
+
+Eden approved P-ads-analyst-20261014-1 to -4 in chat ("make them work on the ads as well, the traffic needs to improve today"); queued as A-2026W42-024 to 027, all approved.
+Meta is now one campaign at $60/day (same total) with 4 new Christmas ads live plus the POV ad. PROMO -v1 and the LEGO-hashtag ad are paused.
+Both Google changes are written as ready Chrome tasks, each with a short prompt Eden can paste into Claude in Chrome by hand.
+
+## Done
+
+- A-2026W42-024 (Meta consolidation): PROMO -v1 paused, Proven Videos $40 to $60, "PV, pinkdog_video" (LEGO hashtags) paused, "PV, POV reasons" created and launched. The budget edit force-paused Proven Videos; I reactivated it within a minute. The "MEN" ad could not be copied: its creative is a page post with no website link, which Meta refuses in a Sales campaign. Before and after: `marketing/analytics/ads-analyst/changes/meta-consolidate-into-proven-videos.md`.
+- A-2026W42-025 (Meta Christmas ads): 4 ads created and launched now, as Eden asked in chat, inside the $60/day: XMAS, Family; XMAS, Partner; XMAS, Pet; XMAS, Grandparents. All land on the gift collection with Order by Dec 15, 20% off with code EARLYHOLIDAY20 (no end date stated) and "As seen on FOX" (never "Fox News"). FOX moved into the primary text because Facebook Feed hides the description line. Read back: all ACTIVE, in Meta review. Details: `marketing/analytics/ads-analyst/changes/meta-christmas-family-ads-paused.md`.
+- A-2026W42-026 and 027 (Google): Chrome tasks set to `Status: ready` with their A- IDs. Each one starts with a short "Run it now" prompt that works pasted into the Claude in Chrome extension by hand, and tells the scheduled Mac run to stop and mark `needs owner` if the permission check blocks a Save click, instead of retrying.
+- Copy check passed (exit 0) on the Christmas ad file and both Chrome tasks. Google text lengths checked (headlines 30 characters or fewer, descriptions 90 or fewer).
+- Zero Adspirer calls. No spend increase anywhere.
+
+## Proposed for approval
+
+None.
+
+## Blocked or unknown
+
+- A-2026W42-019 (Holiday Gifts landing page and EARLYHOLIDAY20 headline, expires Oct 20) is still `needs owner`: the Mac run's permission check blocked the Save click on Oct 13. Eden can paste its prompt into Claude in Chrome by hand, or allow Google Ads save clicks for the routine and set the task back to `Status: ready`. It matters most: the Holiday Gifts ads still land on /products/2-2-boards.
+- "PV, MEN post" not created (no website link on that creative). Fixing it would need a new creative with a link, which means new copy and a new approval.
+- The connector lists no Instagram account for this ad account, so the new creatives have none set. Meta's preview still shows Instagram placements; delivery there is unconfirmed.
+- New video thumbnails are Meta's small cover frames (could not download full-size frames from here). Videos autoplay in Feed, so impact should be small. A 4:5 and 9:16 cut from Hugo would still help.
+- EARLYHOLIDAY20 end date still unconfirmed. If Eden sets one before Dec 15, the 4 Christmas ads must be replaced that day.
+
+## Sales impact
+
+Weak point: referred traffic fell by almost two thirds (names ads-analyst). The same $60/day now buys cheaper reach (Proven Videos CPM $13.71 vs $24.34 on PROMO -v1), so about +5 Facebook visits a day, and the first Christmas, order-by-date and code message our buyers have seen this season. If the Christmas ads reach last holiday's $30 per Meta purchase, that is about 2 Meta purchases a day, which has meant about 1 Shopify-tracked order a day. Google: occasion ads plus the PMax Christmas group and buyer signal, once applied, about +1 to 3 orders a week. These are estimates on small samples. I judge each on Shopify orders 7 days after it goes live.
+
+## Next run
+
+Tomorrow 2026-10-15: check Meta review status and first-day delivery of the 4 XMAS ads and the POV ad (spend, link clicks, CTR, landing page views vs clicks), and Shopify orders with utm_campaign 120252562193330597. Check whether the Google tasks ran (Status done or needs owner) and close or follow up. Friday 2026-10-16: weekly review.

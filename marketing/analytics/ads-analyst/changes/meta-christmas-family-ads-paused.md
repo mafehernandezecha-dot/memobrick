@@ -104,3 +104,16 @@ Low while paused. If Eden sets an end date for EARLYHOLIDAY20 before Dec 15, all
 ## How I will judge it 7 days after launch
 
 Link CTR at or above the ad set's 1.6%, landing page views at least 80% of link clicks, cost per Meta purchase under $40, and at least 3 Shopify orders with utm_campaign 120252562193330597 in the week. Losers (no purchase after $60 each) get paused.
+
+## Applied 2026-10-14 (A-2026W42-025, owner approved in chat 2026-10-14 to create AND launch now, inside the $60/day total)
+
+Change from the draft: Meta does not show the description line on Facebook Feed video ads, so "As seen on FOX." was moved to the end of the second paragraph of each primary text (all four ads, including Pet), and no description is set. Landing URL is the gift collection with static UTMs: utm_source=facebook, utm_medium=paid, utm_campaign=120252562193330597, utm_content=xmas-family, xmas-partner, xmas-pet or xmas-grandparents. Thumbnails are the videos' own cover frames. The connector lists no Instagram account for this ad account, so none was set; Meta's preview still offered Instagram placements.
+
+| Ad | Ad ID | Creative ID | Video | Status (read back) |
+|---|---|---|---|---|
+| XMAS, Family | 120252612740140597 | 1494117202554647 | 2786059298433030 (family "bonding" video) | ACTIVE, in review |
+| XMAS, Partner | 120252612740850597 | 975526582259846 | 1954866981751623 (Merriage_video) | ACTIVE, in review |
+| XMAS, Pet | 120252612741600597 | 1081950124824769 | 2447135395648728 (Dog_vid) | ACTIVE, in review |
+| XMAS, Grandparents | 120252612742330597 | 2813008459099718 | 2786059298433030 | ACTIVE, in review |
+
+An unused creative 1418132956453428 (first Partner version, FOX in the description line) exists and is attached to no ad. No budget change.
