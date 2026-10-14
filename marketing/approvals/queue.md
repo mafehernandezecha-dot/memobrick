@@ -113,7 +113,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: a2138ea
 - Reason: If approved, site-developer backs up and applies the new cart page (customer's mosaic, hidden internal fields, Dec 15 line, shipping estimator with real carrier rates, $125 free-shipping message) and the cart drawer image edit to the live theme; cart to checkout should improve.
 - Expires: 2026-10-21
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261014-1
 - Note: Replaces A-2026W42-012 (auditor's cart draft). Approve this one only. Shipping wording matches the Facts table (checked 2026-10-12). Display only; it changes no checkout step, order email or fulfillment.
 
