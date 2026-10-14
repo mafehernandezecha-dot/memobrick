@@ -88,7 +88,53 @@ Per post (likes + comments) / 1,854: 4.96%, 0.70%, 4.58%, 0.86%. Median **2.7%**
 | Elizabethhill Elizabethhill | 2026-09-28 | FB lorapick 12K 0%; IG lorapick68 10K 0.05%; TT lorapick 1.1K 0.78% | Brand/deal account; 4 more applicants use the same brand's email domain |
 | Bao Long Luong | 2026-08-15 | IG minimalsetup_hub 2; YT Minimal Setup 4.1K subs | Paid-ads agency pitch; claims purchase |
 
-## Not read (time): 407
+## Second pass (09:50 to 10:35 ET)
+
+Second run the same day. Used the Collabs "Social account" filter: **every** pending applicant with a Facebook, TikTok or YouTube account (61 in total) is now read or matched to an account already read. Then searched by name for the named Instagram-only applicants. Engagement is Collabs' figure. Public profiles were read for 2 TikToks (the only accounts here above 5%).
+
+| Applicant | Applied | Accounts (Collabs audience, engagement) | What I saw |
+|---|---|---|---|
+| Nguyen Van | 2026-03-31 | FB royalvethadong 1.3K 0.52%; IG trust.coupon.review 24K 0.78%; TT coupon_review 7.4K 1.93%; YT Coupon Code 4 subs | 5th application on trust.coupon.review; AI-slides affiliate bio |
+| Team Gop17 | 2025-09-10 | FB Topreview product 0; IG trust.coupon.review 24K 0.78%; TT huntersai150 9.9K 1.54%; YT Trust Coupon Hub 1 sub | 6th application on trust.coupon.review |
+| Jeffrey Houston | 2026-03-17 | FB Vietnamese household wholesale page 17K 0.01%; IG thangvd.aff3 2.1K 0.11%; TT depkhoexauche 342 1.36% | Accounts unrelated to the name; profile says female, 31 |
+| Chat Tong (3 applications) | 2026-03-06; 2025-10-09 (x2) | chattong.coupon.deals FB 1.5K 0.01%, IG 1K 0.05%; TT chattong.coupondeals 43K 0.71% | Bio "Leading coupons & deals marketplace"; same store email domain |
+| Zane T. Phillips | 2026-01-31 | FB 0; IG coupontobedeals 611 0.08%; TT 10K 0%; Twitch 0 | "Coupon Tobe" referral and review site |
+| Pham Than Dinh Khoi | 2026-01-04 | FB Zenithly Vital 0; IG flusia010 0; TT baoanhstore03 1.2K 4.52% | Store TikTok; contradictory purchase answers |
+| Pham Than Dinh Khoi | 2025-10-17 | IG dinhkhoi010180 2; TT trucmy9973 11K 7.21% | Public TikTok (read 2026-10-14): "Trúc My", 11.2K followers, 1,020 following, 46.1K likes, Vietnamese playlists; latest 6 videos 25 to 130 views. Same TikTok is on Nguyen Thi Truc My's application |
+| Finn Eric (6 applications) | 2026-09-16, 08-11, 07-27, 07-13, 07-12, 05-04 | bestdealsup FB 27K 0%; IG bestdealsupcom 6.8K 0.01%; TT bestdealsup68 2K 0%; YT 0 subs | Opened Jul 13 and Jul 12; the rest share the same deal-site email domain and avatar. Posts shown: 0 likes |
+| John Doe (5 applications) | 2026-08-27, 08-12, 08-03, 07-27, 07-18 | findreviewsup FB 17K 0%; IG 9.5K 0.01%; TT 457 2.48% | Opened Jul 27; the rest share the same review-site domain and avatar |
+| Joyce Ryu | 2026-07-21 | IG getsoftdeals 915 0.07%; TT love_this_life24 5.2K 11.64% | Answer word for word Ebony Grice's; same "Rio Linda" location. Public TikTok (read 2026-10-14): "_likklemiss100k", 5,181 followers, 5,282 following, 45.2K likes; personal nightlife and travel content; latest videos 1.2K to 9.2K views (pinned up to 438.9K). Not family or gift content |
+| Tu Tong Thanh | 2026-07-09 | FB couponlanding 10K 0%; IG cpl_review 6.1K 0.01%; TT 40; Twitch 0; YT 1 sub | Coupon site |
+| Ngoc Vu Van | 2026-06-28 | FB reviewandsharing 25K 0%; IG 15K 0%; TT couponspeak102 4.6K 1.48%; X 0; YT 1 sub | Review network |
+| Bee bee | 2026-09-24 | FB Corelux Review 0; IG bulldog.ai 11K 0.06%; TT malasikeyeeme 1.9K 4.48%; YT 1 sub | Corelux Review referral site; location Vietnam |
+| Qag Nguyen | 2026-09-08 | Same accounts as Bee bee | Same answer text as Bee bee |
+| Vy Luong Thi Thuy | 2026-09-23 | HamiAffiV FB, IG, TT, YT all 0 | Affiliate marketer; mentions a "Custom Bricked Mosaic Kit" |
+| VU TRUNG THIEN | 2025-09-13 | FB Koupora 6.1K 0%; IG pandiannamad 136, 7.31%; TT rollingyourfate 14K 1.06%; YT Fashion Paper Story 56K subs | Four unrelated accounts; coupon Facebook page |
+| Tram Nguyen Van Kim | 2026-09-08 | IG chipchun2324 0; TT chipchun.review 0 | "Chipchun Review" coupon site |
+| PHUONG LAN HO | 2026-08-31 | FB Hunter39 10K 0%; IG hunter39review 2; TT 4.9K 0.31%; YT 0 subs | Review accounts |
+| THUY TRAN | 2026-08-25 | FB Promoreviewhub68 10K 0%; IG 0; TT 4.8K 1.54%; YT 0 subs | Review accounts |
+| TRUONG BUI LE | 2026-08-13 | IG alphapicks.finds 13K 0%; TT alphapicks_official 297, 0.49%; YT Alpha Picks 35K subs | Posts push another brand's discount code; 0 likes |
+| vu cong | 2026-08-04 | IG artsupplyreview 0; TT bacsilacsinhminh 7.1K 2.46% | Review account; TikTok handle unrelated |
+| Averyflores Averyflores | 2026-09-04 | lorapick FB, IG lorapick68, TT | Posts push watches and sunglasses from other stores. Abigailhernandez (2026-09-22), Emmajohnson (2026-08-24) and Evelyngonzalez (2026-08-15) use the same lorapick domain and logo |
+| VAN THI HAI LONG | 2026-07-21 | FB PippoPupp 3.8K 0%; IG az.3763664_4000 11K 0.14% | SEO and Google Ads affiliate pitch |
+| John Chapple | 2025-09-12 | IG danielmitchellunn79625 0 | Categories include Tobacco & Vape, Mature |
+| Aaron Larissa | 2026-08-31 | IG hellen_lychee_diyart 14K 0.05% | DIY art niche but 0.05%; Hanoi, Vietnam; agency pitch |
+| laura clara | 2026-08-31 | IG britlanginsta 77K 0.01% | "Daily US finds, deals" |
+| betty garcia | 2026-08-30 | IG bulldog.dailyws 96K 0.07% | Media shown from petly.daily; answer identical to laura clara |
+| Andrew Torres | 2026-08-31 | IG mary.glowlab 105K 0% | Beauty account |
+| Stanwood Darb | 2025-09-19 | IG mary.glowlab 105K 0% | Same account as Andrew Torres; coupon-domain email |
+| William Mack | 2026-08-11 | IG 4pyuy32q 29K 0% | Random handle; nature photos |
+| Ellie Flores | 2026-08-15 | IG 0 followers | |
+| Loan Nguyen | 2026-02-28 | IG globalpromotionllc 5K 0.28% | Referral and review site bio |
+| matthew gonzalez69668 | 2026-08-21 | IG tastybites.reviews 44K 0% | Blank application |
+
+Already read in the first pass and seen again under the filter: Hayes Charlotte, Elizabethhill, Hoang Anh, Sophia Hayes, Ebony Grice, Bao Long Luong, Johnson Liam, Jack Reed, Ava Miller, Dilkey Review, Alina Macare, Olivia Bennett, mckearin weddle, Duc Chung (2026-05-04), Nhat Bui, Linh Nguyen, Thanh Nguyen Canh, Trung Thanh, junior adde, ATORYANA HICKS, coupons Sky, Niki Loheit, Nguyen Thi Truc My, HECTOR PEREZ.
+
+Not opened in the second pass: Duc Chung (2026-03-31; IG, TT, YT; same name as the trust.coupon.review operator). Not found by search: Anthony Mark Wood, Huy Hoang.
+
+## Not read (time): 360
+
+452 pending, minus 45 read in the first pass and 47 in the second. About 355 are coupon-domain Instagram-only applicants (list below, minus Stanwood Darb), plus Duc Chung (2026-03-31), Anthony Mark Wood, Huy Hoang and a few unnamed others. The "Other email" list below is now read except those three.
 
 Listed from the Applicants table; profiles and application answers not opened. "IG" means Instagram only; "coupon-domain" means the throwaway coupon-site email pattern described above.
 
