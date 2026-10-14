@@ -426,7 +426,7 @@ Also waiting on you (not a Status edit):
 - Commit: 91545c8
 - Reason: On the next Mac run, declines 47 more coupon, deal, review and empty-account applicants silently in Collabs (no message, no reason); approves nobody and sends no messages. With batch 1 this clears every applicant who has a Facebook, TikTok or YouTube account, leaving only the coupon-domain Instagram farm.
 - Expires: 2026-10-28
-- Status: pending
+- Status: approved
 - From: P-outreach-creator-scout-20261014-3
 - Note: Checked: no applicant is also in batch 1 (A-2026W42-028). Housekeeping, no orders expected.
 
