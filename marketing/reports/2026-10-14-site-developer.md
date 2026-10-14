@@ -1,10 +1,52 @@
 # site-developer 2026-10-14
 
 ## Summary
+Eden published "Memobrick fixes", so the 5 approved fixes are live (checksums confirmed). She finds the phone home page busy: I built and tested a calm phone home (one main button with "Kits from $35", free-proof link right under it on the first screen, no dot row, shorter video, 2 red buttons instead of 5 plus a floating bar). Desktop unchanged.
+No preview link yet: the store is at Shopify's 20-theme limit, so a copy cannot be made until Eden removes one old theme. Proposed as one site-change; Omnisend teaser and Inbox chat settings are Eden's steps.
+
+## Done
+Third run today (live run at the owner's request after she published). Earlier runs follow below.
+
+- Live theme is now "Memobrick fixes" (188683092188, MAIN, updatedAt 2026-10-14T07:17:21Z). Its four fixed files match the approved checksums (memobrick.js 88f83c4a..., memobrick-email-gate.js 851b9041..., memobrick-site.liquid 809e6c2e..., cart.liquid 49832661...), so **A-2026W42-009, -010, -013, -021 and -022 are live, applied by the owner's one-click publish** (Option 2 of `fixes/live-apply-2026-10-14.md`). Undo theme: "memobrick-theme-v27-print-8mm" (188646719708), unpublished, untouched.
+- New working copy: `themeDuplicate` of the live theme returned no theme and no error, twice. The store has 20 themes, Shopify's limit. Nothing was created, removed or changed in any theme. `working-theme.md` updated.
+- Measured the live phone home (390x844): red buttons at y = 403, 1,180, 1,879, 2,856, 5,584 plus a floating "Create My MemoBrick" bar (`#mobCta`) pinned to the bottom from the first scroll; free-proof link at y = 1,432 (17 px tall); 8-dot row under the price line; hero media 557 px (66% of the screen). Desktop: 4 buttons a screen apart, free-proof link on the first screen, already calm.
+- Found what draws the floating bubbles: the pink "🎁 Get 20% off" pill is the teaser of the Omnisend pop-up "Exit-Intent 10% Welcome (gentle)" (bottom-left, shown "Always", 15 px bold); the "Chat" bubble is the Shopify Inbox app embed (bottom-right, "Chat with us" text). On phones both sat on top of the floating bar.
+- Built the fix: one file, `sections/memobrick-site.liquid` (new md5 6795f9091b0a8bd9361c992806a9ab0b), phone-only CSS in the hero's existing style block plus a class on two button paragraphs. Backup of the live file (byte-identical, 809e6c2e...) in `backups/2026-10-14-calm-phone-home/`.
+- Tested the exact change on the live page in a test browser (same CSS and classes added before render, nothing changed on the site) at 390x844, 360x740 and 1440x900: main button y = 383 with "Kits from $35"; free-proof link y = 477, 44 px tap area, fully on the first screen (360x740: y = 468); 2 red buttons on the phone page; no floating bar at any scroll point; dot row hidden; hero media 439 px (52%); video still muted autoplay loop; no sideways scroll; button and link tappable and clear of the bubbles' positions; free-proof link opens the free-proof view; button starts navigation to /pages/editor; desktop positions and height unchanged. Results and screenshots: `2026-10-14-calm-phone-home/`, test tool `tools/calm-home-test.mjs`.
+- Draft with diff, test table, Eden's clicks, app steps and undo: `marketing/conversion/site-developer/fixes/calm-phone-home.md`.
+
+## Proposed for approval
+
+### P-site-developer-20261014-3
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/calm-phone-home.md
+- Reason: If approved (and Eden removes one old theme), I make the private copy "Memobrick calm home" with this one-file phone home change, retest it and send the preview link, then Eden publishes it with one click (or pastes the file); phone visitors get one main button with the free-proof link right under it and nothing covering them.
+- Expires: 2026-10-21
+- Status: pending
+
+## Blocked or unknown
+- **Theme limit (Eden, 1 minute):** the store has 20 themes, so no copy and no preview link can be made. Online Store > Themes > Theme library > "Copy of Copy of Copy of xx" (added 2021-11-17) > "..." > Remove. Keep "Memobrick fixes", "memobrick-theme-v27-print-8mm" and "AVADA Assets - DO NOT REMOVE". The connector cannot remove themes, and I would not do it without her.
+- **Omnisend teaser (Eden, app setting):** Omnisend > Forms > "Exit-Intent 10% Welcome (gentle)" > Teaser: show it only after the visitor closed the pop-up (now "Always"), font 13 px (now 15), padding 6/12 px (now 10/16), keep bottom-left. This keeps the pill off the first screen and makes it smaller.
+- **Shopify Inbox chat (Eden, app embed):** Online Store > Themes > live theme > Customize > App embeds > Shopify Inbox: Button text to the icon-only option (now "Chat with us"), Position bottom right, Save. Do it after publishing the calm copy, or before I make it, so the setting is not lost.
+- **Offer check (Eden or coordinator):** the home page's first line says "Order early & save 20% with code EARLYBIRD20". The code is active in Shopify, but `offers-calendar.md` lists only EARLYHOLIDAY20 as active, and the Omnisend pop-up promises 20% while its name and tag say 10%. I did not change any offer text; please confirm which code and percentage the site should show.
+- Test limits: this sandbox cannot reach cdn.shopify.com or the apps' servers and its Chromium cannot play H.264, so the hero shows its poster image, review photos are blank, and the two bubbles are shown as grey placeholders at their configured spots. The editor page sends this test browser to Shopify's bot check (shop.app) before and after the change.
+- Other floating app embeds turned on (Google & YouTube store widget bottom-left, BixGrow widget, UpPromote message bar, Vitals) could not be seen here; if Eden sees another bubble, its App embeds toggle turns it off.
+
+## Sales impact
+The free-proof link moves from 1.7 screens down to the first screen, right under the button: free-proof sales are 4 against 67 last year, and this is the top entry to that offer on the most visited page. The phone home page adds to cart at 6.6% against 12.5% last year; one clear action on a calmer screen with nothing covering it should help. Trade-off: the floating button bar goes away on phones; if phone home-to-editor clicks drop more than 10% in 14 days it comes back in a smaller form. Follow-up for the five fixes that went live today starts now (referred sessions only, baselines in each draft), first reading in 7 days.
+
+## Next run
+If Eden freed a theme slot: recheck live id, updatedAt and the live md5 of `sections/memobrick-site.liquid`, duplicate the live theme as "Memobrick calm home", upsert the file from commit 5dcdbe8 (md5 6795f909...), compare the copy with live, rerun the tests on the preview with `node tools/calm-home-test.mjs after <dir> <new id>` and send the preview link. Run `verify-bundle.mjs live` and `prodesign-size.mjs live` for the five fixes now live and save after-screenshots.
+
+## Second run (kept as written; the owner then published "Memobrick fixes")
+
+### Second run: Summary
 Five approved fixes (A-2026W42-009, -010, -013, -021, -022) are backed up, built and tested together in the private copy, but none is live: the Shopify connector refuses every write to the live theme.
 The owner can put them live in about 10 minutes (paste 4 files) or with one click (publish the tested copy): `marketing/conversion/site-developer/fixes/live-apply-2026-10-14.md`.
 
-## Done
+### Second run: Done
 Second run today (live run at the owner's request). The morning run's notes follow at the end.
 
 - Approvals: `check.py approvals --agent site-developer` printed A-2026W42-009, -010, -022, -013 and -021. A-2026W42-011 and -012 (rejected) were not touched. A-2026W42-008 needs re-approval and is replaced by -022, so it was not acted on.
@@ -22,10 +64,10 @@ Second run today (live run at the owner's request). The morning run's notes foll
 
 Morning run (earlier today): rebuilt the working copy on v27, built and tested the cart fix and the v27 sticky bar, and proposed both (now A-2026W42-021 and -022).
 
-## Proposed for approval
+### Second run: Proposed for approval
 None. All five fixes are already approved; only the owner's paste or publish is missing.
 
-## Blocked or unknown
+### Second run: Blocked or unknown
 - **Owner, needed to go live:** the connector blocks writes to the live theme, so I cannot do it. Pick one:
   1. Paste 4 files in Edit code (links and checksums are in `fixes/live-apply-2026-10-14.md`; start with `assets/memobrick.js`).
   2. Publish the "Memobrick fixes" theme. It is identical to live apart from the four fixed files. Afterwards, check one GemPages page. To undo, publish v27 again.
@@ -34,7 +76,7 @@ None. All five fixes are already approved; only the owner's paste or publish is 
 - Still open from this morning: compare the cart's quoted rates with checkout for the same address (owner, 2 minutes, no payment). Also confirm whether the $125 free-shipping discount covers Alaska, Hawaii and Puerto Rico.
 - Shopify's cookie banner covers part of the sandbox screenshots. The measurements come from the page itself.
 
-## Sales impact
+### Second run: Sales impact
 Nothing has changed for customers yet. Once live, the five fixes target the biggest site losses found in the 2026-10-12 audit:
 - phone home page (add to cart 6.6% vs 12.5% last year)
 - pop-ups and keyboard after upload (phone add to cart 4.8% vs 7.9%)
@@ -44,7 +86,7 @@ Nothing has changed for customers yet. Once live, the five fixes target the bigg
 
 Combined estimates from Wilson's audit are about 17 to 40 more orders per 30 days. The sooner they go live, the more of the pre-Christmas traffic they reach.
 
-## Next run
+### Second run: Next run
 If the owner has pasted or published: check the live checksums, run `verify-bundle.mjs live` and `prodesign-size.mjs live`, save after-screenshots, then start measuring (referred sessions only, baselines in each draft). If not, remind the coordinator. Then build the next fix from Wilson's latest audit.
 
 ## Morning run (kept as written; its proposals are now A-2026W42-021 and -022)
