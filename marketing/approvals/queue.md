@@ -217,7 +217,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 0e70384
 - Reason: Redesigned no-offer photo tips email (real product photos, new subject) to the Warm segment; creates the Omnisend campaign and schedules it for Thu Oct 22, 11:00 ET.
 - Expires: 2026-10-21
-- Status: pending
+- Status: changes: change the first image since was already used on the last email
 - From: P-email-campaign-writer-20261012-1
 - Note: Replaces A-2026W41-004, whose draft changed after it was queued. Decide this one; A-2026W41-004 cannot be acted on.
 
