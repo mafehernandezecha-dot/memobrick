@@ -340,7 +340,13 @@
    "proofClickable": true,
    "topCtaUnderFloat": false,
    "proofUnderFloat": false,
-   "rail": false,
+   "rail": true,
+   "railBox": [
+    9,
+    537,
+    372,
+    14
+   ],
    "videoDbg": {
     "cs": "none/visible/1",
     "rect": [
@@ -351,7 +357,7 @@
     ],
     "fig": [
      9,
-     545,
+     571,
      372,
      441
     ],
@@ -373,7 +379,7 @@
      "t": "Create My MemoBrick",
      "r": [
       83,
-      4974,
+      5000,
       224,
       56
      ]
@@ -393,7 +399,7 @@
      "t": "Send a photo and get a free proof \u2192",
      "r": [
       85,
-      2275,
+      2301,
       219,
       44
      ]
@@ -402,13 +408,13 @@
      "t": "Not ready yet? Get a free proof first \u2192",
      "r": [
       67,
-      5043,
+      5069,
       257,
       44
      ]
     }
    ],
-   "docH": 5573,
+   "docH": 5599,
    "sw": 390,
    "iw": 390,
    "patched": {
@@ -423,7 +429,7 @@
    },
    "ctaTap": {
     "url": "chrome-error://chromewebdata/",
-    "ms": 4967,
+    "ms": 3588,
     "views": []
    }
   },
@@ -447,7 +453,13 @@
    "proofClickable": true,
    "topCtaUnderFloat": false,
    "proofUnderFloat": false,
-   "rail": false,
+   "rail": true,
+   "railBox": [
+    9,
+    528,
+    342,
+    14
+   ],
    "videoDbg": {
     "cs": "none/visible/1",
     "rect": [
@@ -458,7 +470,7 @@
     ],
     "fig": [
      9,
-     536,
+     562,
      342,
      387
     ],
@@ -480,7 +492,7 @@
      "t": "Create My MemoBrick",
      "r": [
       68,
-      5017,
+      5043,
       224,
       56
      ]
@@ -500,7 +512,7 @@
      "t": "Send a photo and get a free proof \u2192",
      "r": [
       70,
-      2298,
+      2324,
       219,
       44
      ]
@@ -509,13 +521,13 @@
      "t": "Not ready yet? Get a free proof first \u2192",
      "r": [
       52,
-      5085,
+      5111,
       257,
       44
      ]
     }
    ],
-   "docH": 5616,
+   "docH": 5642,
    "sw": 360,
    "iw": 360,
    "patched": {
@@ -530,7 +542,7 @@
    },
    "ctaTap": {
     "url": "chrome-error://chromewebdata/",
-    "ms": 4230,
+    "ms": 4690,
     "views": []
    }
   },
@@ -550,6 +562,12 @@
    "topCtaUnderFloat": null,
    "proofUnderFloat": false,
    "rail": true,
+   "railBox": [
+    130,
+    432,
+    752,
+    22
+   ],
    "videoDbg": {
     "cs": "none/visible/1",
     "rect": [

@@ -1,7 +1,7 @@
 # site-developer 2026-10-14
 
 ## Summary
-Eden published "Memobrick fixes", so the 5 approved fixes are live (checksums confirmed). She finds the phone home page busy: I built and tested a calm phone home (one main button with "Kits from $35", free-proof link right under it on the first screen, no dot row, shorter video, 2 red buttons instead of 5 plus a floating bar). Desktop unchanged.
+Eden published "Memobrick fixes", so the 5 approved fixes are live (checksums confirmed). She finds the phone home page busy: I built and tested a calm phone home (one main button with "Kits from $35", free-proof link right under it on the first screen, compact dot row (kept at Eden's request), shorter video, 2 red buttons instead of 5 plus a floating bar). Desktop unchanged.
 No preview link yet: the store is at Shopify's 20-theme limit, so a copy cannot be made until Eden removes one old theme. Proposed as one site-change; Omnisend teaser and Inbox chat settings are Eden's steps.
 
 ## Done
@@ -14,6 +14,8 @@ Third run today (live run at the owner's request after she published). Earlier r
 - Built the fix: one file, `sections/memobrick-site.liquid` (new md5 6795f9091b0a8bd9361c992806a9ab0b), phone-only CSS in the hero's existing style block plus a class on two button paragraphs. Backup of the live file (byte-identical, 809e6c2e...) in `backups/2026-10-14-calm-phone-home/`.
 - Tested the exact change on the live page in a test browser (same CSS and classes added before render, nothing changed on the site) at 390x844, 360x740 and 1440x900: main button y = 383 with "Kits from $35"; free-proof link y = 477, 44 px tap area, fully on the first screen (360x740: y = 468); 2 red buttons on the phone page; no floating bar at any scroll point; dot row hidden; hero media 439 px (52%); video still muted autoplay loop; no sideways scroll; button and link tappable and clear of the bubbles' positions; free-proof link opens the free-proof view; button starts navigation to /pages/editor; desktop positions and height unchanged. Results and screenshots: `2026-10-14-calm-phone-home/`, test tool `tools/calm-home-test.mjs`.
 - Draft with diff, test table, Eden's clicks, app steps and undo: `marketing/conversion/site-developer/fixes/calm-phone-home.md`.
+- **Revision (Eden: "keep the color dots"):** the dot row now stays on phones, 14 px dots centered just below the free-proof link and above the video; all other changes kept. New md5 883ec9b9756b04c28eb971b7bb625ff9 (commit 2b1bd9f). Retested at 390x844, 360x740 and 1440x900: button y = 383 with "Kits from $35"; proof link y = 477 to 521, fully on the first screen and tappable; dots y = 537 to 551; 2 red buttons; no floating bar; no sideways scroll; desktop unchanged. After-screenshots and `test-results.json` refreshed; the draft and its diff updated. P-site-developer-20261014-3 is unchanged apart from the draft content.
+- **"Slot free" relay:** Shopify still lists 20 themes (the 2021 "Copy of Copy of Copy of xx", 128996770012, is still there), and a third `themeDuplicate` again returned no theme. No copy and no preview link yet.
 
 ## Proposed for approval
 
@@ -38,7 +40,7 @@ Third run today (live run at the owner's request after she published). Earlier r
 The free-proof link moves from 1.7 screens down to the first screen, right under the button: free-proof sales are 4 against 67 last year, and this is the top entry to that offer on the most visited page. The phone home page adds to cart at 6.6% against 12.5% last year; one clear action on a calmer screen with nothing covering it should help. Trade-off: the floating button bar goes away on phones; if phone home-to-editor clicks drop more than 10% in 14 days it comes back in a smaller form. Follow-up for the five fixes that went live today starts now (referred sessions only, baselines in each draft), first reading in 7 days.
 
 ## Next run
-If Eden freed a theme slot: recheck live id, updatedAt and the live md5 of `sections/memobrick-site.liquid`, duplicate the live theme as "Memobrick calm home", upsert the file from commit 5dcdbe8 (md5 6795f909...), compare the copy with live, rerun the tests on the preview with `node tools/calm-home-test.mjs after <dir> <new id>` and send the preview link. Run `verify-bundle.mjs live` and `prodesign-size.mjs live` for the five fixes now live and save after-screenshots.
+If Eden freed a theme slot: recheck live id, updatedAt and the live md5 of `sections/memobrick-site.liquid`, duplicate the live theme as "Memobrick calm home", upsert the file from commit 2b1bd9f (md5 883ec9b9...), compare the copy with live, rerun the tests on the preview with `node tools/calm-home-test.mjs after <dir> <new id>` and send the preview link. Run `verify-bundle.mjs live` and `prodesign-size.mjs live` for the five fixes now live and save after-screenshots.
 
 ## Second run (kept as written; the owner then published "Memobrick fixes")
 

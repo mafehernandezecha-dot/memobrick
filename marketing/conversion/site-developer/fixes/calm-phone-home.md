@@ -1,5 +1,7 @@
 # Site fix: a calm phone home page (one main button, free-proof link always visible)
 
+**Revised 2026-10-14 at Eden's request ("keep the color dots"):** the dot row now stays on phones, smaller (14 px dots), just below the free-proof link and above the video. Everything else is as first proposed. New file md5 883ec9b9756b04c28eb971b7bb625ff9 (was 6795f9091b0a8bd9361c992806a9ab0b).
+
 Built and tested by: site-developer (Jenny), 2026-10-14
 Executor: site-developer
 Asked by: Eden, 2026-10-14, after publishing "Memobrick fixes": "I don't like how busy the website looks."
@@ -22,10 +24,10 @@ Phones and small tablets only (up to 900 px wide; the floating-bar rule up to 70
 
 | Before (phone) | After (phone) |
 |---|---|
-| Button, price line, dot row, video, second button, text, free-proof link, trust line | Button, "Kits from $35" line, **free-proof link right under it**, video (shorter), text, trust line |
+| Button, price line, dot row, video, second button, text, free-proof link, trust line | Button, "Kits from $35" line, **free-proof link right under it**, compact dot row, video (shorter), text, trust line |
 | 5 red buttons on the page plus a floating bar | **2**: the main one on the first screen and one at the end (FAQ), each with a free-proof link under it |
 | Floating "Create My MemoBrick" bar pinned to the bottom | Removed on phones, so the app bubbles no longer sit on a button |
-| Dot row | Hidden on phones |
+| Dot row of 22 px dots between price line and video | Kept, 14 px dots, centered, 16 px below the free-proof link |
 | Video up to 58% of the screen | Up to 52% (50% where the browser has no `svh`), muted autoplay loop unchanged |
 
 The "Send a photo and get a free proof" link in How it works, the size cards' own "Try this size" buttons, and the FAQ button with "Not ready yet? Get a free proof first" all stay.
@@ -33,22 +35,23 @@ The "Send a photo and get a free proof" link in How it works, the size cards' ow
 ### Exact diff against the live file (md5 809e6c2ebf0eef90eeb81352bf190c94)
 
 ```diff
-@@ -109,6 +109,23 @@
+@@ -109,6 +109,24 @@
            .wrap.hero .hero-cta-top{display:flex;flex-direction:column;align-items:stretch;order:2;gap:8px;margin:0}
            .hero .hero-cta-top .hero-cta-note{margin:0;font-size:14px;line-height:1.4;color:var(--ink-2,#5E636C);text-align:center}
          }
-+        /* Calm phone home (2026-10-14): one main button, free-proof link right under it, no dot row, shorter video, no repeated buttons. Desktop (901px+) unchanged. */
++        /* Calm phone home (2026-10-14): one main button, free-proof link right under it, compact dot row under the link, shorter video, no repeated buttons. Desktop (901px+) unchanged. */
 +        @media (max-width:900px){
 +          .wrap.hero{gap:14px}
-+          .hero .rail{display:none}
++          .hero .rail{order:4;justify-content:center;gap:7px;margin:2px 0 0}
++          .hero .rail i{width:14px;height:14px}
 +          .hero .hero-tertiary{order:3;margin:-4px 0 0;font-size:15px;line-height:1.3}
 +          .hero .hero-tertiary .linky2{display:inline-block;padding:10px 6px;min-height:44px}
-+          .hero .hero-img{order:4;margin-top:10px}
++          .hero .hero-img{order:5;margin-top:6px}
 +          .hero .hero-img video{max-height:50vh;max-height:52svh}
 +          .hero .hero-img .hero-poster{aspect-ratio:4/5;object-fit:cover;max-height:50vh;max-height:52svh}
-+          .hero .lede,.hero .lede:first-of-type{order:5;margin:6px 0 0;font-size:16px}
++          .hero .lede,.hero .lede:first-of-type{order:6;margin:6px 0 0;font-size:16px}
 +          .wrap.hero > .hero-cta:not(.hero-cta-top){display:none}
-+          .hero-trustbar{order:6;margin-top:6px}
++          .hero-trustbar{order:7;margin-top:6px}
 +          .mb-mid-cta{display:none}
 +        }
 +        @media (max-width:700px){
@@ -57,25 +60,25 @@ The "Send a photo and get a free proof" link in How it works, the size cards' ow
        </style>
        <div class="rail" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
        <figure class="hero-img">
-@@ -142,7 +159,7 @@
+@@ -142,7 +160,7 @@
 -      <p style="text-align:center;margin-top:24px">
 +      <p class="mb-mid-cta" style="text-align:center;margin-top:24px">
          <a class="btn btn-red big" href="/pages/editor">See your photo in bricks</a>
-@@ -175,7 +192,7 @@
+@@ -175,7 +193,7 @@
 -      <p style="text-align:center;margin-top:24px">
 +      <p class="mb-mid-cta" style="text-align:center;margin-top:24px">
          <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
 ```
 
-Full new file: `marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid`, md5 **6795f9091b0a8bd9361c992806a9ab0b**, also at
-https://github.com/mafehernandezecha-dot/memobrick/raw/5dcdbe8ec3aef530c8fa2f44389d32b0f3c11bb2/marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid
+Full new file: `marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid`, md5 **883ec9b9756b04c28eb971b7bb625ff9**, also at
+https://github.com/mafehernandezecha-dot/memobrick/raw/2b1bd9ffe21bd3388ce654ac71d5bd70cd7fd84a/marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid
 (checked: that link downloads exactly this md5).
 
 The same section renders `/pages/editor`, where the home view is hidden, so the editor is not affected. `memobrick.js` still shows/hides `#mobCta` as before; the CSS keeps it hidden on phones (no JavaScript change).
 
 ## Preview link
 
-**Not available yet.** The store already has 20 themes, Shopify's limit, so `themeDuplicate` returned no theme (tried twice, no error message, theme count unchanged). See "What Eden clicks", step 1: removing one old theme frees the slot, then I make the copy "Memobrick calm home" from the live theme, add this one file, rerun the tests on it and send `https://mymemobrick.com/?preview_theme_id=<new id>`.
+**Not available yet.** The store already has 20 themes, Shopify's limit, so `themeDuplicate` returned no theme (tried twice, no error message, theme count unchanged). After Eden's "slot free" message (relayed by the coordinator), I checked again: Shopify still lists 20 themes, "Copy of Copy of Copy of xx" (128996770012) is still there, and a third `themeDuplicate` again returned no theme. See "What Eden clicks", step 1: removing one old theme frees the slot, then I make the copy "Memobrick calm home" from the live theme, add this one file, rerun the tests on it and send `https://mymemobrick.com/?preview_theme_id=<new id>`.
 
 ## How it was tested today
 
@@ -86,11 +89,11 @@ Because no copy could be made, I tested the exact change on the live page in a t
 | Phone 390x844: main button | y = 403 | y = 383, "See your photo in bricks in seconds. Kits from $35." under it |
 | Phone 390x844: free-proof link | y = 1,432, 17 px tall, not on the first screen | y = 477, 44 px tall tap area, fully on the first screen |
 | Phone 360x740 (small phone): free-proof link | y = 1,355 | y = 468, fully on the first screen |
-| Red buttons in the home page (phone) | 5, plus the floating bar from y = 800 on | 2 (y = 383 and the FAQ one at y = 4,974), no floating bar at any scroll point |
-| Dot row (phone) | shown | hidden |
+| Red buttons in the home page (phone) | 5, plus the floating bar from y = 800 on | 2 (y = 383 and the FAQ one at y = 5,000), no floating bar at any scroll point |
+| Dot row (phone) | 22 px dots at y = 533, between price line and video | 14 px dots at y = 537 to 551, 16 px below the free-proof link (ends y = 521), above the video |
 | Hero media height (phone) | 557 px (66% of the screen, poster fallback) | 439 px (52%); the video uses the same limit |
 | Video settings | muted, autoplay, loop, playsinline | unchanged |
-| Page length (phone) | 6,183 px | 5,573 px |
+| Page length (phone) | 6,183 px | 5,599 px |
 | Sideways scroll | none (390 = 390, 360 = 360) | none (390 = 390, 360 = 360) |
 | Main button and free-proof link tappable (nothing on top) | button yes, link off screen | both yes (checked with the element at the tap point) |
 | Main button and free-proof link under the app bubbles | | no overlap on the first screen with grey placeholders at the teaser's and chat's real positions (bottom-left 12 px, bottom-right 16 px) |
