@@ -11,7 +11,7 @@ Current follower counts and the average weekly change are **missing** for every 
 | Instagram | missing | missing | +1.5% a week | 7 posts and 3 Stories a week, a running series ("Guess the photo Friday"), the "Send us your photo" campaign and the daily engagement list are new; a steady account posting daily usually grows 1% to 2% a week. Instagram brings fewer orders than Facebook (6 vs 20 in 90 days), so growth here must be buyers, not volume. |
 | Facebook | missing | missing | +0.5% a week | Facebook brings the most social orders (20 in 90 days, $2,251) but Pages grow slowly from organic posts; the goal is modest and the real measure stays orders from `utm_source=facebook`. |
 | TikTok | missing | missing | +3% a week | Reels and photo carousels go up daily; TikTok reach does not depend on existing followers, so small accounts can grow faster in percentage terms. |
-| Pinterest | missing | missing | +2% a week, and track monthly views and outbound clicks too | Pins keep bringing visitors for months, and outbound clicks to the site matter more than followers. Needs a Pinterest business account first (owner to confirm it exists). |
+| Pinterest | missing | missing | +2% a week, and track monthly views and outbound clicks too | Pins keep bringing visitors for months, and outbound clicks to the site matter more than followers. The Pinterest business account exists (owner confirmed 2026-10-14). |
 
 ## Rules that stay in place
 

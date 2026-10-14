@@ -92,5 +92,5 @@ Engagement marked (C) is Collabs' figure for the main account; real post-level e
 | Creator | Program | Connected | Code | Code check |
 |---|---|---|---|---|
 | Tara Hackbarth (thehackbarthhaus) | Default Tier (10%/10%) | about 1 year ago | THEHACKBARTHHAUS (shown in Collabs) | partly: the code group "Shopify Collabs Tier Codes - Default Tier" is active at 10% off entire order (31 app codes); the single code does not appear in a Discounts search, so it can't be confirmed individually there |
-| Evan Rubin (legocr8tor) | none shown; connection paused 2023-10-23 | 2023 | unknown | not checked |
+| Evan Rubin (legocr8tor) | none shown; connection paused 2023-10-23. Owner decided 2026-10-14: do not reactivate | 2023 | unknown | not checked |
 | The other 35 | see Connections | 2023 to 2026 | unknown | not checked (time) |

@@ -229,6 +229,17 @@ Also waiting on you (not a Status edit):
 
 (Highest expected sales impact first.)
 
+## A-2026W42-036
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid
+- Reason: The home page promo strip says code EARLYBIRD20, which is not in offers-calendar. Switch it to EARLYHOLIDAY20 so one code is used everywhere (ads, emails, posts, site). Already changed in the calm phone home file, so it goes live with that theme; if the calm home is not published by Oct 17, apply the one-word swap to the live theme on its own, with a backup.
+- Expires: 2026-11-30
+- Status: approved
+- From: chat
+- Note: Eden approved in chat on 2026-10-14 ("2. yes" to "switch EARLYBIRD20 to EARLYHOLIDAY20 on the home page"), recorded by the coordinator session.
+
 ## A-2026W42-033
 - Agent: social-planner
 - Executor: social-publisher
@@ -239,7 +250,7 @@ Also waiting on you (not a Status edit):
 - Expires: 2026-10-24
 - Status: pending
 - From: P-social-planner-20261014-1
-- Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. If there is no Pinterest business account, the publisher skips the pins.
+- Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
 
 ## A-2026W42-013
 - Agent: conversion-auditor
@@ -446,8 +457,8 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 
 - **New today (run 2):**
   - Ads: A-2026W42-019 blocked by the Claude Code permission check on the Google Ads save click (needs Eden). Meta landing page views are 76% of link clicks vs 93% last year (possible slow mobile load; worth a site-developer check). BEMYVALENTINE is not in offers-calendar, so the Valentine's plan waits. Adspirer has 0 free calls until Nov 6.
-  - Creator-scout: reactivate Evan Rubin (best creator ever: 24 orders, $1,787.10; paused since 2023-10-23)? There is no approval type for reactivation; tell her if you want a welcome-back message drafted. Discount groups BF15 (15%) and freelifemiami (20%) are active at rates other than 10%, and other Collabs programs exist (Family 15% commission, a legacy 0% program with warnings). 407 applications not read yet.
-  - Outreach: the 10%/10% creator offer is not in offers-calendar.md. The Collabs page copy (https://mymemobrick.com/pages/collabs) is outdated (reads like a job ad, names a toy brand). No contact route for the two best fits, Shop TODAY and CNN Underscored, or for NCOA, Dogster, Catster, iHeartDogs and The Mom Edit. Green Wedding Shoes is approved commission only (A-2026W42-023).
+  - Creator-scout: Evan Rubin reactivation: owner said no (2026-10-14). Do not reactivate or contact him. Discount groups BF15 (15%) and freelifemiami (20%) are active at rates other than 10%, and other Collabs programs exist (Family 15% commission, a legacy 0% program with warnings). 407 applications not read yet.
+  - Outreach: the 10%/10% creator offer is now in offers-calendar.md (owner confirmed 2026-10-14), so the flag on A-2026W42-030 to 032 is cleared. The Collabs page copy (https://mymemobrick.com/pages/collabs) is outdated (reads like a job ad, names a toy brand). No contact route for the two best fits, Shop TODAY and CNN Underscored, or for NCOA, Dogster, Catster, iHeartDogs and The Mom Edit. Green Wedding Shoes is approved commission only (A-2026W42-023).
   - Social-publisher: S-20261015-1 (A-2026W41-002, changes requested) posts Oct 15 12:00 and will be missed unless the planner revises it today.
 - **Earlier today:**
   - Site-developer: owner to confirm the free-shipping discount covers Alaska, Hawaii and Puerto Rico, and to compare cart-quoted rates to checkout rates with a real address (2 minutes, no payment).
