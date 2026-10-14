@@ -277,7 +277,7 @@ Also waiting on you (not a Status edit):
 - Commit: c88ed90
 - Reason: Replaces A-2026W42-015. Commission only, no free kit. If approved, a Gmail draft to Kimberly@SheScribes.com (HTML version) is created for the owner to send, asking for inclusion in her 2026 guide and inviting her to Collabs at 10%/10%.
 - Expires: 2026-10-24
-- Status: pending
+- Status: approved
 - From: P-outreach-gift-guide-pr-20261014-1
 - Flag: Offers the Collabs creator tier (10% commission, 10% code for readers), which is not listed as active in offers-calendar.md. It is your existing Default Tier in Collabs; add it to offers-calendar.md, or approve knowing this pitch names it.
 - Note: Audience-fit score 4. The site sells paid placements; do not pay.
