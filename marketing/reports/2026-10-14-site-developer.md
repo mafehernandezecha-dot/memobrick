@@ -2,7 +2,7 @@
 
 ## Summary
 Eden published "Memobrick fixes", so the 5 approved fixes are live (checksums confirmed). She finds the phone home page busy: I built and tested a calm phone home (one main button with "Kits from $35", free-proof link right under it on the first screen, compact dot row (kept at Eden's request), shorter video, 2 red buttons instead of 5 plus a floating bar). Desktop unchanged.
-No preview link yet: the store is at Shopify's 20-theme limit, so a copy cannot be made until Eden removes one old theme. Proposed as one site-change; Omnisend teaser and Inbox chat settings are Eden's steps.
+Preview copy "Memobrick calm home" (188697510108) is ready: https://mymemobrick.com/?preview_theme_id=188697510108 (only the one file differs from live). Proposed as one site-change; Omnisend teaser and Inbox chat settings are Eden's steps.
 
 ## Done
 Third run today (live run at the owner's request after she published). Earlier runs follow below.
@@ -16,6 +16,8 @@ Third run today (live run at the owner's request after she published). Earlier r
 - Draft with diff, test table, Eden's clicks, app steps and undo: `marketing/conversion/site-developer/fixes/calm-phone-home.md`.
 - **Revision (Eden: "keep the color dots"):** the dot row now stays on phones, 14 px dots centered just below the free-proof link and above the video; all other changes kept. New md5 883ec9b9756b04c28eb971b7bb625ff9 (commit 2b1bd9f). Retested at 390x844, 360x740 and 1440x900: button y = 383 with "Kits from $35"; proof link y = 477 to 521, fully on the first screen and tappable; dots y = 537 to 551; 2 red buttons; no floating bar; no sideways scroll; desktop unchanged. After-screenshots and `test-results.json` refreshed; the draft and its diff updated. P-site-developer-20261014-3 is unchanged apart from the draft content.
 - **"Slot free" relay:** Shopify still lists 20 themes (the 2021 "Copy of Copy of Copy of xx", 128996770012, is still there), and a third `themeDuplicate` again returned no theme. No copy and no preview link yet.
+- **Preview copy made.** After Eden freed slots (Shopify then listed 17 themes; she removed "Copy of Copy of Copy of Copy of xx" 136454832348, "Copy for motti 2" 151460577500 and "memobrick-theme-updated-1" 167017840860; the 2021 "Copy of Copy of Copy of xx" is still there), I rechecked the live theme (still "Memobrick fixes" 188683092188, updatedAt 2026-10-14T07:17:21Z, same four checksums) and duplicated it as **"Memobrick calm home", id 188697510108**, unpublished. Pulled main: the calm-home file now also carries the EARLYHOLIDAY20 promo line (A-2026W42-036, commit 1c2cb58), md5 **d641ed44212004aaa1ab2be733f6829f**. Uploaded only that file (checksum confirmed); all 514 files of copy and live compared, only this one differs.
+- **Preview tested** at 390x844, 360x740 and 1440x900 (`tools/calm-home-test.mjs preview <dir> 188697510108`, Shopify's cookie banner declined first): button y = 383 with "Kits from $35", proof link y = 477 to 521 fully on the first screen and tappable (opens the free-proof view), dots y = 537 to 551, 2 red buttons, no floating bar, no sideways scroll, promo strip reads EARLYHOLIDAY20, main button opens the editor's upload view on both phones; desktop positions and height identical to live. Preview link: https://mymemobrick.com/?preview_theme_id=188697510108. Screenshots `2026-10-14-calm-phone-home/preview-*.jpg`.
 
 ## Proposed for approval
 
@@ -29,7 +31,7 @@ Third run today (live run at the owner's request after she published). Earlier r
 - Status: pending
 
 ## Blocked or unknown
-- **Theme limit (Eden, 1 minute):** the store has 20 themes, so no copy and no preview link can be made. Online Store > Themes > Theme library > "Copy of Copy of Copy of xx" (added 2021-11-17) > "..." > Remove. Keep "Memobrick fixes", "memobrick-theme-v27-print-8mm" and "AVADA Assets - DO NOT REMOVE". The connector cannot remove themes, and I would not do it without her.
+- Theme limit: resolved. Eden removed three old themes; the copy 188697510108 exists. Remaining owner steps: look at the preview, approve P-site-developer-20261014-3, publish "Memobrick calm home" with one click (undo: publish "Memobrick fixes" again).
 - **Omnisend teaser (Eden, app setting):** Omnisend > Forms > "Exit-Intent 10% Welcome (gentle)" > Teaser: show it only after the visitor closed the pop-up (now "Always"), font 13 px (now 15), padding 6/12 px (now 10/16), keep bottom-left. This keeps the pill off the first screen and makes it smaller.
 - **Shopify Inbox chat (Eden, app embed):** Online Store > Themes > live theme > Customize > App embeds > Shopify Inbox: Button text to the icon-only option (now "Chat with us"), Position bottom right, Save. Do it after publishing the calm copy, or before I make it, so the setting is not lost.
 - **Offer check (Eden or coordinator):** the home page's first line says "Order early & save 20% with code EARLYBIRD20". The code is active in Shopify, but `offers-calendar.md` lists only EARLYHOLIDAY20 as active, and the Omnisend pop-up promises 20% while its name and tag say 10%. I did not change any offer text; please confirm which code and percentage the site should show.

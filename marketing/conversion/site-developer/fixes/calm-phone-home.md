@@ -2,6 +2,8 @@
 
 **Revised 2026-10-14 at Eden's request ("keep the color dots"):** the dot row now stays on phones, smaller (14 px dots), just below the free-proof link and above the video. Everything else is as first proposed. New file md5 883ec9b9756b04c28eb971b7bb625ff9 (was 6795f9091b0a8bd9361c992806a9ab0b).
 
+**Revised again 2026-10-14 (approved item A-2026W42-036):** the promo strip in this file now says EARLYHOLIDAY20 instead of EARLYBIRD20 (one-word change made on main, commit 1c2cb58). **Current file md5 d641ed44212004aaa1ab2be733f6829f.** This is the file in the preview copy below.
+
 Built and tested by: site-developer (Jenny), 2026-10-14
 Executor: site-developer
 Asked by: Eden, 2026-10-14, after publishing "Memobrick fixes": "I don't like how busy the website looks."
@@ -33,6 +35,8 @@ Phones and small tablets only (up to 900 px wide; the floating-bar rule up to 70
 The "Send a photo and get a free proof" link in How it works, the size cards' own "Try this size" buttons, and the FAQ button with "Not ready yet? Get a free proof first" all stay.
 
 ### Exact diff against the live file (md5 809e6c2ebf0eef90eeb81352bf190c94)
+
+Plus one line in the promo strip (A-2026W42-036): `with code <b>EARLYBIRD20</b>` becomes `with code <b>EARLYHOLIDAY20</b>`.
 
 ```diff
 @@ -109,6 +109,24 @@
@@ -70,15 +74,19 @@ The "Send a photo and get a free proof" link in How it works, the size cards' ow
          <a class="btn btn-red big" href="/pages/editor">Create My MemoBrick</a>
 ```
 
-Full new file: `marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid`, md5 **883ec9b9756b04c28eb971b7bb625ff9**, also at
-https://github.com/mafehernandezecha-dot/memobrick/raw/2b1bd9ffe21bd3388ce654ac71d5bd70cd7fd84a/marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid
+Full new file: `marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid`, md5 **d641ed44212004aaa1ab2be733f6829f** (includes the EARLYHOLIDAY20 promo line, A-2026W42-036), also at
+https://github.com/mafehernandezecha-dot/memobrick/raw/1c2cb58870ec81e5fc31d95d6900b7d774e2a07c/marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid
 (checked: that link downloads exactly this md5).
 
 The same section renders `/pages/editor`, where the home view is hidden, so the editor is not affected. `memobrick.js` still shows/hides `#mobCta` as before; the CSS keeps it hidden on phones (no JavaScript change).
 
 ## Preview link
 
-**Not available yet.** The store already has 20 themes, Shopify's limit, so `themeDuplicate` returned no theme (tried twice, no error message, theme count unchanged). After Eden's "slot free" message (relayed by the coordinator), I checked again: Shopify still lists 20 themes, "Copy of Copy of Copy of xx" (128996770012) is still there, and a third `themeDuplicate` again returned no theme. See "What Eden clicks", step 1: removing one old theme frees the slot, then I make the copy "Memobrick calm home" from the live theme, add this one file, rerun the tests on it and send `https://mymemobrick.com/?preview_theme_id=<new id>`.
+**https://mymemobrick.com/?preview_theme_id=188697510108**
+
+Theme "Memobrick calm home", id 188697510108 (gid://shopify/OnlineStoreTheme/188697510108), UNPUBLISHED, created 2026-10-14 with `themeDuplicate` from the live theme "Memobrick fixes" (188683092188) after Eden freed theme slots. Only `sections/memobrick-site.liquid` was uploaded (from commit 1c2cb58, md5 d641ed44212004aaa1ab2be733f6829f, confirmed by Shopify's checksum). Compared all 514 theme files of the copy and the live theme by checksum: this is the only difference.
+
+Tested in the preview (`tools/calm-home-test.mjs preview <dir> 188697510108`): same results as the table below (button y = 383, proof link y = 477 to 521, dots y = 537 to 551, 2 red buttons, no floating bar, no sideways scroll at 390 and 360, desktop unchanged), the promo strip reads EARLYHOLIDAY20, the free-proof link opens the free-proof view, and the main button opens the editor (`/pages/editor`, upload view) on both phone sizes. Preview screenshots: `2026-10-14-calm-phone-home/preview-*.jpg`.
 
 ## How it was tested today
 
@@ -105,6 +113,7 @@ Notes on the test environment: this sandbox cannot load cdn.shopify.com or the a
 
 Screenshots (`marketing/conversion/site-developer/2026-10-14-calm-phone-home/`, about 1000 px wide):
 
+- In the preview theme 188697510108 (the real copy, no test-browser patching): `preview-phone-screen1.jpg`, `preview-phone-y800.jpg`, `preview-phone-y1700.jpg`, `preview-phone360-screen1.jpg`, `preview-phone-full.jpg`, `preview-desktop-screen1.jpg`, `preview-desktop-full.jpg`
 - First phone screen: `before-phone-screen1.jpg`, `after-phone-screen1.jpg`
 - Phone scrolled 800 px and 1,700 px: `before-phone-y800.jpg`, `after-phone-y800.jpg`, `before-phone-y1700.jpg`, `after-phone-y1700.jpg` (before: the floating bar under the SIM bubbles; after: none)
 - Small phone: `before-phone360-screen1.jpg`, `after-phone360-screen1.jpg`
@@ -118,12 +127,12 @@ Screenshots (`marketing/conversion/site-developer/2026-10-14-calm-phone-home/`, 
 
 ## What Eden clicks
 
-1. **Free one theme slot (needed for the preview and the one-click publish).** Shopify admin > Online Store > Themes > Theme library > "Copy of Copy of Copy of xx" (the oldest, added 2021-11-17) > "..." > Remove. Do not remove "Memobrick fixes" (live), "memobrick-theme-v27-print-8mm" (the undo for today's publish) or "AVADA Assets - DO NOT REMOVE" (an app needs it). I cannot remove themes myself.
-2. **Approve this item** in the queue (Status: approved).
-3. Tell the coordinator (or me) that the slot is free. I then create "Memobrick calm home" from the live theme, add the one file, check that it differs from live only in this file, rerun the tests and send the preview link.
+1. Done: theme slots freed, copy "Memobrick calm home" (188697510108) created and tested.
+2. **Look at the preview on your phone:** https://mymemobrick.com/?preview_theme_id=188697510108
+3. **Approve this item** in the queue (Status: approved).
 4. **Publish, one click:** Online Store > Themes > "Memobrick calm home" > "..." > Publish. Open the home page on your phone.
 
-If you would rather not remove a theme: after step 2, Online Store > Themes > "Memobrick fixes" > "..." > Edit code > `sections/memobrick-site.liquid` > select all, paste the full file from the GitHub link above, Save (2 minutes). The connector blocks my writes to the live theme, so this paste is the only way without a copy.
+Alternative without publishing a new theme: after step 3, Online Store > Themes > "Memobrick fixes" > "..." > Edit code > `sections/memobrick-site.liquid` > select all, paste the full file from the GitHub link above, Save (2 minutes). The connector blocks my writes to the live theme, so this paste is the only way without a copy.
 
 ## How to undo
 

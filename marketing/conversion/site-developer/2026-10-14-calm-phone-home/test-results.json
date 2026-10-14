@@ -661,5 +661,343 @@
     "midCtas": 2
    }
   }
+ },
+ "preview_theme_188697510108_2026-10-14": {
+  "phone": {
+   "firstScreen": 844,
+   "topCta": [
+    9,
+    383,
+    372,
+    56
+   ],
+   "note": "See your photo in bricks in seconds. Kits from $35.",
+   "proofLink": [
+    30,
+    477,
+    330,
+    44
+   ],
+   "proofFullyOnFirstScreen": true,
+   "topCtaClickable": true,
+   "proofClickable": true,
+   "topCtaUnderFloat": false,
+   "proofUnderFloat": false,
+   "rail": true,
+   "railBox": [
+    9,
+    537,
+    372,
+    14
+   ],
+   "videoDbg": {
+    "cs": "none/visible/1",
+    "rect": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "fig": [
+     9,
+     571,
+     372,
+     441
+    ],
+    "src": "https://mymemobrick.com/cdn/shop/t/211/assets/mb-hero-short-hd.mp4?v=15344996291"
+   },
+   "video": "not visible",
+   "mobCtaDisplay": "none",
+   "ctas": [
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      9,
+      383,
+      372,
+      56
+     ]
+    },
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      83,
+      5000,
+      224,
+      56
+     ]
+    }
+   ],
+   "proof": [
+    {
+     "t": "Not sure yet? Get a free design proof first \u2192",
+     "r": [
+      30,
+      477,
+      330,
+      44
+     ]
+    },
+    {
+     "t": "Send a photo and get a free proof \u2192",
+     "r": [
+      85,
+      2301,
+      219,
+      44
+     ]
+    },
+    {
+     "t": "Not ready yet? Get a free proof first \u2192",
+     "r": [
+      67,
+      5069,
+      257,
+      44
+     ]
+    }
+   ],
+   "docH": 5599,
+   "sw": 390,
+   "iw": 390,
+   "patched": null,
+   "mobCtaAt800": "none",
+   "mobCtaAt1700": "none",
+   "proofTap": {
+    "freeproofShown": true,
+    "hash": ""
+   },
+   "ctaTap": {
+    "url": "https://mymemobrick.com/pages/editor",
+    "ms": 4981,
+    "views": [
+     "view-upload"
+    ]
+   }
+  },
+  "phone360": {
+   "firstScreen": 740,
+   "topCta": [
+    9,
+    374,
+    342,
+    56
+   ],
+   "note": "See your photo in bricks in seconds. Kits from $35.",
+   "proofLink": [
+    15,
+    468,
+    330,
+    44
+   ],
+   "proofFullyOnFirstScreen": true,
+   "topCtaClickable": true,
+   "proofClickable": true,
+   "topCtaUnderFloat": false,
+   "proofUnderFloat": false,
+   "rail": true,
+   "railBox": [
+    9,
+    528,
+    342,
+    14
+   ],
+   "videoDbg": {
+    "cs": "none/visible/1",
+    "rect": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "fig": [
+     9,
+     562,
+     342,
+     387
+    ],
+    "src": "https://mymemobrick.com/cdn/shop/t/211/assets/mb-hero-short-hd.mp4?v=15344996291"
+   },
+   "video": "not visible",
+   "mobCtaDisplay": "none",
+   "ctas": [
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      9,
+      374,
+      342,
+      56
+     ]
+    },
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      68,
+      5043,
+      224,
+      56
+     ]
+    }
+   ],
+   "proof": [
+    {
+     "t": "Not sure yet? Get a free design proof first \u2192",
+     "r": [
+      15,
+      468,
+      330,
+      44
+     ]
+    },
+    {
+     "t": "Send a photo and get a free proof \u2192",
+     "r": [
+      70,
+      2324,
+      219,
+      44
+     ]
+    },
+    {
+     "t": "Not ready yet? Get a free proof first \u2192",
+     "r": [
+      52,
+      5111,
+      257,
+      44
+     ]
+    }
+   ],
+   "docH": 5642,
+   "sw": 360,
+   "iw": 360,
+   "patched": null,
+   "mobCtaAt800": "none",
+   "mobCtaAt1700": "none",
+   "proofTap": {
+    "freeproofShown": true,
+    "hash": ""
+   },
+   "ctaTap": {
+    "url": "https://mymemobrick.com/pages/editor",
+    "ms": 4608,
+    "views": [
+     "view-upload"
+    ]
+   }
+  },
+  "desktop": {
+   "firstScreen": 900,
+   "topCta": null,
+   "note": null,
+   "proofLink": [
+    130,
+    631,
+    286,
+    16
+   ],
+   "proofFullyOnFirstScreen": true,
+   "topCtaClickable": null,
+   "proofClickable": true,
+   "topCtaUnderFloat": null,
+   "proofUnderFloat": false,
+   "rail": true,
+   "railBox": [
+    130,
+    432,
+    752,
+    22
+   ],
+   "videoDbg": {
+    "cs": "none/visible/1",
+    "rect": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "fig": [
+     930,
+     252,
+     380,
+     562
+    ],
+    "src": "https://mymemobrick.com/cdn/shop/t/211/assets/mb-hero-build.mp4?v=18266549674443"
+   },
+   "video": "not visible",
+   "mobCtaDisplay": "none",
+   "ctas": [
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      130,
+      558,
+      224,
+      56
+     ]
+    },
+    {
+     "t": "See your photo in bricks",
+     "r": [
+      601,
+      1223,
+      238,
+      56
+     ]
+    },
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      608,
+      1967,
+      224,
+      56
+     ]
+    },
+    {
+     "t": "Create My MemoBrick",
+     "r": [
+      608,
+      4131,
+      224,
+      56
+     ]
+    }
+   ],
+   "proof": [
+    {
+     "t": "Not sure yet? Get a free design proof first \u2192",
+     "r": [
+      130,
+      631,
+      286,
+      16
+     ]
+    },
+    {
+     "t": "Send a photo and get a free proof \u2192",
+     "r": [
+      701,
+      1922,
+      219,
+      19
+     ]
+    },
+    {
+     "t": "Not ready yet? Get a free proof first \u2192",
+     "r": [
+      592,
+      4202,
+      257,
+      21
+     ]
+    }
+   ],
+   "docH": 4623,
+   "sw": 1440,
+   "iw": 1440,
+   "patched": null
+  }
  }
 }

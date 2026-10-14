@@ -11,6 +11,8 @@ const base = 'https://mymemobrick.com/' + (themeId ? `?preview_theme_id=${themeI
 const css = fs.readFileSync(new URL('./calm-home-test.css', import.meta.url), 'utf8');
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-sandbox'] });
 const results = {};
+const dismissConsent = async (page) => { try { await page.getByRole('button', { name: 'Decline', exact: true }).click({ timeout: 4000 }); await page.waitForTimeout(800); } catch (e) {} };
+
 const go = async (page, u) => { for (let i = 0; i < 4; i++) { try { return await page.goto(u, { waitUntil: 'load', timeout: 90000 }); } catch (e) { console.error('goto retry', i, e.message.split('\n')[0]); await new Promise(r => setTimeout(r, 60000)); } } throw new Error('goto failed'); };
 const devices = [
   ['phone', { width: 390, height: 844 }, true],
@@ -36,6 +38,7 @@ for (const [name, vp, mobile] of devices) {
   let ctx = await mkctx(); let page = await ctx.newPage(); await setup(page);
   await go(page, base);
   await page.waitForTimeout(6000);
+  await dismissConsent(page);
   // Simulated floating widgets at their configured spots (Omnisend teaser bottomLeft, 12px margin; Inbox chat bottom-right, lowest)
   if (mobile) await page.evaluate(() => {
     const mk = (css, t) => { const d = document.createElement('div'); d.className = 'sim-float'; d.textContent = t; d.style.cssText = 'position:fixed;z-index:2147483000;background:rgba(120,120,120,.55);color:#fff;font:600 13px system-ui;display:flex;align-items:center;justify-content:center;border-radius:30px;pointer-events:none;' + css; document.body.appendChild(d); };
@@ -80,13 +83,13 @@ for (const [name, vp, mobile] of devices) {
   // Taps: free-proof link opens the free-proof view; main button opens the editor
   if (name !== 'desktop') {
     const link = page.locator('.hero-tertiary .linky2');
-    if (await link.isVisible()) { await link.tap(); await page.waitForTimeout(1500);
+    if (await link.isVisible()) { await link.tap({ timeout: 10000 }).catch(e => { r.proofTapError = e.message.split('\n')[0]; }); await page.waitForTimeout(1500);
       r.proofTap = await page.evaluate(() => ({ freeproofShown: !document.querySelector('#view-freeproof').hidden, hash: location.hash }));
       }
     await ctx.close(); await new Promise(r => setTimeout(r, 5000));
-    ctx = await mkctx(); page = await ctx.newPage(); await setup(page); await go(page, base); await page.waitForTimeout(3000);
+    ctx = await mkctx(); page = await ctx.newPage(); await setup(page); await go(page, base); await page.waitForTimeout(3000); await dismissConsent(page);
     const t0 = Date.now();
-    await Promise.all([page.waitForURL(/\/pages\/editor/, { timeout: 30000 }).catch(e => null), page.locator('.hero-cta-top a').tap()]);
+    await Promise.all([page.waitForURL(/\/pages\/editor/, { timeout: 30000 }).catch(e => null), page.locator('.hero-cta-top a').tap({ timeout: 10000 }).catch(e => { r.ctaTapError = e.message.split('\n')[0]; })]);
     await page.waitForTimeout(3000);
     r.ctaTap = { url: page.url().replace(/\?.*/, ''), ms: Date.now() - t0, views: await page.evaluate(() => [...document.querySelectorAll('section.view')].filter(v => !v.hidden).map(v => v.id)) };
   }
