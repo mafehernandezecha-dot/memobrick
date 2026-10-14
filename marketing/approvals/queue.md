@@ -303,7 +303,7 @@ Also waiting on you (not a Status edit):
 - Commit: c88ed90
 - Reason: Replaces A-2026W42-016. Commission only, no free kit. If approved, a Gmail draft to contact@lovetabitha.com (unverified, from search text) is created for the owner to send; if the page uses a form, the report gives the text to paste.
 - Expires: 2026-10-24
-- Status: pending
+- Status: approved
 - From: P-outreach-gift-guide-pr-20261014-2
 - Flag: Offers the Collabs creator tier (10% commission, 10% code for readers), which is not listed as active in offers-calendar.md. It is your existing Default Tier in Collabs; add it to offers-calendar.md, or approve knowing this pitch names it.
 - Note: Audience-fit score 4. Email address is unverified.
