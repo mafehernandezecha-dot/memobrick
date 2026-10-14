@@ -1,4 +1,4 @@
-Status: needs owner (step 1 done; steps 2 and 3 not done: save clicks are being blocked and the audience signal editor would not open. Paste the "Run it now" box and skip step 1, the segment exists)
+Status: done 2026-10-14 (steps 1 and 2 done; step 3 skipped by owner decision, see Result)
 
 # Claude in Chrome task: PMax #2 buyer signal and Christmas asset group (approval item: A-2026W42-027, approved 2026-10-14, expires 2026-10-21; from P-ads-analyst-20261014-4)
 
@@ -96,3 +96,11 @@ Scheduled Mac run 2026-10-14, account 672-499-4049 confirmed (authuser=1).
 - Note: the new-asset-group form showed Brand guidelines "Memobrick inc, 3 logos" (campaign level). It was not changed.
 - Owner: paste the "Run it now" box into Claude in Chrome but skip step 1, because the segment already exists. Choose "Copy existing asset group" only if you are fine with it also copying that group's search themes; otherwise pick the images by hand.
 - No budget, bid strategy, target, URL expansion, brand exclusion or other asset group was changed.
+
+Owner run 2026-10-14 (Eden, Claude in Chrome extension), account 672-499-4049:
+- Step 2: DONE. New asset group "Christmas Gifts - Family" in "USA - PMAX #2- Custom Photo Bricks - Sales - Maximize Conv", enabled: 12 headlines, 2 long headlines, 4 descriptions, call to action Shop now, the new final URL; same 20 images and 5 videos as "Products - Full Audience". Last check: Pending (under review), ad strength Excellent.
+- Signal change: PMax audience signals do not offer search-term custom segments, so "MB buyers: gift and photo searches" (step 1) could not be used. A new interest-type custom segment "MB buyers: gift and photo interests" (12 terms) was created instead.
+- Audience signal on "Christmas Gifts - Family": All visitors, All converters, in-market Gifts & Occasions, "MB buyers: gift and photo interests", ages 35-64. "Parents" was not selectable (only age-of-child subgroups), so it was skipped.
+- Step 3: SKIPPED (owner decision on the coordinator's advice). "Products - Full Audience" and "Full Asset - Full Audience" share the saved audience "Full Audience", which is used in 4 asset groups including the paused PMax #1 campaign; editing it would change all 4. Both groups are Excellent and converting, and a signal is only a hint, so they were left unchanged.
+- No budget, bid, target or other asset group was changed.
+- Follow-up for ads-analyst: check "Christmas Gifts - Family" approval and first results on the next pacing check. The unused search-term segment "MB buyers: gift and photo searches" can stay (it costs nothing) or be reused in Search campaigns as an observation audience.
