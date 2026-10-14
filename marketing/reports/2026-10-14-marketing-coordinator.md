@@ -25,3 +25,32 @@ Weak points with no proposal working on them: (1) draft orders collapse (4 vs 71
 
 ## Next run
 Monday 2026-10-19 with the weekly Sales Plan.
+
+---
+
+# marketing-coordinator 2026-10-14, run 2 (owner request)
+
+## Summary
+- Added 9 items: A-2026W42-024 to 027 (ads-analyst), 028 and 029 (creator-scout), 030 to 032 (outreach, commission only). Archived 17 items (4 done, 3 rejected, 10 replaced or withdrawn).
+- The relayed chat approval of the 4 ads items is noted on each one. Eden still has to edit the Status lines; the Christmas ads launch needs a revised item.
+
+## Done
+- Collected new proposals from today's reports: ads-analyst (4), outreach-creator-scout (2), outreach-gift-guide-pr run 1 (6) and run 2 (withdrawals), site-developer (2, already queued). No email agent reports today. Hugo's W43 batch is not in a report yet, so it waits for the next run.
+- Queued: 024 Meta consolidation, 025 Christmas Meta ads (paused), 026 Google occasion ads, 027 PMax Christmas signals, 028 Collabs silent declines, 029 2% engagement floor, 030 SheScribes, 031 Love Tabitha, 032 Emily Reviews.
+- Not queued: outreach P-4, P-5, P-6 (withdrawn). Site-developer P-1 and P-2 (already 021 and 022).
+- Archived to `marketing/approvals/archive/2026-W42.md` with an `Archived:` reason: A-2026W42-001, 002, 003, 005 (applied, per ads-analyst); 004, 011, 012 (rejected); 008 (stale, replaced by 022); old Mario pitches A-2026W41-005, 006, 007, 008, 009 and A-2026W42-015, 016, 017; A-2026W41-004 (replaced by 014). A-2026W42-023 (Green Wedding Shoes commission only, approved) is kept. No Status line changed.
+- Fixed repeated Note fields (021 in the queue; 011, 012 and A-2026W41-011 in the archive). `check.py approvals` passes on the queue and the archive.
+
+## Proposed for approval
+None
+
+## Blocked or unknown
+- Relayed approval: Eden's chat approval of P-ads-analyst-20261014-1 to -4 reached me only through the coordinator session. An agent message cannot count as approval, and I never write an approved Status, so 024 to 027 are pending with a note. Eden can approve with four Status edits. For 025, the draft creates the ads paused; launching today within $60 a day needs ads-analyst to re-propose with the launch included, or Eden to write `changes:`.
+- A-2026W42-019 (approved) is stuck behind the Claude Code permission check on the Google Ads save click.
+- New owner inputs: the Collabs 10%/10% offer is missing from offers-calendar; Evan Rubin reactivation; BF15 and freelifemiami codes; outdated Collabs page; BEMYVALENTINE. Full list in queue.md.
+
+## Sales impact
+Weak points: (1) referred traffic -63%: the four ads items are the only proposals that act on it this week (ads-analyst estimates about 1 order a day from 025 once live, plus 2 to 4 a week from 024, 026 and 027). (2) Draft orders collapse (4 vs 71): still no proposal; it needs Eden to test the proof form. (3) October gap of 26 orders: 007 (Early Bird email, approved) and 009 (home phone CTA, approved) are the biggest approved levers not yet applied. Outreach and creator items will bring no orders before November.
+
+## Next run
+Next coordinator run: queue Hugo's W43 batch and any re-proposed Christmas launch item, and archive items as their agents report them done.
