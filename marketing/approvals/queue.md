@@ -45,6 +45,17 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Status: approved
 - From: P-ads-analyst-20261013-2 (owner approved in chat 2026-10-13)
 
+## A-2026W42-023
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
+- Commit: 26c0214
+- Reason: Commission-only pitch to Green Wedding Shoes (Collabs 10% commission and 10% code, no free kit). If approved, a Gmail draft is created in memobrickofficial@gmail.com for Eden to send, using the address on their contact page.
+- Expires: 2026-10-22
+- Status: approved
+- From: Owner decision in chat 2026-10-14 ("commission only"), after the audience-fit score of 3
+
 ## A-2026W42-001
 - Agent: ads-analyst
 - Executor: ads-analyst
