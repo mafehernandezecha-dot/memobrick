@@ -1,6 +1,6 @@
 # Memobrick talking points for press and gift guide pitches
 
-Use this file for every pitch. Built 2026-10-12 from Eden's feedback ("talk more about Memobrick like an experience", "creating experiences with families building a special picture together; make it more sentimental") and checked against `marketing/shared/product-facts.md` and the Facts table in `marketing/shared/offers-calendar.md`. Re-check prices in Shopify (read-only) on the day you quote one.
+Use this file for every pitch. Updated 2026-10-14 (kit vs commission rule, creator program, FOX line). Built 2026-10-12 from Eden's feedback ("talk more about Memobrick like an experience", "creating experiences with families building a special picture together; make it more sentimental") and checked against `marketing/shared/product-facts.md` and the Facts table in `marketing/shared/offers-calendar.md`. Re-check prices in Shopify (read-only) on the day you quote one.
 
 ## The story in one breath
 
@@ -31,7 +31,9 @@ Lead with that moment. The product details come second, as proof.
 | Order by December 15, 2026 to receive before Christmas | Facts table, 2026-10-11 |
 | Gift cards are offered (for the giver who wants the recipient to pick the photo) | Facts table, 2026-10-11 |
 | Free US shipping on orders of $125 or more | Facts table, 2026-10-12 |
-| Sample kits for press: case by case, strong outlets only, each offer needs the owner's approval in the queue | Facts table, 2026-10-11 |
+| Sample kits for press: case by case, strong outlets only, each offer needs the owner's approval in the queue as its own offer item | Facts table, 2026-10-11; owner rule 2026-10-14 |
+| Creator program: Shopify Collabs, 10% commission on every sale plus the creator's own code giving their audience 10% off (the only tier). Apply at https://mymemobrick.com/pages/collabs | Owner, 2026-10-14; page checked live 2026-10-14 |
+| Press: "As seen on FOX" (FOX 4 Dallas-Fort Worth gift guide, 2022, and a FOX TV segment) | Facts table, 2026-10-12 |
 | Sender: Eden Biri, Memobrick (sender email still to confirm) | Facts table |
 
 Build times are Shopify's estimates; say "about" or "an evening or two", never a promise.
@@ -80,13 +82,15 @@ Not for press: product images that use celebrity photos (Emma Watson, Dwayne Joh
 - Subject: warm and specific to the outlet, names the moment (for example "the night a family photo becomes a brick portrait").
 - Opening (2 to 3 sentences): paint the building moment, then connect it to their guide by name.
 - 2 to 3 talking points from the tables above, picked for that guide type.
-- One ask: include Memobrick in the guide, with photos offered, and a sample kit only where the Facts table allows and the owner approves.
+- One ask: include Memobrick in the guide, with photos offered. Default: invite them to the creator program on Shopify Collabs (10% commission, 10% off code for their audience, apply at https://mymemobrick.com/pages/collabs). Offer a sample kit only for a KIT target (see kit-vs-commission-2026-10-14.md) and only with its own approved offer item.
+- Sign-off may carry "As seen on FOX". Never "Fox News".
 - Body under about 170 words. Sign "Eden Biri, Memobrick" with mymemobrick.com.
 - Two versions: `pitches/<slug>.md` (plain text plus photo links) and `pitches/<slug>.html` (navy #1B264F, pink #D66A7E, white, hero photo, 2 small photos, signature). The HTML goes in the Gmail draft as `htmlBody` with the plain text as `body`; contact forms get the plain text with photo links.
 
 ## Lines to avoid
 
-- Any press coverage claim. The site shows Fox News, NBC, Yahoo, and Disrupt logos, but this is not verified in the Facts table; do not mention it until the owner confirms it.
+- Any press claim other than "As seen on FOX" or "Featured in FOX 4's holiday gift guide". Never "Fox News", never imply the coverage is recent, and never NBC, Yahoo, or Disrupt (not confirmed).
+- A free kit for a commission-only target, or any commission or discount above 10%/10%.
 - Customer counts, ratings, reviews, testimonials, or "loved by thousands".
 - "Assembled", "we build it for you", or the pricier "Yes" option: only the build-at-home kit is offered.
 - Faces per size for the 16×16 to 30×20 sizes (unknown).

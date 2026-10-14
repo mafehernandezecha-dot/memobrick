@@ -1,13 +1,13 @@
 # Pitch: love-tabitha-2026
 
-- Queue item: A-2026W41-007 (pending). Rewritten 2026-10-12 after Eden's feedback; proposed again with a new P- ID.
+- Replaces: A-2026W42-016 (and A-2026W41-007 before it). Rewritten 2026-10-14 in the kit vs commission review.
 - To: Tabitha, Love, Tabitha (site owner inferred, byline unverified)
-- Contact route: Submission page https://www.lovetabitha.com/holiday-gift-guide-submissions-2026/ (exact form or email not confirmed; the page could not be opened from this environment). If it is a form, paste the plain text below and the photo links; if it lists an email, use the HTML version.
+- Contact route: contact@lovetabitha.com, from a search summary of the submissions page https://www.lovetabitha.com/holiday-gift-guide-submissions-2026/ (unverified: confirm on the page before sending; it asks for brand name, website, product, and retail price). If the page uses a form instead, paste the plain text below.
 - Guide: https://www.lovetabitha.com/best-holiday-gifts-kids-families/
 - Angle: Family and kids guides (see marketing/outreach/gift-guide-pr/talking-points.md)
-- Word count (body, greeting and signature excluded): 166
+- Word count (body, greeting, photo list and signature excluded): 165
 - Which version to send: email the HTML version (pitches/love-tabitha-2026.html) as the Gmail draft's htmlBody, with the plain text below as the plain-text alternative. For a contact form, paste the plain text below, photo links included.
-- Flags: Offers a sample kit: the Facts table allows press kits case by case with owner approval, so approving this item approves the kit. Contact route not confirmed. Sender email still to confirm.
+- Flags: Decision 2026-10-14: COMMISSION ONLY (see marketing/outreach/gift-guide-pr/kit-vs-commission-2026-10-14.md). No free kit is offered. The ask is inclusion in the guide plus an invite to the Memobrick creator program on Shopify Collabs (10% commission, 10% off code for their readers, the only tier). The application link is the public Collabs page https://mymemobrick.com/pages/collabs. Sender email still to confirm.
 
 **Subject:** For your kids and families guide: a family photo the kids build in bricks
 
@@ -15,15 +15,17 @@ Hi Tabitha,
 
 I loved your "10 Best Holiday Gifts for Kids & Families in 2026" and saw submissions are open.
 
-Picture the kids at the kitchen table, hunting for the right color while a grown-up places the next row. Little by little, a familiar face appears in the bricks: Grandma's smile, or the dog's ears. When the last brick goes in, it goes up on the wall.
+Picture the kids at the kitchen table, hunting for the right color while a grown-up places the next row. Little by little, Grandma's smile appears. When the last brick goes in, it goes up on the wall.
 
 Memobrick turns a favorite family photo into a DIY brick mosaic kit:
 
-- Everyone has a job: bricks come sorted in labeled color bags with a printed color map, so little builders can help.
-- A 20×20 kit is 4,096 pieces, about four hours of building: one cozy evening or a few short sessions.
-- It stays: not a toy that gets put away, but art made from their own memory. Made and shipped from Miami, Florida.
+- Everyone has a job: bricks come in labeled color bags with a printed color map, so little builders can help.
+- A 16×16 kit is 2,500 pieces, about two and a half hours: one cozy evening. Retail $69.88.
+- Made and shipped from Miami, Florida. Order by December 15 for Christmas.
 
-Would you consider Memobrick for your kids and families guide? I would be glad to send photos, or a sample kit made from your own family photo.
+Would you consider Memobrick for your kids and families guide? Photos are below.
+
+I would also love to invite you to our creator program on Shopify Collabs: you earn 10% on every sale from your link, and your readers get 10% off with your own code. Apply here: https://mymemobrick.com/pages/collabs
 
 Product photos from mymemobrick.com:
 
@@ -33,4 +35,5 @@ Product photos from mymemobrick.com:
 
 Warmly,
 Eden Biri, Memobrick
+As seen on FOX
 https://mymemobrick.com
