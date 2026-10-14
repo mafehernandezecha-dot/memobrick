@@ -253,11 +253,33 @@
     return false;
   }
 
-  function downloadPDF(){
-    if (!window.jspdf || !window.jspdf.jsPDF){ T.toast("PDF library still loading — try again in a moment."); return false; }
+  function makePDF(){
+    if (!window.jspdf || !window.jspdf.jsPDF){ T.toast("PDF library still loading — try again in a moment."); return null; }
     const doc = new window.jspdf.jsPDF({ unit: "mm", format: [279.4, 431.8], orientation: "portrait" });
     T.buildInstructionsPDF(doc);
+    return doc;
+  }
+  function downloadPDF(){
+    const doc = makePDF(); if (!doc) return false;
     doc.save(fileBase() + "-instructions.pdf");
+    return true;
+  }
+  /* the on-screen preview shows the booklet PDF itself, so the team sees
+     exactly the pages that will be printed (the storefront's HTML preview
+     is an older layout) */
+  let previewURL = null;
+  function openInstructions(){
+    const doc = makePDF(); if (!doc) return false;
+    if (previewURL) URL.revokeObjectURL(previewURL);
+    previewURL = URL.createObjectURL(doc.output("blob"));
+    const box = $("#instructions"), sheets = $("#insSheets");
+    sheets.innerHTML = "";
+    const f = document.createElement("iframe");
+    f.className = "team-pdf-preview"; f.title = "Build instructions";
+    f.src = previewURL;
+    f.style.cssText = "display:block;width:min(1100px,100%);height:calc(100vh - 110px);margin:16px auto;border:0;background:#fff;border-radius:6px";
+    sheets.appendChild(f);
+    box.hidden = false; document.body.classList.add("printing"); box.scrollTop = 0;
     return true;
   }
 
@@ -274,7 +296,7 @@
       Object.assign(current, rec, { photo: undefined });
       syncBar();
       downloadPDF();
-      T.openInstructions();
+      openInstructions();
       T.toast("Finished — instructions generated and downloaded.");
       document.dispatchEvent(new CustomEvent("studio:finished", { detail: projectEvent(rec) }));
     } finally { finishing = false; }
@@ -460,7 +482,7 @@
   }
   const ACTIONS = {
     pdf: downloadPDF, png: exportPNG, parts: exportParts, project: () => exportProjectFile(),
-    preview: () => { closeModal(fModal); T.openInstructions(); return true; },
+    preview: () => { closeModal(fModal); openInstructions(); return true; },
     all: async () => {
       downloadPDF();
       await new Promise((r) => setTimeout(r, 400)); await exportPNG();
