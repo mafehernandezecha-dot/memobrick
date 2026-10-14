@@ -65,7 +65,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: d52dbf5
 - Reason: Edits the scheduled Omnisend campaign "Q4 | Oct 20 | Early Bird 15%" (about 5,000 Warm contacts): restores it to draft, swaps in the 20% EARLYHOLIDAY20 version, and reschedules it for the same time (Tue Oct 20, 11:00 ET).
 - Expires: 2026-10-19
-- Status: pending
+- Status: approved
 - From: P-email-campaign-writer-20261013-1
 - Note: This improves one of your existing Omnisend campaigns. EARLYHOLIDAY20 is active in offers-calendar.md, but its end date is unconfirmed; the draft states no end date. If the code will end before Oct 20, do not approve and tell the coordinator the end date. The Oct 27 'LAST CALL 15%' campaign still needs the same decision.
 
