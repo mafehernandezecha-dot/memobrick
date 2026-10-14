@@ -1,0 +1,17 @@
+        /* Calm phone home (2026-10-14): one main button, free-proof link right under it, no dot row, shorter video, no repeated buttons. Desktop (901px+) unchanged. */
+        @media (max-width:900px){
+          .wrap.hero{gap:14px}
+          .hero .rail{display:none}
+          .hero .hero-tertiary{order:3;margin:-4px 0 0;font-size:15px;line-height:1.3}
+          .hero .hero-tertiary .linky2{display:inline-block;padding:10px 6px;min-height:44px}
+          .hero .hero-img{order:4;margin-top:10px}
+          .hero .hero-img video{max-height:50vh;max-height:52svh}
+          .hero .hero-img .hero-poster{aspect-ratio:4/5;object-fit:cover;max-height:50vh;max-height:52svh}
+          .hero .lede,.hero .lede:first-of-type{order:5;margin:6px 0 0;font-size:16px}
+          .wrap.hero > .hero-cta:not(.hero-cta-top){display:none}
+          .hero-trustbar{order:6;margin-top:6px}
+          .mb-mid-cta{display:none}
+        }
+        @media (max-width:700px){
+          #mobCta{display:none!important}
+        }
