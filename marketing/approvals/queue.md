@@ -157,7 +157,7 @@ Also waiting on you (not a Status edit):
 - Commit: 500e180
 - Reason: If approved, ads-analyst readies a Chrome task that adds a buyer search-term audience signal to PMax #2 and launches one Christmas Gifts asset group on the gift collection, inside the same budget, to win back impressions lost to ad rank.
 - Expires: 2026-10-21
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261014-4
 - Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Estimate +1 to 2 orders a week. No budget change.
 
