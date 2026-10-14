@@ -77,7 +77,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: d33ffe8
 - Reason: If approved, site-developer saves a backup and puts the tested home page change on the live theme so phone visitors see "Create My MemoBrick" and "Kits from $35" without scrolling.
 - Expires: 2026-10-19
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261012-2
 - Note: Site-developer rates this and the email pop-up fix above the desktop bar fix for orders (its estimate: 10 to 20 and 5 to 15 a month). Owner may need to paste 17 lines.
 
