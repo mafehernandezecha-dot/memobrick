@@ -4,7 +4,7 @@
 
 | Post ID | Post file | Hash | Scheduled (ET) | Channels | Caption first line | Preview |
 |---|---|---|---|---|---|---|
-| S-20261019-1 | marketing/social/planner/2026-W43/S-20261019-1.md | afad9187ec72e61dd91ab18a4488135a09fae795 | 2026-10-19 19:00 | IG, FB, TT, PIN | Your camera roll is full of photos nobody sees. What if one of them became something you build and hang on the wall? | marketing/social/planner/2026-W43/S-20261019-1-preview.jpg |
+| S-20261019-1 | marketing/social/planner/2026-W43/S-20261019-1.md | 068a4cde070cb7317b56f29f1b3a0c21d548494b | 2026-10-19 19:00 | IG, FB, TT, PIN | Your camera roll is full of photos nobody sees. What if one of them became something you build and hang on the wall? | marketing/social/planner/2026-W43/S-20261019-1-preview.jpg |
 | S-20261020-1 | marketing/social/planner/2026-W43/S-20261020-1.md | 68c8ede6bcab75c1628ada1fb1d1476d6cf055c8 | 2026-10-20 19:00 | IG, FB, TT, PIN | The best part of this gift happens before it is wrapped. | marketing/social/planner/2026-W43/S-20261020-1.png |
 | S-20261021-1 | marketing/social/planner/2026-W43/S-20261021-1.md | a64617446091c97a0be16d02b0402021826a4d7b | 2026-10-21 19:00 | IG, FB, TT, PIN | Every Memobrick mosaic is built from tiny 1×1 bricks, pressed in one at a time. | marketing/social/planner/2026-W43/S-20261021-1-preview.jpg |
 | S-20261022-1 | marketing/social/planner/2026-W43/S-20261022-1.md | fa0e69f49241d9e70577cf9a3d319075241ded6b | 2026-10-22 19:00 | IG, FB, TT, PIN | What actually comes in a Memobrick kit? Save this for when you are choosing a gift. | marketing/social/planner/2026-W43/S-20261022-1.png |
