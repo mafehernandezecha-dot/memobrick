@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: gift for someone who has everything
 Hub: Christmas
 Page type: article
