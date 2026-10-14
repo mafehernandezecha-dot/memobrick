@@ -331,7 +331,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 768c71e
 - Reason: site-developer makes the cart show the customer's own mosaic instead of a stock photo, hides raw internal fields, and adds the verified "Order by December 15" line.
 - Expires: 2026-12-10
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261012-4
 - Note: Cart page display only; it does not touch checkout, order emails or fulfillment. Remove the Dec 15 line after Dec 15. Superseded by A-2026W42-021 (site-developer built and tested the cart fix).
 
