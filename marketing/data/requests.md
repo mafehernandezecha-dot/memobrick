@@ -5,3 +5,4 @@ Agents add one line under Open when they need Google Ads, Google Analytics (GA4)
 Format: `- <YYYY-MM-DD> <agent>: <source>: <what, which date window, which comparison>. Why: <one line>`
 
 ## Open
+- 2026-10-14 conversion-auditor: Meta Business Suite and GA4: sessions, add to cart and purchases by landing page and channel for the last 30 days and the same dates in 2025, plus Meta ad landing URLs. Why: Facebook and Instagram visitors add to cart at 3.8% against 8.9% last year and I cannot see which pages the ads send them to.

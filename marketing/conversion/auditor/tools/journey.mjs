@@ -4,7 +4,7 @@
 // Phone runs use an Android Chrome user agent: in the agent sandbox shop.app is blocked, and Shopify bounces
 // iPhone Safari through shop.app/accounts/sur. Checkout redirects to Shop Pay on shop.app, so the walk also opens
 // /checkout?skip_shop_pay=true. It STOPS at the checkout page: no payment details, no order.
-import { chromium } from '/home/user/memobrick/os/node_modules/playwright-core/index.mjs';
+import { chromium } from '/opt/node-tools/node_modules/playwright-core/index.mjs';
 // Walks the purchase path and STOPS at the checkout page. Never fills payment or places an order.
 const [,, device, start, outdir, prefix] = process.argv;
 const vp = device === 'phone' ? { width: 390, height: 844 } : { width: 1440, height: 900 };
