@@ -1,3 +1,5 @@
+> **Withdrawn 2026-10-14** after the audience-fit check (score 3, maybe, needs Eden; see marketing/outreach/gift-guide-pr/audience-fit-2026-10-14.md). Proposal P-outreach-gift-guide-pr-20261014-6 is withdrawn in the run report. Do not ship a kit on this file.
+
 # Kit offer: Green Wedding Shoes (Jen Campbell)
 
 Type: offer (nothing automatic; the owner sends the kit by hand if approved).

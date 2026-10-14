@@ -1,3 +1,5 @@
+> **Superseded in part 2026-10-14** by the audience-fit check (marketing/outreach/gift-guide-pr/audience-fit-2026-10-14.md): Green Wedding Shoes moves from KIT to commission only, score 3 (maybe, needs Eden), and The Frugal Ginger is dropped (score 2).
+
 # Kit vs commission review, 2026-10-14
 
 Requested by Eden on 2026-10-14: "re-analyze who to give a kit and who just to offer earning on commission. Not everyone should get a free kit."

@@ -1,3 +1,5 @@
+> **Dropped 2026-10-14** in the audience-fit check (score 2: frugal, deal-seeking readers do not match our $70 to $150 gift buyer; see marketing/outreach/gift-guide-pr/audience-fit-2026-10-14.md). P-outreach-gift-guide-pr-20261014-4 is withdrawn. Do not send.
+
 # Pitch: frugal-ginger
 
 - Replaces: A-2026W41-009 (approved with a free kit; replaced at the owner's request of 2026-10-14 before any draft was created). Rewritten 2026-10-14 in the kit vs commission review.

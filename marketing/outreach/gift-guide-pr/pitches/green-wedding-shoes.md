@@ -5,25 +5,27 @@
 - Contact route: Contact page https://greenweddingshoes.com/contact/ (general inquiries to Jen; copy the address from the page, it was not captured and the page could not be opened from this environment).
 - Guide: https://greenweddingshoes.com/best-wedding-gift-ideas/
 - Angle: Couples and wedding guides (see marketing/outreach/gift-guide-pr/talking-points.md)
-- Word count (body, greeting, photo list and signature excluded): 172
+- Word count (body, greeting, photo list and signature excluded): 169
 - Which version to send: email the HTML version (pitches/green-wedding-shoes.html) as the Gmail draft's htmlBody, with the plain text below as the plain-text alternative. For a contact form, paste the plain text below, photo links included.
-- Flags: Decision 2026-10-14: KIT (see marketing/outreach/gift-guide-pr/kit-vs-commission-2026-10-14.md). The pitch offers a sample kit, but the kit has its own offer item: approving this send item does not approve the kit. Create the Gmail draft only if the kit offer item (marketing/outreach/gift-guide-pr/kit-offers/green-wedding-shoes-kit.md) is approved too; if the kit is rejected, the pitch is rewritten as commission only and proposed again. Sender email still to confirm.
+- Flags: Audience-fit check 2026-10-14 (marketing/outreach/gift-guide-pr/audience-fit-2026-10-14.md): score 3, MAYBE, NEEDS EDEN. Readers skew to engaged couples aged 25 to 34, our weakest buyer group, and wedding season is not our Nov to Dec peak. The kit is withdrawn and this pitch is rewritten as COMMISSION ONLY (Collabs 10% commission, 10% reader code). Not proposed: it is proposed again only if Eden says yes to this outlet. Sender: Eden Biri, memobrickofficial@gmail.com (Facts table).
 
 **Subject:** A wedding gift they build together: their favorite photo, brick by brick
 
 Hi Jen,
 
-I loved Green Wedding Shoes' "56 Best Wedding Gift Ideas" and wanted to share a gift that gives newlyweds an evening, not just an object.
+I loved your "56 Best Wedding Gift Ideas" and wanted to share a gift that gives newlyweds an evening, not just an object.
 
-Picture the couple on the floor of their first home with a tray of tiny bricks and their favorite photo, maybe their first kiss as newlyweds. Row by row, their faces start to appear. By the end of the night they have art for the wall that they made together.
+Picture the couple in their first home with a tray of tiny bricks and their favorite photo. Row by row, their faces start to appear. By the end of the night they have wall art they made together.
 
 That is Memobrick, a DIY brick mosaic kit made from the couple's own photo:
 
 - The giver previews the mosaic before ordering; our designers can send a free proof first.
-- 1×1 bricks in 40+ colors, sorted in labeled bags, with a printed color map and a tool.
+- 1×1 bricks in 40+ colors in labeled bags, with a printed color map.
 - Made and shipped from Miami, Florida. Orders placed by December 15 arrive before Christmas.
 
-Would you consider Memobrick for your next wedding gift roundup? I would be happy to send photos, or a sample kit made from a photo of you and your partner so you can try the build yourself.
+Would you consider Memobrick for your next wedding gift roundup? Photos are below.
+
+I would also love to invite you to our creator program on Shopify Collabs: you earn 10% on every sale from your link, and your readers get 10% off with your own code. Apply here: https://mymemobrick.com/pages/collabs
 
 Product photos from mymemobrick.com:
 

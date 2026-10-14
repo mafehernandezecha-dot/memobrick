@@ -92,3 +92,49 @@ Commission only means placements cost Memobrick nothing up front and pay only wh
 
 ## Next run
 Create Gmail drafts for whichever of P-20261014-1 to -5 are approved (GWS only with the kit approved too), log them in contacts-log.md, check sent mail, and look for contact routes for the held KIT targets.
+
+---
+
+# outreach-gift-guide-pr 2026-10-14, run 2: buyer profile and audience-fit check
+
+## Summary
+At Eden's request ("make sure Mario re-analyzes that each website he wants to approach is our audience") I built a buyer profile from Shopify and Meta data and scored all 18 outlets against it.
+Our buyer: a US woman aged 35 to 64 buying a $70 to $150 personalized photo gift for family, partner or pet, mostly for Christmas. 11 rows (8 outlets) fit at 4 or 5, 6 are "maybe, needs Eden", 1 dropped.
+Pitches P-1, P-2, P-3 stay as proposed. P-4 (Frugal Ginger) is withdrawn; P-5 and P-6 (Green Wedding Shoes pitch and kit) are withdrawn pending Eden.
+
+## Done
+- `marketing/outreach/gift-guide-pr/buyer-profile.md`: who buys, for whom, why, when, price comfort, where they find us, plus the audience-fit test. Sources: ShopifyQL (aggregated only, no names, emails or addresses), Meta age and gender purchases for Nov to Dec 2025, the ads-analyst audit, and the growth-analyst diagnosis.
+- `marketing/outreach/gift-guide-pr/audience-fit-2026-10-14.md`: table of outlet, readers, country, price fit, content fit, score and decision for all 18 outlets and guides.
+- Green Wedding Shoes pitch (.md and .html) rewritten as commission only (Collabs 10%/10%, 169 words). It is ready but not proposed. The kit offer file is marked withdrawn.
+- Frugal Ginger pitch marked dropped. `kit-vs-commission-2026-10-14.md` notes the two changes at the top.
+- Agent file: new step 2a. Every future target must pass the audience-fit check against `buyer-profile.md` before a pitch is written (4 or 5 pitch, 3 needs Eden, 1 or 2 drop; a kit needs 5, or 4 with evidence of reach). `buyer-profile.md` is added to Inputs and Outputs. `python3 marketing/tools/check.py agents` passes.
+- `talking-points.md`: new "Who we are talking to" section.
+- `check.py copy` passes on every changed file.
+- Approvals: `check.py approvals` shows only A-2026W41-009 (Frugal Ginger), whose draft has changed. Nothing to act on. That target is now dropped.
+
+## Proposed for approval
+
+No new items. Changes to this morning's proposals (I did not edit queue.md):
+
+- **P-outreach-gift-guide-pr-20261014-1 (SheScribes): stays.** Score 4.
+- **P-outreach-gift-guide-pr-20261014-2 (Love, Tabitha): stays.** Score 4.
+- **P-outreach-gift-guide-pr-20261014-3 (Emily Reviews): stays.** Score 4.
+- **P-outreach-gift-guide-pr-20261014-4 (The Frugal Ginger): WITHDRAWN.** Score 2: frugal, deal-seeking readers do not match a $70 to $150 gift buyer. Coordinator, please do not queue it, or retire it if it was queued. A-2026W41-009, which it replaced, stays retired.
+- **P-outreach-gift-guide-pr-20261014-5 (Green Wedding Shoes pitch): WITHDRAWN, maybe, needs Eden.** Score 3. Readers skew to engaged couples aged 25 to 34, our smallest and costliest Meta buyer group (8% of holiday purchases). Wedding season is also not our Nov to Dec peak. A commission-only version is ready at `pitches/green-wedding-shoes.md`; I will propose it if Eden says yes.
+- **P-outreach-gift-guide-pr-20261014-6 (Green Wedding Shoes kit): WITHDRAWN.** A score 3 outlet does not justify a free kit.
+
+## Blocked or unknown
+- `marketing/data/` has no GA4 or Meta audience snapshots (never pulled), so I have no landing-page or interest data beyond the ads audit.
+- Orders have no gift note or occasion field. "For whom" is inferred from codes (BEMYVALENTINE 122, MOMINBRICKS 32) and ad themes.
+- Meta age and gender data follows our targeting (82% of spend on women).
+- Outlet pages still cannot be opened (DNS failure), and Similarweb and Ahrefs are not connected. Outlet reader evidence is search text and self-description, marked unverified.
+- Contact routes are still missing for the two best fits (Shop TODAY, CNN Underscored), and for NCOA and Dogster.
+
+## Sales impact
+In 12 months no editorial site or gift guide appears among our top 25 order referrers. Gift-guide PR is unproven for Memobrick, so it has to reach our exact buyer. Dropping the weak fits keeps Eden's time and kits for outlets that can sell. The three remaining pitches are commission only, so they cost nothing unless they sell. The biggest upside is a score 5 national desk (Shop TODAY or CNN Underscored) placed before Nov 10, when demand doubles. Expected effect before November: none. This does not address the referred-traffic weak point directly; a national placement would.
+
+## Next run
+- Create Gmail drafts for whichever of P-1 to P-3 are approved.
+- Look for editor routes at Shop TODAY and CNN Underscored.
+- Apply step 2a to every new target.
+- Propose Green Wedding Shoes again only if Eden says yes.

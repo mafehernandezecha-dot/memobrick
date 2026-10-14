@@ -2,6 +2,10 @@
 
 Use this file for every pitch. Updated 2026-10-14 (kit vs commission rule, creator program, FOX line). Built 2026-10-12 from Eden's feedback ("talk more about Memobrick like an experience", "creating experiences with families building a special picture together; make it more sentimental") and checked against `marketing/shared/product-facts.md` and the Facts table in `marketing/shared/offers-calendar.md`. Re-check prices in Shopify (read-only) on the day you quote one.
 
+## Who we are talking to
+
+The real buyer (from `buyer-profile.md`, built from Shopify and Meta data on 2026-10-14): a US woman aged 35 to 64 buying a $70 to $150 personalized photo gift for her family, partner or pet, mostly for Christmas, then Valentine's Day and Mother's Day. Pick the angle for that reader, and pitch only outlets that pass the audience-fit check.
+
 ## The story in one breath
 
 Memobrick turns a favorite photo into a brick portrait that the family builds together. The kit arrives, everyone gathers around the table, the bags of bricks open, and someone starts the first row. For a while it is just colors. Then, brick by brick, a face appears: a grin, a pair of eyes, the dog's ears. When the last brick goes in, the picture goes on the wall, and every time someone walks past it they remember the evening they built it.
