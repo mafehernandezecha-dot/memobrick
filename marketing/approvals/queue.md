@@ -351,7 +351,7 @@ Also waiting on you (not a Status edit):
 - Commit: 081512d
 - Reason: On the next Mac run, declines 42 fake, coupon or off-brand applicants silently in Collabs (no message, no reason); approves nobody and sends no messages. Clears the worst of the 452-application queue.
 - Expires: 2026-10-28
-- Status: pending
+- Status: approved
 - From: P-outreach-creator-scout-20261014-1
 - Note: Housekeeping; no direct orders expected. It shows whether her evidence standard is accepted before larger decline batches.
 
