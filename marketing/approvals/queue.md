@@ -2,13 +2,19 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-14 (run 2). Added A-2026W42-024 to 027 (ads-analyst: Christmas ads, Meta consolidation, Google occasion ads and PMax signals), 028 and 029 (creator-scout: silent declines and the 2% engagement floor) and 030 to 032 (outreach: commission-only SheScribes, Love Tabitha, Emily Reviews). Archived 17 items: 4 done ad changes, 3 rejected, 10 replaced or withdrawn (including the old Mario pitches). Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-14.md`.
+Updated 2026-10-14 (run 3). Added A-2026W42-033 (W43 social batch, 7 posts from Oct 19), 034 (follower goals) and 035 (creator-scout: 47 more silent declines). Earlier today (run 2): Added A-2026W42-024 to 027 (ads-analyst: Christmas ads, Meta consolidation, Google occasion ads and PMax signals), 028 and 029 (creator-scout: silent declines and the 2% engagement floor) and 030 to 032 (outreach: commission-only SheScribes, Love Tabitha, Emily Reviews). Archived 17 items: 4 done ad changes, 3 rejected, 10 replaced or withdrawn (including the old Mario pitches). Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-14.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-Your turn, in order of expected orders (all `pending`):
+New in run 3 (all `pending`):
+
+- A-2026W42-033: W43 social batch, 7 posts Oct 19 to 25 incl. EARLYHOLIDAY20 and Dec 15 posts. Decide by Oct 18; confirm the portrait consent noted on the item.
+- A-2026W42-034: weekly follower goals as growth rates (nothing automatic).
+- A-2026W42-035: silently decline 47 more fake or coupon Collabs applicants (housekeeping).
+
+From run 2 (check each Status line; several are now approved):
 
 1. A-2026W42-025: 4 Christmas gift ads on Meta (ads-analyst's top move, about 1 order a day once live). You approved them in chat today and asked for a launch now within $60 a day; confirm on the Status line (the item's note explains how to include the launch).
 2. A-2026W42-024: move Meta spend from PROMO -v1 into Proven Videos (same $60 a day total). Approved in chat; confirm on the Status line.
@@ -23,7 +29,6 @@ Your turn, in order of expected orders (all `pending`):
 Also waiting on you (not a Status edit):
 
 - A-2026W42-019 (approved) is stuck: the Google Ads save click was refused by Claude Code's permission check. Allow save clicks for the Chrome routine and set the task back to ready, or make the edit by hand. Expires Oct 20.
-- Hugo's W43 weekly social batch was not in his report when this ran; it goes in on the next coordinator run.
 
 ## Time-sensitive
 
@@ -224,6 +229,18 @@ Also waiting on you (not a Status edit):
 
 (Highest expected sales impact first.)
 
+## A-2026W42-033
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W43/week.md
+- Commit: 44b5d76
+- Reason: Approving this approves all 7 W43 posts listed in week.md (3 new reels, 4 carousels, Oct 19 to 25, IG/FB/TikTok/Pinterest). The social publisher then prepares a posting kit for each one. To send back single posts, write `changes: <post-id> <note>`; posts you do not name stay approved.
+- Expires: 2026-10-24
+- Status: pending
+- From: P-social-planner-20261014-1
+- Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. If there is no Pinterest business account, the publisher skips the pins.
+
 ## A-2026W42-013
 - Agent: conversion-auditor
 - Executor: site-developer
@@ -378,7 +395,32 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-seo-technical-20261011-3
 
+## A-2026W42-034
+- Agent: social-planner
+- Executor: social-planner
+- Type: offer
+- Draft: marketing/social/planner/follower-goals.md
+- Commit: 44b5d76
+- Reason: Weekly follower goals as growth rates (IG +1.5%, FB +0.5%, TikTok +3%, Pinterest +2%) because current counts are missing; nothing automatic happens, and the planner then reports against them weekly.
+- Expires: 2026-10-29
+- Status: pending
+- From: P-social-planner-20261014-2
+
+## A-2026W42-035
+- Agent: outreach-creator-scout
+- Executor: outreach-creator-scout
+- Type: send
+- Draft: marketing/outreach/creator-scout/batches/2026-10-14-batch-2.md
+- Commit: 91545c8
+- Reason: On the next Mac run, declines 47 more coupon, deal, review and empty-account applicants silently in Collabs (no message, no reason); approves nobody and sends no messages. With batch 1 this clears every applicant who has a Facebook, TikTok or YouTube account, leaving only the coupon-domain Instagram farm.
+- Expires: 2026-10-28
+- Status: pending
+- From: P-outreach-creator-scout-20261014-3
+- Note: Checked: no applicant is also in batch 1 (A-2026W42-028). Housekeeping, no orders expected.
+
 ## Flagged
+
+Run 3 (2026-10-14). Added A-2026W42-033 to 035. No flags: none touches the order workflow, all drafts exist and are unshared, EARLYHOLIDAY20 and Dec 15 are in offers-calendar, contacts log is empty, batch 2 does not overlap batch 1, and no other open item posts to W43 dates. Not queued: P-outreach-gift-guide-pr-20261014-4, -5 and -6 (withdrawn, see run 2 below).
 
 Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file exists, and no two open items share a draft file. Contacts log is still empty, so no 30-day matches.
 

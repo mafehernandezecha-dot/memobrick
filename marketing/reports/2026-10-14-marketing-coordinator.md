@@ -54,3 +54,29 @@ Weak points: (1) referred traffic -63%: the four ads items are the only proposal
 
 ## Next run
 Next coordinator run: queue Hugo's W43 batch and any re-proposed Christmas launch item, and archive items as their agents report them done.
+
+---
+
+# marketing-coordinator 2026-10-14, run 3 (owner request)
+
+## Summary
+- Added 3 items: A-2026W42-033 (Hugo's W43 social batch, 7 posts from Oct 19), 034 (weekly follower goals), 035 (creator-scout batch 2: 47 more silent declines). Nothing flagged or dropped.
+
+## Done
+- Collected new proposals from today's reports: social-planner P-1 and P-2, outreach-creator-scout P-3 (commit 91545c8). All other P- IDs in today's reports were already queued or archived; outreach-gift-guide-pr P-4, P-5 and P-6 stay unqueued (withdrawn).
+- Checks: no order-workflow item; all drafts exist and are unshared; EARLYHOLIDAY20 is active and Dec 15 is in the Facts table; contacts log is empty; batch 2 shares no applicant with batch 1 (028); Executors match the approvals table.
+- Added a note on 033: the woman in the 2022 portrait appears in 6 of 7 posts, so her consent should be confirmed before approving (social-planner's blocker). The first post is Oct 19, so the decision is due by Oct 18.
+- `check.py approvals` passes. No Status line changed. Archiving of done items (chrome-tasks reported 026, 027, 018 and 020 done) was left for the next full run, since this run was limited to queueing.
+
+## Proposed for approval
+None
+
+## Blocked or unknown
+- New from social-planner: follower counts are missing on all platforms (no data snapshots, no Instagram account linked to the Meta ad account); Pinterest business account unconfirmed; portrait consent; baseplate colour (clear in footage vs white in product-facts); the "submitted photos" Drive folder does not exist.
+- New from creator-scout: 360 applications still unread; Nguyen Thi Truc My to be proposed for decline next run unless the owner wants her kept.
+
+## Sales impact
+033 is the only new item with order potential: one EARLYHOLIDAY20 + Dec 15 carousel to the gift collection (weak point: EARLYHOLIDAY20 not announced on every channel) and 3 reels with 4:5 cuts usable as Meta ads. 034 and 035 bring no orders directly. Weak point still without a proposal: draft orders collapse (4 vs 71).
+
+## Next run
+Monday 2026-10-19 with the weekly Sales Plan; archive the items chrome-tasks and ads-analyst reported done.
