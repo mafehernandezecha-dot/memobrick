@@ -89,7 +89,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 15912ed
 - Reason: If approved, site-developer saves a backup and puts the tested change on the live theme's memobrick.js so desktop visitors see the price and Finish Editing after upload (desktop add to cart 5.1% vs 8.0% last year).
 - Expires: 2026-10-20
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261013-1
 - Note: This is the built and tested version of A-2026W42-011 (same fix). Approve this one, not both. Owner may need to paste two edits. Stale: built on the old theme and would overwrite v27 changes. Superseded by A-2026W42-022.
 
