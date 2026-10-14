@@ -35,19 +35,20 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | ads-analyst | Google and Meta ads judged on Shopify sales; budget moves, pauses, new ads (applies approved changes) | Fri; daily Nov 16 to Dec 20 |
 | conversion-auditor | Walks the store like a customer, finds what stops people buying, proposes fixes | Wed |
 | site-developer | Builds store fixes in a theme copy, tests them on phone and desktop, applies approved ones with a backup | Daily |
+| outreach-creator-scout | María Beatriz: reviews every pending Shopify Collabs application (real engagement, audience fit, red flags), sorts creators into Top 3, Approve, Decline and Maybe, drafts each welcome message; after your approval she approves creators into the fixed 10% commission, 10% discount tier, sends the approved messages and declines silently. Runs on your Mac only (Collabs needs your logged-in Chrome), not in the cloud routine | Mon 10:07 on the Mac; also Thu Nov 1 to Dec 15 |
 
 ### Wave 2 (after the week 4 review)
 
-outreach-link-builder, outreach-creator-scout, social-community-manager, conversion-reviews-ugc. (ads-analyst and conversion-auditor started early, on 2026-10-12.)
+outreach-link-builder, social-community-manager, conversion-reviews-ugc. (ads-analyst and conversion-auditor started early, on 2026-10-12, and outreach-creator-scout on 2026-10-14.)
 
 ## Social publishing
 
 Approved posts publish themselves from your Mac, free (no Postiz or other app). The social publisher writes a kit for each approved post in `social/publisher/to-post/` at least a day ahead, starting with `Status: ready` and the post time. A job on your Mac checks every hour from 8:07 am to 9:07 pm, and when a kit's time arrives it posts it with Claude in Chrome (the `memobrick-social-post` skill) on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, then writes the live links into the kit and the content calendar.
 
-- **Install once**, in Terminal: `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh` (it also schedules the Google Ads Chrome tasks at 9:07 pm and the data pull at 7:07 am; run it again to update).
+- **Install once**, in Terminal: `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh` (it also schedules the Google Ads Chrome tasks at 9:07 pm, the data pull at 7:07 am, and María Beatriz's Shopify Collabs review on Mondays at 10:07, plus Thursdays from November 1 to December 15; run it again to update).
 - **Keep** the Mac awake and on power during those hours, with Chrome open, the Claude in Chrome extension signed in, and you logged in to Meta Business Suite, TikTok, Pinterest and Google Ads.
 - **Needs you:** a login page, CAPTCHA, a video over 10 MB, or a kit more than 2 days late is marked `Status: needs owner: <reason>`, and the publisher lists it in its report under Blocked or unknown.
-- **Logs:** `~/Library/Logs/memobrick-social-post.log` (and `memobrick-chrome-tasks.log`, `memobrick-data-pull.log`).
+- **Logs:** `~/Library/Logs/memobrick-social-post.log` (and `memobrick-chrome-tasks.log`, `memobrick-data-pull.log`, `memobrick-collabs.log`).
 - **Stop:** `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall`. Without the Mac job you can still post a kit by hand and reply with the live links.
 
 ## Data snapshots (Google and Meta numbers, free)
@@ -102,6 +103,7 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 | Postiz API key (optional; not needed, the Mac posts for free) | Never | Nothing |
 | Mac jobs installed (see Social publishing) | Before the first approved post | Automatic posting, Google and Meta data |
 | Logged in, in the Mac's Chrome, to Google Ads, Analytics, Search Console, Meta Business Suite, TikTok and Pinterest | Always | Daily data snapshots |
+| Logged in, in the Mac's Chrome, to Shopify admin for the Memobrick store with the Shopify Collabs app (and to Instagram, TikTok and YouTube so creators' profiles open), and a Collabs tier at 10% commission and 10% discount | Always | Creator reviews and approved Collabs actions (María Beatriz) |
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
 | Product footage in the Drive footage library, with each clip's rights confirmed in `social/footage-rights.md` | Week 1 | Edited social videos |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |

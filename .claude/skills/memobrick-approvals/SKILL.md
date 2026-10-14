@@ -42,9 +42,10 @@ Status values: `pending`, `approved`, `rejected`, or `changes: <note>`. Anything
 | send (email campaign) | email-campaign-writer creates the campaign in Omnisend and schedules it for its send time, or applies the approved edit to an existing scheduled campaign |
 | send (flow test) | email-flow-optimizer makes the flow change exactly as written |
 | send (outreach pitch) | outreach-gift-guide-pr creates a Gmail draft for the owner to send |
+| send (Collabs creators) | outreach-creator-scout, on the owner's Mac in Shopify Collabs: approves the listed creators into the fixed 10% commission, 10% discount tier, sends each one's message word for word, and declines the listed creators silently (a batch item, or one Top 3 creator per item) |
 | site-change | site-developer (store and conversion fixes) or seo-technical (SEO fixes) applies exactly the change in the draft, after saving a backup |
 | ad-change | Meta: ads-analyst applies exactly the change through the Meta connector. Google: ads-analyst writes a ready-to-paste task for the owner to run with the Claude extension in Chrome. New campaigns and ads are created paused unless the item says to launch |
-| offer | nothing automatic; the owner applies it |
+| offer | nothing automatic; the owner applies it. Exceptions for outreach-creator-scout: a sample kit item approves the kit version of that creator's Collabs message (the owner ships the kit), and an engagement floor item sets the floor she sorts by |
 
 Write the Reason so the owner knows exactly which of these will happen.
 

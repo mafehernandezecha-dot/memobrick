@@ -210,15 +210,15 @@
     {
       "name": "outreach-creator-scout",
       "character": "mariabeatriz",
-      "role": "Finds content creators",
+      "role": "Reviews Shopify Collabs creators",
       "department": "Outreach & PR",
-      "status": "planned",
+      "status": "active",
       "displayName": "María Beatriz",
-      "machine": "",
+      "machine": "Mac",
       "avatar": "avatars/mariabeatriz.png",
       "sprite": "sprites/mariabeatriz.png",
-      "folder": null,
-      "agentFile": null
+      "folder": "marketing/outreach/creator-scout",
+      "agentFile": ".claude/agents/outreach-creator-scout.md"
     },
     {
       "name": "social-community-manager",

@@ -27,6 +27,8 @@ Then add, in this order:
 - marketing-coordinator every day, so proposals reach the owner's Your turn the same day (the Sales Plan is still written on Mondays).
 - social-publisher every day, last.
 
+Not in this routine: outreach-creator-scout (María Beatriz). Shopify Collabs has no API in the Shopify connector and needs the owner's logged-in Chrome, so she runs only on the owner's Mac (the `com.memobrick.collabs` job and the `memobrick-collabs` skill), Mondays and, from November 1 to December 15, Thursdays. Never start her from here.
+
 Order of the run: growth-analyst first, then the day's other agents in the table order, then site-developer, then marketing-coordinator, then social-publisher.
 
 ## 2. Run them

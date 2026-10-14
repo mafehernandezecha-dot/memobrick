@@ -4,7 +4,10 @@
 #   com.memobrick.chrome-tasks  every day at 21:07, runs approved Google Ads Chrome tasks
 #   com.memobrick.data-pull     every day at 7:07, reads Google Ads, Analytics, Search Console,
 #                               Meta, TikTok and Pinterest numbers into marketing/data/ (read-only)
-# All three run Claude Code with Claude in Chrome on this Mac, signed in with the owner's plan.
+#   com.memobrick.collabs       Mondays at 10:07 (and Thursdays at 10:07 from Nov 1 to Dec 15):
+#                               María Beatriz reviews Shopify Collabs creator applications and
+#                               carries out the owner-approved decisions and messages
+# All four run Claude Code with Claude in Chrome on this Mac, signed in with the owner's plan.
 #
 # Install or update (safe to run again):  bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh
 # Stop and remove all jobs:               bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh --uninstall
@@ -17,7 +20,7 @@ AGENTS_DIR="$HOME/Library/LaunchAgents"
 LOG_DIR="$HOME/Library/Logs"
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.local/bin/claude}"
 DOMAIN="gui/$(id -u)"
-JOBS="social-post chrome-tasks data-pull"
+JOBS="social-post chrome-tasks data-pull collabs"
 
 unload_job() {
   local label="com.memobrick.$1" plist="$AGENTS_DIR/com.memobrick.$1.plist"
@@ -31,8 +34,8 @@ if [ "${1:-}" = "--uninstall" ]; then
   done
   rm -f "$WRAPPER"
   rm -rf "$SUPPORT_DIR"/*.lock "$SUPPORT_DIR/data-pull-raw"
-  echo "Memobrick Mac jobs stopped and removed. Nothing will post or pull data automatically now."
-  echo "Logs are kept in $LOG_DIR/memobrick-social-post.log, memobrick-chrome-tasks.log and memobrick-data-pull.log."
+  echo "Memobrick Mac jobs stopped and removed. Nothing will post, pull data or act in Shopify Collabs automatically now."
+  echo "Logs are kept in $LOG_DIR/memobrick-social-post.log, memobrick-chrome-tasks.log, memobrick-data-pull.log and memobrick-collabs.log."
   echo "To turn them back on: bash \"$REPO_DIR/os/scripts/install-mac-tasks.sh\""
   exit 0
 fi
@@ -47,7 +50,7 @@ mkdir -p "$SUPPORT_DIR" "$AGENTS_DIR" "$LOG_DIR"
 # The wrapper launchd runs. Values from this install are filled in below.
 cat > "$WRAPPER" <<'WRAP'
 #!/bin/bash
-# Memobrick Mac task runner. Usage: run-task.sh social-post | chrome-tasks | data-pull
+# Memobrick Mac task runner. Usage: run-task.sh social-post | chrome-tasks | data-pull | collabs
 # Written by os/scripts/install-mac-tasks.sh; run that script again to update it.
 TASK="${1:-}"
 REPO="__REPO_DIR__"
@@ -61,7 +64,8 @@ case "$TASK" in
   chrome-tasks) SKILL="memobrick-chrome-tasks"; LIMIT=5400 ;;
   data-pull)    SKILL="memobrick-data-pull";    LIMIT=3000
                 EXTRA=("Bash(mv:*)" "Bash(mkdir:*)" "Bash(python3 marketing/tools/clean_csv.py:*)") ;;
-  *) echo "Usage: run-task.sh social-post | chrome-tasks | data-pull" >&2; exit 2 ;;
+  collabs)      SKILL="memobrick-collabs";      LIMIT=5400 ;;
+  *) echo "Usage: run-task.sh social-post | chrome-tasks | data-pull | collabs" >&2; exit 2 ;;
 esac
 
 LOG="$HOME/Library/Logs/memobrick-$TASK.log"
@@ -109,6 +113,10 @@ elif [ "$TASK" = "chrome-tasks" ]; then
     [ -f "$f" ] || continue
     if [ "$(head -n 1 "$f" | tr -d '\r')" = "Status: ready" ]; then due=1; break; fi
   done
+elif [ "$TASK" = "collabs" ]; then
+  # Mondays always (and any day it is started by hand); Thursdays only from Nov 1 to Dec 15.
+  md="$(date '+%m%d')"
+  if [ "$(date '+%u')" != "4" ] || { [[ ! "$md" < "1101" ]] && [[ ! "$md" > "1215" ]]; }; then due=1; fi
 else
   # data-pull: once a day; skip when latest.md already says it was updated today.
   if [ "$(head -n 1 marketing/data/latest.md 2>/dev/null | tr -d '\r' | cut -c 1-19)" != "Updated: $(date '+%Y-%m-%d')" ]; then
@@ -145,11 +153,20 @@ chmod 755 "$WRAPPER"
 
 xml_escape() { printf '%s' "$1" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'; }
 
+# write_plist <job> "<hours>" ["<weekdays>"]: runs at :07 of each hour, on the given
+# weekdays only (1 = Monday ... 7 = Sunday) when weekdays are given, else every day.
 write_plist() {
-  local job="$1" hours="$2" plist="$AGENTS_DIR/com.memobrick.$1.plist" intervals="" h
+  local job="$1" hours="$2" days="${3:-}" plist="$AGENTS_DIR/com.memobrick.$1.plist" intervals="" h d
   for h in $hours; do
-    intervals="$intervals    <dict><key>Hour</key><integer>$h</integer><key>Minute</key><integer>7</integer></dict>
+    if [ -n "$days" ]; then
+      for d in $days; do
+        intervals="$intervals    <dict><key>Weekday</key><integer>$d</integer><key>Hour</key><integer>$h</integer><key>Minute</key><integer>7</integer></dict>
 "
+      done
+    else
+      intervals="$intervals    <dict><key>Hour</key><integer>$h</integer><key>Minute</key><integer>7</integer></dict>
+"
+    fi
   done
   cat > "$plist" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
@@ -180,6 +197,7 @@ PLIST
 write_plist social-post "8 9 10 11 12 13 14 15 16 17 18 19 20 21"
 write_plist chrome-tasks "21"
 write_plist data-pull "7"
+write_plist collabs "10" "1 4"
 
 cat <<NEXT
 
@@ -188,6 +206,9 @@ Memobrick Mac jobs installed.
   Google Ads tasks:   every day at 21:07 (runs approved Chrome tasks)
   Data pull:          every day at 7:07 (reads Google Ads, Analytics, Search Console, Meta,
                       TikTok and Pinterest numbers into marketing/data/, changes nothing)
+  Collabs creators:   Mondays at 10:07, and Thursdays at 10:07 from Nov 1 to Dec 15
+                      (María Beatriz reviews Shopify Collabs applications; acts only on
+                      what you approved)
   Memobrick folder:   $REPO_DIR
 NEXT
 
@@ -202,7 +223,9 @@ Next steps:
   1. Keep the Mac awake and on power from 7 am to 9 pm, with Google Chrome open and the
      Claude in Chrome extension signed in. Stay logged in, in that Chrome, to:
      Google Ads, Google Analytics and Search Console (with the Google account that owns
-     them), Meta Business Suite (Instagram and Facebook), TikTok and Pinterest.
+     them), Meta Business Suite (Instagram and Facebook), TikTok, Pinterest, and Shopify
+     admin for the Memobrick store with the Shopify Collabs app (also Instagram, TikTok and
+     YouTube, so creators' profiles open without a login wall).
      If Chrome asks whether the site may download multiple files, click Allow.
      (System Settings > Battery or Energy: prevent automatic sleeping when on power.)
   2. Try it once now (posts only kits that are approved and due):
@@ -210,12 +233,15 @@ Next steps:
      If macOS asks to let bash access the Documents folder, click Allow.
      Also check that 'git push' works from Terminal in the memobrick folder.
      To test the data pull now:  bash "$WRAPPER" data-pull
+     To run María Beatriz's Collabs review now:  bash "$WRAPPER" collabs
   3. Logs:
        $LOG_DIR/memobrick-social-post.log
        $LOG_DIR/memobrick-chrome-tasks.log
        $LOG_DIR/memobrick-data-pull.log
+       $LOG_DIR/memobrick-collabs.log
      Anything that needs you shows up as 'Status: needs owner' in the kit and in the
-     publisher's report, and for the data pull under 'Needs owner' in marketing/data/latest.md.
-  4. To stop all three jobs:
+     publisher's report, for the data pull under 'Needs owner' in marketing/data/latest.md,
+     and for Collabs under 'Blocked or unknown' in María Beatriz's report.
+  4. To stop all four jobs:
        bash "$REPO_DIR/os/scripts/install-mac-tasks.sh" --uninstall
 NEXT
