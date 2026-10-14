@@ -388,7 +388,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 768c71e
 - Reason: site-developer makes the desktop editor's price and Finish Editing bar sticky; after upload it scrolls off screen, so desktop visitors see no way to order.
 - Expires: 2026-11-15
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261012-2
 - Flag: Same fix as A-2026W42-008 (site-developer's built and tested version). Approve only one; A-2026W42-008 is the one ready to apply.
 - Note: Also superseded by A-2026W42-022 (built on v27).
