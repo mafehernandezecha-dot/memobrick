@@ -125,7 +125,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: a2138ea
 - Reason: If approved, site-developer backs up and applies the sticky price and Finish Editing bar on desktop to the live memobrick.js (rebuilt on theme v27); desktop add to cart is 5.1% vs 8.0% last year.
 - Expires: 2026-10-21
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261014-2
 - Flag: Replaces A-2026W42-008 and A-2026W42-011, whose files would overwrite v27 changes. Approve this one only and reject the other two.
 
