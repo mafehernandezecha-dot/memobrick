@@ -125,6 +125,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Reason: If approved, site-developer backs up and applies the new cart page (customer's mosaic, hidden internal fields, Dec 15 line, shipping estimator with real carrier rates, $125 free-shipping message) and the cart drawer image edit to the live theme; cart to checkout should improve.
 - Expires: 2026-10-21
 - Status: approved
+- Note: Approved in place of A-2026W42-012 at the owner's request in chat 2026-10-14 (owner had approved this fix via 012).
 - From: P-site-developer-20261014-1
 - Note: Replaces A-2026W42-012 (auditor's cart draft). Approve this one only. Shipping wording matches the Facts table (checked 2026-10-12). Display only; it changes no checkout step, order email or fulfillment.
 
@@ -137,6 +138,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Reason: If approved, site-developer backs up and applies the sticky price and Finish Editing bar on desktop to the live memobrick.js (rebuilt on theme v27); desktop add to cart is 5.1% vs 8.0% last year.
 - Expires: 2026-10-21
 - Status: approved
+- Note: Approved in place of A-2026W42-011 at the owner's request in chat 2026-10-14 (owner had approved this fix via 011).
 - From: P-site-developer-20261014-2
 - Flag: Replaces A-2026W42-008 and A-2026W42-011, whose files would overwrite v27 changes. Approve this one only and reject the other two.
 
@@ -331,7 +333,8 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 768c71e
 - Reason: site-developer makes the cart show the customer's own mosaic instead of a stock photo, hides raw internal fields, and adds the verified "Order by December 15" line.
 - Expires: 2026-12-10
-- Status: approved
+- Status: rejected
+- Note: Owner asked 2026-10-14 to fix the mix-up: same fix as A-2026W42-021 (tested on v27); 021 is applied instead.
 - From: P-conversion-auditor-20261012-4
 - Note: Cart page display only; it does not touch checkout, order emails or fulfillment. Remove the Dec 15 line after Dec 15. Superseded by A-2026W42-021 (site-developer built and tested the cart fix).
 
@@ -388,7 +391,8 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 768c71e
 - Reason: site-developer makes the desktop editor's price and Finish Editing bar sticky; after upload it scrolls off screen, so desktop visitors see no way to order.
 - Expires: 2026-11-15
-- Status: approved
+- Status: rejected
+- Note: Owner asked 2026-10-14 to fix the mix-up: same fix as A-2026W42-022, which is built on live theme v27; 022 is applied instead.
 - From: P-conversion-auditor-20261012-2
 - Flag: Same fix as A-2026W42-008 (site-developer's built and tested version). Approve only one; A-2026W42-008 is the one ready to apply.
 - Note: Also superseded by A-2026W42-022 (built on v27).
