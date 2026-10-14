@@ -61,7 +61,7 @@ Also waiting on you (not a Status edit):
 - Commit: 500e180
 - Reason: If approved, ads-analyst creates 4 Christmas gift ads (family, partner, pet, mom and grandparents) PAUSED in Proven Videos from last year's best videos, with Order by Dec 15, EARLYHOLIDAY20 and As seen on FOX; launching them is a separate approval.
 - Expires: 2026-10-21
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261014-2
 - Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Per the chat, Eden wants these ads created AND launched now, inside the existing Meta total of $60 a day (no spend increase). The draft creates them paused with launch as a separate approval, so `approved` alone means paused; to launch today, write `changes: launch now within $60/day total` or ask ads-analyst to re-propose with launch included. Ads-analyst's top move: about 1 Shopify-tracked order a day once launched (target Oct 20). EARLYHOLIDAY20 is active but has no end date yet; same open question as A-2026W42-007. Uses different videos from A-2026W42-006.
 
