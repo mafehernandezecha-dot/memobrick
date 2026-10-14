@@ -15,7 +15,9 @@
 |---|---|---|---|
 | assets/memobrick-email-gate.js | email-gate-ab-no-keyboard | 851b9041af3a1e33c16102520c3b92e9 | 5a95f0f5d9c9c7f848a9c313210c36e9 |
 | sections/memobrick-site.liquid | home-phone-cta-above-fold | 809e6c2ebf0eef90eeb81352bf190c94 | 5516bd7733c1c1bb254e448f26450ca2 |
-| assets/memobrick.js | desktop-editor-sticky-topbar-v27 plus cart drawer edits | 5fb7938f5f63c2c99e02864db353e838 | cb938c927b6c8e00e8b56bc200f7407f |
+| assets/memobrick.js | desktop-editor-sticky-topbar-v27 plus cart drawer edits plus Pro Design keeps size (A-2026W42-013), uploaded 2026-10-14 06:59 UTC from `theme-files/live-bundle-2026-10-14/` | 88f83c4a454dcf58bc1d9c1118777f77 | cb938c927b6c8e00e8b56bc200f7407f |
+
+All four files are approved (A-2026W42-009, -010, -013, -021, -022). Rechecked 2026-10-14 ~07:00 UTC: live updatedAt still 2026-10-13T10:04:49Z, live checksums still the "Live md5" column, and the copy differs from live only in these four files (checked about 400 files). Live writes are refused by the connector; owner steps in `fixes/live-apply-2026-10-14.md`.
 | templates/cart.liquid | cart-design-delivery-shipping | 498326618234d9f98c771afe82477a15 | e494bd6a40250dd4c433f2cfdd2ac5cc |
 
 Recreate this copy if the live theme's `updatedAt` moves past 2026-10-13T10:04:49Z or the live theme id changes. When recreating, the earlier fixes must be rebased: the v25 version of memobrick.js (theme-files/desktop-editor-sticky-topbar) is obsolete.
