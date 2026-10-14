@@ -377,7 +377,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: 768c71e
 - Reason: site-developer makes the Pro Design page keep the size chosen on the product page instead of asking again.
 - Expires: 2026-12-15
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261012-5
 
 ## A-2026W42-011
