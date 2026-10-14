@@ -58,7 +58,7 @@ for (const [name, vp, mobile] of devices) {
       topCta: top && vis(top) ? box(top) : null, note: note && vis(note) ? note.textContent.trim() : null,
       proofLink: link && vis(link) ? box(link) : null, proofFullyOnFirstScreen: link ? link.getBoundingClientRect().bottom <= innerHeight : null,
       topCtaClickable: hit(top), proofClickable: hit(link), topCtaUnderFloat: overlap(top), proofUnderFloat: overlap(link),
-      rail: [...document.querySelectorAll('.hero .rail')].some(vis),
+      rail: [...document.querySelectorAll('.hero .rail')].some(vis), railBox: (e => e && vis(e) ? box(e) : null)(document.querySelector('.hero .rail')),
       videoDbg: vid ? { cs: (s => [s.display, s.visibility, s.opacity].join('/'))(getComputedStyle(vid)), rect: box(vid), fig: box(vid.parentElement), src: (vid.currentSrc || '').slice(0, 80) } : null,
       video: vid && vis(vid) ? { r: box(vid), pctOfScreen: Math.round(vid.getBoundingClientRect().height / innerHeight * 100), muted: vid.muted, autoplay: vid.autoplay, playsinline: vid.playsInline, loop: vid.loop } : 'not visible',
       mobCtaDisplay: getComputedStyle(document.querySelector('#mobCta')).display,
