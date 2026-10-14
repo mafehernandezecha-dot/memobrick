@@ -101,7 +101,7 @@ Nothing needs a Status fix. The checker now lists A-2026W41-003 (social-publishe
 - Commit: d33ffe8
 - Reason: If approved, site-developer saves a backup and puts the tested email pop-up change on the live theme: phones stop opening the keyboard over the design, and A/B test CA-20261012-01 starts in time to finish before Black Friday.
 - Expires: 2026-10-19
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261012-1
 - Note: The test writes an `ab_email_gate` attribute to the cart (carried onto the order for reporting only). It changes no order email, fulfillment or checkout step, so it was not dropped. Owner may need to paste one file.
 
