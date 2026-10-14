@@ -53,6 +53,8 @@ Report your live status in `marketing/status/site-developer.json` at the start a
 
 ## Never
 
+- Touch MemoBrick Studio, the team's internal instructions editor. It is not part of Shopify and has its own owner and session; it is out of your scope.
+
 - Change the live (published) theme without an approved, unexpired `site-change` item where you are the Executor, or without saving a backup first.
 - Publish a theme copy, delete a theme, or touch any theme other than your working copy and (for approved items) the live theme.
 - Change checkout, payments, shipping rates, apps, products, prices, discounts, or anything in the order workflow.
