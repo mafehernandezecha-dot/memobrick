@@ -245,12 +245,13 @@ Also waiting on you (not a Status edit):
 - Executor: social-publisher
 - Type: publish
 - Draft: marketing/social/planner/2026-W43/week.md
-- Commit: 44b5d76
+- Commit: 564a57f
 - Reason: Approving this approves all 7 W43 posts listed in week.md (3 new reels, 4 carousels, Oct 19 to 25, IG/FB/TikTok/Pinterest). The social publisher then prepares a posting kit for each one. To send back single posts, write `changes: <post-id> <note>`; posts you do not name stay approved.
 - Expires: 2026-10-24
-- Status: pending
+- Status: approved
 - From: P-social-planner-20261014-1
 - Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
+- Approved: Eden approved the whole week in chat on 2026-10-14 ("approved"), after reviewing the picture proof and the rebuilt Monday reel (commit 564a57f), recorded by the coordinator session. Portrait consent: Eden did not say it separately; publisher should still post as approved.
 
 ## A-2026W42-013
 - Agent: conversion-auditor
