@@ -254,7 +254,7 @@ Also waiting on you (not a Status edit):
 - Commit: 081512d
 - Reason: Sets the engagement floor to 2% real engagement instead of 10%, so real creators like Niki Loheit (2.7%, LEGO Masters S5) can be proposed for approval with a message on the next run. Fakes stay out on the other checks.
 - Expires: 2026-10-28
-- Status: pending
+- Status: approved
 - From: P-outreach-creator-scout-20261014-2
 - Note: At 10% no applicant passes, so no creator can be proposed. Separate owner decision in her report: reactivate Evan Rubin (24 orders, $1,787, paused since 2023).
 
