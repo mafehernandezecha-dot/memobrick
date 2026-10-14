@@ -1,4 +1,4 @@
-Status: ready
+Status: needs owner (step 1 done; steps 2 and 3 not done: save clicks are being blocked and the audience signal editor would not open. Paste the "Run it now" box and skip step 1, the segment exists)
 
 # Claude in Chrome task: PMax #2 buyer signal and Christmas asset group (approval item: A-2026W42-027, approved 2026-10-14, expires 2026-10-21; from P-ads-analyst-20261014-4)
 
@@ -87,4 +87,12 @@ When done, tell me: the Step 0 list, the new asset group's status and ad strengt
 
 ## Result
 
-(filled in by the owner's Chrome routine)
+Scheduled Mac run 2026-10-14, account 672-499-4049 confirmed (authuser=1).
+
+- Step 0 (read only): asset groups in "USA - PMAX #2- Custom Photo Bricks - Sales - Maximize Conv" (filter "All but removed"). All are Eligible, ad strength Excellent. Products - Retargeting (signal: Your data + Interests and detailed demographics), Products - Keyword (Your data + Interests), Products - Full Audience (Your data + Interests), Products - Demographics (Interests only), Full Asset - Retargeting (Your data + Interests), Full Asset - Keyword (Interests only), Full Asset - Full Audience (Your data + Interests), plus an eighth row "Full Asset - Demographic" further down the table (its status was not read). The table shows signal types only; segment names were not opened.
+- Step 1: DONE. The custom segment "MB buyers: gift and photo searches" was created as "People who searched for any of these terms on Google" with all 22 terms. Audience manager shows it under Custom segments, type Search terms, approval status "Under review", created Oct 14, 2026, not yet used anywhere. No segment with that name existed before.
+- Step 2: NOT done. The "Christmas Gifts - Family" form was filled in (name, final URL, 12 headlines, 2 long headlines, 4 descriptions, with Google's auto-suggestions stopped) but never saved. The image picker has no "reuse another asset group's images" option, so matching the 19 images used by "Products - Full Audience" needs a hand pick from the asset library. Saving was also expected to be blocked: Claude Code's permission check blocked the "Save ad" click in the other task tonight. The draft was discarded, and no asset group was created.
+- Step 3: NOT done. Clicking the Audience signal cell for "Products - Full Audience" in the asset groups table did not open an editor (tried twice). Nothing changed in either asset group.
+- Note: the new-asset-group form showed Brand guidelines "Memobrick inc, 3 logos" (campaign level). It was not changed.
+- Owner: paste the "Run it now" box into Claude in Chrome but skip step 1, because the segment already exists. Choose "Copy existing asset group" only if you are fine with it also copying that group's search themes; otherwise pick the images by hand.
+- No budget, bid strategy, target, URL expansion, brand exclusion or other asset group was changed.

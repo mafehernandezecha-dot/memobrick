@@ -1,4 +1,4 @@
-Status: ready
+Status: needs owner (save click blocked for ad B "Christmas Photo Gifts"; ad A is live. Paste the "Run it now" box for ad B only)
 
 # Claude in Chrome task: Holiday Gifts occasion ads (approval item: A-2026W42-026, approved 2026-10-14, expires 2026-10-21; from P-ads-analyst-20261014-3)
 
@@ -86,4 +86,9 @@ When done, tell me for each new ad: the ad group, the final URL, the number of h
 
 ## Result
 
-(filled in by the owner's Chrome routine)
+Scheduled Mac run 2026-10-14, account 672-499-4049 confirmed (authuser=1). Both ad group names matched.
+
+- A) "Gifts For Family & Couples" (ad group 199189087365): new responsive search ad SAVED. Google reported "no policy issues". Checked in the Ads table after saving: status Eligible, enabled, ad strength Pending, final URL https://mymemobrick.com/collections/the-gift-for-everyone, display path gifts / family, 15 headlines and 4 descriptions exactly as written, only "Order by Dec 15 for Christmas" pinned (position 2). Google had prefilled the form with its own suggestions; every field was overwritten with the approved text. The existing ad was not touched.
+- B) "Christmas Photo Gifts" (ad group 197804230541): NOT saved. The form was filled exactly (final URL, gifts / christmas, the 15 headlines in the listed order, 4 descriptions, "Order by Dec 15 for Christmas" pinned to position 2), but Claude Code's permission check blocked the "Save ad" click. Per this file, it was not retried. The draft was discarded, and the ad group still has only its one existing ad.
+- Owner: paste the "Run it now" box into Claude in Chrome but do only the "Christmas Photo Gifts" ad, because the Family ad already exists. Running both would duplicate it.
+- No budgets, bids, keywords, audiences, settings or existing ads were changed.
