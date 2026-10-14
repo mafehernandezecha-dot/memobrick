@@ -28,7 +28,7 @@ Open `marketing/approvals/queue.md` on the main branch (the GitHub web editor wo
 | seo-blog-writer | Writes the briefed article or hub page | Wed |
 | seo-technical | Site audit, checks drafts, schema, redirects | Fri |
 | outreach-gift-guide-pr | Holiday gift guides and press pitches | Tue |
-| social-planner | Next week's posts, one a day: videos edited from Drive footage, real photos, and realistic AI lifestyle images | Thu |
+| social-planner | Next week's posts, one a day: videos edited from Drive footage, real photos, and realistic AI lifestyle images, approved as one weekly batch; grows followers on all four platforms and writes a daily engagement list for you | Thu |
 | social-publisher | Turns approved posts into ready-to-post kits that your Mac posts itself at post time (Postiz optional), records live links | Daily (last) |
 | email-flow-optimizer | Improves existing Omnisend flows (not order emails) | Tue |
 | email-campaign-writer | Weekly campaigns and the holiday plan | Tue |
@@ -43,7 +43,7 @@ outreach-link-builder, social-community-manager, conversion-reviews-ugc. (ads-an
 
 ## Social publishing
 
-Approved posts publish themselves from your Mac, free (no Postiz or other app). The social publisher writes a kit for each approved post in `social/publisher/to-post/` at least a day ahead, starting with `Status: ready` and the post time. A job on your Mac checks every hour from 8:07 am to 9:07 pm, and when a kit's time arrives it posts it with Claude in Chrome (the `memobrick-social-post` skill) on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, then writes the live links into the kit and the content calendar.
+Approved posts publish themselves from your Mac, free (no Postiz or other app). Each week Hugo (social-planner) proposes one approval item for the whole next week: `social/planner/<YYYY>-W<ww>/week.md` lists all 7 posts with their time, channels, caption first line and preview image. Approve it once, or reply `changes: <post-id> <note>` to send single posts back; the posts you do not name stay approved. The social publisher writes a kit for each approved post in `social/publisher/to-post/` at least a day ahead, starting with `Status: ready` and the post time. A job on your Mac checks every hour from 8:07 am to 9:07 pm, and when a kit's time arrives it posts it with Claude in Chrome (the `memobrick-social-post` skill) on Instagram and Facebook (Meta Business Suite), TikTok and Pinterest, then writes the live links into the kit and the content calendar.
 
 - **Install once**, in Terminal: `bash ~/Documents/GitHub/memobrick/os/scripts/install-mac-tasks.sh` (it also schedules the Google Ads Chrome tasks at 9:07 pm, the data pull at 7:07 am, and María Beatriz's Shopify Collabs review on Mondays at 10:07, plus Thursdays from November 1 to December 15; run it again to update).
 - **Keep** the Mac awake and on power during those hours, with Chrome open, the Claude in Chrome extension signed in, and you logged in to Meta Business Suite, TikTok, Pinterest and Google Ads.
@@ -107,6 +107,8 @@ Example: `Use the seo-strategist agent to run its weekly job, dry run.`
 | Search Console access for mymemobrick.com | Week 1 | SEO data |
 | Product footage in the Drive footage library, with each clip's rights confirmed in `social/footage-rights.md` | Week 1 | Edited social videos |
 | Canva sign-in (claude.ai connector settings) | Week 2 | Social images and covers |
+| A Drive folder for "Send us your photo" submissions (ID in `social/footage-rights.md` under Submitted photos), or forward the photos to Hugo; and each sender's written permission recorded there | When submissions arrive | Reels made from followers' photos |
+| Approve Hugo's weekly follower goals (one item) | His first planning run after 2026-10-14 | Follower goals in `social/planner/followers.md` |
 | Christmas order-by date, current offers and codes | Week 2 | Holiday emails and posts |
 | Fulfillment location claim (Miami, Florida) verified | Week 2 | Shipping copy, local PR |
 | Product margins and holiday ad budget | Week 3 | Offer and ad recommendations |

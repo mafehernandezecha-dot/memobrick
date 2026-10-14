@@ -14,7 +14,7 @@ The social publisher writes each kit as `marketing/social/publisher/to-post/<YYY
 ```
 Status: ready
 Post time (ET): <YYYY-MM-DD HH:MM>
-Approval: <A-YYYYWww-nnn>
+Approval: <A-YYYYWww-nnn>, or <A-YYYYWww-nnn> <post ID> for a post of a weekly batch
 Post file: <repo path to the approved post file>
 ```
 
@@ -29,7 +29,8 @@ followed by one section per platform with the caption (or pin title, description
    - Otherwise it is due. Handle due kits oldest post time first.
    If nothing is due, reply "No social posts due" and stop.
 3. **Approval check** for each due kit:
-   - Run `python3 marketing/tools/check.py approvals marketing/approvals/queue.md --agent social-publisher --today <today ET>`. If the kit's `Approval:` ID is not printed, run the same command on the newest files in `marketing/approvals/archive/`. The ID must be printed (approved, not expired, post file unchanged since approval).
+   - Run `python3 marketing/tools/check.py approvals marketing/approvals/queue.md --agent social-publisher --today <today ET>`. If the kit's `Approval:` value is not printed, run the same command on the newest files in `marketing/approvals/archive/`. The kit's whole `Approval:` value must be printed as one line (approved, not expired, post file unchanged since approval). Most posts come from a weekly batch: one item approving the week's posts listed in its `week.md`. For those the checker prints one line per approved post, `<A- item ID> <post ID>`, so the batch ID alone is not enough: that exact line must be printed. A post the owner sent back with `changes: <post-id> ...`, or whose post file changed after approval, is not printed and is never posted.
+   - For a batch post, also check that the kit's `Post file:` is the file `week.md` lists for that post ID.
    - Open the `Post file:` and check that every caption, title, description, hashtag and link in the kit is word for word the same as in the post file.
    - If either check fails, set the first line to `Status: skipped (not approved)`, add one line under it saying which check failed, and move on.
 4. **Media check:** every `Media:` path must exist in the repo and be 10 MB or smaller (`ls -l`). If not, set `Status: needs owner: media missing` or `Status: needs owner: video over 10 MB` and move on.

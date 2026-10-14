@@ -12,6 +12,7 @@ Exits 0 when everything passes, 1 when errors are found.
 
 import csv
 import datetime
+import hashlib
 import pathlib
 import re
 import subprocess
@@ -187,10 +188,65 @@ def strip_preview(text):
     return PREVIEW_SECTION.sub("", text, count=1)
 
 
+POST_ID = re.compile(r"\bS-\d{8}-\d+\b")
+BATCH_ROW = re.compile(r"^\|\s*(S-\d{8}-\d+)\s*\|\s*([^|\s]+)\s*\|\s*([0-9a-f]{40})\s*\|")
+
+
+def is_batch(item):
+    """A weekly social batch: one publish item whose draft is a week.md listing every post."""
+    return pathlib.PurePosixPath(item["draft"]).name == "week.md"
+
+
+def sent_back_posts(item):
+    """Post IDs the owner sent back with `changes: <post-id> ...` on a batch item."""
+    return set(POST_ID.findall(item["status"])) if item["status"].startswith("changes:") else set()
+
+
+def parse_batch(text):
+    """Rows of week.md: (post ID, post file, blob hash of the post file)."""
+    return [match.groups() for match in map(BATCH_ROW.match, text.splitlines()) if match]
+
+
+def blob_hash(path):
+    """The same hash as `git hash-object <path>`."""
+    data = pathlib.Path(path).read_bytes()
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def batch_approvals(item, repo_root):
+    """Lines `<A-ID> <post ID>` for each post a batch item approves, plus errors.
+
+    Posts named in a `changes:` note are skipped; a post whose file no longer
+    matches the hash listed in week.md needs re-approval.
+    """
+    root = pathlib.Path(repo_root)
+    rows = parse_batch((root / item["draft"]).read_text())
+    if not rows:
+        return [], [f"{item['id']}: {item['draft']} lists no posts (| Post ID | Post file | Hash | ...)"]
+    ids = [row[0] for row in rows]
+    skip = sent_back_posts(item)
+    lines, errors = [], []
+    for post_id, post_file, listed in rows:
+        if post_id in skip:
+            continue
+        if ids.count(post_id) > 1:
+            errors.append(f"{item['id']} {post_id}: listed more than once in {item['draft']}")
+        elif not (root / post_file).is_file():
+            errors.append(f"{item['id']} {post_id}: post file {post_file} does not exist")
+        elif blob_hash(root / post_file) != listed:
+            errors.append(f"{item['id']} {post_id}: post file changed since approval; re-approval needed")
+        else:
+            lines.append(f"{item['id']} {post_id}")
+    return lines, errors
+
+
 def approved_items_for(items, agent, today):
+    """Approved, unexpired items for this Executor. A weekly batch with
+    `changes: <post-id> ...` stays approved for the posts it does not name."""
     return [
         item for item in items
-        if item["executor"] == agent and item["status"] == "approved" and item["expires"] >= today
+        if item["executor"] == agent and item["expires"] >= today
+        and (item["status"] == "approved" or (is_batch(item) and sent_back_posts(item)))
     ]
 
 
@@ -262,10 +318,15 @@ def main(argv):
             today_text = _option(args, "--today")
             today = datetime.date.fromisoformat(today_text) if today_text else datetime.date.today()
             for item in approved_items_for(items, agent, today):
-                if draft_unchanged(REPO_ROOT, item["draft"], item["commit"]):
-                    print(item["id"])
-                else:
+                if not draft_unchanged(REPO_ROOT, item["draft"], item["commit"]):
                     errors.append(f"{item['id']}: draft changed since commit {item['commit']}; re-approval needed")
+                elif is_batch(item):
+                    lines, batch_errors = batch_approvals(item, REPO_ROOT)
+                    for line in lines:
+                        print(line)
+                    errors += batch_errors
+                else:
+                    print(item["id"])
     else:
         print(f"unknown command {command!r}")
         return 1

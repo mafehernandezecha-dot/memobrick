@@ -212,6 +212,80 @@ class CheckTests(unittest.TestCase):
         draft.write_text(draft.read_text().replace("Hi", "Hello"))
         self.assertFalse(check.draft_unchanged(self.root, "draft.md", sha))
 
+    def write_week(self, posts):
+        week_dir = self.root / "marketing/social/planner/2026-W45"
+        week_dir.mkdir(parents=True, exist_ok=True)
+        rows = ["| Post ID | Post file | Hash | Scheduled (ET) | Channels | Caption first line | Preview |",
+                "|---|---|---|---|---|---|---|"]
+        for post_id, content in posts:
+            post = week_dir / f"{post_id}.md"
+            post.write_text(content)
+            rel = post.relative_to(self.root).as_posix()
+            rows.append(f"| {post_id} | {rel} | {check.blob_hash(post)} | 2026-11-02 12:00 | IG, FB, TT, PIN | Hi | x.png |")
+        (week_dir / "week.md").write_text("# Week\n\n" + "\n".join(rows) + "\n")
+        return week_dir
+
+    def batch_item(self, status="approved"):
+        text = approval("A-30", agent="social-planner", executor="social-publisher", status=status,
+                        draft="marketing/social/planner/2026-W45/week.md")
+        items, errors = check.parse_approvals(text)
+        self.assertEqual(errors, [])
+        return items[0]
+
+    def test_blob_hash_matches_git(self):
+        path = self.root / "post.md"
+        path.write_text("caption\n")
+        expected = subprocess.run(["git", "hash-object", str(path)], capture_output=True, text=True).stdout.strip()
+        self.assertEqual(check.blob_hash(path), expected)
+
+    def test_batch_approves_every_post(self):
+        self.write_week([("S-20261102-1", "a"), ("S-20261103-1", "b")])
+        item = self.batch_item()
+        self.assertTrue(check.is_batch(item))
+        lines, errors = check.batch_approvals(item, self.root)
+        self.assertEqual(lines, ["A-30 S-20261102-1", "A-30 S-20261103-1"])
+        self.assertEqual(errors, [])
+
+    def test_batch_changes_note_sends_back_named_posts_only(self):
+        self.write_week([("S-20261102-1", "a"), ("S-20261103-1", "b"), ("S-20261104-1", "c")])
+        item = self.batch_item("changes: S-20261103-1 shorter caption")
+        self.assertEqual(check.approved_items_for([item], "social-publisher", datetime.date(2026, 10, 20)), [item])
+        lines, errors = check.batch_approvals(item, self.root)
+        self.assertEqual(lines, ["A-30 S-20261102-1", "A-30 S-20261104-1"])
+        self.assertEqual(errors, [])
+
+    def test_batch_changes_without_post_id_approves_nothing(self):
+        item = self.batch_item("changes: make it warmer")
+        self.assertEqual(check.approved_items_for([item], "social-publisher", datetime.date(2026, 10, 20)), [])
+        for status in ("pending", "rejected"):
+            self.assertEqual(check.approved_items_for([self.batch_item(status)], "social-publisher",
+                                                      datetime.date(2026, 10, 20)), [])
+
+    def test_changes_note_on_single_post_item_is_not_approval(self):
+        items, _ = check.parse_approvals(approval("A-31", executor="social-publisher", draft="p.md",
+                                                  status="changes: S-20261102-1 shorter"))
+        self.assertEqual(check.approved_items_for(items, "social-publisher", datetime.date(2026, 10, 20)), [])
+
+    def test_batch_post_changed_after_approval_needs_reapproval(self):
+        week_dir = self.write_week([("S-20261102-1", "a"), ("S-20261103-1", "b")])
+        (week_dir / "S-20261103-1.md").write_text("b, edited")
+        lines, errors = check.batch_approvals(self.batch_item(), self.root)
+        self.assertEqual(lines, ["A-30 S-20261102-1"])
+        self.assertEqual(len(errors), 1)
+        self.assertIn("S-20261103-1", errors[0])
+        self.assertIn("re-approval", errors[0])
+
+    def test_batch_without_rows_or_with_missing_file_is_error(self):
+        week_dir = self.write_week([("S-20261102-1", "a")])
+        (week_dir / "S-20261102-1.md").unlink()
+        lines, errors = check.batch_approvals(self.batch_item(), self.root)
+        self.assertEqual(lines, [])
+        self.assertIn("does not exist", errors[0])
+        (week_dir / "week.md").write_text("# Week\n\nNo table.\n")
+        lines, errors = check.batch_approvals(self.batch_item(), self.root)
+        self.assertEqual(lines, [])
+        self.assertIn("lists no posts", errors[0])
+
     def test_layout_reports_missing(self):
         errors = check.check_layout(self.root)
         self.assertEqual(len(errors), len(check.REQUIRED_LAYOUT))

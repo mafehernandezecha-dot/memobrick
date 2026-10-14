@@ -32,3 +32,10 @@ All folders cleared by the owner on 2026-10-12 ("all folders"), for posts and ad
 | 1PjZ_qs1uT7WZpLHk9KetbVQLPUokzzg5 | Video Aug 12, 3 04 38 PM.mp4 | Same creator | Instagram export with the creator's watermark and licensed music | do not use | Watermark and licensed song. |
 | 1lP9Bc6WN9nt6bWA5fqh4ApyNFbPpUyrX | Photo Aug 09, 4 18 14 PM.jpg | Not reviewed yet | iPhone photo, 2022 | ok | Cleared with its folder on 2026-10-12. |
 | 1hyejAv1ifbGXkajfF4uMgAvdl_BhUAct | Photo Apr 27, 7 19 39 PM.jpg | Not reviewed yet | iPhone photo, 2022 | ok | Cleared with its folder on 2026-10-12. |
+
+## Submitted photos
+
+Photos followers send for the "Send us your photo" campaign. Drive folder: not set yet (the owner creates a "submitted photos" folder, shares it by link and writes its ID here, or forwards photos to the social planner). The social planner adds each photo as `to confirm`; only the owner sets `ok`, after the sender has given written permission (and a parent or guardian has, for any photo with a child).
+
+| Drive file ID | Sender (handle) | Platform | Who appears | Child in photo | Permission (date, where recorded) | Status | Note |
+|---|---|---|---|---|---|---|---|
