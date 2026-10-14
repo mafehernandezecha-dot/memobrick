@@ -85,7 +85,7 @@ Also waiting on you (not a Status edit):
 - Commit: 500e180
 - Reason: If approved, ads-analyst pauses Meta ALWAYON PROMO -v1 (Shopify ROAS about 1.06, learning limited), raises Proven Videos from $40 to $60 a day (total Meta spend unchanged at $60), pauses one ad with LEGO hashtags, and launches copies of the 2 cheapest PROMO ads in Proven Videos, via the Meta connector.
 - Expires: 2026-10-19
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261014-1
 - Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Follows A-2026W42-005 (PROMO -v1 already cut to $20, done). Ads-analyst estimate: +5 visits a day, +0.5 to 1 order a week.
 
