@@ -2,13 +2,17 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-14 (run 3). Added A-2026W42-033 (W43 social batch, 7 posts from Oct 19), 034 (follower goals) and 035 (creator-scout: 47 more silent declines). Earlier today (run 2): Added A-2026W42-024 to 027 (ads-analyst: Christmas ads, Meta consolidation, Google occasion ads and PMax signals), 028 and 029 (creator-scout: silent declines and the 2% engagement floor) and 030 to 032 (outreach: commission-only SheScribes, Love Tabitha, Emily Reviews). Archived 17 items: 4 done ad changes, 3 rejected, 10 replaced or withdrawn (including the old Mario pitches). Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-14.md`.
+Updated 2026-10-15. Added A-2026W42-037 (W44 social batch, 7 posts Oct 26 to Nov 1). Archived 8 items already live or done (A-2026W42-009, 010, 013, 021, 022, 036 live on the site; 024 and 025 done on Meta). Not queued: P-site-developer-20261014-3 (the calm home, already live through Eden's publish; A-2026W42-036 covers its code line) and P-outreach-gift-guide-pr-20261014-4 to -6 (withdrawn). Earlier, 2026-10-14 (run 3): Added A-2026W42-033 (W43 social batch, 7 posts from Oct 19), 034 (follower goals) and 035 (creator-scout: 47 more silent declines). Earlier today (run 2): Added A-2026W42-024 to 027 (ads-analyst: Christmas ads, Meta consolidation, Google occasion ads and PMax signals), 028 and 029 (creator-scout: silent declines and the 2% engagement floor) and 030 to 032 (outreach: commission-only SheScribes, Love Tabitha, Emily Reviews). Archived 17 items: 4 done ad changes, 3 rejected, 10 replaced or withdrawn (including the old Mario pitches). Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-14.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-New in run 3 (all `pending`):
+New today (2026-10-15, `pending`):
+
+- A-2026W42-037: W44 social batch, 7 posts Oct 26 to Nov 1. Decide by Oct 25; test the free-proof form before Oct 27.
+
+From run 3 (2026-10-14):
 
 - A-2026W42-033: W43 social batch, 7 posts Oct 19 to 25 incl. EARLYHOLIDAY20 and Dec 15 posts. Decide by Oct 18; confirm the portrait consent noted on the item.
 - A-2026W42-034: weekly follower goals as growth rates (nothing automatic).
@@ -34,18 +38,6 @@ Also waiting on you (not a Status edit):
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
-## A-2026W42-009
-- Agent: site-developer
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/site-developer/fixes/home-phone-cta-above-fold.md
-- Commit: d33ffe8
-- Reason: If approved, site-developer saves a backup and puts the tested home page change on the live theme so phone visitors see "Create My MemoBrick" and "Kits from $35" without scrolling.
-- Expires: 2026-10-19
-- Status: approved
-- From: P-site-developer-20261012-2
-- Note: Site-developer rates this and the email pop-up fix above the desktop bar fix for orders (its estimate: 10 to 20 and 5 to 15 a month). Owner may need to paste 17 lines.
-
 ## A-2026W42-007
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
@@ -57,42 +49,6 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-email-campaign-writer-20261013-1
 - Note: This improves one of your existing Omnisend campaigns. EARLYHOLIDAY20 is active in offers-calendar.md, but its end date is unconfirmed; the draft states no end date. If the code will end before Oct 20, do not approve and tell the coordinator the end date. The Oct 27 'LAST CALL 15%' campaign still needs the same decision.
-
-## A-2026W42-025
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/meta-christmas-family-ads-paused.md
-- Commit: 500e180
-- Reason: If approved, ads-analyst creates 4 Christmas gift ads (family, partner, pet, mom and grandparents) PAUSED in Proven Videos from last year's best videos, with Order by Dec 15, EARLYHOLIDAY20 and As seen on FOX; launching them is a separate approval.
-- Expires: 2026-10-21
-- Status: approved
-- From: P-ads-analyst-20261014-2
-- Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Per the chat, Eden wants these ads created AND launched now, inside the existing Meta total of $60 a day (no spend increase). The draft creates them paused with launch as a separate approval, so `approved` alone means paused; to launch today, write `changes: launch now within $60/day total` or ask ads-analyst to re-propose with launch included. Ads-analyst's top move: about 1 Shopify-tracked order a day once launched (target Oct 20). EARLYHOLIDAY20 is active but has no end date yet; same open question as A-2026W42-007. Uses different videos from A-2026W42-006.
-
-## A-2026W42-021
-- Agent: site-developer
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/site-developer/fixes/cart-design-delivery-shipping.md
-- Commit: a2138ea
-- Reason: If approved, site-developer backs up and applies the new cart page (customer's mosaic, hidden internal fields, Dec 15 line, shipping estimator with real carrier rates, $125 free-shipping message) and the cart drawer image edit to the live theme; cart to checkout should improve.
-- Expires: 2026-10-21
-- Status: approved
-- Note: Approved in place of A-2026W42-012 at the owner's request in chat 2026-10-14 (owner had approved this fix via 012). Replaces A-2026W42-012 (auditor's cart draft). Approve this one only. Shipping wording matches the Facts table (checked 2026-10-12). Display only; it changes no checkout step, order email or fulfillment.
-- From: P-site-developer-20261014-1
-
-## A-2026W42-024
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/meta-consolidate-into-proven-videos.md
-- Commit: 500e180
-- Reason: If approved, ads-analyst pauses Meta ALWAYON PROMO -v1 (Shopify ROAS about 1.06, learning limited), raises Proven Videos from $40 to $60 a day (total Meta spend unchanged at $60), pauses one ad with LEGO hashtags, and launches copies of the 2 cheapest PROMO ads in Proven Videos, via the Meta connector.
-- Expires: 2026-10-19
-- Status: approved
-- From: P-ads-analyst-20261014-1
-- Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Follows A-2026W42-005 (PROMO -v1 already cut to $20, done). Ads-analyst estimate: +5 visits a day, +0.5 to 1 order a week.
 
 ## A-2026W42-019
 - Agent: ads-analyst
@@ -117,31 +73,6 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-ads-analyst-20261014-3
 - Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Same campaign as approved A-2026W42-019, which is stuck until you allow the Google Ads save click (see Needs your attention). Estimate with 019: +1 order a week now, +3 to 5 a week from Nov 16.
-
-## A-2026W42-022
-- Agent: site-developer
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/site-developer/fixes/desktop-editor-sticky-topbar-v27.md
-- Commit: a2138ea
-- Reason: If approved, site-developer backs up and applies the sticky price and Finish Editing bar on desktop to the live memobrick.js (rebuilt on theme v27); desktop add to cart is 5.1% vs 8.0% last year.
-- Expires: 2026-10-21
-- Status: approved
-- Note: Approved in place of A-2026W42-011 at the owner's request in chat 2026-10-14 (owner had approved this fix via 011).
-- From: P-site-developer-20261014-2
-- Flag: Replaces A-2026W42-008 and A-2026W42-011, whose files would overwrite v27 changes. Approve this one only and reject the other two.
-
-## A-2026W42-010
-- Agent: site-developer
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/site-developer/fixes/email-gate-ab-no-keyboard.md
-- Commit: d33ffe8
-- Reason: If approved, site-developer saves a backup and puts the tested email pop-up change on the live theme: phones stop opening the keyboard over the design, and A/B test CA-20261012-01 starts in time to finish before Black Friday.
-- Expires: 2026-10-19
-- Status: approved
-- From: P-site-developer-20261012-1
-- Note: The test writes an `ab_email_gate` attribute to the cart (carried onto the order for reporting only). It changes no order email, fulfillment or checkout step, so it was not dropped. Owner may need to paste one file.
 
 ## A-2026W42-018
 - Agent: ads-analyst
@@ -229,17 +160,6 @@ Also waiting on you (not a Status edit):
 
 (Highest expected sales impact first.)
 
-## A-2026W42-036
-- Agent: site-developer
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/site-developer/theme-files/calm-phone-home/sections/memobrick-site.liquid
-- Reason: The home page promo strip says code EARLYBIRD20, which is not in offers-calendar. Switch it to EARLYHOLIDAY20 so one code is used everywhere (ads, emails, posts, site). Already changed in the calm phone home file, so it goes live with that theme; if the calm home is not published by Oct 17, apply the one-word swap to the live theme on its own, with a backup.
-- Expires: 2026-11-30
-- Status: approved
-- From: chat
-- Note: Eden approved in chat on 2026-10-14 ("2. yes" to "switch EARLYBIRD20 to EARLYHOLIDAY20 on the home page"), recorded by the coordinator session.
-
 ## A-2026W42-033
 - Agent: social-planner
 - Executor: social-publisher
@@ -253,17 +173,6 @@ Also waiting on you (not a Status edit):
 - Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
 - Approved: Eden approved the whole week in chat on 2026-10-14 ("approved"), after reviewing the picture proof and the rebuilt Monday reel (commit 564a57f), recorded by the coordinator session. Portrait consent: Eden did not say it separately; publisher should still post as approved.
 
-## A-2026W42-013
-- Agent: conversion-auditor
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/auditor/site-changes/pro-design-keep-size.md
-- Commit: 768c71e
-- Reason: site-developer makes the Pro Design page keep the size chosen on the product page instead of asking again.
-- Expires: 2026-12-15
-- Status: approved
-- From: P-conversion-auditor-20261012-5
-
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
@@ -274,6 +183,18 @@ Also waiting on you (not a Status edit):
 - Expires: 2026-11-15
 - Status: approved
 - From: P-seo-technical-20261011-4
+
+## A-2026W42-037
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W44/week.md
+- Commit: 2e08742
+- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
+- Expires: 2026-10-31
+- Status: pending
+- From: P-social-planner-20261015-1
+- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
 
 ## A-2026W42-029
 - Agent: outreach-creator-scout
@@ -431,6 +352,8 @@ Also waiting on you (not a Status edit):
 - Note: Checked: no applicant is also in batch 1 (A-2026W42-028). Housekeeping, no orders expected.
 
 ## Flagged
+
+Run 4 (2026-10-15). Added A-2026W42-037; no flags (not order workflow, draft exists and is unshared, hashes current, EARLYHOLIDAY20 and Dec 15 in offers-calendar, contacts log not involved, no other item posts on Oct 26 to Nov 1). Not queued: P-site-developer-20261014-3 (the calm home is already live, so there is nothing left to approve). A-2026W41-002 (changes requested) expires today and its Oct 15 12:00 post will be missed.
 
 Run 3 (2026-10-14). Added A-2026W42-033 to 035. No flags: none touches the order workflow, all drafts exist and are unshared, EARLYHOLIDAY20 and Dec 15 are in offers-calendar, contacts log is empty, batch 2 does not overlap batch 1, and no other open item posts to W43 dates. Not queued: P-outreach-gift-guide-pr-20261014-4, -5 and -6 (withdrawn, see run 2 below).
 
