@@ -1,6 +1,7 @@
 import DOMPurify from 'dompurify';
 import { marked } from 'marked';
 import { useMemo } from 'react';
+import { withPair } from './api';
 import { resolveMediaSrc } from './mediaPath';
 
 marked.setOptions({ gfm: true, breaks: true });
@@ -12,7 +13,7 @@ function rewriteImages(html: string, base: string) {
   tpl.content.querySelectorAll('img[src]').forEach((img) => {
     const src = resolveMediaSrc(img.getAttribute('src') ?? '', base);
     if (src === null) img.removeAttribute('src');
-    else img.setAttribute('src', src);
+    else img.setAttribute('src', withPair(src));
     img.setAttribute('loading', 'lazy');
   });
   return tpl.innerHTML;

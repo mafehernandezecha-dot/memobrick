@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { api } from './api';
 import { Markdown } from './Markdown';
 
 export function DocViewer({ path, onClose }: { path: string; onClose: () => void }) {
@@ -8,7 +9,7 @@ export function DocViewer({ path, onClose }: { path: string; onClose: () => void
   useEffect(() => {
     setText(null);
     setError(null);
-    fetch(`/api/file?path=${encodeURIComponent(path)}`)
+    api(`/api/file?path=${encodeURIComponent(path)}`)
       .then((r) => r.json())
       .then((d) => (d.error ? setError(d.error) : setText(d.text)))
       .catch((e) => setError(String(e)));

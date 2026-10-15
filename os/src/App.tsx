@@ -1,14 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AgentPanel } from './ui/AgentPanel';
+import { api } from './ui/api';
 import { ChatPanel } from './ui/ChatPanel';
 import { ActionsContext } from './ui/context';
 import type { Actions, AppState } from './ui/context';
 import { DocViewer } from './ui/DocViewer';
 import { Mundo } from './ui/Mundo';
 import { Celebration, SalesPage, useSales } from './ui/Sales';
-import { Dashboard, DepartmentView, ParaTi, PorCrear, TeToca } from './ui/Screens';
+import { PairScreen, PhoneShell, useIsPhone } from './ui/Phone';
+import type { PhoneTab } from './ui/Phone';
+import { Dashboard, DepartmentView, ParaTi, PorCrear, Team, TeToca } from './ui/Screens';
 import { Sidebar } from './ui/Sidebar';
 import type { View } from './ui/Sidebar';
+import { WorldView } from './ui/WorldView';
 
 export function App() {
   const [state, setState] = useState<AppState | null>(null);
@@ -18,6 +22,9 @@ export function App() {
   const [agent, setAgent] = useState<string | null>(null);
   const [chat, setChat] = useState<{ prefill?: string; key: number } | null>(null);
   const [doc, setDoc] = useState<string | null>(null);
+  const [needsPair, setNeedsPair] = useState(false);
+  const isPhone = useIsPhone();
+  const [tab, setTab] = useState<PhoneTab>('turn');
   const salesFeed = useSales();
   const [partyKey, setPartyKey] = useState(0);
   const [partyKind, setPartyKind] = useState<'sale' | 'goal' | 'recap'>('sale');
@@ -31,8 +38,12 @@ export function App() {
 
   const refresh = useCallback(
     () =>
-      fetch('/api/state')
-        .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`The server answered ${r.status}`))))
+      api('/api/state')
+        .then((r) => {
+          // Another device on the network without the pairing key.
+          setNeedsPair(r.status === 401);
+          return r.ok ? r.json() : Promise.reject(new Error(`The server answered ${r.status}`));
+        })
         .then((s) => {
           setState(s);
           setError(null);
@@ -57,12 +68,15 @@ export function App() {
         setAgent(null);
         setMenuOpen(false);
         setChat({ prefill, key: Date.now() });
+        setTab('betty');
       },
       openDoc: setDoc,
       refresh,
     }),
     [refresh],
   );
+
+  if (needsPair) return <PairScreen onRetry={refresh} />;
 
   if (!state) {
     return (
@@ -76,6 +90,48 @@ export function App() {
     setView(v);
     setMenuOpen(false);
   };
+
+  // Phone: the same screens under a bottom tab bar. The 3D office only loads
+  // when its tab is open, at a lower resolution, so the phone stays fast.
+  if (isPhone) {
+    const pickTab = (t: PhoneTab) => {
+      setAgent(null);
+      setTab(t);
+      if (t === 'betty' && !chat) setChat({ key: Date.now() });
+    };
+    return (
+      <ActionsContext.Provider value={actions}>
+        <PhoneShell
+          tab={tab}
+          onTab={pickTab}
+          pending={state.approvals.pending}
+          overlays={
+            <>
+              {doc && <DocViewer path={doc} onClose={() => setDoc(null)} />}
+              {party && <Celebration key={party.key} party={party} onDone={salesFeed.next} />}
+            </>
+          }
+        >
+          {tab === 'turn' && <TeToca state={state} />}
+          {tab === 'team' && <Team state={state} />}
+          {tab === 'sales' && <SalesPage sales={salesFeed.sales} state={state} sound={salesFeed.sound} onToggleSound={salesFeed.toggleSound} />}
+          {tab === 'office' && (
+            <div className="phone-office">
+              <WorldView state={state} onPick={actions.openAgent} partyKey={partyKey} partyKind={partyKind} maxPixelRatio={1} />
+              <p className="phone-office-hint">Drag to look around · pinch to zoom · tap someone</p>
+            </div>
+          )}
+          {/* Betty stays open in the background so the conversation survives switching tabs. */}
+          {chat && (
+            <div className="phone-chat" hidden={tab !== 'betty'}>
+              <ChatPanel key={chat.key} state={state} prefill={chat.prefill} embedded onClose={() => pickTab('turn')} />
+            </div>
+          )}
+          {agent && <AgentPanel state={state} name={agent} onClose={() => setAgent(null)} />}
+        </PhoneShell>
+      </ActionsContext.Provider>
+    );
+  }
 
   return (
     <ActionsContext.Provider value={actions}>

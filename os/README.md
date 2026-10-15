@@ -28,7 +28,21 @@ Everything is read from this repository each time the app refreshes (every 15 se
 
 The agents work on the `main` branch, and the app keeps your copy in step with it on its own: it pulls the agents' latest work when it starts and every 3 minutes, and each Approve, Edit or Reject is committed and pushed right away (only `marketing/approvals/queue.md` is committed). If a push can't go through, for example when you're offline, the decision stays saved and committed on your computer, the app says so, and it is sent on the next sync; you can also click Push origin in GitHub Desktop. Syncing only happens when your copy is on `main`.
 
-Decisions and chat only work in a browser on the computer running the app. Conversations with Betty are saved in `os/data/chats/` (never pushed to the repository).
+Decisions and chat work on the computer running the app and on phones you pair with it (see below). Other devices on your network only see a "Pair this phone" screen. Conversations with Betty are saved in `os/data/chats/` (never pushed to the repository).
+
+## Use it on your phone
+
+The same dashboard works on your iPhone: Your turn (Approve, Edit, Reject), Team, Sales, Betty and the Office, with tabs at the bottom.
+
+1. On the Mac, with the dashboard running, click **Open on your phone** at the bottom of the left menu.
+2. Scan the QR code with the iPhone camera and tap the link that appears.
+3. In Safari, tap **Share** > **Add to Home Screen**. From then on it opens like an app from its brick icon.
+
+The Mac must be on with the dashboard running, and the phone on the same Wi-Fi. The QR code contains a private key, so only phones that scanned it can see your queue or decide anything; the key is kept in `os/data/` (never pushed). If the address doesn't open on the phone, click one of the other addresses under the code and scan again. To lock out every paired phone (for example, a lost phone), click **Forget paired phones** in the same window, then scan the new code on your phone (and add it to the Home Screen again).
+
+Away from home: on the same Wi-Fi nothing else is needed. To use it from anywhere, a free option is Tailscale's free personal plan (tailscale.com): install the Tailscale app on the Mac and the iPhone and sign in to both with the same account.
+Then click Open on your phone on the Mac and pick the address that starts with `100.` under the code; scan that code once at home and add it to the Home Screen too.
+It then works wherever the phone has internet, as long as the Mac is on with the dashboard running.
 
 ## Sales, goals, and celebrations
 

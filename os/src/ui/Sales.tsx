@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { SalesView } from '../../server/sales';
 import type { DashboardState } from '../../server/state';
+import { api } from './api';
 import { formatDay } from './context';
 
 export type Party = { key: number; kind: 'sale' | 'goal' | 'recap'; title: string; sub: string; value?: number; goal?: number };
@@ -56,7 +57,7 @@ export function useSales() {
   soundRef.current = sound;
 
   const load = useCallback(async () => {
-    const r = await fetch('/api/sales').catch(() => null);
+    const r = await api('/api/sales').catch(() => null);
     if (!r?.ok) return;
     const s = (await r.json()) as SalesView;
     setSales(s);

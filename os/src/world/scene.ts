@@ -59,9 +59,10 @@ export class OfficeWorld {
   private zoomStart = 1;
   private sized = false;
 
-  constructor(private container: HTMLElement, private onPick: (agent: string) => void) {
+  /** `maxPixelRatio` lowers the drawing resolution (phones use 1 to stay fast and cool). */
+  constructor(private container: HTMLElement, private onPick: (agent: string) => void, maxPixelRatio = 2) {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;

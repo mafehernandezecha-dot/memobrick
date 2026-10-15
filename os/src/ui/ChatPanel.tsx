@@ -1,13 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { APPROVALS_DESK } from '../../server/parse';
 import type { AppState } from './context';
+import { api } from './api';
 import { Markdown } from './Markdown';
 
 type Msg = { role: 'user' | 'assistant'; content: string };
 type ChatSummary = { id: string; title: string; updated: string };
 
 /** Chat with Betty, the one Eden talks to. */
-export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefill?: string; onClose: () => void }) {
+export function ChatPanel({ state, prefill, onClose, embedded }: { state: AppState; prefill?: string; onClose: () => void; embedded?: boolean }) {
   const betty = state.agents.find((a) => a.name === APPROVALS_DESK);
   const [chats, setChats] = useState<ChatSummary[]>([]);
   const [chatId, setChatId] = useState<string | null>(null);
@@ -18,7 +19,7 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
   const scroller = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const loadChats = useCallback(() => fetch('/api/chats').then((r) => r.json()).then(setChats).catch(() => {}), []);
+  const loadChats = useCallback(() => api('/api/chats').then((r) => r.json()).then(setChats).catch(() => {}), []);
   useEffect(() => {
     loadChats();
   }, [loadChats]);
@@ -28,14 +29,15 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
       setChatId(null);
       setMessages([]);
     }
-    inputRef.current?.focus();
-  }, [prefill]);
+    // On a phone the keyboard would cover the screen as soon as the tab opens.
+    if (!embedded || prefill) inputRef.current?.focus();
+  }, [prefill, embedded]);
   useEffect(() => {
     scroller.current?.scrollTo(0, scroller.current.scrollHeight);
   }, [messages]);
 
   const open = async (id: string) => {
-    const chat = await fetch(`/api/chats/${id}`).then((r) => r.json());
+    const chat = await api(`/api/chats/${id}`).then((r) => r.json());
     if (chat.messages) {
       setChatId(id);
       setMessages(chat.messages.map((m: Msg) => ({ role: m.role, content: m.content })));
@@ -59,7 +61,8 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
     setInput('');
     setMessages((m) => [...m, { role: 'user', content: message }, { role: 'assistant', content: '' }]);
     try {
-      const res = await fetch('/api/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: chatId, message }) });
+      const res = await api('/api/chat', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ id: chatId, message }) });
+      if (!res.ok) throw new Error((await res.json().catch(() => null))?.error ?? `The server answered ${res.status}.`);
       if (!res.body) throw new Error('No answer from the server.');
       const reader = res.body.getReader();
       const dec = new TextDecoder();
@@ -100,7 +103,7 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
   ];
 
   return (
-    <div className="chat-wrap">
+    <div className={`chat-wrap ${embedded ? 'is-embedded' : ''}`}>
       <section className="chat" role="dialog" aria-label="Chat with Betty">
         <aside className="chat-history">
           <p className="history-heading">Conversations</p>
@@ -121,9 +124,11 @@ export function ChatPanel({ state, prefill, onClose }: { state: AppState; prefil
             <button className="btn-quiet small" onClick={fresh}>
               + New
             </button>
-            <button className="icon-btn" aria-label="Close chat" onClick={onClose}>
-              ✕
-            </button>
+            {!embedded && (
+              <button className="icon-btn" aria-label="Close chat" onClick={onClose}>
+                ✕
+              </button>
+            )}
           </header>
 
           <div className="chat-scroll" ref={scroller}>

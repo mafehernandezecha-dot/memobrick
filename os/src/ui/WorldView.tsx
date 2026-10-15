@@ -3,9 +3,9 @@ import type { DashboardState } from '../../server/state';
 import { ROOMS } from '../world/layout';
 import type { FigureInfo, OfficeWorld } from '../world/scene';
 
-type Props = { state: DashboardState; onPick: (agent: string) => void; partyKey?: number; partyKind?: 'sale' | 'goal' | 'recap' };
+type Props = { state: DashboardState; onPick: (agent: string) => void; partyKey?: number; partyKind?: 'sale' | 'goal' | 'recap'; maxPixelRatio?: number };
 
-export function WorldView({ state, onPick, partyKey = 0, partyKind = 'sale' }: Props) {
+export function WorldView({ state, onPick, partyKey = 0, partyKind = 'sale', maxPixelRatio = 2 }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const overlay = useRef<HTMLDivElement>(null);
   const world = useRef<OfficeWorld | null>(null);
@@ -36,7 +36,7 @@ export function WorldView({ state, onPick, partyKey = 0, partyKind = 'sale' }: P
     import('../world/scene')
       .then(({ OfficeWorld }) => {
         if (disposed || !host.current) return;
-        world.current = new OfficeWorld(host.current, (agent) => pickRef.current(agent));
+        world.current = new OfficeWorld(host.current, (agent) => pickRef.current(agent), maxPixelRatio);
         world.current.setOverlay(overlay.current);
         setReady(true);
       })
@@ -46,6 +46,7 @@ export function WorldView({ state, onPick, partyKey = 0, partyKind = 'sale' }: P
       world.current?.dispose();
       world.current = null;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

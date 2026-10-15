@@ -42,6 +42,12 @@ All 22 portraits in `avatars/`, figures in `sprites/`. Review images: `python3 s
 ## Stage 4: panels, chat and live data (built, waiting for approval)
 - Agent panel ("What they are doing"): click a figure or a sidebar row. Shows Now, the agent's pending items with "Needs you" and "View" (opens the draft), the last report, and "Chat here" / "Build with Betty".
 - Chat with Betty: `server/chat.ts`, official `@anthropic-ai/sdk`, model `claude-opus-5-5`, effort low, server-side refusal fallback on. The system prompt is rebuilt from the repo on every message (team, pending queue, reports, sales week). Credentials come from the owner's environment; chats saved in `os/data/chats/` (gitignored). Not tested against the live API in the cloud session (no key there); the missing-key message was tested.
-- Your turn: Approve / Edit (writes `changes: <note>`) / Reject, via `server/actions.ts` -> `setQueueStatus`, which only rewrites that item's Status line and refuses already-decided items. Only accepted from localhost.
+- Your turn: Approve / Edit (writes `changes: <note>`) / Reject, via `server/actions.ts` -> `setQueueStatus`, which only rewrites that item's Status line and refuses already-decided items. Accepted from this computer or a paired phone.
 - For Eden (reports), Dashboard, department cards, Agents to create, document viewer for any file under `marketing/`.
 - Live status convention: `marketing/status/<agent>.json` `{state, task, updated}`, added to the memobrick-run skill and every agent file. A "working" status older than 6 hours shows as idle.
+
+## Phone version (built)
+- Narrow screens (and phones turned sideways) get `PhoneShell` in `src/ui/Phone.tsx`: bottom tabs Your turn, Team, Sales, Betty, Office, reusing the desktop screens (TeToca, Team/AgentCard, SalesPage, ChatPanel embedded, WorldView at pixel ratio 1, mounted only while its tab is open).
+- Pairing: `server/pairing.ts` (tested in `pairing.test.ts`). The key lives in `os/data/phone-pairing.json`; every `/api/` route except `/api/pair` needs this computer or the key (header `x-memobrick-pair`, or `?pair=` for images). `/api/phone` (QR links) and `/api/phone/forget` (new key) only answer this computer. `os/data/` is never served as a file.
+- "Open on your phone" (sidebar footer) draws the QR in the browser with `qrcode-generator` (MIT). Vite allows `.local` and `.ts.net` host names.
+- Home Screen: `public/manifest.webmanifest` (no start_url on purpose, so the saved link keeps its key) and `public/apple-touch-icon.png`, made from `scripts/mac-app/icon-1024.png`.

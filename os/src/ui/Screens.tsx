@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { APPROVALS_DESK } from '../../server/parse';
 import type { AgentView } from '../../server/state';
 import { designPrompt } from './AgentPanel';
+import { api } from './api';
 import type { AppState } from './context';
 import { agentByName, formatDay, TYPE_LABEL, useActions } from './context';
 
@@ -27,7 +28,7 @@ export function TeToca({ state }: { state: AppState }) {
   const decide = async (id: string, decision: 'approved' | 'rejected' | 'changes') => {
     setBusy(id);
     setMessage(null);
-    const res = await fetch(`/api/approvals/${id}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ decision, note }) });
+    const res = await api(`/api/approvals/${id}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ decision, note }) });
     const body = await res.json().catch(() => ({}));
     setBusy(null);
     if (!res.ok) return setMessage({ ok: false, text: body.error ?? "Couldn't save the decision." });
@@ -197,7 +198,7 @@ function Tile({ n, label, tone, empty }: { n: number | null; label: string; tone
 }
 
 /** Agent card for the departments view. */
-export function AgentCard({ agent, state }: { agent: AgentView; state: AppState }) {
+export function AgentCard({ agent, state, withReport }: { agent: AgentView; state: AppState; withReport?: boolean }) {
   const { openAgent, openChat } = useActions();
   if (agent.status !== 'active') {
     return (
@@ -217,6 +218,7 @@ export function AgentCard({ agent, state }: { agent: AgentView; state: AppState 
   const live = agent.live;
   const queueCount = agent.name === APPROVALS_DESK ? state.approvals.pending : agent.pending;
   const availability = live?.state === 'working' ? 'Working' : agent.pending > 0 || live?.state === 'needs_me' ? 'Needs you' : live ? 'Available' : 'No live status';
+  const report = withReport ? state.reports.items.find((r) => r.agent === agent.name) : undefined;
   return (
     <button className="card" onClick={() => openAgent(agent.name)}>
       <img className="card-avatar" src={`/${agent.avatar}`} alt="" />
@@ -230,11 +232,34 @@ export function AgentCard({ agent, state }: { agent: AgentView; state: AppState 
           <span className="now-label">Now</span> {live?.state === 'working' ? live.task || 'Working' : 'No tasks right now'}
         </p>
         <p className={`card-avail ${availability === 'Needs you' ? 'needs-text' : ''}`}>{availability}</p>
+        {report && (
+          <p className="card-report">
+            <span className="now-label">{formatDay(report.date)}</span> {report.summary || report.title}
+          </p>
+        )}
         <p className="muted small">
           {queueCount} in their queue{agent.machine ? ` · ${agent.machine}` : ''}
         </p>
       </div>
     </button>
+  );
+}
+
+/** Team (phone): every active agent, what they are doing now and their latest report. */
+export function Team({ state }: { state: AppState }) {
+  const list = state.agents.filter((a) => a.status === 'active');
+  const working = list.filter((a) => a.live?.state === 'working').length;
+  return (
+    <Page title="Team">
+      <p className="page-intro">
+        {state.liveConnected ? `${working} of ${list.length} agents working right now.` : 'Live status not connected yet.'} Tap an agent to see what they are doing.
+      </p>
+      <div className="cards team-cards">
+        {list.map((a) => (
+          <AgentCard key={a.name} agent={a} state={state} withReport />
+        ))}
+      </div>
+    </Page>
   );
 }
 

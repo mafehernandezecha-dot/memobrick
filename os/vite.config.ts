@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { decide, readMarketingFile, readMarketingMedia } from './server/actions';
+import { isAllowed, isLocalAddress, ownAddresses, PAIR_HEADER, PAIR_MESSAGE, pairingKey, phoneLinks, rotatePairingKey } from './server/pairing';
 import { CHAT_MODEL_LABEL, getChat, listChats, streamChat } from './server/chat';
 import { buildSales } from './server/sales';
 import { buildState } from './server/state';
@@ -35,8 +36,14 @@ const readBody = (req: IncomingMessage) =>
 
 // The local API. Everything is read from (and decisions written to) the repo
 // on each request, so edits to agents.json, the queue or status files show up
-// on reload. Only requests from this computer are accepted for writes.
+// on reload. The app listens on the home network for Eden's phone, but only
+// this computer and phones paired with the QR code may read or change anything.
 export default defineConfig({
+  server: {
+    // Phones open the dashboard by the Mac's Bonjour name (name.local) or, away
+    // from home, by its Tailscale name; IP addresses and localhost always work.
+    allowedHosts: ['.local', '.ts.net'],
+  },
   plugins: [
     react(),
     {
@@ -47,14 +54,35 @@ export default defineConfig({
           pullLatest(repoDir);
           setInterval(() => pullLatest(repoDir), 3 * 60_000).unref();
         }
+        // Never serve os/data/ (chats, the pairing key) as plain files.
+        server.middlewares.use((req, res, next) => {
+          let path = (req.url ?? '/').split('?')[0];
+          try {
+            path = decodeURIComponent(path);
+          } catch {
+            /* keep it as is */
+          }
+          path = path.toLowerCase().replace(/\\/g, '/').replace(/\/+/g, '/');
+          if (path === '/data' || path.startsWith('/data/') || path.includes('/os/data/')) return json(res, 404, { error: 'Not found.' });
+          next();
+        });
         server.middlewares.use(async (req, res, next) => {
           const url = new URL(req.url ?? '/', 'http://local');
           if (!url.pathname.startsWith('/api/')) return next();
-          // Writes must come from this computer and from the app's own page, never
-          // from another website open in the browser.
+          // Writes must come from the app's own page, never from another website open in the browser.
           const sameOrigin = !req.headers.origin || URL.canParse(req.headers.origin) && new URL(req.headers.origin).host === req.headers.host;
           const isJson = (req.headers['content-type'] ?? '').startsWith('application/json');
-          const local = ['127.0.0.1', '::1', '::ffff:127.0.0.1'].includes(req.socket.remoteAddress ?? '') && sameOrigin && (req.method === 'GET' || isJson);
+          const own = ownAddresses();
+          const remote = req.socket.remoteAddress;
+          const here = isLocalAddress(remote, own);
+          // A paired phone sends its key as a header; images in docs carry it as ?pair=.
+          const givenKey = String(req.headers[PAIR_HEADER] ?? '') || (req.method === 'GET' ? url.searchParams.get('pair') : null);
+          const allowed = isAllowed({ remote, givenKey, key: pairingKey(osDir), own });
+          const trusted = allowed && sameOrigin && (req.method === 'GET' || isJson);
+          // The phone asks whether its key still works; this is the only open route.
+          if (url.pathname === '/api/pair' && req.method === 'GET') return json(res, 200, { paired: allowed, here });
+          if (!allowed) return json(res, 401, { error: PAIR_MESSAGE, pair: true });
+          if (!trusted) return json(res, 403, { error: 'This request has to come from the dashboard page itself.' });
           try {
             if (url.pathname === '/api/state' && req.method === 'GET') {
               return json(res, 200, { ...buildState(osDir, repoDir), chatModel: CHAT_MODEL_LABEL });
@@ -75,7 +103,6 @@ export default defineConfig({
             }
             const decideMatch = url.pathname.match(/^\/api\/approvals\/([A-Za-z0-9-]+)$/);
             if (decideMatch && req.method === 'POST') {
-              if (!local) return json(res, 403, { error: 'Decisions can only be made on this computer.' });
               const body = await readBody(req);
               const decision = body.decision === 'changes' ? { decision: 'changes' as const, note: String(body.note ?? '') } : body.decision === 'approved' || body.decision === 'rejected' ? { decision: body.decision } : null;
               if (!decision) return json(res, 400, { error: 'Invalid decision.' });
@@ -90,9 +117,18 @@ export default defineConfig({
               return chat ? json(res, 200, chat) : json(res, 404, { error: "Couldn't find that conversation." });
             }
             if (url.pathname === '/api/chat' && req.method === 'POST') {
-              if (!local) return json(res, 403, { error: 'Chat only works on this computer.' });
               const body = await readBody(req);
               return streamChat(osDir, repoDir, { id: body.id ? String(body.id) : undefined, message: String(body.message ?? '') }, res);
+            }
+            // "Open on your phone" and "Forget paired phones": only on this computer.
+            if (url.pathname === '/api/phone' && req.method === 'GET') {
+              if (!here) return json(res, 403, { error: 'Open this on your Mac to see the pairing QR.' });
+              return json(res, 200, phoneLinks(osDir, req.socket.localPort ?? 5173));
+            }
+            if (url.pathname === '/api/phone/forget' && req.method === 'POST') {
+              if (!here || !trusted) return json(res, 403, { error: 'Only your Mac can forget paired phones.' });
+              rotatePairingKey(osDir);
+              return json(res, 200, phoneLinks(osDir, req.socket.localPort ?? 5173));
             }
             return json(res, 404, { error: 'Unknown route.' });
           } catch (err) {

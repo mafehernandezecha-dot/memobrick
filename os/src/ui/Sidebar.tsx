@@ -2,6 +2,7 @@ import { APPROVALS_DESK } from '../../server/parse';
 import type { AgentView, DashboardState } from '../../server/state';
 import { useActions } from './context';
 import { Logo } from './Logo';
+import { PhoneButton } from './PhoneLink';
 
 export type View =
   | { kind: 'mundo' }
@@ -125,13 +126,16 @@ function EngineFooter({ state }: { state: DashboardState }) {
   const turn = state.approvals.pending > 0 ? `${desk} is waiting · your turn` : `${desk} is all caught up`;
   return (
     <footer className="engine">
-      <span className={`engine-dot ${state.liveConnected ? 'on' : ''}`} />
-      <span className="engine-text">
-        <strong>{state.liveConnected ? 'Engine connected' : 'Engine not connected'}</strong>
-        <span>
-          {state.ownerName} · {turn}
+      <PhoneButton />
+      <div className="engine-row">
+        <span className={`engine-dot ${state.liveConnected ? 'on' : ''}`} />
+        <span className="engine-text">
+          <strong>{state.liveConnected ? 'Engine connected' : 'Engine not connected'}</strong>
+          <span>
+            {state.ownerName} · {turn}
+          </span>
         </span>
-      </span>
+      </div>
     </footer>
   );
 }
