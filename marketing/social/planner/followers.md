@@ -14,3 +14,7 @@ No approved goals yet. Proposed on 2026-10-14 in `marketing/social/planner/follo
 | 2026-10-14 | Facebook | missing | missing | missing (no posts published yet) |
 | 2026-10-14 | TikTok | missing | missing | missing (no posts published yet) |
 | 2026-10-14 | Pinterest | missing | missing | missing (no posts published yet; account not confirmed) |
+| 2026-10-15 | Instagram | missing | missing | missing (no snapshot yet and nothing published; W43 posts start 2026-10-19) |
+| 2026-10-15 | Facebook | missing | missing | missing (no snapshot yet and nothing published; W43 posts start 2026-10-19) |
+| 2026-10-15 | TikTok | missing | missing | missing (no snapshot yet and nothing published; W43 posts start 2026-10-19) |
+| 2026-10-15 | Pinterest | missing | missing | missing (no snapshot yet and nothing published; W43 posts start 2026-10-19) |

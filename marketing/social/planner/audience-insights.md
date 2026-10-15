@@ -1,6 +1,6 @@
 # Audience insights
 
-Kept by the social planner. Evidence only; every line says where it comes from. Updated 2026-10-14 (first version).
+Kept by the social planner. Evidence only; every line says where it comes from. Updated 2026-10-15 (second version; the evidence is unchanged because no snapshots exist yet).
 
 ## Data gaps (read first)
 
@@ -69,3 +69,11 @@ Unknown: no organic data yet. W43 tests weekday evenings at 19:00 ET and weekend
 ## Plan rule
 
 About 70% of each week from the themes and formats above (family, pet, couple; real product video and family image), about 30% tests, logged in `marketing/shared/experiments.md`.
+
+## Update 2026-10-15 (W44 plan)
+
+- **Still no organic data.** `marketing/data/latest.md` says "Updated: never"; no Meta, TikTok or Pinterest snapshot exists, nothing from W42 or W43 has been published, and the same requests stay open in `marketing/data/requests.md`. The W44 plan therefore rests on the same paid and Shopify evidence above.
+- **Sales weak points that shape W44** (`marketing/sales/latest.json`, 2026-10-14): referred traffic is down 64% year over year (social 1,213 sessions in 30 days), draft orders (designer proof, then invoice) fell from 74 to 6, and October is at 41 orders against a goal of 70. So W44 adds a free-proof carousel (draft orders), a size guide with prices (the 16×16, 20×20 and 20×30 kits sell most), and the verified order-by date with the active code EARLYHOLIDAY20 (Christmas weeks carry 44% of the year's orders).
+- **Mix this week:** about 70% from the proven themes (couple and "for him" reel, family and gift reminders, pet) and about 30% tests (free-proof link, price-forward size guide, build-time hook, Halloween pet hook), logged as EXP-SP-20261026-01 to -05.
+- **Public ad-library check not repeated this week** (no new evidence source); the Pixel Brick Art dog ad noted on 2026-10-14 is still too new to call proven.
+- **Stop doing (added):** repeating one hook two weeks in a row. W43 opened a reel with "Your photo, in 1×1 bricks"; W44 opens with a different line each reel.
