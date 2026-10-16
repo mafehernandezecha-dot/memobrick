@@ -78,12 +78,13 @@
   let current = null;          // the open project record (photo kept out of memory copy)
   let startImgId = 0;          // photos adopted after this id belong to `current`
   let lastSig = "", lastPhotoImgId = -1, saving = false;
+  let opening = false;         // a project's saved design is still being put back: don't save over it
 
   function stateOf(){
     return {
       sizeId: S.size.id, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
       bri: S.bri, con: S.con, sat: S.sat, temp: S.temp, detail: S.detail,
-      dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, pal: S.pal,
+      dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, autoBright: S.autoBright !== false, pal: S.pal,
       excludedColors: S.excludedColors ? [...S.excludedColors] : [],
       edits: S.edits && S.edits.size ? [...S.edits.entries()] : [],
     };
@@ -135,7 +136,7 @@
   }
 
   async function saveNow(force){
-    if (!ownsPhoto() || saving) return false;
+    if (!ownsPhoto() || saving || opening) return false;
     const state = stateOf();
     const sig = JSON.stringify(state) + "|" + S.imgId + "|" + cellsHash();
     if (!force && sig === lastSig) return false;
@@ -190,7 +191,7 @@
     const p = await dbGet(id);
     if (!p){ T.toast("That project no longer exists."); return; }
     current = Object.assign({}, p, { photo: undefined });
-    startImgId = S.imgId; lastSig = ""; lastPhotoImgId = -1;
+    startImgId = S.imgId; lastSig = ""; lastPhotoImgId = -1; opening = false;
     const size = ensureSize(p);
     showSaved("");
     syncBar();
@@ -204,11 +205,14 @@
       sessionStorage.setItem("mb_photo", p.photo);
       sessionStorage.setItem("mb_state", JSON.stringify(Object.assign({}, p.state, { sizeId: size.id })));
     } catch (e){ T.toast("This browser blocked opening the project (storage full or private mode)."); return; }
+    opening = true;
     T.restoreSession();
     try { sessionStorage.removeItem("mb_photo"); sessionStorage.removeItem("mb_state"); } catch (e){}
     T.showView("editor");
     // the restored design becomes the baseline, so opening isn't a "change"
     waitForDesign().then((ok) => {
+      if (!current || current.id !== p.id) return;     // another project was opened meanwhile
+      opening = false;
       if (!ok) return;
       restoreDesign(p.design);
       lastSig = JSON.stringify(stateOf()) + "|" + S.imgId + "|" + cellsHash();
@@ -248,6 +252,7 @@
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   }
   function need(){
+    if (opening){ T.toast("Still opening the project — one moment."); return false; }
     if (hasDesign()) return true;
     T.toast(current ? "Add a photo and design it first." : "Open or create a project first.");
     return false;
@@ -581,15 +586,19 @@
 
   /* import: single project files (this app, or the first team version) and backups */
   function normalise(p){
-    if (!p || !p.photo || !p.state) return null;
+    // a Studio project created before its photo was added (backups include
+    // them) has no photo or settings yet, only its details and size
+    const blank = !!(p && p.app === "memobrick-studio" && !p.photo && p.sizeId);
+    if (!p || (!blank && (!p.photo || !p.state))) return null;
     if (p.app === "memobrick-editor") // first team version: photo + settings only
       p = { name: p.reference || "Imported project", ref: p.reference || "", photo: p.photo, state: p.state };
-    const z = sizeById(p.state.sizeId);
+    const sid = p.state ? p.state.sizeId : p.sizeId;
+    const z = sizeById(sid);
     return Object.assign({ status: "draft", createdAt: Date.now() }, p, {
       app: "memobrick-studio", version: 2,
       name: p.name || "Imported project",
-      sizeId: p.sizeId || p.state.sizeId,
-      sizeLabel: p.sizeLabel || (z && z.label) || p.state.sizeId,
+      sizeId: p.sizeId || sid,
+      sizeLabel: p.sizeLabel || (z && z.label) || sid,
       updatedAt: Date.now(),
     });
   }

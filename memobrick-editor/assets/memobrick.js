@@ -3449,6 +3449,29 @@ function draw(reuse){
   pctx.clearRect(0, 0, pho.width, pho.height);
   drawSource(pctx, pho.width, pho.height);
 
+  // a saved, approved design (team app: an opened project) stays exactly as
+  // it was while nothing that shapes the mosaic has changed. Face detection
+  // and background segmentation finish seconds after a project opens and
+  // re-ran the whole pipeline, so reopened projects came back with
+  // different colors. Hand edits made since still go on top.
+  if (S.pinned && S.pinned.key === pinKey()){
+    const PAL = S.pinned.pal.slice(), cells = S.pinned.cells.slice();
+    const byHex = new Map(PAL.map((c, i) => [c.hex, i]));
+    for (const [k, hex] of S.edits){
+      if (k >= cells.length) continue;
+      let i = byHex.get(hex);
+      if (i === undefined){
+        const real = fullPal().find((c) => c.hex === hex);
+        if (!real) continue;
+        PAL.push(real); i = PAL.length - 1; byHex.set(hex, i);
+      }
+      cells[k] = i;
+    }
+    S.usedPal = PAL; S.cells = cells; S.baseCells = S.pinned.cells.slice(); S.cacheKey = mosaicKey();
+    drawThumb(); paint(cells, gw, gh, PAL); tally(cells, PAL); meta();
+    return;
+  }
+
   // hi-res crop at an exact multiple of the grid, then area-average it
   // (gamma-correct area averaging — a high-quality resample, not a naive
   // nearest/bilinear shrink, so edges don't alias before anything else runs)
@@ -4058,6 +4081,12 @@ function mosaicKey(){
           S.bri, S.con, S.sat, S.temp, S.detail, S.dither, S.auto ? 1 : 0, S.shadows, S.warm,
           [...S.excludedColors].sort().join(","), S.paletteCount || "auto", S.bgEffect,
           S.img ? (S.img.naturalWidth || S.img.width) : 0].join("|");
+}
+/* mosaicKey plus the two choices it leaves out (the auto-brightness pill
+   and which custom background photo): what a pinned design is valid for */
+function pinKey(){
+  return mosaicKey() + "|" + (S.autoBright === false ? "abOff" : "abOn") + "|" +
+    (S.bgEffect === "custom" && S.customBgImg ? S.customBgImg.src : "");
 }
 
 /* Redraw the board from what we already computed. Used for anything that is
@@ -6672,7 +6701,7 @@ function saveSession(){
     sessionStorage.setItem("mb_state", JSON.stringify({
       sizeId: S.size.id, build: !!S.build, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
       bri: S.bri, con: S.con, sat: S.sat, temp: S.temp, detail: S.detail,
-      dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, pal: S.pal,
+      dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, autoBright: S.autoBright !== false, pal: S.pal,
       excludedColors: S.excludedColors ? [...S.excludedColors] : [],
       edits: S.edits && S.edits.size ? [...S.edits.entries()] : [],
     }));
@@ -6715,6 +6744,10 @@ function restoreSession(){
         });
         if (st.excludedColors && st.excludedColors.length) S.excludedColors = new Set(st.excludedColors);
         if (st.edits && st.edits.length) S.edits = new Map(st.edits);
+        // the saved detail is the customer's own value: the first analysis
+        // of the photo must not reset it to the automatic 100%
+        if (st.detail != null) S.detailTouched = true;
+        if (st.autoBright === false) S.autoBright = false;
         syncSliders();
         render();
         toast("Picked up where you left off.");
@@ -8201,6 +8234,13 @@ function applyEditsToCells(){
     if (k >= cells.length) continue;
     let i = byHex.get(hex);
     if (i === undefined){
+      // a real color the design doesn't use yet (Replace color offers all
+      // of them): add it, as a single placed brick does, instead of quietly
+      // swapping in the closest color already used
+      const real = fullPal().find((c) => c.hex === hex);
+      if (real){ S.usedPal = S.usedPal.concat([real]); i = S.usedPal.length - 1; byHex.set(hex, i); }
+    }
+    if (i === undefined){
       const want = rgb2lab(...hex2rgb(hex));
       let bd = Infinity;
       S.usedPal.forEach((c, j) => { const d = dLab(want, c); if (d < bd){ bd = d; i = j; } });
@@ -8315,7 +8355,7 @@ $("#redoTop").addEventListener("click", redoStep);
 updateHistoryButtons();
 $("#clearEdits").addEventListener("click", () => {
   if (!S.edits.size){ toast("No hand edits to clear."); return; }
-  S.edits.clear(); S.undo.length = 0; render(); refreshEdits();
+  S.edits.clear(); S.undo.length = 0; S.pinned = null; render(); refreshEdits();
   toast("Hand edits cleared.");
 });
 
@@ -9888,6 +9928,9 @@ function teamApplyDesign(cells, entries){
              top: shade(hex, .16), lo: shade(hex, -.22), hi: shade(hex, .38) };
   });
   S.cells = cells; S.usedPal = P; S.baseCells = cells.slice(); S.cacheKey = mosaicKey();
+  // keep it as the design until a setting that shapes the mosaic changes
+  // (draw() would otherwise replace it when face detection finishes)
+  S.pinned = { key: pinKey(), cells: cells.slice(), pal: P };
   repaint(); tally(cells, P); meta();
 }
 /* restoreSession() only brings a saved design back on the storefront's
