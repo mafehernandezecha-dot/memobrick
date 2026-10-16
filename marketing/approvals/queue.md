@@ -265,7 +265,7 @@ Also waiting on you (not a Status edit):
 - Commit: 44b5d76
 - Reason: Weekly follower goals as growth rates (IG +1.5%, FB +0.5%, TikTok +3%, Pinterest +2%) because current counts are missing; nothing automatic happens, and the planner then reports against them weekly.
 - Expires: 2026-10-29
-- Status: pending
+- Status: approved
 - From: P-social-planner-20261014-2
 
 ## A-2026W42-035
