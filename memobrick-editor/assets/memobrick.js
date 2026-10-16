@@ -1518,6 +1518,26 @@ function sharpen(buf, gw, gh, amount, skinMask){
    every photo — a photo that's already warm gets little to none, which
    is what stops faces drifting orange, pink or red; a photo with a real
    blue cast still gets a meaningful counter-push. */
+/* VIBRANCE (automatic). Colors that are already clearly colorful (a
+   sweater, hair, a pet's coat, a painted wall) get richer, so the palette
+   chooser picks real colored bricks for them instead of dull near-greys.
+   Near-greys (grey or silver hair, white walls), near-whites and already
+   vivid colors are left alone, so walls and hair don't turn yellow or
+   orange and red doesn't go neon; deep shadows aren't touched. Skin gets
+   only a light lift, and protectSkinColors() right after still caps it. */
+const VIBRANCE = 0.5, SKIN_VIBRANCE = 0.08;
+function vibrance(buf, skinMask){
+  for (let i = 0, o = 0; o < buf.length; i++, o += 3){
+    const r = buf[o], g = buf[o+1], b = buf[o+2];
+    const mx = Math.max(r, g, b), mn = Math.min(r, g, b), lum = .299*r + .587*g + .114*b;
+    const sat = mx > 0 ? (mx - mn) / mx : 0;
+    const W = clamp((sat - 0.18) / 0.17, 0, 1) * (1 - sat) * 1.5 * clamp((235 - lum) / 40, 0, 1);
+    const k = (skinMask && skinMask[i]) ? 1 + SKIN_VIBRANCE : 1 + VIBRANCE * W * clamp((lum - 20) / 60, 0, 1);
+    if (k === 1) continue;
+    buf[o] = clamp(lum + (r - lum)*k, 0, 255); buf[o+1] = clamp(lum + (g - lum)*k, 0, 255); buf[o+2] = clamp(lum + (b - lum)*k, 0, 255);
+  }
+}
+
 function protectSkinColors(buf, skinMask){
   if (!skinMask) return;
   const N = skinMask.length;
@@ -2897,6 +2917,7 @@ function draw(reuse){
     buf[i] = clamp(r,0,255); buf[i+1] = clamp(g,0,255); buf[i+2] = clamp(b,0,255);
   }
 
+  if (S.auto) vibrance(buf, S.skinMask);                          // richer color, natural skin
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
 
@@ -5254,6 +5275,7 @@ $("#sizeAll").addEventListener("change", (e) => setSize(e.target.value));
 
 function setSize(id){
   pushHistory("Size");
+  S.userFramedImg = S.imgId;
   const nxt = SIZES.find((x) => x.id === id) || S.size;
   if ((nxt.gw !== S.size.gw || nxt.gh !== S.size.gh) && S.edits.size)
     clearEditsFor("Different board size — hand edits cleared.");
@@ -5435,8 +5457,8 @@ function setZoom(pct, live, force){
   $("#bgRow").hidden = S.zoom >= 1;
   render(live);
 }
-$("#zoom").addEventListener("input", (e) => setZoom(+e.target.value, true, true));
-$("#zoom").addEventListener("change", (e) => setZoom(+e.target.value, false, true));
+$("#zoom").addEventListener("input", (e) => { S.userFramedImg = S.imgId; setZoom(+e.target.value, true, true); });
+$("#zoom").addEventListener("change", (e) => { S.userFramedImg = S.imgId; setZoom(+e.target.value, false, true); });
 $("#zoomIn").addEventListener("click", () => setZoom(Math.round(S.zoom*100) + 10, false, true));
 $("#zoomOut").addEventListener("click", () => setZoom(Math.round(S.zoom*100) - 10, false, true));
 /* the wheel used to zoom the board; with the view locked it scrolls the page
@@ -5536,9 +5558,6 @@ async function autoCropToFaces(silent){
   const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
   if (!iw || !ih) return;
   if (!silent) toast("Finding faces…");
-  // the automatic crop never overrides a frame the person moved (or a size
-  // they picked) while the faces were still being found
-  const before = [S.zoom, S.ox, S.oy, S.size.id].join("|");
 
   let union = null;   // {x0,y0,x1,y1} normalised 0-1, or null if nothing found
   let faceCount = 0;
@@ -5603,7 +5622,9 @@ async function autoCropToFaces(silent){
   }
 
   if (!union){ if (!silent){ fitWholePhoto(true); toast("No face found — fit the whole photo instead."); } return; }
-  if (silent && (S.img !== img || [S.zoom, S.ox, S.oy, S.size.id].join("|") !== before)) return;
+  // the automatic crop never overrides a frame the person set themselves
+  // (moved, zoomed, cropped or resized) while the faces were being found
+  if (silent && (S.img !== img || S.userFramedImg === S.imgId)) return;
 
   // size recommendations only ever use this — set on a reliable MediaPipe
   // read, cleared otherwise, so a recommendation is never shown from a
@@ -7272,6 +7293,7 @@ function closeCropper(){
 
 function applyCrop(){
   pushHistory("Crop");
+  S.userFramedImg = S.imgId;
   S.viewLocked = false;
   // changing the crop requantises the photo, which can move hand-placed bricks
   if (S.edits.size && !confirm(
@@ -7616,7 +7638,7 @@ hold.addEventListener("pointermove", (e) => {
   if (panning){
     tip.classList.remove("on");
     const dx = e.clientX - px0, dy = e.clientY - py0;
-    if (!panHistoryPushed && Math.hypot(dx, dy) > 3){ pushHistory("Move photo"); panHistoryPushed = true; }
+    if (!panHistoryPushed && Math.hypot(dx, dy) > 3){ pushHistory("Move photo"); panHistoryPushed = true; S.userFramedImg = S.imgId; }
     // the photo follows the pointer: offset ±1 is the full overhang, so one
     // stud of drag moves the photo by one stud
     const { gw, gh } = dims(), sl = photoSlack();
