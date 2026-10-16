@@ -2,13 +2,18 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-15. Added A-2026W42-037 (W44 social batch, 7 posts Oct 26 to Nov 1). Archived 8 items already live or done (A-2026W42-009, 010, 013, 021, 022, 036 live on the site; 024 and 025 done on Meta). Not queued: P-site-developer-20261014-3 (the calm home, already live through Eden's publish; A-2026W42-036 covers its code line) and P-outreach-gift-guide-pr-20261014-4 to -6 (withdrawn). Earlier, 2026-10-14 (run 3): Added A-2026W42-033 (W43 social batch, 7 posts from Oct 19), 034 (follower goals) and 035 (creator-scout: 47 more silent declines). Earlier today (run 2): Added A-2026W42-024 to 027 (ads-analyst: Christmas ads, Meta consolidation, Google occasion ads and PMax signals), 028 and 029 (creator-scout: silent declines and the 2% engagement floor) and 030 to 032 (outreach: commission-only SheScribes, Love Tabitha, Emily Reviews). Archived 17 items: 4 done ad changes, 3 rejected, 10 replaced or withdrawn (including the old Mario pitches). Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-14.md`.
+Updated 2026-10-16. Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-New today (2026-10-15, `pending`):
+New today (2026-10-16, `pending`):
+
+- A-2026W42-038: paused Meta ad from the 1:1 photo-to-mosaic video (replaces 006). Decide by Oct 21; confirm the video shows no face or name without permission.
+- A-2026W42-039: publish the gift-for-someone-who-has-everything article (Christmas SEO). Decide by Oct 30; earlier is better for indexing.
+
+From run 4 (2026-10-15, `pending`):
 
 - A-2026W42-037: W44 social batch, 7 posts Oct 26 to Nov 1. Decide by Oct 25; test the free-proof form before Oct 27.
 
@@ -18,21 +23,15 @@ From run 3 (2026-10-14):
 - A-2026W42-034: weekly follower goals as growth rates (nothing automatic).
 - A-2026W42-035: silently decline 47 more fake or coupon Collabs applicants (housekeeping).
 
-From run 2 (check each Status line; several are now approved):
+From run 2 (all now approved; 024, 025, 026, 027 are done or archived):
 
-1. A-2026W42-025: 4 Christmas gift ads on Meta (ads-analyst's top move, about 1 order a day once live). You approved them in chat today and asked for a launch now within $60 a day; confirm on the Status line (the item's note explains how to include the launch).
-2. A-2026W42-024: move Meta spend from PROMO -v1 into Proven Videos (same $60 a day total). Approved in chat; confirm on the Status line.
-3. A-2026W42-026: Google occasion ads in Holiday Gifts (same $10 a day). Approved in chat; confirm on the Status line.
-4. A-2026W42-027: PMax #2 Christmas asset group and buyer signal (same budget). Approved in chat; confirm on the Status line.
-5. A-2026W42-029: creator engagement floor 2% instead of 10% (lets real creators be proposed).
-6. A-2026W42-030: SheScribes pitch, commission only (flag: Collabs 10%/10% not in offers-calendar).
-7. A-2026W42-032: Emily Reviews pitch, commission only (same flag).
-8. A-2026W42-031: Love, Tabitha pitch, commission only (same flag; email unverified).
-9. A-2026W42-028: silently decline 42 fake or off-brand Collabs applicants (housekeeping, no orders expected).
+- A-2026W42-029: creator engagement floor 2% instead of 10%.
+- A-2026W42-030, 031, 032: commission-only pitches (SheScribes, Love Tabitha, Emily Reviews). The 10%/10% tier is now in offers-calendar, so the old flag is cleared.
+- A-2026W42-028: silent declines of 42 fake or off-brand Collabs applicants (housekeeping).
 
 Also waiting on you (not a Status edit):
 
-- A-2026W42-019 (approved) is stuck: the Google Ads save click was refused by Claude Code's permission check. Allow save clicks for the Chrome routine and set the task back to ready, or make the edit by hand. Expires Oct 20.
+- A-2026W42-018 and A-2026W42-019 (both approved) are stuck: the Google Ads save and create clicks were blocked, so Eden needs to run the pasted prompts by hand or allow the clicks. Expire Oct 20. Detail: 019 is stuck: the Google Ads save click was refused by Claude Code's permission check. Allow save clicks for the Chrome routine and set the task back to ready, or make the edit by hand. Expires Oct 20.
 
 ## Time-sensitive
 
@@ -62,18 +61,6 @@ Also waiting on you (not a Status edit):
 - From: P-ads-analyst-20261013-1 (owner approved in chat 2026-10-13)
 - Note: Blocked 2026-10-14: the Chrome save click was refused by Claude Code's permission check, nothing saved. You need to allow save clicks for the routine and reset the task to ready, or make the edit by hand.
 
-## A-2026W42-026
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-occasion-ads.md
-- Commit: 500e180
-- Reason: If approved, ads-analyst readies a Chrome task that adds and launches one buyer-occasion search ad (mom, partner, grandparents, pet, Christmas) per Holiday Gifts ad group, landing on the gift collection, same $10/day.
-- Expires: 2026-10-21
-- Status: approved
-- From: P-ads-analyst-20261014-3
-- Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Same campaign as approved A-2026W42-019, which is stuck until you allow the Google Ads save click (see Needs your attention). Estimate with 019: +1 order a week now, +3 to 5 a week from Nov 16.
-
 ## A-2026W42-018
 - Agent: ads-analyst
 - Executor: ads-analyst
@@ -85,40 +72,17 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: Owner approval in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis")
 
-## A-2026W42-027
+## A-2026W42-038
 - Agent: ads-analyst
 - Executor: ads-analyst
 - Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/google-pmax-christmas-signals.md
-- Commit: 500e180
-- Reason: If approved, ads-analyst readies a Chrome task that adds a buyer search-term audience signal to PMax #2 and launches one Christmas Gifts asset group on the gift collection, inside the same budget, to win back impressions lost to ad rank.
+- Draft: marketing/analytics/ads-analyst/changes/meta-photo-to-mosaic-ad-existing-1x1.md
+- Commit: a2167a4
+- Reason: If approved, ads-analyst creates one PAUSED Meta ad from the photo-to-mosaic video already in the account (1:1 crop), replacing A-2026W42-006 which cannot upload the 9:16 file; launching is separate.
 - Expires: 2026-10-21
-- Status: approved
-- From: P-ads-analyst-20261014-4
-- Note: Eden approved P-ads-analyst-20261014-1 to -4 in chat on 2026-10-14 ("make them work on the ads as well, the traffic needs to improve today"), as relayed by the coordinator session. The coordinator cannot write an approved Status from a relayed message: change this Status line to approved to confirm. Estimate +1 to 2 orders a week. No budget change.
-
-## A-2026W42-020
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/google-conversion-call-actions-secondary.md
-- Commit: cc3b0de
-- Reason: Sets the 2 old Smart campaign call conversions to secondary so Purchase is the only primary conversion before the holidays. Applied by the owner's Mac via chrome-tasks/2026-10-13-conversion-call-actions-secondary.md.
-- Expires: 2026-10-20
-- Status: approved
-- From: P-ads-analyst-20261013-2 (owner approved in chat 2026-10-13)
-
-## A-2026W42-006
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/meta-new-ad-photo-to-mosaic-reel.md
-- Commit: aee1580
-- Reason: If approved, ads-analyst creates one new Meta ad, PAUSED, from the planner's photo-to-mosaic reel in the Proven Videos ad set, linking to the editor; launching it is a separate approval.
-- Expires: 2026-10-17
-- Status: approved
-- From: P-ads-analyst-20261012-6
-- Note: Same clip as the organic post in A-2026W41-001 (a different channel, so not a duplicate). On 2026-10-12 you asked for a different video on A-2026W41-001 ("change the video"); if that applies here too, reply `changes:` on this item. It lands on /pages/editor; the SEO audit notes two creator pages (/pages/create and /pages/editor), so check the editor works well on mobile before the later launch approval.
+- Status: pending
+- From: P-ads-analyst-20261016-1
+- Note: Replaces A-2026W42-006 (archived as replaced; its Status line was not changed). Before approving, confirm the 1:1 video shows no face or name without permission. Meta is the weak spot right now (7 days: $512 spent, 1 Shopify order tagged facebook/paid), so this only adds a test ad and no spend while paused.
 
 ## A-2026W41-003
 - Agent: social-planner
@@ -144,17 +108,16 @@ Also waiting on you (not a Status edit):
 - From: P-email-campaign-writer-20261012-1
 - Note: Replaces A-2026W41-004, whose draft changed after it was queued. Decide this one; A-2026W41-004 cannot be acted on.
 
-## A-2026W41-002
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W42/S-20261015-1.md
-- Commit: e91580d
-- Reason: Building experience video shows the hands-on value ahead of holiday gift planning.
-- Expires: 2026-10-15
-- Status: changes: generate a video or publish a video that is not in the instagram account yet
-- From: P-social-planner-20261011-2
-- Note: Confirm the Drive clip content and usage rights (the planner could not play it).
+## A-2026W42-023
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
+- Commit: 26c0214
+- Reason: Commission-only pitch to Green Wedding Shoes (Collabs 10% commission and 10% code, no free kit). If approved, a Gmail draft is created in memobrickofficial@gmail.com for Eden to send, using the address on their contact page.
+- Expires: 2026-10-22
+- Status: approved
+- From: Owner decision in chat 2026-10-14 ("commission only"), after the audience-fit score of 3
 
 ## Open
 
@@ -173,16 +136,17 @@ Also waiting on you (not a Status edit):
 - Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
 - Approved: Eden approved the whole week in chat on 2026-10-14 ("approved"), after reviewing the picture proof and the rebuilt Monday reel (commit 564a57f), recorded by the coordinator session. Portrait consent: Eden did not say it separately; publisher should still post as approved.
 
-## A-2026W41-012
+## A-2026W42-039
 - Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
-- Commit: 22411dc
-- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
-- Expires: 2026-11-15
-- Status: approved
-- From: P-seo-technical-20261011-4
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/gift-for-someone-who-has-everything.md
+- Commit: 8e33dd4
+- Reason: Publishes this Christmas gift-guide article live on the Shopify blog (add the FAQPage JSON-LD from checks/gift-for-someone-who-has-everything.md); it needs indexing time before the November gift searches.
+- Expires: 2026-10-30
+- Status: pending
+- From: P-seo-technical-20261016-1
+- Note: Proposed by seo-technical; the article is published by seo-blog-writer. The article's only date is the Dec 15 order-by (in the Facts table), it names no offer, and the SEO check file is at marketing/seo/technical/checks/gift-for-someone-who-has-everything.md.
 
 ## A-2026W42-037
 - Agent: social-planner
@@ -196,6 +160,17 @@ Also waiting on you (not a Status edit):
 - From: P-social-planner-20261015-1
 - Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
 
+## A-2026W41-012
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
+- Commit: 22411dc
+- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
+- Expires: 2026-11-15
+- Status: approved
+- From: P-seo-technical-20261011-4
+
 ## A-2026W42-029
 - Agent: outreach-creator-scout
 - Executor: outreach-creator-scout
@@ -207,17 +182,6 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-outreach-creator-scout-20261014-2
 - Note: At 10% no applicant passes, so no creator can be proposed. Separate owner decision in her report: reactivate Evan Rubin (24 orders, $1,787, paused since 2023).
-
-## A-2026W42-023
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
-- Commit: 26c0214
-- Reason: Commission-only pitch to Green Wedding Shoes (Collabs 10% commission and 10% code, no free kit). If approved, a Gmail draft is created in memobrickofficial@gmail.com for Eden to send, using the address on their contact page.
-- Expires: 2026-10-22
-- Status: approved
-- From: Owner decision in chat 2026-10-14 ("commission only"), after the audience-fit score of 3
 
 ## A-2026W42-030
 - Agent: outreach-gift-guide-pr
@@ -270,18 +234,6 @@ Also waiting on you (not a Status edit):
 - From: P-email-flow-optimizer-20261011-1
 - Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
 
-## A-2026W41-013
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/retire-duplicate-holiday-article.md
-- Commit: 22411dc
-- Reason: The duplicate "[Ikram GemPages] Perfect Holiday Gift" article went live 2026-09-10 and splits ranking with `theperfect-holiday` before the holiday peak. The fix is to unpublish it and 301 it to `theperfect-holiday`.
-- Expires: 2026-11-30
-- Status: approved
-- From: P-seo-technical-20261011-1
-- Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
-
 ## A-2026W41-014
 - Agent: seo-technical
 - Executor: seo-technical
@@ -304,29 +256,6 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-outreach-creator-scout-20261014-1
 - Note: Housekeeping; no direct orders expected. It shows whether her evidence standard is accepted before larger decline batches.
-
-## A-2026W41-015
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/retire-duplicate-summer-souvenirs-page.md
-- Commit: e91580d
-- Reason: `/pages/blog-post` is a 100% copy of the summer souvenirs article. The fix is to hide the page and 301 it to the article.
-- Expires: 2026-12-31
-- Status: approved
-- From: P-seo-technical-20261011-2
-- Note: Checked only in Shopify store records, not on the live site. Open both URLs before approving.
-
-## A-2026W41-016
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/fix-redirect-and-broken-link.md
-- Commit: e91580d
-- Reason: One redirect sends "emotional connections" traffic to the graduation article, which is the wrong page. The graduation article also links to a 404.
-- Expires: 2026-12-31
-- Status: approved
-- From: P-seo-technical-20261011-3
 
 ## A-2026W42-034
 - Agent: social-planner
@@ -353,6 +282,8 @@ Also waiting on you (not a Status edit):
 
 ## Flagged
 
+Run 5 (2026-10-16). Added A-2026W42-038 and 039; no flags (neither touches the order workflow, both drafts exist and are unshared, no offer or code used, Dec 15 is in the Facts table, contacts log is empty, no other item overlaps). A-2026W42-006 was archived as replaced; 012 and 014 (theme-file SEO changes) remain approved but could not be applied because Shopify blocks live-theme writes.
+
 Run 4 (2026-10-15). Added A-2026W42-037; no flags (not order workflow, draft exists and is unshared, hashes current, EARLYHOLIDAY20 and Dec 15 in offers-calendar, contacts log not involved, no other item posts on Oct 26 to Nov 1). Not queued: P-site-developer-20261014-3 (the calm home is already live, so there is nothing left to approve). A-2026W41-002 (changes requested) expires today and its Oct 15 12:00 post will be missed.
 
 Run 3 (2026-10-14). Added A-2026W42-033 to 035. No flags: none touches the order workflow, all drafts exist and are unshared, EARLYHOLIDAY20 and Dec 15 are in offers-calendar, contacts log is empty, batch 2 does not overlap batch 1, and no other open item posts to W43 dates. Not queued: P-outreach-gift-guide-pr-20261014-4, -5 and -6 (withdrawn, see run 2 below).
@@ -378,6 +309,11 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - EARLYHOLIDAY20 (active since 2026-10-12): end date and exclusions to confirm. The Oct 20 and Oct 27 Early Bird emails, the Meta Christmas ads (A-2026W42-025) and any "ends" wording depend on it
 
 **Blockers reported by agents:**
+
+- **New 2026-10-16:**
+  - Seo-technical: Shopify blocks writes to the live theme, so approved A-2026W41-012 (remove hardcoded 4.8/747 rating) and A-2026W41-014 (article schema) are not applied. Paste the before/after in Shopify admin or give a route that allows it. The rating one is the higher risk before Q4.
+  - Ads-analyst: Google not read this week (no data snapshots; Adspirer has 0 calls until Nov 6); A-2026W42-018 and 019 need Eden to run the prompts by hand. Meta reports 6 purchases in 7 days but Shopify shows 1 tagged facebook/paid order (tracking gap to check).
+  - Data pull: `marketing/data/` still has no snapshots, so Google, GA4, Search Console and Meta cross-checks are missing across agents.
 
 - **New today (run 2):**
   - Ads: A-2026W42-019 blocked by the Claude Code permission check on the Google Ads save click (needs Eden). Meta landing page views are 76% of link clicks vs 93% last year (possible slow mobile load; worth a site-developer check). BEMYVALENTINE is not in offers-calendar, so the Valentine's plan waits. Adspirer has 0 free calls until Nov 6.
