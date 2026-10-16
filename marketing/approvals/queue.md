@@ -80,7 +80,7 @@ Also waiting on you (not a Status edit):
 - Commit: a2167a4
 - Reason: If approved, ads-analyst creates one PAUSED Meta ad from the photo-to-mosaic video already in the account (1:1 crop), replacing A-2026W42-006 which cannot upload the 9:16 file; launching is separate.
 - Expires: 2026-10-21
-- Status: pending
+- Status: approved
 - From: P-ads-analyst-20261016-1
 - Note: Replaces A-2026W42-006 (archived as replaced; its Status line was not changed). Before approving, confirm the 1:1 video shows no face or name without permission. Meta is the weak spot right now (7 days: $512 spent, 1 Shopify order tagged facebook/paid), so this only adds a test ad and no spend while paused.
 
