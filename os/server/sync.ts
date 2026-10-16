@@ -28,6 +28,17 @@ async function onMain(repoDir: string) {
   }
 }
 
+function npmInstall(osDir: string) {
+  return new Promise<void>((ok) => {
+    execFile(
+      'npm',
+      ['install', '--no-audit', '--no-fund'],
+      { cwd: osDir, timeout: 300_000, env: process.env },
+      () => ok(),
+    );
+  });
+}
+
 async function pullRebase(repoDir: string) {
   try {
     await git(repoDir, ['pull', '--rebase', '--autostash', 'origin', 'main']);
@@ -52,7 +63,12 @@ function queued<T>(job: () => Promise<T>) {
 export function pullLatest(repoDir: string) {
   return queued(async () => {
     if (!(await onMain(repoDir))) return;
+    const lockBefore = await git(repoDir, ['rev-parse', 'HEAD:os/package-lock.json']).catch(() => '');
     await pullRebase(repoDir).catch(() => {});
+    // A pull that adds a package would break the page until it's installed, so
+    // install it right away (Vite picks it up on the next reload).
+    const lockAfter = await git(repoDir, ['rev-parse', 'HEAD:os/package-lock.json']).catch(() => '');
+    if (lockAfter && lockAfter !== lockBefore) await npmInstall(`${repoDir}/os`);
     const ahead = await git(repoDir, ['rev-list', '--count', 'origin/main..HEAD']).catch(() => '0');
     if (Number(ahead) > 0) await git(repoDir, ['push', 'origin', 'main']).catch(() => {});
   });

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "os": "vite --host",
+    "os": "npm install --no-audit --no-fund --prefer-offline && vite --host",
     "build": "tsc --noEmit && vite build",
     "portraits": "node scripts/render-portraits.mjs",
     "test": "vitest run"
