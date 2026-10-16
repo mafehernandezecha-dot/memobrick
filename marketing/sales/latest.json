@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14T22:50:00-04:00",
+ "updated": "2026-10-16T08:05:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -316,6 +316,11 @@
    "date": "2026-10-14",
    "orders": 2,
    "netSales": 520.4
+  },
+  {
+   "date": "2026-10-15",
+   "orders": 1,
+   "netSales": 399.52
   }
  ],
  "lastYear": [
@@ -781,16 +786,16 @@
   }
  ],
  "funnel": {
-  "period": "Last 30 days (to Oct 14), referred sessions only (direct excluded because bots inflate it), vs Sep 15 to Oct 15 2025",
+  "period": "Last 30 days (to Oct 15), referred sessions only (direct excluded because bots inflate it), vs Sep 16 to Oct 15 2025",
   "now": {
-   "sessions": 2017,
+   "sessions": 2025,
    "addedToCart": 103,
-   "reachedCheckout": 57,
-   "purchased": 32
+   "reachedCheckout": 58,
+   "purchased": 31
   },
   "lastYear": {
-   "sessions": 5661,
-   "addedToCart": 418,
+   "sessions": 5642,
+   "addedToCart": 422,
    "reachedCheckout": 162,
    "purchased": 66
   }
@@ -798,7 +803,7 @@
  "weakPoints": [
   {
    "title": "Referred traffic fell by almost two thirds",
-   "detail": "Referred (non-direct) sessions in the last 30 days: 2,017 vs 5,661 last year (-64%). Social 1,213, search 693, unknown 94, email 13. Add-to-cart rate is 5.1% vs 7.4%, so fewer visitors and weaker carts. Last year's paid and social reach is not being matched.",
+   "detail": "Referred (non-direct) sessions in the last 30 days: 2,025 vs 5,642 last year (-64%). Add-to-cart rate is 5.1% vs 7.5%, so fewer visitors and weaker carts. Social 1,213, search 693, email 13 as of Oct 14 (not re-split today). Last year's paid and social reach is not being matched.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -807,15 +812,15 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) collapsed",
-   "detail": "Draft orders were 6 in the last 30 days vs 74 last year (58 orders in total vs 181; Online Store 51 vs 104). Draft orders account for 68 of the 123 lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 7 in the last 30 days vs 74 in the same 30 days last year (58 orders in total vs 182; Online Store 50 vs 105). Draft orders account for 67 of the 124 lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
    ]
   },
   {
-   "title": "Daily goal missed: 39 orders in October vs 65 goal",
-   "detail": "October 1 to 14: 41 orders and $4,914 net sales vs goal 70 and $7,700 (gap 29 orders, $2,786). Yesterday (Oct 14) 2 orders, $520 vs 5 and $550 (orders short, sales near goal on one large order). Last 7 days (Oct 8 to 14): 19 orders, $2,513 vs goal 35 and $3,850. Last year Oct 1 to 14 had 84 orders and $9,272. EARLYHOLIDAY20 started Oct 12 and is not yet announced on every channel; its end date is unconfirmed.",
+   "title": "Daily goal missed: 42 orders in October vs 75 goal",
+   "detail": "October 1 to 15: 42 orders and $5,314 net sales vs goal 75 and $8,250 (gap 33 orders, $2,936). Yesterday (Oct 15) 1 order, $400 vs 5 and $550. Last 7 days (Oct 9 to 15): 17 orders, $2,215 vs goal 35 and $3,850. Last year Oct 1 to 15 had 93 orders and $10,128. EARLYHOLIDAY20 started Oct 12 and is not yet announced on every channel; its end date is unconfirmed.",
    "owners": [
     "owner",
     "email-campaign-writer",
