@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/gift-for-someone-who-has-everything.md
 Title: A Gift for the Person Who Has Everything
 Meta description: Stuck on a gift for someone who has everything? Turn a photo only you have into a custom brick mosaic they can build and display.
