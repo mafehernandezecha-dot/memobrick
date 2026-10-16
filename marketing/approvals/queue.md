@@ -144,7 +144,7 @@ Also waiting on you (not a Status edit):
 - Commit: 8e33dd4
 - Reason: Publishes this Christmas gift-guide article live on the Shopify blog (add the FAQPage JSON-LD from checks/gift-for-someone-who-has-everything.md); it needs indexing time before the November gift searches.
 - Expires: 2026-10-30
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261016-1
 - Note: Proposed by seo-technical; the article is published by seo-blog-writer. The article's only date is the Dec 15 order-by (in the Facts table), it names no offer, and the SEO check file is at marketing/seo/technical/checks/gift-for-someone-who-has-everything.md.
 
