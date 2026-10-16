@@ -123,21 +123,14 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
     const bySize = new Map(cat.sizes.map((s) => [String(s.id), s]));
     SIZES.forEach((size) => {
       const rec = bySize.get(String(size.id));
-      // in a real catalog but missing from it (product renamed, unpublished
-      // or not found by the Liquid lookup): checkout can't find a variant for
-      // it, so stop offering it at a stale hard-coded price — dropUnbuyableSizes
-      // below removes it. An empty catalog leaves every static size alone.
-      if (!rec || !rec.variants || !rec.variants.length){ if (cat.sizes.length) size.v = ""; return; }
+      if (!rec || !rec.variants) return;
       const kit = rec.variants.find((v) => !v.service && v.available) || rec.variants.find((v) => !v.service);
       const build = rec.variants.find((v) => v.service && v.available) || rec.variants.find((v) => v.service);
       if (kit && kit.price != null){
         size.price = Math.round((typeof kit.price === "number" ? kit.price : parseFloat(kit.price))) / 100;
-        // a compare-at price that isn't above the price is no saving: showing it
-        // printed "Save 0%" (or a negative saving) next to the price
-        const cap = (kit.compareAtPrice != null)
+        size.was = (kit.compareAtPrice != null)
           ? Math.round((typeof kit.compareAtPrice === "number" ? kit.compareAtPrice : parseFloat(kit.compareAtPrice))) / 100
-          : 0;
-        size.was = cap > size.price ? cap : undefined;
+          : undefined;
       }
       if (build && build.price != null){
         size.build = Math.round((typeof build.price === "number" ? build.price : parseFloat(build.price))) / 100;
@@ -147,7 +140,7 @@ const url = (s, build) => P + s.handle + "?variant=" + (build && s.bv ? s.bv : s
       // don't exist and render as broken images. The live product's own
       // featured_image is guaranteed to exist (it's how the product shows
       // up in Shopify at all), so it wins whenever the catalog has it.
-      if (rec.image){ size.imgStatic = size.img; size.img = rec.image; }
+      if (rec.image) size.img = rec.image;
       // variant ids and handle come from the live store too, so a size can
       // be added (or its product re-created) in Shopify without editing JS
       if (rec.handle) size.handle = rec.handle;
@@ -262,27 +255,7 @@ const dims = () => ({ gw: S.size.gw, gh: S.size.gh, bx: S.size.bx, by: S.size.by
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 const fmt = (n) => n.toLocaleString("en-US");
-/* PRICES IN THE SHOPPER'S CURRENCY. With Shopify Markets a visitor abroad
-   gets prices in their own currency (an Israeli visitor sees shekels),
-   but every price here used to be printed with a hard-coded "$", so a
-   ₪129 kit showed as "$129", about 3.7x too much. The catalog now says
-   which currency its prices are in, and every price is labelled with it. */
-const MB_CURRENCY = (() => {
-  try {
-    const el = document.querySelector("#memobrick-catalog");
-    const c = el && JSON.parse(el.textContent).currency;
-    if (c) return String(c);
-  } catch (e){}
-  try { if (window.Shopify && Shopify.currency && Shopify.currency.active) return String(Shopify.currency.active); } catch (e){}
-  return "USD";
-})();
-const money = (n) => {
-  const whole = Math.abs(n - Math.round(n)) < 0.005;
-  try {
-    return new Intl.NumberFormat("en-US", { style: "currency", currency: MB_CURRENCY,
-      minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: whole ? 0 : 2 }).format(whole ? Math.round(n) : n);
-  } catch (e){ return "$" + (whole ? Math.round(n) : n.toFixed(2)); }
-};
+const money = (n) => "$" + (Number.isInteger(n) ? n : n.toFixed(2));
 const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
 
 function hex2rgb(h){ return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)]; }
@@ -313,7 +286,7 @@ function rgb2lab(r,g,b){
 window.DEBUG_MEMOBRICK_PROCESSING = false;
 
 const AUTO_START = { bri: 20, con: -10, sat: 41, temp: 0, detail: 150,
-                     dither: 74, shadows: 0, warm: 35, auto: true };
+                     dither: 74, shadows: -100, warm: 35, auto: true };
 
 const CACHE = {};
 function pal(){
@@ -948,84 +921,6 @@ function drawSource(ctx, W, H){
 /* MediaPipe face boxes are stored normalised to the whole photo; this maps
    them onto the board grid through the same crop maths drawSource() uses,
    dropping any face that's been cropped out of view. */
-/* FACIAL FEATURES. The eyes, brows and mouth are what make a mosaic look
-   like the person, and at 15-25 bricks across a face they are only a few
-   bricks each: the general smoothing, the skin rules and dithering tend to
-   wash them into the skin. Using the detector's landmarks (eyes, mouth),
-   mapped onto the board through the current crop, this gently deepens
-   the darks and adds contrast around the eyes and brows and on the lips,
-   and returns a mask of those bricks so dithering leaves them solid. Only
-   inside small regions around each landmark; never on the rest of the
-   face, so skin stays even. */
-function faceFeaturesInGrid(gw, gh){
-  if (!S.mlFaces || S.mlFacesImg !== S.imgId || !S.img) return null;
-  const img = S.img, iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
-  if (!iw || !ih) return null;
-  const sc = Math.max(gw/iw, gh/ih) * S.zoom;
-  const dw = iw*sc, dh = ih*sc;
-  const ox = (gw-dw)/2 + S.ox*Math.abs(dw - gw)/2, oy = (gh-dh)/2 + S.oy*Math.abs(dh - gh)/2;
-  const out = [];
-  for (const f of S.mlFaces){
-    if (!f.kp) continue;
-    const P = (q) => ({ x: ox + q.x*dw, y: oy + q.y*dh });
-    const fw = (f.x1 - f.x0)*dw;
-    if (fw < 9) continue;                         // too small for features to be drawn at all
-    const eyes = [P(f.kp[0]), P(f.kp[1])], mouth = P(f.kp[3]);
-    // landmarks from the tilted detector passes are already mapped back to
-    // the photo, so they're valid; only a face lying on its side is left
-    // out, where "the brow is above the eye" no longer holds
-    if (Math.abs(eyes[1].y - eyes[0].y) > Math.abs(eyes[1].x - eyes[0].x)) continue;
-    if (eyes.every((e) => e.x < 0 || e.y < 0 || e.x >= gw || e.y >= gh)) continue;
-    out.push({ fw, eyes, mouth });
-  }
-  return out.length ? out : null;
-}
-function enhanceFaceFeatures(buf, gw, gh, feats){
-  const mask = new Uint8Array(gw*gh);
-  const lum = (o) => 0.299*buf[o] + 0.587*buf[o+1] + 0.114*buf[o+2];
-  // one elliptical region: local contrast on luminance (chroma kept), darks
-  // pushed a little deeper, strongest in the middle, fading at the edge
-  const region = (cx, cy, rx, ry, k, deepen, satBoost) => {
-    const x0 = Math.max(0, Math.floor(cx - rx)), x1 = Math.min(gw - 1, Math.ceil(cx + rx));
-    const y0 = Math.max(0, Math.floor(cy - ry)), y1 = Math.min(gh - 1, Math.ceil(cy + ry));
-    if (x1 < x0 || y1 < y0) return;
-    let sum = 0, n = 0;
-    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++){ sum += lum((y*gw + x)*3); n++; }
-    const m = sum / Math.max(1, n);
-    for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++){
-      const dx = (x + 0.5 - cx)/rx, dy = (y + 0.5 - cy)/ry, d2 = dx*dx + dy*dy;
-      if (d2 > 1) continue;
-      const w = 1 - d2*0.6;                       // full strength in the middle
-      const o = (y*gw + x)*3, L = lum(o);
-      // the dark side (pupils, lashes, brows, the lip line) gets the full
-      // contrast; the light side only a little, or skin beside the eye turns
-      // into stray pale bricks
-      const kk = L < m ? k : 1 + (k - 1)*0.25;
-      let L2 = m + (L - m)*(1 + (kk - 1)*w);
-      if (L < m) L2 -= (m - L)*deepen*w;
-      L2 = clamp(L2, 0, 255);
-      const t = L > 0.5 ? L2 / L : 1, sb = 1 + (satBoost - 1)*w;
-      for (let c = 0; c < 3; c++){
-        const v = buf[o+c]*t;
-        buf[o+c] = clamp(L2 + (v - L2)*sb, 0, 255);
-      }
-      mask[y*gw + x] = 1;
-    }
-  };
-  const FK = window.MB_FEAT_K || 1, sk = (k) => 1 + (k - 1)*FK;
-  for (const f of feats){
-    const ex = Math.abs(f.eyes[1].x - f.eyes[0].x) || f.fw*0.4;
-    for (const e of f.eyes){
-      region(e.x, e.y, ex*0.34, ex*0.24, sk(1.45), 0.25*FK, 1);                 // eye: iris, lash line, white
-      region(e.x, e.y - ex*0.36, ex*0.40, ex*0.16, sk(1.30), 0.20*FK, 1);      // brow just above it
-    }
-    // lips: a narrow, gentle region — a wider or stronger one also deepened
-    // the soft shadow under the lower lip into a dark patch
-    region(f.mouth.x, f.mouth.y, ex*0.42, ex*0.13, sk(1.15), 0.05*FK, 1.12);
-  }
-  return mask;
-}
-
 function mlFacesInGrid(gw, gh){
   if (!S.mlFaces || S.mlFacesImg !== S.imgId || !S.img) return null;
   const img = S.img;
@@ -1076,313 +971,6 @@ function humanSkinInGrid(gw, gh){
   }
   return out;
 }
-
-/* =====================================================================
-   SITE-WIDE PARTS — run on every page, before the Creator.
-   memobrick.js loads on every page (layout/theme.liquid), but only the
-   homepage and /pages/editor contain the Creator. The Creator code below
-   assumes its canvases exist, and used to throw on the first line of it
-   on product, cart, collection and blog pages — taking the phone menu,
-   the cart drawer and the product-page reviews down with it. These parts
-   need nothing from the Creator, so they run first; then pages without
-   the Creator stop cleanly.
-   ===================================================================== */
-/* keep every timing mention in step with the single constant */
-document.querySelectorAll("[data-prodtime]").forEach((el) => { el.textContent = PRODUCTION_TIME_TEXT; });
-
-const REVIEWS = [{"n":"Richard J.","r":5,"d":"August 14, 2026","t":"Always such a great and unique gift to give to friends and family","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg"},{"n":"Donna K.","r":5,"d":"August 9, 2026","t":"Excellent","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/8/9/o3XA6i-fF_mid.jpg"},{"n":"Steve B.","r":5,"d":"July 16, 2026","t":"My son loves it!!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/7/16/ik1scdnFM_mid.jpg"},{"n":"Tim R.","r":5,"d":"July 8, 2026","t":"Another spectacular job turning a photo into art. She's already asking when we're going to do another one.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/7/8/_MtiAWOcs_mid.jpg"},{"n":"Nicole N.","r":5,"d":"June 18, 2026","t":"Absolutely love my memobrick order. Will definitely recommend to family and friends.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/6/18/30vbX20BQ_mid.jpg"},{"n":"Brian B.","r":5,"d":"June 4, 2026","t":"great product, great gift ! my wife loved putting the mosaic together, and the instruction sheet and whole kit are great quality ! we are going to order again !","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/6/5/vnVn9uYJ5_mid.jpg"},{"n":"Ellen S.","r":5,"d":"May 28, 2026","t":"This was so much fun to do with my boyfriend! We loved doing it and can't wait to hang it in our house. It came out so good!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg"},{"n":"Lauren D.","r":5,"d":"May 28, 2026","t":"This was so much fun to do! I just love how it turned out! I'm just waiting until I can get a shadow box for it, and then I'll hang it on my wall 😁","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/31/RHKvYxUPr_mid.jpg"},{"n":"Mary S.","r":3,"d":"May 24, 2026","t":"It looks blurry to me but it is ok","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/5/24/QsvJ3JsVf_mid.jpg"},{"n":"Giselle D.","r":4,"d":"April 25, 2026","t":"A little hard to snap in sometimes and see the letters through the block but it came out great","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/4/26/NMq2OMbuu_mid.jpg"},{"n":"Melanie B.","r":5,"d":"April 9, 2026","t":"Very cool picture and everyone loves it!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/4/19/J_v2xITlk_mid.jpg"},{"n":"Jennifer H.","r":5,"d":"March 17, 2026","t":"Was a fun and a little bit challenging project to do. Can't wait to do another one","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/18/DePzXpS4A_mid.jpg"},{"n":"Jennifer M.","r":5,"d":"March 7, 2026","t":"Love, love, love!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg"},{"n":"Lucy W.","r":5,"d":"March 6, 2026","t":"Loved putting it together","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/3/11/2kZnl5hIp_mid.jpg"},{"n":"Donnie M.","r":4,"d":"February 27, 2026","t":"I really enjoyed hose it turned out and the only thing that I didn't like too well was the word we're not as legible as I thought they would be.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/3/2/FrAR14A8Ss_mid.jpg"},{"n":"Donnie M.","r":5,"d":"February 25, 2026","t":"I just love the way this turned out. It won't be my last purchase.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2026/2/26/-jmr6H1Gp_mid.jpg"},{"n":"Marsha W.","r":5,"d":"February 24, 2026","t":"This was fun!!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/24/XV14cLgqn_mid.jpg"},{"n":"Tim R.","r":5,"d":"February 23, 2026","t":"Another beautiful picture. Thank you again","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/27/9TvgauJIm_mid.jpg"},{"n":"Erica C.","r":5,"d":"February 21, 2026","t":"Love it ! Came out soo good ! Very happy with the purchase !","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/21/Zm2Bhe1Jq_mid.jpg"},{"n":"Halley D.","r":5,"d":"February 13, 2026","t":"Turned out better than I ever expected! Definitely will order again :)","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/2/14/foeLiecYb_mid.jpg"},{"n":"Allison H.","r":5,"d":"February 11, 2026","t":"The frame worked out great.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2026/2/12/eNaxDI0Nk_mid.jpg"},{"n":"Kelsey M.","r":5,"d":"February 8, 2026","t":"I love these memo bricks! I ordered a smaller size, but when they emailed the mockup they showed me the difference of what it would look like compared to the bigger size. I was offered to upgrade to the bigger size, which I did. I am so glad I did! These were fun to put together and see how the final product came out. It is interesting to see how they use different colors to create shadows. I had one picture that was mostly black and white in a dark setting with a lot of shadows. A light purple color was used to help show those. Definitely recommend!","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/9/7xFZPGgJq_mid.jpg"},{"n":"Kris C.","r":5,"d":"February 3, 2026","t":"It was difficult to get the board to stick together so I had to get my own joiner pieces so it stays together better but I really loved making it and watching it come together!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg"},{"n":"Aaron M.","r":5,"d":"January 25, 2026","t":"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form.","p":"Custom Bricked Mosaic Portrait 30x20\"","img":"https://images.loox.io/uploads/2026/1/25/GwlS7rLfA_mid.jpg"},{"n":"Nadeana T.","r":5,"d":"January 24, 2026","t":"Absolutely incredible! Pattern is simple to follow and portrait turned out fantastic!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/1/24/wj6s-qpgI_mid.jpg"},{"n":"Kellie G.","r":5,"d":"January 14, 2026","t":"My son-in-law who builds and collects all the adult Star Wars Lego kits love this. Said it was easily the hardest build he has done.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/14/V-UHmIaiB_mid.jpg"},{"n":"Teri M.","r":5,"d":"January 9, 2026","t":"It was great","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/10/S2qR_raR0_mid.jpg"},{"n":"Elizabeth P.","r":5,"d":"January 3, 2026","t":"I got this for my son for Christmas. He thought it was the coolest thing ever. He's been putting it together since he got it and is almost done. He really likes it.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/1/3/sdpzAIsdg_mid.jpg"},{"n":"Jacob P.","r":5,"d":"December 31, 2025","t":"I loved building it and my girlfriend loved the finished project. It was her favorite picture and I was so excited to bring it to life in this unique way","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/1/1/UcXoh1baeq_mid.jpg"},{"n":"Emily S.","r":5,"d":"December 29, 2025","t":"Love this!","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/12/30/c_KH7WMJEG_mid.jpg"},{"n":"John R.","r":4,"d":"November 28, 2025","t":"The frame works well enough. It could have been a little simpler to assemble. Also I suggest the it be made with a back that the picture can lock into.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/11/28/GM4kRymqx_mid.jpg"},{"n":"Jennifer B.","r":5,"d":"November 11, 2025","t":"Loved it! Will be ordering again soon!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/11/11/u5E39DACF_mid.jpg"},{"n":"John R.","r":5,"d":"November 2, 2025","t":"It was a fun relaxing task. My wife and I are thrilled to have our wedding photo in such an interesting style.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2025/11/3/yWOhEH0xx-_mid.jpg"},{"n":"Michael F.","r":5,"d":"October 27, 2025","t":"Perfect and unique gift for grandson. Kept him off electronics.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/10/27/BEA1z2h7l_mid.jpg"},{"n":"Kimberly W.","r":5,"d":"October 17, 2025","t":"I gave this to my son for his birthday. He loved putting it together and the frame was super easy to install.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2025/10/17/fkwmMBB3R_mid.jpg"},{"n":"Candice L.","r":5,"d":"October 7, 2025","t":"I split the photo in half so I could get 2 of the 60x20 so I could fill my wall more and its turned out AMAZING!","p":"Custom Bricked Mosaic Portrait 60x20\"","img":"https://images.loox.io/uploads/2025/10/8/gsJn-GTlj_mid.jpg"},{"n":"Athena P.","r":5,"d":"October 7, 2025","t":"I really enjoyed doing this one of my girls and I. I had issues with the tool not working for me. I wish that the frames weren't so expensive.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/10/7/0bJe8d7-A_mid.jpg"},{"n":"Athena P.","r":4,"d":"September 30, 2025","t":"I love this picture. However I wish that it wasn't so close up. I wish that it was able to capture more of her and her beauty.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/9/30/CoZGC-fD9_mid.jpg"},{"n":"Carol J.","r":5,"d":"September 30, 2025","t":"I love it","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2025/9/30/-uiTZ8ev3_mid.jpg"},{"n":"Norma G.","r":5,"d":"September 12, 2025","t":"We LOVE the way the portrait looks! I have shown it off to all of my friends and family. It is a great memory that will be kept for a long time. It was very easy to put together and the result is fantastic! I highly recommend this to everyone.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/9/12/Q14hvAZ8s_mid.jpg"}];
-
-/* Every review here was written by a real customer and is reproduced verbatim
-   from memobrick.com, photo included. The store has 747 reviews in total;
-   these are the ones published publicly on the site. The rest live in Loox,
-   so the section links out rather than inventing any.  */
-/* Shared between the two review-rendering blocks below: these are the
-   specific reviews used in the small "transformations" teaser near the
-   top of the page. The full rail (paint(), just below) excludes them so
-   a visitor doesn't scroll down and see the exact same reviews twice —
-   it starts with whatever comes next instead. */
-const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
-
-(function realReviews(){
-  const track = document.querySelector("#revTrack");
-  if (!track || typeof REVIEWS === "undefined") return;
-  // with the teaser on the page, the rail skips its picks so nobody sees the
-  // same review twice; without it, the rail leads with those picks instead
-  const others = REVIEWS.filter((r, i) => !TRANSFORM_PICKS.includes(i));
-  const rest = document.querySelector("#transformTrack") ? others
-    : TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean).concat(others);
-  let shown = 12;
-
-  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
-  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
-    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
-
-  function paint(){
-    track.innerHTML = rest.slice(0, shown).map((r) =>
-      '<figure class="rev">' +
-        '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
-        'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
-        '<figcaption>' +
-          '<span class="stars">' + stars(r.r) + "</span>" +
-          "<p>" + esc(r.t) + "</p>" +
-          "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
-          '<span class="rev-prod">' + esc(r.p) + "</span>" +
-        "</figcaption></figure>").join("");
-    const more = document.querySelector("#revMore");
-    if (more) more.hidden = shown >= rest.length;
-  }
-
-  const more = document.querySelector("#revMore");
-  if (more) more.addEventListener("click", () => { shown = rest.length; paint(); });
-  paint();
-})();
-
-/* Compact "transformations" teaser near the top of the homepage — the same
-   real review data and escaping as the full rail above, just 6 specific,
-   strongly positive examples rather than the first 6 by date, so the
-   earliest thing a visitor sees is representative of what people love
-   about it. Nothing here is invented: same REVIEWS array, same esc(). */
-(function transformTeaser(){
-  const track = document.querySelector("#transformTrack");
-  if (!track || typeof REVIEWS === "undefined") return;
-  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
-  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
-    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
-  const picks = TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean);
-  track.innerHTML = picks.map((r) =>
-    '<figure class="rev">' +
-      '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
-      'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
-      '<figcaption>' +
-        '<span class="stars">' + stars(r.r) + "</span>" +
-        "<p>" + esc(r.t) + "</p>" +
-        "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
-        '<span class="rev-prod">' + esc(r.p) + "</span>" +
-      "</figcaption></figure>").join("");
-})();
-
-/* phones: keep a create button on screen once the hero's own button has
-   scrolled away; step aside again near the final button and the footer so
-   it never covers them. Only on the homepage, where #mobCta exists. */
-(function stickyCreate(){
-  const cta = document.querySelector("#mobCta");
-  const hero = document.querySelector(".hero-cta");
-  if (!cta || !hero || !("IntersectionObserver" in window)) return;
-  const ends = [document.querySelector("#faq .btn-red"), document.querySelector("footer")].filter(Boolean);
-  let pastHero = false;
-  const endVisible = new Set();
-  const sync = () => { cta.hidden = !pastHero || endVisible.size > 0; };
-  new IntersectionObserver(([e]) => {
-    pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; sync();
-  }).observe(hero);
-  const io = new IntersectionObserver((list) => {
-    list.forEach((e) => { if (e.isIntersecting) endVisible.add(e.target); else endVisible.delete(e.target); });
-    sync();
-  });
-  ends.forEach((el) => io.observe(el));
-})();
-
-/* the reviews rail */
-const revTrack = document.querySelector("#revTrack");
-if (revTrack){
-  const step = () => Math.max(280, revTrack.clientWidth * 0.8);
-  const sync = () => {
-    const prev = document.querySelector("#revPrev"), next = document.querySelector("#revNext");
-    if (!prev || !next) return;
-    prev.disabled = revTrack.scrollLeft < 8;
-    next.disabled = revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 8;
-  };
-  document.querySelector("#revPrev").addEventListener("click", () =>
-    revTrack.scrollBy({ left: -step(), behavior: "smooth" }));
-  document.querySelector("#revNext").addEventListener("click", () =>
-    revTrack.scrollBy({ left: step(), behavior: "smooth" }));
-  revTrack.addEventListener("scroll", sync, { passive: true });
-  window.addEventListener("resize", sync);
-  sync();
-}
-
-/* ---------------- mobile navigation ---------------- */
-const burger = $("#burger"), navLinks = $("#navLinks");
-if (burger && navLinks){
-  burger.addEventListener("click", () => {
-    const open = navLinks.classList.toggle("open");
-    burger.setAttribute("aria-expanded", open);
-  });
-  navLinks.addEventListener("click", (e) => {
-    if (e.target.closest("a,button")){
-      navLinks.classList.remove("open");
-      burger.setAttribute("aria-expanded", false);
-    }
-  });
-}
-
-/* =====================================================================
-   CART DROPDOWN — click the cart icon to open a live-updating panel
-   instead of leaving the page. Falls back to the real /cart page via
-   the icon's href if JS fails for any reason.
-   ===================================================================== */
-(function cartDrawerModule(){
-  const btn = document.querySelector("#cartIconBtn");
-  const drawer = document.querySelector("#cartDrawer");
-  const itemsEl = document.querySelector("#cartDrawerItems");
-  const footEl = document.querySelector("#cartDrawerFoot");
-  const totalEl = document.querySelector("#cartDrawerTotal");
-  const countEl = document.querySelector("#cartCount");
-  const closeBtn = document.querySelector("#cartDrawerClose");
-  if (!btn || !drawer) return;
-
-  const fmt = (cents) => money(cents / 100);
-
-  function renderCart(cart){
-    if (!cart.items.length){
-      itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
-      footEl.hidden = true;
-    } else {
-      itemsEl.innerHTML = "";
-      cart.items.forEach((item) => {
-        const row = document.createElement("div");
-        row.className = "cart-drawer-item";
-        if (item.image){
-          const img = document.createElement("img");
-          img.src = item.image + "&width=120";
-          img.alt = "";
-          img.loading = "lazy";
-          row.appendChild(img);
-        }
-        const info = document.createElement("div");
-        info.className = "cart-drawer-item-info";
-        const title = document.createElement("b");
-        title.textContent = item.product_title;
-        info.appendChild(title);
-        if (item.variant_title && item.variant_title !== "Default Title"){
-          const variant = document.createElement("span");
-          variant.textContent = item.variant_title;
-          info.appendChild(variant);
-        }
-        const row2 = document.createElement("div");
-        row2.className = "cart-drawer-item-row";
-        const qty = document.createElement("span");
-        qty.textContent = "Qty " + item.quantity + " · " + fmt(item.final_line_price);
-        const rm = document.createElement("button");
-        rm.className = "cart-drawer-remove"; rm.type = "button"; rm.textContent = "Remove";
-        rm.dataset.key = item.key;
-        row2.appendChild(qty); row2.appendChild(rm);
-        info.appendChild(row2);
-        row.appendChild(info);
-        itemsEl.appendChild(row);
-      });
-      footEl.hidden = false;
-      totalEl.textContent = fmt(cart.total_price);
-    }
-    // free-shipping progress bar — threshold comes from the theme setting
-    // (window.MB_FREE_SHIPPING_THRESHOLD, set in layout/theme.liquid), not
-    // hardcoded, so it stays correct if the merchant ever changes it
-    const shipBar = document.querySelector("#cartShipBar");
-    if (shipBar){
-      // the setting is in the store's dollars; a shopper paying in another
-      // currency (Shopify Markets) has a cart total in that currency, so the
-      // threshold is converted with Shopify's own rate before comparing
-      let rate = 1;
-      try { rate = parseFloat(window.Shopify && Shopify.currency && Shopify.currency.rate) || 1; } catch (e){}
-      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100 * rate; // dollars -> cents in the cart's currency
-      // free shipping is for United States orders only: shoppers Shopify
-      // places in another country don't see the bar at all
-      let country = "";
-      try { country = String((window.Shopify && Shopify.country) || "").toUpperCase(); } catch (e){}
-      const usShopper = country ? country === "US" : String(cart.currency || "USD").toUpperCase() === "USD";
-      if (!threshold || !cart.items.length || !usShopper){
-        shipBar.hidden = true;
-      } else {
-        shipBar.hidden = false;
-        const msg = document.querySelector("#cartShipMsg");
-        const fill = document.querySelector("#cartShipFill");
-        const pct = Math.max(0, Math.min(100, (cart.total_price / threshold) * 100));
-        if (fill) fill.style.width = pct + "%";
-        if (msg){
-          if (cart.total_price >= threshold){
-            msg.textContent = "You've unlocked free shipping! 🎉";
-          } else {
-            const remaining = fmt(threshold - cart.total_price);
-            msg.textContent = "Add " + remaining + " more for free shipping";
-          }
-        }
-      }
-    }
-  }
-
-  function updateBadge(count){
-    if (!countEl) return;
-    countEl.textContent = count;
-    countEl.hidden = count === 0;
-  }
-
-  async function loadCart(){
-    itemsEl.innerHTML = '<p class="cart-empty">Loading…</p>';
-    try {
-      const res = await fetch("/cart.js");
-      const cart = await res.json();
-      renderCart(cart);
-      updateBadge(cart.item_count);
-    } catch (e){
-      itemsEl.innerHTML = '<p class="cart-empty">Couldn' + "'" + 't load your cart. <a href="' + btn.getAttribute("href") + '">Open cart page</a></p>';
-    }
-  }
-
-  async function removeItem(key){
-    const row = itemsEl.querySelector('[data-key="' + key + '"]');
-    if (row) row.closest(".cart-drawer-item").style.opacity = ".4";
-    try {
-      const res = await fetch("/cart/change.js", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: key, quantity: 0 })
-      });
-      const cart = await res.json();
-      renderCart(cart);
-      updateBadge(cart.item_count);
-    } catch (e){ loadCart(); }
-  }
-
-  function openDrawer(){
-    drawer.hidden = false;
-    btn.setAttribute("aria-expanded", "true");
-    loadCart();
-    document.addEventListener("click", onOutsideClick, true);
-    document.addEventListener("keydown", onEscape);
-  }
-  window.MB_openCartDrawer = openDrawer;
-  function closeDrawer(){
-    drawer.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-    document.removeEventListener("click", onOutsideClick, true);
-    document.removeEventListener("keydown", onEscape);
-  }
-  function onOutsideClick(e){
-    if (!drawer.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDrawer();
-  }
-  function onEscape(e){ if (e.key === "Escape") closeDrawer(); }
-
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    drawer.hidden ? openDrawer() : closeDrawer();
-  });
-  closeBtn.addEventListener("click", closeDrawer);
-  itemsEl.addEventListener("click", (e) => {
-    const rm = e.target.closest("[data-key]");
-    if (rm) removeItem(rm.dataset.key);
-  });
-
-  // any add-to-cart flow elsewhere on the site (editor checkout, designer
-  // service, free proof) can refresh the badge without a full reload
-  document.addEventListener("memobrick:added", () => {
-    fetch("/cart.js").then((r) => r.json()).then((cart) => updateBadge(cart.item_count)).catch(() => {});
-  });
-})();
-
-
-/* no Creator on this page (product, cart, blog…): the site-wide parts above
-   are all it needs */
-if (!document.getElementById("mosaic")) return;
 
 /* ---------------------------- render ---------------------------- */
 const mos = $("#mosaic"), mctx = mos.getContext("2d");
@@ -1930,60 +1518,6 @@ function sharpen(buf, gw, gh, amount, skinMask){
    every photo — a photo that's already warm gets little to none, which
    is what stops faces drifting orange, pink or red; a photo with a real
    blue cast still gets a meaningful counter-push. */
-/* FACE DETAIL. Brightness-only unsharp mask (3x3) inside each detected
-   face. At 15-25 bricks across a face, an eye or the nose is one to three
-   bricks; the general sharpening deliberately goes easy on skin, which
-   also softens exactly those features. Here the face as a whole gets a
-   brightness-only pass, so colour stays clean while edges (eyes, nose,
-   mouth, jaw) hold. */
-function faceDetail(buf, gw, gh, boxes, amount){
-  if (!(amount > 0)) return;
-  const Y = (o) => 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
-  for (const b of boxes){
-    const x0 = Math.max(0, b.x0 - 1), x1 = Math.min(gw - 1, b.x1 + 1), y0 = Math.max(0, b.y0 - 1), y1 = Math.min(gh - 1, b.y1 + 1);
-    const w = x1 - x0 + 1, h = y1 - y0 + 1, lum = new Float32Array(w*h);
-    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) lum[y*w + x] = Y(((y0 + y)*gw + (x0 + x))*3);
-    const K = [1,2,1, 2,4,2, 1,2,1];
-    for (let y = 1; y < h - 1; y++) for (let x = 1; x < w - 1; x++){
-      let s = 0, k = 0;
-      for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++, k++) s += lum[(y + dy)*w + (x + dx)]*K[k];
-      const d = clamp((lum[y*w + x] - s/16)*amount, -40, 40);
-      const o = ((y0 + y)*gw + (x0 + x))*3;
-      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
-    }
-  }
-}
-/* FACE SHADING. The skin bricks are about 10 L apart (Caramel 73, Nougat
-   66, Toffee 56, Coffee 47), while the light and shadow that shape a face
-   (cheek and forehead highlights, the shadow under the nose, the sides of
-   the face, the smile lines) span only a few L. Quantized as is, a whole
-   face lands on one brick and reads flat: no nose, no smile. Inside each
-   detected face, skin pixels have their brightness spread away from the
-   face's own median, so highlights reach the next lighter skin brick and
-   shadows the next darker one, the way hand-made brick portraits are
-   shaded. Brightness only (colour offsets are kept), capped, and the
-   median itself doesn't move, so the overall skin tone stays as it is. */
-function faceShading(buf, gw, skinMask, boxes){
-  if (!boxes || !boxes.length) return;
-  const K = window.MB_FACE_K || 1.7, CAP = 24;
-  for (const b of boxes){
-    const ys = [];
-    for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
-      const p = y*gw + x; if (!skinMask[p]) continue;
-      const o = p*3; ys.push(0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2]);
-    }
-    if (ys.length < 20) continue;
-    ys.sort((u, v) => u - v);
-    const med = ys[ys.length >> 1];
-    for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++){
-      const p = y*gw + x; if (!skinMask[p]) continue;
-      const o = p*3;
-      const Y = 0.2126*buf[o] + 0.7152*buf[o+1] + 0.0722*buf[o+2];
-      const d = clamp((Y - med)*(K - 1), -CAP, CAP);
-      buf[o] = clamp(buf[o] + d, 0, 255); buf[o+1] = clamp(buf[o+1] + d, 0, 255); buf[o+2] = clamp(buf[o+2] + d, 0, 255);
-    }
-  }
-}
 function protectSkinColors(buf, skinMask){
   if (!skinMask) return;
   const N = skinMask.length;
@@ -2494,17 +2028,10 @@ function detectFacesTiled(img, detector){
         const px1 = sx + (b.originX + b.width)/k, py1 = sy + (b.originY + b.height)/k;
         const pts = [[px0, py0], [px1, py0], [px0, py1], [px1, py1]].map(([x, y]) => toImg(x, y));
         const xs = pts.map((q) => q[0]), ys = pts.map((q) => q[1]);
-        // the detector's six landmarks (right eye, left eye, nose tip, mouth,
-        // two ears), normalised to the photo like the box — used to bring out
-        // the eyes, brows and mouth in the mosaic (enhanceFaceFeatures)
-        const kp = ((d.keypoints) || []).map((q) => {
-          const [x, y] = toImg(sx + q.x*c.width/k, sy + q.y*c.height/k);
-          return { x: clamp(x/iw, 0, 1), y: clamp(y/ih, 0, 1) };
-        });
         const f = {
           x0: clamp(Math.min(...xs)/iw, 0, 1), y0: clamp(Math.min(...ys)/ih, 0, 1),
           x1: clamp(Math.max(...xs)/iw, 0, 1), y1: clamp(Math.max(...ys)/ih, 0, 1),
-          score: sc, rotated: toImg !== same, kp: kp.length >= 4 ? kp : null,
+          score: sc, rotated: toImg !== same,
         };
         if (f.x1 - f.x0 > 0.005 && f.y1 - f.y0 > 0.005) found.push(f);
       }
@@ -2605,7 +2132,7 @@ async function verifyHumanFaces(img, faces){
   let seg = null;
   try {
     seg = await Promise.race([loadSegmenter(),
-      new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), 10000))]);
+      new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), ML_LOAD_TIMEOUT_MS))]);
   } catch (e){ seg = null; }
   if (!seg) return faces.filter((f) => !f.rotated && f.score >= 0.8);
   const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
@@ -2645,108 +2172,7 @@ async function verifyHumanFaces(img, faces){
     } catch (e){ /* can't judge this one: leave it out */ }
     await new Promise((r) => setTimeout(r, 0));               // keep the page responsive between faces
   }
-  if (out.length) bodySkinMap(img, seg);
   return out;
-}
-
-/* BODY SKIN. The close-ups above only cover each face and a face-width
-   around it, so arms, hands, shoulders and chests were never treated as
-   skin: under warm light (sunset, indoor bulbs) they were free to take
-   any brick and came out solid orange and yellow (order #21054). One
-   more pass of the same person model over the whole photo marks body
-   and face skin; draw() adds it to the skin map, so the body gets the
-   same skin bricks and the same "never more orange than the photo"
-   rules as the face. */
-let BODY_SKIN = null;
-function bodySkinMap(img, seg){
-  BODY_SKIN = null;
-  try {
-    const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
-    const k = 512 / Math.max(iw, ih);
-    const c = document.createElement("canvas");
-    c.width = Math.max(1, Math.round(iw*k)); c.height = Math.max(1, Math.round(ih*k));
-    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
-    const res = seg.segment(c);
-    const body = res.confidenceMasks[MP_CAT.bodySkin].getAsFloat32Array();
-    const face = res.confidenceMasks[MP_CAT.faceSkin].getAsFloat32Array();
-    const mask = new Uint8Array(c.width*c.height), fm = new Uint8Array(c.width*c.height);
-    for (let q = 0; q < mask.length; q++){
-      if (body[q] > 0.6 || face[q] > 0.5) mask[q] = 1;
-      if (face[q] > 0.5) fm[q] = 1;
-    }
-    if (res.close) res.close();
-    BODY_SKIN = { img, w: c.width, h: c.height, mask, faces: faceSkinBlobs(fm, c.width, c.height, mask) };
-  } catch (e){ BODY_SKIN = null; }
-}
-/* Faces from the person model's face-skin pixels, for when the face
-   detector finds none (side profiles, faces looking up). Without a face
-   box the face-detail steps (sharpening, shading, less dithering) never
-   ran and the faces came out flat. Each solid patch of face skin becomes
-   a face box, in the same form as the detector's. */
-function faceSkinBlobs(fm, w, h, skin){
-  const seen = new Uint8Array(w*h), blobs = [];
-  const stack = [];
-  for (let s0 = 0; s0 < w*h; s0++){
-    if (!fm[s0] || seen[s0]) continue;
-    let n = 0, x0 = w, y0 = h, x1 = 0, y1 = 0;
-    stack.push(s0); seen[s0] = 1;
-    while (stack.length){
-      const q = stack.pop(), x = q % w, y = (q / w) | 0;
-      n++; if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y;
-      if (x > 0 && fm[q-1] && !seen[q-1]){ seen[q-1] = 1; stack.push(q-1); }
-      if (x < w-1 && fm[q+1] && !seen[q+1]){ seen[q+1] = 1; stack.push(q+1); }
-      if (y > 0 && fm[q-w] && !seen[q-w]){ seen[q-w] = 1; stack.push(q-w); }
-      if (y < h-1 && fm[q+w] && !seen[q+w]){ seen[q+w] = 1; stack.push(q+w); }
-    }
-    blobs.push({ n, x0, y0, x1, y1 });
-  }
-  if (!blobs.length) return [];
-  const big = Math.max(...blobs.map((b) => b.n));
-  return blobs
-    .filter((b) => b.n >= w*h*0.0015 && b.n >= big/20)
-    .filter((b) => { const bw = b.x1 - b.x0 + 1, bh = b.y1 - b.y0 + 1; return bw/bh < 2.5 && bh/bw < 2.5; })
-    .sort((a, b) => b.n - a.n).slice(0, 10)
-    .map((b) => ({ x0: b.x0/w, y0: b.y0/h, x1: (b.x1 + 1)/w, y1: (b.y1 + 1)/h, score: 0.9, fromSkin: true,
-                   skin: { x0: 0, y0: 0, x1: 1, y1: 1, w, h, mask: skin } }));
-}
-/* the whole-photo skin map on the board grid, through the current crop */
-function bodySkinInGrid(gw, gh){
-  if (window.MB_BODY_SKIN === false || !BODY_SKIN || BODY_SKIN.img !== S.img) return null;
-  const img = S.img, m = BODY_SKIN;
-  const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
-  const sc = Math.max(gw/iw, gh/ih) * S.zoom;
-  const dw = iw*sc, dh = ih*sc;
-  const ox = (gw-dw)/2 + S.ox*Math.abs(dw - gw)/2, oy = (gh-dh)/2 + S.oy*Math.abs(dh - gh)/2;
-  const out = new Uint8Array(gw*gh);
-  for (let y = 0; y < gh; y++){
-    const v = (y + 0.5 - oy)/dh;
-    if (v < 0 || v >= 1) continue;
-    for (let x = 0; x < gw; x++){
-      const u = (x + 0.5 - ox)/dw;
-      if (u < 0 || u >= 1) continue;
-      if (m.mask[Math.min(m.h-1, (v*m.h) | 0)*m.w + Math.min(m.w-1, (u*m.w) | 0)]) out[y*gw + x] = 1;
-    }
-  }
-  return out;
-}
-/* add body skin to the face skin map, with the same colour checks the
-   face cells get (no pupils/deep shadow, no neutrals, no vivid objects) */
-function addBodySkin(buf, gw, gh, mask){
-  const body = bodySkinInGrid(gw, gh);
-  if (!body || !mask) return;
-  for (let p = 0; p < gw*gh; p++){
-    if (mask[p] || !body[p]) continue;
-    const x = p % gw, y = (p / gw) | 0;
-    if (!isSubjectCellForSkin(x, y, gw, gh)) continue;
-    const o = p*3;
-    const [L, a, b] = rgb2lab(buf[o], buf[o+1], buf[o+2]);
-    if (L < 22) continue;
-    const C = Math.sqrt(a*a + b*b);
-    if (C < 7 || C > 62) continue;
-    let hue = Math.atan2(b, a) * 180/Math.PI; if (hue < 0) hue += 360;
-    if (hue > 112 && hue < 330) continue;
-    mask[p] = 1;
-  }
 }
 
 function currentSegKey(){
@@ -3030,6 +2456,13 @@ function normalisedFaces(dets, c){
              x1: (b.originX+b.width)/c.width, y1: (b.originY+b.height)/c.height };
   });
 }
+/* how long the face models may take to download before a photo is designed
+   without them. It was 8-10 s: on a slow connection (or the first photo
+   after opening the Studio, while the models are still downloading) the
+   same photo then came out with no face crop and no skin handling, and a
+   minute later the same photo gave a different design. A slow first load
+   now just means the design settles a little later. */
+const ML_LOAD_TIMEOUT_MS = 60000;
 function ensureHumanFaces(){
   if (!S.img || S.mlFacesImg === S.imgId || humanFaceDetectFor === S.imgId) return;
   const id = S.imgId, img = S.img;
@@ -3039,39 +2472,15 @@ function ensureHumanFaces(){
     try {
       const detector = await Promise.race([
         loadFaceDetector(),
-        new Promise((_, reject) => setTimeout(() => reject(new Error("face-detector-load-timeout")), 8000)),
+        new Promise((_, reject) => setTimeout(() => reject(new Error("face-detector-load-timeout")), ML_LOAD_TIMEOUT_MS)),
       ]);
       faces = (await detectFacesTiled(img, detector)).filter((f) => f.score >= HUMAN_FACE_MIN_SCORE);
     } catch (err){
       faces = [];                     // detector unavailable: no skin rules, full colors
-      // a slow connection only: the model is still downloading. Don't give
-      // up on this photo — when it arrives, find the faces and redraw, so
-      // the design still gets the proper face and skin treatment
-      if (err && err.message === "face-detector-load-timeout"){
-        loadFaceDetector().then(async (detector) => {
-          if (S.imgId !== id) return;
-          const late = (await detectFacesTiled(img, detector)).filter((f) => f.score >= HUMAN_FACE_MIN_SCORE);
-          if (S.imgId !== id || !late.length) return;
-          S.mlFaces = late; S.mlFacesImg = id; S.baseKey = ""; render();
-        }).catch(() => {});
-      }
     }
     if (S.imgId !== id) return;       // a different photo was loaded meanwhile
-    // no face found (side profiles, faces looking up or away, heads cut
-    // off): the person model can still see the skin, so skin gets the
-    // skin-tone rules anyway instead of none at all
-    if (!faces.length && window.MB_BODY_SKIN !== false){
-      try {
-        const seg = await Promise.race([loadSegmenter(),
-          new Promise((_, reject) => setTimeout(() => reject(new Error("segmenter-load-timeout")), 10000))]);
-        if (S.imgId !== id) return;
-        bodySkinMap(img, seg);
-      } catch (e){ BODY_SKIN = null; }
-      if (S.imgId !== id) return;
-      if (BODY_SKIN && BODY_SKIN.img === img && BODY_SKIN.faces.length) faces = BODY_SKIN.faces;
-    }
     S.mlFaces = faces; S.mlFacesImg = id;
-    if (faces.length || (BODY_SKIN && BODY_SKIN.img === img)){ S.baseKey = ""; render(); }
+    if (faces.length){ S.baseKey = ""; render(); }
   })();
 }
 
@@ -3107,8 +2516,8 @@ const EXPO_SHADOW = 0.18, EXPO_CLIP = 0.95;
 function expoStats(hist, total){
   if (!total) return null;
   let sum = 0, acc = 0, shadow = 0, clip = 0;
-  const q = { p5: null, median: null, p75: null, p90: null, p95: null, p99: null };
-  const at = { p5: 0.05, median: 0.5, p75: 0.75, p90: 0.90, p95: 0.95, p99: 0.99 };
+  const q = { p5: null, median: null, p75: null, p90: null, p95: null };
+  const at = { p5: 0.05, median: 0.5, p75: 0.75, p90: 0.90, p95: 0.95 };
   for (let i = 0; i < 256; i++){
     const n = hist[i], v = i/255;
     sum += n*v; acc += n;
@@ -3128,8 +2537,8 @@ function analyzeExposure(img, faces){
   const cx = c.getContext("2d", { willReadFrequently: true });
   cx.drawImage(img, 0, 0, w, h);
   const d = cx.getImageData(0, 0, w, h).data;
-  const all = new Uint32Array(256), subj = new Uint32Array(256), fullFace = new Uint32Array(256);
-  let subjN = 0, fullN = 0;
+  const all = new Uint32Array(256), subj = new Uint32Array(256);
+  let subjN = 0;
   const useFaces = faces && faces.length;
   // faces: the inner part of each box (mostly skin, not hair or background)
   const inFace = (u, v) => faces.some((f) => {
@@ -3145,12 +2554,6 @@ function analyzeExposure(img, faces){
       const u = (x + 0.5)/w;
       if (useFaces){
         if (inFace(u, v)){ subj[Y]++; subjN++; }
-        // an oval inside the face box: eyes, nose and mouth, not the
-        // background in the box's corners
-        if (faces.some((f) => {
-          const ex = (u - (f.x0 + f.x1)/2) / ((f.x1 - f.x0)*0.38), ey = (v - (f.y0 + f.y1)/2 - (f.y1 - f.y0)*0.04) / ((f.y1 - f.y0)*0.42);
-          return ex*ex + ey*ey <= 1;
-        })){ fullFace[Y]++; fullN++; }
       } else if (u > 0.2 && u < 0.8 && v > 0.12 && v < 0.82){
         subj[Y]++; subjN++;                       // centre-weighted: where the subject usually is
       }
@@ -3158,10 +2561,6 @@ function analyzeExposure(img, faces){
   }
   const whole = expoStats(all, w*h);
   const faceBased = !!(useFaces && subjN > 30);
-  // the brightest 1% of the whole face box: eye whites, teeth, the shine on
-  // a forehead. In good light these are bright whatever the skin tone; in a
-  // backlit or shaded face even they are dim
-  const faceHi = fullN > 30 ? expoStats(fullFace, fullN).p99 : null;
   const subject = (subjN > 30 ? expoStats(subj, subjN) : null) || whole;
   const sm = subject.median;
   /* A dark subject alone is not proof of a dark photo: people with dark
@@ -3172,42 +2571,17 @@ function analyzeExposure(img, faces){
      bright, clipping background (backlight). The same test keeps a
      well-exposed low-key scene with real highlights from being lifted. */
   const underexposed = whole.p95 < (faceBased ? 0.80 : 0.85);
-  // backlight: most of the frame is bright and clipping while the subject
-  // is far darker. A few white pixels (a white shirt) are not backlight —
-  // otherwise dark skin in good light next to something white got lifted
-  const backlitClipped = whole.clipPct > 0.05 && whole.median > 0.50 && sm < 0.5*whole.median;
-  // backlight without clipping (a bright wall, a window or sky a phone kept
-  // just below white): a very bright scene, a face far below it, AND even
-  // the face's brightest spots (eye whites, teeth, shine) are dim. Dark skin
-  // in good light still has bright eyes and teeth, so it isn't caught here.
-  const backlitSoft = faceBased && faceHi !== null && whole.median > 0.65 && sm < 0.4*whole.median && faceHi < 0.40;
-  const backlit = backlitClipped || backlitSoft;
-  /* The dark classes are tested FIRST: a backlit photo (dark person in
-     front of a bright window or sky) has a very bright frame median, and
-     checking "too bright" first called it overexposed and left the person
-     dark. "Too bright" now also requires the subject itself to be bright. */
-  /* Face in shade: a well-exposed, sunny scene where the person stands in
-     shade (under a tree, a canopy, a hat brim). The photo is fine, but the
-     face sits a clear step below the scene, and the brick palette turns
-     that level into Brown/Coffee bricks — a fair-skinned child reads as
-     dark-skinned in the mosaic. It gets the gentle "slightly dark" fill.
-     The band keeps dark skin in good light out of it: such a face sits
-     much further below the scene (under 60% of the frame median) and
-     below the 0.28 floor, and is left exactly as it is. */
-  const shadedFace = faceBased && !underexposed && !backlit &&
-    sm >= 0.28 && sm < 0.46 && sm < whole.median - 0.08 && sm > 0.6*whole.median;
+  const backlit = whole.clipPct > 0.03 && sm < 0.5*whole.p90;
   let cls = "ok";
-  if (faceBased){
+  if (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06 && sm > 0.45)) cls = "bright";
+  else if (faceBased){
     if (sm < 0.26 && (underexposed || backlit)) cls = "veryDark";
-    else if ((sm < 0.40 && (underexposed || backlit)) || shadedFace) cls = "dark";
+    else if (sm < 0.40 && (underexposed || backlit)) cls = "dark";
   } else {
-    if ((sm < 0.22 && (underexposed || backlit)) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
-    else if ((sm < 0.38 && (underexposed || backlit)) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
+    if ((sm < 0.22 && underexposed) || (whole.median < 0.20 && whole.shadowPct > 0.60)) cls = "veryDark";
+    else if ((sm < 0.38 && underexposed) || (whole.median < 0.30 && whole.shadowPct > 0.45)) cls = "dark";
   }
-  if (cls === "ok" && sm > 0.45 &&
-      (whole.median > 0.70 || (whole.mean > 0.66 && whole.clipPct > 0.06))) cls = "bright";
   return { cls, apply: cls === "dark" || cls === "veryDark", whole, subject, faceBased, backlit, underexposed,
-           shaded: shadedFace && cls === "dark", faceHi,
            faceKey: useFaces ? faces.length : 0 };
 }
 /* Step 3: the correction itself, computed on the working image AFTER the
@@ -3215,7 +2589,7 @@ function analyzeExposure(img, faces){
    where it lands — the white-point stretch alone already lifts an evenly
    dark photo, and a curve sized without knowing that either doubled the
    lift or was cancelled by it. Returns the applied curve info or null. */
-function brightenSubject(buf, gw, gh, skinMask, cls, shaded){
+function brightenSubject(buf, gw, gh, skinMask, cls){
   const faceBased = !!(skinMask && skinMask.some((v) => v));
   const hist = new Uint32Array(256); let n = 0;
   for (let y = 0; y < gh; y++){
@@ -3229,13 +2603,10 @@ function brightenSubject(buf, gw, gh, skinMask, cls, shaded){
   const st = expoStats(hist, n);
   if (!st) return null;
   const now = st.median;
-  // a face in shade in a well-lit photo is brought up to the light the
-  // rest of the scene has, a little further than a generally dark photo
-  const shadedFace = !!(shaded && faceBased && cls === "dark");
-  const target = shadedFace ? 0.52 : cls === "veryDark" ? (faceBased ? 0.50 : 0.42) : (faceBased ? 0.46 : 0.38);
+  const target = cls === "veryDark" ? (faceBased ? 0.50 : 0.42) : (faceBased ? 0.46 : 0.38);
   if (now >= target - 0.02) return { before: now, after: now, e: 1, faceBased, curve: null };   // already there
   let e = Math.log(target) / Math.log(Math.max(0.04, now));
-  e = cls === "veryDark" ? clamp(e, 0.55, 1) : clamp(e, shadedFace ? 0.60 : 0.72, 1);
+  e = cls === "veryDark" ? clamp(e, 0.55, 1) : clamp(e, 0.72, 1);
   // highlight protection: brighter photos (real highlights) get an earlier shoulder
   let whole = 0, clipN = 0;
   for (let i = 0; i < buf.length; i += 3) if (0.2126*buf[i] + 0.7152*buf[i+1] + 0.0722*buf[i+2] >= 242) clipN++;
@@ -3255,7 +2626,7 @@ function brightenSubject(buf, gw, gh, skinMask, cls, shaded){
     }
   }
   if (!curve || e >= 0.985) return { before: now, after: now, e: 1, faceBased, curve: null };
-  applyExposureCurve(buf, curve, faceBased ? skinMask : null);
+  applyExposureCurve(buf, curve);
   return { before: now, after: curve[Math.round(now*255)]/255, e: +e.toFixed(3), faceBased, curve };
 }
 // 256-entry luminance curve: power lift, capped shadow gain (toe) and a
@@ -3277,41 +2648,21 @@ function expoCurve(e, maxGain, knee){
 }
 // apply to a working RGB buffer (0..255 floats). Hue is kept exactly and
 // saturation is kept as it LOOKS: the new luminance comes from the curve,
-// and each channel's distance from grey grows by a power of the
+// and each channel's distance from grey grows by the square root of the
 // brightening ratio. Scaling colour fully with the ratio (plain gain)
 // makes lifted shadows over-saturated — dark skin turns orange, brown
-// hair turns yellow; not scaling it at all washes colours out. Skin
-// (when the people's faces are known) uses the square root of the ratio;
-// everything else uses ratio^0.75 so clothing, sky and other colours keep
-// enough saturation to land on the right palette brick rather than a
-// greyer neighbour. Channels are pulled back together (same hue) if any
-// would clip.
-function applyExposureCurve(buf, lut, skinMask){
-  for (let i = 0, p = 0; i < buf.length; i += 3, p++){
+// hair turns yellow; not scaling it at all washes colours out. Channels
+// are pulled back together (same hue) if any would clip.
+function applyExposureCurve(buf, lut){
+  for (let i = 0; i < buf.length; i += 3){
     const r = buf[i], g = buf[i+1], b = buf[i+2];
     const Y = 0.2126*r + 0.7152*g + 0.0722*b;
     if (Y <= 0.5) continue;
     const yi = Math.min(254.999, Y), lo = yi | 0, fr = yi - lo;
-    let Y2 = lut[lo] + (lut[lo+1] - lut[lo])*fr;
+    const Y2 = lut[lo] + (lut[lo+1] - lut[lo])*fr;
     if (Y2 <= Y + 0.05) continue;
-    const cpow = (skinMask && skinMask[p]) ? 0.5 : 0.75;   // chroma growth: between "none" and "full gain"
-    const lift = (Yn) => {
-      const s = Math.pow(Yn / Y, cpow);
-      return [Yn + (r - Y)*s, Yn + (g - Y)*s, Yn + (b - Y)*s];
-    };
-    let [nr, ng, nb] = lift(Y2);
-    if (Math.max(nr, ng, nb) > 255){
-      // a saturated bright colour (pink top, blue sky) would clip: give it
-      // less brightening rather than less colour, so it neither blows out
-      // nor fades toward grey
-      let a = Y, z = Y2;
-      for (let k = 0; k < 8; k++){
-        const m = (a + z)/2;
-        if (Math.max(...lift(m)) > 255) z = m; else a = m;
-      }
-      [nr, ng, nb] = lift(a);
-      Y2 = a;
-    }
+    const s = Math.sqrt(Y2 / Y);                      // chroma growth: between "none" and "full gain"
+    let nr = Y2 + (r - Y)*s, ng = Y2 + (g - Y)*s, nb = Y2 + (b - Y)*s;
     const hi = Math.max(nr, ng, nb), low = Math.min(nr, ng, nb);
     if (hi > 255 || low < 0){
       // shrink the colour offset (not the luminance) until it fits
@@ -3322,59 +2673,6 @@ function applyExposureCurve(buf, lut, skinMask){
       nr = Y2 + (nr - Y2)*t; ng = Y2 + (ng - Y2)*t; nb = Y2 + (nb - Y2)*t;
     }
     buf[i] = nr; buf[i+1] = ng; buf[i+2] = nb;
-  }
-}
-/* Skin level guard. The black/white-point step is meant to add contrast,
-   but on a photo with bright window light and no real blacks it raises the
-   black point a long way, and the mid-tones, where skin sits, come out
-   darker: a child's face measured L 50 in the photo and L 39 after levels,
-   and the palette answered with Brown and Dark Brown bricks. Auto-
-   brightness can't catch it, because it judges the original photo (where
-   the face is fine). So once the people's skin is known: if levels left
-   the skin darker than it is in the photo, a mid-tone curve (black and
-   white points stay put) lifts it back to the photo's own skin level. */
-function holdSkinLevel(buf, pre, skinMask){
-  if (!skinMask) return null;
-  const hb = new Uint32Array(256), hp = new Uint32Array(256); let n = 0;
-  for (let p = 0, i = 0; p < skinMask.length; p++, i += 3){
-    if (!skinMask[p]) continue;
-    hb[clamp(Math.round(0.2126*buf[i] + 0.7152*buf[i+1] + 0.0722*buf[i+2]), 0, 255)]++;
-    hp[clamp(Math.round(0.2126*pre[i] + 0.7152*pre[i+1] + 0.0722*pre[i+2]), 0, 255)]++;
-    n++;
-  }
-  if (n < 20) return null;
-  const now = expoStats(hb, n).median, was = expoStats(hp, n).median;
-  if (!(now > 0.04 && was > now + 0.01)) return null;
-  const g = clamp(Math.log(was) / Math.log(now), 0.55, 1);
-  if (g >= 0.995) return null;
-  const lut = new Float32Array(256);
-  for (let k = 0; k < 256; k++) lut[k] = 255*Math.pow(k/255, g);
-  applyExposureCurve(buf, lut, skinMask);
-  return { was, now, g: +g.toFixed(3) };
-}
-/* Skin saturation guard. The black/white-point step stretches each colour
-   channel on its own: right for the photo as a whole, but on skin it
-   pushes red up and blue down, so natural skin (e.g. 130,90,73) comes out
-   as saturated orange-brown (125,75,52) and the palette answers with
-   Coffee/Brown bricks. For skin pixels only, the colour's strength
-   relative to its brightness is held to what the photo itself had (plus
-   5%); the new brightness and the white-balance hue are kept. Only ever
-   reduces saturation, never adds it. */
-function keepSkinSaturation(buf, pre, skinMask){
-  if (!skinMask) return;
-  for (let p = 0, i = 0; p < skinMask.length; p++, i += 3){
-    if (!skinMask[p]) continue;
-    const r0 = pre[i], g0 = pre[i+1], b0 = pre[i+2];
-    const Y0 = 0.2126*r0 + 0.7152*g0 + 0.0722*b0;
-    const r = buf[i], g = buf[i+1], b = buf[i+2];
-    const Y = 0.2126*r + 0.7152*g + 0.0722*b;
-    if (Y0 < 1 || Y < 1) continue;
-    const c0 = Math.hypot(r0 - Y0, g0 - Y0, b0 - Y0) / Y0;
-    const c = Math.hypot(r - Y, g - Y, b - Y) / Y;
-    const cap = c0 * 1.05;
-    if (c <= cap || c <= 0) continue;
-    const t = cap / c;
-    buf[i] = Y + (r - Y)*t; buf[i+1] = Y + (g - Y)*t; buf[i+2] = Y + (b - Y)*t;
   }
 }
 // analyse lazily on the first render of a photo (i.e. straight after
@@ -3423,7 +2721,7 @@ function syncBrightPill(){
     ? '<span aria-hidden="true">☀</span> Auto brightness applied <u>Undo</u>'
     : '<span aria-hidden="true">☀</span> Original brightness <u>Brighten</u>';
   brightPill.title = on
-    ? (S.expo.shaded ? "The face was in shade" : "Your photo was " + (S.expo.cls === "veryDark" ? "quite dark" : "a little dark")) + ", so it was brightened automatically. Tap to use the original brightness."
+    ? "Your photo was " + (S.expo.cls === "veryDark" ? "quite dark" : "a little dark") + ", so it was brightened automatically. Tap to use the original brightness."
     : "Tap to brighten this photo automatically again.";
 }
 
@@ -3453,7 +2751,8 @@ function draw(reuse){
   // it was while nothing that shapes the mosaic has changed. Face detection
   // and background segmentation finish seconds after a project opens and
   // re-ran the whole pipeline, so reopened projects came back with
-  // different colors. Hand edits made since still go on top.
+  // different colors. Hand edits made since still go on top, in their own
+  // exact colors.
   if (S.pinned && S.pinned.key === pinKey()){
     const PAL = S.pinned.pal.slice(), cells = S.pinned.cells.slice();
     const byHex = new Map(PAL.map((c, i) => [c.hex, i]));
@@ -3534,9 +2833,6 @@ function draw(reuse){
     // stretch is itself a brightness gain, so smart auto-brightness governs
     // it: a TOO BRIGHT photo, or a dark photo the customer switched back to
     // "Original brightness", keeps only the black point (no gain)
-    // the photo's own colours before levels, kept so skin can be held to
-    // its natural saturation once the people's skin is known (below)
-    const preLevels = S.auto ? Float32Array.from(buf) : null;
     if (S.auto){
       const lev = measureLevels(toneSrc);
       const cls = expoCls();
@@ -3555,23 +2851,14 @@ function draw(reuse){
     // in the UI telling the customer that's what "Auto off" also did.
     const faceAlreadyConfirmed = !!(S.faceBoxes && S.faceBoxes.length);
     const face = analyzeFaceRegions(buf, gw, gh, faceAlreadyConfirmed, mlFacesInGrid(gw, gh) || [], humanSkinInGrid(gw, gh));  // 1. human faces only; skin follows the real outline
-    addBodySkin(buf, gw, gh, face.mask);          // arms, hands, shoulders: skin too, not just the face
-    if (!face.mask){                              // no face found, but the person model saw skin
-      const m = new Uint8Array(gw*gh);
-      addBodySkin(buf, gw, gh, m);
-      let n = 0; for (let p = 0; p < m.length; p++) n += m[p];
-      if (n >= Math.max(20, gw*gh*0.01)) face.mask = m;
-    }
     S.skinMask = face.mask; S.faceBoxes = face.boxes;
     S.regionMap = classifyRegions(buf, gw, gh, S.skinMask, S.faceBoxes);  // skin/hair/clothing/background — still used for photo enhancement below
-    if (preLevels) keepSkinSaturation(buf, preLevels, S.skinMask);  // levels must not turn skin orange
-    if (preLevels) holdSkinLevel(buf, preLevels, S.skinMask);       // ...or darker than the photo
 
     // 3. smart auto-brightness: only for photos the upload analysis found
     // dark, sized on the subject (the real skin of the people, when there
     // are any) as it stands after step 2, before highlight recovery, HDR,
     // skin protection, sharpening and the palette/mosaic conversion
-    S.expoApplied = autoBrightActive() ? brightenSubject(buf, gw, gh, S.skinMask, S.expo.cls, S.expo.shaded) : null;
+    S.expoApplied = autoBrightActive() ? brightenSubject(buf, gw, gh, S.skinMask, S.expo.cls) : null;
 
     if (S.auto){
       recoverHighlights(buf, gw, gh, 35);                      // highlight recovery — keeps bright faces from clipping to white
@@ -3611,18 +2898,7 @@ function draw(reuse){
   }
 
   if (S.auto && S.skinMask) protectSkinColors(buf, S.skinMask);   // 6. protect skin tones
-  if (S.auto && S.faceBoxes && S.faceBoxes.length) faceDetail(buf, gw, gh, S.faceBoxes, window.MB_FACE_SHARP != null ? window.MB_FACE_SHARP : 1.6);
-  // face shading spread skin into pale cream highlights and brown shadows;
-  // the Studio-style even, warm skin looks better, so it is off by default
-  // (window.MB_FACE_K = 1.7 turns it back on for testing)
-  if (S.auto && S.skinMask && window.MB_FACE_K > 1) faceShading(buf, gw, S.skinMask, S.faceBoxes);
   sharpen(buf, gw, gh, S.detail, S.auto ? S.skinMask : null);      // smart, edge-aware sharpening
-  // bring out eyes, brows and mouth (auto only); their bricks stay undithered
-  let featureMask = null;
-  if (S.auto && window.MB_FACE_FEATURES !== false){
-    const feats = faceFeaturesInGrid(gw, gh);
-    if (feats) featureMask = enhanceFaceFeatures(buf, gw, gh, feats);
-  }
 
   const hasSkin = S.regionMap ? S.regionMap.includes(1) : false;
   const key = S.pal + "|" + gw + "x" + gh + "|" + [...S.excludedColors].sort().join(",") + "|" + (S.paletteCount || "auto") + "|" + (hasSkin ? "skin" : "noskin");
@@ -3652,19 +2928,12 @@ function draw(reuse){
   const regionMapForDither = S.auto ? S.regionMap : null;
   // background 0, skin 1, hair 2, clothing 3
   const REGION_DITHER = [0.22, 0.28, 0.30, 0.30];
-  // inside a face, dithering speckles are as big as an eye at small sizes
-  const FACE_DITHER = window.MB_FACE_DITHER != null ? window.MB_FACE_DITHER : 0.3;
-  let faceGridDither = null;
-  if (FACE_DITHER !== 1 && S.auto && S.faceBoxes && S.faceBoxes.length){
-    faceGridDither = new Uint8Array(gw*gh);
-    for (const b of S.faceBoxes) for (let y = b.y0; y <= b.y1; y++) for (let x = b.x0; x <= b.x1; x++) faceGridDither[y*gw + x] = 1;
-  }
   // which PAL indices are approved skin-tone bricks — computed once, not
   // per pixel. choosePalette() above guarantees these are present in PAL
   // whenever hasSkin is true, so this should reliably find all 8 (or as
   // many as choosePalette could fit).
   const skinHexSet = new Set(SKIN_PALETTE.map((c) => c[1]));
-  let skinIndices = [];
+  const skinIndices = [];
   for (let pi = 0; pi < PAL.length; pi++) if (skinHexSet.has(PAL[pi].hex)) skinIndices.push(pi);
   // Region-classified skin pixels already can't land on a non-skin color —
   // the hard restriction above only offers the 8 SKIN_PALETTE bricks. The
@@ -3699,35 +2968,6 @@ function draw(reuse){
   const hasBgSwap = !!(S.bgEffect && S.bgEffect !== "original" && S.subjectMask);
   const subjectAlphaGrid = hasBgSwap ? resampleAlpha(S.subjectMask, S.segW, S.segH, gw, gh) : null;
   const isSubjectPixel = (x, y) => !subjectAlphaGrid || subjectAlphaGrid[y*gw + x] > 0.5;
-  /* SKIN TONE BAND. Every skin pixel could take any of the 8 skin bricks,
-     Cream to Dark Brown, and dithering spreads error between neighbours,
-     so a fair face in soft shade picked up isolated Brown / Dark Brown
-     bricks mid-cheek and read as blotchy or darker than it is. The band is
-     measured from THIS photo's own skin (lightness, 8th to 92nd
-     percentile) and only the skin bricks inside it, plus a small margin,
-     stay allowed (never fewer than 3, so shading survives). Dark skin
-     keeps its dark bricks and is never pushed paler: the band comes from
-     the photo, not a target. Eyes, brows and lips are not skin pixels and
-     keep the full palette. */
-  if (S.auto && regionMapForDither && skinIndices.length > 3 && window.MB_SKIN_BAND === true){   // off by default: all 8 skin bricks give warmer, more natural skin
-    const Ls = [];
-    for (let y = 0; y < gh; y++) for (let x = 0; x < gw; x++){
-      const p = y*gw + x;
-      if (regionMapForDither[p] !== 1 || !isSubjectPixel(x, y)) continue;
-      const o = p*3;
-      Ls.push(rgb2lab(clamp(buf[o],0,255), clamp(buf[o+1],0,255), clamp(buf[o+2],0,255))[0]);
-    }
-    if (Ls.length >= 30){
-      Ls.sort((u, v) => u - v);
-      const lo = Ls[Math.floor(Ls.length*0.08)] - 6, hi = Ls[Math.floor(Ls.length*0.92)] + 6;
-      const mid = (lo + hi)/2;
-      let band = skinIndices.filter((pi) => PAL[pi].lab[0] >= lo && PAL[pi].lab[0] <= hi);
-      if (band.length < 3){
-        band = skinIndices.slice().sort((u, v) => Math.abs(PAL[u].lab[0] - mid) - Math.abs(PAL[v].lab[0] - mid)).slice(0, 3);
-      }
-      skinIndices = band;
-    }
-  }
   // White and yellow are never acceptable on skin either — unlike red
   // (which lips legitimately need, so it reroutes to "any other color"),
   // these reroute straight to the nearest of the 8 approved skin tones,
@@ -3828,8 +3068,7 @@ function draw(reuse){
     for (let k = 0; k < gw; k++){
       const x = ltr ? k : gw-1-k, i = (y*gw + x)*3;
       const regionMult = regionMapForDither ? REGION_DITHER[regionMapForDither[y*gw + x]] : 1;
-      const faceMult = (faceGridDither && faceGridDither[y*gw + x]) ? FACE_DITHER : 1;
-      const strength = (featureMask && featureMask[y*gw + x]) ? 0 : baseStrength * regionMult * faceMult;
+      const strength = baseStrength * regionMult;
       const r = clamp(buf[i],0,255), g = clamp(buf[i+1],0,255), b = clamp(buf[i+2],0,255);
       const isSkinPixel = regionMapForDither ? (regionMapForDither[y*gw + x] === 1 && isSubjectPixel(x, y)) : false;
       let n = nearest(r, g, b, PAL, true, isSkinPixel ? skinIndices : null);
@@ -4053,7 +3292,15 @@ function draw(reuse){
     for (const [k, hex] of S.edits){
       if (k >= cells.length) continue;
       let i = byHex.get(hex);
-      if (i === undefined){            // that color left the mosaic — snap to the closest one still in it
+      if (i === undefined){
+        // a color placed by hand that the automatic palette doesn't use
+        // (a brick painted in a new color, or Replace color): keep that
+        // exact color. Snapping it to the closest automatic color turned a
+        // hand-painted purple letter blue when the mosaic was regenerated.
+        const real = fullPal().find((c) => c.hex === hex);
+        if (real){ PAL.push(real); i = PAL.length - 1; byHex.set(hex, i); }
+      }
+      if (i === undefined){            // not a real color any more — snap to the closest one in the mosaic
         const want = PAL[0] ? rgb2lab(...hex2rgb(hex)) : null;
         let bd = Infinity;
         PAL.forEach((c, j) => { const d = dLab(want, c); if (d < bd){ bd = d; i = j; } });
@@ -4204,13 +3451,15 @@ function tally(cells, P){
   if (S.editing){ renderBrushes(); refreshEdits(); }
   try { document.dispatchEvent(new CustomEvent("memobrick:recount")); } catch (e) {}
   if (typeof renderColorGrid === "function") renderColorGrid();
+  // hand-placed colors are always kept, so they can take a design past the
+  // 18 colors a kit is bagged with: say so instead of changing any brick
+  const over = COUNTS.length > MAX_COLOURS;
+  if (over && !tally._over) toast(`This design now uses ${COUNTS.length} colors — a kit holds at most ${MAX_COLOURS}. Replace a hand-placed color with one already in the design.`);
+  tally._over = over;
   $("#partsMeta").textContent = `${COUNTS.length} of ${PALETTES[S.pal].colors.length} colors · max ${MAX_COLOURS} bags, none under ${MIN_BRICKS} bricks${S.edits.size ? " · " + fmt(S.edits.size) + " hand-placed" : ""}`;
 }
 
 function meta(){
-  // keep the saved copy current: it used to be written once, 400 ms after
-  // upload, so a reload brought back the first size and crop, not the design
-  if (S.uploaded){ clearTimeout(meta._save); meta._save = setTimeout(saveSession, 1500); }
   const { gw, gh, bx, by } = dims(), pieces = gw*gh;
   const canBuild = !!S.size.build;
   const total = (S.build && canBuild) ? S.size.build : S.size.price;
@@ -4491,12 +3740,6 @@ function showView(name){
     try { history.replaceState(null, "", location.pathname + location.search); }
     catch (e) { location.hash = ""; }
   }
-  // #editor marks "the editor is open" so a reload comes back to the design
-  // (restoreSession only restores there); leaving the editor drops it
-  try {
-    if (name === "editor" && location.hash !== "#editor") history.replaceState(null, "", location.pathname + location.search + "#editor");
-    else if (name !== "editor" && location.hash === "#editor") history.replaceState(null, "", location.pathname + location.search);
-  } catch (e){}
   if (name === "editor"){
     const panels = document.querySelectorAll("[data-acc]");
     if (panels.length){
@@ -4511,7 +3754,6 @@ function showView(name){
     if (el) el.hidden = (v !== name);
   });
   document.body.classList.toggle("in-app", name !== "home");
-  document.body.classList.toggle("in-editor", name === "editor");   // phones: the editor's own sticky bar owns the top edge
   window.scrollTo({ top: 0, behavior: "auto" });
   if (name === "editor") renderIfNeeded();     // never rebuild an existing design
 }
@@ -4558,19 +3800,6 @@ document.addEventListener("click", (e) => {
   requestAnimationFrame(() => {
     if (id === "top"){ window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-    // photos above the target (the reviews rail) finish loading during the
-    // smooth scroll and push the section down, so it used to stop short.
-    // Once the scroll settles, line it up again if it has moved.
-    let tries = 0, last = -1;
-    const settle = setInterval(() => {
-      const y = Math.round(window.scrollY);
-      if (y !== last){ last = y; return; }               // still scrolling
-      const want = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
-      const off = el.getBoundingClientRect().top - want;
-      if (Math.abs(off) > 12 && tries++ < 2){ last = -1; el.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
-      clearInterval(settle);
-    }, 250);
-    setTimeout(() => clearInterval(settle), 6000);
   });
 });
 
@@ -5048,9 +4277,6 @@ if (foxThumb){
    and send a proof before production. Sizes and prices come from the same
    SIZES catalogue the creator uses — there is no second price list.
    ===================================================================== */
-// filled in by designerService() below: hands an uploaded photo (and the
-// size it was previewed at) to the Pro Design Service form
-let svcPrefill = null;
 (function designerService(){
   const drop = document.querySelector("#svcDrop"),
         input = document.querySelector("#svcFile"),
@@ -5072,6 +4298,7 @@ let svcPrefill = null;
     "30x20": "Great for couples and families", "30x30": "Statement piece",
   };
 
+  function money(n){ return "$" + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, ""); }
 
   function sizeList(){
     return svc.showAll ? SIZES : SIZES.filter((z) => POPULAR.indexOf(z.id) > -1);
@@ -5188,10 +4415,7 @@ let svcPrefill = null;
       return;
     }
     const z = SIZES.find((x) => x.id === svc.sizeId);
-    // the Shopify catalog is printed into every storefront page (live domain,
-    // *.myshopify.com, theme preview); a hostname test missed preview and any
-    // other domain and faked a "Ready to send" without adding to cart
-    const onShopify = !!document.querySelector("#memobrick-catalog") || /myshopify|mymemobrick/.test(location.hostname);
+    const onShopify = /myshopify|mymemobrick/.test(location.hostname);
     if (!onShopify){
       toast("Ready to send: " + z.label + " with your photo attached. On the live shop this posts to checkout.");
       return;
@@ -5217,103 +4441,7 @@ let svcPrefill = null;
   }
   if (checkout) checkout.addEventListener("click", submit);
 
-  svcPrefill = (f, sizeId) => {
-    takeFile(f);
-    if (sizeId && SIZES.some((z) => z.id === sizeId)){
-      svc.sizeId = sizeId;
-      if (POPULAR.indexOf(sizeId) < 0) svc.showAll = true;   // keep the chosen size visible
-    }
-    drawSizes(); summary();
-  };
-
   drawSizes(); summary();
-})();
-
-/* =====================================================================
-   DESIGN CHOICE  (#designChoice)
-   Right after a photo is uploaded, its brick preview opens with a choice
-   on top: design it yourself in the Creator, or let our artist design it
-   (Pro Design Service: photo and size carried over, one tap from checkout).
-   Asked every time the customer uploads their own file from the upload
-   screen; a photo changed from inside the editor after they already chose
-   "myself" on this page is not asked again. The "Save your design" email
-   popup waits for this choice (memobrick:designchoice) and only follows
-   "myself".
-   ===================================================================== */
-const designChoice = (function(){
-  const sheet = document.querySelector("#designChoice");
-  if (!sheet) return { offer(){} };
-  const thumb = sheet.querySelector("#dcThumb");
-  const card = sheet.querySelector(".dchoice-card");
-  let file = null, lastFocus = null;
-  let choseSelf = false;              // on this page load
-
-  function announce(choice){
-    try { document.dispatchEvent(new CustomEvent("memobrick:designchoice", { detail: { choice } })); } catch (e) {}
-  }
-  function close(){
-    sheet.hidden = true;
-    if (card) card.removeAttribute("aria-modal");
-    document.documentElement.classList.remove("dchoice-open");
-    if (lastFocus && lastFocus.focus) try { lastFocus.focus(); } catch (e) {}
-  }
-  function self(){
-    choseSelf = true;
-    close();
-    track("design_choice", { choice: "self" });
-    announce("self");
-  }
-  function artist(){
-    close();
-    track("design_choice", { choice: "artist" });
-    announce("artist");
-    if (svcPrefill && file) svcPrefill(file, S.size && S.size.id);
-    showView("design");
-    // the photo and size are already filled in: land on the order summary
-    requestAnimationFrame(() => {
-      const buy = document.querySelector("#view-design .svc-buy");
-      if (buy) buy.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
-  }
-  function track(name, data){
-    try { if (window.dataLayer) window.dataLayer.push(Object.assign({ event: "memobrick_" + name }, data)); } catch (e) {}
-  }
-
-  sheet.querySelector("#dcSelf").addEventListener("click", self);
-  sheet.querySelector("#dcClose").addEventListener("click", self);
-  sheet.querySelector("#dcArtist").addEventListener("click", artist);
-  sheet.addEventListener("click", (e) => { if (e.target === sheet) self(); });
-  sheet.addEventListener("keydown", (e) => {
-    if (e.key === "Escape"){ e.preventDefault(); self(); return; }
-    if (e.key !== "Tab") return;                       // keep focus inside the dialog
-    const f = [...sheet.querySelectorAll("button")].filter((b) => b.offsetParent !== null);
-    if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-  });
-
-  return {
-    // fromStart: the upload came from the upload screen (always asked);
-    // otherwise it is a photo change inside the editor
-    offer(f, fromStart){
-      if (!f || !(f instanceof Blob)) return;
-      if (choseSelf && !fromStart) return;
-      file = f;
-      if (thumb){
-        const url = URL.createObjectURL(f);
-        thumb.onload = () => URL.revokeObjectURL(url);
-        thumb.onerror = () => { thumb.style.display = "none"; };
-        thumb.style.display = "";
-        thumb.src = url;
-      }
-      lastFocus = document.activeElement;
-      sheet.hidden = false;
-      if (card) card.setAttribute("aria-modal", "true");
-      document.documentElement.classList.add("dchoice-open");
-      setTimeout(() => { const b = sheet.querySelector("#dcSelf"); if (b) b.focus(); }, 50);
-    }
-  };
 })();
 
 /* =====================================================================
@@ -5785,6 +4913,76 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
   });
 })();
 
+/* keep every timing mention in step with the single constant */
+document.querySelectorAll("[data-prodtime]").forEach((el) => { el.textContent = PRODUCTION_TIME_TEXT; });
+
+const REVIEWS = [{"n":"Richard J.","r":5,"d":"August 14, 2026","t":"Always such a great and unique gift to give to friends and family","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/8/14/X3rHt48mr_mid.jpg"},{"n":"Donna K.","r":5,"d":"August 9, 2026","t":"Excellent","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/8/9/o3XA6i-fF_mid.jpg"},{"n":"Steve B.","r":5,"d":"July 16, 2026","t":"My son loves it!!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/7/16/ik1scdnFM_mid.jpg"},{"n":"Tim R.","r":5,"d":"July 8, 2026","t":"Another spectacular job turning a photo into art. She's already asking when we're going to do another one.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/7/8/_MtiAWOcs_mid.jpg"},{"n":"Nicole N.","r":5,"d":"June 18, 2026","t":"Absolutely love my memobrick order. Will definitely recommend to family and friends.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/6/18/30vbX20BQ_mid.jpg"},{"n":"Brian B.","r":5,"d":"June 4, 2026","t":"great product, great gift ! my wife loved putting the mosaic together, and the instruction sheet and whole kit are great quality ! we are going to order again !","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/6/5/vnVn9uYJ5_mid.jpg"},{"n":"Ellen S.","r":5,"d":"May 28, 2026","t":"This was so much fun to do with my boyfriend! We loved doing it and can't wait to hang it in our house. It came out so good!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/28/Ut59WLyWS_mid.jpg"},{"n":"Lauren D.","r":5,"d":"May 28, 2026","t":"This was so much fun to do! I just love how it turned out! I'm just waiting until I can get a shadow box for it, and then I'll hang it on my wall 😁","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/5/31/RHKvYxUPr_mid.jpg"},{"n":"Mary S.","r":3,"d":"May 24, 2026","t":"It looks blurry to me but it is ok","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/5/24/QsvJ3JsVf_mid.jpg"},{"n":"Giselle D.","r":4,"d":"April 25, 2026","t":"A little hard to snap in sometimes and see the letters through the block but it came out great","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/4/26/NMq2OMbuu_mid.jpg"},{"n":"Melanie B.","r":5,"d":"April 9, 2026","t":"Very cool picture and everyone loves it!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/4/19/J_v2xITlk_mid.jpg"},{"n":"Jennifer H.","r":5,"d":"March 17, 2026","t":"Was a fun and a little bit challenging project to do. Can't wait to do another one","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/18/DePzXpS4A_mid.jpg"},{"n":"Jennifer M.","r":5,"d":"March 7, 2026","t":"Love, love, love!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/3/8/t2a1q9OZ9_mid.jpg"},{"n":"Lucy W.","r":5,"d":"March 6, 2026","t":"Loved putting it together","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/3/11/2kZnl5hIp_mid.jpg"},{"n":"Donnie M.","r":4,"d":"February 27, 2026","t":"I really enjoyed hose it turned out and the only thing that I didn't like too well was the word we're not as legible as I thought they would be.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/3/2/FrAR14A8Ss_mid.jpg"},{"n":"Donnie M.","r":5,"d":"February 25, 2026","t":"I just love the way this turned out. It won't be my last purchase.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2026/2/26/-jmr6H1Gp_mid.jpg"},{"n":"Marsha W.","r":5,"d":"February 24, 2026","t":"This was fun!!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/24/XV14cLgqn_mid.jpg"},{"n":"Tim R.","r":5,"d":"February 23, 2026","t":"Another beautiful picture. Thank you again","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/27/9TvgauJIm_mid.jpg"},{"n":"Erica C.","r":5,"d":"February 21, 2026","t":"Love it ! Came out soo good ! Very happy with the purchase !","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/21/Zm2Bhe1Jq_mid.jpg"},{"n":"Halley D.","r":5,"d":"February 13, 2026","t":"Turned out better than I ever expected! Definitely will order again :)","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2026/2/14/foeLiecYb_mid.jpg"},{"n":"Allison H.","r":5,"d":"February 11, 2026","t":"The frame worked out great.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2026/2/12/eNaxDI0Nk_mid.jpg"},{"n":"Kelsey M.","r":5,"d":"February 8, 2026","t":"I love these memo bricks! I ordered a smaller size, but when they emailed the mockup they showed me the difference of what it would look like compared to the bigger size. I was offered to upgrade to the bigger size, which I did. I am so glad I did! These were fun to put together and see how the final product came out. It is interesting to see how they use different colors to create shadows. I had one picture that was mostly black and white in a dark setting with a lot of shadows. A light purple color was used to help show those. Definitely recommend!","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/2/9/7xFZPGgJq_mid.jpg"},{"n":"Kris C.","r":5,"d":"February 3, 2026","t":"It was difficult to get the board to stick together so I had to get my own joiner pieces so it stays together better but I really loved making it and watching it come together!","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/2/3/uXkWbqHXB_mid.jpg"},{"n":"Aaron M.","r":5,"d":"January 25, 2026","t":"Excellent customer service! The design team did an excellent job and we are so pleased to have a precious family picture transformed into such a cool art form.","p":"Custom Bricked Mosaic Portrait 30x20\"","img":"https://images.loox.io/uploads/2026/1/25/GwlS7rLfA_mid.jpg"},{"n":"Nadeana T.","r":5,"d":"January 24, 2026","t":"Absolutely incredible! Pattern is simple to follow and portrait turned out fantastic!","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2026/1/24/wj6s-qpgI_mid.jpg"},{"n":"Kellie G.","r":5,"d":"January 14, 2026","t":"My son-in-law who builds and collects all the adult Star Wars Lego kits love this. Said it was easily the hardest build he has done.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/14/V-UHmIaiB_mid.jpg"},{"n":"Teri M.","r":5,"d":"January 9, 2026","t":"It was great","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2026/1/10/S2qR_raR0_mid.jpg"},{"n":"Elizabeth P.","r":5,"d":"January 3, 2026","t":"I got this for my son for Christmas. He thought it was the coolest thing ever. He's been putting it together since he got it and is almost done. He really likes it.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2026/1/3/sdpzAIsdg_mid.jpg"},{"n":"Jacob P.","r":5,"d":"December 31, 2025","t":"I loved building it and my girlfriend loved the finished project. It was her favorite picture and I was so excited to bring it to life in this unique way","p":"Custom Bricked Mosaic Portrait 20×20\"","img":"https://images.loox.io/uploads/2026/1/1/UcXoh1baeq_mid.jpg"},{"n":"Emily S.","r":5,"d":"December 29, 2025","t":"Love this!","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/12/30/c_KH7WMJEG_mid.jpg"},{"n":"John R.","r":4,"d":"November 28, 2025","t":"The frame works well enough. It could have been a little simpler to assemble. Also I suggest the it be made with a back that the picture can lock into.","p":"Frame 2×3 / 3×2 Size: 20x30 inch / 30x20 inch","img":"https://images.loox.io/uploads/2025/11/28/GM4kRymqx_mid.jpg"},{"n":"Jennifer B.","r":5,"d":"November 11, 2025","t":"Loved it! Will be ordering again soon!","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/11/11/u5E39DACF_mid.jpg"},{"n":"John R.","r":5,"d":"November 2, 2025","t":"It was a fun relaxing task. My wife and I are thrilled to have our wedding photo in such an interesting style.","p":"Custom Bricked Mosaic Portrait 20x30\"","img":"https://images.loox.io/uploads/2025/11/3/yWOhEH0xx-_mid.jpg"},{"n":"Michael F.","r":5,"d":"October 27, 2025","t":"Perfect and unique gift for grandson. Kept him off electronics.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/10/27/BEA1z2h7l_mid.jpg"},{"n":"Kimberly W.","r":5,"d":"October 17, 2025","t":"I gave this to my son for his birthday. He loved putting it together and the frame was super easy to install.","p":"Frame 20x20 inch","img":"https://images.loox.io/uploads/2025/10/17/fkwmMBB3R_mid.jpg"},{"n":"Candice L.","r":5,"d":"October 7, 2025","t":"I split the photo in half so I could get 2 of the 60x20 so I could fill my wall more and its turned out AMAZING!","p":"Custom Bricked Mosaic Portrait 60x20\"","img":"https://images.loox.io/uploads/2025/10/8/gsJn-GTlj_mid.jpg"},{"n":"Athena P.","r":5,"d":"October 7, 2025","t":"I really enjoyed doing this one of my girls and I. I had issues with the tool not working for me. I wish that the frames weren't so expensive.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/10/7/0bJe8d7-A_mid.jpg"},{"n":"Athena P.","r":4,"d":"September 30, 2025","t":"I love this picture. However I wish that it wasn't so close up. I wish that it was able to capture more of her and her beauty.","p":"Custom Bricked Mosaic Portrait 16x16\"","img":"https://images.loox.io/uploads/2025/9/30/CoZGC-fD9_mid.jpg"},{"n":"Carol J.","r":5,"d":"September 30, 2025","t":"I love it","p":"Custom Bricked Mosaic 10x10\" (one face only)","img":"https://images.loox.io/uploads/2025/9/30/-uiTZ8ev3_mid.jpg"},{"n":"Norma G.","r":5,"d":"September 12, 2025","t":"We LOVE the way the portrait looks! I have shown it off to all of my friends and family. It is a great memory that will be kept for a long time. It was very easy to put together and the result is fantastic! I highly recommend this to everyone.","p":"Custom Bricked Mosaic Portrait 30x30\"","img":"https://images.loox.io/uploads/2025/9/12/Q14hvAZ8s_mid.jpg"}];
+
+/* Every review here was written by a real customer and is reproduced verbatim
+   from memobrick.com, photo included. The store has 747 reviews in total;
+   these are the ones published publicly on the site. The rest live in Loox,
+   so the section links out rather than inventing any.  */
+/* Shared between the two review-rendering blocks below: these are the
+   specific reviews used in the small "transformations" teaser near the
+   top of the page. The full rail (paint(), just below) excludes them so
+   a visitor doesn't scroll down and see the exact same reviews twice —
+   it starts with whatever comes next instead. */
+const TRANSFORM_PICKS = [0, 2, 3, 4, 6, 7];
+
+(function realReviews(){
+  const track = document.querySelector("#revTrack");
+  if (!track || typeof REVIEWS === "undefined") return;
+  const rest = REVIEWS.filter((r, i) => !TRANSFORM_PICKS.includes(i));
+  let shown = 12;
+
+  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
+
+  function paint(){
+    track.innerHTML = rest.slice(0, shown).map((r) =>
+      '<figure class="rev">' +
+        '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
+        'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
+        '<figcaption>' +
+          '<span class="stars">' + stars(r.r) + "</span>" +
+          "<p>" + esc(r.t) + "</p>" +
+          "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
+          '<span class="rev-prod">' + esc(r.p) + "</span>" +
+        "</figcaption></figure>").join("");
+    const more = document.querySelector("#revMore");
+    if (more) more.hidden = shown >= rest.length;
+  }
+
+  const more = document.querySelector("#revMore");
+  if (more) more.addEventListener("click", () => { shown = rest.length; paint(); });
+  paint();
+})();
+
+/* Compact "transformations" teaser near the top of the homepage — the same
+   real review data and escaping as the full rail above, just 6 specific,
+   strongly positive examples rather than the first 6 by date, so the
+   earliest thing a visitor sees is representative of what people love
+   about it. Nothing here is invented: same REVIEWS array, same esc(). */
+(function transformTeaser(){
+  const track = document.querySelector("#transformTrack");
+  if (!track || typeof REVIEWS === "undefined") return;
+  function stars(n){ return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, (c) =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c])); }
+  const picks = TRANSFORM_PICKS.map((i) => REVIEWS[i]).filter(Boolean);
+  track.innerHTML = picks.map((r) =>
+    '<figure class="rev">' +
+      '<img src="' + r.img + '" alt="MemoBrick built by ' + esc(r.n) + '" loading="lazy" ' +
+      'referrerpolicy="no-referrer" onerror="this.style.visibility=\'hidden\'">' +
+      '<figcaption>' +
+        '<span class="stars">' + stars(r.r) + "</span>" +
+        "<p>" + esc(r.t) + "</p>" +
+        "<b>" + esc(r.n) + '</b> <span class="rev-date">Verified · ' + esc(r.d) + "</span>" +
+        '<span class="rev-prod">' + esc(r.p) + "</span>" +
+      "</figcaption></figure>").join("");
+})();
+
 /* =====================================================================
    REMOTE MEDIA SAFETY NET
    Opened as a local file — which is how this build is tested on a phone —
@@ -5795,8 +4993,6 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
    ===================================================================== */
 (function mediaSafety(){
   function fallback(img){
-    // size-card photos try their backup photo first (their own onerror)
-    if (img.classList.contains("size-img")) return;
     const card = img.closest(".rev, .gal-item, .shopcard");
     if (card){
       // a customer photo that will not load is the whole point of the card:
@@ -5824,11 +5020,25 @@ const ROOM_PHOTOS = {"living": {"box": [0.02, 0.18, 0.86, 1.0], "wallIn": 74, "a
     new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
   } catch (e) {}
 
-  /* the banner video's own fallback lives in heroVideo(): it retries a failed
-     load once and only then shows the poster. A second fallback here used to
-     swap the video for its poster whenever it hadn't started loading after
-     2.5 seconds, which on a slower phone connection hid the video for good
-     (and could stack a second poster image on top). */
+  /* the banner video: if it cannot play, show its poster instead of a black box */
+  const vid = document.querySelector("#heroVid");
+  if (vid){
+    const posterOnly = () => {
+      const src = vid.getAttribute("poster");
+      if (!src) { vid.style.display = "none"; return; }
+      const im = new Image();
+      im.src = src; im.alt = "Building a MemoBrick photo mosaic, brick by brick";
+      im.className = "hero-poster";
+      im.style.cssText = "width:100%;height:auto;display:block;border-radius:inherit";
+      if (vid.parentElement) vid.parentElement.insertBefore(im, vid);
+      vid.style.display = "none";
+    };
+    vid.addEventListener("error", posterOnly);
+    // iOS refuses data: video outright; give it a moment, then fall back
+    setTimeout(() => {
+      if (vid.readyState === 0 && !vid.videoWidth) posterOnly();
+    }, 2500);
+  }
 })();
 
 /* =====================================================================
@@ -5898,6 +5108,25 @@ function diag(msg){
   window.__memobrickDiag = show;
 })();
 
+/* the reviews rail */
+const revTrack = document.querySelector("#revTrack");
+if (revTrack){
+  const step = () => Math.max(280, revTrack.clientWidth * 0.8);
+  const sync = () => {
+    const prev = document.querySelector("#revPrev"), next = document.querySelector("#revNext");
+    if (!prev || !next) return;
+    prev.disabled = revTrack.scrollLeft < 8;
+    next.disabled = revTrack.scrollLeft + revTrack.clientWidth >= revTrack.scrollWidth - 8;
+  };
+  document.querySelector("#revPrev").addEventListener("click", () =>
+    revTrack.scrollBy({ left: -step(), behavior: "smooth" }));
+  document.querySelector("#revNext").addEventListener("click", () =>
+    revTrack.scrollBy({ left: step(), behavior: "smooth" }));
+  revTrack.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", sync);
+  sync();
+}
+
 /* the strip at the top of the editor opens the full guide below */
 function revealTips(){
   const body = document.querySelector("#tipsBody"), btn = document.querySelector("#tipsToggle");
@@ -5938,6 +5167,21 @@ if (tipsToggle && tipsBody){
     tipsToggle.setAttribute("aria-expanded", open);
     tipsToggle.setAttribute("aria-expanded", open);
     if (open) tipsBody.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+}
+
+/* ---------------- mobile navigation ---------------- */
+const burger = $("#burger"), navLinks = $("#navLinks");
+if (burger && navLinks){
+  burger.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    burger.setAttribute("aria-expanded", open);
+  });
+  navLinks.addEventListener("click", (e) => {
+    if (e.target.closest("a,button")){
+      navLinks.classList.remove("open");
+      burger.setAttribute("aria-expanded", false);
+    }
   });
 }
 
@@ -6019,8 +5263,6 @@ function setSize(id){
 let sizeFilter = "all";
 const BY_AREA = SIZES.slice().sort((a, b) => (a.gw*a.gh) - (b.gw*b.gh));
 
-// size cards shown before "Show more": one row on desktop, keeps the homepage short
-const SIZES_SHOWN = 4;
 function renderSizes(){
   if (!$("#sizeCards")) return;   // homepage section, not in the editor app
   const list = BY_AREA.filter((x) => sizeFilter === "all" || x.shape === sizeFilter);
@@ -6029,9 +5271,9 @@ function renderSizes(){
     const per = (x.price/pieces*100);
     const ar = Math.min(56, 56*w/Math.max(w,h)), arh = Math.min(56, 56*h/Math.max(w,h));
     return `
-    <article class="size${x.id===S.size.id?" pick":""}${i>=SIZES_SHOWN?" extra":""}" data-id="${x.id}">
+    <article class="size${x.id===S.size.id?" pick":""}${i>7?" extra":""}" data-id="${x.id}">
       ${x.id===S.size.id?'<span class="tag now">In the creator</span>':(x.id==="16x16"?'<span class="tag">Most ordered</span>':"")}
-      <img class="size-img" referrerpolicy="no-referrer" src="${x.img}"${x.imgStatic && x.imgStatic !== x.img ? ` data-fallback="${x.imgStatic}"` : ""} alt="MemoBrick ${x.label} mosaic" loading="lazy" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.removeAttribute('data-fallback')}else{this.style.display='none'}">
+      <img class="size-img" referrerpolicy="no-referrer" src="${x.img}" alt="MemoBrick ${x.label} mosaic" loading="lazy" onerror="this.style.display='none'">
       <div class="size-head">
         <span class="ratio" style="width:${ar}px;height:${arh}px" aria-hidden="true"></span>
         <div>
@@ -6048,10 +5290,10 @@ function renderSizes(){
         ${x.build?`<li><span>Built for you</span><span>${money(x.build)}</span></li>`:""}
       </ul>
       <button class="btn${x.id===S.size.id?"":" btn-ghost"}" data-try="${x.id}">${x.id===S.size.id?"Now in the creator":"Try this size"}</button>
-      <a class="viewlink" href="${url(x, false)}" target="_blank" rel="noopener">View product page →</a>
+      <a class="viewlink" href="${url(x, false)}" target="_blank" rel="noopener">View on memobrick.com →</a>
     </article>`;
   }).join("");
-  const extra = list.length - SIZES_SHOWN;
+  const extra = list.length - 8;
   const mb = $("#moreSizes");
   if (mb){
     mb.hidden = extra <= 0;
@@ -6233,15 +5475,11 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
 
   let ux = ux0, uy = uy0, uw = ux1-ux0, uh = uy1-uy0;
 
-  // margin: frame the whole head with a little shoulder, not just the face.
-  // The detector's box runs roughly brow to chin, so a flat 12% cut off hair
-  // and chin and zoomed in so far that features became a few big bricks (a
-  // real review: "I wish that it wasn't so close up"). Tested side by side
-  // on portraits: much more room than this (60% above, 80% below) pulled in
-  // so much background on a square board that the face got small again.
-  const padTop = uh*0.35, padSide = uw*0.20, padBottom = uh*0.40;
-  ux = Math.max(0, ux-padSide); uy = Math.max(0, uy-padTop);
-  const ex1 = Math.min(1, ux1+padSide), ey1 = Math.min(1, uy1+padBottom);
+  // margin: expand 12% on each side so the crop doesn't hug the face(s)
+  // tightly, then clamp back within the photo
+  const marginX = uw*0.12, marginY = uh*0.12;
+  ux = Math.max(0, ux-marginX); uy = Math.max(0, uy-marginY);
+  const ex1 = Math.min(1, ux1+marginX), ey1 = Math.min(1, uy1+marginY);
   uw = ex1-ux; uh = ey1-uy;
 
   // reshape to the board's own aspect ratio, growing whichever side is
@@ -6256,7 +5494,7 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
   // zoom: how much to scale so this reshaped box fills the whole visible
   // crop — my own S.zoom is a multiplier on top of "cover", exactly
   // matching what 1/max(width,height) gives here
-  const zoomPct = clamp(Math.round((1/Math.max(rw, rh))*100), 100, 240);   // was 300: deep zooms made faces blocky
+  const zoomPct = clamp(Math.round((1/Math.max(rw, rh))*100), 100, 300);
   S.zoom = zoomPct/100;
 
   // convert the desired centre (cx0, cy0, normalised 0-1 in photo space)
@@ -6269,13 +5507,7 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
   const wantX = cx0*iw, wantY = cy0*ih;       // desired centre, in photo pixel space
   S.ox = slackX > 0.001 ? clamp(((iw/2 - wantX)*sc)/slackX, -1, 1) : 0;
   S.oy = slackY > 0.001 ? clamp(((ih/2 - wantY)*sc)/slackY, -1, 1) : 0;
-  // how wide the largest face now is, as a share of the board's width — the
-  // size suggestion uses it to say how many bricks across a face gets
-  const faces = (S.mlFaces && S.mlFacesImg === S.imgId) ? S.mlFaces : null;
-  const faceW = faces && faces.length ? Math.max(...faces.map((f) => f.x1 - f.x0)) : 0;
-  S.faceFrac = faceW > 0 ? Math.min(1, faceW*dw/W) : null;
   setZoom(zoomPct, false, true);
-  if (typeof updateSizeRecommendation === "function") updateSizeRecommendation();
 }
 
 /* Face-aware auto-crop. Detects every face in the FULL original photo —
@@ -6296,14 +5528,13 @@ function applyFaceCrop(ux0, uy0, ux1, uy1, iw, ih, gw, gh){
    runs rather than leaving the customer stuck. */
 async function autoCropToFaces(silent){
   const img = S.img; if (!img) { if (!silent) toast("Upload a photo first."); return; }
-  let { gw, gh } = dims();
+  const { gw, gh } = dims();
   const iw = img.naturalWidth || img.width, ih = img.naturalHeight || img.height;
-  // what the framing was when detection started: detection can take 8 s+,
-  // and an automatic crop must not undo a zoom, pan or size the customer
-  // chose in the meantime
-  const framingAtStart = [S.size.id, S.zoom, S.ox, S.oy].join("|");
   if (!iw || !ih) return;
   if (!silent) toast("Finding faces…");
+  // the automatic crop never overrides a frame the person moved (or a size
+  // they picked) while the faces were still being found
+  const before = [S.zoom, S.ox, S.oy, S.size.id].join("|");
 
   let union = null;   // {x0,y0,x1,y1} normalised 0-1, or null if nothing found
   let faceCount = 0;
@@ -6312,7 +5543,7 @@ async function autoCropToFaces(silent){
   let detectorRan = false;          // the detector worked — "no face" is then a real answer (pet, landscape)
 
   try {
-    const FACE_LOAD_TIMEOUT_MS = 8000;
+    const FACE_LOAD_TIMEOUT_MS = ML_LOAD_TIMEOUT_MS;
     const detector = await Promise.race([
       loadFaceDetector(),
       new Promise((_, reject) => setTimeout(() => reject(new Error("face-detector-load-timeout")), FACE_LOAD_TIMEOUT_MS)),
@@ -6367,13 +5598,8 @@ async function autoCropToFaces(silent){
     }
   }
 
-  // the photo may have been replaced while faces were found (the fallback
-  // path had no check), or the customer may already have framed it
-  if (S.img !== img) return;
-  if (silent && [S.size.id, S.zoom, S.ox, S.oy].join("|") !== framingAtStart) return;
-  ({ gw, gh } = dims());          // the board may have changed shape during detection
-
   if (!union){ if (!silent){ fitWholePhoto(true); toast("No face found — fit the whole photo instead."); } return; }
+  if (silent && (S.img !== img || [S.zoom, S.ox, S.oy, S.size.id].join("|") !== before)) return;
 
   // size recommendations only ever use this — set on a reliable MediaPipe
   // read, cleared otherwise, so a recommendation is never shown from a
@@ -6416,40 +5642,6 @@ function recommendedSizeForFaces(n){
   return best;
 }
 
-/* The size to suggest for this photo, with the reason in words. Starts
-   from the face count (recommendedSizeForFaces), then makes sure the
-   largest face gets enough bricks across for clear eyes (FACE_MIN_STUDS),
-   preferring the photo's own shape. Only ever a suggestion: the board is
-   never switched automatically. */
-const FACE_MIN_STUDS = 18;
-function recommendedSizeForPhoto(){
-  const n = S.detectedFaceCount;
-  const byCount = recommendedSizeForFaces(n);
-  if (!byCount) return null;
-  const img = S.img, iw = img && (img.naturalWidth || img.width), ih = img && (img.naturalHeight || img.height);
-  const ratio = iw && ih ? iw/ih : 1;
-  const shape = ratio > 1.15 ? "landscape" : ratio < 0.87 ? "portrait" : "square";
-  const frac = S.faceFrac || 0;
-  const fitsCount = (z) => { const f = FITS[z.id]; const nums = f && f.match(/\d+/g); return !nums || Number(nums[nums.length - 1]) >= n; };
-  const studs = (z) => Math.round(frac * z.gw);
-  // never suggest a smaller board than the one already chosen: the old
-  // face-count rule recommended 16x16 to someone on 20x20
-  const floor = Math.max(byCount.gw*byCount.gh, S.size.gw*S.size.gh);
-  const pool = SIZES.filter((z) => z.id !== "10x10" && fitsCount(z) && z.gw*z.gh >= floor);
-  const ok = (z) => !frac || studs(z) >= FACE_MIN_STUDS;
-  const byArea = (a, b) => a.gw*a.gh - b.gw*b.gh;
-  const best = pool.filter((z) => z.shape === shape && ok(z)).sort(byArea)[0]
-            || pool.filter(ok).sort(byArea)[0] || S.size;
-  let why;
-  if (frac && studs(best) >= FACE_MIN_STUDS && studs(S.size) < FACE_MIN_STUDS)
-    why = "The face gets about " + studs(best) + " bricks across on this size (" + studs(S.size) + " now), so eyes and smile stay clear.";
-  else if (best.shape === shape && S.size.shape !== shape)
-    why = "Matches your photo\u2019s " + (shape === "portrait" ? "tall" : "wide") + " shape, so less of it is cropped.";
-  else
-    why = "Your photo has " + n + (n === 1 ? " face" : " faces") + " \u2014 this size keeps more detail.";
-  return { size: best, why: why };
-}
-
 /* Desktop-only counterpart to the mobile size panel's own inline
    recommendation banner (built fresh each time that panel renders).
    #sizeGrid renders once at script load rather than per-photo, so
@@ -6457,13 +5649,14 @@ function recommendedSizeForPhoto(){
    slot right above it — purely additive, sizeGrid/sizeAll untouched. */
 function updateSizeRecommendation(){
   const el = $("#sizeRec"); if (!el) return;
-  const pick = recommendedSizeForPhoto(), rec = pick && pick.size;
+  const rec = recommendedSizeForFaces(S.detectedFaceCount);
   if (!rec || rec.id === S.size.id){ el.hidden = true; el.innerHTML = ""; return; }
+  const n = S.detectedFaceCount;
   el.hidden = false;
   el.innerHTML = '<span class="size-rec-k">✨ Recommended for your photo</span>' +
     '<button type="button" class="size-rec-pick" data-id="' + rec.id + '">' +
       '<b>' + rec.label + '</b>' +
-      '<span>' + pick.why + '</span>' +
+      '<span>Your photo has ' + n + (n === 1 ? ' face' : ' faces') + ' — this size keeps more detail.</span>' +
     '</button>';
   el.querySelector(".size-rec-pick").addEventListener("click", () => setSize(rec.id));
 }
@@ -6699,7 +5892,7 @@ function saveSession(){
     c.getContext("2d").drawImage(S.img, 0, 0, c.width, c.height);
     sessionStorage.setItem("mb_photo", c.toDataURL("image/jpeg", 0.82));
     sessionStorage.setItem("mb_state", JSON.stringify({
-      sizeId: S.size.id, build: !!S.build, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
+      sizeId: S.size.id, zoom: S.zoom, ox: S.ox, oy: S.oy, bg: S.bg, bgEffect: S.bgEffect,
       bri: S.bri, con: S.con, sat: S.sat, temp: S.temp, detail: S.detail,
       dither: S.dither, shadows: S.shadows, warm: S.warm, auto: S.auto, autoBright: S.autoBright !== false, pal: S.pal,
       excludedColors: S.excludedColors ? [...S.excludedColors] : [],
@@ -6710,12 +5903,6 @@ function saveSession(){
 
 function restoreSession(){
   try {
-    // only bring the saved design back where the customer is designing (the
-    // editor page, #editor, or a ?size= deep link). Restoring on every visit
-    // turned the homepage into the editor for the rest of the tab, and the
-    // logo, Sizes and FAQ links could no longer reach it.
-    const qs = new URLSearchParams(location.search);
-    if (!(window.MB_LANDING_VIEW === "upload" || location.hash === "#editor" || qs.get("size"))) return false;
     const data = sessionStorage.getItem("mb_photo");
     if (!data) return false;
     const st = JSON.parse(sessionStorage.getItem("mb_state") || "{}");
@@ -6728,10 +5915,8 @@ function restoreSession(){
       // returning visitor, rather than just quietly starting fresh.
       try {
         adopt(im, { name: "restored.jpg", type: "image/jpeg" }, { skipAutoCrop: !st.fresh });
-        // a size in the link (a product page's "design this size") wins
-        const z = SIZES.find((x) => x.id === (qs.get("size") || st.sizeId));
+        const z = SIZES.find((x) => x.id === st.sizeId);
         if (z) S.size = z;
-        if (z && st.build && z.build && !qs.get("size")) S.build = true;
         // a value missing from an older saved copy keeps the current one
         // instead of becoming undefined (sliders read "undefined")
         const pick = (k) => (st[k] == null ? S[k] : st[k]);
@@ -6758,12 +5943,7 @@ function restoreSession(){
         // an error for something the customer never asked to happen
       }
     };
-    // an unreadable saved photo: restoreSession already returned true, so
-    // without this no view was ever shown (a blank page)
-    im.onerror = () => {
-      try { sessionStorage.removeItem("mb_photo"); sessionStorage.removeItem("mb_state"); } catch (x){}
-      showView(window.MB_LANDING_VIEW || "home");
-    };
+    im.onerror = () => {};
     im.src = data;
     return true;
   } catch (e){ return false; }
@@ -6803,7 +5983,6 @@ function adopt(img, f, opts){
   S.imgId = (S.imgId || 0) + 1;
   S.baseBuf = null; S.baseKey = ""; S.cells = null; S.cacheKey = "";
   S.pickedPal = null; S.palKey = "";
-  S.faceFrac = null;
   S.detectedFaceCount = null;   // belongs to the previous photo — cleared until this one's own detection resolves
   S.mlFaces = null; S.mlFacesImg = -1;
   S.expo = null; S.autoBright = true;   // each photo gets its own exposure analysis
@@ -6861,8 +6040,6 @@ function adopt(img, f, opts){
 }
 
 function loadFile(f){
-  const upView = document.querySelector("#view-upload");
-  const fromStart = !!(upView && !upView.hidden);
   if (!looksLikeImage(f)){
     toast("That doesn't look like an image. JPG, PNG, HEIC, WebP, AVIF, GIF, BMP, TIFF and SVG all work.");
     return;
@@ -6873,7 +6050,7 @@ function loadFile(f){
     .then(() => { diag("trying createImageBitmap"); return decodeViaBitmap(f); })
     .catch((e) => { diag("bitmap failed: " + e.message + " — trying FileReader"); return decodeViaDataURL(f); })
     .catch((e) => { diag("FileReader failed: " + e.message + " — trying object URL"); return decodeViaImage(f); })
-    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); adopt(img, f); try { designChoice.offer(f, fromStart); } catch (e) {} })
+    .then((img) => { diag("decoded " + (img.naturalWidth||img.width) + "x" + (img.naturalHeight||img.height) + ", opening the editor"); return adopt(img, f); })
     .catch(() => {
       const name = (f.name || "") + " " + (f.type || "");
       if (/heic|heif|hif/i.test(name))
@@ -8557,8 +7734,6 @@ if (!restoreSession()){
     params.get("size") ? "upload" :
     location.hash === "#editor" ? "editor" :
     location.hash === "#freeproof" ? "freeproof" :
-    // the header/footer "Corporate & bulk" links on other pages point here
-    (location.hash === "#view-corporate" || location.hash === "#corporate") ? "corporate" :
     window.MB_LANDING_VIEW || "home"));
 }
 meta();
@@ -8724,17 +7899,11 @@ meta();
 body{background:#8a8f96;margin:0;padding:20px 0}
 .sheet{width:279.4mm;min-height:431.8mm;margin:0 auto 22px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
 .ins-sheets{max-width:none}
-/* one sheet = one printed 11x17" page. The sheet already carries its own
-   14mm/11mm padding, so the page itself has no margin — a 10mm page
-   margin on top of a full-size sheet pushed the bottom of every sheet
-   (and every section's color list) onto a second, mostly blank page */
 @media print{
   body{background:#fff;padding:0}
-  @page{size:11in 17in;margin:0}
-  .ins-sheets{padding:0}
-  .sheet{width:279.4mm;min-height:431.8mm;height:auto;padding:14mm 11mm;margin:0;box-shadow:none;
-    break-inside:avoid;break-after:page;page-break-after:always}
-  .sheet:last-child{break-after:auto;page-break-after:auto}
+  .sheet{box-shadow:none;page-break-after:always;margin:0 auto}
+  .sheet:last-child{page-break-after:auto}
+  @page{size:11in 17in;margin:10mm}
 }
 </style></head><body><div class="ins-sheets">${body}</div></body></html>`;
   }
@@ -8764,10 +7933,7 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     try { saveSession(); } catch (e){}
 
     const id = o.designId || designId();
-    // the label production reads must match the variant actually charged:
-    // the editor's state calls it S.build, never buildForMe, so the old
-    // lookup marked every "we build it" order as "Build at home"
-    const props = designProperties(Object.assign({}, o.state, { buildForMe: !!variant.service }), id);
+    const props = designProperties(o.state, id);
 
     const fd = new FormData();
     fd.append("id", variant.id);
@@ -8787,63 +7953,15 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     // Prefixed with an underscore: Shopify's convention for a line-item
     // property that's stored on the order and visible to the merchant in
     // admin, but never rendered in the customer-facing cart or checkout.
-    // A real PDF (the same one the customer can download): it opens and
-    // prints like any PDF, one 11x17" page per sheet. The HTML version
-    // relied on the browser honouring its 11x17" page size; Safari and a
-    // Letter-size print dialog don't, so every sheet spilled onto a second,
-    // blank page. The HTML is only sent if the PDF library isn't loaded.
     try {
-      let attached = false;
-      if (window.jspdf && window.jspdf.jsPDF && S.cells && S.usedPal){
-        try {
-          const pdf = new window.jspdf.jsPDF({ unit: "mm", format: [PDF_PAGE_W, PDF_PAGE_H], orientation: "portrait" });
-          buildInstructionsPDF(pdf);
-          const pdfBlob = pdf.output("blob");
-          if (pdfBlob && pdfBlob.size){
-            fd.append("properties[_Build Instructions]", pdfBlob, "memobrick-instructions-" + id + ".pdf");
-            attached = true;
-          }
-        } catch (e){ /* fall back to the HTML booklet below */ }
-      }
-      if (!attached){
-        const doc = await buildInstructionsDocument();
-        if (doc){
-          const htmlBlob = new Blob([doc], { type: "text/html" });
-          fd.append("properties[_Build Instructions]", htmlBlob, "memobrick-instructions-" + id + ".html");
-        }
+      const doc = await buildInstructionsDocument();
+      if (doc){
+        const htmlBlob = new Blob([doc], { type: "text/html" });
+        fd.append("properties[_Build Instructions]", htmlBlob, "memobrick-instructions-" + id + ".html");
       }
     } catch (e){ /* instructions failed to build — the order still has the design image and settings */ }
 
-    // The PNG and the booklet make this a multi-MB upload. A stalled phone
-    // connection used to leave the button on "Preparing…" forever, and a
-    // rejected attachment failed the whole order. Now: a time limit, then
-    // one retry without the files (the design settings production needs
-    // still go with the order). Before retrying, check the first try didn't
-    // land after all, so the design is never added to the cart twice.
-    const post = (body) => {
-      const ac = (typeof AbortController === "function") ? new AbortController() : null;
-      const t = ac ? setTimeout(() => ac.abort(), 90000) : 0;
-      return fetch("/cart/add.js", { method: "POST", body: body, signal: ac ? ac.signal : undefined })
-        .finally(() => clearTimeout(t));
-    };
-    const alreadyInCart = async () => {
-      try {
-        const cart = await (await fetch("/cart.js")).json();
-        return (cart.items || []).find((it) => it.properties && it.properties["Design ID"] === id) || null;
-      } catch (e){ return null; }
-    };
-    let res = await post(fd).catch(() => null);
-    if (!res || (!res.ok && res.status !== 422)){          // 422 = a real stock/variant answer: keep it
-      const landed = await alreadyInCart();
-      if (landed){
-        document.dispatchEvent(new CustomEvent("memobrick:added", { detail: { line: landed, designId: id } }));
-        return { line: landed, designId: id, variant: variant };
-      }
-      const lite = new FormData();
-      for (const [k, v] of fd.entries()) if (!(v instanceof Blob)) lite.append(k, v);
-      res = await post(lite).catch(() => null);
-      if (!res) throw new Error("cart-failed");
-    }
+    const res = await fetch("/cart/add.js", { method: "POST", body: fd });
     if (!res.ok){
       let msg = "";
       try { msg = (await res.json()).description || ""; } catch (e){}
@@ -8884,6 +8002,17 @@ body{background:#8a8f96;margin:0;padding:20px 0}
   const mob = document.querySelector("#mob");
   if (!mob) return;
   const isMobile = () => window.matchMedia("(max-width:767px)").matches;
+  // where the board lives on a desktop-width window: the phone layout moves
+  // it into its own preview, and it has to come back when the window is
+  // made wider again (otherwise the board area stayed empty)
+  const holdHome = document.querySelector("#hold") ? document.querySelector("#hold").parentElement : null;
+  const holdNext = document.querySelector("#hold") ? document.querySelector("#hold").nextSibling : null;
+  function restoreDesktopHold(){
+    const h = document.querySelector("#hold");
+    if (!h || !holdHome || h.parentElement === holdHome) return;
+    holdHome.insertBefore(h, holdNext && holdNext.parentNode === holdHome ? holdNext : null);
+    repaint();
+  }
 
   /* activeTool === null  -> workspace shows the current step's tool cards
      activeTool === "size"|"crop"|"colors"|"adjust"|"edit"
@@ -9074,14 +8203,16 @@ body{background:#8a8f96;margin:0;padding:20px 0}
     },
     size(){
       const list = SIZES.slice().sort((a, b) => (a.gw * a.gh) - (b.gw * b.gh) || a.price - b.price);
-      const pick = recommendedSizeForPhoto(), rec = pick && pick.size;
+      const rec = recommendedSizeForFaces(S.detectedFaceCount);
       let html = "";
       if (rec && rec.id !== (S.size && S.size.id)){
+        const n = S.detectedFaceCount;
         html += '<div class="mob-size-rec">' +
           '<span class="mob-size-rec-k">✨ Recommended for your photo</span>' +
           '<button type="button" class="mob-size-rec-pick" data-size="' + rec.id + '">' +
             '<b>' + rec.label + '</b>' +
-            '<span>' + pick.why + '</span>' +
+            '<span>Your photo has ' + n + (n === 1 ? ' face' : ' faces') +
+              ' — this size keeps more detail.</span>' +
           '</button></div>';
       }
       html += '<div class="mob-sizes">' + list.map((z) => {
@@ -9524,7 +8655,7 @@ body{background:#8a8f96;margin:0;padding:20px 0}
 
   /* ---- entry points -------------------------------------------------- */
   function initMobileEditor(){
-    if (!isMobile()) { mob.hidden = true; return; }
+    if (!isMobile()) { mob.hidden = true; restoreDesktopHold(); return; }
     mob.hidden = !S.uploaded;
     if (!S.uploaded) return;
     syncMobilePreview();
@@ -9665,6 +8796,159 @@ body{background:#8a8f96;margin:0;padding:20px 0}
   // per browser via localStorage[TOUR_KEY].)
 
   document.querySelectorAll("[data-tour-replay]").forEach((b) => b.addEventListener("click", start));
+})();
+
+/* =====================================================================
+   CART DROPDOWN — click the cart icon to open a live-updating panel
+   instead of leaving the page. Falls back to the real /cart page via
+   the icon's href if JS fails for any reason.
+   ===================================================================== */
+(function cartDrawerModule(){
+  const btn = document.querySelector("#cartIconBtn");
+  const drawer = document.querySelector("#cartDrawer");
+  const itemsEl = document.querySelector("#cartDrawerItems");
+  const footEl = document.querySelector("#cartDrawerFoot");
+  const totalEl = document.querySelector("#cartDrawerTotal");
+  const countEl = document.querySelector("#cartCount");
+  const closeBtn = document.querySelector("#cartDrawerClose");
+  if (!btn || !drawer) return;
+
+  const fmt = (cents) => "$" + (cents / 100).toFixed(2);
+
+  function renderCart(cart){
+    if (!cart.items.length){
+      itemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+      footEl.hidden = true;
+    } else {
+      itemsEl.innerHTML = "";
+      cart.items.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "cart-drawer-item";
+        if (item.image){
+          const img = document.createElement("img");
+          img.src = item.image + "&width=120";
+          img.alt = "";
+          img.loading = "lazy";
+          row.appendChild(img);
+        }
+        const info = document.createElement("div");
+        info.className = "cart-drawer-item-info";
+        const title = document.createElement("b");
+        title.textContent = item.product_title;
+        info.appendChild(title);
+        if (item.variant_title && item.variant_title !== "Default Title"){
+          const variant = document.createElement("span");
+          variant.textContent = item.variant_title;
+          info.appendChild(variant);
+        }
+        const row2 = document.createElement("div");
+        row2.className = "cart-drawer-item-row";
+        const qty = document.createElement("span");
+        qty.textContent = "Qty " + item.quantity + " · " + fmt(item.final_line_price);
+        const rm = document.createElement("button");
+        rm.className = "cart-drawer-remove"; rm.type = "button"; rm.textContent = "Remove";
+        rm.dataset.key = item.key;
+        row2.appendChild(qty); row2.appendChild(rm);
+        info.appendChild(row2);
+        row.appendChild(info);
+        itemsEl.appendChild(row);
+      });
+      footEl.hidden = false;
+      totalEl.textContent = fmt(cart.total_price);
+    }
+    // free-shipping progress bar — threshold comes from the theme setting
+    // (window.MB_FREE_SHIPPING_THRESHOLD, set in layout/theme.liquid), not
+    // hardcoded, so it stays correct if the merchant ever changes it
+    const shipBar = document.querySelector("#cartShipBar");
+    if (shipBar){
+      const threshold = Number(window.MB_FREE_SHIPPING_THRESHOLD) * 100; // dollars -> cents, matching cart.total_price
+      if (!threshold || !cart.items.length){
+        shipBar.hidden = true;
+      } else {
+        shipBar.hidden = false;
+        const msg = document.querySelector("#cartShipMsg");
+        const fill = document.querySelector("#cartShipFill");
+        const pct = Math.max(0, Math.min(100, (cart.total_price / threshold) * 100));
+        if (fill) fill.style.width = pct + "%";
+        if (msg){
+          if (cart.total_price >= threshold){
+            msg.textContent = "You've unlocked free shipping! 🎉";
+          } else {
+            const remaining = fmt(threshold - cart.total_price);
+            msg.textContent = "Add " + remaining + " more for free shipping";
+          }
+        }
+      }
+    }
+  }
+
+  function updateBadge(count){
+    if (!countEl) return;
+    countEl.textContent = count;
+    countEl.hidden = count === 0;
+  }
+
+  async function loadCart(){
+    itemsEl.innerHTML = '<p class="cart-empty">Loading…</p>';
+    try {
+      const res = await fetch("/cart.js");
+      const cart = await res.json();
+      renderCart(cart);
+      updateBadge(cart.item_count);
+    } catch (e){
+      itemsEl.innerHTML = '<p class="cart-empty">Couldn' + "'" + 't load your cart. <a href="' + btn.getAttribute("href") + '">Open cart page</a></p>';
+    }
+  }
+
+  async function removeItem(key){
+    const row = itemsEl.querySelector('[data-key="' + key + '"]');
+    if (row) row.closest(".cart-drawer-item").style.opacity = ".4";
+    try {
+      const res = await fetch("/cart/change.js", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: key, quantity: 0 })
+      });
+      const cart = await res.json();
+      renderCart(cart);
+      updateBadge(cart.item_count);
+    } catch (e){ loadCart(); }
+  }
+
+  function openDrawer(){
+    drawer.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    loadCart();
+    document.addEventListener("click", onOutsideClick, true);
+    document.addEventListener("keydown", onEscape);
+  }
+  window.MB_openCartDrawer = openDrawer;
+  function closeDrawer(){
+    drawer.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    document.removeEventListener("click", onOutsideClick, true);
+    document.removeEventListener("keydown", onEscape);
+  }
+  function onOutsideClick(e){
+    if (!drawer.contains(e.target) && e.target !== btn && !btn.contains(e.target)) closeDrawer();
+  }
+  function onEscape(e){ if (e.key === "Escape") closeDrawer(); }
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    drawer.hidden ? openDrawer() : closeDrawer();
+  });
+  closeBtn.addEventListener("click", closeDrawer);
+  itemsEl.addEventListener("click", (e) => {
+    const rm = e.target.closest("[data-key]");
+    if (rm) removeItem(rm.dataset.key);
+  });
+
+  // any add-to-cart flow elsewhere on the site (editor checkout, designer
+  // service, free proof) can refresh the badge without a full reload
+  document.addEventListener("memobrick:added", () => {
+    fetch("/cart.js").then((r) => r.json()).then((cart) => updateBadge(cart.item_count)).catch(() => {});
+  });
 })();
 
 /* =====================================================================
@@ -9933,17 +9217,9 @@ function teamApplyDesign(cells, entries){
   S.pinned = { key: pinKey(), cells: cells.slice(), pal: P };
   repaint(); tally(cells, P); meta();
 }
-/* restoreSession() only brings a saved design back on the storefront's
-   editor page; the team app opens projects from its own Projects screen,
-   so present itself as that page for the (synchronous) check */
-function teamRestoreSession(){
-  const prev = window.MB_LANDING_VIEW;
-  window.MB_LANDING_VIEW = "upload";
-  try { return restoreSession(); } finally { window.MB_LANDING_VIEW = prev; }
-}
 window.MB_TEAM = {
   S, SIZES, PALETTES, MAX_COLOURS, MIN_BRICKS, mosaic: mos, showView, render, syncSliders, toast,
-  saveSession, restoreSession: teamRestoreSession, orderRef, instructionsHTML, buildInstructionsPDF,
+  saveSession, restoreSession, orderRef, instructionsHTML, buildInstructionsPDF,
   openInstructions, downloadInstructionsPDF, renderSizePickers, setSize, meta, applyDesign: teamApplyDesign,
 };
 document.dispatchEvent(new CustomEvent("memobrick:team-ready"));
