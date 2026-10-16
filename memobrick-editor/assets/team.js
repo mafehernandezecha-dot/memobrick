@@ -79,6 +79,7 @@
   let startImgId = 0;          // photos adopted after this id belong to `current`
   let lastSig = "", lastPhotoImgId = -1, saving = false;
   let opening = false;         // a project's saved design is still being put back: don't save over it
+  let openSeq = 0;             // which Open click is the latest (double clicks, a second project)
 
   function stateOf(){
     return {
@@ -187,7 +188,9 @@
 
   /* ================= opening projects ================= */
   async function openProject(id, then){
+    const seq = ++openSeq;
     await saveNow(false);
+    if (seq !== openSeq) return;                         // a later Open click wins
     const p = await dbGet(id);
     if (!p){ T.toast("That project no longer exists."); return; }
     current = Object.assign({}, p, { photo: undefined });
@@ -211,9 +214,11 @@
     T.showView("editor");
     // the restored design becomes the baseline, so opening isn't a "change"
     waitForDesign().then((ok) => {
-      if (!current || current.id !== p.id) return;     // another project was opened meanwhile
+      if (seq !== openSeq || !current || current.id !== p.id) return;   // opened again, or another project, meanwhile
       opening = false;
-      if (!ok) return;
+      // a very large board can take longer than the wait to settle: the
+      // saved design is put back all the same once the photo is in
+      if (!ok && !hasDesign()) return;
       restoreDesign(p.design);
       lastSig = JSON.stringify(stateOf()) + "|" + S.imgId + "|" + cellsHash();
       lastPhotoImgId = S.imgId;

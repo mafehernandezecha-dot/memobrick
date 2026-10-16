@@ -3285,6 +3285,10 @@ function draw(reuse){
       }
     }
   }
+  // the isolated-brick cleanup and the face guard run after the 30-brick
+  // rule and could leave a color with 28-29 bricks (an orange taken off a
+  // face): apply the rule once more on the finished grid
+  PAL = enforceMinimum(cells, PAL, MIN_BRICKS);
 
 // hand-placed bricks win over anything the algorithm decided
   if (S.edits.size){
@@ -5906,8 +5910,13 @@ function restoreSession(){
     const data = sessionStorage.getItem("mb_photo");
     if (!data) return false;
     const st = JSON.parse(sessionStorage.getItem("mb_state") || "{}");
+    // only the latest restore applies: two projects opened in quick
+    // succession could otherwise finish decoding out of order and leave
+    // the first project's photo and settings in the second one
+    const seq = restoreSession.seq = (restoreSession.seq || 0) + 1;
     const im = new Image();
     im.onload = () => {
+      if (seq !== restoreSession.seq) return;
       // this callback runs asynchronously, after this function's own
       // try/catch has already returned — without its own guard, a stale
       // or incompatible saved session (from before an app update) could
