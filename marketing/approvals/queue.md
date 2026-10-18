@@ -2,7 +2,7 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-16. Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
+Updated 2026-10-18. No new proposals since the last run; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
@@ -119,10 +119,6 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: Owner decision in chat 2026-10-14 ("commission only"), after the audience-fit score of 3
 
-## Open
-
-(Highest expected sales impact first.)
-
 ## A-2026W42-033
 - Agent: social-planner
 - Executor: social-publisher
@@ -135,53 +131,6 @@ Also waiting on you (not a Status edit):
 - From: P-social-planner-20261014-1
 - Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
 - Approved: Eden approved the whole week in chat on 2026-10-14 ("approved"), after reviewing the picture proof and the rebuilt Monday reel (commit 564a57f), recorded by the coordinator session. Portrait consent: Eden did not say it separately; publisher should still post as approved.
-
-## A-2026W42-039
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/gift-for-someone-who-has-everything.md
-- Commit: 8e33dd4
-- Reason: Publishes this Christmas gift-guide article live on the Shopify blog (add the FAQPage JSON-LD from checks/gift-for-someone-who-has-everything.md); it needs indexing time before the November gift searches.
-- Expires: 2026-10-30
-- Status: approved
-- From: P-seo-technical-20261016-1
-- Note: Proposed by seo-technical; the article is published by seo-blog-writer. The article's only date is the Dec 15 order-by (in the Facts table), it names no offer, and the SEO check file is at marketing/seo/technical/checks/gift-for-someone-who-has-everything.md.
-
-## A-2026W42-037
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W44/week.md
-- Commit: 2e08742
-- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
-- Expires: 2026-10-31
-- Status: approved
-- From: P-social-planner-20261015-1
-- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
-
-## A-2026W41-012
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
-- Commit: 22411dc
-- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
-- Expires: 2026-11-15
-- Status: approved
-- From: P-seo-technical-20261011-4
-
-## A-2026W42-029
-- Agent: outreach-creator-scout
-- Executor: outreach-creator-scout
-- Type: offer
-- Draft: marketing/outreach/creator-scout/floor-2026-10-14.md
-- Commit: 081512d
-- Reason: Sets the engagement floor to 2% real engagement instead of 10%, so real creators like Niki Loheit (2.7%, LEGO Masters S5) can be proposed for approval with a message on the next run. Fakes stay out on the other checks.
-- Expires: 2026-10-28
-- Status: approved
-- From: P-outreach-creator-scout-20261014-2
-- Note: At 10% no applicant passes, so no creator can be proposed. Separate owner decision in her report: reactivate Evan Rubin (24 orders, $1,787, paused since 2023).
 
 ## A-2026W42-030
 - Agent: outreach-gift-guide-pr
@@ -233,6 +182,57 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-email-flow-optimizer-20261011-1
 - Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
+
+## Open
+
+(Highest expected sales impact first.)
+
+## A-2026W42-039
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/gift-for-someone-who-has-everything.md
+- Commit: 8e33dd4
+- Reason: Publishes this Christmas gift-guide article live on the Shopify blog (add the FAQPage JSON-LD from checks/gift-for-someone-who-has-everything.md); it needs indexing time before the November gift searches.
+- Expires: 2026-10-30
+- Status: approved
+- From: P-seo-technical-20261016-1
+- Note: Proposed by seo-technical; the article is published by seo-blog-writer. The article's only date is the Dec 15 order-by (in the Facts table), it names no offer, and the SEO check file is at marketing/seo/technical/checks/gift-for-someone-who-has-everything.md.
+
+## A-2026W42-037
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W44/week.md
+- Commit: 2e08742
+- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
+- Expires: 2026-10-31
+- Status: approved
+- From: P-social-planner-20261015-1
+- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
+
+## A-2026W41-012
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
+- Commit: 22411dc
+- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
+- Expires: 2026-11-15
+- Status: approved
+- From: P-seo-technical-20261011-4
+
+## A-2026W42-029
+- Agent: outreach-creator-scout
+- Executor: outreach-creator-scout
+- Type: offer
+- Draft: marketing/outreach/creator-scout/floor-2026-10-14.md
+- Commit: 081512d
+- Reason: Sets the engagement floor to 2% real engagement instead of 10%, so real creators like Niki Loheit (2.7%, LEGO Masters S5) can be proposed for approval with a message on the next run. Fakes stay out on the other checks.
+- Expires: 2026-10-28
+- Status: approved
+- From: P-outreach-creator-scout-20261014-2
+- Note: At 10% no applicant passes, so no creator can be proposed. Separate owner decision in her report: reactivate Evan Rubin (24 orders, $1,787, paused since 2023).
 
 ## A-2026W41-014
 - Agent: seo-technical
