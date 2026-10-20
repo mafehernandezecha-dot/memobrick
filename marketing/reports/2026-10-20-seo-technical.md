@@ -2,7 +2,9 @@
 
 ## Summary
 
-Eden asked for better product descriptions and tags to win back search (search sessions down 73%). I read every priority listing in Shopify, viewed the images, and drafted new titles, descriptions, SEO fields, alt text, tags, product types and categories for the 22 custom photo kits, the 4 best-selling frames, 4 collections and 110 live Artist Collection designs (each written from its image). Nothing is live; three site-change items are proposed below.
+**Update, later on 2026-10-20:** Eden approved A-2026W42-043 and A-2026W42-044. After a committed backup, 184 products and 5 collections were updated in Shopify and verified field by field by reading them back. One product was skipped because its size data conflicts. Results are in `marketing/seo/technical/applied-2026-10-20.md`.
+
+Earlier run: Eden asked for better product descriptions and tags to win back search (search sessions down 73%). I read every priority listing in Shopify, viewed the images, and drafted new titles, descriptions, SEO fields, alt text, tags, product types and categories for the 22 custom photo kits, the 4 best-selling frames, 4 collections and 110 live Artist Collection designs (each written from its image). Nothing is live; three site-change items are proposed below.
 
 ## Done
 
@@ -36,6 +38,16 @@ Eden asked for better product descriptions and tags to win back search (search s
 3. **Starry Night** (`bricked-mosaic-20x20-the-starry-night`, currently a draft). The image shows a swirling blue night sky with a yellow moon and a dark cypress.
    - Before: "The starry Night Home Decor Bricked Mosaic Portrait 20x20".
    - After: "Van Gogh Starry Night Brick Mosaic Art Kit - 20x20 in DIY Wall Decor", with tags famous-painting, starry-night and art-lover-gift. The painting is public domain, so the name is safe to use and people search for it.
+
+### Applied after approval (later run, 2026-10-20)
+
+- **A-2026W42-043 (priority): done.** 22 custom photo kits, 4 best-selling frames and 4 collections updated and verified (titles, descriptions, SEO title and meta, product type, Shopify category, tags, image alt text). The tag `Custom Bricks Portrait` was removed from the alphabet tiles and Abstract Lion, and both are now out of the custom photo collection. Example: https://mymemobrick.com/products/2-2-boards
+- **A-2026W42-044 (long tail): done, with one product skipped.** 109 of 110 live Artist Collection designs, 40 brick bags, the storage case, 7 frames, the alphabet tiles and the Artist Collection page updated and verified. Skipped: `yelow-cat-home-decor-bricked-mosaic-portrait-20x30` (the draft says 20x30 and 6,144 bricks; Shopify data and price say 16x16 and 2,500).
+- Backup first, committed in 99865ab: `marketing/seo/technical/backups/2026-10-20-product-listings/` (one JSON per product and collection, plus `RESTORE.md` and `restore.py`).
+- Not written: the Meta catalog category metafield (Google IDs cannot be confirmed in Shopify's taxonomy through the API), anything on the IP list (including the `accesories` tag on the anger design), draft products, and "1x1" on bags. Small corrections made while applying (a/an grammar, a repeated word, one leftover internal note, and "famous paintings" taken off the Artist Collection page) are listed in the applied file.
+- Errors: one 502 and one Shopify upstream error. Each time I checked what had been applied before resending, and both retries succeeded. The storage case's SEO title was cleared by a partial SEO write; I restored it.
+- Copy check passed on the applied copy and on `applied-2026-10-20.md`.
+- Still blocked from the earlier queue: A-2026W41-012 (remove the hardcoded rating) and A-2026W41-014 (article schema) need writes to the live theme, which the Shopify connector blocks. They were not attempted again.
 
 ## Proposed for approval
 
@@ -88,7 +100,7 @@ Republishing Starry Night and Mona Lisa brings back product pages that drew sear
 
 ## Next run
 
-- After approval: apply the approved items with backups, then report product IDs and any skipped fields.
+- Propose: alt text on the Artist Collection image (it still reads "lego mosaic"), a Shopify category for the brick bags, and the yellow cat listing once Eden confirms its size.
 - Write per-image alt text for the 16 lower-selling custom sizes and the second image of each art kit.
 - Remove the Christmas order-by paragraph on 2026-12-16.
 - Friday 2026-10-23: weekly audit. Compare search sessions with the pre-change baseline.
