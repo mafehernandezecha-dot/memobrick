@@ -10,8 +10,8 @@ Dates and offers come only from `marketing/shared/offers-calendar.md`. Facts now
 |---|---|---|---|---|---|
 | Oct 13, 11:00 | Q4 Real Customer Builds | 6ab3ae43a46e779522c64464 | Warm | none | Has an unverified "Thousands of satisfied customers" banner; sends before any approval can land |
 | Oct 14, 11:00 | Q4 Re-engagement 10% | 6ab3ae634dae2e28118748a1 | Unengaged 180d | 10% personal code | |
-| Oct 20, 11:00 | Q4 Early Bird 15% | 6ab3ae8ca46e779522c6446f | Warm + Past Buyers | 15%, "this week only" | Conflicts with live 20% EARLYHOLIDAY20. Improvement proposed: `improve-oct20-early-bird.md` |
-| Oct 27, 11:00 | Q4 Early Bird LAST CALL 15% | 6ab5038abbe86b0610261a72 | Warm + Past Buyers | 15%, "ends tomorrow" | Same conflict; follow the Oct 20 decision |
+| Oct 20, 11:00 | Q4 Early Bird 15% | 6ab3ae8ca46e779522c6446f | Warm + Past Buyers | EARLYHOLIDAY20 20% (was 15%) | Updated 2026-10-20 03:25 ET under A-2026W42-040 (`improve-oct20-early-bird.md`); verified scheduled, subject "Early Bird: 20% off your Memobrick, code inside" |
+| Oct 27, 11:00 | Q4 Early Bird LAST CALL 15% | 6ab5038abbe86b0610261a72 | Warm + Past Buyers | EARLYHOLIDAY20 20% (was 15%, "ends tomorrow") | Updated 2026-10-20 under A-2026W42-041 (`improve-oct27-last-call.md`); verified scheduled, subject "Reminder: 20% off your Memobrick, code inside" |
 | Nov 3, 11:00 | Q4 Gift Ideas By Person | 6ab3aee64dae2e28118748af | Warm | none | Covers the gift guide idea |
 | Nov 19, 11:00 | Q4 VIP Early Access 20% | 6ab3af384dae2e28118748b8 | Past Buyers | 20% | |
 | Nov 27, 09:00 | Q4 Black Friday 20% | 6ab3af11a46e779522c64477 | Warm | 20% | |
@@ -31,12 +31,12 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 | 2 | Order-by day last chance | Tue Dec 15 | Not drafted yet (draft by Dec 8) | Existing countdown ends Dec 14; the order-by date itself has no send. Use only Dec 15 and verified shipping facts |
 | 3 | Gift card email | Wed Dec 16 | Not drafted yet (draft by Dec 9) | Gift cards are offered (Facts). Instant gift for people past the order-by date. Check the gift card product and delivery method in Shopify before drafting |
 | 4 | Mid-November gift guide | n/a | Covered by the Nov 3 Gift Ideas send. Skip unless the owner drops it | |
-| 6 | Past customers: "Who else is on your list?" (second Memobrick for grandparents, partner, pet, sibling; EARLYHOLIDAY20) | Thu Oct 29, 10:00 ET | Drafted 2026-10-20 at Eden's request, proposal P-email-campaign-writer-20261020-1 | Past Buyers - Subscribed (9,007), excluding ordered in last 30 days and Unengaged 180d. Avoids the Oct 27 send to the same people |
+| 6 | Past customers: "Who else is on your list?" (second Memobrick for grandparents, partner, pet, sibling; EARLYHOLIDAY20) | Thu Oct 29, 10:00 ET | Created and scheduled 2026-10-20 (A-2026W42-042), campaign 6ad718cfb7f7dabccf47ecd6 | Past Buyers - Subscribed (9,007), excluding ordered in last 30 days and Unengaged 180d. Avoids the Oct 27 send to the same people |
 | 5 | EARLYHOLIDAY20 announcement | n/a | Covered by the Oct 20 improvement if approved | No separate send: it would stack on Oct 20 and 22 |
 
 ## Notes 2026-10-20
 
-- The approved Oct 20 improvement (A-2026W42-007) expired on 2026-10-19 before this agent ran, so it was not applied: "Q4 | Oct 20 | Early Bird 15%" sends today at 11:00 ET with its original 15% copy unless the owner edits it in Omnisend.
+- The Oct 20 improvement was re-approved as A-2026W42-040 and applied on 2026-10-20 at 03:25 ET: "Q4 | Oct 20 | Early Bird 15%" now sends the 20% EARLYHOLIDAY20 version at 11:00 ET (campaign name in Omnisend still says 15%; content does not).
 - EARLYHOLIDAY20 checked in Shopify: applies to Custom Bricks Portrait, Memobrick Frame, Artist Collection, Bricks and Accessories, Newest products and Best Sellers collections only, combines with no other discount, no end date. Never call it sitewide.
 - Omnisend campaign UTM tagging is on (source omnisend, medium email, campaign "campaign: <name> (<id>)"). Shopify shows 281 sessions with utm_source=omnisend from Sep 22 to Oct 19; the "13 email visits" figure is the referrer report (email/gmail), which misses most email clicks.
 

@@ -6,7 +6,7 @@
 
 - Omnisend campaign ID: 6ab3ae8ca46e779522c6446f (status scheduled, Tue 2026-10-20 11:00 ET, 15:00 UTC)
 - Audience and exclusions: unchanged (Warm + Past Buyers; excludes Unengaged 180d).
-- Status: proposal. Nothing in Omnisend has been changed.
+- Status: applied 2026-10-20 03:25 ET under A-2026W42-040; read back as scheduled for 2026-10-20 15:00 UTC with the 20% content. Footer line "One code per customer. Not combinable with other offers." removed with the personal-code block.
 
 ## Why change it
 

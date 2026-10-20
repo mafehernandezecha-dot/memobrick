@@ -4,7 +4,7 @@
 
 ![Email preview](2026-10-29-who-else-on-your-list-preview.png)
 
-- Status: draft for owner approval. Not created, sent, or scheduled in Omnisend.
+- Status: created and scheduled 2026-10-20 under A-2026W42-042 (Omnisend campaign 6ad718cfb7f7dabccf47ecd6, Thu 2026-10-29 10:00 ET). Images uploaded to Omnisend (grandparents 6ad7189c31a0ed8db8a644aa, dog photo 6ad7189d266bd3daf8bb5752, dog mosaic 6ad7189fc0dfbec6e740f838). Exclusion segment "Ordered in last 30 days - Exclude" 6ad718993431610c1a61467d.
 - Requested by: Eden, 2026-10-20 ("bring more visitors": a Christmas email to people who already bought a Memobrick).
 - Campaign name (Omnisend): Q4 | Oct 29 | Who Else Is On Your List (Past Buyers)
 
