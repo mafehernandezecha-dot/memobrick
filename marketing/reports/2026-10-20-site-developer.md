@@ -47,3 +47,28 @@ Targets the cart-to-checkout drop (82% to 62% store-wide since Oct 14; the drop 
 
 ## Next run
 Once Eden publishes: confirm the live checksums match the copy, then read cart-to-checkout by device every day for 7 days (referred sessions) against 82% overall, 71% mobile and 95% desktop.
+
+---
+
+# site-developer 2026-10-20, third run: cart without the shipping box (A-2026W42-046)
+
+## Summary
+Eden chose the targeted change instead of the full rollback. Built "Memobrick cart no shipping box" (188955623644) from the live theme: the cart page loses only the shipping box, the State/ZIP estimator and the December 15 line. Tested with real editor designs on phone and desktop through to the checkout Contact step. Waiting for Eden to publish.
+
+## Done
+- Live theme rechecked (same checksums). New copy duplicated from live; only `templates/cart.liquid` changed (498326618234d9f98c771afe82477a15 to 13f6c57bb371bb521b378e0bb574c50a). Diff and file: `marketing/conversion/site-developer/theme-files/cart-no-shipping-box-2026-10-20/`.
+- Tests and screenshots: `marketing/conversion/site-developer/2026-10-20-cart-no-shipping-box/`. Write-up: `marketing/conversion/site-developer/fixes/cart-no-shipping-box-2026-10-20.md`. The full rollback write-up is marked superseded.
+
+## Proposed for approval
+None.
+
+## Blocked or unknown
+- Eden: publish "Memobrick cart no shipping box" (Themes > ... > Publish). Do not publish "Memobrick cart rollback". Undo: republish "Memobrick calm home".
+- The store is at 20 of 20 themes. I cannot delete themes; Eden can remove "Memobrick cart rollback" (188955361500), which is no longer needed.
+- The drawer's older "Add $X more for free shipping" bar (live before Oct 14) was kept; ask if it should go too.
+
+## Sales impact
+Targets the phone cart-to-checkout drop (71% to 44% since Oct 14) while keeping the mosaic picture and the hidden fields. Target: phone 65% or more within 7 days of publishing.
+
+## Next run
+After publishing: confirm the live cart.liquid md5 is 13f6c57bb371bb521b378e0bb574c50a, then read cart-to-checkout by device every day for 7 days.

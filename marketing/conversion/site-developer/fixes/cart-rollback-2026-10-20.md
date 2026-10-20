@@ -1,7 +1,7 @@
 # Cart page rollback (A-2026W42-045), 2026-10-20
 
 Built and tested by: site-developer (Jenny). Approved by Eden in chat on 2026-10-20 ("revert the cart page").
-Status: **ready in a theme copy, waiting for Eden to publish.** The Shopify connector refuses writes to the live theme, so nothing on the live site has changed yet.
+Status: **SUPERSEDED, do not publish.** Eden chose the targeted version (A-2026W42-046, `fixes/cart-no-shipping-box-2026-10-20.md`, copy 188955623644). Original status: ready in a theme copy. The Shopify connector refuses writes to the live theme, so nothing on the live site has changed yet.
 
 ## Preview and how Eden publishes it
 

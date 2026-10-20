@@ -5,10 +5,11 @@
 | Field | Value |
 |---|---|
 | Live theme (MAIN) | "Memobrick calm home", id 188697510108 (updatedAt 2026-10-14T11:42:00Z). Checked 2026-10-20: cart.liquid 498326618234d9f98c771afe82477a15, memobrick.js 88f83c4a454dcf58bc1d9c1118777f77, memobrick-email-gate.js 851b9041af3a1e33c16102520c3b92e9, memobrick-site.liquid d641ed44212004aaa1ab2be733f6829f |
-| Rollback copy | **"Memobrick cart rollback", id 188955361500**, UNPUBLISHED, duplicated from live on 2026-10-20 for A-2026W42-045; only cart.liquid (e494bd6a40250dd4c433f2cfdd2ac5cc) and memobrick.js (75dc4d8d376915dc62242dc28cffbf39) changed. Waiting for Eden to publish. See fixes/cart-rollback-2026-10-20.md |
-| Preview | https://mymemobrick.com/?preview_theme_id=188955361500 |
+| Rollback copy | **"Memobrick cart rollback", id 188955361500**, UNPUBLISHED, duplicated from live on 2026-10-20 for A-2026W42-045; only cart.liquid (e494bd6a40250dd4c433f2cfdd2ac5cc) and memobrick.js (75dc4d8d376915dc62242dc28cffbf39) changed. NOT to be published (replaced by A-2026W42-046). See fixes/cart-rollback-2026-10-20.md |
+| Targeted copy (to publish) | **"Memobrick cart no shipping box", id 188955623644**, UNPUBLISHED, duplicated from live 2026-10-20 for A-2026W42-046; only cart.liquid changed (13f6c57bb371bb521b378e0bb574c50a). See fixes/cart-no-shipping-box-2026-10-20.md. Preview https://mymemobrick.com/?preview_theme_id=188955623644 |
+| Preview (full rollback, not to publish) | https://mymemobrick.com/?preview_theme_id=188955361500 |
 | Undo after publish | republish "Memobrick calm home" 188697510108 |
-| Theme count | 19 of 20 |
+| Theme count | 20 of 20 (at the limit; Eden may remove 188955361500) |
 
 ## Previous (2026-10-14)
 
