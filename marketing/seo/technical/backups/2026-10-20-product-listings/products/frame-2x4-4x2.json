@@ -1,0 +1,35 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/5391485665434",
+  "handle": "frame-2x4-4x2",
+  "status": "ACTIVE",
+  "title": "Frame 2x4 / 4x2 — Size: 20x40 inch / 40x20 inch",
+  "descriptionHtml": "<p data-mce-fragment=\"1\">Frame for 4x2/2x4 </p>\n<p data-mce-fragment=\"1\">Size : 40x20/20x40 inch</p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 2x4 / 4x2 – 20x40 & 40x20 inch - Memobrick",
+    "description": "Premium display frame for 20x40\" and 40x20\" brick mosaics. Finishes your Memobrick portrait as ready-to-hang wall art."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-3-52",
+    "fullName": "Home & Garden > Decor > Picture Frames"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844808609946",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502282043546",
+      "alt": "Frame 2x4 - 4x2 <br> Size: 20x40 inch / 40x20 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502283845786",
+      "alt": "Frame 2x4 - 4x2 <br> Size: 20x40 inch / 40x20 inch - Memobrick"
+    }
+  ]
+}

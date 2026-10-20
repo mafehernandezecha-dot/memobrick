@@ -1,0 +1,39 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/4739459121291",
+  "handle": "frame-2-3-3-2",
+  "status": "ACTIVE",
+  "title": "Frame 2×3 / 3×2 — Size: 20x30 inch / 30x20 inch",
+  "descriptionHtml": "<p>Frame for 2x3/3x2</p>\n<p>Size: 20x30 inch / 30x20 inch<br></p>\n<p> </p>\n<p><span><img alt=\"\" src=\"https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Hnet.com-image_3_480x480.gif?v=1586236195\"></span></p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 2x3 / 3x2 – 20x30 & 30x20 inch - Memobrick",
+    "description": null
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/co-4-3",
+    "fullName": "Cameras & Optics > Photography > Photo Mounting Supplies"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844809724058",
+    "value": "536",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502184853658",
+      "alt": "Frame 2×3 / 3×2 <br> Size: 20x30 inch / 30x20 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502185345178",
+      "alt": "Frame 2×3 / 3×2 <br> Size: 20x30 inch / 30x20 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502186098842",
+      "alt": "Frame 2×3 / 3×2 <br> Size: 20x30 inch / 30x20 inch - Memobrick"
+    }
+  ]
+}

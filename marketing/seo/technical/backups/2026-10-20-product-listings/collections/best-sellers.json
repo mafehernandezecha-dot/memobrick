@@ -1,0 +1,25 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Collection/478362992860",
+  "handle": "best-sellers",
+  "title": "Best Sellers",
+  "descriptionHtml": "<p>These are the Memobricks our customers order most. Every piece here has been built in hundreds of homes — start with a size that suits your photo, and add a frame to finish it as wall art.</p>\n<p>Not sure which size to pick? Upload your photo and we'll send you a free digital proof before anything is produced, with unlimited revisions until you're happy.</p>",
+  "seo": {
+    "title": "Best Sellers – Custom Brick Mosaics - Memobrick",
+    "description": "Our most-ordered custom brick mosaics and frames. Turn a favourite photo into wall art, with a free digital proof before anything is made."
+  },
+  "image": null,
+  "ruleSet": null,
+  "member_product_ids": [
+    "gid://shopify/Product/4735970443403",
+    "gid://shopify/Product/4736012648587",
+    "gid://shopify/Product/4736025493643",
+    "gid://shopify/Product/7907539943644",
+    "gid://shopify/Product/4736062554251",
+    "gid://shopify/Product/4736107282571",
+    "gid://shopify/Product/4739459121291",
+    "gid://shopify/Product/4739456696459",
+    "gid://shopify/Product/4739451977867",
+    "gid://shopify/Product/4739461316747"
+  ]
+}

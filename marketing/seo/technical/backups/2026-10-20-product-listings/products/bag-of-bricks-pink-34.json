@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7546459291868",
+  "handle": "bag-of-bricks-pink-34",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks - Pink 34",
+  "descriptionHtml": "<p><strong>Pink — colour 34</strong></p>\n<p>A soft, rosy pink. Gentler than Bubblegum, it suits florals, baby portraits and adding a touch of natural warmth to cheeks and lips.</p>\n<p><strong>Works well with:</strong> Bubblegum 21, Rouge 38, Cream 20</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Pink bricks (colour 34) for Memobrick mosaics. A soft rosy pink for florals, baby portraits and gentle warmth in skin tones."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911735558364",
+      "alt": "Bag of Bricks - Pink 34 - Memobrick"
+    }
+  ]
+}

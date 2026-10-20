@@ -1,0 +1,31 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545289867484",
+  "handle": "bag-of-bricks-03-sand",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks- Sand 03",
+  "descriptionHtml": "<p><strong>Sand — colour 03</strong></p>\n<p>A warm, dry neutral that reads as beach, desert or bare earth. Sand also makes an excellent quiet background — warm enough to feel deliberate, muted enough to let your subject hold the attention.</p>\n<p><strong>Works well with:</strong> Beige 09, Cream 20, Spring Yellow 04</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Sand bricks (colour 03) for Memobrick mosaics. A warm neutral for beaches, deserts and soft backgrounds that let your subject stand out."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/41760764199132",
+    "value": "5710",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/29075436896476",
+      "alt": "Bag of Bricks- Sand 03 - Memobrick"
+    }
+  ]
+}

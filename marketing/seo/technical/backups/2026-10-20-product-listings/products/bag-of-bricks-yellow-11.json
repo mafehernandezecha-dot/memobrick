@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545315492060",
+  "handle": "bag-of-bricks-yellow-11",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks - Yellow 11",
+  "descriptionHtml": "<p><strong>Yellow — colour 11</strong></p>\n<p>The classic golden yellow. Warmer and deeper than Spring Yellow, it's the right choice for late afternoon light, sunflowers and anything that should feel rich rather than electric.</p>\n<p><strong>Works well with:</strong> Spring Yellow 04, Orange 24, Caramel 15</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Yellow bricks (colour 11) for Memobrick mosaics. A classic golden yellow for sunflowers, sunsets and warm highlights. Resealable bag, exact fit."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911737589980",
+      "alt": "Bag of Bricks - Yellow 11 - Memobrick"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545272500444",
+  "handle": "bag-of-bricks-light-nougat-02",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks Light Nougat-02",
+  "descriptionHtml": "<p><strong>Light Nougat — colour 02</strong></p>\n<p>The lightest skin tone in the palette. Light Nougat carries the highlights on a face — forehead, cheekbones, the bridge of the nose — and is what stops a portrait looking flat. Most face builds need more of it than you'd expect.</p>\n<p><strong>Works well with:</strong> Nougat 32, Beige 09, Caramel 15</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Light Nougat bricks (colour 02) for Memobrick mosaics. A soft skin tone that brings warmth and realism to portrait faces. Resealable bag."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/41760777568476",
+    "value": "5710",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911738573020",
+      "alt": "Bag of Bricks Light Nougat-02 - Memobrick"
+    }
+  ]
+}

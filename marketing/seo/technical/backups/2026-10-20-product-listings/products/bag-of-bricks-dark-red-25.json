@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7546349584604",
+  "handle": "bag-of-bricks-dark-red-25",
+  "status": "ACTIVE",
+  "title": "Bag of bricks- Dark Red 25",
+  "descriptionHtml": "<p><strong>Dark Red — colour 25</strong></p>\n<p>A deep burgundy with real richness. Dark Red handles the shadowed side of anything red — roses, fabric, lips — and brings drama to portraits without resorting to black.</p>\n<p><strong>Works well with:</strong> Red 26, Rouge 38, Coffee 14</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Dark Red bricks (colour 25) for Memobrick mosaics. A deep burgundy for rich shadows, roses and dramatic contrast in portrait work."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911739982044",
+      "alt": "Bag of bricks- Dark Red 25 - Memobrick"
+    }
+  ]
+}

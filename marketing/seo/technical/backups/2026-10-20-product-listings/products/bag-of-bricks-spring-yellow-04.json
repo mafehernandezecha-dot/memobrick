@@ -1,0 +1,31 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545294749916",
+  "handle": "bag-of-bricks-spring-yellow-04",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks -Spring yellow 04",
+  "descriptionHtml": "<p><strong>Spring Yellow — colour 04</strong></p>\n<p>Bright, clean and cheerful. Spring Yellow is the colour of sunlight and sunflowers, and it's the one that gives pop art panels their energy. Against black or deep blue it practically glows.</p>\n<p><strong>Works well with:</strong> Yellow 11, Bright Orange 35, Black 01</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Spring Yellow bricks (colour 04) for Memobrick mosaics. Bright and cheerful for sunlight, flowers and high-energy pop art panels. Resealable bag."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/41760749322460",
+    "value": "5710",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911738376412",
+      "alt": "Bag of Bricks -Spring yellow 04 - Memobrick"
+    }
+  ]
+}

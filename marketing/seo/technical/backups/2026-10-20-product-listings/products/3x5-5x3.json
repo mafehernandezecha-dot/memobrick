@@ -1,0 +1,35 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/5391502606490",
+  "handle": "3x5-5x3",
+  "status": "ACTIVE",
+  "title": "Frame 3x5 / 5x3 — Size: 30x50 inch / 50x30 inch",
+  "descriptionHtml": "<p data-mce-fragment=\"1\">Frame for 3x5 /5x3</p>\n<p data-mce-fragment=\"1\">Size : 30x50/50x30 inch</p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 3x5 / 5x3 – 30x50 & 50x30 inch - Memobrick",
+    "description": "Premium display frame for 30x50\" and 50x30\" brick mosaics. Finishes your Memobrick portrait as ready-to-hang wall art."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/co-4-3",
+    "fullName": "Cameras & Optics > Photography > Photo Mounting Supplies"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844808511642",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502286434458",
+      "alt": "Frame 3x5 - 5x3 <br> Size: 30x50 inch / 50x30 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502287122586",
+      "alt": "Frame 3x5 - 5x3 <br> Size: 30x50 inch / 50x30 inch - Memobrick"
+    }
+  ]
+}

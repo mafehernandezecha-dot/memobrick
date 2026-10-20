@@ -1,0 +1,31 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545295798492",
+  "handle": "bag-of-bricks-shiny-blue-05",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks -Shiny Blue 05",
+  "descriptionHtml": "<p><strong>Shiny Blue — colour 05</strong></p>\n<p>A vivid, saturated blue with real punch. Use it for open sky, swimming pools and graphic designs that need one colour to dominate. It holds its intensity even in small areas.</p>\n<p><strong>Works well with:</strong> Aqua Blue 07, Deep Blue 13, White 37</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Shiny Blue bricks (colour 05) for Memobrick mosaics. A vivid, saturated blue for skies, water and bold graphic designs. Precision-moulded fit."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/41760735592668",
+    "value": "5710",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911738179804",
+      "alt": "Bag of Bricks -Shiny Blue 05 - Memobrick"
+    }
+  ]
+}

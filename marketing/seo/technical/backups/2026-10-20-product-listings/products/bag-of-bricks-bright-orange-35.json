@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7546459554012",
+  "handle": "bag-of-bricks-bright-orange-35",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks - Bright Orange 35",
+  "descriptionHtml": "<p><strong>Bright Orange — colour 35</strong></p>\n<p>High-intensity orange that behaves almost like a highlighter. Against greys and blues it pops hard, which makes it ideal for accents, flames and bold graphic work.</p>\n<p><strong>Works well with:</strong> Orange 24, Spring Yellow 04, Dark Grey 31</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Bright Orange bricks (colour 35) for Memobrick mosaics. A high-intensity orange that pops hard against blues and greys."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/29082767818972",
+      "alt": "Bag of Bricks - Bright Orange 35 - Memobrick"
+    }
+  ]
+}

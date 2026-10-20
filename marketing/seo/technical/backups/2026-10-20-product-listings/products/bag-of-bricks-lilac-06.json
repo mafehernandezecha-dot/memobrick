@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545299697884",
+  "handle": "bag-of-bricks-lilac-06",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks-Lilac 06",
+  "descriptionHtml": "<p><strong>Lilac — colour 06</strong></p>\n<p>A gentle pastel purple that softens everything around it. Lilac does its best work in dusk skies, florals and gradients where you want the colour to shift gradually rather than jump.</p>\n<p><strong>Works well with:</strong> Lavender 10, Pink 34, Cream 20</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Lilac bricks (colour 06) for Memobrick mosaics. A gentle pastel purple for dusk skies, florals and soft, dreamy colour blends. Resealable bag."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911742243036",
+      "alt": "Bag of Bricks-Lilac 06 - Memobrick"
+    }
+  ]
+}

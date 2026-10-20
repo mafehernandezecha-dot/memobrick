@@ -1,0 +1,31 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545304121564",
+  "handle": "bag-of-bricks-magenta-08",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks -Magenta 08",
+  "descriptionHtml": "<p><strong>Magenta — colour 08</strong></p>\n<p>A bold pink-purple that refuses to sit quietly. Magenta is built for pop art, neon-styled portraits and any piece where you want one area to grab the eye immediately.</p>\n<p><strong>Works well with:</strong> Bubblegum 21, Purple 40, Pink 34</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Magenta bricks (colour 08) for Memobrick mosaics. A punchy pink-purple that makes pop art and statement pieces genuinely leap off the wall."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/41760620085468",
+    "value": "5710",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911737950428",
+      "alt": "Bag of Bricks -Magenta 08 - Memobrick"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Collection/180217348235",
+  "handle": "the-gift-for-everyone",
+  "title": "Custom Bricks Portrait",
+  "descriptionHtml": "Transform your cherished photos into stunning brick art masterpieces. Our custom portraits capture every detail with precision and artistry. Available in multiple sizes from intimate 10x10\" to grand 70x60\" displays, these unique keepsakes make unforgettable gifts that preserve memories in a tangible, creative way.",
+  "seo": {
+    "title": null,
+    "description": "Turn your favourite photos into custom brick portraits, from 10x10\" to 70x60\". A hand-built keepsake gift that captures the detail of the original."
+  },
+  "image": {
+    "id": "gid://shopify/CollectionImage/1726107910364",
+    "altText": "Custom-Bricks-Portrait Memobrick",
+    "url": "https://cdn.shopify.com/s/files/1/0375/0107/5595/collections/Gemini_Generated_Image_7yozo77yozo77yoz_235232f7-24ce-4e74-8117-8bda21c05782.png?v=1769616034"
+  },
+  "ruleSet": {
+    "appliedDisjunctively": true,
+    "rules": [
+      {
+        "column": "TAG",
+        "relation": "EQUALS",
+        "condition": "Custom Bricks Portrait"
+      }
+    ]
+  },
+  "member_product_ids": [
+    "gid://shopify/Product/7907539943644",
+    "gid://shopify/Product/4735970443403",
+    "gid://shopify/Product/4736012648587",
+    "gid://shopify/Product/4736025493643",
+    "gid://shopify/Product/4736062554251",
+    "gid://shopify/Product/4736153682059",
+    "gid://shopify/Product/4736107282571",
+    "gid://shopify/Product/4736049905803",
+    "gid://shopify/Product/4736191627403",
+    "gid://shopify/Product/4736124125323",
+    "gid://shopify/Product/4736161251467",
+    "gid://shopify/Product/4736145260683",
+    "gid://shopify/Product/4736200802443",
+    "gid://shopify/Product/4736168886411",
+    "gid://shopify/Product/4736181993611",
+    "gid://shopify/Product/6145472921754",
+    "gid://shopify/Product/6814211244186",
+    "gid://shopify/Product/7079878623386",
+    "gid://shopify/Product/7506131058908",
+    "gid://shopify/Product/5964055445658",
+    "gid://shopify/Product/8034301346012",
+    "gid://shopify/Product/8034356625628",
+    "gid://shopify/Product/8034358427868",
+    "gid://shopify/Product/8034360230108",
+    "gid://shopify/Product/8274647843036"
+  ]
+}

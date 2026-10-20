@@ -1,0 +1,70 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Collection/398854684892",
+  "handle": "bricks",
+  "title": "Bricks and Accessories",
+  "descriptionHtml": "Discover our vibrant collection of building bricks in every color imaginable! From classic black and white to vibrant reds and blues, our high-quality construction blocks are perfect for custom creations. Each bag contains precisely what you need for your next project. Don't miss our special board connectors and storage solutions too!",
+  "seo": {
+    "title": "Bricks and Accessories Get it now - Memobrick",
+    "description": "Collection of building blocks 40 different of vibrant colors with an amazing quality"
+  },
+  "image": {
+    "id": "gid://shopify/CollectionImage/1726107975900",
+    "altText": "LEGO bricks",
+    "url": "https://cdn.shopify.com/s/files/1/0375/0107/5595/collections/F91A7440-22_b0bd8706-2a56-4dfe-8ac9-e8a359e2f8f5.jpg?v=1769616043"
+  },
+  "ruleSet": {
+    "appliedDisjunctively": false,
+    "rules": [
+      {
+        "column": "TAG",
+        "relation": "EQUALS",
+        "condition": "Accesories"
+      }
+    ]
+  },
+  "member_product_ids": [
+    "gid://shopify/Product/7545268699356",
+    "gid://shopify/Product/7546460078300",
+    "gid://shopify/Product/7546460700892",
+    "gid://shopify/Product/7545339412700",
+    "gid://shopify/Product/7546352009436",
+    "gid://shopify/Product/7545272500444",
+    "gid://shopify/Product/7546459848924",
+    "gid://shopify/Product/7546351419612",
+    "gid://shopify/Product/7546346438876",
+    "gid://shopify/Product/7546351812828",
+    "gid://shopify/Product/7546346864860",
+    "gid://shopify/Product/7545316802780",
+    "gid://shopify/Product/7546350960860",
+    "gid://shopify/Product/7546349945052",
+    "gid://shopify/Product/7545315492060",
+    "gid://shopify/Product/7545338888412",
+    "gid://shopify/Product/7546459291868",
+    "gid://shopify/Product/7546352468188",
+    "gid://shopify/Product/7546350436572",
+    "gid://shopify/Product/7545301467356",
+    "gid://shopify/Product/7545295798492",
+    "gid://shopify/Product/7546350272732",
+    "gid://shopify/Product/7546349584604",
+    "gid://shopify/Product/7546347127004",
+    "gid://shopify/Product/7546344505564",
+    "gid://shopify/Product/7545314345180",
+    "gid://shopify/Product/7546349125852",
+    "gid://shopify/Product/7546346176732",
+    "gid://shopify/Product/7545307955420",
+    "gid://shopify/Product/7545304121564",
+    "gid://shopify/Product/8029645504732",
+    "gid://shopify/Product/7546461061340",
+    "gid://shopify/Product/7546347946204",
+    "gid://shopify/Product/7545299697884",
+    "gid://shopify/Product/7545289867484",
+    "gid://shopify/Product/7546460405980",
+    "gid://shopify/Product/7546347520220",
+    "gid://shopify/Product/8929228423388",
+    "gid://shopify/Product/7546459554012",
+    "gid://shopify/Product/7546343620828",
+    "gid://shopify/Product/7545337741532",
+    "gid://shopify/Product/7545294749916"
+  ]
+}

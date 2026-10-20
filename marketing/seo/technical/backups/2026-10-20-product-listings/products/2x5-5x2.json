@@ -1,0 +1,39 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/5391489302682",
+  "handle": "2x5-5x2",
+  "status": "ACTIVE",
+  "title": "Frame 2x5 / 5x2 — Size: 20x50 inch / 50x20 inch",
+  "descriptionHtml": "<p data-mce-fragment=\"1\">Frame for 2x5/5x2 </p>\n<p data-mce-fragment=\"1\">Size : 20x50/50x20 inch</p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 2x5 / 5x2 – 20x50 & 50x20 inch - Memobrick",
+    "description": "Premium display frame for 20x50\" and 50x20\" brick mosaics. Finishes your Memobrick portrait as ready-to-hang wall art."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-3-52",
+    "fullName": "Home & Garden > Decor > Picture Frames"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844808577178",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502284370074",
+      "alt": "Frame 2x5 -5x2 <br> Size: 20x50 inch / 50x20 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502284828826",
+      "alt": "Frame 2x5 -5x2 <br> Size: 20x50 inch / 50x20 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502286139546",
+      "alt": "Frame 2x5 -5x2 <br> Size: 20x50 inch / 50x20 inch - Memobrick"
+    }
+  ]
+}

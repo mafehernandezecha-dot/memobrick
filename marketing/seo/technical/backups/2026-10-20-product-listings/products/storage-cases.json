@@ -1,0 +1,35 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/8029645504732",
+  "handle": "storage-cases",
+  "status": "ACTIVE",
+  "title": "Storage Cases",
+  "descriptionHtml": "<p><span>Keep your bricks in order with hardware storage cases. Featuring a convenient hook for storage and a snap-on lid, these cases will help you keep your bricks in place and easy to find.</span></p>\n<p>Measuring 7.125 x 4.875 x 8.75 inches each.<br><br>The cases come with a hook for storage and a snap-on lid. <br>Their translucent design makes it easy to identify the bricks inside.<br> Additionally, the cases are environmentally friendly, as they are made of recyclable plastic.</p>",
+  "productType": "Arts & Crafts",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": "Storage Cases - Memobrick",
+    "description": "Keep your  in order with hardware storage cases. Featuring a convenient hook for storage and a snap-on lid, these cases will help you keep your  - Memobrick"
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31510298067164",
+      "alt": "Storage Cases Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/31510298034396",
+      "alt": "Storage Cases Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/31515102314716",
+      "alt": "Storage Cases Memobrick"
+    }
+  ]
+}

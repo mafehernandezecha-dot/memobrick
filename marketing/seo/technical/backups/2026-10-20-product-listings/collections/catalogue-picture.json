@@ -1,0 +1,98 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Collection/180384333963",
+  "handle": "catalogue-picture",
+  "title": "Artist Collection",
+  "descriptionHtml": "<p> </p>\n<p><strong>Transform Your Memories into Masterpieces! </strong>✨</p>\n<p>Add a creative touch to your space with Memobrick’s Artist Design Collection. Create your own custom brick mosaic, blending creativity with personalization. Whether it’s a cherished family moment, a beloved pet, or an artist's design, turn your favorite images into stunning, Lego-style, one-of-a-kind art pieces. Each kit offers a fun, engaging way to build your masterpiece, perfect for gifts, home decor, or even businesses. Start crafting today and bring your memories to life, one brick at a time!</p>\n<p> </p>\n<p><strong>Fulfillment time 1-2 days only!</strong></p>\n<div style=\"text-align: center;\" data-mce-fragment=\"1\">\n<h5>\n<strong><em></em></strong><br>\n</h5>\n<br>\n</div>\n<div style=\"text-align: center;\"><br></div>",
+  "seo": {
+    "title": null,
+    "description": "Artist-designed brick mosaic kits for home decor, plus custom designs from your own photo. Fun to build, striking on the wall. Ships in 1-2 days."
+  },
+  "image": {
+    "id": "gid://shopify/CollectionImage/1726107943132",
+    "altText": "lego mosaic",
+    "url": "https://cdn.shopify.com/s/files/1/0375/0107/5595/collections/This_is_your_golden_ticket_12_aad3798f-3953-4b31-94c0-2d22ebf84904.png?v=1769616036"
+  },
+  "ruleSet": {
+    "appliedDisjunctively": true,
+    "rules": [
+      {
+        "column": "TAG",
+        "relation": "EQUALS",
+        "condition": "art collection"
+      },
+      {
+        "column": "TAG",
+        "relation": "EQUALS",
+        "condition": "pre-made design"
+      },
+      {
+        "column": "TAG",
+        "relation": "EQUALS",
+        "condition": "pre-made design"
+      }
+    ]
+  },
+  "member_product_ids": [
+    "gid://shopify/Product/5964055445658",
+    "gid://shopify/Product/7660289589468",
+    "gid://shopify/Product/7506131058908",
+    "gid://shopify/Product/7090593464474",
+    "gid://shopify/Product/8607545032924",
+    "gid://shopify/Product/8929512128732",
+    "gid://shopify/Product/8010238165212",
+    "gid://shopify/Product/7088963682458",
+    "gid://shopify/Product/8029633249500",
+    "gid://shopify/Product/7461543739612",
+    "gid://shopify/Product/7078451282074",
+    "gid://shopify/Product/9294489845980",
+    "gid://shopify/Product/8929130873052",
+    "gid://shopify/Product/8276412006620",
+    "gid://shopify/Product/8274658918620",
+    "gid://shopify/Product/8003493724380",
+    "gid://shopify/Product/7092133363866",
+    "gid://shopify/Product/7088984031386",
+    "gid://shopify/Product/7078428868762",
+    "gid://shopify/Product/9318432342236",
+    "gid://shopify/Product/9307272052956",
+    "gid://shopify/Product/9302542549212",
+    "gid://shopify/Product/9302541730012",
+    "gid://shopify/Product/9302539796700",
+    "gid://shopify/Product/9294498562268",
+    "gid://shopify/Product/9266501517532",
+    "gid://shopify/Product/8936630255836",
+    "gid://shopify/Product/8936013168860",
+    "gid://shopify/Product/8935991083228",
+    "gid://shopify/Product/8929255653596",
+    "gid://shopify/Product/8929253851356",
+    "gid://shopify/Product/8929251098844",
+    "gid://shopify/Product/8929248805084",
+    "gid://shopify/Product/8929245462748",
+    "gid://shopify/Product/8929135919324",
+    "gid://shopify/Product/8278190194908",
+    "gid://shopify/Product/8276408697052",
+    "gid://shopify/Product/8275004031196",
+    "gid://shopify/Product/8274642665692",
+    "gid://shopify/Product/8274600558812",
+    "gid://shopify/Product/8029640130780",
+    "gid://shopify/Product/8029637837020",
+    "gid://shopify/Product/8029636985052",
+    "gid://shopify/Product/8003502637276",
+    "gid://shopify/Product/8003497296092",
+    "gid://shopify/Product/8003486220508",
+    "gid://shopify/Product/7670152003804",
+    "gid://shopify/Product/7660290408668",
+    "gid://shopify/Product/7461549310172",
+    "gid://shopify/Product/7078401769626",
+    "gid://shopify/Product/9489518002396",
+    "gid://shopify/Product/9489517576412",
+    "gid://shopify/Product/9489517445340",
+    "gid://shopify/Product/9489517183196",
+    "gid://shopify/Product/9489517084892",
+    "gid://shopify/Product/9489516921052",
+    "gid://shopify/Product/9489516822748",
+    "gid://shopify/Product/9489516429532",
+    "gid://shopify/Product/9489515970780",
+    "gid://shopify/Product/9489515708636"
+  ]
+}

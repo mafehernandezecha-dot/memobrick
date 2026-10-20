@@ -1,0 +1,50 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7506131058908",
+  "handle": "alphabet-and-number",
+  "status": "ACTIVE",
+  "title": "Alphabet And Numbers",
+  "descriptionHtml": "<p>40 Tiles alphabet and numbers Print 1*1 <br></p>\n<p><br></p>",
+  "productType": "puzzle",
+  "tags": [
+    "art collection",
+    "Custom Bricks Portrait",
+    "GIFT",
+    "memobrick"
+  ],
+  "seo": {
+    "title": "Alphabet And Numbers - Memobrick",
+    "description": "Build words, names, and numbers with colorful alphabet and number bricks. Perfect for creative play, learning, and custom mosaic projects."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/tg-5-7-12",
+    "fullName": "Toys & Games > Toys > Building Toys > Interlocking Blocks"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/41131451318492",
+    "value": "3287",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/28894053728476",
+      "alt": "Alphabet And Numbers - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/28894053761244",
+      "alt": "Alphabet And Numbers - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/28894053826780",
+      "alt": "Alphabet And Numbers - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/28894053859548",
+      "alt": "Alphabet And Numbers - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/28894053892316",
+      "alt": "Alphabet And Numbers - Memobrick"
+    }
+  ]
+}

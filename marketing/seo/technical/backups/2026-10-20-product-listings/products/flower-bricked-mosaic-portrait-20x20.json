@@ -1,0 +1,41 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/8929512128732",
+  "handle": "flower-bricked-mosaic-portrait-20x20",
+  "status": "ACTIVE",
+  "title": "FLOWER BRICKED MOSAIC PORTRAIT 20X20",
+  "descriptionHtml": "<div style=\"text-align: center;\"><b>Personalized kit of Bricks mosaic.</b></div>\n<div>\n<div style=\"text-align: center;\">SIZE: 20x20 inches</div>\n<div style=\"text-align: center;\">BASE PLATES: 4 white clear</div>\n<div style=\"text-align: center;\">PIECES: 4,096</div>\n<div style=\"text-align: center;\">BUILDING TIME: 4H</div>\n<div style=\"text-align: center;\">Our artists have created a special collection just for you!<br>Enjoy the experience of bringing your personalized brick-art to life. <br><span>Transform your walls with our one-of-a-kind brick art. It's more than a home decor; it's a conversation starter!</span><br>\n<p>Build your own Memobrick at home with everything you need. It's relaxing and fun!</p>\n<p>A unique way to create an art wall! </p>\n<p>Yes, We also can build it for you.<br></p>\n</div>\n<div style=\"text-align: center;\">\n<strong>Set Includes:</strong><br><span>Baseplates, a set of bricks, a brick separator, and a mosaic map.</span><br><span style=\"font-weight: 400;\">Pre-designed orders takes 1-2 business days to be shipped</span>\n</div>\n</div>",
+  "productType": "puzzle",
+  "tags": [
+    "art collection",
+    "brick",
+    "build",
+    "home",
+    "mosaic",
+    "personalized",
+    "pre-made design"
+  ],
+  "seo": {
+    "title": "FLOWER BRICKED MOSAIC PORTRAIT 20X20 - Memobrick",
+    "description": "Turn your photo into a custom LEGO®-style brick mosaic. Memobrick kits are personalized, fun to build, and perfect for unique gifts, home decor, and unforgettable memories."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/tg-5-7-8",
+    "fullName": "Toys & Games > Toys > Building Toys > Construction Set Toys"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/30383051505884",
+    "value": "3805",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/34729536422108",
+      "alt": "FLOWER BRICKED MOSAIC PORTRAIT 20X20 Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/34729536454876",
+      "alt": "FLOWER BRICKED MOSAIC PORTRAIT 20X20 Memobrick"
+    }
+  ]
+}

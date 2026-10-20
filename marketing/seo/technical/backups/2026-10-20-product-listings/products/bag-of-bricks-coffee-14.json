@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545338888412",
+  "handle": "bag-of-bricks-coffee-14",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks - Coffee 14",
+  "descriptionHtml": "<p><strong>Coffee — colour 14</strong></p>\n<p>A deep roasted brown that does shadow work without the harshness of black. Ideal for dark hair, and for the darkest areas of a warm-toned image where black would look like a hole.</p>\n<p><strong>Works well with:</strong> Dark Brown 30, Toffee 29, Caramel 15</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Coffee bricks (colour 14) for Memobrick mosaics. A deep roasted brown for shadow work, dark hair and rich contrast against lighter tones."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911733919964",
+      "alt": "Bag of Bricks - Coffee 14 - Memobrick"
+    }
+  ]
+}

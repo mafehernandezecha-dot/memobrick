@@ -1,0 +1,37 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/5391478685850",
+  "handle": "frame-4x4",
+  "status": "ACTIVE",
+  "title": "Frame 4x4 Size: 40x40 inch",
+  "descriptionHtml": "<p data-mce-fragment=\"1\">Frame for 4x4 </p>\n<p data-mce-fragment=\"1\">Size : 40x40inch</p>",
+  "productType": "Decor",
+  "tags": [
+    "FRAME",
+    "frame photo",
+    "picture"
+  ],
+  "seo": {
+    "title": "Frame 4x4 Size: 40x40 inch - Memobrick",
+    "description": "Frame for 4x4  Size : 40x40inch - Memobrick"
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-3-52",
+    "fullName": "Home & Garden > Decor > Picture Frames"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844808642714",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502279225498",
+      "alt": "Frame 4x4 Size: 40x40 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502281224346",
+      "alt": "Frame 4x4 Size: 40x40 inch - Memobrick"
+    }
+  ]
+}

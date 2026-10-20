@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7546343620828",
+  "handle": "bag-of-bricks-jungle-green-16",
+  "status": "ACTIVE",
+  "title": "Bag of bricks- Jungle Green 16",
+  "descriptionHtml": "<p><strong>Jungle Green — colour 16</strong></p>\n<p>Lush and deep, with a slightly blue lean. Jungle Green builds dense foliage, palm leaves and forest shade — the green you reach for when the scene needs depth rather than freshness.</p>\n<p><strong>Works well with:</strong> Dark Green 23, Green 22, Olive Green 17</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Jungle Green bricks (colour 16) for Memobrick mosaics. A lush deep green for foliage, forests and tropical backgrounds. Resealable bag."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911740735708",
+      "alt": "Bag of bricks- Jungle Green 16 - Memobrick"
+    }
+  ]
+}

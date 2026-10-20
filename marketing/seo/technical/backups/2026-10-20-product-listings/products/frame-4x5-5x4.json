@@ -1,0 +1,35 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/5391567782042",
+  "handle": "frame-4x5-5x4",
+  "status": "ACTIVE",
+  "title": "Frame 4x5 - 5x4 Size: 40x50 inch / 50x40 inch",
+  "descriptionHtml": "<p>Frame for 4x5 /5x4</p>\n<p>Size : 40x50/50x40 inch</p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 4x5 - 5x4 Size: 40x50 inch / 50x40 inch - Memobrick",
+    "description": "Frame for 4x5 /5x4 Size : 40x50/50x40 inch - Memobrick"
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-3-52",
+    "fullName": "Home & Garden > Decor > Picture Frames"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844808413338",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502287351962",
+      "alt": "Frame 4x5 - 5x4 Size: 40x50 inch / 50x40 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502289088666",
+      "alt": "Frame 4x5 - 5x4 Size: 40x50 inch / 50x40 inch - Memobrick"
+    }
+  ]
+}

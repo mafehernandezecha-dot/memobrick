@@ -1,0 +1,35 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/4739462758539",
+  "handle": "frame-3-4-4-3",
+  "status": "ACTIVE",
+  "title": "Frame 3×4 / 4×3 — Size: 30x40 inch / 40x30 inch",
+  "descriptionHtml": "<p>Frame for 4x3/4x3 </p>\n<p>Size : 40x30/30x40inch</p>\n<p><span><img alt=\"\" src=\"https://cdn.shopify.com/s/files/1/0375/0107/5595/files/Hnet.com-image_3_480x480.gif?v=1586236195\"></span></p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 3x4 / 4x3 – 30x40 & 40x30 inch - Memobrick",
+    "description": "Premium display frame for 30x40\" and 40x30\" brick mosaics. Finishes your Memobrick portrait as ready-to-hang wall art."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/co-4-3",
+    "fullName": "Cameras & Optics > Photography > Photo Mounting Supplies"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844809691290",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502187770010",
+      "alt": "Frame 3×4 / 4×3 <br> <br> Size: 30x40 inch / 40x30 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502188523674",
+      "alt": "Frame 3×4 / 4×3 <br> <br> Size: 30x40 inch / 40x30 inch - Memobrick"
+    }
+  ]
+}

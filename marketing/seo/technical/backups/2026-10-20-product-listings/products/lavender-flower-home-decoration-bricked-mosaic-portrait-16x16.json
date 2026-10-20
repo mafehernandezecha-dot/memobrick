@@ -1,0 +1,37 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/9302541336796",
+  "handle": "lavender-flower-home-decoration-bricked-mosaic-portrait-16x16",
+  "status": "ACTIVE",
+  "title": "Lavender Flower Home decoration Bricked Mosaic Portrait 16x16\"",
+  "descriptionHtml": "<p><img></p>\n<div style=\"text-align: center;\">\n<b>Personalized kit of Bricks mosaic.</b><b></b>\n</div>\n<div style=\"text-align: center;\">SIZE: 16x16 inches<br>BASE PLATES: 1 white clear<br>PIECES: 2,500<br>BUILDING TIME: 2.5h<br>Our artists have created a special collection just for you!<br>Enjoy the experience of bringing your personalized brick-art to life. <br><span>Transform your walls with our one-of-a-kind brick art. It's more than a home decor; it's a conversation starter!</span><br>\n<p>Build your own Memobrick at home with everything you need. It's relaxing and fun!</p>\n<p>A unique way to create an art wall! </p>\n<p>Yes, We also can build it for you.<br></p>\n</div>\n<div style=\"text-align: center;\">Set Includes:<br>Baseplates, a set of bricks, a brick separator, and a mosaic map.<br><span style=\"font-weight: 400;\">Pre-designed orders takes 1-2 business days to be shipped.</span>\n</div>\n<p><img></p>",
+  "productType": "puzzle",
+  "tags": [
+    "art collection",
+    "flower",
+    "pre-made design"
+  ],
+  "seo": {
+    "title": null,
+    "description": null
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/hg-3-4-2-3",
+    "fullName": "Home & Garden > Decor > Artwork > Posters, Prints, & Visual Artwork > Visual Artwork"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/35787715182812",
+    "value": "500044",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/36802285240540",
+      "alt": "Lavender-Flower-Home-Decoration-Bricked-Mosaic-Portrait-16x16"
+    },
+    {
+      "id": "gid://shopify/MediaImage/36802285207772",
+      "alt": "Lavender-Flower-Home-Decoration-Bricked-Mosaic-Portrait-16x16"
+    }
+  ]
+}

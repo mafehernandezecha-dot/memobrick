@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7546459848924",
+  "handle": "bag-of-bricks-stone-grey-36",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks - Stone Grey 36",
+  "descriptionHtml": "<p><strong>Stone Grey — colour 36</strong></p>\n<p>A light, cool neutral for concrete, cloud and clean modern backgrounds. Stone Grey is the go-to when you want a backdrop that feels contemporary rather than warm.</p>\n<p><strong>Works well with:</strong> Grey 39, Dark Grey 31, White 37</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Stone Grey bricks (colour 36) for Memobrick mosaics. A light neutral grey for concrete, clouds and clean modern backgrounds."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911736869084",
+      "alt": "Bag of Bricks - Stone Grey - Memobrick"
+    }
+  ]
+}

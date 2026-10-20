@@ -1,0 +1,39 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Collection/180383023243",
+  "handle": "photo-frames",
+  "title": "Memobrick Frame",
+  "descriptionHtml": "Elevate your memories with premium display frames designed specifically for brick portraits. Our collection ranges from compact 16x16\" to expansive 50x50\" sizes, perfect for showcasing your cherished moments. Each frame is crafted for durability and elegant presentation, transforming your brick art into stunning wall decor.",
+  "seo": {
+    "title": null,
+    "description": "Premium display frames made for brick portraits, in sizes from 16x16\" to 50x50\". Built to last and finish your mosaic as proper wall art."
+  },
+  "image": {
+    "id": "gid://shopify/CollectionImage/1613072171162",
+    "altText": "Memobrick Frame Memobrick",
+    "url": "https://cdn.shopify.com/s/files/1/0375/0107/5595/collections/frame-4x4-size-40x40-inch-photobrickusa-photobrickusa-photobrick-photobricks-2.jpg?v=1751554063"
+  },
+  "ruleSet": {
+    "appliedDisjunctively": true,
+    "rules": [
+      {
+        "column": "TAG",
+        "relation": "EQUALS",
+        "condition": "FRAME"
+      }
+    ]
+  },
+  "member_product_ids": [
+    "gid://shopify/Product/4739451977867",
+    "gid://shopify/Product/4739456696459",
+    "gid://shopify/Product/4739459121291",
+    "gid://shopify/Product/4739461316747",
+    "gid://shopify/Product/5391485665434",
+    "gid://shopify/Product/5391489302682",
+    "gid://shopify/Product/5391478685850",
+    "gid://shopify/Product/4739462758539",
+    "gid://shopify/Product/5391502606490",
+    "gid://shopify/Product/5391567782042",
+    "gid://shopify/Product/5391572828314"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7545314345180",
+  "handle": "bag-of-bricks-lavender-10",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks-Lavender 10",
+  "descriptionHtml": "<p><strong>Lavender — colour 10</strong></p>\n<p>A muted, greyish purple that behaves more like a neutral than a colour. Lavender is invaluable for twilight skies and for the delicate shading between pale tones where a stronger purple would be too much.</p>\n<p><strong>Works well with:</strong> Lilac 06, Stone Blue 18, Cream 20</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Lavender bricks (colour 10) for Memobrick mosaics. A muted pastel purple for gradients, twilight skies and delicate shading work."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911741456604",
+      "alt": "Bag of Bricks-Lavender 10 - Memobrick"
+    }
+  ]
+}

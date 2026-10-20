@@ -1,0 +1,27 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/7546351419612",
+  "handle": "bag-of-bricks-dark-brown-30",
+  "status": "ACTIVE",
+  "title": "Bag of Bricks - Dark Brown 30",
+  "descriptionHtml": "<p><strong>Dark Brown — colour 30</strong></p>\n<p>A deep chocolate tone that anchors a design. Use it for dark hair, tree bark and the shadow side of anything brown — it grounds an image the way black can be too blunt to do.</p>\n<p><strong>Works well with:</strong> Coffee 14, Brown 12, Toffee 29</p>\n<ul>\n<li>Precision-moulded, compatible with all Memobrick kits and standard building bricks</li>\n<li>Ideal for replacing missing pieces or extending an existing design</li>\n<li>Supplied in a resealable bag for easy sorting and storage</li>\n</ul>",
+  "productType": "puzzle",
+  "tags": [
+    "accesories"
+  ],
+  "seo": {
+    "title": null,
+    "description": "Dark Brown bricks (colour 30) for Memobrick mosaics. A deep chocolate tone for hair, tree bark and strong grounding shadows."
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts"
+  },
+  "metafield_mc_facebook_google_product_category": null,
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31911734280412",
+      "alt": "Bag of Bricks - Dark Brown 30 - Memobrick"
+    }
+  ]
+}

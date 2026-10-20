@@ -1,0 +1,35 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/5391572828314",
+  "handle": "frame-5x5",
+  "status": "ACTIVE",
+  "title": "Frame 5x5 Size: 50x50 inch",
+  "descriptionHtml": "<p data-mce-fragment=\"1\">Frame for 5x5</p>\n<p data-mce-fragment=\"1\">Size: 50x50 inch</p>\n<p data-mce-fragment=\"1\"> </p>",
+  "productType": "",
+  "tags": [
+    "FRAME"
+  ],
+  "seo": {
+    "title": "Frame 5x5 Size: 50x50 inch - Memobrick",
+    "description": "Frame for 5x5 Size: 50x50 inch   - Memobrick"
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/co-4-3",
+    "fullName": "Cameras & Optics > Photography > Photo Mounting Supplies"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/18844808347802",
+    "value": "597",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/20502289776794",
+      "alt": "Frame 5x5 Size: 50x50 inch - Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/20502290137242",
+      "alt": "Frame 5x5 Size: 50x50 inch - Memobrick"
+    }
+  ]
+}

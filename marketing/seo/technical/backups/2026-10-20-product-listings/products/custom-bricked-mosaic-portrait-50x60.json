@@ -1,0 +1,45 @@
+{
+  "backed_up": "2026-10-20",
+  "id": "gid://shopify/Product/8034301346012",
+  "handle": "custom-bricked-mosaic-portrait-50x60",
+  "status": "ACTIVE",
+  "title": "Custom Bricked Mosaic Portrait 50x60\"",
+  "descriptionHtml": "<div style=\"text-align: center;\"><strong><span><img src=\"https://cdn.shopify.com/s/files/1/0375/0107/5595/files/65l6jv_480x480.gif?v=1645132318\" alt=\"\"></span></strong></div>\n<div style=\"text-align: center;\"><strong><span>Personalized kit of Bricks mosaic.</span></strong></div>\n<div style=\"text-align: center;\"><br></div>\n<div style=\"text-align: center;\"><span>SIZE: 50-60 inches</span></div>\n<div style=\"text-align: center;\"><span>BASE PLATES: 30</span></div>\n<div style=\"text-align: center;\"><span>PIECES: 30,720 </span></div>\n<div style=\"text-align: center;\"><br></div>\n<div style=\"text-align: center;\">\n<p>Turn your favorite photo into a custom MemoBrick mosaic—designed by you!</p>\n<p>Upload your picture to our new web editor and watch it transform into brick art instantly. Adjust the colors, fine-tune the details, preview different sizes, and see exactly how your finished MemoBrick will look before ordering.</p>\n<p>Your kit includes all the 1×1 bricks, baseplates, personalized building instructions, and tools needed to bring your memory to life. Prefer some help? Let our designers create it for you and receive a free proof before production.</p>\n<p>Create it. Build it. Keep the memory forever.</p>\n</div>",
+  "productType": "Posters, Prints, & Visual Artwork",
+  "tags": [
+    "Custom Bricks Portrait",
+    "GIFT",
+    "memobrick"
+  ],
+  "seo": {
+    "title": "Custom Bricked Mosaic Portrait 50x60\" - Memobrick",
+    "description": "Unleash your creativity with our Lego-style pixel art DIY kit! Our easy-to-use kit includes everything you need to create your own custom pixel art designs using high-quality building blocks. Perfect for kids and adults who love to build and create, our Lego-style pixel art kit offers endless possibilities for design a"
+  },
+  "category": {
+    "id": "gid://shopify/TaxonomyCategory/ae-2-1-1",
+    "fullName": "Arts & Entertainment > Hobbies & Creative Arts > Arts & Crafts > Art & Craft Kits"
+  },
+  "metafield_mc_facebook_google_product_category": {
+    "id": "gid://shopify/Metafield/24167461486812",
+    "value": "3577",
+    "type": "string"
+  },
+  "media_alt": [
+    {
+      "id": "gid://shopify/MediaImage/31532606259420",
+      "alt": "Custom Bricked Mosaic Portrait 50x60\" Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/31532606226652",
+      "alt": "Custom Bricked Mosaic Portrait 50x60\" Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/31532606292188",
+      "alt": "Custom Bricked Mosaic Portrait 50x60\" Memobrick"
+    },
+    {
+      "id": "gid://shopify/MediaImage/31532606324956",
+      "alt": "Custom Bricked Mosaic Portrait 50x60\" Memobrick"
+    }
+  ]
+}
