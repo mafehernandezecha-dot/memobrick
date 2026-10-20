@@ -37,6 +37,18 @@ Also waiting on you (not a Status edit):
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W42-046
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/cart-rollback-2026-10-20.md
+- Commit: 4c1c5fe
+- Reason: Replaces the full cart rollback (A-2026W42-045, not to be published). Starting from the LIVE cart (A-2026W42-021 version), remove only the free-shipping box ("Free US shipping on orders $125 and up / Add $X more"), the ZIP/state shipping estimator and the "Order by December 15" line from the cart page (and the same lines in the cart drawer if present). Keep the customer's mosaic picture, the hidden internal fields, the kit label and every other live fix. Build it in a theme copy, test phone and desktop add to cart -> checkout, and give the owner the preview link to publish. Phone cart-to-checkout fell from 71% to 44% after Oct 14; watch it for 7 days (target 65% or more).
+- Expires: 2026-10-27
+- Status: approved
+- From: chat
+- Note: Eden approved in chat on 2026-10-20 ("remove the shipping box"), recorded by the coordinator session. A-2026W42-045's full rollback copy (188955361500) should not be published.
+
 ## A-2026W42-045
 - Agent: site-developer
 - Executor: site-developer
