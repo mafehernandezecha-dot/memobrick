@@ -1,6 +1,16 @@
 # Working theme
 
-## Now (2026-10-14, about 07:40 UTC)
+## Now (2026-10-20)
+
+| Field | Value |
+|---|---|
+| Live theme (MAIN) | "Memobrick calm home", id 188697510108 (updatedAt 2026-10-14T11:42:00Z). Checked 2026-10-20: cart.liquid 498326618234d9f98c771afe82477a15, memobrick.js 88f83c4a454dcf58bc1d9c1118777f77, memobrick-email-gate.js 851b9041af3a1e33c16102520c3b92e9, memobrick-site.liquid d641ed44212004aaa1ab2be733f6829f |
+| Rollback copy | **"Memobrick cart rollback", id 188955361500**, UNPUBLISHED, duplicated from live on 2026-10-20 for A-2026W42-045; only cart.liquid (e494bd6a40250dd4c433f2cfdd2ac5cc) and memobrick.js (75dc4d8d376915dc62242dc28cffbf39) changed. Waiting for Eden to publish. See fixes/cart-rollback-2026-10-20.md |
+| Preview | https://mymemobrick.com/?preview_theme_id=188955361500 |
+| Undo after publish | republish "Memobrick calm home" 188697510108 |
+| Theme count | 19 of 20 |
+
+## Previous (2026-10-14)
 
 | Field | Value |
 |---|---|
