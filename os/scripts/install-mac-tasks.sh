@@ -223,7 +223,8 @@ Next steps:
   1. Keep the Mac awake and on power from 7 am to 9 pm, with Google Chrome open and the
      Claude in Chrome extension signed in. Stay logged in, in that Chrome, to:
      Google Ads, Google Analytics and Search Console (with the Google account that owns
-     them), Meta Business Suite (Instagram and Facebook), TikTok, Pinterest, and Shopify
+     them), Meta Business Suite (Instagram and Facebook), TikTok, Pinterest, YouTube Studio
+     (the Memobrick channel, for Shorts; verify it by phone once), and Shopify
      admin for the Memobrick store with the Shopify Collabs app (also Instagram, TikTok and
      YouTube, so creators' profiles open without a login wall).
      If Chrome asks whether the site may download multiple files, click Allow.

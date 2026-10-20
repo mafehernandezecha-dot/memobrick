@@ -58,6 +58,20 @@ Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_
 Alt text: Video: a sped-up build of a brick mosaic, bricks pressed in by hand, ending on the finished portrait.
 Media: marketing/social/planner/2026-W44/S-20261028-1.mp4
 
+## YouTube Shorts (added channel)
+
+Added channel: YouTube Shorts is not in the approved post file (marketing/social/planner/2026-W44/S-20261028-1.md was approved before YouTube was added, and editing it would break its approval), so this title and description are written here only. Post it only once the owner's OK is recorded on the next line; until then post the other channels and skip YouTube.
+Owner OK: pending
+Title: How long does a 20×20 take? A brick mosaic build, sped up #Shorts
+Description:
+About 4 hours for a 20×20, with 4,096 1×1 bricks pressed in one at a time (build time is an estimate). Shown here sped up 6 to 8 times. Upload a photo at the link and see your mosaic before you order.
+https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_campaign=2026-10-build-time
+#brickmosaic #satisfying #diygift #timelapse
+
+Altered or synthetic content: Yes
+Audience: No, it's not made for kids
+Media: marketing/social/planner/2026-W44/S-20261028-1.mp4
+
 ## Result
 
 (filled in by the owner's Mac after posting)

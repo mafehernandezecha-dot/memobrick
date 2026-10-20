@@ -52,6 +52,20 @@ Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_
 Alt text: Slow-motion close-ups of 1x1 bricks being placed and rows filling on a baseplate.
 Media: marketing/social/planner/2026-W43/S-20261021-1.mp4
 
+## YouTube Shorts (added channel)
+
+Added channel: YouTube Shorts is not in the approved post file (marketing/social/planner/2026-W43/S-20261021-1.md was approved before YouTube was added, and editing it would break its approval), so this title and description are written here only. Post it only once the owner's OK is recorded on the next line; until then post the other channels and skip YouTube.
+Owner OK: pending
+Title: The most satisfying part: 1×1 bricks pressed in by hand, in slow motion #Shorts
+Description:
+Every Memobrick mosaic is built from tiny 1×1 bricks, pressed in one at a time. Want to see your own photo like this? Upload it at the link and see your mosaic preview.
+https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_campaign=2026-10-satisfying-build
+#oddlysatisfying #brickmosaic #diyproject #photogift
+
+Altered or synthetic content: No
+Audience: No, it's not made for kids
+Media: marketing/social/planner/2026-W43/S-20261021-1.mp4
+
 ## Result
 
 (filled in by the owner's Mac after posting)

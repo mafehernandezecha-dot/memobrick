@@ -289,6 +289,10 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 
 ## Missing owner inputs
 
+**YouTube Shorts for the already-approved W43 and W44 reels (Eden, OK needed):**
+
+- YouTube: pending. Reels now also post to YouTube Shorts. The W43 and W44 batches (A-2026W42-033, A-2026W42-037) were approved before that, and their post files cannot change without breaking the approval, so the YouTube title and description were added only to the kits, as an "added channel" section: S-20261019-1, S-20261021-1, S-20261023-1, S-20261026-1, S-20261028-1, S-20261030-1 (marketing/social/publisher/to-post/). Read them there, then write `OK` at the end of this line (or say so in chat) to let them post on YouTube too. Until then the Mac posts these reels on the other four channels only. OK by Wed Oct 21 before 19:00 ET so Wednesday's reel goes to YouTube on time.
+
 **Facts marked unknown or incomplete:**
 
 - Holiday ad budget

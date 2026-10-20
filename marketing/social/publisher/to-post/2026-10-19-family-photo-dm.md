@@ -58,6 +58,20 @@ Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_
 Alt text: Short video of a family photo turning into a custom brick mosaic, then close-ups of 1x1 bricks being pressed in by hand.
 Media: marketing/social/planner/2026-W43/S-20261019-1.mp4
 
+## YouTube Shorts (added channel)
+
+Added channel: YouTube Shorts is not in the approved post file (marketing/social/planner/2026-W43/S-20261019-1.md was approved before YouTube was added, and editing it would break its approval), so this title and description are written here only. Post it only once the owner's OK is recorded on the next line; until then post the other channels and skip YouTube.
+Owner OK: pending
+Title: Your photo, in 1×1 bricks. Which photo from your camera roll would you build? #Shorts
+Description:
+A family photo turns into a custom brick mosaic, pressed in by hand from tiny 1×1 bricks. Upload any photo at the link to see your own mosaic preview.
+https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_campaign=2026-10-send-your-photo
+#brickmosaic #photogift #familyphoto #personalizedgift
+
+Altered or synthetic content: Yes
+Audience: No, it's not made for kids
+Media: marketing/social/planner/2026-W43/S-20261019-1.mp4
+
 ## Result
 
 (filled in by the owner's Mac after posting)

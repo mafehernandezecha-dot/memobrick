@@ -58,6 +58,20 @@ Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_
 Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box opens and hands press bricks into a board.
 Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
 
+## YouTube Shorts (added channel)
+
+Added channel: YouTube Shorts is not in the approved post file (marketing/social/planner/2026-W44/S-20261026-1.md was approved before YouTube was added, and editing it would break its approval), so this title and description are written here only. Post it only once the owner's OK is recorded on the next line; until then post the other channels and skip YouTube.
+Owner OK: pending
+Title: Two faces. All 1×1 bricks. A couple photo turned into a brick mosaic #Shorts
+Description:
+Upload a favorite photo of the two of you, see it as a custom brick mosaic before you order, then build it together one 1×1 brick at a time. Order by December 15 to get it before Christmas.
+https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_campaign=2026-10-couple-gift
+#brickmosaic #photogift #anniversarygift #giftforhim
+
+Altered or synthetic content: Yes
+Audience: No, it's not made for kids
+Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
+
 ## Result
 
 (filled in by the owner's Mac after posting)

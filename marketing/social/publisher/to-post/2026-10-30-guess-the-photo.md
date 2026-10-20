@@ -58,6 +58,20 @@ Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_
 Alt text: Guess the photo reveal: close-up of studs zooming out to a finished brick portrait of a cat.
 Media: marketing/social/planner/2026-W44/S-20261030-1.mp4
 
+## YouTube Shorts (added channel)
+
+Added channel: YouTube Shorts is not in the approved post file (marketing/social/planner/2026-W44/S-20261030-1.md was approved before YouTube was added, and editing it would break its approval), so this title and description are written here only. Post it only once the owner's OK is recorded on the next line; until then post the other channels and skip YouTube.
+Owner OK: pending
+Title: Guess the photo Friday: what is it before the zoom out? #Shorts
+Description:
+It is a cat, turned into a custom brick mosaic made of tiny 1×1 bricks. Tell us your guess in the comments, and see your own pet as a mosaic at the link.
+https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_campaign=2026-10-guess-the-photo
+#guessthephoto #brickmosaic #petportrait #catmom
+
+Altered or synthetic content: Yes
+Audience: No, it's not made for kids
+Media: marketing/social/planner/2026-W44/S-20261030-1.mp4
+
 ## Result
 
 (filled in by the owner's Mac after posting)
