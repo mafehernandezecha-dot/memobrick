@@ -1,6 +1,6 @@
 # Holiday campaign plan 2026
 
-Updated: 2026-10-13. Owner: email-campaign-writer.
+Updated: 2026-10-20. Owner: email-campaign-writer.
 
 Dates and offers come only from `marketing/shared/offers-calendar.md`. Facts now verified by the owner: Christmas order-by date Dec 15, 2026; Miami fulfillment claim; gift cards offered; free design proof; free US shipping over $125. Active offers: EARLYHOLIDAY20 (20%, from Oct 12, end date unconfirmed) and the two automated 20% flow codes.
 
@@ -31,7 +31,14 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 | 2 | Order-by day last chance | Tue Dec 15 | Not drafted yet (draft by Dec 8) | Existing countdown ends Dec 14; the order-by date itself has no send. Use only Dec 15 and verified shipping facts |
 | 3 | Gift card email | Wed Dec 16 | Not drafted yet (draft by Dec 9) | Gift cards are offered (Facts). Instant gift for people past the order-by date. Check the gift card product and delivery method in Shopify before drafting |
 | 4 | Mid-November gift guide | n/a | Covered by the Nov 3 Gift Ideas send. Skip unless the owner drops it | |
+| 6 | Past customers: "Who else is on your list?" (second Memobrick for grandparents, partner, pet, sibling; EARLYHOLIDAY20) | Thu Oct 29, 10:00 ET | Drafted 2026-10-20 at Eden's request, proposal P-email-campaign-writer-20261020-1 | Past Buyers - Subscribed (9,007), excluding ordered in last 30 days and Unengaged 180d. Avoids the Oct 27 send to the same people |
 | 5 | EARLYHOLIDAY20 announcement | n/a | Covered by the Oct 20 improvement if approved | No separate send: it would stack on Oct 20 and 22 |
+
+## Notes 2026-10-20
+
+- The approved Oct 20 improvement (A-2026W42-007) expired on 2026-10-19 before this agent ran, so it was not applied: "Q4 | Oct 20 | Early Bird 15%" sends today at 11:00 ET with its original 15% copy unless the owner edits it in Omnisend.
+- EARLYHOLIDAY20 checked in Shopify: applies to Custom Bricks Portrait, Memobrick Frame, Artist Collection, Bricks and Accessories, Newest products and Best Sellers collections only, combines with no other discount, no end date. Never call it sitewide.
+- Omnisend campaign UTM tagging is on (source omnisend, medium email, campaign "campaign: <name> (<id>)"). Shopify shows 281 sessions with utm_source=omnisend from Sep 22 to Oct 19; the "13 email visits" figure is the referrer report (email/gmail), which misses most email clicks.
 
 ## Rules for every holiday email
 
