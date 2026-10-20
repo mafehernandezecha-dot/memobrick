@@ -1,6 +1,6 @@
 # Keyword map
 
-Updated: 2026-10-12 (live run). Owner: seo-strategist. Changes this run: owner facts now known (Christmas order-by Dec 15, 2026; sizes, pieces and build times in product-facts.md), so the sizes and build-time articles are unblocked; the gift-for-someone-who-has-everything article is briefed.
+Updated: 2026-10-20 (live run). Owner: seo-strategist. Changes this run: owner facts now known (Christmas order-by Dec 15, 2026; sizes, pieces and build times in product-facts.md), so the sizes and build-time articles are unblocked; the gift-for-someone-who-has-everything article is briefed.
 
 Search volumes are "unknown": Search Console is not connected and no keyword volume tool is available. Evidence codes:
 
@@ -95,3 +95,9 @@ Target URLs are relative to https://mymemobrick.com. "planned" means the page do
 | custom brick mosaic vs alternatives | commercial | theme template `page.custom-brick-mosaic-vs-alternatives` exists; live URL not confirmed | C |
 | brick mosaic faq | informational | /pages/faqs | C |
 | custom brick mosaics for brands | commercial | /pages/custom-brick-mosaics-for-brands | C |
+
+## Updates 2026-10-20
+
+- Kit contents, sizes and build time now target one page: /blogs/news/brick-mosaic-sizes (briefed 2026-10-20). Secondary keywords: what is in a brick mosaic kit, how long does a brick mosaic take to build, how many pieces in a brick mosaic.
+- New: can you turn a photo into a lego style mosaic | informational | /blogs/news/can-you-turn-a-photo-into-a-lego-style-mosaic (planned) | S (ai-visibility-2026-10) | unknown
+- New competitor-owned terms seen in search (2026-10-20): personalized lego style portrait, custom photo mosaic corporate gift (Brick Me, DDBricks). Evidence S.

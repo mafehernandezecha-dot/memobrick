@@ -10,3 +10,5 @@ Append-only for all agents. Social planner and SEO strategist turn these into po
 | 2026-10-11 | seo-strategist: agent buyer-question list | What should I get for someone who has everything? | 1 | page plan rank 3 |
 | 2026-10-12 | seo-strategist: buyer-question list; SERP pattern for "gift for someone who has everything" | Will a photo mosaic work as a gift if they already own everything? What if I do not know their taste? | 1 | brief: gift-for-someone-who-has-everything |
 | 2026-10-12 | seo-strategist: Shopify catalog (frames sold separately, some below zero inventory) | Is a frame available for every size, and can I order the frame with the kit? | 1 | page plan rank 7 (sizes) |
+| 2026-10-20 | seo-strategist: search research (Brick Me blog title "Can you get a photo turned into Lego?") | Can you turn a photo into a LEGO-style mosaic, and is it the same as an AI Lego filter? | 1 | page plan 2026-10-20 |
+| 2026-10-20 | seo-strategist: search research (Brick Me tips) | Does a group photo work, or do I need a close-up portrait? | 1 | brief: brick-mosaic-sizes (fits section); future best-photo article |

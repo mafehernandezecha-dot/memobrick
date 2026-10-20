@@ -1,6 +1,6 @@
 # Page plan
 
-Updated: 2026-10-12 (live run). Ranked. Rule: until December 1, 2026, holiday pages rank first because they need time to be crawled.
+Updated: 2026-10-20 (live run). Ranked. Rule: until December 1, 2026, holiday pages rank first because they need time to be crawled.
 
 Context: the blog already has at least six published Christmas articles that target overlapping "build a Christmas memory together" angles, plus one published duplicate. Writing a seventh standalone Christmas article would cannibalize them. The Christmas priority is therefore met with a hub that organizes them, plus cleanup.
 
@@ -31,3 +31,10 @@ Context: the blog already has at least six published Christmas articles that tar
 - Two articles sit on their own single-article blogs (`/blogs/experience-the-ultimate-bonding-activity-with-memobrick/...` and `/blogs/the-top-superlative-ways-to-disconnect-kids-from-technology/...`). Consider moving them to `news` with redirects.
 - Several handles do not match their titles (`baby-carrier-jul-10-22-19-45`, `baby-carrier-aug-14-20-11-55`, `test-blog-post-07072026`, `copy-of-why-your-funniest-photos-might-make-the-best-keepsakes`, `duplicate-from-...`).
 - Several blog articles also exist as unpublished Pages with the same titles. Confirm none are published.
+
+## Updates 2026-10-20
+
+- Briefed `brick-mosaic-sizes` (merges ranks 4, 7 and 8: kit contents, sizes, build time) to avoid three thin pages. Ranks 4, 7, 8 are now one row, status briefed 2026-10-20.
+- New, rank after best-photo: `/blogs/news/can-you-turn-a-photo-into-a-lego-style-mosaic` (informational; AI-visibility check found no Memobrick page answering it, Brick Me owns it). Not briefed.
+- Sales context: Oct 1 to 18 was 48 orders vs a goal of 90; search traffic is down 74% year on year, so organic pages matter. Search Console data has never been pulled; the open requests in data/requests.md cover it.
+- Next to brief (week of 2026-10-26): rank 5, best photo for a brick mosaic (needs no owner facts beyond general advice).
