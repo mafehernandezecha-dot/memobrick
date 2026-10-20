@@ -37,6 +37,18 @@ Also waiting on you (not a Status edit):
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W42-045
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/cart-design-delivery-shipping.md
+- Commit: a2138ea
+- Reason: ROLLBACK of the cart page change from A-2026W42-021 (live Oct 14). Since Oct 14, cart-to-checkout fell from 82% (118 of 144, Oct 1-13) to 62% (35 of 56, Oct 14-19) store-wide while checkout completion stayed ~35%; brand search buyers went from 8.5 conversions to 0 with no ad changes. Restore the pre-Oct-14 cart page (sections/templates for the cart and the cart drawer edit) from marketing/conversion/site-developer/backups/2026-10-14-cart-sticky-prodesign/, keep every other live fix (calm phone home, sticky desktop bar, Pro Design size, email pop-up), test add to cart -> checkout on phone and desktop, and report. The owner publishes if a theme copy is needed.
+- Expires: 2026-10-27
+- Status: approved
+- From: chat
+- Note: Eden approved in chat on 2026-10-20 ("revert the cart page"), recorded by the coordinator session. Watch cart-to-checkout for 5-7 days after the rollback (baseline 82%).
+
 ## A-2026W42-040
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
