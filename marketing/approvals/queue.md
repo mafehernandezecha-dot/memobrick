@@ -37,6 +37,66 @@ Also waiting on you (not a Status edit):
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W42-040
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/improve-oct20-early-bird.md
+- Commit: d52dbf5
+- Reason: Renews expired A-2026W42-007: edits the scheduled Omnisend campaign "Q4 | Oct 20 | Early Bird 15%" (restore to draft, swap in the 20% EARLYHOLIDAY20 version, reschedule for the same time, Tue Oct 20 11:00 ET). If it can't be done before 10:45 ET, pause the campaign instead of sending the 15% copy.
+- Expires: 2026-10-20
+- Status: approved
+- From: A-2026W42-007
+- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
+
+## A-2026W42-041
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/improve-oct20-early-bird.md
+- Commit: d52dbf5
+- Reason: Same fix for the scheduled "LAST CALL 15%" campaign (Oct 27): replace the 15% offer with EARLYHOLIDAY20 20% and remove "this week only" wording, keeping layout, audience and send time; minimal text changes only. The executor writes the draft with previews first and applies it; any change beyond offer wording goes back to the owner.
+- Expires: 2026-10-27
+- Status: approved
+- From: chat
+- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
+
+## A-2026W42-042
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/2026-10-29-who-else-on-your-list.md
+- Commit: 6bd7703
+- Reason: Creates "Q4 | Oct 29 | Who Else Is On Your List (Past Buyers)" and schedules it for Thu Oct 29 10:00 ET to Past Buyers - Subscribed minus ordered in last 30 days (new segment) minus Unengaged 180d. The dog mosaic is now a MemoBrick Studio design (commit 6bd7703). Images: upload via the Omnisend image tools if available, otherwise the owner uploads the 3 images before Oct 28.
+- Expires: 2026-10-28
+- Status: approved
+- From: P-email-campaign-writer-20261020-1
+- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
+
+## A-2026W42-043
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/product-listings-priority.md
+- Commit: db7271f
+- Reason: Backs up current values, then rewrites titles, descriptions, SEO fields, alt text, tags, types and categories on the 22 custom photo kits, 4 best-selling frames and 4 collections (no URL or price changes). Unconfirmed specs (60x20/60x30/60x60 plates, frame materials, brand compatibility, 1x1 bags) stay out.
+- Expires: 2026-11-10
+- Status: approved
+- From: P-seo-technical-20261020-1
+- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
+
+## A-2026W42-044
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/product-listings-long-tail.md
+- Commit: db7271f
+- Reason: Backs up current values, then applies the image-based listings to the 110 live Artist Collection designs and rule-based fixes to brick bags, other frames and the Artist Collection page. IP-list products untouched.
+- Expires: 2026-11-15
+- Status: approved
+- From: P-seo-technical-20261020-2
+- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session. P-seo-technical-20261020-3 (republish Starry Night / Mona Lisa) is NOT approved: waits for the owner to confirm those kits can be made.
+
 ## A-2026W42-007
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
