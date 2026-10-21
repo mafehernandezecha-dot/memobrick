@@ -1,0 +1,9 @@
+59c59,60
+< {% if size_id == "" and product.title contains "Custom Bricked Mosaic" %}
+---
+> {% assign title_kit = false %}{% if product.title contains "Custom Bricked Mosaic" or product.title contains "Custom Photo Brick Mosaic" %}{% assign title_kit = true %}{% endif %}
+> {% if size_id == "" and title_kit %}
+67c68
+< {% if product.title contains "Custom Bricked Mosaic" or product.title contains "Custom Brick Portrait" %}{% assign is_creator_product = true %}{% endif %}
+---
+> {% if size_id != "" or product.title contains "Custom Photo Brick Mosaic" or product.title contains "Custom Bricked Mosaic" or product.title contains "Custom Brick Portrait" %}{% assign is_creator_product = true %}{% endif %}
