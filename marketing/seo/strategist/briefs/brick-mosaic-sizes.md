@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: brick mosaic sizes
 Hub: Buyer questions (links to Christmas, family, couples hubs)
 Page type: article
