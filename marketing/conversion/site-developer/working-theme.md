@@ -1,7 +1,18 @@
 # Working theme
 
-## Now (2026-10-20)
+## Now (2026-10-21)
 
+| Field | Value |
+|---|---|
+| Live theme (MAIN) | "Memobrick cart no shipping box", id 188955623644, published by Eden on 2026-10-20 (A-2026W42-046). Checked 2026-10-21: cart.liquid 13f6c57bb371bb521b378e0bb574c50a, memobrick.js 88f83c4a454dcf58bc1d9c1118777f77, product.liquid aaaad07d16b9e81e1dce5b60f65879fe |
+| Working copy (to publish) | **"Memobrick kit page fix", id 188955361500**, UNPUBLISHED. It is the old "Memobrick cart rollback" copy, renamed and reset to live (cart.liquid and memobrick.js re-uploaded from the repo by URL, md5 confirmed) plus the new product.liquid 54578873af06ce0965e57ba29b8cd85f. Preview https://mymemobrick.com/products/2-2-boards?preview_theme_id=188955361500. See fixes/kit-page-creator-check.md |
+| Undo after publish | republish "Memobrick cart no shipping box" 188955623644 |
+| Theme count | 20 of 20, so no new copy can be made; the copy above was reused |
+| Tip | `themeFilesUpsert` with body type URL works from a public GitHub raw link of a pushed commit (not from mymemobrick.com or cdn.shopify.com); use it for large files like memobrick.js |
+
+## Previous (2026-10-20)
+
+### Live theme then: "Memobrick calm home" 188697510108 (now unpublished, the undo for the cart change; do not touch)
 | Field | Value |
 |---|---|
 | Live theme (MAIN) | "Memobrick calm home", id 188697510108 (updatedAt 2026-10-14T11:42:00Z). Checked 2026-10-20: cart.liquid 498326618234d9f98c771afe82477a15, memobrick.js 88f83c4a454dcf58bc1d9c1118777f77, memobrick-email-gate.js 851b9041af3a1e33c16102520c3b92e9, memobrick-site.liquid d641ed44212004aaa1ab2be733f6829f |

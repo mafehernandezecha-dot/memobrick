@@ -1,0 +1,343 @@
+[
+ {
+  "device": "phone",
+  "handle": "2-2-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x20 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $99.88",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$99.88 $159.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "1-big-board",
+  "title": "Custom Photo Brick Mosaic Portrait 16x16 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $69.88",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$69.88 $89.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "2-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x30 in Vertical - Personalized DI",
+  "ctas": [
+   {
+    "text": "Buy now — $149.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$149.00 $195.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "3-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 30x30 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $209.99",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$209.99 $295.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "custom-bricked-mosaic-10x10",
+  "title": "Custom Photo Brick Mosaic 10x10 in, One Face - Personalized Mini DIY P",
+  "ctas": [
+   {
+    "text": "Buy now — $35.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$35.00 $55.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "60x60-fits-1-9-individuals",
+  "title": "Custom Photo Brick Mosaic Portrait 60x60 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $853.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$853.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "5-5-board",
+  "title": "Custom Photo Brick Mosaic Portrait 50x50 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $530.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$530.00 $750.00 Buy now",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "frame-2-2",
+  "title": "Black Frame for 20x20 in Brick Mosaic - Display Frame for Memobrick Ph",
+  "ctas": [
+   {
+    "text": "Buy now — $65.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$65.00 $75.00 Buy now",
+  "specs": false,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "donuts-20x20",
+  "title": "Donuts Brick Mosaic Art Kit - 20x20 in DIY Wall Decor",
+  "ctas": [
+   {
+    "text": "Buy now — $99.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$99.00 Buy now",
+  "specs": false,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "bag-of-bricks-black-01",
+  "title": "Bag of Bricks - Black 01",
+  "ctas": [
+   {
+    "text": "Buy now — $3.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$3.00 $7.00 Buy now",
+  "specs": false,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "stickyHidden": false,
+  "stickyText": "$99.88 $159.00 Buy now"
+ },
+ {
+  "device": "phone",
+  "jsErrors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/",
+   "Error completing request. A network failure may have prevented the request from completing",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics"
+  ]
+ },
+ {
+  "device": "desktop",
+  "handle": "2-2-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x20 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $99.88",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$99.88 $159.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "1-big-board",
+  "title": "Custom Photo Brick Mosaic Portrait 16x16 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $69.88",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$69.88 $89.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "2-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x30 in Vertical - Personalized DI",
+  "ctas": [
+   {
+    "text": "Buy now — $149.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$149.00 $195.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "3-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 30x30 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $209.99",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$209.99 $295.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "custom-bricked-mosaic-10x10",
+  "title": "Custom Photo Brick Mosaic 10x10 in, One Face - Personalized Mini DIY P",
+  "ctas": [
+   {
+    "text": "Buy now — $35.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$35.00 $55.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "60x60-fits-1-9-individuals",
+  "title": "Custom Photo Brick Mosaic Portrait 60x60 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $853.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$853.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "5-5-board",
+  "title": "Custom Photo Brick Mosaic Portrait 50x50 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Buy now — $530.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$530.00 $750.00 Buy now",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "frame-2-2",
+  "title": "Black Frame for 20x20 in Brick Mosaic - Display Frame for Memobrick Ph",
+  "ctas": [
+   {
+    "text": "Buy now — $65.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$65.00 $75.00 Buy now",
+  "specs": false,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "donuts-20x20",
+  "title": "Donuts Brick Mosaic Art Kit - 20x20 in DIY Wall Decor",
+  "ctas": [
+   {
+    "text": "Buy now — $99.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$99.00 Buy now",
+  "specs": false,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "bag-of-bricks-black-01",
+  "title": "Bag of Bricks - Black 01",
+  "ctas": [
+   {
+    "text": "Buy now — $3.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$3.00 $7.00 Buy now",
+  "specs": false,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "jsErrors": [
+   "Error completing request. A network failure may have prevented the request from completing",
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics"
+  ]
+ }
+]

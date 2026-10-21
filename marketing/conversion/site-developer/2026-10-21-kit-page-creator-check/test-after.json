@@ -1,0 +1,409 @@
+[
+ {
+  "device": "phone",
+  "handle": "2-2-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x20 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=20x20#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=20x20#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$99.88 $159.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "1-big-board",
+  "title": "Custom Photo Brick Mosaic Portrait 16x16 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=16x16#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=16x16#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$69.88 $89.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "2-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x30 in Vertical - Personalized DI",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=20x30#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=20x30#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$149.00 $195.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "3-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 30x30 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=30x30#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=30x30#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$209.99 $295.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "custom-bricked-mosaic-10x10",
+  "title": "Custom Photo Brick Mosaic 10x10 in, One Face - Personalized Mini DIY P",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=10x10#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=10x10#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$35.00 $55.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "60x60-fits-1-9-individuals",
+  "title": "Custom Photo Brick Mosaic Portrait 60x60 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=60x60#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=60x60#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$853.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "5-5-board",
+  "title": "Custom Photo Brick Mosaic Portrait 50x50 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=50x50#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=50x50#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$530.00 $750.00 Design this in the creator",
+  "specs": true,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "frame-2-2",
+  "title": "Black Frame for 20x20 in Brick Mosaic - Display Frame for Memobrick Ph",
+  "ctas": [
+   {
+    "text": "Buy now — $65.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$65.00 $75.00 Buy now",
+  "specs": false,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "donuts-20x20",
+  "title": "Donuts Brick Mosaic Art Kit - 20x20 in DIY Wall Decor",
+  "ctas": [
+   {
+    "text": "Buy now — $99.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$99.00 Buy now",
+  "specs": false,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "handle": "bag-of-bricks-black-01",
+  "title": "Bag of Bricks - Black 01",
+  "ctas": [
+   {
+    "text": "Buy now — $3.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$3.00 $7.00 Buy now",
+  "specs": false,
+  "sw": 390,
+  "iw": 390
+ },
+ {
+  "device": "phone",
+  "follow": "https://mymemobrick.com/products/2-2-boards",
+  "editorFileInput": 0
+ },
+ {
+  "device": "phone",
+  "stickyHidden": false,
+  "stickyText": "$99.88 $159.00 Design this in the creator"
+ },
+ {
+  "device": "phone",
+  "jsErrors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics",
+   "Error completing request. A network failure may have prevented the request from completing"
+  ]
+ },
+ {
+  "device": "desktop",
+  "handle": "2-2-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x20 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=20x20#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=20x20#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$99.88 $159.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "1-big-board",
+  "title": "Custom Photo Brick Mosaic Portrait 16x16 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=16x16#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=16x16#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$69.88 $89.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "2-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 20x30 in Vertical - Personalized DI",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=20x30#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=20x30#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$149.00 $195.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "3-3-boards",
+  "title": "Custom Photo Brick Mosaic Portrait 30x30 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=30x30#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=30x30#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$209.99 $295.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "custom-bricked-mosaic-10x10",
+  "title": "Custom Photo Brick Mosaic 10x10 in, One Face - Personalized Mini DIY P",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=10x10#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=10x10#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$35.00 $55.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "60x60-fits-1-9-individuals",
+  "title": "Custom Photo Brick Mosaic Portrait 60x60 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=60x60#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=60x60#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$853.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "5-5-board",
+  "title": "Custom Photo Brick Mosaic Portrait 50x50 in - Personalized DIY Photo G",
+  "ctas": [
+   {
+    "text": "Design your own MemoBrick",
+    "href": "/pages/editor?size=50x50#editor"
+   },
+   {
+    "text": "Order with Pro Design",
+    "href": "/pages/editor?size=50x50#design"
+   }
+  ],
+  "buyNowForm": false,
+  "sticky": "$530.00 $750.00 Design this in the creator",
+  "specs": true,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "frame-2-2",
+  "title": "Black Frame for 20x20 in Brick Mosaic - Display Frame for Memobrick Ph",
+  "ctas": [
+   {
+    "text": "Buy now — $65.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$65.00 $75.00 Buy now",
+  "specs": false,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "donuts-20x20",
+  "title": "Donuts Brick Mosaic Art Kit - 20x20 in DIY Wall Decor",
+  "ctas": [
+   {
+    "text": "Buy now — $99.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$99.00 Buy now",
+  "specs": false,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "handle": "bag-of-bricks-black-01",
+  "title": "Bag of Bricks - Black 01",
+  "ctas": [
+   {
+    "text": "Buy now — $3.00",
+    "href": null
+   }
+  ],
+  "buyNowForm": true,
+  "sticky": "$3.00 $7.00 Buy now",
+  "specs": false,
+  "sw": 1440,
+  "iw": 1440
+ },
+ {
+  "device": "desktop",
+  "follow": "https://mymemobrick.com/pages/editor?size=20x20",
+  "editorFileInput": 1
+ },
+ {
+  "device": "desktop",
+  "jsErrors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/",
+   "Error completing request. A network failure may have prevented the request from completing",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics"
+  ]
+ }
+]
