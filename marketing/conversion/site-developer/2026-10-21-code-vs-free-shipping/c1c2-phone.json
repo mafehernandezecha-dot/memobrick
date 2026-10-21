@@ -1,0 +1,129 @@
+{
+ "caseId": "c1c2",
+ "device": "phone",
+ "items": "33536126877835:1",
+ "addr": "ny",
+ "code": "EARLYHOLIDAY20",
+ "nav": [
+  "302 https://mymemobrick.com/checkouts/cn/hWNIEp9Y1TAooz3ljmPq5I14/en-us -> https://mymemobrick.com/checkouts/cn/hWNIEp9dyxbKonHYiFncltyM/en-us",
+  "200 https://mymemobrick.com/checkouts/cn/hWNIEp9dyxbKonHYiFncltyM/en-us"
+ ],
+ "add": {
+  "permalink": "https://mymemobrick.com/cart/33536126877835:1",
+  "checkout": "https://mymemobrick.com/checkouts/cn/<token>/en-us"
+ },
+ "viaNode": 14,
+ "beforeAddress": {
+  "subtotal": "Subtotal $149.00",
+  "shipping": "Shipping Enter shipping address",
+  "discountLines": [
+   "Discount code or gift card Discount code or gift card Apply"
+  ],
+  "total": null,
+  "saved": null,
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2ce7ccbc03173"
+  ],
+  "shippingOptions": []
+ },
+ "noCode": {
+  "subtotal": "Subtotal $149.00",
+  "shipping": "Shipping Original price $12.35",
+  "discountLines": [
+   "Discounted price $149.00",
+   "Discount code or gift card Discount code or gift card Apply",
+   "Discounted price FREE FREE SHIPPING ON US ORDERS OVER $125",
+   "Discounted price FREE",
+   "Discounted price FREE",
+   "Discounted price FREE Payment"
+  ],
+  "total": "Total price $161.35",
+  "saved": "TOTAL SAVINGS $12.35",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2ce7ccbc03173"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ]
+ },
+ "shots": [
+  "c1c2-phone-1-no-code.jpg",
+  "c1c2-phone-2-with-code.jpg",
+  "c1c2-phone-3-code-removed.jpg"
+ ],
+ "withCode": {
+  "subtotal": "Subtotal $119.20",
+  "shipping": "Shipping $12.35",
+  "discountLines": [
+   "Discounted price $131.55",
+   "Discount code EARLYHOLIDAY20 (-$29.80)",
+   "Discounted price $119.20",
+   "Discount code or gift card Discount code or gift card Apply",
+   "EARLYHOLIDAY20 EARLYHOLIDAY20 Cost summary",
+   "Discount code EARLYHOLIDAY20 has been appliedUpdated total price: 131.55 US dollarsUpdated shipping method: UPS® Ground Saver"
+  ],
+  "total": "Total price $161.35",
+  "saved": "TOTAL SAVINGS $29.80",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2ce7ccbc03173"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ],
+  "nearBox": "Discount code or gift card Apply Submit"
+ },
+ "codeRemoved": {
+  "subtotal": "Subtotal $149.00",
+  "shipping": "Shipping Original price $12.35",
+  "discountLines": [
+   "Discounted price $149.00",
+   "Discount code or gift card Discount code or gift card Apply",
+   "Discounted price FREE FREE SHIPPING ON US ORDERS OVER $125",
+   "Discounted price FREE",
+   "Discounted price FREE",
+   "Discounted price FREE Payment",
+   "Discount code EARLYHOLIDAY20 has been removedUpdated total price: 149.00 US dollarsUpdated shipping method: UPS® Ground Saver"
+  ],
+  "total": "Total price $161.35",
+  "saved": "TOTAL SAVINGS $12.35",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2ce7ccbc03173"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ]
+ }
+}

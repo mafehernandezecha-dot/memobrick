@@ -1,0 +1,125 @@
+{
+ "caseId": "c4c",
+ "device": "desktop",
+ "items": "33536317882507:1,43590610682076:1",
+ "addr": "ny",
+ "code": "BRICK10",
+ "nav": [
+  "302 https://mymemobrick.com/checkouts/cn/hWNIEm6zVmd8O8ZLufooYEmQ/en-us -> https://mymemobrick.com/checkouts/cn/hWNIEm77a5mvye4LIbOoGjUg/en-us",
+  "200 https://mymemobrick.com/checkouts/cn/hWNIEm77a5mvye4LIbOoGjUg/en-us"
+ ],
+ "add": {
+  "permalink": "https://mymemobrick.com/cart/33536317882507:1,43590610682076:1",
+  "checkout": "https://mymemobrick.com/checkouts/cn/<token>/en-us"
+ },
+ "viaNode": 14,
+ "beforeAddress": {
+  "subtotal": "Subtotal · 2 items $314.00",
+  "shipping": "Shipping Enter shipping address",
+  "discountLines": [
+   "Discount code or gift card Discount code or gift card Apply"
+  ],
+  "total": null,
+  "saved": null,
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2a2871ba54e70"
+  ],
+  "shippingOptions": []
+ },
+ "noCode": {
+  "subtotal": "Subtotal · 2 items $314.00",
+  "shipping": "Shipping Original price $27.11",
+  "discountLines": [
+   "Discounted price FREE",
+   "Discounted price FREE",
+   "Discounted price FREE Payment",
+   "Discount code or gift card Discount code or gift card Apply",
+   "Discounted price FREE FREE SHIPPING ON US ORDERS OVER $125"
+  ],
+  "total": null,
+  "saved": "TOTAL SAVINGS $27.11",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2a2871ba54e70"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ]
+ },
+ "shots": [
+  "c4c-desktop-1-no-code.jpg",
+  "c4c-desktop-2-with-code.jpg",
+  "c4c-desktop-3-code-removed.jpg"
+ ],
+ "withCode": {
+  "subtotal": "Subtotal · 2 items $314.00",
+  "shipping": "Shipping $27.11",
+  "discountLines": [
+   "Discount code or gift card Discount code or gift card Apply",
+   "BRICK10 BRICK10 Back to finalize order",
+   "Order discount BRICK10 − $31.40",
+   "Discount code BRICK10 has been appliedUpdated total price: 309.71 US dollarsUpdated shipping method: UPS® Ground Saver"
+  ],
+  "total": null,
+  "saved": "TOTAL SAVINGS $31.40",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2a2871ba54e70"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ],
+  "nearBox": "Discount code or gift card Apply Submit"
+ },
+ "codeRemoved": {
+  "subtotal": "Subtotal · 2 items $314.00",
+  "shipping": "Shipping Original price $27.11",
+  "discountLines": [
+   "Discounted price FREE",
+   "Discounted price FREE",
+   "Discounted price FREE Payment",
+   "Discount code or gift card Discount code or gift card Apply",
+   "Discounted price FREE FREE SHIPPING ON US ORDERS OVER $125",
+   "Discount code BRICK10 has been removedUpdated total price: 314.00 US dollarsUpdated shipping method: UPS® Ground Saver"
+  ],
+  "total": null,
+  "saved": "TOTAL SAVINGS $27.11",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2a2871ba54e70"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ]
+ }
+}

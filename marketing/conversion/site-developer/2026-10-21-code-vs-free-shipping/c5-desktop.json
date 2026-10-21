@@ -1,0 +1,118 @@
+{
+ "caseId": "c5",
+ "device": "desktop",
+ "items": "33536095977611:1",
+ "addr": "ny",
+ "code": "EARLYHOLIDAY20",
+ "nav": [
+  "302 https://mymemobrick.com/checkouts/cn/hWNIEozZnvrf6Sa31qjS0718/en-us -> https://mymemobrick.com/checkouts/cn/hWNIEozfj0a12VWAXbQrExmM/en-us",
+  "200 https://mymemobrick.com/checkouts/cn/hWNIEozfj0a12VWAXbQrExmM/en-us"
+ ],
+ "add": {
+  "permalink": "https://mymemobrick.com/cart/33536095977611:1",
+  "checkout": "https://mymemobrick.com/checkouts/cn/<token>/en-us"
+ },
+ "viaNode": 14,
+ "beforeAddress": {
+  "subtotal": "Subtotal $69.88",
+  "shipping": "Shipping Enter shipping address",
+  "discountLines": [
+   "Discount code or gift card Discount code or gift card Apply"
+  ],
+  "total": null,
+  "saved": null,
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2cc289c3b215a"
+  ],
+  "shippingOptions": []
+ },
+ "noCode": {
+  "subtotal": "Subtotal $69.88",
+  "shipping": "Shipping $12.35",
+  "discountLines": [
+   "Discount code or gift card Discount code or gift card Apply"
+  ],
+  "total": null,
+  "saved": null,
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2cc289c3b215a"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ]
+ },
+ "shots": [
+  "c5-desktop-1-no-code.jpg",
+  "c5-desktop-2-with-code.jpg",
+  "c5-desktop-3-code-removed.jpg"
+ ],
+ "withCode": {
+  "subtotal": "Subtotal $55.91",
+  "shipping": "Shipping $12.35",
+  "discountLines": [
+   "Discount code EARLYHOLIDAY20 (-$13.97)",
+   "Discounted price $55.91",
+   "Discount code or gift card Discount code or gift card Apply",
+   "EARLYHOLIDAY20 EARLYHOLIDAY20 Back to finalize order",
+   "Discount code EARLYHOLIDAY20 has been appliedUpdated total price: 68.26 US dollarsUpdated shipping method: UPS® Ground Saver"
+  ],
+  "total": null,
+  "saved": "TOTAL SAVINGS $13.97",
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2cc289c3b215a"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ],
+  "nearBox": "Discount code or gift card Apply Submit"
+ },
+ "codeRemoved": {
+  "subtotal": "Subtotal $69.88",
+  "shipping": "Shipping $12.35",
+  "discountLines": [
+   "Discount code or gift card Discount code or gift card Apply",
+   "Discount code EARLYHOLIDAY20 has been removedUpdated total price: 82.23 US dollarsUpdated shipping method: UPS® Ground Saver"
+  ],
+  "total": null,
+  "saved": null,
+  "alerts": [
+   "There was a problem with our checkoutRefresh this page or try again in a few minutesRefresh PageRequest ID: a4e2cc289c3b215a"
+  ],
+  "shippingOptions": [
+   {
+    "checked": true,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   },
+   {
+    "checked": false,
+    "label": ""
+   }
+  ]
+ }
+}

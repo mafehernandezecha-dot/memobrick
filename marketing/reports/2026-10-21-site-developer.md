@@ -37,3 +37,39 @@ Targets add to cart on kit pages, the best converting landing pages. With the bu
 
 ## Next run
 If Eden has published: confirm live product.liquid md5 54578873..., test kit pages live on phone and desktop, then read add to cart per kit-page session for 7 days. Otherwise remind Eden, and read phone cart to checkout on Oct 27.
+
+# site-developer 2026-10-21, second run: discount code vs free shipping (Eden's question)
+
+## Summary
+Tested on the live checkout (read-only, no order, no payment): when a code goes in on a $125+ US order, Shopify always keeps the code and drops free shipping. It does not pick the better deal.
+In 3 of the 7 tested $125+ carts with a code, free shipping was worth more and the customer pays $4.76 to $27.02 more with the code. One small proposal for Eden: a cart line saying a code replaces free shipping.
+
+## Done
+- Read the live discounts (Admin API): free shipping over $125 (US, all rates, combines with product discounts only); EARLYHOLIDAY20 (product class, 20%, 7 collections, combines with nothing); BRICK10 (order class, 10%, combines with nothing).
+- Ran 9 cases on desktop and 2 on phone at mymemobrick.com checkout with real kits and frames, test contact test+checkout@mymemobrick.com, business addresses in New York and Los Angeles, stopping before payment. Evidence, table and screenshots: `marketing/conversion/site-developer/2026-10-21-code-vs-free-shipping/README.md`. Script: `marketing/conversion/site-developer/tools/code-vs-freeship-test.mjs`.
+- Results: code kept every time (EARLYHOLIDAY20 and BRICK10). Better for the customer in 1/2 ($149 kit: $131.55 vs $149.00), 3c, 4a, 4c. Worse in 3a (frames $134 to LA: $138.76 vs $134.00), 3b (four 10x10 kits, 3 Day Select: $167.02 vs $140.00), 4b (frames with BRICK10: $152.16 vs $134.00). No visible message; removing the code brings free shipping back. Under $125 (case 5) the 20% applies and shipping is charged ($68.26 vs $82.23).
+- Nothing changed on the store or theme.
+
+## Proposed for approval
+
+### P-site-developer-20261021-2
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/one-offer-per-order-line.md
+- Reason: Approving lets me build and test one line in the cart drawer and cart page for $125+ carts, "One offer per order: a discount code replaces free shipping.", and bring it back as a new item with a preview link; nothing goes live from this approval. Shopify always swaps free shipping for the code, even when free shipping saves more.
+- Expires: 2026-10-28
+- Status: pending
+
+## Blocked or unknown
+- Eden decides between option A (cart line), B (leave as is) and C (let codes combine, which breaks her rule; not recommended). Text inside Shopify's checkout next to the code box, or Shopify picking the better offer automatically, is not possible without Shopify Plus or a Shopify Function.
+- Building option A waits for the kit page fix copy (188955361500) to be published: the store is at 20 of 20 themes.
+- email agents: the welcome 20% pop-up and code emails should keep saying the code can't be combined with free shipping (offers-calendar rule of 2026-10-20). Not checked in this run.
+- The test left about 12 abandoned checkouts under test+checkout@mymemobrick.com; abandoned-checkout emails may go to that address.
+- Test environment: the store's bot check (HTTP 429, "Just a moment...") blocked the sandbox browser on /checkouts after a few runs; later runs loaded the checkout through curl inside the test. The card form showed "Credit and debit card payments aren't available right now" in the sandbox every time, most likely because the sandbox cannot reach Shopify's card form host. Worth one look on a real phone; I did not test payment.
+
+## Sales impact
+Small. Most coded orders are better off with the code, and Shopify already gives them that. The line protects the few $125 to $160 orders (frames, faster shipping, 10% codes) from paying more and from a "my free shipping disappeared" surprise at checkout, which can cause an abandoned checkout or a support email.
+
+## Next run
+If Eden picks option A: build the line in a theme copy after the kit page fix is published, test phone and desktop with a $125+ and an under-$125 cart, and propose it with a preview link.
