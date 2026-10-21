@@ -2,11 +2,19 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-19. No new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
+Updated 2026-10-21. Added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
+
+Do first today (2026-10-21):
+
+- A-2026W43-001 (`pending`): publish "Memobrick kit page fix" after approving. Since the Oct 20 listing rewrite, the 22 custom kit pages send a kit with no photo to checkout. Then check Oct 20 and 21 kit orders for any with no design attached.
+- A-2026W43-002 is the same bug from the auditor; approve 001 and reject 002.
+- YouTube Shorts OK for the W43 and W44 reels is needed before 19:00 ET today (see Missing owner inputs).
+- A-2026W42-014 (photo tips email) has `changes:` and expires today; it needs a new first image from the email-campaign-writer or it lapses.
+- A-2026W42-038 (Meta photo-to-mosaic ad) is approved and expires today; ads-analyst has not reported doing it.
 
 New today (2026-10-16, `pending`):
 
@@ -37,124 +45,29 @@ Also waiting on you (not a Status edit):
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
-## A-2026W42-046
+## A-2026W43-001
 - Agent: site-developer
 - Executor: site-developer
 - Type: site-change
-- Draft: marketing/conversion/site-developer/fixes/cart-rollback-2026-10-20.md
-- Commit: 4c1c5fe
-- Reason: Replaces the full cart rollback (A-2026W42-045, not to be published). Starting from the LIVE cart (A-2026W42-021 version), remove only the free-shipping box ("Free US shipping on orders $125 and up / Add $X more"), the ZIP/state shipping estimator and the "Order by December 15" line from the cart page (and the same lines in the cart drawer if present). Keep the customer's mosaic picture, the hidden internal fields, the kit label and every other live fix. Build it in a theme copy, test phone and desktop add to cart -> checkout, and give the owner the preview link to publish. Phone cart-to-checkout fell from 71% to 44% after Oct 14; watch it for 7 days (target 65% or more).
-- Expires: 2026-10-27
-- Status: approved
-- From: chat
-- Note: Eden approved in chat on 2026-10-20 ("remove the shipping box"), recorded by the coordinator session. A-2026W42-045's full rollback copy (188955361500) should not be published.
-
-## A-2026W42-045
-- Agent: site-developer
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/site-developer/fixes/cart-design-delivery-shipping.md
-- Commit: a2138ea
-- Reason: ROLLBACK of the cart page change from A-2026W42-021 (live Oct 14). Since Oct 14, cart-to-checkout fell from 82% (118 of 144, Oct 1-13) to 62% (35 of 56, Oct 14-19) store-wide while checkout completion stayed ~35%; brand search buyers went from 8.5 conversions to 0 with no ad changes. Restore the pre-Oct-14 cart page (sections/templates for the cart and the cart drawer edit) from marketing/conversion/site-developer/backups/2026-10-14-cart-sticky-prodesign/, keep every other live fix (calm phone home, sticky desktop bar, Pro Design size, email pop-up), test add to cart -> checkout on phone and desktop, and report. The owner publishes if a theme copy is needed.
-- Expires: 2026-10-27
-- Status: approved
-- From: chat
-- Note: Eden approved in chat on 2026-10-20 ("revert the cart page"), recorded by the coordinator session. Watch cart-to-checkout for 5-7 days after the rollback (baseline 82%).
-
-## A-2026W42-040
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/improve-oct20-early-bird.md
-- Commit: d52dbf5
-- Reason: Renews expired A-2026W42-007: edits the scheduled Omnisend campaign "Q4 | Oct 20 | Early Bird 15%" (restore to draft, swap in the 20% EARLYHOLIDAY20 version, reschedule for the same time, Tue Oct 20 11:00 ET). If it can't be done before 10:45 ET, pause the campaign instead of sending the 15% copy.
-- Expires: 2026-10-20
-- Status: approved
-- From: A-2026W42-007
-- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
-
-## A-2026W42-041
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/improve-oct20-early-bird.md
-- Commit: d52dbf5
-- Reason: Same fix for the scheduled "LAST CALL 15%" campaign (Oct 27): replace the 15% offer with EARLYHOLIDAY20 20% and remove "this week only" wording, keeping layout, audience and send time; minimal text changes only. The executor writes the draft with previews first and applies it; any change beyond offer wording goes back to the owner.
-- Expires: 2026-10-27
-- Status: approved
-- From: chat
-- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
-
-## A-2026W42-042
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/2026-10-29-who-else-on-your-list.md
-- Commit: 6bd7703
-- Reason: Creates "Q4 | Oct 29 | Who Else Is On Your List (Past Buyers)" and schedules it for Thu Oct 29 10:00 ET to Past Buyers - Subscribed minus ordered in last 30 days (new segment) minus Unengaged 180d. The dog mosaic is now a MemoBrick Studio design (commit 6bd7703). Images: upload via the Omnisend image tools if available, otherwise the owner uploads the 3 images before Oct 28.
+- Draft: marketing/conversion/site-developer/fixes/kit-page-creator-check.md
+- Commit: b8f6f9c
+- Reason: URGENT, sales-blocking. After the Oct 20 title rewrite (A-2026W42-043) the 22 custom kit pages lost "Design your own MemoBrick" and "Order with Pro Design" and show a Buy now that sends a kit with no photo to checkout. Restores both buttons through a tested theme copy ("Memobrick kit page fix", one file, product.liquid). Eden publishes it (Online Store > Themes > ... > Publish); site-developer then confirms it live. Undo: republish "Memobrick cart no shipping box". Every day it stays unpublished, kit page visitors cannot reach the editor.
 - Expires: 2026-10-28
-- Status: approved
-- From: P-email-campaign-writer-20261020-1
-- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
+- Status: pending
+- From: P-site-developer-20261021-1
+- Note: Also check kit orders from Oct 20 and 21 for any with no design attached and ask those customers for a photo (owner step, not an agent action).
 
-## A-2026W42-043
-- Agent: seo-technical
-- Executor: seo-technical
+## A-2026W43-002
+- Agent: conversion-auditor
+- Executor: site-developer
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes/product-listings-priority.md
-- Commit: db7271f
-- Reason: Backs up current values, then rewrites titles, descriptions, SEO fields, alt text, tags, types and categories on the 22 custom photo kits, 4 best-selling frames and 4 collections (no URL or price changes). Unconfirmed specs (60x20/60x30/60x60 plates, frame materials, brand compatibility, 1x1 bags) stay out.
-- Expires: 2026-11-10
-- Status: approved
-- From: P-seo-technical-20261020-1
-- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session.
-
-## A-2026W42-044
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/product-listings-long-tail.md
-- Commit: db7271f
-- Reason: Backs up current values, then applies the image-based listings to the 110 live Artist Collection designs and rule-based fixes to brick bags, other frames and the Artist Collection page. IP-list products untouched.
-- Expires: 2026-11-15
-- Status: approved
-- From: P-seo-technical-20261020-2
-- Note: Eden approved in chat on 2026-10-20 ("approve", answering the list: update the Early Bird emails, approve the past customer email, approve product listings 1 and 2), recorded by the coordinator session. P-seo-technical-20261020-3 (republish Starry Night / Mona Lisa) is NOT approved: waits for the owner to confirm those kits can be made.
-
-## A-2026W42-007
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/improve-oct20-early-bird.md
-- Commit: d52dbf5
-- Reason: Edits the scheduled Omnisend campaign "Q4 | Oct 20 | Early Bird 15%" (about 5,000 Warm contacts): restores it to draft, swaps in the 20% EARLYHOLIDAY20 version, and reschedules it for the same time (Tue Oct 20, 11:00 ET).
-- Expires: 2026-10-19
-- Status: approved
-- From: P-email-campaign-writer-20261013-1
-- Note: This improves one of your existing Omnisend campaigns. EARLYHOLIDAY20 is active in offers-calendar.md, but its end date is unconfirmed; the draft states no end date. If the code will end before Oct 20, do not approve and tell the coordinator the end date. The Oct 27 'LAST CALL 15%' campaign still needs the same decision.
-
-## A-2026W42-019
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-gift-page-and-code.md
-- Commit: cc3b0de
-- Reason: Holiday Gifts ads point to the gift collection page (6.3% checkout last holiday) and add the live EARLYHOLIDAY20 headline. No budget change. Applied by the owner's Mac via chrome-tasks/2026-10-13-holiday-gifts-gift-page-and-code.md.
-- Expires: 2026-10-20
-- Status: approved
-- From: P-ads-analyst-20261013-1 (owner approved in chat 2026-10-13)
-- Note: Blocked 2026-10-14: the Chrome save click was refused by Claude Code's permission check, nothing saved. You need to allow save clicks for the routine and reset the task to ready, or make the edit by hand.
-
-## A-2026W42-018
-- Agent: ads-analyst
-- Executor: ads-analyst
-- Type: ad-change
-- Draft: marketing/analytics/ads-analyst/changes/google-search-terms-2026-10-13.md
-- Commit: cc3b0de
-- Reason: Google search terms cleanup: blocks non-converting LEGO and freebie searches, pauses 5 keywords with spend and no sales, adds gift and product keywords to Holiday Gifts and old brand names to the brand campaign. No budget or bid changes. Applied by the owner's Mac via chrome-tasks/2026-10-13-search-terms.md.
-- Expires: 2026-10-20
-- Status: approved
-- From: Owner approval in chat 2026-10-13 ("delete the ones not working and add new ones based on your analysis")
+- Draft: marketing/conversion/auditor/site-changes/product-page-creator-check-title.md
+- Commit: 04e6a7e
+- Reason: Same kit page bug as A-2026W43-001, found by the conversion auditor (the creator check tests the product title "Custom Bricked Mosaic", which the Oct 20 rewrite removed). Its draft also offers a fallback: restore the old titles on the 22 kits with seo-technical's restore.py.
+- Expires: 2026-10-28
+- Status: pending
+- From: P-conversion-auditor-20261021-1
+- Flag: Duplicate of A-2026W43-001, which is the built and tested version (site-developer asks to approve that one and let this one close). Approve 001 and reject this one, unless you prefer the title fallback.
 
 ## A-2026W42-038
 - Agent: ads-analyst
@@ -168,29 +81,6 @@ Also waiting on you (not a Status edit):
 - From: P-ads-analyst-20261016-1
 - Note: Replaces A-2026W42-006 (archived as replaced; its Status line was not changed). Before approving, confirm the 1:1 video shows no face or name without permission. Meta is the weak spot right now (7 days: $512 spent, 1 Shopify order tagged facebook/paid), so this only adds a test ad and no spend while paused.
 
-## A-2026W42-014
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/2026-10-22-photo-tips.md
-- Commit: 0e70384
-- Reason: Redesigned no-offer photo tips email (real product photos, new subject) to the Warm segment; creates the Omnisend campaign and schedules it for Thu Oct 22, 11:00 ET.
-- Expires: 2026-10-21
-- Status: changes: change the first image since was already used on the last email
-- From: P-email-campaign-writer-20261012-1
-- Note: Replaces A-2026W41-004, whose draft changed after it was queued. Decide this one; A-2026W41-004 cannot be acted on.
-
-## A-2026W42-023
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
-- Commit: 26c0214
-- Reason: Commission-only pitch to Green Wedding Shoes (Collabs 10% commission and 10% code, no free kit). If approved, a Gmail draft is created in memobrickofficial@gmail.com for Eden to send, using the address on their contact page.
-- Expires: 2026-10-22
-- Status: approved
-- From: Owner decision in chat 2026-10-14 ("commission only"), after the audience-fit score of 3
-
 ## A-2026W42-033
 - Agent: social-planner
 - Executor: social-publisher
@@ -203,6 +93,17 @@ Also waiting on you (not a Status edit):
 - From: P-social-planner-20261014-1
 - Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
 - Approved: Eden approved the whole week in chat on 2026-10-14 ("approved"), after reviewing the picture proof and the rebuilt Monday reel (commit 564a57f), recorded by the coordinator session. Portrait consent: Eden did not say it separately; publisher should still post as approved.
+
+## A-2026W42-023
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/green-wedding-shoes.md
+- Commit: 26c0214
+- Reason: Commission-only pitch to Green Wedding Shoes (Collabs 10% commission and 10% code, no free kit). If approved, a Gmail draft is created in memobrickofficial@gmail.com for Eden to send, using the address on their contact page.
+- Expires: 2026-10-22
+- Status: approved
+- From: Owner decision in chat 2026-10-14 ("commission only"), after the audience-fit score of 3
 
 ## A-2026W42-030
 - Agent: outreach-gift-guide-pr
@@ -255,44 +156,17 @@ Also waiting on you (not a Status edit):
 - From: P-email-flow-optimizer-20261011-1
 - Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
 
-## Open
-
-(Highest expected sales impact first.)
-
-## A-2026W42-039
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/gift-for-someone-who-has-everything.md
-- Commit: 8e33dd4
-- Reason: Publishes this Christmas gift-guide article live on the Shopify blog (add the FAQPage JSON-LD from checks/gift-for-someone-who-has-everything.md); it needs indexing time before the November gift searches.
-- Expires: 2026-10-30
-- Status: approved
-- From: P-seo-technical-20261016-1
-- Note: Proposed by seo-technical; the article is published by seo-blog-writer. The article's only date is the Dec 15 order-by (in the Facts table), it names no offer, and the SEO check file is at marketing/seo/technical/checks/gift-for-someone-who-has-everything.md.
-
-## A-2026W42-037
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W44/week.md
-- Commit: 2e08742
-- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
-- Expires: 2026-10-31
-- Status: approved
-- From: P-social-planner-20261015-1
-- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
-
-## A-2026W41-012
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
-- Commit: 22411dc
-- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
-- Expires: 2026-11-15
-- Status: approved
-- From: P-seo-technical-20261011-4
+## A-2026W42-014
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/2026-10-22-photo-tips.md
+- Commit: 0e70384
+- Reason: Redesigned no-offer photo tips email (real product photos, new subject) to the Warm segment; creates the Omnisend campaign and schedules it for Thu Oct 22, 11:00 ET.
+- Expires: 2026-10-21
+- Status: changes: change the first image since was already used on the last email
+- From: P-email-campaign-writer-20261012-1
+- Note: Replaces A-2026W41-004, whose draft changed after it was queued. Decide this one; A-2026W41-004 cannot be acted on.
 
 ## A-2026W42-029
 - Agent: outreach-creator-scout
@@ -306,17 +180,6 @@ Also waiting on you (not a Status edit):
 - From: P-outreach-creator-scout-20261014-2
 - Note: At 10% no applicant passes, so no creator can be proposed. Separate owner decision in her report: reactivate Evan Rubin (24 orders, $1,787, paused since 2023).
 
-## A-2026W41-014
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/add-article-breadcrumb-schema.md
-- Commit: 22411dc
-- Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
-- Expires: 2026-11-30
-- Status: approved
-- From: P-seo-technical-20261011-5
-
 ## A-2026W42-028
 - Agent: outreach-creator-scout
 - Executor: outreach-creator-scout
@@ -328,17 +191,6 @@ Also waiting on you (not a Status edit):
 - Status: approved
 - From: P-outreach-creator-scout-20261014-1
 - Note: Housekeeping; no direct orders expected. It shows whether her evidence standard is accepted before larger decline batches.
-
-## A-2026W42-034
-- Agent: social-planner
-- Executor: social-planner
-- Type: offer
-- Draft: marketing/social/planner/follower-goals.md
-- Commit: 44b5d76
-- Reason: Weekly follower goals as growth rates (IG +1.5%, FB +0.5%, TikTok +3%, Pinterest +2%) because current counts are missing; nothing automatic happens, and the planner then reports against them weekly.
-- Expires: 2026-10-29
-- Status: approved
-- From: P-social-planner-20261014-2
 
 ## A-2026W42-035
 - Agent: outreach-creator-scout
@@ -352,7 +204,76 @@ Also waiting on you (not a Status edit):
 - From: P-outreach-creator-scout-20261014-3
 - Note: Checked: no applicant is also in batch 1 (A-2026W42-028). Housekeeping, no orders expected.
 
+## Open
+
+(Highest expected sales impact first.)
+
+## A-2026W42-037
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W44/week.md
+- Commit: 2e08742
+- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
+- Expires: 2026-10-31
+- Status: approved
+- From: P-social-planner-20261015-1
+- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
+
+## A-2026W43-003
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/republish-public-domain-designs.md
+- Commit: db7271f
+- Reason: Republishes the Starry Night (20x20, 20x30) and Mona Lisa kits with new listings on the Online Store and Google channels. These pages drew search buyers last holiday and are drafts today.
+- Expires: 2026-11-10
+- Status: pending
+- From: P-seo-technical-20261020-3
+- Flag: Not approved on Oct 20: waits for Eden to confirm these designs can still be made. Do not approve until then.
+
+## A-2026W41-012
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/remove-hardcoded-product-rating.md
+- Commit: 22411dc
+- Reason: A hardcoded 4.8/747 AggregateRating sits on every product. That risks a Google manual action removing star snippets sitewide just before Q4.
+- Expires: 2026-11-15
+- Status: approved
+- From: P-seo-technical-20261011-4
+
+## A-2026W41-014
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/add-article-breadcrumb-schema.md
+- Commit: 22411dc
+- Reason: 47 GemPages articles, including 8 of the 10 Christmas and holiday posts, have no BlogPosting or Breadcrumb schema.
+- Expires: 2026-11-30
+- Status: approved
+- From: P-seo-technical-20261011-5
+
+## A-2026W42-034
+- Agent: social-planner
+- Executor: social-planner
+- Type: offer
+- Draft: marketing/social/planner/follower-goals.md
+- Commit: 44b5d76
+- Reason: Weekly follower goals as growth rates (IG +1.5%, FB +0.5%, TikTok +3%, Pinterest +2%) because current counts are missing; nothing automatic happens, and the planner then reports against them weekly.
+- Expires: 2026-10-29
+- Status: approved
+- From: P-social-planner-20261014-2
+
 ## Flagged
+
+Run 6 (2026-10-21). Details in `marketing/coordination/coordinator/overlaps-2026-10-21.md`.
+
+- A-2026W43-002 (conversion-auditor): same kit page fix as A-2026W43-001 (site-developer, built and tested). Copied with a flag so you can pick; approve 001 and reject 002.
+- A-2026W43-003 (seo-technical): copied as `pending` with a flag; you did not approve it on Oct 20 because the designs must be confirmed makeable first.
+- Not queued, already copied: P-email-campaign-writer-20261020-1 (A-2026W42-042), P-seo-technical-20261020-1 and -2 (A-2026W42-043, 044).
+- No proposal touches the order workflow; both new drafts exist and are unshared; no offer or date outside offers-calendar; contacts log empty.
+- Stale approvals archived with Status lines untouched: 018 and 019 expired unapplied.
 
 Run 5 (2026-10-16). Added A-2026W42-038 and 039; no flags (neither touches the order workflow, both drafts exist and are unshared, no offer or code used, Dec 15 is in the Facts table, contacts log is empty, no other item overlaps). A-2026W42-006 was archived as replaced; 012 and 014 (theme-file SEO changes) remain approved but could not be applied because Shopify blocks live-theme writes.
 
@@ -372,6 +293,19 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-10-21:**
+
+- Publish "Memobrick kit page fix" (A-2026W43-001) once approved; check Oct 20 and 21 kit orders for missing designs.
+- Real iPhone check in Instagram: add a kit, tap Checkout, stop before paying. Also look at the cart mosaic picture on a phone (it showed broken in the auditor's sandbox).
+- Delete the unused theme copy "Memobrick cart rollback" (188955361500); the store is at 20 of 20 themes. Say whether the drawer's older "Add $X more for free shipping" bar should go too.
+- Product data errors (seo-technical): 60x20 shows 50x60 specs; 60x30 and 60x60 list 32 baseplates; the 20x20 guide says 4,092 bricks vs 4,096; art titles Lion, Rose and Colorful Zebra show the wrong subject; one product (`yelow-cat...20x30`) has conflicting size data.
+- IP risk: 52 Artist Collection designs show celebrities, logos or studio characters (2 live: `lady-bricked-mosaic-home-decor-20x30`, `heatblast-ben-10-art-piece...-20x30`); gallery images on 10x10, 16x16, 20x20 and two 30x30 kits look like recognizable actors or anime characters. Decide whether to unpublish or replace.
+- Meta Oct 27 "Early Bird LAST CALL" is now 20% (A-2026W42-041 done); confirm EARLYHOLIDAY20 end date before "ends" wording.
+- Merchant Center "Needs attention" export (Eden) and Search Console/GA4/Meta data pull: `marketing/data/` is still empty.
+- Cookie banner covers the main button on phones (app setting); no featured image on the two new articles.
+- Page load is 4.3 to 4.6 s on phone, cause not diagnosed.
+- Draft orders: 8 in 30 days vs 77 last year (largest lost-order cause); test the free-proof form.
 
 **YouTube Shorts for the already-approved W43 and W44 reels (Eden, OK needed):**
 
