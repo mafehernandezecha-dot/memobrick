@@ -244,6 +244,18 @@ Also waiting on you (not a Status edit):
 - From: chat
 - Note: Eden approved in chat on 2026-10-21 ("yes" to the three new times), recorded by the coordinator session.
 
+## A-2026W43-005
+- Agent: social-planner
+- Executor: social-planner
+- Type: publish
+- Draft: marketing/social/planner/research/2026-10-21-facebook-groups-test.md
+- Commit: 1c92140
+- Reason: 2-week Facebook groups test in 5 groups (Dog Mom Club, Golden Doodle Owners, Cat Lovers Group Official, Craft & Creative Ideas DIY, Scrapbooking, Cards, & Crafts), done by hand by Eden from her own profile: read-only rules check Oct 23 to 27, join and comment only Oct 28 to Nov 3, one post per group Nov 4 to 8, result Nov 11. Starts nothing automatic; the Mac does nothing in groups without a separate item. Real photos only, "I run Memobrick" in every post, tracked links (utm_medium=group) only when asked.
+- Expires: 2026-11-11
+- Status: approved
+- From: chat
+- Note: Eden approved in chat on 2026-10-21 ("approve groups test"), recorded by the coordinator session. Proposal P-social-planner-20261021-1. Who does the read-only rules check (Eden or the Mac) is still open.
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
