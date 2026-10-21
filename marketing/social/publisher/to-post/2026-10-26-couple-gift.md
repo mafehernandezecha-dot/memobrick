@@ -8,6 +8,7 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
 
 ## Instagram (Reel)
+Buffer: 6ad8a546befea41f139e6a45 (scheduled 2026-10-26 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Two faces. All 1×1 bricks.
@@ -24,6 +25,7 @@ Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box 
 Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
 
 ## Facebook (Reel)
+Buffer: 6ad8a54bbefea41f139e6bba (scheduled 2026-10-26 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Two faces. All 1×1 bricks.
@@ -40,6 +42,7 @@ Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box 
 Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
 
 ## TikTok (video)
+Buffer: 6ad8a55b3021c1ef52b39328 (scheduled 2026-10-26 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Their photo, built by hand, brick by brick. Code EARLYHOLIDAY20 for 20% off.

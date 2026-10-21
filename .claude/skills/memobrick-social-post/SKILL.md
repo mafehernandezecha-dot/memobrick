@@ -5,7 +5,7 @@ description: Posts the owner-approved social kits that the social publisher wrot
 
 # Memobrick social post
 
-This runs on the owner's Mac (the `com.memobrick.social-post` launchd job, installed with `os/scripts/install-mac-tasks.sh`), every hour from 8:07 to 21:07. It posts in the owner's own Chrome, through Claude in Chrome, so there is no paid scheduling app. Each run posts only what is due now.
+This runs on the owner's Mac (the `com.memobrick.social-post` launchd job, installed with `os/scripts/install-mac-tasks.sh`), every hour from 8:07 to 21:07. It posts in the owner's own Chrome, through Claude in Chrome, so there is no paid scheduling app. Each run posts only what is due now. Instagram, Facebook and TikTok are usually scheduled in Buffer (free plan) by the social publisher; this job then posts only the kit's other channels (Pinterest, YouTube Shorts, and anything Buffer could not take, such as a TikTok photo carousel).
 
 ## Kit format
 
@@ -18,7 +18,7 @@ Approval: <A-YYYYWww-nnn>, or <A-YYYYWww-nnn> <post ID> for a post of a weekly b
 Post file: <repo path to the approved post file>
 ```
 
-followed by one section per platform with the caption (or pin title, description, board and link; for YouTube Shorts the title, description, altered content answer and audience) and `Media:` with the local repo path of each file to upload. A reel can have a `## YouTube Shorts` section. A section headed `## YouTube Shorts (added channel)` is not in the approved post file: the owner OKs it separately, on its `Owner OK:` line (step 3).
+followed by one section per platform with the caption (or pin title, description, board and link; for YouTube Shorts the title, description, altered content answer and audience) and `Media:` with the local repo path of each file to upload. A reel can have a `## YouTube Shorts` section. A section headed `## YouTube Shorts (added channel)` is not in the approved post file: the owner OKs it separately, on its `Owner OK:` line (step 3). A section whose first line under the heading starts with `Buffer:` is scheduled in Buffer: never post it here (step 6).
 
 ## Steps
 
@@ -37,7 +37,8 @@ followed by one section per platform with the caption (or pin title, description
    - If either check fails, set the first line to `Status: skipped (not approved)`, add one line under it saying which check failed, and move on.
 4. **Media check:** every `Media:` path must exist in the repo and be 10 MB or smaller (`ls -l`). If not, set `Status: needs owner: media missing` or `Status: needs owner: video over 10 MB` and move on.
 5. **Duplicate check:** before posting on a platform, look at that account's latest posts (YouTube: studio.youtube.com → Content → Shorts). If a post with this caption is already there from today, do not post again; record its URL as that platform's result.
-6. **Post with Claude in Chrome**, one platform at a time, YouTube last, choosing "post now" (this job runs at post time). Upload the media from its local path in the repo (Claude in Chrome can attach a local file to an upload field, up to 10 MB). Paste text exactly as in the kit; never retype or reword it.
+6. **Skip Buffer sections:** a platform section with a `Buffer:` line is posted by Buffer, not here. Do not open, post or duplicate-check it; if every section of a kit has a `Buffer:` line, leave the kit alone.
+   **Post with Claude in Chrome**, one platform at a time, YouTube last, choosing "post now" (this job runs at post time). Upload the media from its local path in the repo (Claude in Chrome can attach a local file to an upload field, up to 10 MB). Paste text exactly as in the kit; never retype or reword it.
    - **Instagram and Facebook:** business.facebook.com (Meta Business Suite) → Create post (Create reel for a Reel). Select both the Facebook Page and the Instagram account as placements (only those the kit lists). Add the media and paste the caption, with its hashtags, exactly as approved. When the kit says to turn on the AI label, turn it on (Advanced settings → AI label). Publish now.
    - **TikTok:** tiktok.com/upload. Upload the video, paste the caption, keep visibility Everyone, turn on "AI-generated content" when the kit says so, then Post.
    - **Pinterest:** pinterest.com/pin-creation-tool. Upload the image or video, paste the title, description and destination link from the kit, choose the board the kit names, then Publish.
@@ -56,8 +57,8 @@ followed by one section per platform with the caption (or pin title, description
      - Pinterest: <live URL>
      - YouTube: <Shorts URL>
      ```
-     Only the platforms in the kit; write `not posted: <reason>` (or `needs owner: <reason>` for YouTube) for any that did not post. When YouTube is the only channel left over, the first line is still `Status: posted ...`; when a later run posts it (step 2), replace its Result line with the Shorts URL.
-   - In `marketing/shared/content-calendar.md`, on the row for each channel that posted (`<post ID>-ig`, `-fb`, `-tt`, `-pin`, `-yt`; older posts have one row for all channels), set Status to `Published`, fill Live URL (on a one-row post: `IG <url>; FB <url>; TT <url>; PIN <url>; YT <url>`), and clear the `kit:<path>` from the Error column, the same way the publisher's live check does. Rows of channels that did not post keep Status `To post` and get the reason in the Error column after the kit path. A YouTube Short with no `-yt` row (an added channel) gets one, copied from the `-ig` row with Channel `YouTube` and its own link.
+     Only the platforms in the kit; for a section with a `Buffer:` line write `- <Platform>: in Buffer <post ID>` (keep the line if the publisher already filled a URL); write `not posted: <reason>` (or `needs owner: <reason>` for YouTube) for any that did not post. When YouTube is the only channel left over, the first line is still `Status: posted ...`; when a later run posts it (step 2), replace its Result line with the Shorts URL.
+   - In `marketing/shared/content-calendar.md`, on the row for each channel that posted (`<post ID>-ig`, `-fb`, `-tt`, `-pin`, `-yt`; older posts have one row for all channels), set Status to `Published`, fill Live URL (on a one-row post: `IG <url>; FB <url>; TT <url>; PIN <url>; YT <url>`), and clear the `kit:<path>` from the Error column, the same way the publisher's live check does. Leave the rows of Buffer channels (Status `Scheduled`, Error `buffer:<id>`) to the publisher. Rows of channels that did not post keep Status `To post` and get the reason in the Error column after the kit path. A YouTube Short with no `-yt` row (an added channel) gets one, copied from the `-ig` row with Channel `YouTube` and its own link.
 9. Commit only the kit files and the content calendar you changed, with the message `social-post: <slugs> posted` (or `needs owner` / `skipped` instead of `posted` when nothing posted), then `git pull --rebase origin main && git push origin main`.
 10. Reply with one line per kit: posted (with URLs), skipped, or needs owner, and why.
 

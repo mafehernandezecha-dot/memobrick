@@ -8,6 +8,7 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
+Buffer: 6ad8a53e0807acdda125ee67 (scheduled 2026-10-25 11:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 What do you give the parents who say they don't need anything?
@@ -26,6 +27,7 @@ Media: marketing/social/planner/2026-W43/S-20261025-1-2.png
 Media: marketing/social/planner/2026-W43/S-20261025-1-3.png
 
 ## Facebook (carousel)
+Buffer: 6ad8a5433021c1ef52b38f37 (scheduled 2026-10-25 11:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 What do you give the parents who say they don't need anything?

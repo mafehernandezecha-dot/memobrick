@@ -6,6 +6,7 @@ Post file: marketing/social/planner/2026-W43/S-20261022-1.md
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
+Buffer: 6ad8a510fe0d0b6022851f00 (scheduled 2026-10-22 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 What actually comes in a Memobrick kit? Save this for when you are choosing a gift.
@@ -26,6 +27,7 @@ Media: marketing/social/planner/2026-W43/S-20261022-1-4.png
 Media: marketing/social/planner/2026-W43/S-20261022-1-5.png
 
 ## Facebook (carousel)
+Buffer: 6ad8a515befea41f139e56bc (scheduled 2026-10-22 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 What actually comes in a Memobrick kit? Save this for when you are choosing a gift.

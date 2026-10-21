@@ -6,6 +6,7 @@ Post file: marketing/social/planner/2026-W43/S-20261023-1.md
 Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
 
 ## Instagram (Reel)
+Buffer: 6ad8a51afe0d0b60228520ba (scheduled 2026-10-23 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Guess the photo Friday. Did you get it before the zoom out?
@@ -20,6 +21,7 @@ Alt text: Guess the photo reveal: close-up of studs zooming out to a finished br
 Media: marketing/social/planner/2026-W43/S-20261023-1.mp4
 
 ## Facebook (Reel)
+Buffer: 6ad8a51e3021c1ef52b382d8 (scheduled 2026-10-23 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Guess the photo Friday. Did you get it before the zoom out?
@@ -34,6 +36,7 @@ Alt text: Guess the photo reveal: close-up of studs zooming out to a finished br
 Media: marketing/social/planner/2026-W43/S-20261023-1.mp4
 
 ## TikTok (video)
+Buffer: 6ad8a52e0807acdda125ea0f (scheduled 2026-10-23 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Guess the photo before the zoom out. New one every Friday.

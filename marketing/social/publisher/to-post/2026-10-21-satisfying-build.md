@@ -6,6 +6,7 @@ Post file: marketing/social/planner/2026-W43/S-20261021-1.md
 Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
 
 ## Instagram (Reel)
+Buffer: 6ad8a4f6dd065d61589397da (scheduled 2026-10-21 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Every Memobrick mosaic is built from tiny 1×1 bricks, pressed in one at a time.
@@ -20,6 +21,7 @@ Alt text: Slow-motion close-ups of 1x1 bricks being placed and rows filling on a
 Media: marketing/social/planner/2026-W43/S-20261021-1.mp4
 
 ## Facebook (Reel)
+Buffer: 6ad8a505befea41f139e5406 (scheduled 2026-10-21 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Every Memobrick mosaic is built from tiny 1×1 bricks, pressed in one at a time.
@@ -34,6 +36,7 @@ Alt text: Slow-motion close-ups of 1x1 bricks being placed and rows filling on a
 Media: marketing/social/planner/2026-W43/S-20261021-1.mp4
 
 ## TikTok (video)
+Buffer: 6ad8a50b9c5d256f6599c103 (scheduled 2026-10-21 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Slow motion, then the rows fly in. Follow for Friday's reveal.

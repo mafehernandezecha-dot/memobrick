@@ -8,6 +8,7 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
 
 ## Instagram (Reel)
+Buffer: 6ad8a56ebefea41f139e7238 (scheduled 2026-10-28 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 How long does a 20×20 mosaic take to build? About 4 hours, with 4,096 1×1 bricks pressed in one at a time (build time is an estimate).
@@ -24,6 +25,7 @@ Alt text: Video: a sped-up build of a brick mosaic, bricks pressed in by hand, e
 Media: marketing/social/planner/2026-W44/S-20261028-1.mp4
 
 ## Facebook (Reel)
+Buffer: 6ad8a572fe0d0b6022853f02 (scheduled 2026-10-28 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 How long does a 20×20 mosaic take to build? About 4 hours, with 4,096 1×1 bricks pressed in one at a time (build time is an estimate).
@@ -40,6 +42,7 @@ Alt text: Video: a sped-up build of a brick mosaic, bricks pressed in by hand, e
 Media: marketing/social/planner/2026-W44/S-20261028-1.mp4
 
 ## TikTok (video)
+Buffer: 6ad8a576dd065d615893b872 (scheduled 2026-10-28 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 How long does a 20×20 take? About 4 hours. Sped up here. Start yours, link in bio.

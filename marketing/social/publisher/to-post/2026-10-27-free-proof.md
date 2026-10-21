@@ -8,6 +8,7 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
+Buffer: 6ad8a5639c5d256f6599d871 (scheduled 2026-10-27 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Not sure your photo will work?
@@ -27,6 +28,7 @@ Media: marketing/social/planner/2026-W44/S-20261027-1-3.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-4.png
 
 ## Facebook (carousel)
+Buffer: 6ad8a56bbefea41f139e715f (scheduled 2026-10-27 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Not sure your photo will work?

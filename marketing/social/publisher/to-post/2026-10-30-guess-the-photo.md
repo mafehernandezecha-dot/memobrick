@@ -8,6 +8,7 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
 
 ## Instagram (Reel)
+Buffer: 6ad8a591fe0d0b602285459b (scheduled 2026-10-30 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Guess the photo Friday. Can you guess what this is before the zoom out?
@@ -24,6 +25,7 @@ Alt text: Guess the photo reveal: close-up of studs zooming out to a finished br
 Media: marketing/social/planner/2026-W44/S-20261030-1.mp4
 
 ## Facebook (Reel)
+Buffer: 6ad8a595befea41f139e7902 (scheduled 2026-10-30 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Guess the photo Friday. Can you guess what this is before the zoom out?
@@ -40,6 +42,7 @@ Alt text: Guess the photo reveal: close-up of studs zooming out to a finished br
 Media: marketing/social/planner/2026-W44/S-20261030-1.mp4
 
 ## TikTok (video)
+Buffer: 6ad8a59c9c5d256f6599e2a4 (scheduled 2026-10-30 19:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Guess the photo Friday! What is it? Follow for next week. DM us your photo to be next.
