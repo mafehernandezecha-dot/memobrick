@@ -232,6 +232,18 @@ Also waiting on you (not a Status edit):
 - From: P-seo-technical-20261020-3
 - Flag: Not approved on Oct 20: waits for Eden to confirm these designs can still be made. Do not approve until then.
 
+## A-2026W43-004
+- Agent: social-publisher
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/reports/2026-10-21-social-publisher.md
+- Commit: 6dda0ec
+- Reason: New times for the three posts the Mac never posted, as proposed in the report: S-20261019-1 family-photo-dm (kit marketing/social/publisher/to-post/2026-10-19-family-photo-dm.md, approved in A-2026W42-033) on Thu Oct 22 12:00 ET; S-20261020-1 holiday-build-together (kit 2026-10-20-holiday-build-together.md, A-2026W42-033) on Fri Oct 23 12:00 ET; S-20261018-1 family-photo (kit 2026-10-18-family-photo.md, its approval A-2026W41-003 expired) on Sun Oct 25 19:00 ET. Approved wording unchanged. Instagram, Facebook and TikTok reels through Buffer (carousels: Instagram and Facebook in Buffer, TikTok carousel and Pinterest on the Mac). Facebook goes out without an AI label (Buffer has no such setting). Instagram and Facebook are at the free plan's 10-post limit until the Oct 21 19:00 ET posts go out, so schedule after that.
+- Expires: 2026-10-25
+- Status: approved
+- From: chat
+- Note: Eden approved in chat on 2026-10-21 ("yes" to the three new times), recorded by the coordinator session.
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
