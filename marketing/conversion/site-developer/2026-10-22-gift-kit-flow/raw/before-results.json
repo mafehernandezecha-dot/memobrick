@@ -1,0 +1,38 @@
+{
+  "phone": {
+    "steps": [
+      "product-page: ok 4.9s"
+    ],
+    "pageErrors": [],
+    "contactPosts": [],
+    "product": {
+      "gkForm": false,
+      "qty": false,
+      "creatorBtn": false,
+      "buyBtn": "Buy now — $99.00",
+      "steps": false,
+      "stepsText": null,
+      "sw": 390,
+      "iw": 390
+    },
+    "note": "live: product page only"
+  },
+  "desktop": {
+    "steps": [
+      "product-page: ok 4.2s"
+    ],
+    "pageErrors": [],
+    "contactPosts": [],
+    "product": {
+      "gkForm": false,
+      "qty": false,
+      "creatorBtn": false,
+      "buyBtn": "Buy now — $99.00",
+      "steps": false,
+      "stepsText": null,
+      "sw": 1440,
+      "iw": 1440
+    },
+    "note": "live: product page only"
+  }
+}

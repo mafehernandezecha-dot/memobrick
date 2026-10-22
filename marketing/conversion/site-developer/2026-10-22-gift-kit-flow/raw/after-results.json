@@ -1,0 +1,334 @@
+{
+  "phone": {
+    "steps": [
+      "product-page: ok 4.9s",
+      "add-2-kits-to-cart: ok 4.2s",
+      "open-gift-link: ok 6.3s",
+      "upload-generated-photo: ok 3.1s",
+      "email-gate-not-shown: ok 0.0s",
+      "add-second-gift-link: FAILED locator.click: Timeout 15000ms exceeded.",
+      "finish-opens-details: ok 0.1s",
+      "fill-and-send: ok 5.0s",
+      "reopen-used-link: ok 8.7s",
+      "normal-open: ok 5.2s",
+      "normal-upload: ok 3.1s",
+      "normal-email-gate-skip-if-shown: ok 0.8s",
+      "normal-finish-to-drawer: ok 4.4s"
+    ],
+    "pageErrors": [],
+    "contactPosts": [
+      {
+        "real": false,
+        "body": "------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"form_type\"\r\n\r\ncontact\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"utf8\"\r\n\r\n✓\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[name]\"\r\n\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[email]\"\r\n\r\ngift-test@example.com\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Gift kit order]\"\r\n\r\n#99999\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Buyer email from link]\"\r\n\r\ngift-test@example.com\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Size chosen]\"\r\n\r\n20 × 20 in\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Difference to pay]\"\r\n\r\nnone\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Ship to]\"\r\n\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n1 Test Street\r\nMiami, FL, 33101\r\nUnited States\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Final design image]\"\r\n\r\nhttps://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/42326dc9fedde9b46b597c742860cd10.png\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Build instructions]\"\r\n\r\nhttps://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/6115e9c34cb3a9ef855cb31d7d8cae27.html\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[Design ID]\"\r\n\r\nMB-20261022-PJPHGJ4V\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK\r\nContent-Disposition: form-data; name=\"contact[body]\"\r\n\r\nGIFT KIT PERSONALISATION (no checkout). Prepaid gift kit order(s): #99999 (bought with gift-test@example.com)\r\nSize chosen: 20 × 20 in\r\nDifference to pay: none\r\n\r\nShip to:\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n1 Test Street\r\nMiami, FL, 33101\r\nUnited States\r\nRecipient email (for the design proof): gift-test@example.com\r\n\r\nNote from recipient: TEST submission by Memobrick site-developer agent. No order, please ignore.\r\n\r\nFinal design image: https://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/42326dc9fedde9b46b597c742860cd10.png\r\nBuild instructions: https://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/6115e9c34cb3a9ef855cb31d7d8cae27.html\r\nDesign ID: MB-20261022-PJPHGJ4V\r\n\r\nBefore production: check each order number in Shopify admin, that the buyer email matches, that it is an Art Gift Kit order and that it was not redeemed before. Then reply to this email with the design proof.\r\n\r\nDesign settings:\r\nDesign ID: MB-20261022-PJPHGJ4V\r\nMemoBrick Size: 20 × 20\"\r\nOrientation: square\r\nBrick grid: 64 x 64 studs\r\nBuild service: Build at home\r\n_design: {\"v\":1,\"id\":\"MB-20261022-PJPHGJ4V\",\"size\":\"20x20\",\"crop\":{\"zoom\":1,\"ox\":0,\"oy\":0},\"adjust\":{\"bri\":20,\"con\":-10,\"sat\":41,\"detail\":100,\"shadows\":0,\"warm\":35,\"dither\":74,\"auto\":true},\"palette\":\"full\",\"edits\":0}\r\n------WebKitFormBoundaryzh1Mu1iOLP0F74gK--\r\n"
+      }
+    ],
+    "product": {
+      "gkForm": true,
+      "qty": true,
+      "creatorBtn": false,
+      "buyBtn": "Buy now, no photo needed",
+      "steps": true,
+      "stepsText": "What happens after you buy\n\nYou buy the kit. No photo needed today.\nWe email you a personalisation link in your order confirmation, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.\nThey choose their photo and design their mosaic in our Creator. The kit is already paid, so there's nothing more to pay.\nThey approve the design. We email them a design proof to check before we make anything.\nWe make the kit and ship it directly to them.\n\nBuying more than one? Each link can go to a different person, or one person can combine two or more links into one bigger mosaic.",
+      "sw": 390,
+      "iw": 390
+    },
+    "cartAfterAdd": [
+      {
+        "title": "Art Gift Kit — Buy Now, Personalise Later",
+        "qty": 2,
+        "props": []
+      }
+    ],
+    "giftStart": {
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link",
+      "giftClass": true,
+      "emailGateCfg": false
+    },
+    "giftLabels1": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 +$50",
+        "30x20 +$50",
+        "20x40 +$90.88",
+        "40x20 +$90.99",
+        "30x30 +$110.99",
+        "20x50 +$135.99",
+        "50x20 +$135.99",
+        "40x30 +$179",
+        "30x40 +$180",
+        "30x50 +$235.99",
+        "50x30 +$235.99",
+        "40x40 +$249",
+        "60x30 +$315",
+        "40x50 +$332.98",
+        "50x50 +$431",
+        "50x60 +$599",
+        "60x60 +$754"
+      ],
+      "mobSizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 +$50",
+        "30x20 +$50",
+        "20x40 +$90.88",
+        "40x20 +$90.99",
+        "30x30 +$110.99",
+        "20x50 +$135.99",
+        "50x20 +$135.99",
+        "40x30 +$179",
+        "30x40 +$180",
+        "30x50 +$235.99",
+        "50x30 +$235.99",
+        "40x40 +$249",
+        "60x30 +$315",
+        "40x50 +$332.98",
+        "50x50 +$431",
+        "50x60 +$599",
+        "60x60 +$754"
+      ],
+      "credit": "Included in your gift. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x20",
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels2": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 +$50",
+        "30x20 +$50",
+        "20x40 +$90.88",
+        "40x20 +$90.99",
+        "30x30 +$110.99",
+        "20x50 +$135.99",
+        "50x20 +$135.99",
+        "40x30 +$179",
+        "30x40 +$180",
+        "30x50 +$235.99",
+        "50x30 +$235.99",
+        "40x40 +$249",
+        "60x30 +$315",
+        "40x50 +$332.98",
+        "50x50 +$431",
+        "50x60 +$599",
+        "60x60 +$754"
+      ],
+      "mobSizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 +$50",
+        "30x20 +$50",
+        "20x40 +$90.88",
+        "40x20 +$90.99",
+        "30x30 +$110.99",
+        "20x50 +$135.99",
+        "50x20 +$135.99",
+        "40x30 +$179",
+        "30x40 +$180",
+        "30x50 +$235.99",
+        "50x30 +$235.99",
+        "40x40 +$249",
+        "60x30 +$315",
+        "40x50 +$332.98",
+        "50x50 +$431",
+        "50x60 +$599",
+        "60x60 +$754"
+      ],
+      "credit": "Included in your gift. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x20",
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "details": "Where should we ship it?\n\nYour 20 × 20 in design is ready. Tell us who it's for and where to send it. There's nothing to pay.\n\nRecipient's full name\nYour email (we send the design proof here)\nStreet address\nApartment, suite, etc. (optional)\nCity\nState\nZIP code\nCountry\nPhone (optional, for the delivery)\nAnything we should know? (optional)\nKeep editing\nSend my design",
+    "done": "Your design is in!\n\nThank you, TEST. We've received your design for gift kit #99999.\n\nWhat happens next\n\nWe check your design and email you a design proof at gift-test@example.com.\nYou reply to approve it, or tell us what to change.\nOnce it's approved, we make your kit and ship it to you.\n\nYour design reference: MB-20261022-PJPHGJ4V\n\nHaven't heard from us in a few days? Email us a copy of your submission.\n\nBack to MemoBrick",
+    "cartAfterGift": 0,
+    "usedFlag": "{\"#99999\":{\"at\":1792679154425,\"designId\":\"MB-20261022-PJPHGJ4V\"}}",
+    "used": "This gift link has been used\n\nA design for gift kit #99999 was sent from this device on 10/22/2026. We'll email a design proof to approve. To change something, just reply to that email.\n\nSending a new design replaces the one you sent before.\n\nBack to MemoBrick\nSend a new design",
+    "normal": {
+      "banner": false,
+      "giftClass": false,
+      "finish": [
+        "edTopFinish=Finish Editing →",
+        "mobFinish=Finish Editing\n→"
+      ],
+      "price": "$99.88 $99.88"
+    },
+    "normalCart": {
+      "count": 1,
+      "title": "Custom Photo Brick Mosaic Portrait 20x20 in - Personalized DIY Photo Gift Kit",
+      "designId": "MB-20261022-YBNPSYJH",
+      "finalDesign": true
+    }
+  },
+  "desktop": {
+    "steps": [
+      "product-page: ok 4.3s",
+      "add-2-kits-to-cart: ok 5.6s",
+      "open-gift-link: ok 4.8s",
+      "upload-generated-photo: ok 3.4s",
+      "email-gate-not-shown: ok 0.0s",
+      "add-second-gift-link: ok 1.7s",
+      "pick-30x30: ok 2.5s",
+      "finish-opens-details: ok 0.1s",
+      "fill-and-send: FAILED locator.waitFor: Timeout 120000ms exceeded."
+    ],
+    "pageErrors": [],
+    "contactPosts": [
+      {
+        "real": false,
+        "body": "------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"form_type\"\r\n\r\ncontact\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"utf8\"\r\n\r\n✓\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[name]\"\r\n\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[email]\"\r\n\r\ngift-test@example.com\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Gift kit order]\"\r\n\r\n#99999, #99998\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Buyer email from link]\"\r\n\r\ngift-test@example.com, gift-test@example.com\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Size chosen]\"\r\n\r\n30 × 30 in\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Difference to pay]\"\r\n\r\n$11.99\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Ship to]\"\r\n\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n1 Test Street\r\nMiami, FL, 33101\r\nUnited States\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Final design image]\"\r\n\r\nhttps://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/2e7d3931a3943048303d94bc0626636f.png\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Build instructions]\"\r\n\r\nhttps://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/43e23b9f02352746d5d042306a9579df.html\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[Design ID]\"\r\n\r\nMB-20261022-M88VQ729\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93\r\nContent-Disposition: form-data; name=\"contact[body]\"\r\n\r\nGIFT KIT PERSONALISATION (no checkout). Prepaid gift kit order(s): #99999 (bought with gift-test@example.com), #99998 (bought with gift-test@example.com)\r\nSize chosen: 30 × 30 in (combining 2 kits, $198 gift credit)\r\nDIFFERENCE TO INVOICE: $11.99 (recipient agreed to pay it by a payment link before production)\r\n\r\nShip to:\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n1 Test Street\r\nMiami, FL, 33101\r\nUnited States\r\nRecipient email (for the design proof): gift-test@example.com\r\n\r\nNote from recipient: TEST submission by Memobrick site-developer agent. No order, please ignore.\r\n\r\nFinal design image: https://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/2e7d3931a3943048303d94bc0626636f.png\r\nBuild instructions: https://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/43e23b9f02352746d5d042306a9579df.html\r\nDesign ID: MB-20261022-M88VQ729\r\n\r\nBefore production: check each order number in Shopify admin, that the buyer email matches, that it is an Art Gift Kit order and that it was not redeemed before. Then reply to this email with the design proof.\r\n\r\nDesign settings:\r\nDesign ID: MB-20261022-M88VQ729\r\nMemoBrick Size: 30 × 30\"\r\nOrientation: square\r\nBrick grid: 96 x 96 studs\r\nBuild service: Build at home\r\n_design: {\"v\":1,\"id\":\"MB-20261022-M88VQ729\",\"size\":\"30x30\",\"crop\":{\"zoom\":1,\"ox\":0,\"oy\":0},\"adjust\":{\"bri\":20,\"con\":-10,\"sat\":41,\"detail\":100,\"shadows\":0,\"warm\":35,\"dither\":74,\"auto\":true},\"palette\":\"full\",\"edits\":0}\r\n------WebKitFormBoundaryBSnrU2HfrSSNLA93--\r\n"
+      },
+      {
+        "real": false,
+        "body": "form_type=contact&utf8=%E2%9C%93&contact%5Bname%5D=TEST+Gift+Recipient+%28site-developer+test%2C+please+ignore%29&contact%5Bemail%5D=gift-test%40example.com&contact%5BGift+kit+order%5D=%2399999%2C+%2399998&contact%5BBuyer+email+from+link%5D=gift-test%40example.com%2C+gift-test%40example.com&contact%5BSize+chosen%5D=30+%C3%97+30+in&contact%5BDifference+to+pay%5D=%2411.99&contact%5BShip+to%5D=TEST+Gift+Recipient+%28site-developer+test%2C+please+ignore%29%0D%0A1+Test+Street%0D%0AMiami%2C+FL%2C+33101%0D%0AUnited+States&contact%5BFinal+design+image%5D=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0375%2F0107%2F5595%2Fuploads%2F2e7d3931a3943048303d94bc0626636f.png&contact%5BBuild+instructions%5D=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0375%2F0107%2F5595%2Fuploads%2F43e23b9f02352746d5d042306a9579df.html&contact%5BDesign+ID%5D=MB-20261022-M88VQ729&contact%5Bbody%5D=GIFT+KIT+PERSONALISATION+%28no+checkout%29.+Prepaid+gift+kit+order%28s%29%3A+%2399999+%28bought+with+gift-test%40example.com%29%2C+%2399998+%28bought+with+gift-test%40example.com%29%0D%0ASize+chosen%3A+30+%C3%97+30+in+%28combining+2+kits%2C+%24198+gift+credit%29%0D%0ADIFFERENCE+TO+INVOICE%3A+%2411.99+%28recipient+agreed+to+pay+it+by+a+payment+link+before+production%29%0D%0A%0D%0AShip+to%3A%0D%0ATEST+Gift+Recipient+%28site-developer+test%2C+please+ignore%29%0D%0A1+Test+Street%0D%0AMiami%2C+FL%2C+33101%0D%0AUnited+States%0D%0ARecipient+email+%28for+the+design+proof%29%3A+gift-test%40example.com%0D%0A%0D%0ANote+from+recipient%3A+TEST+submission+by+Memobrick+site-developer+agent.+No+order%2C+please+ignore.%0D%0A%0D%0AFinal+design+image%3A+https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0375%2F0107%2F5595%2Fuploads%2F2e7d3931a3943048303d94bc0626636f.png%0D%0ABuild+instructions%3A+https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0375%2F0107%2F5595%2Fuploads%2F43e23b9f02352746d5d042306a9579df.html%0D%0ADesign+ID%3A+MB-20261022-M88VQ729%0D%0A%0D%0ABefore+production%3A+check+each+order+number+in+Shopify+admin%2C+that+the+buyer+email+matches%2C+that+it+is+an+Art+Gift+Kit+order+and+that+it+was+not+redeemed+before.+Then+reply+to+this+email+with+the+design+proof.%0D%0A%0D%0ADesign+settings%3A%0D%0ADesign+ID%3A+MB-20261022-M88VQ729%0D%0AMemoBrick+Size%3A+30+%C3%97+30%22%0D%0AOrientation%3A+square%0D%0ABrick+grid%3A+96+x+96+studs%0D%0ABuild+service%3A+Build+at+home%0D%0A_design%3A+%7B%22v%22%3A1%2C%22id%22%3A%22MB-20261022-M88VQ729%22%2C%22size%22%3A%2230x30%22%2C%22crop%22%3A%7B%22zoom%22%3A1%2C%22ox%22%3A0%2C%22oy%22%3A0%7D%2C%22adjust%22%3A%7B%22bri%22%3A20%2C%22con%22%3A-10%2C%22sat%22%3A41%2C%22detail%22%3A100%2C%22shadows%22%3A0%2C%22warm%22%3A35%2C%22dither%22%3A74%2C%22auto%22%3Atrue%7D%2C%22palette%22%3A%22full%22%2C%22edits%22%3A0%7D&return_to=%2Fpages%2Feditor%3Fgift_sent%3D1"
+      }
+    ],
+    "product": {
+      "gkForm": true,
+      "qty": true,
+      "creatorBtn": false,
+      "buyBtn": "Buy now, no photo needed",
+      "steps": true,
+      "stepsText": "What happens after you buy\n\nYou buy the kit. No photo needed today.\nWe email you a personalisation link in your order confirmation, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.\nThey choose their photo and design their mosaic in our Creator. The kit is already paid, so there's nothing more to pay.\nThey approve the design. We email them a design proof to check before we make anything.\nWe make the kit and ship it directly to them.\n\nBuying more than one? Each link can go to a different person, or one person can combine two or more links into one bigger mosaic.",
+      "sw": 1440,
+      "iw": 1440
+    },
+    "cartAfterAdd": [
+      {
+        "title": "Art Gift Kit — Buy Now, Personalise Later",
+        "qty": 2,
+        "props": []
+      }
+    ],
+    "giftStart": {
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link",
+      "giftClass": true,
+      "emailGateCfg": false
+    },
+    "giftLabels1": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 +$50",
+        "30x20 +$50",
+        "20x40 +$90.88",
+        "40x20 +$90.99",
+        "30x30 +$110.99",
+        "20x50 +$135.99",
+        "50x20 +$135.99",
+        "40x30 +$179",
+        "30x40 +$180",
+        "30x50 +$235.99",
+        "50x30 +$235.99",
+        "40x40 +$249",
+        "60x30 +$315",
+        "40x50 +$332.98",
+        "50x50 +$431",
+        "50x60 +$599",
+        "60x60 +$754"
+      ],
+      "mobSizes": [],
+      "credit": "Included in your gift. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x20",
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels2": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included",
+        "30x30 +$11.99",
+        "20x50 +$36.99",
+        "50x20 +$36.99",
+        "40x30 +$80",
+        "30x40 +$81",
+        "30x50 +$136.99",
+        "50x30 +$136.99",
+        "40x40 +$150",
+        "60x30 +$216",
+        "40x50 +$233.98",
+        "50x50 +$332",
+        "50x60 +$500",
+        "60x60 +$655"
+      ],
+      "mobSizes": [],
+      "credit": "Included in your gift. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x20",
+      "banner": "Personalising gift kit #99999 + #99998: 2 gift kits, $198 gift credit. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels3": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "10x10 Included",
+        "16x16 Included",
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included",
+        "30x30 +$11.99",
+        "20x50 +$36.99",
+        "50x20 +$36.99",
+        "40x30 +$80",
+        "30x40 +$81",
+        "30x50 +$136.99",
+        "50x30 +$136.99",
+        "40x40 +$150",
+        "60x30 +$216",
+        "40x50 +$233.98",
+        "50x50 +$332",
+        "50x60 +$500",
+        "60x60 +$655"
+      ],
+      "mobSizes": [],
+      "credit": "Bigger than your gift covers: $11.99 difference, paid later by a secure link",
+      "mobCredit": "+$11.99",
+      "pricesVisible": [],
+      "size": "30x30",
+      "banner": "Personalising gift kit #99999 + #99998: 2 gift kits, $198 gift credit. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "details": "Where should we ship it?\n\nYour 30 × 30 in design is ready. Tell us who it's for and where to send it.\n\nThis size is bigger than your gift kits cover. The difference is $11.99. We'll email you a secure payment link for it before we make anything. Prefer no extra cost? Tap “Keep editing” and choose a size marked “Included”.\nI'd like this size and will pay the $11.99 difference by the payment link.\nRecipient's full name\nYour email (we send the design proof here)\nStreet address\nApartment, suite, etc. (optional)\nCity\nState\nZIP code\nCountry\nPhone (optional, for the delivery)\nAnything we should know? (optional)\nKeep editing\nSend my design",
+    "done": null,
+    "fatal": "page.evaluate: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  }
+}
