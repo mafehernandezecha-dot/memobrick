@@ -139,7 +139,7 @@ for (const device of (process.env.DEVICES || 'phone,desktop').split(',')) {
     });
     r.done = await page.evaluate(() => (document.querySelector('.mbg-done') || {}).innerText || null);
     await shot('gift-done');
-    r.cartAfterGift = await page.evaluate(async () => (await (await fetch('/cart.js')).json()).item_count);
+    r.cartAfterGift = await page.evaluate(async () => { const t = await (await fetch('/cart.js')).text(); try { return JSON.parse(t).item_count; } catch (e) { return 'not JSON (bot check?): ' + t.slice(0, 80); } });
     r.usedFlag = await page.evaluate(() => localStorage.getItem('mb_gift_used'));
     // ---------- used link ----------
     await step('reopen-used-link', async () => { await page.goto(giftUrl, { waitUntil: 'load', timeout: 60000 }); await page.waitForTimeout(2500); await page.locator('.mbg-used').waitFor({ state: 'visible', timeout: 15000 }); });
