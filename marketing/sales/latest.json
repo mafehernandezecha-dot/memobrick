@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T22:55:00-04:00",
+ "updated": "2026-10-21T22:55:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -341,6 +341,11 @@
    "date": "2026-10-19",
    "orders": 2,
    "netSales": 762.31
+  },
+  {
+   "date": "2026-10-20",
+   "orders": 2,
+   "netSales": 70.0
   }
  ],
  "lastYear": [
@@ -806,24 +811,24 @@
   }
  ],
  "funnel": {
-  "period": "Last 30 days to Oct 20 (store time, includes part of Oct 20), referred sessions only (direct excluded because bots inflate it), vs Sep 21 to Oct 20 2025",
+  "period": "Last 30 days to Oct 21 (store time, includes part of Oct 21), referred sessions only (direct excluded because bots inflate it), vs Sep 22 to Oct 21 2025",
   "now": {
-   "sessions": 2123,
-   "addedToCart": 121,
-   "reachedCheckout": 62,
-   "purchased": 33
+   "sessions": 2149,
+   "addedToCart": 133,
+   "reachedCheckout": 73,
+   "purchased": 36
   },
   "lastYear": {
-   "sessions": 5334,
-   "addedToCart": 400,
-   "reachedCheckout": 151,
-   "purchased": 53
+   "sessions": 5411,
+   "addedToCart": 422,
+   "reachedCheckout": 172,
+   "purchased": 62
   }
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down almost two thirds, search worst",
-   "detail": "Referred sessions, last 30 days to Oct 20: 2,123 vs 5,334 last year (-60%). By source (all-sessions query): search 734, social 1,278, email 14 (last 30-day comparison last year: search 2,660, social 2,598 as of Oct 18 check). Add-to-cart rate 5.7% vs 7.5%; checkout-to-purchase 53% vs 35%, so visitors who reach checkout do buy; the problem is volume of qualified visitors, mainly search. Direct sessions are 6,113 with 197 carts and look bot-inflated.",
+   "title": "Referred traffic is down 60%, search worst",
+   "detail": "Referred sessions, last 30 days to Oct 21: 2,149 vs 5,411 last year (-60%). Search 736 vs 2,667 (-72%), social 1,285 vs 2,569 (-50%), email 17 vs 13. Add-to-cart rate 6.2% vs 7.8%; checkout-to-purchase 49% vs 36%, so visitors who reach checkout do buy; the problem is volume of qualified visitors, mainly search. Direct sessions are 6,508 (3,345 last year) with 201 carts and look bot-inflated.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -831,16 +836,16 @@
    ]
   },
   {
-   "title": "Draft orders (designer proof, then invoice) collapsed",
-   "detail": "Draft orders were 8 in the last 30 days to Oct 20 vs 77 in the same 30 days last year. Online Store orders 56 vs 97. Total orders 65 vs 176, so draft orders explain 69 of the 111 lost orders. Still unfixed; find out why proof requests are not coming in or not being invoiced.",
+   "title": "Draft orders (designer proof, then invoice) still collapsed",
+   "detail": "Draft orders were 11 in the last 30 days to Oct 21 vs 78 in the same 30 days last year (up from 8 in the Oct 20 check, still -86%). Online Store orders 58 vs 109. Total 70 vs 189, so draft orders explain 67 of the 119 lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
    ]
   },
   {
-   "title": "Daily goal missed: 50 orders in October vs 95 goal",
-   "detail": "October 1 to 19: 50 orders and $6,583 net sales vs goal 95 and $10,450 (gap 45 orders, $3,867). Yesterday (Oct 19) 2 orders, $762 vs 5 and $550: sales above goal on two larger orders, orders still short. Week Oct 13 to 19: 16 orders, $2,715 vs goal 35 and $3,850. Orders per week are flat (about 17 a week) versus the 35 goal.",
+   "title": "Daily goal missed: 52 orders in October vs 100 goal",
+   "detail": "October 1 to 20: 52 orders and $6,653 net sales vs goal 100 and $11,000 (gap 48 orders, $4,347). Yesterday (Oct 20) 2 orders, $70 vs 5 and $550. Week Oct 19 to 20 so far: 4 orders, $832 vs goal 10 and $1,100. Oct 21 is partial (6 orders, $362 at 10:45pm ET), the best order day since Oct 13, but orders per week stay near 17 vs the 35 goal.",
    "owners": [
     "owner",
     "email-campaign-writer",
