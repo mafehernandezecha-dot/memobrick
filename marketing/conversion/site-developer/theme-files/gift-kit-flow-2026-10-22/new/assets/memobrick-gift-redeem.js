@@ -51,13 +51,15 @@
     const css = document.createElement("style");
     css.id = "mbg-css";
     css.textContent = `
-    .mb-gift #pcAmt,.mb-gift #pcWas,.mb-gift #pcSave,.mb-gift #bbPrice,.mb-gift #mobTopPrice,.mb-gift #mobTopWas,
+    .mb-gift #pcAmt,.mb-gift #pcWas,.mb-gift #pcSave,.mb-gift #bbPrice,.mb-gift #mobTopPrice,.mb-gift #mobTopWas,.mb-gift #edTopPrice,.mb-gift #edTopWas,
     .mb-gift #mobNotice,.mb-gift #buildBtn,.mb-gift .upsize{display:none!important}
     .mbg-banner{position:relative;z-index:50;background:var(--ink,#1d1d1f);color:#fff;font:500 14px/1.45 var(--body,system-ui);
       padding:10px 16px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;text-align:center}
     .mbg-banner b{font-weight:700}
     .mbg-banner button{font:600 13px var(--body,system-ui);color:#fff;background:transparent;border:1px solid rgba(255,255,255,.55);
       border-radius:999px;padding:5px 12px;cursor:pointer}
+    .mbg-addlink{display:block;width:100%;margin:10px 0 4px;font:600 14px var(--body,system-ui);color:var(--ink,#1d1d1f);
+      background:#fff6f0;border:1px dashed #e0a98f;border-radius:12px;padding:10px 12px;cursor:pointer;text-align:center}
     .mbg-credit{font:600 14px/1.4 var(--body,system-ui);color:var(--ink,#1d1d1f);background:#fff6f0;border-radius:12px;
       padding:10px 12px;margin:0 0 10px;text-align:center}
     .mbg-back{position:fixed;inset:0;z-index:2147483000;background:rgba(20,20,30,.55);display:flex;
@@ -275,13 +277,26 @@
       if (!c){ c = document.createElement("p"); c.id = "mbgCredit"; c.className = "mbg-credit"; ob.parentNode.insertBefore(c, ob); }
       if (c.textContent !== msg) c.textContent = msg;
     }
-    const top = document.querySelector("#mobTopPrice");
-    if (top && top.parentNode){
-      let c = document.querySelector("#mbgMobCredit");
-      if (!c){ c = document.createElement("span"); c.id = "mbgMobCredit"; c.style.cssText = "font-weight:600;font-size:13px"; top.parentNode.insertBefore(c, top); }
+    [["#mobTopPrice", "mbgMobCredit"], ["#edTopPrice", "mbgEdCredit"]].forEach(([sel, id]) => {
+      const top = document.querySelector(sel);
+      if (!top || !top.parentNode) return;
+      let c = document.getElementById(id);
+      if (!c){ c = document.createElement("span"); c.id = id; c.style.cssText = "font-weight:600;font-size:13px"; top.parentNode.insertBefore(c, top); }
       const t = d > 0 ? "+" + money(d) : "Included";
       if (c.textContent !== t) c.textContent = t;
-    }
+    });
+    // "add another gift link" right under the size choices (the top banner scrolls away on phones)
+    if (linkOk && kits.length < 6){
+      document.querySelectorAll("#sizeGrid, .mob-sizes").forEach((g) => {
+        const nx = g.nextElementSibling;
+        if (nx && nx.classList.contains("mbg-addlink")) return;
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "mbg-addlink";
+        b.textContent = "Have another gift link? Add it to unlock bigger sizes";
+        b.addEventListener("click", addKitDialog);
+        g.parentNode.insertBefore(b, g.nextSibling);
+      });
+    } else document.querySelectorAll(".mbg-addlink").forEach((b) => b.remove());
   }
   relabel(); setInterval(relabel, 700);
 
@@ -422,7 +437,7 @@
     Object.keys(fields).forEach((k) => fd.append(k, fields[k]));
     try {
       const res = await fetch("/contact", { method: "POST", body: fd, credentials: "same-origin" });
-      if (res.ok && /contact_posted=true/.test(res.url)) return true;
+      if (res.ok && (/contact_posted=true/.test(res.url) || (res.redirected && !/challenge/.test(res.url)))) return true;
     } catch (e){}
     // Shopify asked for a spam check (or the request failed): submit the form
     // for real so the recipient can pass the check; Shopify brings them back
