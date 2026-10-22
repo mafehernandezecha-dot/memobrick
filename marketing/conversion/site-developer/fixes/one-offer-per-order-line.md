@@ -1,5 +1,7 @@
 # One offer per order: say it before checkout (proposal, 2026-10-21)
 
+**Owner decision 2026-10-21 (chat): "leave it". Rejected: no cart line; keep codes and free shipping as they are. Do not propose again unless the owner asks.**
+
 Built by: site-developer (Jenny). Status: **pending, Eden decides.** Nothing has changed on the store or theme.
 Evidence: `marketing/conversion/site-developer/2026-10-21-code-vs-free-shipping/README.md` (live checkout tests, screenshots).
 
