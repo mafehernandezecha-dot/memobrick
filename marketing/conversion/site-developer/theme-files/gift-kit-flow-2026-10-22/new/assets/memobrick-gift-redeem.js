@@ -297,17 +297,16 @@
       if (c.textContent !== "Included") c.textContent = "Included";
     });
     // "add another gift link" right under the size choices (the top banner scrolls away on phones)
+    const isGrid = (g) => g && g.matches && g.matches("#sizeGrid, .mob-sizes");
+    // drop any link that no longer sits right under a size grid (the editor re-renders its panels)
+    document.querySelectorAll(".mbg-addlink").forEach((b) => { if (!isGrid(b.previousElementSibling)) b.remove(); });
     if (linkOk && kits.length < 6){
+      const t = kits.length > 1 ? "Have another gift link? Add it for an even bigger mosaic" : "Have another gift link? Add it to combine kits into a bigger mosaic";
       document.querySelectorAll("#sizeGrid, .mob-sizes").forEach((g) => {
         const nx = g.nextElementSibling;
-        if (nx && nx.classList.contains("mbg-addlink")){
-          const t = kits.length > 1 ? "Have another gift link? Add it for an even bigger mosaic" : "Have another gift link? Add it to combine kits into a bigger mosaic";
-          if (nx.textContent !== t) nx.textContent = t;
-          return;
-        }
+        if (nx && nx.classList.contains("mbg-addlink")){ if (nx.textContent !== t) nx.textContent = t; return; }
         const b = document.createElement("button");
-        b.type = "button"; b.className = "mbg-addlink";
-        b.textContent = kits.length > 1 ? "Have another gift link? Add it for an even bigger mosaic" : "Have another gift link? Add it to combine kits into a bigger mosaic";
+        b.type = "button"; b.className = "mbg-addlink"; b.textContent = t;
         b.addEventListener("click", addKitDialog);
         g.parentNode.insertBefore(b, g.nextSibling);
       });
