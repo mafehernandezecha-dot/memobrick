@@ -437,7 +437,10 @@
     Object.keys(fields).forEach((k) => fd.append(k, fields[k]));
     try {
       const res = await fetch("/contact", { method: "POST", body: fd, credentials: "same-origin" });
-      if (res.ok && (/contact_posted=true/.test(res.url) || (res.redirected && !/challenge/.test(res.url)))) return true;
+      // Shopify redirects a delivered message to ...?contact_posted=true. Trust that URL even when the
+      // page it lands on fails to load (status not ok), so the store never gets the design twice.
+      if (/[?&]contact_posted=true/.test(res.url)) return true;
+      if (res.ok && res.redirected && !/challenge/.test(res.url)) return true;
     } catch (e){}
     // Shopify asked for a spam check (or the request failed): submit the form
     // for real so the recipient can pass the check; Shopify brings them back

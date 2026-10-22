@@ -96,7 +96,11 @@ for (const device of (process.env.DEVICES || 'phone,desktop').split(',')) {
     }
     // ---------- combine ----------
     await step('add-second-gift-link', async () => {
-      await page.locator('.mbg-addlink, [data-mbg-add]').filter({ visible: true }).first().click({ timeout: 15000 });
+      // the link under the size choices first (on phones the top banner sits under the full-screen editor)
+      const under = page.locator('.mbg-addlink').filter({ visible: true }).first();
+      if (await under.count()) { await under.scrollIntoViewIfNeeded(); await under.click({ timeout: 15000 }); }
+      else await page.locator('[data-mbg-add]').filter({ visible: true }).first().click({ timeout: 15000 });
+      await page.locator('#mbgLink').waitFor({ state: 'visible', timeout: 10000 });
       await page.fill('#mbgLink', 'https://mymemobrick.com/pages/editor?gift=%2399998&email=gift-test%40example.com&size=20x20');
       await shot('gift-add-link');
       await page.locator('.mbg-card button[type=submit]').click();
