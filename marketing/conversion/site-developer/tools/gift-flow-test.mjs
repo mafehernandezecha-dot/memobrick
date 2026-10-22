@@ -84,8 +84,9 @@ for (const device of (process.env.DEVICES || 'phone,desktop').split(',')) {
     await shot('gift-editor');
     const labels = () => page.evaluate(() => ({
       finish: [...document.querySelectorAll('#edTopFinish,#mobFinish,#orderBtn')].map(b => b.id + '=' + b.innerText.trim()),
-      sizes: [...document.querySelectorAll('#sizeGrid .sizebtn')].map(b => b.dataset.id + ' ' + (b.querySelector('small') || {}).innerText),
-      mobSizes: [...document.querySelectorAll('.mob-size')].map(b => b.dataset.size + ' ' + (b.querySelector('em') || {}).innerText),
+      sizes: [...document.querySelectorAll('#sizeGrid .sizebtn')].filter(b => b.style.display !== 'none').map(b => b.dataset.id + ' ' + (b.querySelector('small') || {}).innerText),
+      mobSizes: [...document.querySelectorAll('.mob-size')].filter(b => b.style.display !== 'none').map(b => b.dataset.size + ' ' + (b.querySelector('em') || {}).innerText),
+      dollarsShown: [...document.querySelectorAll('.editor, #editor, .mob-sheet, .mbg-banner')].some(e => e.offsetParent !== null && /\$\d/.test(e.innerText)),
       credit: (document.querySelector('#mbgCredit') || {}).innerText || null, mobCredit: (document.querySelector('#mbgMobCredit') || {}).innerText || null,
       pricesVisible: [...document.querySelectorAll('#pcAmt,#mobTopPrice,#bbPrice')].filter(e => e.offsetParent).map(e => e.id),
       size: (document.querySelector('#sizeAll') || {}).value, banner: (document.querySelector('.mbg-banner') || {}).innerText }));
@@ -112,7 +113,9 @@ for (const device of (process.env.DEVICES || 'phone,desktop').split(',')) {
       r.giftLabels3 = await labels();
     }
     if (device === 'desktop') {
-      await step('pick-30x30', async () => { await page.evaluate(() => { const s = document.querySelector('#sizeAll'); s.value = '30x30'; s.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(2500); });
+      // 30x30 is not covered by 2 kits: gift mode must refuse it and go back to an included size
+      await step('locked-30x30-refused', async () => { await page.evaluate(() => { const s = document.querySelector('#sizeAll'); s.value = '30x30'; s.dispatchEvent(new Event('change', { bubbles: true })); }); await page.waitForTimeout(2500);
+        const v = await page.evaluate(() => document.querySelector('#sizeAll').value); if (v === '30x30') throw new Error('30x30 kept'); });
       r.giftLabels3 = await labels();
     }
     await shot('gift-two-kits');

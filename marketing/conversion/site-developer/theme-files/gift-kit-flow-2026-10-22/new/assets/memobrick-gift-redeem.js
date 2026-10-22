@@ -7,11 +7,13 @@
      /pages/editor?gift=%2320002&email=buyer%40example.com&size=20x20
 
    With ?gift= in the URL the Creator runs in gift mode:
-     - prices are hidden; each size shows "Included" or "+$X"
-       (gift credit = $99 per kit; sizes it covers are included, bigger
-       sizes show the difference, which the owner invoices by a payment
-       link before production; nothing is charged on this page)
+     - no prices anywhere, and the size is locked to what the gift kits
+       cover: one kit = its own size (20x20); combined kits = the sizes
+       whose normal price fits inside the kits' combined value. Every
+       other size is hidden. Nothing is charged on this page.
      - "I have another gift link" adds more gift kits (one bigger mosaic)
+     - bigger sizes for a payment are not offered here (owner proposal);
+       a recipient can ask in the note and the owner replies by email
      - the finish buttons read "Submit my design"; on submit we ask the
        recipient's name, email and shipping address, store the finished
        design and build instructions exactly like an order does (through
@@ -101,7 +103,6 @@
           <ol class="mbg-steps">
             <li>We check your design and email you a design proof${info.email ? " at <b>" + esc(info.email) + "</b>" : ""}.</li>
             <li>You reply to approve it, or tell us what to change.</li>
-            ${info.diff > 0 ? `<li>We also email you a secure payment link for the difference of <b>${esc(money(info.diff))}</b> for the bigger size.</li>` : ""}
             <li>Once it's approved, we make your kit and ship it to you.</li>
           </ol>
           ${info.designId ? `<p class="mbg-small">Your design reference: ${esc(info.designId)}</p>` : ""}
@@ -143,13 +144,24 @@
     try { const v = window.MB_variantFor && window.MB_variantFor(id, false); if (v && v.price != null) return parseFloat(v.price); } catch (e){}
     return null;
   }
-  function diffFor(id){
-    if (id === giftSize && kits.length === 1) return 0;
-    const p = priceOf(id);
-    if (p == null) return 0;
-    const d = Math.round((p - credit()) * 100) / 100;
-    return d > 0 ? d : 0;
+  // the kits' combined value, priced like the Creator prices the kit's own size
+  function kitValue(){ const p = priceOf(giftSize); return kits.length * (p != null ? p : CFG.kitCredit); }
+  // sizes this gift may use: the kit size, plus (with combined kits) every
+  // size at least that big whose normal price fits inside the kits' value
+  function allowed(id){
+    if (id === giftSize) return true;
+    if (kits.length < 2) return false;
+    const p = priceOf(id), base = priceOf(giftSize);
+    return p != null && base != null && p >= base && p <= kitValue() + 0.01;
   }
+  function allowedList(){
+    const ids = [...document.querySelectorAll("#sizeAll option")].map((o) => o.value).filter(allowed);
+    return ids.length ? ids : [giftSize];
+  }
+  function biggest(){
+    return allowedList().reduce((a, b) => ((priceOf(b) || 0) > (priceOf(a) || 0) ? b : a), giftSize);
+  }
+  const diffFor = () => 0;   // nothing to pay in gift mode
   function currentSize(){
     const sel = document.querySelector("#sizeAll");
     return (sel && sel.value) || giftSize;
@@ -175,7 +187,7 @@
     const refs = kits.map((k) => esc(k.ref)).join(" + ");
     const what = kits.length === 1
       ? `${esc(sizeText(giftSize))} kit, already paid`
-      : `${kits.length} gift kits, ${esc(money(credit()))} gift credit`;
+      : `${kits.length} gift kits combined into one bigger mosaic, already paid`;
     banner.innerHTML = `<span>Personalising gift kit <b>${refs}</b>: ${what}. Design it, then tap “${LABEL}”.</span>` +
       (kits.length < 6 ? `<button type="button" data-mbg-add>I have another gift link</button>` : "");
     const b = banner.querySelector("[data-mbg-add]");
@@ -247,7 +259,7 @@
       kits.push(k);
       writeJSON("session", EXTRA, kits.slice(1));
       back.remove();
-      drawBanner(); relabel();
+      drawBanner(); relabel(); setSize(biggest());
     });
   }
 
@@ -257,19 +269,19 @@
       const b = document.querySelector(s);
       if (b && !b.getAttribute("aria-disabled") && b.textContent.trim() !== LABEL) b.textContent = LABEL;
     });
-    document.querySelectorAll("#sizeGrid .sizebtn").forEach((b) => {
-      const sm = b.querySelector("small"); if (!sm) return;
-      const d = diffFor(b.dataset.id), t = d > 0 ? "+" + money(d) : "Included";
-      if (sm.textContent !== t) sm.textContent = t;
+    // size locked: hide every size the gift does not cover, no prices
+    [["#sizeGrid .sizebtn", "id", "small"], [".mob-size", "size", "em"]].forEach(([sel, key, tag]) => {
+      document.querySelectorAll(sel).forEach((b) => {
+        const ok = allowed(b.dataset[key]);
+        const disp = ok ? "" : "none";
+        if (b.style.display !== disp) b.style.display = disp;
+        const lab = b.querySelector(tag);
+        if (lab && lab.textContent !== "Included") lab.textContent = "Included";
+      });
     });
-    document.querySelectorAll(".mob-size").forEach((b) => {
-      const em = b.querySelector("em"); if (!em) return;
-      const d = diffFor(b.dataset.size), t = d > 0 ? "+" + money(d) : "Included";
-      if (em.textContent !== t) em.textContent = t;
-    });
-    const d = diffFor(currentSize());
-    const msg = d > 0
-      ? `Bigger than your gift covers: ${money(d)} difference, paid later by a secure link`
+    if (!allowed(currentSize())) setSize(biggest());
+    const msg = kits.length > 1
+      ? "Included in your " + kits.length + " gift kits. Nothing to pay"
       : "Included in your gift. Nothing to pay";
     const ob = document.querySelector("#orderBtn");
     if (ob){
@@ -282,17 +294,20 @@
       if (!top || !top.parentNode) return;
       let c = document.getElementById(id);
       if (!c){ c = document.createElement("span"); c.id = id; c.style.cssText = "font-weight:600;font-size:13px"; top.parentNode.insertBefore(c, top); }
-      const t = d > 0 ? "+" + money(d) : "Included";
-      if (c.textContent !== t) c.textContent = t;
+      if (c.textContent !== "Included") c.textContent = "Included";
     });
     // "add another gift link" right under the size choices (the top banner scrolls away on phones)
     if (linkOk && kits.length < 6){
       document.querySelectorAll("#sizeGrid, .mob-sizes").forEach((g) => {
         const nx = g.nextElementSibling;
-        if (nx && nx.classList.contains("mbg-addlink")) return;
+        if (nx && nx.classList.contains("mbg-addlink")){
+          const t = kits.length > 1 ? "Have another gift link? Add it for an even bigger mosaic" : "Have another gift link? Add it to combine kits into a bigger mosaic";
+          if (nx.textContent !== t) nx.textContent = t;
+          return;
+        }
         const b = document.createElement("button");
         b.type = "button"; b.className = "mbg-addlink";
-        b.textContent = "Have another gift link? Add it to unlock bigger sizes";
+        b.textContent = kits.length > 1 ? "Have another gift link? Add it for an even bigger mosaic" : "Have another gift link? Add it to combine kits into a bigger mosaic";
         b.addEventListener("click", addKitDialog);
         g.parentNode.insertBefore(b, g.nextSibling);
       });
@@ -300,14 +315,14 @@
   }
   relabel(); setInterval(relabel, 700);
 
-  // open at the kit's size (the recipient may still choose another one)
+  // open at the kit's size (or the biggest size combined kits cover)
   function setSize(id){
     const sel = document.querySelector("#sizeAll");
     if (sel && sel.value !== id && sel.querySelector('option[value="' + id + '"]')){
       sel.value = id; sel.dispatchEvent(new Event("change", { bubbles: true }));
     }
   }
-  if (!params.get("keep")) setTimeout(() => setSize(giftSize), 400);
+  if (!params.get("keep")) setTimeout(() => setSize(kits.length > 1 ? biggest() : giftSize), 400);
 
   /* the details form */
   function askDetails(sizeId, diff){
@@ -317,10 +332,7 @@
         <div class="mbg-back" role="dialog" aria-modal="true" aria-labelledby="mbgT">
           <form class="mbg-card" novalidate>
             <h3 id="mbgT">Where should we ship it?</h3>
-            <p>Your ${esc(sizeText(sizeId))} design is ready. Tell us who it's for and where to send it.${diff > 0 ? "" : " There's nothing to pay."}</p>
-            ${diff > 0 ? `<div class="mbg-note">This size is bigger than your gift ${multi ? "kits cover" : "kit covers"}. The difference is <b>${esc(money(diff))}</b>.
-              We'll email you a secure payment link for it before we make anything. Prefer no extra cost? Tap “Keep editing” and choose a size marked “Included”.</div>
-              <label class="mbg-check"><input type="checkbox" id="mbgDiffOk"> I'd like this size and will pay the ${esc(money(diff))} difference by the payment link.</label>` : ""}
+            <p>Your ${esc(sizeText(sizeId))} design is ready${multi ? " (" + kits.length + " gift kits combined)" : ""}. Tell us who it's for and where to send it. There's nothing to pay.</p>
             <label for="mbgName">Recipient's full name</label>
             <input id="mbgName" autocomplete="name" required>
             <label for="mbgEmail">Your email (we send the design proof here)</label>
@@ -339,7 +351,7 @@
             </div>
             <label for="mbgPhone">Phone <span style="font-weight:400">(optional, for the delivery)</span></label>
             <input id="mbgPhone" type="tel" autocomplete="tel">
-            <label for="mbgNote">Anything we should know? <span style="font-weight:400">(optional)</span></label>
+            <label for="mbgNote">Anything we should know? <span style="font-weight:400">(optional, for example if you'd love a bigger size: we'll reply with the options)</span></label>
             <textarea id="mbgNote"></textarea>
             <div class="mbg-err" aria-live="polite"></div>
             <div class="mbg-actions">
@@ -359,9 +371,6 @@
         if (!d.name || !EMAIL_RE.test(d.email) || !d.a1 || !d.city || !d.zip || !d.country){
           err.textContent = "Please fill in the name, a valid email and the full shipping address."; return;
         }
-        if (diff > 0 && !back.querySelector("#mbgDiffOk").checked){
-          err.textContent = "Please tick the box to choose the bigger size, or keep editing to pick an included size."; return;
-        }
         back.remove(); resolve(d);
       });
     });
@@ -378,8 +387,8 @@
       .map((k) => k + ": " + props[k]);
     return [
       "GIFT KIT PERSONALISATION (no checkout). Prepaid gift kit order(s): " + kits.map((k) => k.ref + " (bought with " + k.email + ")").join(", "),
-      "Size chosen: " + sizeText(sizeId) + (kits.length > 1 ? " (combining " + kits.length + " kits, " + money(credit()) + " gift credit)" : ""),
-      diff > 0 ? "DIFFERENCE TO INVOICE: " + money(diff) + " (recipient agreed to pay it by a payment link before production)" : "Difference to pay: none",
+      "Size chosen: " + sizeText(sizeId) + (kits.length > 1 ? " (combining " + kits.length + " gift kits into one mosaic)" : ""),
+      "Nothing to pay (size covered by the gift kit" + (kits.length > 1 ? "s" : "") + ")",
       "",
       "Ship to:\n" + shipTo(d),
       "Recipient email (for the design proof): " + d.email,
@@ -403,7 +412,7 @@
       "contact[Gift kit order]": kits.map((k) => k.ref).join(", "),
       "contact[Buyer email from link]": kits.map((k) => k.email).join(", "),
       "contact[Size chosen]": sizeText(sizeId),
-      "contact[Difference to pay]": diff > 0 ? money(diff) : "none",
+      "contact[Kits combined]": String(kits.length),
       "contact[Ship to]": shipTo(d),
       "contact[Final design image]": props["Final Design"] || "(not attached)",
       "contact[Build instructions]": props["_Build Instructions"] || "(not attached)",
@@ -428,7 +437,7 @@
         body: JSON.stringify({ key: cap.key || "", sid: "GIFT-" + (designId || Date.now()), page: location.pathname, email: d.email,
           device: window.innerWidth < 768 ? "Mobile" : "Desktop", kind: "note",
           source: "GIFT KIT " + kits.map((k) => k.ref).join(" + ") + " submitted | " + d.name + " | " + d.email + " | " + sizeText(sizeId) +
-            (diff > 0 ? " | difference " + money(diff) : "") + " | " + (props["Final Design"] || designId || "") }) }).catch(() => {});
+            " | " + (props["Final Design"] || designId || "") }) }).catch(() => {});
     } catch (e){}
   }
 
@@ -461,7 +470,8 @@
   window.MB_addToCart = async function (opts){
     if (!linkOk) throw new Error("gift-link");
     const o = Object.assign({}, opts || {});
-    const sizeId = o.sizeId || currentSize();
+    let sizeId = o.sizeId || currentSize();
+    if (!allowed(sizeId)){ sizeId = giftSize; setSize(giftSize); o.sizeId = giftSize; }
     const diff = diffFor(sizeId);
     const details = await askDetails(sizeId, diff);
     o.buildForMe = false;
