@@ -1,6 +1,6 @@
 Status: ready
-Post time (ET): 2026-10-19 19:00
-Approval: A-2026W42-033 S-20261019-1
+Post time (ET): 2026-10-22 12:00
+Approval: A-2026W43-004 (new time; wording approved in A-2026W42-033 S-20261019-1)
 Post file: marketing/social/planner/2026-W43/S-20261019-1.md
 
 Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> AI label; TikTok: AI-generated content toggle; Pinterest: no setting, note it in the description).
@@ -8,6 +8,8 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
 
 ## Instagram (Reel)
+
+Buffer: 6ad99bb91093844846e0c75a (scheduled 2026-10-22 12:00 ET; media https://cdn.shopify.com/videos/c/o/v/3f4aa1dd74594f06bd2cda331f703bab.mp4)
 
 Caption:
 Your camera roll is full of photos nobody sees. What if one of them became something you build and hang on the wall?
@@ -25,6 +27,8 @@ Media: marketing/social/planner/2026-W43/S-20261019-1.mp4
 
 ## Facebook (Reel)
 
+Buffer: 6ad99bce7dadc432f73e2cbf (scheduled 2026-10-22 12:00 ET; media https://cdn.shopify.com/videos/c/o/v/3f4aa1dd74594f06bd2cda331f703bab.mp4)
+
 Caption:
 Your camera roll is full of photos nobody sees. What if one of them became something you build and hang on the wall?
 
@@ -40,6 +44,8 @@ Alt text: Short video of a family photo turning into a custom brick mosaic, then
 Media: marketing/social/planner/2026-W43/S-20261019-1.mp4
 
 ## TikTok (video)
+
+Buffer: 6ad99bd1282deeeeb2cd47e8 (scheduled 2026-10-22 12:00 ET; media https://cdn.shopify.com/videos/c/o/v/3f4aa1dd74594f06bd2cda331f703bab.mp4)
 
 Caption:
 Which photo from your camera roll would you build? DM it to us, it could be in our next video.
