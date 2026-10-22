@@ -71,4 +71,7 @@ Media: marketing/social/planner/2026-W43/S-20261021-1.mp4
 
 ## Result
 
-(filled in by the owner's Mac after posting)
+- Instagram: https://www.instagram.com/reel/DexigD1Apch/ (Buffer 6ad8a4f6dd065d61589397da, sent 2026-10-21 19:02 ET)
+- Facebook: https://www.facebook.com/reel/1539077507990571/ (Buffer 6ad8a505befea41f139e5406, sent 2026-10-21 19:00 ET)
+- TikTok: https://tiktok.com/@memobrick/video/7699259838936780046 (Buffer 6ad8a50b9c5d256f6599c103, sent 2026-10-21 19:01 ET)
+(Pinterest and YouTube still to be posted by the owner's Mac)
