@@ -220,6 +220,18 @@ Do first today (2026-10-23):
 - From: chat
 - Note: Eden approved in chat on 2026-10-21 ("approve groups test"), recorded by the coordinator session. Proposal P-social-planner-20261021-1. Who does the read-only rules check (Eden or the Mac) is still open.
 
+## A-2026W43-008
+- Agent: social-publisher
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/publisher/music/compose.py
+- Commit: 525b435
+- Reason: Add original background music to every video post. The 4 scheduled videos (guess-the-photo Oct 23 and Oct 30, couple-gift Oct 26, build-time Oct 28) had no sound; music versions replace them in Buffer on Instagram, Facebook and TikTok. Captions unchanged. Music is composed by marketing/social/publisher/music/compose.py and rendered with the MIT-licensed FluidR3 soundfont, so no license or cost. Future reels get music when they are cut.
+- Expires: 2026-12-31
+- Status: approved
+- From: chat
+- Note: Eden chose option 1 in chat on 2026-10-23 ("1": Hugo adds free music to the videos before scheduling; she may add trending sounds by hand when she has time).
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
