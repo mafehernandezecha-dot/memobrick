@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/brick-mosaic-sizes.md
 Title: Which Brick Mosaic Size Should You Choose?
 Meta description: Compare custom brick mosaic sizes from 16×16 to 40×50 inches: pieces, baseplates, build time and what comes in every DIY kit.
