@@ -1,5 +1,5 @@
 Status: ready
-Post time (ET): 2026-10-20 19:00
+Post time (ET): 2026-10-24 19:00 (moved from Oct 20, missed; new time under A-2026W43-004)
 Approval: A-2026W42-033 S-20261020-1
 Post file: marketing/social/planner/2026-W43/S-20261020-1.md
 
@@ -67,3 +67,5 @@ Media: marketing/social/planner/2026-W43/S-20261020-1-pin.png
 ## Result
 
 (filled in by the owner's Mac after posting)
+
+Buffer (2026-10-23): Instagram 6adbb827bd33ce99c3e9f16d, Facebook 6adbb82cbd33ce99c3e9f25a, both Sat Oct 24 19:00 ET. Media: JPEG copies on Shopify Files (memobrick-social-2026-10-20-holiday-build-together-1..3.jpg). TikTok takes video only in Buffer, so no TikTok post. Pinterest stays with the Mac.

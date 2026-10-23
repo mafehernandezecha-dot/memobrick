@@ -31,6 +31,7 @@ Do first today (2026-10-23):
 - Status: approved
 - From: chat
 - Note: Eden approved in chat on 2026-10-21 ("yes" to the three new times), recorded by the coordinator session.
+- Note: 2026-10-23: holiday-build-together missed its Fri 12:00 ET slot (Instagram carousel failed in Buffer, fixed); moved to Sat Oct 24 19:00 ET on Instagram and Facebook, before this item expires. family-photo-dm went out Oct 22.
 
 ## A-2026W42-033
 - Agent: social-planner
