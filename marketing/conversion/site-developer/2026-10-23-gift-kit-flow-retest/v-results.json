@@ -1,0 +1,255 @@
+{
+  "phone": {
+    "steps": [
+      "product-page: ok 5.5s",
+      "add-2-kits-to-cart: ok 4.0s",
+      "open-gift-link: ok 4.5s",
+      "upload-generated-photo: ok 3.2s",
+      "email-gate-not-shown: ok 0.0s",
+      "add-second-gift-link: ok 1.7s",
+      "pick-20x30-phone: ok 2.5s",
+      "finish-opens-details: ok 0.1s",
+      "fill-and-send: ok 4.0s",
+      "reopen-used-link: ok 4.7s",
+      "normal-open: ok 4.0s",
+      "normal-upload: ok 3.0s",
+      "normal-email-gate-skip-if-shown: ok 0.8s",
+      "normal-finish-to-drawer: ok 3.9s"
+    ],
+    "pageErrors": [],
+    "contactPosts": [
+      {
+        "real": false,
+        "body": "------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"form_type\"\r\n\r\ncontact\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"utf8\"\r\n\r\n✓\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[name]\"\r\n\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[email]\"\r\n\r\ngift-test@example.com\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Gift kit order]\"\r\n\r\n#99999, #99998\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Buyer email from link]\"\r\n\r\ngift-test@example.com, gift-test@example.com\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Size chosen]\"\r\n\r\n20 × 30 in\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Kits combined]\"\r\n\r\n2\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Ship to]\"\r\n\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n1 Test Street\r\nMiami, FL, 33101\r\nUnited States\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Final design image]\"\r\n\r\nhttps://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/0a7fd96a8636928fdd74952f4714f164.png\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Build instructions]\"\r\n\r\nhttps://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/4b649ba020bfb9a1047b9ec5915b770b.html\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[Design ID]\"\r\n\r\nMB-20261023-JPXRNPD7\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO\r\nContent-Disposition: form-data; name=\"contact[body]\"\r\n\r\nGIFT KIT PERSONALISATION (no checkout). Prepaid gift kit order(s): #99999 (bought with gift-test@example.com), #99998 (bought with gift-test@example.com)\r\nSize chosen: 20 × 30 in (combining 2 gift kits into one mosaic)\r\nNothing to pay (size covered by the gift kits)\r\n\r\nShip to:\r\nTEST Gift Recipient (site-developer test, please ignore)\r\n1 Test Street\r\nMiami, FL, 33101\r\nUnited States\r\nRecipient email (for the design proof): gift-test@example.com\r\n\r\nNote from recipient: TEST submission by Memobrick site-developer agent. No order, please ignore.\r\n\r\nFinal design image: https://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/0a7fd96a8636928fdd74952f4714f164.png\r\nBuild instructions: https://cdn.shopify.com/s/files/1/0375/0107/5595/uploads/4b649ba020bfb9a1047b9ec5915b770b.html\r\nDesign ID: MB-20261023-JPXRNPD7\r\n\r\nBefore production: check each order number in Shopify admin, that the buyer email matches, that it is an Art Gift Kit order and that it was not redeemed before. Then reply to this email with the design proof.\r\n\r\nDesign settings:\r\nDesign ID: MB-20261023-JPXRNPD7\r\nMemoBrick Size: 20 × 30\"\r\nOrientation: portrait\r\nBrick grid: 64 x 96 studs\r\nBuild service: Build at home\r\n_design: {\"v\":1,\"id\":\"MB-20261023-JPXRNPD7\",\"size\":\"20x30\",\"crop\":{\"zoom\":1,\"ox\":0,\"oy\":0},\"adjust\":{\"bri\":20,\"con\":-10,\"sat\":41,\"detail\":100,\"shadows\":0,\"warm\":35,\"dither\":74,\"auto\":true},\"palette\":\"full\",\"edits\":0}\r\n------WebKitFormBoundaryTWClt1AYtW1guKQO--\r\n"
+      }
+    ],
+    "product": {
+      "gkForm": true,
+      "qty": true,
+      "creatorBtn": false,
+      "buyBtn": "Buy now, no photo needed",
+      "steps": true,
+      "stepsText": "What happens after you buy\n\nYou buy the kit. No photo needed today.\nWe email you a personalisation link in your order confirmation, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.\nThey choose their photo and design their mosaic in our Creator. The kit is already paid, so there's nothing more to pay.\nThey approve the design. We email them a design proof to check before we make anything.\nWe make the kit and ship it directly to them.\n\nBuying more than one? Each link can go to a different person, or one person can combine two or more links into one bigger mosaic.",
+      "sw": 390,
+      "iw": 390
+    },
+    "cartAfterAdd": [
+      {
+        "title": "Art Gift Kit — Buy Now, Personalise Later",
+        "qty": 2,
+        "props": []
+      }
+    ],
+    "giftStart": {
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link",
+      "giftClass": true,
+      "emailGateCfg": false
+    },
+    "giftLabels1": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "20x20 Included"
+      ],
+      "mobSizes": [
+        "20x20 Included"
+      ],
+      "dollarsShown": false,
+      "credit": "Included in your gift. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x20",
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels2": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included"
+      ],
+      "mobSizes": [
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included"
+      ],
+      "dollarsShown": false,
+      "credit": "Included in your 2 gift kits. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "40x20",
+      "banner": "Personalising gift kit #99999 + #99998: 2 gift kits combined into one bigger mosaic, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels3": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included"
+      ],
+      "mobSizes": [
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included"
+      ],
+      "dollarsShown": false,
+      "credit": "Included in your 2 gift kits. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x30",
+      "banner": "Personalising gift kit #99999 + #99998: 2 gift kits combined into one bigger mosaic, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "details": "Where should we ship it?\n\nYour 20 × 30 in design is ready (2 gift kits combined). Tell us who it's for and where to send it. There's nothing to pay.\n\nRecipient's full name\nYour email (we send the design proof here)\nStreet address\nApartment, suite, etc. (optional)\nCity\nState\nZIP code\nCountry\nPhone (optional, for the delivery)\nAnything we should know? (optional, for example if you'd love a bigger size: we'll reply with the options)\nKeep editing\nSend my design",
+    "done": "Your design is in!\n\nThank you, TEST. We've received your design for gift kit #99999 + #99998.\n\nWhat happens next\n\nWe check your design and email you a design proof at gift-test@example.com.\nYou reply to approve it, or tell us what to change.\nOnce it's approved, we make your kit and ship it to you.\n\nYour design reference: MB-20261023-JPXRNPD7\n\nHaven't heard from us in a few days? Email us a copy of your submission.\n\nBack to MemoBrick",
+    "cartAfterGift": 0,
+    "usedFlag": "{\"#99999\":{\"at\":1792723933059,\"designId\":\"MB-20261023-JPXRNPD7\"},\"#99998\":{\"at\":1792723933059,\"designId\":\"MB-20261023-JPXRNPD7\"}}",
+    "used": "This gift link has been used\n\nA design for gift kit #99999 was sent from this device on 10/23/2026. We'll email a design proof to approve. To change something, just reply to that email.\n\nSending a new design replaces the one you sent before.\n\nBack to MemoBrick\nSend a new design",
+    "normal": {
+      "banner": false,
+      "giftClass": false,
+      "finish": [
+        "edTopFinish=Finish Editing →",
+        "mobFinish=Finish Editing\n→"
+      ],
+      "price": "$99.88 $99.88"
+    },
+    "normalCart": {
+      "count": 1,
+      "title": "Custom Photo Brick Mosaic Portrait 20x20 in - Personalized DIY Photo Gift Kit",
+      "designId": "MB-20261023-FDUHJK4C",
+      "finalDesign": true
+    }
+  },
+  "desktop": {
+    "steps": [
+      "product-page: ok 4.0s",
+      "add-2-kits-to-cart: ok 3.9s",
+      "open-gift-link: ok 3.8s",
+      "upload-generated-photo: ok 3.6s",
+      "email-gate-not-shown: ok 0.0s",
+      "add-second-gift-link: ok 1.9s",
+      "locked-30x30-refused: ok 2.5s",
+      "finish-opens-details: ok 0.1s",
+      "fill-and-send: FAILED locator.waitFor: Timeout 120000ms exceeded.",
+      "reopen-used-link: FAILED locator.waitFor: Timeout 15000ms exceeded.",
+      "normal-open: ok 2.5s",
+      "normal-upload: FAILED page.setInputFiles: Timeout 30000ms exceeded.",
+      "normal-email-gate-skip-if-shown: ok 0.8s",
+      "normal-finish-to-drawer: FAILED locator.click: Timeout 15000ms exceeded."
+    ],
+    "pageErrors": [],
+    "contactPosts": [],
+    "product": {
+      "gkForm": true,
+      "qty": true,
+      "creatorBtn": false,
+      "buyBtn": "Buy now, no photo needed",
+      "steps": true,
+      "stepsText": "What happens after you buy\n\nYou buy the kit. No photo needed today.\nWe email you a personalisation link in your order confirmation, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.\nThey choose their photo and design their mosaic in our Creator. The kit is already paid, so there's nothing more to pay.\nThey approve the design. We email them a design proof to check before we make anything.\nWe make the kit and ship it directly to them.\n\nBuying more than one? Each link can go to a different person, or one person can combine two or more links into one bigger mosaic.",
+      "sw": 1440,
+      "iw": 1440
+    },
+    "cartAfterAdd": [
+      {
+        "title": "Art Gift Kit — Buy Now, Personalise Later",
+        "qty": 2,
+        "props": []
+      }
+    ],
+    "giftStart": {
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link",
+      "giftClass": true,
+      "emailGateCfg": false
+    },
+    "giftLabels1": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "20x20 Included"
+      ],
+      "mobSizes": [],
+      "dollarsShown": false,
+      "credit": "Included in your gift. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "20x20",
+      "banner": "Personalising gift kit #99999: 20 × 20 in kit, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels2": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included"
+      ],
+      "mobSizes": [],
+      "dollarsShown": false,
+      "credit": "Included in your 2 gift kits. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "40x20",
+      "banner": "Personalising gift kit #99999 + #99998: 2 gift kits combined into one bigger mosaic, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "giftLabels3": {
+      "finish": [
+        "edTopFinish=Submit my design",
+        "mobFinish=Submit my design",
+        "orderBtn=Submit my design"
+      ],
+      "sizes": [
+        "20x20 Included",
+        "20x30 Included",
+        "30x20 Included",
+        "20x40 Included",
+        "40x20 Included"
+      ],
+      "mobSizes": [],
+      "dollarsShown": false,
+      "credit": "Included in your 2 gift kits. Nothing to pay",
+      "mobCredit": "Included",
+      "pricesVisible": [],
+      "size": "40x20",
+      "banner": "Personalising gift kit #99999 + #99998: 2 gift kits combined into one bigger mosaic, already paid. Design it, then tap “Submit my design”.\nI have another gift link"
+    },
+    "details": "Where should we ship it?\n\nYour 40 × 20 in design is ready (2 gift kits combined). Tell us who it's for and where to send it. There's nothing to pay.\n\nRecipient's full name\nYour email (we send the design proof here)\nStreet address\nApartment, suite, etc. (optional)\nCity\nState\nZIP code\nCountry\nPhone (optional, for the delivery)\nAnything we should know? (optional, for example if you'd love a bigger size: we'll reply with the options)\nKeep editing\nSend my design",
+    "done": null,
+    "cartAfterGift": "not JSON (bot check?): <!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"utf-8\" />\n    <meta n",
+    "usedFlag": null,
+    "used": null,
+    "normal": {
+      "banner": false,
+      "giftClass": false,
+      "finish": [],
+      "price": " "
+    },
+    "fatal": "page.evaluate: SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+  }
+}
