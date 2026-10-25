@@ -2,11 +2,51 @@
    They sit behind the content, drift at different speeds as the page scrolls
    (parallax), and stay at the page edges so they never cover text or buttons.
    Turned off for people who ask their device for reduced motion (boxes stay still).
-   window.MB_GIFT_BOX_URLS = { red, green, blue, purple } gives the image urls. */
+   The boxes are drawn here from the same brick pattern as make_gift_box.py, so no image files are needed. */
 (function () {
   "use strict";
-  var urls = window.MB_GIFT_BOX_URLS || {};
-  if (!urls.red) return;
+  var PATTERN = [
+    "...RRR....RRR...", "..RSSRR..RRSSR..", "..RRSSRRRRSSRR..", "....RRRRRRRR....",
+    "LLLLLLLRRLLLLLLL", "LLLLLLLRRLLLLLLL", "KKKKKKKSSKKKKKKK",
+    ".BBBBBBRRBBBBBB.", ".BBBBBBRRBBBBBB.", ".BBBBBBRRBBBBBB.", ".BBBBBBRRBBBBBB.",
+    ".BBBBBBRRBBBBBB.", ".BBBBBBRRBBBBBB.", ".BBBBBBRRBBBBBB.", ".BBBBBBRRBBBBBB.",
+    ".DDDDDDSSDDDDDD."
+  ];
+  var COLORS = {
+    red: ["#d6223b", "#ffc83d"], green: ["#1f9d63", "#ef4b6c"],
+    blue: ["#3b8cf0", "#ffc83d"], purple: ["#9b5cf0", "#2bbf7a"]
+  };
+  function shade(hex, f) {
+    var n = parseInt(hex.slice(1), 16), out = "#";
+    [n >> 16, (n >> 8) & 255, n & 255].forEach(function (c) {
+      out += ("0" + Math.max(0, Math.min(255, Math.floor(c * f))).toString(16)).slice(-2);
+    });
+    return out;
+  }
+  // a gift box made of 1x1 bricks (each cell a brick with its stud), as an image url
+  function boxUrl(name) {
+    var box = COLORS[name][0], ribbon = COLORS[name][1], cell = 24;
+    var colors = { B: box, D: shade(box, 0.78), L: shade(box, 1.12), K: shade(box, 0.85), R: ribbon, S: shade(ribbon, 0.8) };
+    var w = PATTERN[0].length * cell, h = PATTERN.length * cell, cx = cell / 2, cy = cell / 2 - 1, r = cell * 0.3;
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ' + w + " " + h + '"><defs>';
+    Object.keys(colors).forEach(function (k) {
+      var c = colors[k];
+      svg += '<g id="' + k + '"><rect x="1" y="1" width="22" height="22" rx="3" fill="' + c + '"/>' +
+        '<rect x="1" y="19" width="22" height="4" rx="2" fill="' + shade(c, 0.8) + '"/>' +
+        '<circle cx="' + cx + '" cy="' + (cy + 1.5) + '" r="' + r + '" fill="' + shade(c, 0.78) + '"/>' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + shade(c, 1.08) + '"/>' +
+        '<circle cx="' + (cx - r * 0.35).toFixed(2) + '" cy="' + (cy - r * 0.35).toFixed(2) + '" r="' + (r * 0.28).toFixed(2) + '" fill="#fff" fill-opacity=".45"/></g>';
+    });
+    svg += "</defs>";
+    PATTERN.forEach(function (row, y) {
+      for (var x = 0; x < row.length; x++) {
+        if (row[x] !== ".") svg += '<use xlink:href="#' + row[x] + '" x="' + x * cell + '" y="' + y * cell + '"/>';
+      }
+    });
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg + "</svg>");
+  }
+  var urls = {};
+  Object.keys(COLORS).forEach(function (k) { urls[k] = boxUrl(k); });
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var phone = window.innerWidth < 760;
 

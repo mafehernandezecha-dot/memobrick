@@ -16,3 +16,10 @@ Eden asked (chat): "do not redesign all the website, only add few things to the 
 ## Back to version 1 boxes (2026-10-25, Eden: "the first attempt was better")
 - Flat brick boxes (box-red/green/blue/purple.svg) and the version 1 scroll script are back. The 3D version stays in git history (commit f0f7a13).
 - Kept from version 2: promo bar wording in the bar's own style, and the "Giving it as a gift? Give a Gift Kit, they pick the photo" link under "Not sure yet?".
+
+## In the theme (2026-10-25)
+
+Eden approved v1 ("yes ok"). The script now draws the boxes itself (same brick pattern and colours as
+make_gift_box.py), so the theme needs no image files. make_gift_box.py also writes a smaller SVG now (one brick
+drawing per colour, reused), so it looks the same. Theme copy and checks:
+../theme-files/holiday-gift-boxes-2026-10-25/README.md

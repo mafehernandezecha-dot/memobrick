@@ -37,21 +37,24 @@ def svg(box="#d6223b", ribbon="#ffc83d", cell=24):
     colors = {"B": box, "D": shade(box, 0.78), "L": shade(box, 1.12), "K": shade(box, 0.85),
               "R": ribbon, "S": shade(ribbon, 0.8)}
     w, h = len(PATTERN[0]) * cell, len(PATTERN) * cell
-    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}">']
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 {w} {h}" width="{w}" height="{h}"><defs>']
+    # one brick drawing per colour, reused for every cell of that colour (keeps the file small)
+    cx, cy, r = cell / 2, cell / 2 - 1, cell * 0.3
+    for k in sorted({ch for row in PATTERN for ch in row if ch != "."}):
+        c = colors[k]
+        out.append(f'<g id="{k}">'
+                   f'<rect x="1" y="1" width="{cell - 2}" height="{cell - 2}" rx="3" fill="{c}"/>'
+                   f'<rect x="1" y="{cell - 5}" width="{cell - 2}" height="4" rx="2" fill="{shade(c, 0.8)}"/>'
+                   f'<circle cx="{cx}" cy="{cy + 1.5}" r="{r}" fill="{shade(c, 0.78)}"/>'
+                   f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{shade(c, 1.08)}"/>'
+                   f'<circle cx="{cx - r * 0.35:.2f}" cy="{cy - r * 0.35:.2f}" r="{r * 0.28:.2f}" fill="#fff" fill-opacity=".45"/></g>')
+    out.append("</defs>")
     for y, row in enumerate(PATTERN):
         for x, ch in enumerate(row):
-            if ch == ".":
-                continue
-            c = colors[ch]
-            px, py = x * cell, y * cell
-            out.append(f'<rect x="{px + 1}" y="{py + 1}" width="{cell - 2}" height="{cell - 2}" rx="3" fill="{c}"/>')
-            out.append(f'<rect x="{px + 1}" y="{py + cell - 5}" width="{cell - 2}" height="4" rx="2" fill="{shade(c, 0.8)}"/>')
-            cx, cy, r = px + cell / 2, py + cell / 2 - 1, cell * 0.3
-            out.append(f'<circle cx="{cx}" cy="{cy + 1.5}" r="{r}" fill="{shade(c, 0.78)}"/>')
-            out.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{shade(c, 1.08)}"/>')
-            out.append(f'<circle cx="{cx - r * 0.35}" cy="{cy - r * 0.35}" r="{r * 0.28}" fill="#ffffff" fill-opacity="0.45"/>')
+            if ch != ".":
+                out.append(f'<use xlink:href="#{ch}" x="{x * cell}" y="{y * cell}"/>')
     out.append("</svg>")
-    return "\n".join(out)
+    return "".join(out)
 
 
 if __name__ == "__main__":
