@@ -1,8 +1,8 @@
 /* =====================================================================
    MemoBrick: personalise a prepaid Art Gift Kit (no checkout)
 
-   The order confirmation email for "Art Gift Kit - Buy Now, Personalise
-   Later" links each kit to:
+   The store emails each "Art Gift Kit - Buy Now, Personalise Later" kit
+   a link with the kit's size from the order:
 
      /pages/editor?gift=%2320002&email=buyer%40example.com&size=20x20
 
@@ -133,8 +133,8 @@
   const origMsg = window.MB_cartMessage;
   if (!origAdd) return;
 
-  // all gift kits in this session: [{ref, email}]
-  let kits = [{ ref: firstRef, email: buyerEmail }];
+  // all gift kits in this session: [{ref, email, size}]; each link carries its kit's size
+  let kits = [{ ref: firstRef, email: buyerEmail, size: giftSize }];
   readJSON("session", EXTRA, []).forEach((k) => {
     if (k && k.ref && k.ref !== firstRef && !kits.some((x) => x.ref === k.ref)) kits.push(k);
   });
@@ -145,7 +145,7 @@
     return null;
   }
   // the kits' combined value, priced like the Creator prices the kit's own size
-  function kitValue(){ const p = priceOf(giftSize); return kits.length * (p != null ? p : CFG.kitCredit); }
+  function kitValue(){ return kits.reduce((t, k) => { const p = priceOf(k.size || giftSize); return t + (p != null ? p : CFG.kitCredit); }, 0); }
   // sizes this gift may use: the kit size, plus (with combined kits) every
   // size at least that big whose normal price fits inside the kits' value
   function allowed(id){
@@ -219,15 +219,16 @@
   /* add another gift link */
   function parseKit(text, email){
     text = String(text || "").trim();
-    let ref = "", em = String(email || "").trim();
+    let ref = "", em = String(email || "").trim(), size = "";
     try {
       if (/^https?:\/\//i.test(text) || text.indexOf("gift=") >= 0){
         const u = new URL(text, location.origin);
         ref = normRef(u.searchParams.get("gift") || "");
         em = em || (u.searchParams.get("email") || "").trim();
+        size = (u.searchParams.get("size") || "").replace(/[^0-9x]/g, "");
       } else ref = normRef(text);
     } catch (e){ ref = normRef(text); }
-    return { ref: ref.slice(0, 20), email: em.slice(0, 120) };
+    return { ref: ref.slice(0, 20), email: em.slice(0, 120), size: size || CFG.kitSize };
   }
   function addKitDialog(){
     const back = el(`
@@ -385,7 +386,8 @@
       .filter((k) => typeof props[k] === "string" && props[k].length < 2000 && k !== "Final Design" && k !== "_Build Instructions")
       .map((k) => k + ": " + props[k]);
     return [
-      "GIFT KIT PERSONALISATION (no checkout). Prepaid gift kit order(s): " + kits.map((k) => k.ref + " (bought with " + k.email + ")").join(", "),
+      "GIFT KIT PERSONALISATION (no checkout). Prepaid gift kit order(s): " + kits.map((k) => k.ref + " (" + sizeText(k.size || giftSize) + " kit, bought with " + k.email + ")").join(", "),
+      "CHECK: the kit size in each order matches the size above (the size comes from the link).",
       "Size chosen: " + sizeText(sizeId) + (kits.length > 1 ? " (combining " + kits.length + " gift kits into one mosaic)" : ""),
       "Nothing to pay (size covered by the gift kit" + (kits.length > 1 ? "s" : "") + ")",
       "",

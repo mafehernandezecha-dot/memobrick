@@ -42,3 +42,10 @@ Publish "Memobrick kit page fix" (188955361500) again. Nothing else changes.
 - Fixed: the steps said the link comes "in your order confirmation". Nobody added it to Shopify's order confirmation email, so the wording now says "We email you a personalisation link, one for each kit" (copy product.liquid md5 6f43996672710311912da77b34be4b36). Links are sent by the store by hand unless the owner adds them to Settings > Notifications > Order confirmation.
 - Page errors seen in the sandbox are only blocked third party scripts (Shopify shop-js, TikTok pixel), the same on every page and on the live theme.
 - Not changed, noted: product page press logo alt text says "Fox News" (all product pages, live too); brand rule says "As seen on FOX".
+
+## All sizes (2026-10-25, A-2026W43-009)
+- Shopify product 8607545032924 now has 20 sizes, build at home only, priced like the regular build-at-home kits: 10x10 $35, 16x16 $69.88, 20x20 $99.88 (was $99), 20x30 / 30x20 $149, 20x40 $189.88, 40x20 $189.99, 30x30 $209.99, 20x50 / 50x20 $234.99, 30x40 $279, 40x30 $278, 30x50 / 50x30 $334.99, 40x40 $348, 60x30 $414, 40x50 $431.98, 50x50 $530, 50x60 $698, 60x60 $853. New sizes do not track inventory. 20x20 stays first so the live page (no size picker yet) still sells 20x20.
+- Theme copy: "Kit size" picker on the gift kit page (opens on 20x20, price updates), quantity box kept. Gift script: each gift link carries its kit size (&size=), combined kits add up their own sizes' prices, and the email to the store lists each kit's size with a check line.
+- Copy md5: product.liquid a87bf50f20c4e21363b1ebc297cf44f1, memobrick-gift-redeem.js 6ad90f317f8c13245694c9ed81d43743.
+- Preview test (phone): 20 sizes listed, 30x30 shows $209.99, 2 x 30x30 added to cart at $209.99 each, gift link with size=30x30 opens the editor on 30x30 with only 30x30 shown. No page errors from our code.
+- Link to send each buyer: https://mymemobrick.com/pages/editor?gift=%23ORDER&email=BUYER_EMAIL&size=SIZE (SIZE from the order line, e.g. 30x30). One link per kit.

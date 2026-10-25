@@ -162,7 +162,16 @@
           personalisation link, emailed by the store.
         {%- endcomment -%}
         <form method="post" action="/cart/add" class="gk-form" id="gkForm">
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {%- comment -%} every kit size, small to large; opens on 20x20 (the classic gift) {%- endcomment -%}
+          {% assign gk_default = product.selected_or_first_available_variant %}
+          {% unless product.selected_variant %}{% for v in product.variants %}{% if v.title == "20x20" %}{% assign gk_default = v %}{% endif %}{% endfor %}{% endunless %}
+          <label for="gkSize" class="pdp-path-label" style="display:block;margin:0 0 6px">Kit size</label>
+          <select id="gkSize" name="id" style="font:600 16px var(--body,system-ui);padding:10px 12px;border:1px solid #d8d8de;border-radius:12px;background:#fff;width:100%;margin:0 0 14px">
+            {%- assign gk_sizes = "10x10,16x16,20x20,20x30,30x20,20x40,40x20,30x30,20x50,50x20,30x40,40x30,30x50,50x30,40x40,60x30,40x50,50x50,50x60,60x60" | split: "," -%}
+            {%- for sz in gk_sizes -%}{%- for v in product.variants -%}{%- if v.title == sz and v.available -%}
+              <option value="{{ v.id }}" data-price="{{ v.price | money }}"{% if v.id == gk_default.id %} selected{% endif %}>{{ sz | replace: "x", " × " }} in · {{ v.price | money }}</option>
+            {%- endif -%}{%- endfor -%}{%- endfor -%}
+          </select>
           <label for="gkQty" class="pdp-path-label" style="display:block;margin:0 0 6px">How many gift kits?</label>
           <div style="display:flex;gap:10px;align-items:center;margin:0 0 6px">
             <select id="gkQty" name="quantity" style="font:600 16px var(--body,system-ui);padding:10px 12px;border:1px solid #d8d8de;border-radius:12px;background:#fff;min-width:84px">
@@ -174,10 +183,21 @@
           <button type="submit" name="return_to" value="/cart" class="btn btn-ghost pdp-cta" style="margin-top:8px">Add to cart</button>
         </form>
 
+        <script>
+        (function(){
+          var sel = document.getElementById("gkSize"); if (!sel) return;
+          function show(){
+            var o = sel.options[sel.selectedIndex]; if (!o) return;
+            document.querySelectorAll(".pdp-price, .pdp-sticky-info b").forEach(function(el){ el.textContent = o.dataset.price; });
+          }
+          sel.addEventListener("change", show); show();
+        })();
+        </script>
+
         <div class="gk-steps" style="margin:18px 0 6px;padding:18px 18px 8px;border-radius:16px;background:#fff6f0">
           <p class="pdp-path-label" style="margin:0 0 10px">What happens after you buy</p>
           <ol style="margin:0;padding-left:20px;font-size:15px;line-height:1.5">
-            <li style="margin:0 0 8px"><b>You buy the kit.</b> No photo needed today.</li>
+            <li style="margin:0 0 8px"><b>You choose the size and buy the kit.</b> No photo needed today.</li>
             <li style="margin:0 0 8px"><b>We email you a personalisation link</b>, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.</li>
             <li style="margin:0 0 8px"><b>They choose their photo</b> and design their mosaic in our Creator. The kit is already paid, so there's nothing more to pay.</li>
             <li style="margin:0 0 8px"><b>They approve the design.</b> We email them a design proof to check before we make anything.</li>
