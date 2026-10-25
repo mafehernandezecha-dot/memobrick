@@ -54,3 +54,9 @@ Publish "Memobrick kit page fix" (188955361500) again. Nothing else changes.
 - Before this, no email sent gift links automatically (product description promised one; nobody had set it up).
 - Ready to paste: marketing/conversion/site-developer/notifications/order-confirmation-gift-kit-block.liquid. Eden pastes it in Settings > Notifications > Order confirmation > Edit code (agents do not edit order emails). It only renders when the order has the Art Gift Kit; one button per kit with the order number (-1, -2 for several kits), buyer email and the kit size. Rendered with sample data: 2 x 30x30 gives two links #ORDER-1/-2 size=30x30; non-gift orders render nothing.
 - Order: publish the theme copy first (gift mode lives there), then paste the email block, then place one real test order of the gift kit.
+
+## Live (2026-10-25)
+- Eden published "Memobrick gift kit flow" (188683092188); it is the MAIN theme, file checksums match the tested copy.
+- Live check (phone): gift kit page lists 20 sizes, 30x30 shows $209.99, 2 x 30x30 into the cart at $209.99; gift link size=30x30 opens gift mode on 30x30 only; the normal editor has no banner and all 20 sizes.
+- Undo theme: "Memobrick kit page fix" (188955361500).
+- Still to do by Eden: paste notifications/order-confirmation-gift-kit-block.liquid into the order confirmation email, then one real test order.
