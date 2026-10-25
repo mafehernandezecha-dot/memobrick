@@ -140,7 +140,7 @@ Do first (as of 2026-10-25):
 - Commit: 788f1ec
 - Reason: Publishes the brick mosaic size guide live on the Shopify blog (news) at /blogs/news/brick-mosaic-sizes, with FAQ schema. It answers the size question that stops buyers choosing a kit, ahead of the Christmas rush.
 - Expires: 2026-11-06
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261023-1
 
 ## A-2026W43-003
