@@ -60,3 +60,4 @@ Publish "Memobrick kit page fix" (188955361500) again. Nothing else changes.
 - Live check (phone): gift kit page lists 20 sizes, 30x30 shows $209.99, 2 x 30x30 into the cart at $209.99; gift link size=30x30 opens gift mode on 30x30 only; the normal editor has no banner and all 20 sizes.
 - Undo theme: "Memobrick kit page fix" (188955361500).
 - Still to do by Eden: paste notifications/order-confirmation-gift-kit-block.liquid into the order confirmation email, then one real test order.
+- 2026-10-25: Eden pasted the gift block into the order confirmation email (between the order summary table and the "Customer information" section, line ~463) and saved. Not yet confirmed with a real gift kit order.
