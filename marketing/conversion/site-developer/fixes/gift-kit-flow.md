@@ -35,3 +35,10 @@ Removes the dead end after a gift kit purchase, so gift kits get personalised an
 
 ## Undo
 Publish "Memobrick kit page fix" (188955361500) again. Nothing else changes.
+
+## Review 2026-10-25 (coordinator session, owner asked "check for errors, make sure it is only the gift kit")
+- Scope: product page changes apply only to the Art Gift Kit (product id 8607545032924 / handle unlimited-memobrick). Other product pages render as before (20x20 kit checked). Gift mode on the editor runs only with ?gift= in the link; the editor without it is unchanged. Home page unchanged.
+- Live theme "Memobrick kit page fix" is unchanged since the copy was made (md5 of theme.liquid, product.liquid, memobrick-site.liquid, page.editor.liquid match the base), so publishing the copy loses nothing.
+- Fixed: the steps said the link comes "in your order confirmation". Nobody added it to Shopify's order confirmation email, so the wording now says "We email you a personalisation link, one for each kit" (copy product.liquid md5 6f43996672710311912da77b34be4b36). Links are sent by the store by hand unless the owner adds them to Settings > Notifications > Order confirmation.
+- Page errors seen in the sandbox are only blocked third party scripts (Shopify shop-js, TikTok pixel), the same on every page and on the live theme.
+- Not changed, noted: product page press logo alt text says "Fox News" (all product pages, live too); brand rule says "As seen on FOX".

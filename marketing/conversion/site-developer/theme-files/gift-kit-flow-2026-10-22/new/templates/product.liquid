@@ -159,7 +159,7 @@
       {% elsif is_gift_kit %}
         {%- comment -%}
           Gift kit: buy one or more kits with no photo. Each kit gets its own
-          personalisation link in the order confirmation email.
+          personalisation link, emailed by the store.
         {%- endcomment -%}
         <form method="post" action="/cart/add" class="gk-form" id="gkForm">
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -178,7 +178,7 @@
           <p class="pdp-path-label" style="margin:0 0 10px">What happens after you buy</p>
           <ol style="margin:0;padding-left:20px;font-size:15px;line-height:1.5">
             <li style="margin:0 0 8px"><b>You buy the kit.</b> No photo needed today.</li>
-            <li style="margin:0 0 8px"><b>We email you a personalisation link</b> in your order confirmation, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.</li>
+            <li style="margin:0 0 8px"><b>We email you a personalisation link</b>, one for each kit. Forward it to the person you're gifting, whenever you choose, or open it yourself.</li>
             <li style="margin:0 0 8px"><b>They choose their photo</b> and design their mosaic in our Creator. The kit is already paid, so there's nothing more to pay.</li>
             <li style="margin:0 0 8px"><b>They approve the design.</b> We email them a design proof to check before we make anything.</li>
             <li style="margin:0 0 8px"><b>We make the kit and ship it directly to them.</b></li>
