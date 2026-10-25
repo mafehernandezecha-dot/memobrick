@@ -2,13 +2,13 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
+Updated 2026-10-25. No new proposals (growth-analyst and site-developer reports proposed none). Archived 4 expired: A-2026W42-033, 030, 031 and 032. Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-Do first today (2026-10-23):
+Do first (as of 2026-10-25):
 
 - Reject A-2026W43-002: the kit page fix (001) went live today, so it is moot.
 - A-2026W43-004 (approved) has post times of Oct 22 and Oct 23 already passing; the publisher says the Buffer connector is not connected. Reconnect Buffer or the missed posts will not go out before the approval expires Oct 25.
@@ -30,21 +30,7 @@ Do first today (2026-10-23):
 - Expires: 2026-10-25
 - Status: approved
 - From: chat
-- Note: Eden approved in chat on 2026-10-21 ("yes" to the three new times), recorded by the coordinator session.
-- Note: 2026-10-23: holiday-build-together missed its Fri 12:00 ET slot (Instagram carousel failed in Buffer, fixed); moved to Sat Oct 24 19:00 ET on Instagram and Facebook, before this item expires. family-photo-dm went out Oct 22.
-
-## A-2026W42-033
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W43/week.md
-- Commit: 564a57f
-- Reason: Approving this approves all 7 W43 posts listed in week.md (3 new reels, 4 carousels, Oct 19 to 25, IG/FB/TikTok/Pinterest). The social publisher then prepares a posting kit for each one. To send back single posts, write `changes: <post-id> <note>`; posts you do not name stay approved.
-- Expires: 2026-10-24
-- Status: approved
-- From: P-social-planner-20261014-1
-- Note: First post goes out Mon Oct 19 19:00 ET, so decide by Oct 18. Uses EARLYHOLIDAY20 (active, no end date stated in the posts) and Order by Dec 15 (Facts table), only in S-20261020-1; "As seen on FOX" in S-20261025-1 follows the Facts wording. Before approving, confirm the woman in the 2022 portrait (with her cat) agreed to its use: it appears in 6 of the 7 posts; if not, send those back with `changes:`. Pinterest business account confirmed by the owner (2026-10-14), so the pins post too.
-- Approved: Eden approved the whole week in chat on 2026-10-14 ("approved"), after reviewing the picture proof and the rebuilt Monday reel (commit 564a57f), recorded by the coordinator session. Portrait consent: Eden did not say it separately; publisher should still post as approved.
+- Note: Eden approved in chat on 2026-10-21 ("yes" to the three new times), recorded by the coordinator session. Update 2026-10-23: holiday-build-together missed its Fri 12:00 ET slot (Instagram carousel failed in Buffer, fixed); moved to Sat Oct 24 19:00 ET on Instagram and Facebook, before this item expires. family-photo-dm went out Oct 22.
 
 ## A-2026W43-002
 - Agent: conversion-auditor
@@ -57,45 +43,6 @@ Do first today (2026-10-23):
 - Status: pending
 - From: P-conversion-auditor-20261021-1
 - Flag: Duplicate of A-2026W43-001, which is the built and tested version (site-developer asks to approve that one and let this one close). 001 went live Oct 23, so this one is moot: reject it.
-
-## A-2026W42-030
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/pitches/shescribes-2026.md
-- Commit: c88ed90
-- Reason: Replaces A-2026W42-015. Commission only, no free kit. If approved, a Gmail draft to Kimberly@SheScribes.com (HTML version) is created for the owner to send, asking for inclusion in her 2026 guide and inviting her to Collabs at 10%/10%.
-- Expires: 2026-10-24
-- Status: approved
-- From: P-outreach-gift-guide-pr-20261014-1
-- Flag: Offers the Collabs creator tier (10% commission, 10% code for readers), which is not listed as active in offers-calendar.md. It is your existing Default Tier in Collabs; add it to offers-calendar.md, or approve knowing this pitch names it.
-- Note: Audience-fit score 4. The site sells paid placements; do not pay.
-
-## A-2026W42-031
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/pitches/love-tabitha-2026.md
-- Commit: c88ed90
-- Reason: Replaces A-2026W42-016. Commission only, no free kit. If approved, a Gmail draft to contact@lovetabitha.com (unverified, from search text) is created for the owner to send; if the page uses a form, the report gives the text to paste.
-- Expires: 2026-10-24
-- Status: approved
-- From: P-outreach-gift-guide-pr-20261014-2
-- Flag: Offers the Collabs creator tier (10% commission, 10% code for readers), which is not listed as active in offers-calendar.md. It is your existing Default Tier in Collabs; add it to offers-calendar.md, or approve knowing this pitch names it.
-- Note: Audience-fit score 4. Email address is unverified.
-
-## A-2026W42-032
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/pitches/emily-reviews-2026.md
-- Commit: c88ed90
-- Reason: Replaces A-2026W41-005 and applies Eden's note (more sentimental). Commission only, no free kit. If approved, a Gmail draft to EmilyReviewsCom@gmail.com is created for the owner to send; pitches are wanted by Nov 15.
-- Expires: 2026-10-24
-- Status: approved
-- From: P-outreach-gift-guide-pr-20261014-3
-- Flag: Offers the Collabs creator tier (10% commission, 10% code for readers), which is not listed as active in offers-calendar.md. It is your existing Default Tier in Collabs; add it to offers-calendar.md, or approve knowing this pitch names it.
-- Note: Audience-fit score 4.
 
 ## A-2026W41-010
 - Agent: email-flow-optimizer
