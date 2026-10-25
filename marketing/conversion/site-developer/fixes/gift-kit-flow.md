@@ -49,3 +49,8 @@ Publish "Memobrick kit page fix" (188955361500) again. Nothing else changes.
 - Copy md5: product.liquid a87bf50f20c4e21363b1ebc297cf44f1, memobrick-gift-redeem.js 6ad90f317f8c13245694c9ed81d43743.
 - Preview test (phone): 20 sizes listed, 30x30 shows $209.99, 2 x 30x30 added to cart at $209.99 each, gift link with size=30x30 opens the editor on 30x30 with only 30x30 shown. No page errors from our code.
 - Link to send each buyer: https://mymemobrick.com/pages/editor?gift=%23ORDER&email=BUYER_EMAIL&size=SIZE (SIZE from the order line, e.g. 30x30). One link per kit.
+
+## Automatic gift link email (2026-10-25)
+- Before this, no email sent gift links automatically (product description promised one; nobody had set it up).
+- Ready to paste: marketing/conversion/site-developer/notifications/order-confirmation-gift-kit-block.liquid. Eden pastes it in Settings > Notifications > Order confirmation > Edit code (agents do not edit order emails). It only renders when the order has the Art Gift Kit; one button per kit with the order number (-1, -2 for several kits), buyer email and the kit size. Rendered with sample data: 2 x 30x30 gives two links #ORDER-1/-2 size=30x30; non-gift orders render nothing.
+- Order: publish the theme copy first (gift mode lives there), then paste the email block, then place one real test order of the gift kit.

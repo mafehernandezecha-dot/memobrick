@@ -1,0 +1,31 @@
+{%- comment -%}
+  MemoBrick Art Gift Kit: personalisation links in the order confirmation email.
+  Paste this block into Shopify admin > Settings > Notifications > Customer notifications >
+  Order confirmation > Edit code, right ABOVE the shipping address section (the line with "requires_shipping")
+  (or anywhere after the order summary). It shows nothing unless the order contains the Art Gift Kit
+  (product 8607545032924), so every other order email stays exactly the same.
+  One link per kit: 2 kits = 2 links (order number -1, -2), each with that kit's size.
+{%- endcomment -%}
+{%- assign mb_gift_kits = 0 -%}
+{%- for line in line_items -%}{%- if line.product.id == 8607545032924 -%}{%- assign mb_gift_kits = mb_gift_kits | plus: line.quantity -%}{%- endif -%}{%- endfor -%}
+{%- if mb_gift_kits > 0 -%}
+<table class="row" style="width:100%;border-spacing:0;border-collapse:collapse;margin:24px 0">
+  <tr><td style="background:#fff6f0;border-radius:12px;padding:20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#1d1d1f">
+    <h2 style="font-size:20px;margin:0 0 8px">Your gift {% if mb_gift_kits > 1 %}links{% else %}link{% endif %}</h2>
+    <p style="font-size:15px;line-height:1.5;margin:0 0 14px">Forward {% if mb_gift_kits > 1 %}each link{% else %}this link{% endif %} to the person you're gifting, whenever you're ready, or open it yourself. They choose their photo, design their mosaic and send it to us. It's already paid, so there's nothing more to pay. We email them a design proof before we make anything, then ship the kit straight to them.</p>
+    {%- assign mb_n = 0 -%}
+    {%- for line in line_items -%}{%- if line.product.id == 8607545032924 -%}
+      {%- for i in (1..line.quantity) -%}
+        {%- assign mb_n = mb_n | plus: 1 -%}
+        {%- if mb_gift_kits > 1 -%}{%- assign mb_ref = order_name | append: "-" | append: mb_n -%}{%- else -%}{%- assign mb_ref = order_name -%}{%- endif -%}
+        {%- assign mb_size = line.variant.title | default: "20x20" -%}
+        <p style="margin:0 0 10px">
+          <a href="https://mymemobrick.com/pages/editor?gift={{ mb_ref | url_encode }}&email={{ email | url_encode }}&size={{ mb_size | url_encode }}"
+             style="display:inline-block;background:#d66a7e;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 20px;border-radius:999px">Personalise gift kit {{ mb_ref }} ({{ mb_size | replace: "x", " × " }} in)</a>
+        </p>
+      {%- endfor -%}
+    {%- endif -%}{%- endfor -%}
+    <p style="font-size:13px;line-height:1.5;color:#666;margin:10px 0 0">Buying more than one? Each link can go to a different person, or one person can add several links to make one bigger mosaic.</p>
+  </td></tr>
+</table>
+{%- endif -%}
