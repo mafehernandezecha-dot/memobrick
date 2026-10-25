@@ -151,7 +151,7 @@ Do first (as of 2026-10-25):
 - Commit: db7271f
 - Reason: Republishes the Starry Night (20x20, 20x30) and Mona Lisa kits with new listings on the Online Store and Google channels. These pages drew search buyers last holiday and are drafts today.
 - Expires: 2026-11-10
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261020-3
 - Flag: Not approved on Oct 20: waits for Eden to confirm these designs can still be made. Do not approve until then.
 
