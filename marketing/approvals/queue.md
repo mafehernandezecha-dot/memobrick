@@ -128,7 +128,7 @@ Do first (as of 2026-10-25):
 - Commit: 63e84af
 - Reason: Approving this item approves all 7 W45 posts (Nov 2 to 8) on every channel in each post's Channels column, including YouTube Shorts for the 3 reels; the publisher then prepares and schedules each one. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved).
 - Expires: 2026-11-07
-- Status: pending
+- Status: changes: send preview picture
 - From: P-social-planner-20261022-1
 - Note: Mon and Thu posts use EARLYHOLIDAY20 (active, end date still unknown) and Dec 15. If you end the code first, send those two back with `changes:`. All 7 posts need the AI label on.
 
