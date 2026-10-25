@@ -191,6 +191,18 @@ Do first (as of 2026-10-25):
 - From: chat
 - Note: Eden asked in chat on 2026-10-25 "can you add all the sizes on the gift kit" and chose "Same as normal kit" prices and "Build at home only".
 
+## A-2026W43-010
+- Agent: site-developer
+- Executor: coordinator session
+- Type: site-change
+- Draft: marketing/conversion/site-developer/theme-files/holiday-gift-boxes-2026-10-25/README.md
+- Commit: 610cac6
+- Reason: Homepage holiday touches in the unpublished theme copy "Memobrick holiday gift boxes" (189177626844): brick gift boxes drift in the background while scrolling (edges only, behind the content), promo bar reads "Order by December 15 to have it before Christmas · Save 20% with code EARLYHOLIDAY20", and a "Giving it as a gift? Give a Gift Kit, they pick the photo →" link under the free proof link. Live theme unchanged until Eden publishes the copy.
+- Expires: 2026-12-31
+- Status: approved
+- From: chat
+- Note: Eden approved the first (flat) gift box version and the text touches in chat on 2026-10-25 ("no, the first attempt ws beteer", then "yes ok").
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
