@@ -179,6 +179,18 @@ Do first (as of 2026-10-25):
 - From: chat
 - Note: Eden chose option 1 in chat on 2026-10-23 ("1": Hugo adds free music to the videos before scheduling; she may add trending sounds by hand when she has time).
 
+## A-2026W43-009
+- Agent: site-developer
+- Executor: coordinator session
+- Type: offer
+- Draft: marketing/conversion/site-developer/fixes/gift-kit-flow.md
+- Commit: e18b4b0
+- Reason: Art Gift Kit (product 8607545032924) in every kit size, build at home only, each size priced like the regular build-at-home kit (10x10 $35 up to 60x60 $853; 20x20 moves from $99 to $99.88). No compare-at prices. Theme copy "Memobrick gift kit flow" gets a size picker on the gift kit page and gift links carry the kit size; combined kits add up their own sizes' prices. Live theme unchanged until Eden publishes the copy.
+- Expires: 2026-12-31
+- Status: approved
+- From: chat
+- Note: Eden asked in chat on 2026-10-25 "can you add all the sizes on the gift kit" and chose "Same as normal kit" prices and "Build at home only".
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
