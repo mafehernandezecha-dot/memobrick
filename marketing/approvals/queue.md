@@ -258,13 +258,13 @@ Do first (as of 2026-10-26):
 - Agent: email-campaign-writer
 - Executor: coordinator session
 - Type: offer
-- Draft: marketing/offers/brickfriday20-2026.md
-- Commit: 8c7a152
-- Reason: Black Friday to Cyber Monday code BRICKFRIDAY20, 20% off the same collections as EARLYHOLIDAY20, Nov 27 to Nov 30 ET, no combining. Created in Shopify as scheduled. Emails, ads and posts may use it once their own items are approved.
+- Draft: marketing/offers/black-friday-cyber-monday-2026.md
+- Commit: 77eb569
+- Reason: BRICKFRIDAY25 (25% off, Fri Nov 27 to Sun Nov 29 ET) and CYBERBRICK20 (20% off, Mon Nov 30 ET), same collections as EARLYHOLIDAY20, no combining. Both created in Shopify as scheduled. Emails, ads and posts may use them once their own items are approved.
 - Expires: 2026-12-01
 - Status: approved
 - From: chat
-- Note: Eden in chat 2026-10-26: "create a dicount name for it with the same 20% off".
+- Note: Eden in chat 2026-10-26: "create a dicount name for it with the same 20% off", "lets do black friday 25%", "cybermonday 20%".
 
 ## A-2026W41-012
 - Agent: seo-technical
