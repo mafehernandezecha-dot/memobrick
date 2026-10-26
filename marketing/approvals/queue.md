@@ -158,6 +158,18 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: Eden chose option 1 in chat on 2026-10-23 ("1": Hugo adds free music to the videos before scheduling; she may add trending sounds by hand when she has time).
 
+## A-2026W44-001
+- Agent: site-developer
+- Executor: coordinator session
+- Type: site-change
+- Draft: marketing/conversion/site-developer/gift-kit-image/README.md
+- Commit: 668a2c1
+- Reason: Art Gift Kit (product 8607545032924) gets the new first picture ("Give it now. They pick the photo.", real box with ribbon, question-mark mosaic, 3 steps). The 4 old photos that had the Gemini star are replaced by the same photos with the star painted out; the 5th photo stays last.
+- Expires: 2026-12-31
+- Status: approved
+- From: chat
+- Note: Eden approved the picture in chat on 2026-10-26 ("looks good") and asked "delete gemini logo". Done on 2026-10-26: new media first, old media 36276221182172, 36276221214940, 36276221247708, 36276221280476 deleted.
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
