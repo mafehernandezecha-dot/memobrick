@@ -290,6 +290,18 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: Eden approved 1-5 in chat on 2026-10-26 ("ok"). Item 1 done the same day; 2-5 through a Claude in Chrome prompt.
 
+## A-2026W44-012
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-gift-kit-adgroup-on-2026-10-26.md
+- Commit: f51e6ab
+- Reason: Enable the Holiday Gifts ad group "Gift Kit, Photo Later" now instead of Nov 16. Budget unchanged.
+- Expires: 2026-11-02
+- Status: approved
+- From: chat
+- Note: Eden in chat 2026-10-26: "yes".
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
