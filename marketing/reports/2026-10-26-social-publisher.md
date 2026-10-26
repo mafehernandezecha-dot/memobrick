@@ -26,7 +26,7 @@ None
 - TikTok photo carousels cannot go through Buffer (video only). Still waiting for the Mac or a hand post: Oct 22, 24, 25 (missed) and Oct 27, 29, 31, Nov 1. Pinterest pins for every post since Oct 19 are also still waiting. All those kits still say `Status: ready` with no Mac result, so the Mac social-post job has not run. Owner: check that the Mac job is installed and the Mac is awake at post times, or post from the kits on your phone and send me the links.
 - YouTube Shorts for the W43 and W44 reels: owner OK still pending (Missing owner inputs in the queue).
 - Facebook AI label: Buffer has no Facebook AI setting, so the 4 new Facebook carousels go out without it. Owner can toggle it in Meta Business Suite after posting if wanted.
-- EARLYHOLIDAY20 still has no end date; Oct 26 and Nov 1 posts use it. If it ends before Nov 1, tell me and I will pull the Nov 1 posts.
+- EARLYHOLIDAY20 now ends Nov 22 (offers calendar, owner in chat), so the Oct 26 and Nov 1 posts that use it stay as they are.
 - The Oct 27 post links to /pages/free-preview; the proof form has not been tested yet (coordinator plan item 1).
 - cdn.shopify.com is blocked from this session, so the sound in the Shopify copies was not checked directly; the local files they came from have audio.
 - No data pull snapshots (marketing/data/latest.md says never). Facebook social sessions in Shopify (310 last week) include paid Meta traffic, so organic and paid cannot be split.
