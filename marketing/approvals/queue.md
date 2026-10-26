@@ -170,6 +170,54 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: Eden approved the picture in chat on 2026-10-26 ("looks good") and asked "delete gemini logo". Done on 2026-10-26: new media first, old media 36276221182172, 36276221214940, 36276221247708, 36276221280476 deleted.
 
+## A-2026W44-002
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/meta-pause-proven-videos-2026-10-26.md
+- Commit: 2727850
+- Reason: Pause the Meta campaign MB | Sales | Purchases | Proven Videos | Oct26 (120252562193330597); budget stays $60 so it can resume. 2 Shopify orders ($90.91) in two weeks on $60 a day.
+- Expires: 2026-10-31
+- Status: approved
+- From: chat
+- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
+
+## A-2026W44-003
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-gift-collection-url.md
+- Commit: 2727850
+- Reason: Google Holiday Gifts campaign (24325020428): final URL of each ad from /products/2-2-boards to /collections/the-gift-for-everyone, display path products to gifts. No spend change.
+- Expires: 2026-10-31
+- Status: approved
+- From: chat
+- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
+
+## A-2026W44-004
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-utm-tracking-template.md
+- Commit: 2727850
+- Reason: Google Ads account-level Final URL suffix utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_content={creative}&utm_term={keyword}; auto-tagging stays on. No spend change.
+- Expires: 2026-11-02
+- Status: approved
+- From: chat
+- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
+
+## A-2026W44-005
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/meta-christmas-campaign-paused-2026-10-26.md
+- Commit: 2727850
+- Reason: Create a PAUSED Meta Christmas campaign ($40 a day) from last holiday's couple, cat and dog videos. Launching it is a separate approval.
+- Expires: 2026-11-06
+- Status: approved
+- From: chat
+- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
