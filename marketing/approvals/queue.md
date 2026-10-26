@@ -43,7 +43,7 @@ Do first (as of 2026-10-26):
 - Commit: 04e6a7e
 - Reason: Same kit page bug as A-2026W43-001, found by the conversion auditor (the creator check tests the product title "Custom Bricked Mosaic", which the Oct 20 rewrite removed). Its draft also offers a fallback: restore the old titles on the 22 kits with seo-technical's restore.py.
 - Expires: 2026-10-28
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261021-1
 - Flag: Duplicate of A-2026W43-001, which is the built and tested version (site-developer asks to approve that one and let this one close). 001 went live Oct 23, so this one is moot: reject it.
 
