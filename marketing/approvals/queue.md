@@ -192,7 +192,7 @@ Do first (as of 2026-10-26):
 - Expires: 2026-10-31
 - Status: approved
 - From: chat
-- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
+- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all"). Done 2026-10-26: 2 ads changed to the gift collection page, 2 already used it.
 
 ## A-2026W44-004
 - Agent: ads-analyst
@@ -204,7 +204,7 @@ Do first (as of 2026-10-26):
 - Expires: 2026-11-02
 - Status: approved
 - From: chat
-- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
+- Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all"). Checked 2026-10-26: the suffix was already set to this exact value; nothing saved.
 
 ## A-2026W44-005
 - Agent: ads-analyst
