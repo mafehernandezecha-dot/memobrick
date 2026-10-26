@@ -278,6 +278,18 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: Eden approved A, B, C in chat on 2026-10-26 ("ok"). B (stock fix) done the same day in Shopify; A and C through a Claude in Chrome prompt.
 
+## A-2026W44-011
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-media-fixes-2026-10-26.md
+- Commit: f163066
+- Reason: Custom photo kits published to the Google & YouTube channel (done), business name appeal, remove the dead 26% promotion, pause 2 PMax asset groups with 0 sales in 90 days, swap 4 losing PMax headlines.
+- Expires: 2026-11-02
+- Status: approved
+- From: chat
+- Note: Eden approved 1-5 in chat on 2026-10-26 ("ok"). Item 1 done the same day; 2-5 through a Claude in Chrome prompt.
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
