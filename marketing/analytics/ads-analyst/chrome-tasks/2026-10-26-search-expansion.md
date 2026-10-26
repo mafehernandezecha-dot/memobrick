@@ -1,4 +1,4 @@
-Status: ready
+Status: done
 
 # Claude in Chrome task: Holiday Gifts keyword expansion, negatives and new ads (proposals P-ads-analyst-20261026-5, optional -6 and -7)
 
@@ -410,3 +410,20 @@ F3. Report: the Part 0 notes as tables; every negative added; every keyword adde
 ## Result
 
 (filled in by the owner's Chrome routine or by Eden)
+
+Run by Eden in Claude in Chrome, 2026-10-26 (A-2026W44-006, 007, 008). Summary of Chrome's report:
+
+- Part 0 (before): Holiday Gifts was on MANUAL CPC with $0.01 bids ("below first page bid" on most keywords), $10/day.
+  Last 30 days: Christmas Photo Gifts $46.43, 38 clicks, 0 conv; Gifts For Family & Couples $9.91, 10 clicks, 0 conv.
+  43 keywords, only 5 with cost; 9 search terms with cost, all 0 conv. 62 campaign-level broad negatives; shared list
+  "MB negatives 2026-10-14" (31) applied to Holiday Gifts, NonBrand and PMax #2.
+- E: now Maximize conversion value, no target, $10/day, status Eligible (Learning).
+- A: list "MB negatives 2026-10-26" (52) applied to Holiday Gifts and NonBrand (paused). 28 overlap the 10-14 list.
+- Removed campaign-level broad negatives "lego", "diy", "last minute" (Eden agreed in chat); "free" kept.
+- B: 6 keywords added to Christmas Photo Gifts (4 already existed).
+- C: C1 7, C2 10, C3 10, C4 13 keywords (enabled); C5 7, C6 7, C7 9 (paused until Nov 16); "screen free family
+  activity" skipped (blocked by "free"); ~20 planned keywords already existed. All 7 RSAs saved with no policy issues;
+  ad strength Pending, Parents & Grandparents "Poor".
+- D: "Brick Portrait Searches (exact)", 4 exact keywords, enabled, under review.
+- F: 116 keywords; low volume: "unique christmas gift from a photo", "brick mosaic from photo", "brick art from photo",
+  [turn picture into brick art]. No negative conflicts. Search Partners recommendation not applied.
