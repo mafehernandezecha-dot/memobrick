@@ -266,6 +266,18 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: Eden in chat 2026-10-26: "create a dicount name for it with the same 20% off", "lets do black friday 25%", "cybermonday 20%".
 
+## A-2026W44-010
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-pmax-troas-mothersday-2026-10-26.md
+- Commit: bd2196d
+- Reason: PMax #2 target ROAS 460% to 320% (limited by target, spends ~$10 of $48/day), pause the Mother's Day asset group, and Gift Kit sizes set to continue selling so Google lists them in stock. Budget unchanged.
+- Expires: 2026-11-02
+- Status: approved
+- From: chat
+- Note: Eden approved A, B, C in chat on 2026-10-26 ("ok"). B (stock fix) done the same day in Shopify; A and C through a Claude in Chrome prompt.
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
