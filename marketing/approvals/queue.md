@@ -254,6 +254,18 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: P-ads-analyst-20261026-7. Eden approved in chat on 2026-10-26 ("for gogle 1, 2, 3 yes"). Applied through the Claude in Chrome task chrome-tasks/2026-10-26-search-expansion.md.
 
+## A-2026W44-009
+- Agent: email-campaign-writer
+- Executor: coordinator session
+- Type: offer
+- Draft: marketing/offers/brickfriday20-2026.md
+- Commit: 8c7a152
+- Reason: Black Friday to Cyber Monday code BRICKFRIDAY20, 20% off the same collections as EARLYHOLIDAY20, Nov 27 to Nov 30 ET, no combining. Created in Shopify as scheduled. Emails, ads and posts may use it once their own items are approved.
+- Expires: 2026-12-01
+- Status: approved
+- From: chat
+- Note: Eden in chat 2026-10-26: "create a dicount name for it with the same 20% off".
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
