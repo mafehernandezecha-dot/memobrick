@@ -8,6 +8,7 @@ Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> 
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
+Buffer: 6adf3d319c091261b912b746 (scheduled 2026-10-31 11:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Tag the dog (or cat) who wins Halloween.
@@ -26,6 +27,7 @@ Media: marketing/social/planner/2026-W44/S-20261031-1-2.png
 Media: marketing/social/planner/2026-W44/S-20261031-1-3.png
 
 ## Facebook (carousel)
+Buffer: 6adf3d3543e462eb44736cdd (scheduled 2026-10-31 11:00 ET; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Tag the dog (or cat) who wins Halloween.
@@ -65,5 +67,7 @@ Alt text: Three slides: a dog in a Halloween costume, the same photo as a brick 
 Media: marketing/social/planner/2026-W44/S-20261031-1-pin.png
 
 ## Result
+
+Buffer media (2026-10-26): JPEG copies on Shopify Files (memobrick-social-2026-10-31-pet-halloween-1..3.jpg); Instagram with empty alt text and the AI label on; Facebook with alt text (Buffer has no Facebook AI setting, so the AI label is not set there). TikTok photo carousel and Pinterest stay with the Mac.
 
 (filled in by the owner's Mac after posting)

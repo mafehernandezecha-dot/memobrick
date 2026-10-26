@@ -22,7 +22,7 @@ Start your design at the link in our bio.
 Hashtags: #brickmosaic #photogift #anniversarygift #giftforhim #christmasgift
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=instagram&utm_medium=organic&utm_campaign=2026-10-couple-gift
 Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box opens and hands press bricks into a board.
-Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
+Media: marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4
 
 ## Facebook (Reel)
 Buffer: 6ad8a54bbefea41f139e6bba (scheduled 2026-10-26 19:00 ET; Buffer posts this channel, the Mac skips it)
@@ -39,7 +39,7 @@ Start your design at the link in our bio.
 Hashtags: #brickmosaic #photogift #anniversarygift #giftforhim #christmasgift
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=organic&utm_campaign=2026-10-couple-gift
 Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box opens and hands press bricks into a board.
-Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
+Media: marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4
 
 ## TikTok (video)
 Buffer: 6ad8a55b3021c1ef52b39328 (scheduled 2026-10-26 19:00 ET; Buffer posts this channel, the Mac skips it)
@@ -50,7 +50,7 @@ Their photo, built by hand, brick by brick. Code EARLYHOLIDAY20 for 20% off.
 Hashtags: #brickmosaic #photogift #couplegoals #diygift
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=tiktok&utm_medium=organic&utm_campaign=2026-10-couple-gift
 Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box opens and hands press bricks into a board.
-Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
+Media: marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4
 
 ## Pinterest
 
@@ -59,7 +59,7 @@ Pin description: See a couple photo turn into a DIY brick mosaic made of tiny 1Ã
 Board: Couple gift ideas
 Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_medium=organic&utm_campaign=2026-10-couple-gift
 Alt text: Video: a couple photo turns into a 1x1 brick mosaic, then the kit box opens and hands press bricks into a board.
-Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
+Media: marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4
 
 ## YouTube Shorts (added channel)
 
@@ -73,8 +73,10 @@ https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_c
 
 Altered or synthetic content: Yes
 Audience: No, it's not made for kids
-Media: marketing/social/planner/2026-W44/S-20261026-1.mp4
+Media: marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4
 
 ## Result
+
+Music (A-2026W43-008): every channel uses marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4 (original music added by add-music.sh); the Buffer posts use the same file on Shopify (memobrick-social-2026-10-26-couple-gift-music.mp4).
 
 (filled in by the owner's Mac after posting)

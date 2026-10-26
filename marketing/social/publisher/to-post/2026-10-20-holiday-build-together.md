@@ -69,3 +69,7 @@ Media: marketing/social/planner/2026-W43/S-20261020-1-pin.png
 (filled in by the owner's Mac after posting)
 
 Buffer (2026-10-23): Instagram 6adbb827bd33ce99c3e9f16d, Facebook 6adbb82cbd33ce99c3e9f25a, both Sat Oct 24 19:00 ET. Media: JPEG copies on Shopify Files (memobrick-social-2026-10-20-holiday-build-together-1..3.jpg). TikTok takes video only in Buffer, so no TikTok post. Pinterest stays with the Mac.
+
+Live (checked 2026-10-26 in Buffer):
+- Instagram: https://www.instagram.com/p/De5Q_ONFKWv/ (Buffer 6adbb827bd33ce99c3e9f16d, sent 2026-10-24 19:02 ET)
+- Facebook: https://www.facebook.com/1539743704853420/posts/1543210941173363 (Buffer 6adbb82cbd33ce99c3e9f25a, sent 2026-10-24 19:00 ET)

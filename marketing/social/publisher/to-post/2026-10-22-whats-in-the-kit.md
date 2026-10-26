@@ -75,3 +75,7 @@ Media: marketing/social/planner/2026-W43/S-20261022-1-pin.png
 (filled in by the owner's Mac after posting)
 
 Instagram (2026-10-23): first try failed in Buffer ("issue with the media"). Republished with JPEG slides and no alt text. Live: https://www.instagram.com/p/De2VDUgH2Z4/ (Buffer 6ad8a510fe0d0b6022851f00).
+
+Live (checked 2026-10-26 in Buffer):
+- Instagram: https://www.instagram.com/p/De2VDUgH2Z4/ (Buffer 6ad8a510fe0d0b6022851f00, sent 2026-10-23 15:39 ET)
+- Facebook: https://www.facebook.com/1539743704853420/posts/1541246128036511 (Buffer 6ad8a515befea41f139e56bc, sent 2026-10-22 19:01 ET)

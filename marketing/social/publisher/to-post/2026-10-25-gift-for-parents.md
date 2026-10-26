@@ -69,3 +69,7 @@ Media: marketing/social/planner/2026-W43/S-20261025-1-pin.png
 ## Result
 
 (filled in by the owner's Mac after posting)
+
+Live (checked 2026-10-26 in Buffer):
+- Instagram: https://www.instagram.com/p/De6_LdJkdw5/ (Buffer 6ad8a53e0807acdda125ee67, sent 2026-10-25 11:04 ET)
+- Facebook: https://www.facebook.com/1539743704853420/posts/1543881971106260 (Buffer 6ad8a5433021c1ef52b38f37, sent 2026-10-25 11:02 ET)

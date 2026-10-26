@@ -72,3 +72,8 @@ Media: marketing/social/planner/2026-W43/S-20261023-1.mp4
 ## Result
 
 (filled in by the owner's Mac after posting)
+
+Live (checked 2026-10-26 in Buffer):
+- Instagram: https://www.instagram.com/reel/De2sUjfDv0y/ (Buffer 6ad8a51afe0d0b60228520ba, sent 2026-10-23 19:03 ET)
+- Facebook: https://www.facebook.com/reel/1800900014453252/ (Buffer 6ad8a51e3021c1ef52b382d8, sent 2026-10-23 19:01 ET)
+- TikTok: https://www.tiktok.com/@memobrick/video/7700002328522280205 (Buffer 6ad8a52e0807acdda125ea0f, sent 2026-10-23 19:03 ET)

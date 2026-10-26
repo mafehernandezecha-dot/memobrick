@@ -53,3 +53,8 @@ Media: marketing/social/publisher/media/2026-10-18-family-photo.mp4
 (filled in by the owner's Mac after posting)
 
 Buffer (2026-10-24): Instagram reel 6adcd75f6887a2efc1c5217f, Facebook reel 6adcd7778b3d437ddcc94e5a, TikTok 6adcd77a6887a2efc1c529d8, all Sun Oct 25 19:00 ET. Video: cdn.shopify.com/videos/c/o/v/bcbd1318bc124b388d2b04671c75941c.mp4 (has its own sound). Not AI.
+
+Live (checked 2026-10-26 in Buffer):
+- Instagram: https://www.instagram.com/reel/De71wCZk83s/ (Buffer 6adcd75f6887a2efc1c5217f, sent 2026-10-25 19:02 ET)
+- Facebook: https://www.facebook.com/reel/1839771800367201/ (Buffer 6adcd7778b3d437ddcc94e5a, sent 2026-10-25 19:01 ET)
+- TikTok: https://tiktok.com/@memobrick/video/7700744312983653646 (Buffer 6adcd77a6887a2efc1c529d8, sent 2026-10-25 19:01 ET)
