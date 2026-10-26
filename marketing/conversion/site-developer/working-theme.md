@@ -1,5 +1,8 @@
 # Working theme
 
+## Check 2026-10-26
+Live (MAIN) is now "Memobrick holiday gift boxes" id 189177626844 (updated 2026-10-25, published via A-2026W43-009/-010, not by site-developer). Previous copies "Memobrick kit page fix" 188955361500 and "Memobrick gift kit flow" 188683092188 are unpublished. Any new fix must start from a fresh copy of the live theme.
+
 ## Now (2026-10-21)
 
 | Field | Value |
