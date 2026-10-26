@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: best photo for a brick mosaic
 Hub: Buyer questions (links to Christmas, family, pets, couples hubs)
 Page type: article
