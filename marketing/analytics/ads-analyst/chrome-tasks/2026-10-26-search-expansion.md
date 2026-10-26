@@ -1,8 +1,10 @@
-Status: waiting for approval
+Status: ready
 
 # Claude in Chrome task: Holiday Gifts keyword expansion, negatives and new ads (proposals P-ads-analyst-20261026-5, optional -6 and -7)
 
-Approval: not yet. When Eden approves the A- item(s) for P-ads-analyst-20261026-5 (and optionally -6 bid strategy, -7 LEGO exact group), ads-analyst sets the first line to `Status: ready`, writes the A- item IDs here, and edits the APPROVED PARTS line in the box (D=YES only if -7 is approved, E=YES only if -6 is approved). Until then the evening Chrome routine skips this file. Eden can also paste the box herself after approving, editing that line first.
+Approval: A-2026W44-006 (keywords, negatives, ads), A-2026W44-007 (bidding), A-2026W44-008 (LEGO exact group), approved by Eden in chat 2026-10-26.
+
+Original note: When Eden approves the A- item(s) for P-ads-analyst-20261026-5 (and optionally -6 bid strategy, -7 LEGO exact group), ads-analyst sets the first line to `Status: ready`, writes the A- item IDs here, and edits the APPROVED PARTS line in the box (D=YES only if -7 is approved, E=YES only if -6 is approved). Until then the evening Chrome routine skips this file. Eden can also paste the box herself after approving, editing that line first.
 
 Change records: `marketing/analytics/ads-analyst/changes/google-search-expansion-2026-10-26.md`, `changes/google-holiday-gifts-bidding-2026-10-26.md`, `changes/google-holiday-gifts-lego-exact-optional.md`.
 
@@ -13,7 +15,7 @@ This is a long task (52 negatives, 90 keywords, 7 ads). If it has to stop part w
 ```
 You are helping me in my Google Ads account 672-499-4049 (Memobrick). I approved these changes. Do exactly this and nothing else.
 
-APPROVED PARTS (I edit this line before running):  A=YES  B=YES  C=YES  D=NO  E=NO
+APPROVED PARTS:  A=YES  B=YES  C=YES  D=YES  E=YES
 If D=NO, do part D2 instead of D. If E=NO, skip part E.
 
 First confirm the account at the top of Google Ads is 672-499-4049. If it is not, stop and tell me.

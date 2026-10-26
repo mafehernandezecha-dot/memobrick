@@ -218,6 +218,42 @@ Do first (as of 2026-10-26):
 - From: chat
 - Note: From the 2026-10-26 ads audit (marketing/reports/2026-10-26-ads-analyst-audit.md). Eden approved all four in chat on 2026-10-26 ("ok all").
 
+## A-2026W44-006
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-search-expansion-2026-10-26.md
+- Commit: 7fba71a
+- Reason: Google Holiday Gifts (24325020428): shared negative list "MB negatives 2026-10-26" (52 terms, also on the paused NonBrand campaign), 10 keywords in "Christmas Photo Gifts", 7 new ad groups with 80 keywords and one RSA each (Family, DIY and Gift Kit groups created paused until Nov 16). Budget stays $10/day.
+- Expires: 2026-10-31
+- Status: approved
+- From: chat
+- Note: P-ads-analyst-20261026-5. Eden approved in chat on 2026-10-26 ("for gogle 1, 2, 3 yes"). Applied through the Claude in Chrome task chrome-tasks/2026-10-26-search-expansion.md.
+
+## A-2026W44-007
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-bidding-2026-10-26.md
+- Commit: 7fba71a
+- Reason: Switch Google Holiday Gifts to Maximize conversion value with no target ROAS; budget and goals unchanged. Add tROAS only after 15+ conversions in 30 days.
+- Expires: 2026-10-31
+- Status: approved
+- From: chat
+- Note: P-ads-analyst-20261026-6. Eden approved in chat on 2026-10-26 ("for gogle 1, 2, 3 yes"). Applied through the Claude in Chrome task chrome-tasks/2026-10-26-search-expansion.md.
+
+## A-2026W44-008
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-holiday-gifts-lego-exact-optional.md
+- Commit: 7fba71a
+- Reason: Optional exact group "Brick Portrait Searches (exact)" with [lego portrait], [lego portrait maker], [custom lego mosaic], [turn picture into lego set]; the ad never says LEGO. Review on Nov 9 and cut if it wastes money.
+- Expires: 2026-10-31
+- Status: approved
+- From: chat
+- Note: P-ads-analyst-20261026-7. Eden approved in chat on 2026-10-26 ("for gogle 1, 2, 3 yes"). Applied through the Claude in Chrome task chrome-tasks/2026-10-26-search-expansion.md.
+
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
