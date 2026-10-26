@@ -2,35 +2,38 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-25. No new proposals (growth-analyst and site-developer reports proposed none). Archived 4 expired: A-2026W42-033, 030, 031 and 032. Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
+Updated 2026-10-26. No new proposals (growth-analyst, seo-strategist and site-developer reports proposed none; the Oct 25 reports proposed none). Archived 4: A-2026W43-004 and A-2026W41-010 (expired Oct 25), A-2026W43-009 and 010 (done, live theme "Memobrick holiday gift boxes"). Moved A-2026W42-037 to Time-sensitive (expires Oct 31). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-10-26.md`. Earlier on 2026-10-25: archived A-2026W42-033, 030, 031 and 032 (expired). Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-Do first (as of 2026-10-25):
+Do first (as of 2026-10-26):
 
-- Reject A-2026W43-002: the kit page fix (001) went live today, so it is moot.
-- A-2026W43-004 (approved) has post times of Oct 22 and Oct 23 already passing; the publisher says the Buffer connector is not connected. Reconnect Buffer or the missed posts will not go out before the approval expires Oct 25.
-- Reconnect the Facebook connector in claude.ai connector settings (ads-analyst and social-planner cannot read Meta; the photo-to-mosaic Meta ad A-2026W42-038 lapsed because of it and needs a new item once it works).
-- Decide the new items: A-2026W43-007 (W45 posts, decide by Nov 1 so the Nov 2 post is ready) and A-2026W43-006 (size guide article).
+- Reject A-2026W43-002: the kit page fix (001) is live, so it is moot.
+- Reconnect Buffer in claude.ai connector settings (third run in a row the publisher could not schedule). The Oct 24 and Oct 25 posts did not go out, and the W44 batch (A-2026W42-037, approved) starts today, Oct 26. Also check the Mac social-post job ran.
+- A-2026W43-007 (W45 posts) is `changes: send preview picture`: the social planner has to answer it; nothing posts until it is re-proposed.
+- Test the free-proof form (/pages/free-preview) on a phone before Oct 27: the Oct 27 post links to it and draft orders are the largest lost-order cause (62 of 114).
+- Confirm the EARLYHOLIDAY20 end date: posts on Oct 26, 29 and Nov 1 and the W45 posts use it.
+- Reconnect the Facebook connector (ads-analyst and social-planner cannot read Meta).
+- Run the Mac data pull: `marketing/data/latest.md` still says never, so no agent has Search Console, GA4 or ads numbers.
 - YouTube Shorts OK for the W43 and W44 reels is still open (see Missing owner inputs).
 
 ## Time-sensitive
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
-## A-2026W43-004
-- Agent: social-publisher
+## A-2026W42-037
+- Agent: social-planner
 - Executor: social-publisher
 - Type: publish
-- Draft: marketing/reports/2026-10-21-social-publisher.md
-- Commit: 6dda0ec
-- Reason: New times for the three posts the Mac never posted, as proposed in the report: S-20261019-1 family-photo-dm (kit marketing/social/publisher/to-post/2026-10-19-family-photo-dm.md, approved in A-2026W42-033) on Thu Oct 22 12:00 ET; S-20261020-1 holiday-build-together (kit 2026-10-20-holiday-build-together.md, A-2026W42-033) on Fri Oct 23 12:00 ET; S-20261018-1 family-photo (kit 2026-10-18-family-photo.md, its approval A-2026W41-003 expired) on Sun Oct 25 19:00 ET. Approved wording unchanged. Instagram, Facebook and TikTok reels through Buffer (carousels: Instagram and Facebook in Buffer, TikTok carousel and Pinterest on the Mac). Facebook goes out without an AI label (Buffer has no such setting). Instagram and Facebook are at the free plan's 10-post limit until the Oct 21 19:00 ET posts go out, so schedule after that.
-- Expires: 2026-10-25
+- Draft: marketing/social/planner/2026-W44/week.md
+- Commit: 2e08742
+- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
+- Expires: 2026-10-31
 - Status: approved
-- From: chat
-- Note: Eden approved in chat on 2026-10-21 ("yes" to the three new times), recorded by the coordinator session. Update 2026-10-23: holiday-build-together missed its Fri 12:00 ET slot (Instagram carousel failed in Buffer, fixed); moved to Sat Oct 24 19:00 ET on Instagram and Facebook, before this item expires. family-photo-dm went out Oct 22.
+- From: P-social-planner-20261015-1
+- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
 
 ## A-2026W43-002
 - Agent: conversion-auditor
@@ -43,18 +46,6 @@ Do first (as of 2026-10-25):
 - Status: pending
 - From: P-conversion-auditor-20261021-1
 - Flag: Duplicate of A-2026W43-001, which is the built and tested version (site-developer asks to approve that one and let this one close). 001 went live Oct 23, so this one is moot: reject it.
-
-## A-2026W41-010
-- Agent: email-flow-optimizer
-- Executor: email-flow-optimizer
-- Type: send
-- Draft: marketing/email/flow-optimizer/test-cart-last-email-reassurance.md
-- Commit: e91580d
-- Reason: The 20% last email in Abandoned Cart got 0 clicks and 0 purchases from 88 delivered. Test a no-discount reassurance version before holiday traffic.
-- Expires: 2026-10-25
-- Status: approved
-- From: P-email-flow-optimizer-20261011-1
-- Flag: Both arms keep the live shared blocks, which state a delivery time ("2–4 business days") not in the Facts table (the Miami claim is now verified). The draft itself makes this a precondition: decide on those blocks first. The Omnisend split block is also unconfirmed.
 
 ## A-2026W42-029
 - Agent: outreach-creator-scout
@@ -107,18 +98,6 @@ Do first (as of 2026-10-25):
 ## Open
 
 (Highest expected sales impact first.)
-
-## A-2026W42-037
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W44/week.md
-- Commit: 2e08742
-- Reason: Approving it approves all 7 W44 posts (Oct 26 to Nov 1, each on Instagram, Facebook, TikTok and Pinterest) for the social publisher to prepare and post; send single posts back with `changes: <post-id> <note>` and the rest stay approved. Needed by Monday's approval round so the Oct 26 reel can post.
-- Expires: 2026-10-31
-- Status: approved
-- From: P-social-planner-20261015-1
-- Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
 
 ## A-2026W43-007
 - Agent: social-planner
@@ -179,30 +158,6 @@ Do first (as of 2026-10-25):
 - From: chat
 - Note: Eden chose option 1 in chat on 2026-10-23 ("1": Hugo adds free music to the videos before scheduling; she may add trending sounds by hand when she has time).
 
-## A-2026W43-009
-- Agent: site-developer
-- Executor: coordinator session
-- Type: offer
-- Draft: marketing/conversion/site-developer/fixes/gift-kit-flow.md
-- Commit: e18b4b0
-- Reason: Art Gift Kit (product 8607545032924) in every kit size, build at home only, each size priced like the regular build-at-home kit (10x10 $35 up to 60x60 $853; 20x20 moves from $99 to $99.88). No compare-at prices. Theme copy "Memobrick gift kit flow" gets a size picker on the gift kit page and gift links carry the kit size; combined kits add up their own sizes' prices. Live theme unchanged until Eden publishes the copy.
-- Expires: 2026-12-31
-- Status: approved
-- From: chat
-- Note: Eden asked in chat on 2026-10-25 "can you add all the sizes on the gift kit" and chose "Same as normal kit" prices and "Build at home only".
-
-## A-2026W43-010
-- Agent: site-developer
-- Executor: coordinator session
-- Type: site-change
-- Draft: marketing/conversion/site-developer/theme-files/holiday-gift-boxes-2026-10-25/README.md
-- Commit: a4f0f39
-- Reason: Homepage holiday touches in the unpublished theme copy "Memobrick holiday gift boxes" (189177626844): brick gift boxes drift in the background while scrolling (edges only, behind the content), promo bar reads "Order by December 15 to have it before Christmas · Save 20% with code EARLYHOLIDAY20", and a "Giving it as a gift? Give a Gift Kit, they pick the photo →" link under the free proof link. Live theme unchanged until Eden publishes the copy.
-- Expires: 2026-12-31
-- Status: approved
-- From: chat
-- Note: Eden approved the first (flat) gift box version and the text touches in chat on 2026-10-25 ("no, the first attempt ws beteer", then "yes ok").
-
 ## A-2026W41-012
 - Agent: seo-technical
 - Executor: seo-technical
@@ -227,6 +182,8 @@ Do first (as of 2026-10-25):
 
 
 ## Flagged
+
+Run 8 (2026-10-26). No new proposals, so nothing flagged or dropped. A-2026W42-037 (W44 batch): the checker prints all 7 posts as approved and unchanged. Details in `marketing/coordination/coordinator/overlaps-2026-10-26.md`.
 
 Run 7 (2026-10-23). Details in `marketing/coordination/coordinator/overlaps-2026-10-23.md`.
 
@@ -261,6 +218,14 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-10-26:**
+
+- Reconnect Buffer (publisher, third run in a row) and check the Mac social-post job: kit 2026-10-20-holiday-build-together (Oct 24 19:00) and the Oct 25 kits are still `ready`.
+- Kit orders of Oct 20 and 21 with no design attached (site-developer): check them.
+- Cart funnel follow-up (phone cart to checkout, target 65% or more) is due Oct 27 (site-developer).
+- Black Friday and Cyber Monday offers are not in the offers calendar; the Nov 16 season goal is 12 orders a day. Decide the offers by early November so email, social and ads can prepare.
+- Email orders are unknown: no omnisend referrer shows in Shopify (growth-analyst).
 
 **New 2026-10-23:**
 
