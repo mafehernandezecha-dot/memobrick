@@ -1,6 +1,6 @@
 # Keyword map
 
-Updated: 2026-10-20 (live run). Owner: seo-strategist. Changes this run: owner facts now known (Christmas order-by Dec 15, 2026; sizes, pieces and build times in product-facts.md), so the sizes and build-time articles are unblocked; the gift-for-someone-who-has-everything article is briefed.
+Updated: 2026-10-26 (live run). Owner: seo-strategist. Changes this run: owner facts now known (Christmas order-by Dec 15, 2026; sizes, pieces and build times in product-facts.md), so the sizes and build-time articles are unblocked; the gift-for-someone-who-has-everything article is briefed.
 
 Search volumes are "unknown": Search Console is not connected and no keyword volume tool is available. Evidence codes:
 
@@ -81,7 +81,7 @@ Target URLs are relative to https://mymemobrick.com. "planned" means the page do
 
 | Keyword | Intent | Target URL | Evidence | Volume |
 |---|---|---|---|---|
-| best photo for a brick mosaic | informational | /blogs/news/best-photo-for-a-brick-mosaic (planned) | A | unknown |
+| best photo for a brick mosaic | informational | /blogs/news/best-photo-for-a-brick-mosaic (briefed 2026-10-26) | A | unknown |
 | brick mosaic sizes and how many faces fit | informational | /blogs/news/brick-mosaic-sizes (planned; sizes, pieces, build times now in product-facts.md; faces per size still unknown for 16×16 to 30×20) | A, C | unknown |
 | what is in a brick mosaic kit | informational | /blogs/news/whats-in-a-memobrick-kit (planned) | A | unknown |
 | how long does a brick mosaic take to build | informational | /blogs/news/how-long-to-build-a-brick-mosaic (planned; Shopify build-time estimates now in product-facts.md) | A | unknown |
