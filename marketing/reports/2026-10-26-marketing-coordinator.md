@@ -16,7 +16,7 @@ Queue checker passes. Biggest blockers: Buffer disconnected, free-proof test not
 - Updated `marketing/approvals/queue.md` (Needs your attention, Missing owner inputs, Flagged run 8). `check.py approvals` passes, no unreadable Status lines.
 - Wrote the sales plan and `overlaps-2026-10-26.md`.
 - Approved items not yet acted on: A-2026W42-037 (all 7 W44 posts, Oct 26 posts due today; publisher has no Buffer), A-2026W43-008 (music, blocked on Buffer), A-2026W43-006 (size guide, not yet published; seo-blog-writer has no report this week), A-2026W43-005 (Facebook groups test, Eden by hand), A-2026W42-028/029/034/035 (creator-scout and social-planner, no report since), A-2026W41-012 and 014 (seo-technical, live-theme write blocked).
-- Expired: A-2026W43-004 and A-2026W41-010. Expiring soon: A-2026W42-028, 029, 035 and 043 (Oct 28), 034 (Oct 29), 037 (Oct 31), 002 (Oct 28, moot).
+- Expired: A-2026W43-004 and A-2026W41-010. Expiring soon: A-2026W42-028, 029, and 035 (Oct 28), 034 (Oct 29), 037 (Oct 31), 002 (Oct 28, moot).
 - Owner Status lines to fix: none. A-2026W43-007 `changes: send preview picture` waits on the planner.
 
 ## Proposed for approval
