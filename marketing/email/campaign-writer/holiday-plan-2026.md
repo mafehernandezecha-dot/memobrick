@@ -1,6 +1,6 @@
 # Holiday campaign plan 2026
 
-Updated: 2026-10-20. Owner: email-campaign-writer.
+Updated: 2026-10-27. Owner: email-campaign-writer.
 
 Dates and offers come only from `marketing/shared/offers-calendar.md`. Facts now verified by the owner: Christmas order-by date Dec 15, 2026; Miami fulfillment claim; gift cards offered; free design proof; free US shipping over $125. Active offers: EARLYHOLIDAY20 (20%, from Oct 12, end date unconfirmed) and the two automated 20% flow codes.
 
@@ -56,3 +56,12 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Boosters (resends to non-openers) averaged under 3% opens and about $0.005 to $0.029 per sent. Low value; prefer fresh content over resends.
 - "Early bird" (Nov 2025, 6,070 sent) had a 4.7% unsubscribe rate and no recorded opens. Avoid sending to cold or unverified lists.
 - Since the Warm segment began (Sept 2026), sends reach about 5,000 people with high opens (50 to 55%) and about 0.8 to 1.1% clicks, but few orders: Website Launch 0 orders, Gift Guide Launch 1 order ($80.22, about $0.016 per sent). Clicks are not turning into purchases yet; the landing page step deserves a look by the conversion and flow agents.
+
+
+## Notes 2026-10-27
+
+- New approved facts (offers-calendar, 2026-10-26): EARLYHOLIDAY20 ends Sun Nov 22 23:59:59 ET; BRICKFRIDAY25 25% Fri Nov 27 to Sun Nov 29; CYBERBRICK20 20% Mon Nov 30; no code Nov 23 to Nov 26.
+- Conflict: "Q4 | Nov 27 | Black Friday 20% (Warm)" (6ab3af11a46e779522c64477) still sells a personal 20% code through Monday and prints 20% in two images. Fix proposed in `improve-nov27-black-friday.md`. Cyber Monday (6ab50397de9e4985592a5cb0) already matches 20% and midnight Monday.
+- Existing Nov 19 VIP Early Access 20% (Past Buyers) falls inside the EARLYHOLIDAY20 window. Dec 3 to Dec 14 countdown emails run after all codes end: check they offer no discount (not reviewed this run).
+- Gap 7: Fri Nov 20 10:00 ET "EARLYHOLIDAY20 ends Sunday night" to Warm, draft `2026-11-20-code-ends-sunday.md`, proposed. Also open: nothing is scheduled Nov 4 to Nov 18; consider one mid-November email.
+- Oct 27 Reminder campaign sends today 11:00 ET; the old booster `6ab3ae904dae2e28118748a6` is also still "scheduled" for 2026-10-27 11:07 ET, titled UNUSED (a booster to non-clickers of the Oct 20 campaign that would send the Oct 20 content again). Owner should cancel it.

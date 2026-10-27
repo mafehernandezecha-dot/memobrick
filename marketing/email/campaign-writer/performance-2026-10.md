@@ -16,3 +16,18 @@ Source: Omnisend `post_analytics_reports`, grouped by send date, read 2026-10-13
 ## Next to measure
 
 Oct 13 Real Customer Builds (sends 11:00 ET today) and Oct 14 Re-engagement 10% (Unengaged 180d). Check both on the next run.
+
+
+## Update 2026-10-27 (Omnisend `post_analytics_reports`, send date, Oct 12 to Oct 26)
+
+Delivered = sent minus failed. Attribution is Omnisend's own.
+
+| Campaign (sent) | Audience | Sent | Delivered | Opens (unique) | Clicks (unique) | Orders | Revenue | Orders per delivered | Revenue per recipient | Unsubs |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Q4 Oct 13 Real Customer Builds | Warm | 4,914 | 4,891 | 2,660 | 47 (0.96%) | 0 | $0 | 0% | $0 | 23 (0.47%) |
+| Q4 Oct 14 Re-engagement 10% | Unengaged 180d | 18,120 | 12,509 | 1,017 | 30 (0.24%) | 2 | $387.16 | 0.016% | $0.031 | 45 (0.36%) |
+| Q4 Oct 20 Early Bird (now 20%, EARLYHOLIDAY20) | Warm + Past Buyers | 5,365 | 5,338 | 3,137 | 56 (1.05%) | 1 | $131.55 | 0.019% | $0.025 | 28 (0.52%) |
+
+- Oct 20 (first send with the 20% code) beat the Oct 6 and Sep 24 sends per recipient ($0.025 vs $0.016 to $0.018) but is far below last year's $0.064 best. Only 1 order from 56 clicks again.
+- Oct 14 had 5,611 failed sends out of 18,120 (31%). That hurts sender reputation. Eden should consider not mailing Unengaged 180d again. Its revenue per recipient was the highest of the three only because of one $300+ order.
+- Oct 27 Reminder (sends today 11:00 ET) will be reported next run.
