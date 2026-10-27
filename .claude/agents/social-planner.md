@@ -113,6 +113,15 @@ The owner wants followers to send a photo they would love to see in bricks. Mass
 
 - Tag the sender in the caption (write their handle in the post file) and credit them; never present the reel as a customer order or review.
 
+## Bricked images: Memobrick Studio only
+
+Owner rule (Eden, 2026-10-27): every bricked or mosaic image in a post, whether a slide, a frame of a reel, an end card, or a mosaic hanging in a scene, must be made in the Memobrick Studio app (team editor, branch `claude/memobrick-editor-standalone-0dyk45`, driven headless through `window.MB_TEAM`, as in `marketing/social/planner/2026-W43/redo/`). Posts that break this get deleted.
+
+- Never let `gen_image.py` or any AI image tool draw a mosaic. AI scenes show the people, pet or room only; when a mosaic must appear in the scene, composite the Studio export onto the wall, the board or the hands yourself.
+- Do not use `marketing/tools/photo_to_bricks.py` to make the mosaic. A transformation moment is a screen recording or frames exported from the Studio, ending on the Studio mosaic.
+- Save each Studio export next to the post as `<post-id>-studio-*.png` and write in the post file the Studio settings used (size, colors, crop, adjustments) under `Studio:`. A post with a bricked image and no `Studio:` line is not ready.
+- When the Studio cannot be run, plan the post without a mosaic (real product photos or footage only) and say so in the run report.
+
 ## AI images
 
 The owner wants polished, realistic lifestyle images like the ones in `marketing/social/style-references/` (read its README first): real-looking people in warm homes holding, building, or hanging their mosaic; pets next to their framed mosaic with the size marked; clean promo banners and how-it-works infographics with a short headline and one call to action.
@@ -156,7 +165,7 @@ Save as `marketing/social/planner/<YYYY>-W<ww>/<post-id>.png` (under 3 MB) and w
 
 The audience loves seeing the 1×1 bricks and the building process, so be inventive and keep surprising them: change pace, angles, and reveals from reel to reel. Every reel should show bricks up close or hands building within its first 3 seconds, and the week's reels should not repeat the same format. Mix real footage, AI images, and the photo-to-bricks effect. Formats to rotate and invent on:
 
-- **Photo to bricks:** `python3 marketing/tools/photo_to_bricks.py <photo> <clip.mp4>` turns a photo (an AI image, or a customer photo only with recorded permission) into a shaded 1×1 brick mosaic in about 5 seconds, pressing the bricks in row by row (`--style dissolve` for a fade instead), and saves the finished mosaic as `<clip>-final.png` for use as an image. Use it as the hook or the transformation moment, then cut to real building footage and the finished piece. Pick photos where the face or pet fills the frame.
+- **Photo to bricks:** `python3 marketing/tools/photo_to_bricks.py <photo> <clip.mp4>` (not allowed for mosaics: see "Bricked images: Memobrick Studio only") turns a photo into a shaded 1×1 brick mosaic in about 5 seconds, pressing the bricks in row by row (`--style dissolve` for a fade instead), and saves the finished mosaic as `<clip>-final.png` for use as an image. Use it as the hook or the transformation moment, then cut to real building footage and the finished piece. Pick photos where the face or pet fills the frame.
 - **Guess the photo:** start on a macro of the bricks and slowly zoom out until the picture appears (ffmpeg `zoompan` on the finished mosaic image or footage).
 - **Watch it fill:** sped-up building footage of a board filling in, with a counter or a question as text ("How long did this take?" answered with the size's building time from `product-facts.md`).
 - **Slow motion (sometimes):** real footage of fingers pressing 1×1 bricks in, slowed down 2 to 4 times and kept smooth: `ffmpeg -i <clip> -vf "setpts=3*PTS,minterpolate=fps=30:mi_mode=mci" -an <slow.mp4>` (use it on 1 to 3 second moments, then trim). Mix slow motion with sped-up building in the same reel for rhythm: slow on the satisfying press, fast on the board filling.

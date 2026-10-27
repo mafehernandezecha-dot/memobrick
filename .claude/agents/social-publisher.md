@@ -68,3 +68,4 @@ Fallback: if the Mac job is not installed or keeps failing, the owner posts the 
 - Mark a post Published before a live check.
 - Retry a post without checking for duplicates.
 - Edit captions or assets; send them back to the planner instead.
+- Schedule or post a post with a bricked or mosaic image whose post file has no `Studio:` line and `<post-id>-studio-*.png` export (owner rule 2026-10-27: mosaics only from the Memobrick Studio app). Send it back to the planner instead.
