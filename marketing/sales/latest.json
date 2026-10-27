@@ -1,77 +1,7 @@
 {
- "updated": "2026-10-26T07:00:00-04:00",
+ "updated": "2026-10-27T07:00:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
-  {
-   "date": "2026-08-13",
-   "orders": 4,
-   "netSales": 621.76
-  },
-  {
-   "date": "2026-08-14",
-   "orders": 3,
-   "netSales": 297.88
-  },
-  {
-   "date": "2026-08-15",
-   "orders": 1,
-   "netSales": 194.02
-  },
-  {
-   "date": "2026-08-16",
-   "orders": 2,
-   "netSales": 262.97
-  },
-  {
-   "date": "2026-08-17",
-   "orders": 6,
-   "netSales": 908.5
-  },
-  {
-   "date": "2026-08-18",
-   "orders": 2,
-   "netSales": 315.56
-  },
-  {
-   "date": "2026-08-19",
-   "orders": 3,
-   "netSales": 79.0
-  },
-  {
-   "date": "2026-08-20",
-   "orders": 0,
-   "netSales": 0.0
-  },
-  {
-   "date": "2026-08-21",
-   "orders": 1,
-   "netSales": 278.01
-  },
-  {
-   "date": "2026-08-22",
-   "orders": 1,
-   "netSales": -36.6
-  },
-  {
-   "date": "2026-08-23",
-   "orders": 4,
-   "netSales": 302.76
-  },
-  {
-   "date": "2026-08-24",
-   "orders": 1,
-   "netSales": 99.88
-  },
-  {
-   "date": "2026-08-25",
-   "orders": 3,
-   "netSales": 370.66
-  },
-  {
-   "date": "2026-08-26",
-   "orders": 3,
-   "netSales": 278.76
-  },
   {
    "date": "2026-08-27",
    "orders": 1,
@@ -369,8 +299,13 @@
   },
   {
    "date": "2026-10-25",
-   "orders": 1,
-   "netSales": 99.88
+   "orders": 2,
+   "netSales": 169.76
+  },
+  {
+   "date": "2026-10-26",
+   "orders": 0,
+   "netSales": 0.0
   }
  ],
  "lastYear": [
@@ -836,24 +771,24 @@
   }
  ],
  "funnel": {
-  "period": "Sep 26 to Oct 25 2026 (store time, full days), referred sessions only (direct excluded because bots inflate it), vs Sep 26 to Oct 25 2025",
+  "period": "Sep 27 to Oct 26 2026 (store time, full days), referred sessions only (direct excluded because bots inflate it), vs Sep 27 to Oct 26 2025",
   "now": {
-   "sessions": 2304,
-   "addedToCart": 134,
-   "reachedCheckout": 80,
+   "sessions": 2378,
+   "addedToCart": 141,
+   "reachedCheckout": 82,
    "purchased": 37
   },
   "lastYear": {
-   "sessions": 5053,
-   "addedToCart": 411,
-   "reachedCheckout": 167,
-   "purchased": 65
+   "sessions": 5109,
+   "addedToCart": 425,
+   "reachedCheckout": 173,
+   "purchased": 66
   }
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down 54%, search worst",
-   "detail": "Referred sessions, Sep 26 to Oct 25: 2,304 vs 5,053 last year (-54%). Add-to-cart rate 5.8% vs 8.1%; checkout-to-purchase 46% vs 39%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Week Oct 19 to 25 sessions by source: social 382, search 182, email 8, direct 1,655 (bot-inflated). Total conversion 0.84% vs 2.22% last year, mostly because of the direct bot sessions. Search and social not compared with last year this run.",
+   "title": "Referred traffic is down 53%, add-to-cart and search weakest",
+   "detail": "Referred sessions, Sep 27 to Oct 26: 2,378 vs 5,109 last year (-53%). Add-to-cart rate 5.9% vs 8.3%; checkout-to-purchase 45% vs 38%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Purchases 37 vs 66. Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -862,7 +797,7 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 10 in the 30 days to Oct 25 vs 72 in the same 30 days last year (-86%, unchanged). Online Store 61 vs 112. Total 72 vs 186, so draft orders explain 62 of the 114 lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 10 in the 30 days to Oct 26 vs 71 in the same 30 days last year (-86%, unchanged). Online Store 62 vs 111. Total 73 vs 184, so draft orders explain 61 of the 111 lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
@@ -870,7 +805,7 @@
   },
   {
    "title": "Daily goal missed: orders and sales under pace all October",
-   "detail": "October 1 to 25: 66 orders and $7,824 net sales vs goal 125 and $13,750. Yesterday (Oct 25, Sunday) 1 order, $100 vs 5 and $550. Week Oct 19 to 25: 18 orders, $2,003 vs goal 35 and $3,850 (51% and 52%), and -61% orders vs the same week last year (46 orders, $3,649). Last year Oct 1 to 25 had 153 orders. Black Friday goals (12 orders a day from Nov 16) are far above the current run rate of about 2.6 a day.",
+   "detail": "October 1 to 26: 67 orders and $7,894 net sales vs goal 130 and $14,300 (52% and 55%). Yesterday (Oct 26, Monday) 0 orders, $0 vs 5 and $550. Last 7 days (Oct 20 to 26): 17 orders, $1,311 vs goal 35 and $3,850. Last year Oct 1 to 26 had 154 orders. Black Friday goals (12 orders a day from Nov 16) are far above the current run rate of about 2.6 a day.",
    "owners": [
     "owner",
     "email-campaign-writer",
