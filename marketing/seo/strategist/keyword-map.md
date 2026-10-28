@@ -101,3 +101,32 @@ Target URLs are relative to https://mymemobrick.com. "planned" means the page do
 - Kit contents, sizes and build time now target one page: /blogs/news/brick-mosaic-sizes (briefed 2026-10-20). Secondary keywords: what is in a brick mosaic kit, how long does a brick mosaic take to build, how many pieces in a brick mosaic.
 - New: can you turn a photo into a lego style mosaic | informational | /blogs/news/can-you-turn-a-photo-into-a-lego-style-mosaic (planned) | S (ai-visibility-2026-10) | unknown
 - New competitor-owned terms seen in search (2026-10-20): personalized lego style portrait, custom photo mosaic corporate gift (Brick Me, DDBricks). Evidence S.
+
+## Updates 2026-10-28
+
+Evidence code **E**: owner request in chat (Eden, 2026-10-28) naming the phrase. **P**: Shopify product read 2026-10-28.
+
+Christmas hub additions:
+
+| Keyword | Intent | Target URL | Evidence | Volume |
+|---|---|---|---|---|
+| last minute personalized christmas gifts | transactional | /blogs/news/last-minute-personalized-christmas-gifts (drafted 2026-10-28) | E | unknown |
+| christmas gift no photo needed / gift kit they personalize later | transactional | same, and /products/unlimited-memobrick | E, P | unknown |
+| christmas gifts for grandparents from grandkids | commercial | /blogs/news/christmas-gifts-for-grandparents-from-grandkids (drafted 2026-10-28) | E | unknown |
+| christmas gift for grandma from grandchildren | commercial | same | E | unknown |
+| christmas gift for wife photo | commercial | /blogs/news/photo-christmas-gift-for-wife (drafted 2026-10-28) | E | unknown |
+| personalized christmas gift for wife | commercial | same | E | unknown |
+| personalized stocking stuffers | commercial | /blogs/news/personalized-stocking-stuffers (planned, brief 2026-11-02) | E, P | unknown |
+| christmas gifts for dog lovers | commercial | /blogs/news/christmas-gifts-for-dog-lovers (planned, brief 2026-11-09) | E | unknown |
+
+2027 seasonal keywords (plan in `plan-2027.md`):
+
+| Keyword | Intent | Target URL | Evidence | Volume |
+|---|---|---|---|---|
+| personalized valentine's day gift | commercial | existing Valentine's post (upgrade) | B | unknown |
+| valentine's day gift for boyfriend | commercial | /blogs/news/valentines-day-gift-for-boyfriend-photo (planned) | S | unknown |
+| first mother's day gift | commercial | /blogs/news/first-mothers-day-gift-ideas (planned) | S | unknown |
+| senior photo gift ideas | commercial | /blogs/news/senior-photo-gift-ideas (planned) | S | unknown |
+| father's day gift from kids | commercial | /blogs/news/fathers-day-gift-from-kids-photo (planned) | S | unknown |
+
+S here means common seasonal search phrasing, not measured volume; confirm with Search Console once snapshots exist.

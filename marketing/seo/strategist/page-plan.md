@@ -46,3 +46,21 @@ Context: the blog already has at least six published Christmas articles that tar
 - Next to brief (week of 2026-11-02): `/blogs/news/can-you-turn-a-photo-into-a-lego-style-mosaic` (AI-visibility gap, Brick Me owns it). After that the pet hub (custom-pet-photo-gifts), then the couples hub.
 - Data: Search Console, GA4 and Meta snapshots still do not exist (marketing/data/latest.md says "Updated: never"); all the requests in data/requests.md are open. Sales latest.json: referred sessions are down 54% (search worst), Oct 1 to 25 is 66 orders vs 125 goal. Priorities are unchanged but cannot yet be tied to queries.
 - Consider pulling forward: the first Black Friday-facing page. Offers for Nov 16 to 30 are not in offers-calendar.md, so no page can mention one.
+
+## Updates 2026-10-28 (special run for Eden: Christmas gaps and 2027)
+
+Eden asked for more Christmas articles, published and on Google, plus a 2027 plan. The September Christmas posts all target the same generic "build a Christmas memory" angle (Inesita is auditing them for duplicates), so nothing new targets those terms. The gaps are recipient- and timing-specific searches no post answers.
+
+Ranked Christmas gaps by sales value (order value x closeness to purchase x no existing page):
+
+| Rank | Page | Action | Status | Reason |
+|---|---|---|---|---|
+| C1 | /blogs/news/last-minute-personalized-christmas-gifts | New article | drafted 2026-10-28, in publish batch | Captures the Dec 1 to 24 rush (last year Dec 1 to 15 averaged about 32 orders a day). Honest Dec 15 date, then sells the Art Gift Kit after it, so late searchers still buy. Opposite intent to dont-wait-until-december, cross-linked |
+| C2 | /blogs/news/christmas-gifts-for-grandparents-from-grandkids | New article | drafted 2026-10-28, in publish batch | Family photos need large sizes (30×30 to 40×50, $209.99 to $431.98), so high order value. Existing grandparents post is evergreen and has no Christmas or grandkids angle |
+| C3 | /blogs/news/photo-christmas-gift-for-wife | New article | drafted 2026-10-28, in publish batch | Partners buy late and buy bigger couple sizes. Existing couples post is evergreen; the hub's "For your partner" section is two lines |
+| C4 | /blogs/news/personalized-stocking-stuffers | New article (10×10 mini kit $35.00, Art Gift Kit) | brief 2026-11-02 | Low price point; useful but lower order value |
+| C5 | /blogs/news/christmas-gifts-for-dog-lovers | New article | brief 2026-11-09 | Pets are a core audience; existing pet post is evergreen |
+
+Approval: the three drafts are proposed as one publish item (P-seo-strategist-20261028-1, draft `marketing/seo/strategist/publish-batches/2026-10-28-christmas-gap-articles.md`), executor seo-blog-writer.
+
+2027 plan: `marketing/seo/strategist/plan-2027.md` (Valentine's, Mother's Day, Graduation, Father's Day: upgrade the existing post for each, plus one new gap article each). Next weekly briefs: Nov 2 stocking stuffers, Nov 9 dog lovers, Nov 16 can-you-turn-a-photo-into-a-lego-style-mosaic (moved back one week), then pet hub.

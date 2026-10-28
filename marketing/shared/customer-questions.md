@@ -13,3 +13,5 @@ Append-only for all agents. Social planner and SEO strategist turn these into po
 | 2026-10-20 | seo-strategist: search research (Brick Me blog title "Can you get a photo turned into Lego?") | Can you turn a photo into a LEGO-style mosaic, and is it the same as an AI Lego filter? | 1 | page plan 2026-10-20 |
 | 2026-10-20 | seo-strategist: search research (Brick Me tips) | Does a group photo work, or do I need a close-up portrait? | 1 | brief: brick-mosaic-sizes (fits section); future best-photo article |
 | 2026-10-26 | seo-strategist: brief best-photo-for-a-brick-mosaic (buyer-question list) | What makes a good photo for a mosaic, and can I see the result before I buy? | 1 | brief: best-photo-for-a-brick-mosaic |
+| 2026-10-28 | seo-strategist: owner request (Eden) and Art Gift Kit product page | It is after the Christmas order-by date. Can I still give a personalized gift on Christmas morning? | 1 | draft: last-minute-personalized-christmas-gifts |
+| 2026-10-28 | seo-strategist: owner request (Eden) | Can the grandkids help make the gift, and which size fits all the grandchildren? | 1 | draft: christmas-gifts-for-grandparents-from-grandkids |
