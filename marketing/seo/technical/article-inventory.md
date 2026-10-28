@@ -1,4 +1,15 @@
-# Article inventory (DRY RUN, 2026-10-11)
+# Article inventory
+
+## Update 2026-10-28 (live check, supersedes the Christmas verdicts below)
+
+- Live site checked today (all 56 published articles return 200, self canonical, no noindex, all in the sitemap). Details: `blog-indexing-2026-10-28.md`.
+- The two confirmed merges from 2026-10-11 are live: the Ikram copy and `/pages/blog-post` both 301.
+- **Christmas hubs changed.** Hub A is now `/blogs/news/personalized-christmas-photo-gifts` (published 2026-10-14, built for the head term). Hub B is `/blogs/news/a-holiday-activity-everyone-can-actually-join` (activity intent). The old hub `dont-wait-until-december-...` is merged into hub A.
+- **Merge now, not after January.** Eden asked for consolidation and the season leaves no time to wait for Search Console. Merges (unpublish + 301), proposed in `site-changes/consolidate-christmas-articles.md`: `theperfect-holiday`, `the-christmas-gift-that-turns-a-favorite-moment-into-an-experience`, `this-christmas-give-them-a-memory-they-can-build`, `dont-wait-until-december-...`, `make-christmas-memories-last-...-qcaqov` into hub A; `the-most-fun-christmas-gifts-...`, `give-more-than-a-gift-...-yfpbkl`, `make-your-holiday-gathering-...` into hub B.
+- **Handles:** 14 renames with 301 in `site-changes/clean-article-handles.md`; the FOX article becomes `memobrick-as-seen-on-fox` (`site-changes/retitle-fox-article.md`). Grandparents (`-mxezkd`) waits until Jan 4, 2027 and Thanksgiving (`-aug-8-10`) until after Nov 27.
+- 47 of the 56 published articles use a GemPages template (45 `gp-template-*`, 2 `gem-*`), so their visible content is edited by Eden in GemPages (`gempages-changes-2026-10-28.md`).
+
+## Original inventory (DRY RUN, 2026-10-11)
 
 ## Sources
 
