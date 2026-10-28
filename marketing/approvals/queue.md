@@ -270,6 +270,18 @@ Do first (as of 2026-10-28):
 - From: chat
 - Note (2026-10-28): Eden approved in chat: "ok approve" (to "have Daniel prepare items 2 to 6 ... and Jenny build the dog landing page").
 
+## A-2026W44-032
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/article-template-upgrade.md
+- Commit: ce17342
+- Reason: New default article template (all non-GemPages articles, incl. today's 8): large image, "Make yours" card with live price, real Loox star summary and photo reviews (from Loox data), trust strip (As seen on FOX, free proof, Dec 15, Gift Kit), phone sticky button clear of the chat bubble, related articles. Built in theme copy "Memobrick fixes" (189310075100); preview https://mymemobrick.com/blogs/news/last-minute-personalized-christmas-gifts?preview_theme_id=189310075100
+- Expires: 2026-11-04
+- Status: pending
+- From: P-site-developer-20261028-2
+- Note: Same theme copy as A-2026W44-016 (your-own-photo link); publishing it ships both, the draft says how to split. Eden publishes the theme copy after approving.
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
