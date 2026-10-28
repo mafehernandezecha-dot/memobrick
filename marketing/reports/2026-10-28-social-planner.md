@@ -48,6 +48,15 @@ The 2 reels go to Eden as one publish item. The profile text is in `sprint-2026-
 - Expires: 2026-11-11
 - Status: pending
 
+### P-social-planner-20261028-3
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/sprint-2026-10-29/week-v2.md
+- Reason: Replaces P-social-planner-20261028-1 (A-2026W44-045), which should be rejected or left to expire. Approving it approves both sprint reels, rebuilt from real cleared footage as Eden asked ("Use new footage"), on every channel in their Channels column (Instagram, Facebook, TikTok, Pinterest and YouTube Shorts): S-20261029-2 "We brick your pet" Ep. 1, Thu Oct 29 12:00 ET (S-20261029-2-v2.md) and S-20261030-2 "Same photo, 3 sizes", Fri Oct 30 12:00 ET (S-20261030-2-v2.md). No AI images, so the AI label stays off; the only generated mosaics are the three Studio exports in the size reel. The publisher prepares the kits for the owner's Mac. Send one back with `changes: <post-id> <note>`; posts not named stay approved. Urgent: the first reel posts tomorrow at noon.
+- Expires: 2026-10-29
+- Status: pending
+
 ## Blocked or unknown
 
 - **Instagram follower count is missing.** Buffer has no follower field. The Meta connector shows no Instagram account linked to any ad account (`ads_get_ig_accounts` on PhotoBrick returned none). `marketing/data/latest.md` says nothing has been pulled yet. I added a request in `marketing/data/requests.md`.
@@ -75,3 +84,22 @@ Expected effect: a first measurable flow of shares and follows (targets are in `
   - Plan W46, including Episode 2 of "We brick your pet" if a follower photo with permission exists, otherwise "Guess the pet".
   - Write the next engagement list.
 - Thursday Nov 5: measure the sprint against the targets in `sprint.md`, with the first follower count if the data pull has run.
+
+## Follow-up, later on 2026-10-28: sprint reels rebuilt from real footage
+
+Eden looked at the two sprint reels and said "Use new footage", then "Hugo can cut and re make videos". Both reels are rebuilt as new files; the old files stay as they were. Proposed as P-social-planner-20261028-3 (above), which replaces P-social-planner-20261028-1.
+
+- `marketing/social/planner/sprint-2026-10-29/S-20261029-2-v2.md` and `.mp4` (15.3 s, 8.2 MB): "We brick your pet" Ep. 1 from the Pink Butters creator's raw clip (unused until now) and a shih tzu macro from "pet videos": a brick pressed into the pink dog mosaic in the first frame, bags, color map, the build, the framed piece, then the real dog in her arms. Ends on "Want your pet next? DM us their photo". All real, AI label off.
+- `marketing/social/planner/sprint-2026-10-29/S-20261030-2-v2.md` and `.mp4` (23 s, 6.0 MB): "Same photo, 3 sizes" from a Billo couple's clip (their finished mosaic in the first frame, then their selfie). The selfie becomes 16×16, 20×20 and 30×30 MemoBrick Studio mosaics (commit fb67f84, settings in the `Studio:` line). Then a home build and the reveal from the new billo-276825 clip, and the end card. Ends on "Which one would you hang? Comment 16, 20 or 30". AI label off.
+- `week-v2.md` (the batch with both post hashes), `reels_v2.py` (the edit), and the calendar rows now point to the v2 files.
+- `marketing/social/footage-rights.md`: added billo-276825-orig.MP4, tik_video_50656.MP4, MEMOBRICK_video_original_463981 2.mp4 and Video Jun 02 with who appears in each. Filled in the two 2022 photos that were still "Not reviewed yet", and noted which moments each reel uses.
+- Library check: listed the root, "video 2026 billo" (17 files) and "Memobrick videos" > "pet videos" (5 clips), then downloaded and read frames of 12 clips. None of the clips used here appears in a post file since Oct 12. Not used: the 2025 Billo montage edits ("video-output-...", "process and sizes.mp4"), because they are finished ads with burned-in text. Also not used: the family-with-kids Billo clip (463979), and "Untitled video (9 to 11)", which show other brands (Yamaha, Motul) or Santa.
+
+Blocked or unknown:
+- **tik_video_50656.MP4 could not be downloaded or reviewed.** It is the only file in the library shared with nobody, so it cannot be fetched by link. At 18 MB it is also over the Drive connector's 10 MB limit. Eden: set it to "Anyone with the link can view" (or move it into "video 2026 billo") and I will review it and use it next week.
+- billo-276825-orig.MP4 (added Oct 21) is the same file as `billo-276825-orig.mp4` (Drive `1mRx3HlVq4uer9IkbPgNNQajw9zmQssAf`), which has been in the folder since May.
+- The Pink Butters creator's handle is still "likely @queenconniebonniee", so the pet reel does not tag her. If Eden confirms the handle, she can add the credit line when posting.
+- The size reel's shot 6 shows two children's faces inside the Billo creator's finished family mosaic. The clip is cleared for posts and ads. If Eden prefers no children, send it back and I will swap that shot for the couple's own mosaic.
+- The Stories plan still names the AI dachshund files for two Stories (`stories.md`). They keep the AI label if used. Eden can use any frame of the new pet reel instead.
+
+Sales impact: real people building real kits and a real reveal are more believable than AI photos, and that matters most for a first-time buyer. The size reel shows how much detail each size gives with a real couple's selfie, then sends people to the editor before the Dec 15 order-by date. Same tracking as before (`utm_campaign=2026-10-brick-your-pet`, `2026-10-size-check`).
