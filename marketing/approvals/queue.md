@@ -408,7 +408,7 @@ Do first (as of 2026-10-28):
 - Commit: 0bc1f7c
 - Reason: Adds a fallback message and an "Email my photo for a free proof" button that shows only when the Hulk free-proof form has not loaded after 8 seconds, on /pages/free-preview and the homepage proof view, in a theme copy for you to publish. Today a failed form is a blank box. Draft orders are the largest lost-order cause (11 vs 71 last year).
 - Expires: 2026-11-15
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261026-1
 - Note: Reported Oct 26 but missed by earlier runs; first queued Oct 28.
 
