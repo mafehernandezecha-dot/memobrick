@@ -340,6 +340,18 @@ Do first (as of 2026-10-28):
 - From: P-site-developer-20261028-3
 - Note (2026-10-28): Eden approved in chat: "approve 037". Published by the main session the same day (pageUpdate isPublished true); live at /pages/dog-brick-mosaic.
 
+## A-2026W44-038
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/fox-wording-and-live-rating.md
+- Commit: 838f602
+- Reason: In theme copy "Memobrick fixes": every "Fox News" on home, editor and product pages becomes "As seen on FOX"; the hardcoded "4.8 / 747" rating becomes Loox's live store rating (4.9 from 1,027); A-2026W41-012's hardcoded product aggregateRating removed. Goes live when Eden publishes the copy.
+- Expires: 2026-11-04
+- Status: approved
+- From: P-site-developer-20261028-4
+- Note (2026-10-28): Eden approved in chat: "yes" (to fixing "As seen on Fox News" on the home page) and "publish this ... becomes your live Loox rating".
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
