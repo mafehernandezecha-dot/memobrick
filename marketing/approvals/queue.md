@@ -2,19 +2,19 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-10-27. Added A-2026W44-013 to 015 (email-campaign-writer). Not queued: the Checkout email 1 test from email-flow-optimizer (no P- ID or Status lines and two draft files on one line; asked to re-propose in the standard format). Archived 11 ads and offer items that their executors report done (A-2026W44-001 to 010 except 011, and 012). Before that, 2026-10-26. No new proposals (growth-analyst, seo-strategist and site-developer reports proposed none; the Oct 25 reports proposed none). Archived 4: A-2026W43-004 and A-2026W41-010 (expired Oct 25), A-2026W43-009 and 010 (done, live theme "Memobrick holiday gift boxes"). Moved A-2026W42-037 to Time-sensitive (expires Oct 31). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-10-26.md`. Earlier on 2026-10-25: archived A-2026W42-033, 030, 031 and 032 (expired). Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
+Updated 2026-10-28. Added A-2026W44-016 to 019 (site-developer, conversion-auditor; 018 and 019 were reported Oct 26 and missed earlier). Archived A-2026W44-013 (expired) and A-2026W43-006 (published Oct 26). Before that, 2026-10-27. Added A-2026W44-013 to 015 (email-campaign-writer). Not queued: the Checkout email 1 test from email-flow-optimizer (no P- ID or Status lines and two draft files on one line; asked to re-propose in the standard format). Archived 11 ads and offer items that their executors report done (A-2026W44-001 to 010 except 011, and 012). Before that, 2026-10-26. No new proposals (growth-analyst, seo-strategist and site-developer reports proposed none; the Oct 25 reports proposed none). Archived 4: A-2026W43-004 and A-2026W41-010 (expired Oct 25), A-2026W43-009 and 010 (done, live theme "Memobrick holiday gift boxes"). Moved A-2026W42-037 to Time-sensitive (expires Oct 31). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-10-26.md`. Earlier on 2026-10-25: archived A-2026W42-033, 030, 031 and 032 (expired). Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-Do first (as of 2026-10-27):
+Do first (as of 2026-10-28):
 
-- A-2026W44-013: the old booster sends today at 11:07 ET. Approve it before then, or cancel "UNUSED - old booster" in Omnisend yourself.
+- Reject A-2026W43-002 (moot, kit page fix 001 is live; it expires today). Site-developer asks the same.
 - Approve or send back A-2026W44-014 (Black Friday email still sells 20%; your approved offer is 25%). It is the biggest send of the year.
-- Reject A-2026W43-002: the kit page fix (001) is live, so it is moot (site-developer asks the same). It expires Oct 28.
-- Reconnect Buffer in claude.ai connector settings (the publisher has had no scheduling tool for days). The W44 batch (A-2026W42-037, approved) is running; also check the Mac social-post job.
-- Test the free-proof form (/pages/free-preview) on a phone: draft orders are 10 vs 71 last year and are the largest lost-order cause. The Oct 27 post links to it.
+- Reconnect Buffer in claude.ai connector settings (the publisher has had no scheduling tool for days). The W44 batch (A-2026W42-037, approved) cannot go out without it; also check the Mac social-post job.
+- Test the free-proof form (/pages/free-preview) on a phone: draft orders are 11 vs 71 last year and are the largest lost-order cause. A-2026W44-018 adds a fallback if the form fails to load.
+- A-2026W44-016 and 017 are the same "your own photo" link; approve 016 (built and tested) and reject 017. After approving 016, publish theme copy "Memobrick fixes".
 - A-2026W43-007 (W45 posts) is `changes: send preview picture`: the social planner has to answer it; nothing posts until it is re-proposed.
 - Reconnect the Facebook connector, and run the Mac data pull (`marketing/data/latest.md` still says never).
 - Decide the Google business name swap (remove "Memobrick", add "Memobrick Inc"), see A-2026W44-011.
@@ -36,18 +36,6 @@ Do first (as of 2026-10-27):
 - From: P-social-planner-20261015-1
 - Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
 
-## A-2026W44-013
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/improve-cancel-oct27-booster.md
-- Commit: 239cb86
-- Reason: Cancels the scheduled booster "UNUSED - old booster" (6ab3ae904dae2e28118748a6) that would resend the Oct 20 email today at 11:07 ET, seven minutes after the Oct 27 Reminder, to the same people.
-- Expires: 2026-10-27
-- Status: pending
-- From: P-email-campaign-writer-20261027-1
-- Note: Expires today and the send is at 11:07 ET, so an approval may land too late. If you do not want the resend, cancel that campaign directly in Omnisend.
-
 ## A-2026W44-011
 - Agent: ads-analyst
 - Executor: ads-analyst
@@ -60,6 +48,18 @@ Do first (as of 2026-10-27):
 - From: chat
 - Note: Eden approved 1-5 in chat on 2026-10-26 ("ok"). Item 1 done the same day; 2-5 through a Claude in Chrome prompt.
 - Note (2026-10-27): done except the Google business name: Google allows one name, so "Memobrick Inc" can be added only after removing the disapproved "Memobrick". Waits on you; stays open until you decide.
+
+## A-2026W44-016
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/ready-made-own-photo-link.md
+- Commit: 530f23d
+- Reason: Adds a text link "Want it with your own photo?" under Buy now on ready-made design pages for half of visitors (A/B test CA-20261028-01); built and tested in theme copy "Memobrick fixes" (189310075100). Ready-made pages have about 640 sessions a month and no path to the editor.
+- Expires: 2026-11-04
+- Status: pending
+- From: P-site-developer-20261028-1
+- Note: The connector cannot write to the live theme, so you publish the copy after approving. Approve this built version rather than A-2026W44-017. Theme count is 20 of 20; delete old copies so new ones can be made.
 
 ## A-2026W42-029
 - Agent: outreach-creator-scout
@@ -120,7 +120,6 @@ Do first (as of 2026-10-27):
 - From: P-conversion-auditor-20261021-1
 - Flag: Duplicate of A-2026W43-001, which is the built and tested version (site-developer asks to approve that one and let this one close). 001 went live Oct 23, so this one is moot: reject it.
 
-
 ## Open
 
 (Highest expected sales impact first.)
@@ -137,6 +136,18 @@ Do first (as of 2026-10-27):
 - From: P-email-campaign-writer-20261027-2
 - Note: BRICKFRIDAY25 is in the offers calendar (scheduled, your word in chat Oct 26). Edit of an existing campaign, so its offer and dates are kept as the owner's own.
 
+## A-2026W44-018
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/freeproof-form-fallback.md
+- Commit: 0bc1f7c
+- Reason: Adds a fallback message and an "Email my photo for a free proof" button that shows only when the Hulk free-proof form has not loaded after 8 seconds, on /pages/free-preview and the homepage proof view, in a theme copy for you to publish. Today a failed form is a blank box. Draft orders are the largest lost-order cause (11 vs 71 last year).
+- Expires: 2026-11-15
+- Status: pending
+- From: P-conversion-auditor-20261026-1
+- Note: Reported Oct 26 but missed by earlier runs; first queued Oct 28.
+
 ## A-2026W44-015
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
@@ -149,16 +160,29 @@ Do first (as of 2026-10-27):
 - From: P-email-campaign-writer-20261027-3
 - Flag: A scheduled "VIP 20%" campaign goes out Nov 19, the day before, and its content has not been read (the writer lists it as next run work). Check it does not use another code or tell the same people the same thing before you approve.
 
-## A-2026W43-006
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/brick-mosaic-sizes.md
-- Commit: 788f1ec
-- Reason: Publishes the brick mosaic size guide live on the Shopify blog (news) at /blogs/news/brick-mosaic-sizes, with FAQ schema. It answers the size question that stops buyers choosing a kit, ahead of the Christmas rush.
-- Expires: 2026-11-06
-- Status: approved
-- From: P-seo-technical-20261023-1
+## A-2026W44-019
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/cart-kit-missing-photo-notice.md
+- Commit: 0bc1f7c
+- Reason: The cart page shows "This kit has no photo yet. Add your photo" on any custom kit line with no design or photo attached, in a theme copy for you to publish, so photo-less kits like the second line of #21109 are caught before payment ahead of the December rush.
+- Expires: 2026-11-30
+- Status: pending
+- From: P-conversion-auditor-20261026-2
+- Note: Cart display only; it changes no order email, checkout step or fulfillment. Reported Oct 26 but missed by earlier runs; first queued Oct 28.
+
+## A-2026W44-017
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/ready-made-own-photo-link.md
+- Commit: cf844f1
+- Reason: Same fix as A-2026W44-016, as the auditor specified it: a text link "Want it with your own photo? Make yours in the editor" under Buy now on ready-made design pages, shown to half of visitors as test CA-20261028-01.
+- Expires: 2026-11-18
+- Status: pending
+- From: P-conversion-auditor-20261028-1
+- Flag: Duplicate of A-2026W44-016 (site-developer built and tested it). Approve 016 and reject this one.
 
 ## A-2026W43-007
 - Agent: social-planner
@@ -230,10 +254,16 @@ Do first (as of 2026-10-27):
 - From: chat
 - Note: Eden chose option 1 in chat on 2026-10-23 ("1": Hugo adds free music to the videos before scheduling; she may add trending sounds by hand when she has time).
 
-
 ## Flagged
 
-Run 9 (2026-10-27). Details in `marketing/coordination/coordinator/overlaps-2026-10-27.md`.
+Run 10 (2026-10-28). Details in `marketing/coordination/coordinator/overlaps-2026-10-28.md`.
+
+- A-2026W44-017 copied with a flag: duplicate of A-2026W44-016 (same ready-made "your own photo" link, test CA-20261028-01; site-developer's version is built and tested).
+- A-2026W44-018 and 019 are conversion-auditor proposals of Oct 26 that earlier runs never queued; copied now. Neither touches order emails, fulfillment or checkout steps (018 is a fallback on the free-proof form, 019 a cart-page display notice). Drafts exist and are unshared; no offers or dates used; contacts log empty.
+- Still not queued: the Checkout email 1 test from email-flow-optimizer (no re-proposal in the standard format yet).
+- Archived: A-2026W44-013 (expired Oct 27, Status pending) and A-2026W43-006 (seo-blog-writer reports it was already published Oct 26).
+
+Run 9Run 9 (2026-10-27). Details in `marketing/coordination/coordinator/overlaps-2026-10-27.md`.
 
 - Not queued, malformed: the email-flow-optimizer proposal "Checkout email 1: clean designed version" has no P- ID, Agent, or Status line, and its Draft line holds two files with notes. Both draft files exist. It would replace the claims in Abandoned Checkout email 1 (181 sends, 0 orders); worth re-proposing in the standard format with one Draft path. Not order workflow (it is a recovery email flow, not order emails or Post-Purchase).
 - A-2026W44-015 copied with a flag: the Nov 19 VIP 20% campaign (content unread) sits a day before it.
@@ -274,6 +304,12 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-10-28:**
+
+- Ready-made pages A/B link: theme copy "Memobrick fixes" must be published by you after approving A-2026W44-016; the theme count is 20 of 20, so delete old copies (memobrick-theme-v22 to v26 and "Copy of" themes) to make room (site-developer).
+- Orders cannot be split by A/B arm; the test measures editor landings. Phone and referred-only funnel numbers still need GA4 (the data pull has not run).
+
 
 **New 2026-10-27:**
 
