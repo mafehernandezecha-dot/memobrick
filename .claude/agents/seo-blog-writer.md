@@ -51,6 +51,15 @@ Report your live status in `marketing/status/seo-blog-writer.json` at the start 
 - Updated `Status:` line in the brief
 - `marketing/reports/<YYYY-MM-DD>-seo-blog-writer.md`
 
+## GemPages articles (owner fact, 2026-10-28)
+
+Eden builds the blog articles in GemPages. 47 of the ~50 articles in blog "news" have a GemPages template (`templateSuffix` starting `gp-template-` or `gem-`): their visible content lives in the GemPages layout, not in the article body. So:
+- Editing such an article's body or images through the Shopify API does not change what visitors see. Text, image, heading or link changes on a GemPages article are done by Eden in the GemPages editor; write them as a short change list for her (what to change, where, the exact new text).
+- Title, meta title and description, handle, tags, publish state and 301 redirects are Shopify settings and still work through the API.
+- Merging articles means rebuilding the kept one in GemPages (Eden), then a redirect.
+- New articles published through the API use the theme's default article template and look different from the GemPages ones. Say so in the publish proposal, and offer Eden the option to rebuild one in GemPages from the approved text after it is live.
+- Before claiming an article's content, schema or links on Google, check the live page HTML, not the article body.
+
 ## Never
 
 - Write without a brief.
