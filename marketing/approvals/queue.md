@@ -35,6 +35,7 @@ Do first (as of 2026-10-28):
 - Status: approved
 - From: P-social-planner-20261015-1
 - Note: Uses EARLYHOLIDAY20 (active, no end date set; if it ends before Oct 26 to Nov 1 send the Oct 26, 29 and Nov 1 posts back) and Order by December 15 (Facts table). The Oct 27 post links to /pages/free-preview, whose proof form could not be tested; please submit a test proof before Oct 27. The finished woman-and-cat portrait appears briefly in the Oct 28 reel (same consent question as A-2026W42-033). Thursday prices must be re-checked on Oct 29.
+- Note (2026-10-28): Eden approved Hugo's Studio redo in chat ("Yes approved hugos work"): the bricked images of S-20261027-1 to S-20261101-1 are replaced by the Studio files in `marketing/social/planner/2026-W44/redo/` (README there says which file replaces which asset); captions unchanged. Dates: Oct 28 to Nov 1 as planned, S-20261027-1 free-proof moves to Mon Nov 9 19:00 ET. The 6 posts sit as Buffer drafts until the publisher swaps the assets and reschedules.
 
 ## A-2026W44-011
 - Agent: ads-analyst
