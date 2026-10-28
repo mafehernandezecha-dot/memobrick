@@ -258,6 +258,18 @@ Do first (as of 2026-10-28):
 - From: P-outreach-gift-guide-pr-20261028-3
 - Note (2026-10-28): Eden approved in chat: "approve pitches and both kits".
 
+## A-2026W44-031
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/meta-christmas-boost-2026-10-28.md
+- Commit: 15c372a
+- Reason: Christmas ad set spent $120 with 0 sales (Dog v2 $82, 51 landing views). Copies the 3 proven ALWAYON winners into Christmas, adds a $10/day come-back ad set (30-day visitors and carts), turns on Instagram placements, adds deadline/FOX/free-proof lines, checks purchase tracking; Dog v2 moves to a dog page once it is live.
+- Expires: 2026-11-04
+- Status: approved
+- From: chat
+- Note (2026-10-28): Eden approved in chat: "ok approve" (to "have Daniel prepare items 2 to 6 ... and Jenny build the dog landing page").
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
