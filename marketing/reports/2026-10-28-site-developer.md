@@ -113,3 +113,39 @@ Targets the Dog v2 ad (51 landing page views, 0 purchases in 7 days on a general
 
 ### Next run
 Once P-site-developer-20261028-3 is approved: confirm the page is not already published, publish it, check it returns 200 on phone and desktop, take live screenshots, and tell Daniel to repoint Dog v2.
+
+## Special run: "As seen on FOX" and live Loox rating (Eden's request, 2026-10-28)
+
+### Summary
+In theme copy "Memobrick fixes" (189310075100) every "Fox News" on the home page, editor and kit pages is gone ("As seen on FOX", alt "FOX"), and the hardcoded 4.8 / 747 rating now reads Loox live (4.9 from 1,027).
+Approved A-2026W41-012 is applied in the same copy exactly as its draft (hardcoded Product aggregateRating removed). All of it goes live when Eden publishes the copy.
+
+### Done
+- Searched the copy for "Fox News" (any case): sections, snippets, templates, layout, locales, config/settings_data.json and the served assets, by checksum against repo copies plus direct reads. Found it in `sections/memobrick-site.liquid` (4), `templates/product.liquid` (1), `assets/memobrick.js` (1). None in locales, settings_data, layout, header or footer.
+- Changed 3 files in the copy (before/after files and exact lines in `marketing/conversion/site-developer/fixes/fox-wording-and-live-rating.md`; files in `marketing/conversion/site-developer/theme-files/fox-wording-2026-10-28/`). Re-read each file's checksum just before writing and again after; the other run's article files were not touched. Checksums after: memobrick-site.liquid f3cd4967b199889ec92a597f38be2450, product.liquid ace1fe688d24fb18e659b49d8683fc6b, memobrick.js 0b2713d1c0e521ab1358950fae71d245.
+- A-2026W41-012: checked the queue item (approved, expires 2026-11-15, draft unchanged, checker prints it). Did exactly what its draft says: removed the line `"aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "747" },` from `templates/product.liquid` (old line 319). Done in the theme copy, waiting for Eden to publish. Note the item's Executor is seo-technical; it was done here at Eden's request. All active products use `templates/product.liquid` (no template suffixes), so this covers every product page. The draft does not put Loox numbers into the schema, and the store-wide 4.9 / 1,027 must not go there: Google wants the rating of that one product. An app already adds a per-product rating to the product schema (20x20: 4.9 from 202), and that one stays. The Loox live numbers are used only in the visible text, under the new proposal below.
+- Tested on phone 390x844 and desktop 1440x900 in the preview: home page, editor after uploading a generated test image, kit page 20x20, and home to cart. "Fox News" now appears 0 times in the page HTML (before: 4 on home and editor, 1 on the kit page). The product JSON-LD parses, no new page errors, no horizontal scroll. Screenshots: `marketing/conversion/site-developer/2026-10-28-fox-wording/` (16 before, 16 after, plus editor and cart).
+
+### Proposed for approval
+### P-site-developer-20261028-4
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/fox-wording-and-live-rating.md
+- Reason: Replaces "As seen on Fox News" and "MemoBrick on Fox News." with "As seen on FOX" (alt text "FOX") and shows the live Loox rating (4.9 from 1,027) instead of the hardcoded 4.8 / 747 on the home page, editor and kit pages, in theme copy "Memobrick fixes" 189310075100, which Eden publishes.
+- Expires: 2026-11-04
+- Status: pending
+
+### Blocked or unknown
+- The FOX press logo image itself reads "FOX NEWS" (`files/Fox-News.png`, home page "As featured in" and every kit page). A theme change can only fix its alt text. Eden: either upload a FOX logo you are allowed to use, or tell me to remove that logo from both rows.
+- NBC, Yahoo and Disrupt logos are in the same rows, but offers-calendar says they are unconfirmed and must not be claimed. They were not changed (outside this request).
+- The home page video is YouTube _WrESPAjNjI. The FOX clips Eden confirmed are UMUFrTixfc4 and bDRIuQtPEGI. Please confirm _WrESPAjNjI is a FOX segment.
+- "Made & Shipped from Miami" was not touched (home hero, editor and kit pages). Note: the Facts table in offers-calendar.md has a row "Fulfillment location claim (Miami, Florida): Yes ... 2026-10-11", so it may already count as verified. Eden, please confirm.
+- "Fox News" is still in files this run was told not to touch: the GemPages article templates `templates/article.gem-591249015004-template.liquid`, `article.gem-591273525468-template.liquid` and `article.gem-591293087964-template.liquid` ("FOX NEWS GIFT GUIDE"), and unused product templates (`product.gem-*`, `product.gp-template-bk-default.liquid`, alt "Fox News"; no product uses them). The `sections/gp-section-*` files (GemPages article and page content) were not read one by one. These can go to the article run or a later pass.
+- The other run's proposal IDs repeat: P-site-developer-20261028-2 is used for both the Calm Build Gift page and the article template upgrade. The coordinator should know about this.
+
+### Sales impact
+Trust bar on the first screen: a press claim the owner has not confirmed is removed, and a higher, current rating is shown in 9 places (4.9 from 1,027, up from 4.8 from 747). It stays in sync with Loox from now on. Removing the fixed product rating protects star snippets in Google before Q4. The order effect is small and cannot be measured on its own. The purchase path is unchanged.
+
+### Next run
+After Eden publishes "Memobrick fixes": check the live home page and a kit page on phone and desktop (FOX wording, 4.9 / 1,027, no hardcoded aggregateRating). Tell seo-technical that A-2026W41-012 is live. If Eden chooses, swap or remove the FOX NEWS logo image.
