@@ -315,7 +315,7 @@ Do first (as of 2026-10-28):
 - Commit: 97ac25a
 - Reason: Offers Niki one sample kit to build on camera (welcome message then includes the kit line); Eden ships after she replies.
 - Expires: 2026-11-11
-- Status: pending
+- Status: approved
 - From: P-outreach-creator-scout-20261028-3
 
 ## A-2026W44-036
