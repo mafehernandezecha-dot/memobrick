@@ -68,3 +68,70 @@ Slow and indirect: these pages reach a new search audience (families, OTs, teach
 
 ## Next run
 Publish the series once the item is approved in the queue (check each handle is still free first). Then pick up the next ready brief.
+
+---
+
+# SEO blog writer 2026-10-28, publishing run: A-2026W44-021 and A-2026W44-020
+
+## Summary
+- Published 8 approved articles live on the Shopify blog `news`: the 3 Christmas gap articles (A-2026W44-021), then the 5 calm-building articles with the hub first (A-2026W44-020).
+- All 8 return 200, with the right title, meta description, one H1 and FAQPage JSON-LD in the live HTML. They were not in `sitemap_articles_1.xml` yet when this report was written (see Blocked or unknown).
+- All 8 use the theme's default article template, not GemPages, so they look different from most of the blog.
+
+## Done
+Checks before publishing:
+- `check.py approvals` printed A-2026W44-021 at the start of the run. A-2026W44-020 was set to approved on main later in the run (commit c7a3711), and the checker then printed both.
+- Hashes: all 3 Christmas drafts and all 3 featured images match the batch file `marketing/seo/strategist/publish-batches/2026-10-28-christmas-gap-articles.md`. All 5 calm-series drafts match `marketing/seo/writer/drafts/calm-building-series.md`.
+- Prices re-checked in Shopify (read-only) on 2026-10-28. Kits: 10×10 $35.00, 16×16 $69.88, 20×20 $99.88, 30×20 $149.00, 40×20 $189.99, 30×30 $209.99, 30×40 $279.00, 40×50 $431.98. Frames: 20×20 $65.00, 30×20 $79.00. All match the drafts.
+- Offer codes and dates match `offers-calendar.md` (EARLYHOLIDAY20 to Nov 22, BRICKFRIDAY25 Nov 27 to 29, CYBERBRICK20 Nov 30, no combining with free shipping over $125, Dec 15 order-by date).
+- Links: all 33 unique links in the 8 drafts were checked. Every one returned 200 (four had to be retried after a 429 rate limit), except the 5 series handles, which returned 404 before publishing because they did not exist yet. All 5 return 200 now.
+- No article or URL redirect used any of the 8 handles before publishing. I checked by listing every article in blog `news` and querying the redirects.
+
+Published (GraphQL `articleCreate`, `isPublished: true`, author "Memobrick", default template, SEO title in `global.title_tag`, meta description in `global.description_tag` and as the excerpt, FAQPage JSON-LD added at the end of the body):
+
+| Item | Article ID | Live URL |
+|---|---|---|
+| A-2026W44-021 #1 | gid://shopify/Article/752026484956 | https://mymemobrick.com/blogs/news/last-minute-personalized-christmas-gifts |
+| A-2026W44-021 #2 | gid://shopify/Article/752026517724 | https://mymemobrick.com/blogs/news/christmas-gifts-for-grandparents-from-grandkids |
+| A-2026W44-021 #3 | gid://shopify/Article/752026583260 | https://mymemobrick.com/blogs/news/photo-christmas-gift-for-wife |
+| A-2026W44-020 #1 (hub) | gid://shopify/Article/752026616028 | https://mymemobrick.com/blogs/news/brick-mosaic-calm-activity-autistic-kids-adults |
+| A-2026W44-020 #2 | gid://shopify/Article/752026714332 | https://mymemobrick.com/blogs/news/build-together-reader-sorter-builder |
+| A-2026W44-020 #3 | gid://shopify/Article/752026747100 | https://mymemobrick.com/blogs/news/sensory-friendly-building-tips |
+| A-2026W44-020 #4 | gid://shopify/Article/752026779868 | https://mymemobrick.com/blogs/news/special-interest-brick-mosaic |
+| A-2026W44-020 #5 | gid://shopify/Article/752026812636 | https://mymemobrick.com/blogs/news/brick-mosaics-occupational-therapists-teachers |
+
+- Featured images: the 3 Memobrick Studio exports were uploaded to Shopify Files (MediaImage 46715218755804, 46715218788572, 46715218821340) and set as featured images with the drafts' alt text. The 5 calm articles use the Shopify brick-bag product photos named in each draft. No other images were added.
+- Article titles: for the Christmas articles, the article title is the draft Title, and the H1 was left out of the body because the theme prints the title. For the calm series, the article title is the draft H1 and the SEO title is the draft Title, as the batch file says.
+
+Live verification (HTML fetched for each URL):
+- HTTP 200 on all 8.
+- `<title>` equals the SEO title, and the meta description equals the draft text exactly, on all 8.
+- One H1 (the article title) on each page.
+- JSON-LD on each page: the theme's BlogPosting and BreadcrumbList, plus our FAQPage. It parses as valid JSON.
+- Text check: every paragraph, heading, list item and table cell of each body (66 to 95 blocks per article) appears in the live page. Nothing is missing.
+- Featured image alt text is present on each page.
+
+Plan updates for the seo-strategist (`page-plan.md` and `keyword-map.md` are the strategist's files, so I did not edit them):
+- page-plan.md rows C1, C2 and C3: change the status from "drafted 2026-10-28, in publish batch" to "live 2026-10-28".
+- keyword-map.md, the 3 Christmas keywords: change "(drafted 2026-10-28)" to "(live 2026-10-28)".
+- Add the 5 calm-series URLs to both files as live 2026-10-28. They are not in the plans yet.
+
+## Proposed for approval
+None
+
+## Blocked or unknown
+- Sitemap: none of the 8 articles was in `https://mymemobrick.com/sitemap_articles_1.xml` yet. It still listed 56 URLs, served from Shopify's page cache (etag `page_cache:...SitemapArticlesController`). Shopify refreshes this file on its own. The articles are published and return 200, so they should appear once the cache refreshes. The next seo-technical run should confirm this, and request indexing in Search Console if that is connected.
+- Default template: all 8 use the theme's default `article.liquid` template, not GemPages, so they look different from most of the blog. Option for Eden: rebuild any of them (the calm hub and the last-minute Christmas article are the best candidates) in GemPages from the live text. Title, meta, handle and redirects stay as set through the API.
+- Approval source: both items were set to approved on main by agent commits (45de996, c7a3711) that quote Eden's chat words ("publish christmas 3", "approve 020 and 021"), not by an edit Eden made in `queue.md` herself. The checker accepted both. The coordinator should confirm this matches what Eden said.
+- Calm hub readers: the batch file recommends that one autistic adult or parent and one OT read the hub. The articles are now live without that read, which was Eden's choice. Any changes they suggest can be made through the API, because these articles do not use GemPages.
+- Free-proof form: the Hulk form embed is in the HTML of `/pages/free-preview`, but this environment cannot check that it renders (A-2026W44-018 is still pending). All 8 articles link to it.
+- Research sources in the hub and the OT article (MIT study, 2021 review, the Autism in Adulthood survey) were not re-opened from here; they are cited as the brief gives them.
+- Internal links still to add (seo-technical): link the new Christmas articles from the Christmas hub (`personalized-christmas-photo-gifts`), from `heartwarming-personalized-gifts-every-grandparent-will-love-mxezkd` (a GemPages article, so Eden makes that change) and from `turn-your-favorite-couple-photos-into-something-you-can-treasure` (also GemPages).
+- After December 1, 2026, the offer lists in the 3 Christmas articles will show past codes. The strategist plans a refresh in the December 7 run.
+- approved-stories.md does not exist; no customer stories used.
+
+## Sales impact
+The 3 Christmas articles target searches where the buyer is ready to purchase, before the Black Friday weeks (goal 12 orders a day from Nov 16) and the Christmas rush (goal 20 a day from Dec 1). They address the "referred traffic down 53%" weak point. Each article quotes today's prices and the honest December 15 date, and points to the editor and the Art Gift Kit, so late searchers can still buy after Dec 15. Effect: new organic entry pages once Google indexes them, likely within 1 to 3 weeks. That is too late for this week's orders but in time for the Black Friday and December searches. The 5 calm articles reach a new, slower audience, and their effect on orders is weeks away.
+
+## Next run
+Confirm all 8 are in the sitemap. Offer Eden GemPages rebuilds. Pick up the next ready brief.
