@@ -1,6 +1,6 @@
 {%- comment -%}
   Related articles for blog articles: a short hand-picked list per series
-  (unpublished or missing handles are skipped), topped up with the newest
+  found among the blog's newest 50 articles (unpublished or missing ones are skipped), topped up with the newest
   articles of the blog. Shows 3, never the current article.
 {%- endcomment -%}
 {%- liquid
@@ -22,12 +22,14 @@
     {%- for h in picks -%}
       {%- if shown >= 3 -%}{%- break -%}{%- endif -%}
       {%- if h == current -%}{%- continue -%}{%- endif -%}
-      {%- assign key = 'news/' | append: h -%}
-      {%- assign a = articles[key] -%}
-      {%- if a == blank or a.handle != h -%}{%- continue -%}{%- endif -%}
-      {%- render 'mb-article-related-card', a: a -%}
-      {%- assign shown = shown | plus: 1 -%}
-      {%- assign used = used | append: ',' | append: h -%}
+      {%- for a in blog.articles -%}
+        {%- if a.handle == h -%}
+          {%- render 'mb-article-related-card', a: a -%}
+          {%- assign shown = shown | plus: 1 -%}
+          {%- assign used = used | append: ',' | append: h -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
     {%- endfor -%}
     {%- if shown < 3 -%}
       {%- assign used_list = used | split: ',' -%}
