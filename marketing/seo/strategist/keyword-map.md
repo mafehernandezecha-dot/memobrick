@@ -130,3 +130,23 @@ Christmas hub additions:
 | father's day gift from kids | commercial | /blogs/news/fathers-day-gift-from-kids-photo (planned) | S | unknown |
 
 S here means common seasonal search phrasing, not measured volume; confirm with Search Console once snapshots exist.
+
+## Updates 2026-10-28 (daily task: backlog)
+
+Status changes: the 3 Christmas keywords above are **live 2026-10-28** (were "drafted"). Stocking stuffers and dog lovers are **briefed 2026-10-28**. Christmas hub rows: `theperfect-holiday`, `dont-wait-until-december-...` and `the-most-fun-christmas-gifts-...` were merged (301) into `/blogs/news/personalized-christmas-photo-gifts` (hub A) or `/blogs/news/a-holiday-activity-everyone-can-actually-join` (hub B) on 2026-10-28; their keywords now target the hubs. Evidence **W** = WebSearch SERP read on 2026-10-28 (not Google; result types only, no volumes).
+
+| Keyword | Hub | Intent | Target URL | Evidence | Volume |
+|---|---|---|---|---|---|
+| personalized stocking stuffers | Christmas | commercial | /blogs/news/personalized-stocking-stuffers (briefed) | E, W, P | unknown |
+| christmas gifts for dog lovers | Pets / Christmas | commercial | /blogs/news/christmas-gifts-for-dog-lovers (briefed) | E, W | unknown |
+| christmas gift for husband photo | Christmas | commercial | /blogs/news/photo-christmas-gift-for-husband (briefed) | W | unknown |
+| baby's first christmas gift | Kids / Christmas | commercial | /blogs/news/babys-first-christmas-gift (briefed) | W | unknown |
+| christmas gift in memory of a loved one | Memorial / Christmas | commercial | /blogs/news/christmas-gift-in-memory-of-a-loved-one (briefed) | W | unknown |
+| corporate christmas gifts for employees | Christmas | commercial | /blogs/news/corporate-christmas-gifts-for-employees (briefed) | W, C | unknown |
+| turn a photo into a lego style mosaic | Buyer questions | informational | /blogs/news/can-you-turn-a-photo-into-a-lego-style-mosaic (briefed) | S, W | unknown |
+| pet memorial gift | Memorial / Pets | commercial | /blogs/news/blog-memorial (improve, briefed) | B, A | unknown |
+| personalized valentine's day gift | Couples | commercial | existing Valentine's post (upgrade briefed) | B | unknown |
+| valentine's day gift for boyfriend | Couples | commercial | /blogs/news/valentines-day-gift-for-boyfriend-photo (briefed) | S, W | unknown |
+| personalized anniversary gift from photo | Couples | commercial | /blogs/news/personalized-anniversary-gifts (briefed hub) | A | unknown |
+| calming activities for autistic kids and adults | Kids / Family | informational | /blogs/news/brick-mosaic-calm-activity-autistic-kids-adults (live 2026-10-28, writer's series) | E | unknown |
+| fine motor activities for occupational therapy | Kids | informational | /blogs/news/brick-mosaics-occupational-therapists-teachers (live 2026-10-28) | E | unknown |

@@ -64,3 +64,12 @@ Ranked Christmas gaps by sales value (order value x closeness to purchase x no e
 Approval: the three drafts are proposed as one publish item (P-seo-strategist-20261028-1, draft `marketing/seo/strategist/publish-batches/2026-10-28-christmas-gap-articles.md`), executor seo-blog-writer.
 
 2027 plan: `marketing/seo/strategist/plan-2027.md` (Valentine's, Mother's Day, Graduation, Father's Day: upgrade the existing post for each, plus one new gap article each). Next weekly briefs: Nov 2 stocking stuffers, Nov 9 dog lovers, Nov 16 can-you-turn-a-photo-into-a-lego-style-mosaic (moved back one week), then pet hub.
+
+## Updates 2026-10-28 (daily task: backlog)
+
+- Status: C1, C2 and C3 are **live 2026-10-28** (A-2026W44-021). The 5 calm-building articles are live 2026-10-28 (A-2026W44-020): `brick-mosaic-calm-activity-autistic-kids-adults` (hub), `build-together-reader-sorter-builder`, `sensory-friendly-building-tips`, `special-interest-brick-mosaic`, `brick-mosaics-occupational-therapists-teachers`. Rank 2 (theperfect-holiday/Ikram duplicate) and rank 6 (overlapping Christmas posts) are done: merged into hubs A and B (A-2026W44-022).
+- New: `marketing/seo/strategist/backlog.md` holds the ranked ready briefs the writer takes daily. It now replaces "one brief a week": 11 briefs ready (C4 stocking stuffers and C5 dog lovers are briefed today, not on Nov 2 and Nov 9).
+- New Christmas gaps briefed (no overlap with hubs A and B or the 3 new articles): C6 `photo-christmas-gift-for-husband`, C7 `babys-first-christmas-gift`, C8 `christmas-gift-in-memory-of-a-loved-one`, C9 `corporate-christmas-gifts-for-employees`.
+- Evergreen briefed: `can-you-turn-a-photo-into-a-lego-style-mosaic` (was planned for Nov 16) and the rank 11 improvement of `blog-memorial` (pet memorial).
+- 2027 briefed early: plan-2027 #1 (Valentine's upgrade), #2 (boyfriend), #3 (anniversary hub, page plan rank 10).
+- Handle renames from A-2026W44-023 were not live at this run's check (old URLs 200, new 404); briefs link to whichever returns 200. Flagged for seo-technical.

@@ -52,3 +52,42 @@ Addresses the weak point "referred traffic down 51%, search weakest". Each artic
 ## Next run
 
 Monday 2026-11-02: brief personalized-stocking-stuffers (10×10 mini kit and Art Gift Kit), confirm the three articles are live and ask seo-technical to add hub links down to them. Nov 9: dog lovers. Then the 2027 schedule in plan-2027.md.
+
+---
+
+# seo-strategist 2026-10-28, daily task: brief backlog
+
+## Summary
+
+Created `marketing/seo/strategist/backlog.md` with 11 ready briefs, ranked by sales value and season: 7 Christmas, 1 buyer-question (photo to LEGO-style mosaic), 1 evergreen fix (pet memorial page), 3 for Valentine's 2027 and couples (one is the anniversary hub). The writer can take one a day from tomorrow.
+Before writing them, I checked every topic against the article inventory and the live blog (the 8 articles published today, the 2 Christmas hubs and the 8 merged posts).
+
+## Done
+
+- Task board: `marketing/shared/task-board.md` did not exist yet at this run (the growth director had only started), so I had no task-board row to follow.
+- Live site reachable. Checked the blog feed, the products JSON and the live HTML of the hubs, the 3 new Christmas articles, the size guide and the posts to be upgraded. Every internal link named in the briefs returns 200, except the 5 planned pages, which are marked "once live". None of the 11 new handles is in use.
+- Ran a WebSearch SERP read for 8 target terms (result types only, not Google, no volumes).
+- Briefs (all `Status: ready for writer`, in `marketing/seo/strategist/briefs/`): `personalized-stocking-stuffers`, `christmas-gifts-for-dog-lovers`, `photo-christmas-gift-for-husband`, `babys-first-christmas-gift`, `christmas-gift-in-memory-of-a-loved-one`, `can-you-turn-a-photo-into-a-lego-style-mosaic`, `corporate-christmas-gifts-for-employees`, `pet-memorial-gift-improve-blog-memorial`, `personalized-valentines-day-gift-upgrade`, `valentines-day-gift-for-boyfriend-photo`, `personalized-anniversary-gifts`.
+- Overlap check: each brief has a "Must not duplicate" section naming the live page it borders and how it differs. Not planned because they overlap: Christmas gifts for parents, for cat lovers, under $50, and another "build it together" page.
+- Updated `page-plan.md` and `keyword-map.md`: C1 to C3 and the calm series are live, the merges are done, and the new rows are added. Added 5 buyer questions to `customer-questions.md`.
+- Prices re-checked from the live storefront today. They match `product-facts.md`, and 10×10 is $35.00 with 1,024 bricks and about 1 hour of building (from the product page).
+
+## Proposed for approval
+
+None (briefs only; the writer proposes each draft).
+
+## Blocked or unknown
+
+- **Handle renames not live (for seo-technical).** A-2026W44-023 is logged as applied, but at this run's check the old URLs still return 200 with a self canonical, and the new handles return 404. Examples: `duplicate-from-celebrate-the-pets-who-fill-your-home-with-love` vs `celebrate-the-pets-who-fill-your-home-with-love`, the Valentine's post, and `baby-carrier-jul-10-22-19-45` vs `babys-first-year-photo-mosaic`. The FOX rename is live. The briefs tell the writer to use whichever URL returns 200.
+- **LEGO wording:** the photo-to-mosaic brief uses "LEGO-style" as the search phrase and adds a "not affiliated with the LEGO Group" line. If Eden prefers no LEGO wording, the brief gives a title without it.
+- Owner facts needed: Valentine's 2027 order-by date (the Valentine's briefs say "order early" with no date). Corporate lead times, minimums and bulk pricing are unknown, so that article sends readers to a quote.
+- Search Console and GA4 snapshots still do not exist (`marketing/data/latest.md`: "Updated: never"). The existing requests in `requests.md` cover them, so I added no new line. Search volumes are unknown.
+- The product page states "2 to 4 business days" production and free replacement bricks, but neither is in the Facts table, so the briefs tell the writer not to use them.
+
+## Sales impact
+
+Weak point addressed: "Referred traffic down 53%, search weakest" (owners include seo-strategist). Seven of the 11 briefs target Christmas buyer searches. If the writer drafts one a day and Eden approves, they can be live between November 12 and 23. That gives Google 2 to 5 weeks before the December 1 to 15 rush (goal 20 orders a day). The stocking stuffers and dog articles come first because they match the Black Friday weekend codes and the dog ad already running. Expected effect: new organic entry pages within 1 to 3 weeks of publishing. Nothing moves this week's orders. The Valentine's and anniversary briefs are for January and will not affect 2026 sales.
+
+## Next run
+
+Daily: check which rows the writer marked taken. Keep at least 10 at `ready` (next to brief: Christmas refresh plan, then the pet hub upgrade and Mother's Day 2027). Confirm with seo-technical whether the handle renames are live.
