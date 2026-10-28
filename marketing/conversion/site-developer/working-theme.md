@@ -50,3 +50,6 @@ The connector's `themeFilesUpsert` takes a body of type URL (the result list com
 
 - 2026-10-12: copy 188594847964 (later gone).
 - 2026-10-14 02:53 UTC: copy "Memobrick fixes" 188683092188 from v27; got the 5 approved fixes; Eden published it on 2026-10-14.
+
+## Check 2026-10-28
+Live (MAIN) "Memobrick holiday gift boxes" 189177626844 (updated 2026-10-25), product.liquid md5 a87bf50f20c4e21363b1ebc297cf44f1. Working copy **"Memobrick fixes" 189310075100**, UNPUBLISHED, duplicated from live 2026-10-28; only templates/product.liquid differs (md5 845d653ed4879952c714e0c4ae2e7220, ready-made "own photo" A/B link). Theme count 20 of 20. Note: the connector refuses live-theme writes, so the owner publishes copies.
