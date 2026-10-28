@@ -444,7 +444,7 @@ Do first (as of 2026-10-28):
 - Commit: cf844f1
 - Reason: Same fix as A-2026W44-016, as the auditor specified it: a text link "Want it with your own photo? Make yours in the editor" under Buy now on ready-made design pages, shown to half of visitors as test CA-20261028-01.
 - Expires: 2026-11-18
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261028-1
 - Flag: Duplicate of A-2026W44-016 (site-developer built and tested it). Approve 016 and reject this one.
 
