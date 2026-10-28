@@ -79,3 +79,5 @@ Every action taken in Shopify Collabs and every message sent. Append-only.
 | 2026-10-28 | A-2026W42-035 | Ellie Flores | declined silently | none | done |
 | 2026-10-28 | A-2026W42-035 | Loan Nguyen | declined silently | none | done |
 | 2026-10-28 | A-2026W42-035 | matthew gonzalez69668 | declined silently | none | done |
+| 2026-10-28 | A-2026W44-036 | Sonia England, Duc Chung (2026-03-31), Baldo Vivian, Huy Hoang | not declined: Collabs action blocked by session permission check | none | needs owner |
+| 2026-10-28 | A-2026W44-034, A-2026W44-035 | Niki Loheit | not approved, no message sent: same block | kits/2026-10-28-nikibuildsbricks.md (kit version applies) | needs owner |

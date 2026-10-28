@@ -72,5 +72,12 @@ None.
 ## Sales impact
 The 89 declines bring no orders directly. They clear fake creators who could have gotten codes that leak to coupon sites, and they cut the queue by a fifth. The one sales lever is Niki Loheit. A LEGO Masters builder posting a Memobrick build with her own 10% code reaches a family and LEGO audience before the December 15 order-by date. Her audience is small (about 1.9K), so expect a few orders, not dozens. Approving her item (and the kit, if you want build content) is the only thing here that can move sales this season.
 
+## Second run (10:36 ET): Eden's new approvals
+- **Approved:** A-2026W44-034 (Niki Top 3), A-2026W44-035 (Niki kit), A-2026W44-036 (4 silent declines). All three are **not done**. This session's tool permission check blocked the first Collabs action (the Decline dialog for Sonia England, reason "Real-World Transactions"). I stopped there and did not try any other approve, decline or message. Nothing changed in Collabs.
+- Checked before acting: the Default Tier is still 10%/10%, the three drafts are unchanged since 97ac25a, and 364 applications are still pending.
+- New in Programs (read only): besides Default Tier (10%/10%, 22), Open access (10%, no discount, 9) and freelifemiami (10%/20%, 1), there are three programs with 0 creators: "Gift and code" (5%/10%), "BF15" (10%/15%) and "Family" (15%/10%). I didn't create them and won't use them. Only Default Tier is used for approvals.
+- needs owner: allow Claude in Chrome to click Approve, Decline and Send in Collabs for the `com.memobrick.collabs` job, then re-run. Or do these yourself: decline Sonia England, Duc Chung (2026-03-31), Baldo Vivian and Huy Hoang with "Email creator" unticked. Then approve Niki Loheit into Default Tier and send the **kit version** of her message from `kits/2026-10-28-nikibuildsbricks.md`. The items expire 2026-11-11.
+- Messages sent: none. Codes: none to check (nobody approved).
+
 ## Next run
-Monday 2026-11-02, 10:07, then Thursday 2026-11-05 (Thursday runs start in November). Act on the batch, Niki's item and the kit item if approved. Re-measure Niki's posts if they're visible. Open Anthony Mark Wood. If you accept a sample-based approach, propose the coupon-domain group in batches.
+The next run acts on A-2026W44-034, 035 and 036 if they are still open. Then Monday 2026-11-02, 10:07, then Thursday 2026-11-05 (Thursday runs start in November). Act on the batch, Niki's item and the kit item if approved. Re-measure Niki's posts if they're visible. Open Anthony Mark Wood. If you accept a sample-based approach, propose the coupon-domain group in batches.
