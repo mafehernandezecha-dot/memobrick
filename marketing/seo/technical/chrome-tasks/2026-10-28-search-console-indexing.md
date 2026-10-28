@@ -1,14 +1,17 @@
-Status: waiting for approval
+Status: ready (A-2026W44-026, approved by Eden 2026-10-28)
 
-# Claude in Chrome task: Search Console, resubmit the sitemap and request indexing for the Christmas hubs (proposal P-seo-technical-20261028-5)
+# Search Console task for Eden: paste this into Claude in Chrome
 
-Approval: none yet. When Eden approves the A- item made from P-seo-technical-20261028-5, seo-technical writes the A- item ID here and sets the first line to `Status: ready`.
+The nightly Chrome job only runs Google Ads tasks, so it will not run this one. You run it on your Mac, about 15 minutes each part.
 
-How to run it: the nightly `memobrick-chrome-tasks` job only runs Google Ads tasks from `marketing/analytics/ads-analyst/chrome-tasks/`, so it will not pick this file up. Eden runs it herself: open Chrome on the Mac, open the Claude in Chrome extension, and paste the text in the box. It takes about 15 minutes. Part B is run a second time after the site changes are applied (seo-technical will say when).
+## Paste this
 
-Search Console status: the homepage has four `google-site-verification` tags, so mymemobrick.com is verified for some Google account. Which account, and whether Eden's login can open the property, is unknown. Step 0 checks this and stops if the property is not there.
+1. **First (2 minutes):** switch off SearchPie's meta tags, steps in `marketing/seo/technical/eden-steps-2026-10-28.md` section 1. Doing it before Google recrawls means Google sees one clean title per page. If you cannot do it today, run Part A anyway.
+2. Open Chrome, open the Claude in Chrome extension, and paste **Part A** below. Today (Oct 28) or any day.
+3. On a **later day** (Oct 29 or after; Google allows about 10 indexing requests a day), paste **Part B**. The site changes it needs (Christmas consolidation, FOX retitle, clean handles) were all applied on Oct 28, so Part B is ready.
+4. After each part, paste Claude's result into the `## Result` section at the end of this file (on GitHub: pencil, edit, commit to main).
 
-Google limits "Request indexing" to roughly 10 URLs per property per day, so each part asks for at most 10.
+### Part A
 
 ```
 You are helping me in Google Search Console for my store mymemobrick.com. I approved these steps. Do exactly this and nothing else.
@@ -47,7 +50,21 @@ STEP 4. Inspect only (no request), write down the result line for each:
  - https://mymemobrick.com/blogs/news/theperfect-holiday
  - https://mymemobrick.com/blogs/news/memobrick-named-one-of-the-best-holiday-gifts-by-fox-news
 
-PART B (run only when I say the site changes are applied; on a different day from PART A)
+At the end, give me one block of text with everything you wrote down, step by step, so I can paste it into GitHub.
+```
+
+### Part B (a different day from Part A)
+
+```
+You are helping me in Google Search Console for my store mymemobrick.com. I approved these steps. Do exactly this and nothing else.
+
+Rules for the whole task:
+- Never sign in, sign out, type a password or code, or solve a CAPTCHA. If you see a login page or an account chooser, try only the Google accounts already signed in in this Chrome; if none of them shows the mymemobrick.com property, stop and tell me "Search Console: property not found in any signed-in account".
+- Never use Removals, never add or remove users or owners, never change any setting, never delete or add a sitemap other than the one named below, never click "Validate fix", and never touch another property.
+- If Google shows a quota message ("Quota exceeded"), stop requesting, write down which URLs were done, and finish.
+
+Run only PART B below (PART A was done on an earlier day).
+
 Inspect each URL and click "Request indexing" if it is reachable:
  1. https://mymemobrick.com/blogs/news/memobrick-as-seen-on-fox
  2. https://mymemobrick.com/blogs/news/why-personalized-gifts-create-stronger-emotional-connections
@@ -63,4 +80,26 @@ Then Indexing > Sitemaps: Resubmit sitemap.xml again.
 At the end, give me one block of text with everything you wrote down, step by step, so I can paste it into GitHub.
 ```
 
+## Background
+
+Claude in Chrome task: Search Console, resubmit the sitemap and request indexing for the Christmas hubs (proposal P-seo-technical-20261028-5)
+
+Approval: A-2026W44-026, approved by Eden in chat on 2026-10-28 ("approve 022 to 026"). Set ready by seo-technical on 2026-10-28.
+
+How to run it: the nightly `memobrick-chrome-tasks` job only runs Google Ads tasks from `marketing/analytics/ads-analyst/chrome-tasks/`, so it will not pick this file up. Eden runs it herself: open Chrome on the Mac, open the Claude in Chrome extension, and paste the text in the box. It takes about 15 minutes. Part B is run on a later day; the site changes it depends on were applied on 2026-10-28.
+
+Search Console status: the homepage has four `google-site-verification` tags, so mymemobrick.com is verified for some Google account. Which account, and whether Eden's login can open the property, is unknown. Step 0 checks this and stops if the property is not there.
+
+Google limits "Request indexing" to roughly 10 URLs per property per day, so each part asks for at most 10.
+
 After the run, paste the result into a `## Result` section at the end of this file (on GitHub: pencil, edit, commit to main), and change the first line to `Status: done <YYYY-MM-DD>`. seo-technical reads it on the next run and replaces the estimates in `blog-indexing-2026-10-28.md` with the real index status.
+
+## Result
+
+Part A (date):
+
+(paste here)
+
+Part B (date):
+
+(paste here)
