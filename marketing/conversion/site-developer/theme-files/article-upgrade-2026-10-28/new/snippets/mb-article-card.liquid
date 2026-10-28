@@ -2,7 +2,7 @@
   "Make yours" product card for blog articles (templates/article.liquid).
   series: 'calm' | 'christmas' | 'default'   place: 'intro' | 'end'   hero: (optional) hero asset name to avoid
   Self-contained (own CSS), so it can also be rendered from a GemPages Liquid element.
-  Price and Loox rating from Shopify; picture is a Memobrick Studio example. Calm series points to the 16×16 kit
+  Price and Loox rating from Shopify; picture is a real photo of a finished mosaic. Calm series points to the 16×16 kit
   (and to the Calm Build Gift page once a published page with handle
   calm-build-gift exists). No health claims.
 {%- endcomment -%}
@@ -18,15 +18,25 @@
     assign size_label = '20×20 in kit'
   endif
   comment
-    Card picture: a Memobrick Studio example mosaic (theme asset), never a
-    lifestyle photo with people. Avoids repeating the hero picture.
+    Card picture: a real product photo of a finished mosaic (theme asset),
+    never a raw Studio export. Avoids repeating the hero picture (hero is the
+    hero image file name).
   endcomment
   if series == 'calm'
-    assign card_img = 'mb-studio-cat.jpg'
-  elsif hero == 'mb-studio-dog.jpg'
-    assign card_img = 'mb-studio-sofa-couple.jpg'
+    assign card_img = 'mb-real-color-bags.jpg'
+    assign card_alt = 'Memobrick bags of 1×1 bricks, each labeled with its color name and number'
+    assign card_cap = 'Bricks sorted by color in labeled bags'
+    if hero contains 'color-bags-bright' or hero == 'mb-real-color-bags.jpg'
+      assign card_img = 'mb-real-color-bags-soft.jpg'
+    endif
+  elsif hero contains 'framed-couple-wall' or hero == 'mb-real-couple-wall.jpg'
+    assign card_img = 'mb-real-woman-portrait.jpg'
+    assign card_alt = 'A woman at home with a finished, framed brick mosaic of her own portrait'
+    assign card_cap = 'A finished mosaic. Frame sold separately'
   else
-    assign card_img = 'mb-studio-dog.jpg'
+    assign card_img = 'mb-real-couple-wall.jpg'
+    assign card_alt = 'A finished brick mosaic of a smiling couple, framed and hanging on a wall'
+    assign card_cap = 'A finished mosaic. Frame sold separately'
   endif
   assign rating = p.metafields.loox.avg_rating.value | default: p.metafields.loox.avg_rating
   assign raters = p.metafields.loox.num_reviews.value | default: p.metafields.loox.num_reviews
@@ -34,8 +44,8 @@
 -%}
 <aside class="mba-card mba-card--{{ place }}" aria-label="Make your own brick mosaic">
   <a class="mba-card-img" href="/pages/editor?size={{ size }}#editor" tabindex="-1" aria-hidden="true">
-    <img src="{{ card_img | asset_url }}" alt="" loading="lazy" width="600" height="600">
-    <span>Example design made in the Memobrick Studio</span>
+    <img src="{{ card_img | asset_url }}" alt="{{ card_alt | escape }}" loading="lazy" width="1200" height="800">
+    <span>{{ card_cap }}</span>
   </a>
   <div class="mba-card-txt">
     {%- if series == 'calm' -%}
@@ -72,7 +82,7 @@
   .mba-card-img{display:block;border-radius:14px;overflow:hidden;background:var(--paper,#f3f1ec)}
   .mba-card-img{position:relative}
   .mba-card-img span{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.92);color:var(--ink-2);font-size:11px;line-height:1.2;padding:4px 8px;border-radius:999px}
-  .mba-card-img img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;margin:0;border-radius:0}
+  .mba-card-img img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;margin:0;border-radius:0}
   .page-prose .mba-card a.btn{text-decoration:none}
   .mba-card p{margin:0}
   .mba-card-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--b-red)}

@@ -1,21 +1,23 @@
-{%- comment -%} One related-article card (used by mb-article-related). Image: the article's featured image, else a Memobrick Studio example mosaic. {%- endcomment -%}
+{%- comment -%} One related-article card (used by mb-article-related). Image: the article's featured image, else a real photo of a finished mosaic. {%- endcomment -%}
 <a class="mba-rel" href="{{ a.url }}">
   {%- if a.image -%}
     <img src="{{ a.image | image_url: width: 600 }}" alt="{{ a.image.alt | default: a.title | escape }}" loading="lazy" width="600" height="375">
   {%- else -%}
     {%- liquid
-      assign fb = 'mb-studio-dog.jpg'
-      if a.handle contains 'grandparent'
-        assign fb = 'mb-studio-grandma.jpg'
-      elsif a.handle contains 'wife' or a.handle contains 'everything'
-        assign fb = 'mb-studio-sofa-couple.jpg'
-      elsif a.handle contains 'christmas' or a.handle contains 'holiday'
-        assign fb = 'mb-studio-christmas-couple.jpg'
-      elsif a.handle contains 'size'
-        assign fb = 'mb-studio-cat.jpg'
+      assign fb = 'mb-real-couple-wall.jpg'
+      assign fb_alt = 'A finished brick mosaic of a smiling couple, framed on a wall'
+      if a.handle contains 'calm' or a.handle contains 'sensory' or a.handle contains 'build-together' or a.handle contains 'special-interest' or a.handle contains 'occupational'
+        assign fb = 'mb-real-color-bags.jpg'
+        assign fb_alt = 'Memobrick bags of 1×1 bricks, labeled by color'
+      elsif a.handle contains 'dog' or a.handle contains 'pet'
+        assign fb = 'mb-real-dog-framed.jpg'
+        assign fb_alt = 'A finished brick mosaic of a dog in a frame, with the dog below it'
+      elsif a.handle contains 'wife' or a.handle contains 'everything' or a.handle contains 'size'
+        assign fb = 'mb-real-woman-portrait.jpg'
+        assign fb_alt = 'A woman at home with a finished, framed brick mosaic of her portrait'
       endif
     -%}
-    <img src="{{ fb | asset_url }}" alt="Example brick mosaic made in the Memobrick Studio" loading="lazy" width="600" height="375">
+    <img src="{{ fb | asset_url }}" alt="{{ fb_alt }}" loading="lazy" width="600" height="400">
   {%- endif -%}
   <span class="mba-rel-t">{{ a.title | escape }}</span>
   <span class="mba-rel-x">{{ a.excerpt_or_content | strip_html | truncate: 110 }}</span>
