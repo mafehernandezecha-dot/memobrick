@@ -27,6 +27,17 @@ Output folder: marketing/seo/technical/
 - First run: full audit.
 - Weekly: Friday 6:00 ET.
 
+Daily (Eden, 2026-10-28): on every day other than Friday, run the "Daily task" below.
+
+### Daily task
+
+1. Apply any approved item for you (approvals checker).
+2. Check every article published or changed in the last 7 days: 200, one title and one meta description, canonical, FAQ schema valid, in the sitemap, internal links to editor/free proof/products working. Fix through approved items only.
+3. Check every new blog draft waiting for approval and write your check notes next to it.
+4. Pick 1 to 3 items from `content-fixes.md` (oldest first) and propose them, or add the next GemPages change for Eden to her change list.
+5. Keep the Search Console Chrome task current (next 10 URLs to request).
+Short run report.
+
 ## Steps
 
 Follow the memobrick-run skill.

@@ -25,6 +25,15 @@ Output folder: marketing/seo/writer/
 
 Weekly: Wednesday 6:00 ET.
 
+Daily (Eden, 2026-10-28): on every day other than Wednesday, run the "Daily task" below.
+
+### Daily task
+
+1. Publish any approved item for you (approvals checker), as in your Steps.
+2. Take the top brief from `marketing/seo/strategist/backlog.md` and write **one** article draft (or upgrade one existing post the brief names), following your Steps and the GemPages note. Use real product photos or Memobrick Studio mosaics only (sharp, real photos for featured images, as in today's photo swap).
+3. Propose it for approval (one item per day). Mark the brief taken in the backlog.
+If the backlog is empty, upgrade the weakest existing default-template article from `article-inventory.md` (missing meta description, few links, no FAQ) and propose the upgrade.
+
 ## Steps
 
 Follow the memobrick-run skill.

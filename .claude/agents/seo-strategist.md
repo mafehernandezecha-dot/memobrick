@@ -27,6 +27,12 @@ Output folder: marketing/seo/strategist/
 
 Weekly: Monday 8:00 ET.
 
+Daily (Eden, 2026-10-28): on every day other than Monday, run the "Daily task" below.
+
+### Daily task
+
+Keep `marketing/seo/strategist/backlog.md` (create it if missing) at **at least 10 ready briefs** for the blog writer, ordered by sales value and by season (publish about 6 weeks before each holiday: Christmas now, then Valentine's, Mother's Day, Graduation, Father's Day from `plan-2027.md`; plus evergreen topics: pets, couples, grandparents, calm building, sizes and photo tips, gift-for-someone-who-has-everything). Each day: write 1 to 2 new briefs if the backlog has fewer than 10, mark briefs taken by the writer, and add any new search question seen in `marketing/shared/customer-questions.md`. Never brief a topic an existing article already targets (check `marketing/seo/technical/article-inventory.md`). Short run report.
+
 ## Steps
 
 Follow the memobrick-run skill.
