@@ -184,3 +184,20 @@ Article readers now see a real finished product first, which supports the articl
 
 ### Next run
 Apply P-site-developer-20261028-4 if approved, then check every article live on phone and desktop.
+
+### Done: A-2026W44-041 applied (featured image swap, 2026-10-28)
+Checker printed A-2026W44-041 (approved, unchanged at e82bb72). `articleUpdate` image and alt only, last-minute first; read back: titles, handles, publish state, publish dates and template unchanged. All 11 return 200 live and the page HTML carries the new image. Live tops on phone and desktop: `marketing/conversion/site-developer/2026-10-28-article-photos/live/`, sheets `.../live-before-after-desktop-top-11.jpg` and `.../live-before-after-phone-top-11.jpg`. Old URLs for undo: `marketing/conversion/site-developer/backups/2026-10-28-article-photo-swap/old-images.md`.
+
+| Article | New image |
+|---|---|
+| last-minute-personalized-christmas-gifts | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/01-framed-couple-wall.jpg?v=1793175811 |
+| christmas-gifts-for-grandparents-from-grandkids | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/06-baby-mosaic-dresser.jpg?v=1793176185 |
+| photo-christmas-gift-for-wife | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/02-woman-framed-portrait-home.jpg?v=1793176194 |
+| brick-mosaic-calm-activity-autistic-kids-adults | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/11-color-bags-soft.jpg?v=1793176198 |
+| build-together-reader-sorter-builder | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/08-two-faces-brick-closeup.jpg?v=1793176201 |
+| sensory-friendly-building-tips | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/09-dog-mosaic-finished-table.jpg?v=1793176204 |
+| special-interest-brick-mosaic | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/04-framed-doberman-home.jpg?v=1793176208 |
+| brick-mosaics-occupational-therapists-teachers | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/10-color-bags-bright.jpg?v=1793176211 |
+| brick-mosaic-sizes | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/12-family-mosaic-living-room-mockup.jpg?v=1793176214 |
+| gift-for-someone-who-has-everything | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/07-sisters-mosaic-family-wall.jpg?v=1793176217 |
+| personalized-christmas-photo-gifts | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/05-dog-mosaic-holiday-mantel.jpg?v=1793176220 |
