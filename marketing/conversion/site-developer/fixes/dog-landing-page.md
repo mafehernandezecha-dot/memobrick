@@ -64,3 +64,6 @@ mutation { pageUpdate(id: "gid://shopify/Page/167410106588", page: { isPublished
 ```
 
 Daniel first points Dog v2 back to its previous link, then the page is unpublished. The Studio image in Shopify Files can stay. Nothing else changed.
+
+## Live (2026-10-28)
+- A-2026W44-037 done: the main session published the page (pageUpdate isPublished true) on 2026-10-28; live at https://mymemobrick.com/pages/dog-brick-mosaic . Next: Daniel (ads-analyst) points the Dog ads to it.

@@ -201,3 +201,36 @@ Checker printed A-2026W44-041 (approved, unchanged at e82bb72). `articleUpdate` 
 | brick-mosaic-sizes | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/12-family-mosaic-living-room-mockup.jpg?v=1793176214 |
 | gift-for-someone-who-has-everything | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/07-sisters-mosaic-family-wall.jpg?v=1793176217 |
 | personalized-christmas-photo-gifts | https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/05-dog-mosaic-holiday-mantel.jpg?v=1793176220 |
+
+---
+
+# site-developer 2026-10-28 (executor run, 08:30 to 08:55 UTC)
+
+## Summary
+"Memobrick fixes" (016, 032 rev b, 038) went live at 08:36 UTC during this run, so 018 and 019 were built in a new copy, "Memobrick proof and cart fixes" (189322330332). Both were tested on phone and desktop.
+The new copy is ready to publish: it holds 016, 032 rev b, 038 (already live), plus 018 and 019. 027 and 037 recorded as done, 017 as covered by 016, and W43-002 as moot.
+The Calm Build Gift page now links to the live autism hub article (checked live).
+
+## Done
+- Live theme check: MAIN is "Memobrick fixes" 189310075100 (updated 08:36 UTC). Live checksums match the tested copy for 016 + 038 (product.liquid ace1fe68...), 038 (memobrick-site.liquid f3cd4967..., memobrick.js 0b2713d1...) and 032 rev b (article.liquid 3ae9ed10..., mb-article-card 696279d1...). The live check ran on /pages/free-preview, the home proof view and /cart, on phone and desktop. There were no page errors from theme code. The editor-to-cart path was tested in the new copy, which only differs from live in the 4 files below.
+- A-2026W44-018 (free-proof form fallback) and A-2026W44-019 (cart notice for a kit with no photo): built in new copy "Memobrick proof and cart fixes" 189322330332, duplicated from live. I re-read each file right before writing (checksums matched live). Files: snippets/mb-fp-fallback.liquid (new), snippets/free-proof-page.liquid, sections/memobrick-site.liquid, templates/cart.liquid. The upload was confirmed by checksum. All tests passed on phone and desktop (details in the two fix drafts). Drafts: `marketing/conversion/site-developer/fixes/freeproof-form-fallback.md`, `marketing/conversion/site-developer/fixes/cart-kit-missing-photo-notice.md`. Screenshots: `marketing/conversion/site-developer/2026-10-28-proof-fallback-cart-notice/`.
+- A-2026W44-027 (Calm Build Gift page): done. The main session published it, and it is live at /pages/calm-build-gift.
+- A-2026W44-037 (dog page): done. The main session published it, and it is live at /pages/dog-brick-mosaic.
+- Calm Build Gift page: it had no link to the autism hub article, so I added one line under "Building together" linking to /blogs/news/brick-mosaic-calm-activity-autistic-kids-adults. I saved a backup first (`marketing/conversion/site-developer/backups/2026-10-28-calm-build-gift-hub-link/page-body-before.html`). The live check passed: the link opens the article on phone and desktop.
+- A-2026W44-017: covered by A-2026W44-016 (same "your own photo" link, already live in "Memobrick fixes"). Nothing built.
+- A-2026W43-002: moot. Kit page fix A-2026W43-001 has been live since Oct 23, and the item expires today. Nothing built.
+
+## Proposed for approval
+None. 018 and 019 are already approved. Eden only needs to publish the copy.
+
+## Blocked or unknown
+- Eden: publish theme copy **"Memobrick proof and cart fixes" (189322330332)** in Online Store > Themes. The connector refuses theme publishing. The undo is to republish "Memobrick fixes" 189310075100.
+- The theme count is 20 of 20 again. Before the next fix copy, delete one old copy in Online Store > Themes, for example "Memobrick gift kit flow" 188683092188 or "Memobrick kit page fix" 188955361500. Keep "Memobrick holiday gift boxes" 189177626844 for a few days as the undo for today's publish.
+- The real Hulk form does not load in this sandbox, so the "form works" case of 018 was simulated. After publishing, open /pages/free-preview on a phone and check that the form shows and the email box does not.
+- The cart drawer (memobrick.js) does not show the 019 notice. That was out of scope in the approved draft.
+
+## Sales impact
+018 protects free-proof requests when the Hulk form fails to load. Draft orders are the largest lost-order cause (11 vs 71 last year). Each saved request has about a one in four to five chance of becoming an order. 019 prevents paid kit orders that arrive with no photo before the December rush. It has a small direct effect on orders, but it protects production and refunds. The hub link on the Calm Build Gift page adds an internal link between the two autism pages that outreach is sending people to.
+
+## Next run
+After Eden publishes 189322330332: check the live checksums of the 4 files, then run the live phone and desktop check of /pages/free-preview, the home proof view and the cart. Follow up on 016 (A/B test CA-20261028-01) and 032 in Shopify analytics, counting referred sessions only.

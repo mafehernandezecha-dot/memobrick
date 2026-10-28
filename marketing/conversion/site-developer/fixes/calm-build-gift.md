@@ -63,3 +63,9 @@ mutation { pageUpdate(id: "gid://shopify/Page/167408763100", page: { isPublished
 ```
 
 Nothing else changes, so nothing else needs undoing. The PDF in Shopify Files can stay (it is free and linked from the blog hub too).
+
+## Live (2026-10-28)
+- A-2026W44-027 done: the main session published the page (isPublished true) on 2026-10-28; live at https://mymemobrick.com/pages/calm-build-gift .
+- 08:48 UTC: added a link to the live autism hub article under "Building together": "For more ideas, read our guide Building a Brick Mosaic as a Calm, Shared Activity for Autistic Kids and Adults" -> /blogs/news/brick-mosaic-calm-activity-autistic-kids-adults. Nothing else changed. Backup of the body before: backups/2026-10-28-calm-build-gift-hub-link/page-body-before.html; body now: calm-build-gift/page-body-live-2026-10-28-hub-link.html.
+- Checked live on phone and desktop: link present, it opens the article, no horizontal scroll. Screenshots: 2026-10-28-calm-build-gift/after-phone-calm-build-gift-hub-link.jpg, after-desktop-calm-build-gift-hub-link.jpg.
+- Undo for the link: pageUpdate with the backup body.
