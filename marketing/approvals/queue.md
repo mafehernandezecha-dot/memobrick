@@ -222,6 +222,42 @@ Do first (as of 2026-10-28):
 - Status: pending
 - From: P-site-developer-20261028-2
 
+## A-2026W44-028
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/batches/2026-10-28-autism-outreach.md
+- Commit: 7255305
+- Reason: 10 pitches to autistic creators, autistic parents, OTs, special-education teachers and sensory-friendly gift guides (Growing Hands-On Kids, NeuroDivergent Rebel, Life Skills Advocate, Neurodiverging, Miss Jaime OT, Autistic Mama, Not An Autism Mom, TN Disability Pathfinder, Autism Classroom Resources, TPGA). Contact routes are from search results: confirm each page before sending. No health claims.
+- Expires: 2026-11-07
+- Status: approved
+- From: P-outreach-gift-guide-pr-20261028-1
+- Note (2026-10-28): Eden approved in chat: "approve pitches and both kits".
+
+## A-2026W44-029
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: offer
+- Draft: marketing/outreach/gift-guide-pr/kit-offers/growing-hands-on-kids-kit.md
+- Commit: 7255305
+- Reason: One free 16×16 kit ($69.88) for Heather Greutman (Growing Hands-On Kids, OT, sensory gifts guide), for an honest view, no obligation to post.
+- Expires: 2026-11-07
+- Status: approved
+- From: P-outreach-gift-guide-pr-20261028-2
+- Note (2026-10-28): Eden approved in chat: "approve pitches and both kits".
+
+## A-2026W44-030
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: offer
+- Draft: marketing/outreach/gift-guide-pr/kit-offers/neurodivergent-rebel-kit.md
+- Commit: 7255305
+- Reason: One free 16×16 kit ($69.88) for Lyric Rivera (NeuroDivergent Rebel, autistic self-advocate), for honest feedback, no obligation to post.
+- Expires: 2026-11-07
+- Status: approved
+- From: P-outreach-gift-guide-pr-20261028-3
+- Note (2026-10-28): Eden approved in chat: "approve pitches and both kits".
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
