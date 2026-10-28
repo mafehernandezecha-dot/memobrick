@@ -6,10 +6,22 @@
   Nothing is typed in by hand, so no review can be invented or edited here.
   Rendered server-side (article.liquid is a Liquid template, so Loox app blocks
   cannot be placed in it, and the Loox script widget is JavaScript-only).
-  Shows photo reviews only, in Loox's own order.
+  Shows photo reviews only, in Loox's own order. rating/count are optional
+  (computed here when not passed), so GemPages can render it too.
 {%- endcomment -%}
 {%- liquid
   assign feed = shop.metafields.loox.review_feed_agg.value
+  if rating == blank
+    assign st = shop.metafields.loox.global_stats.value | default: shop.metafields.loox.global_stats | split: ','
+    assign rating = st[0]
+    assign count = st[1] | strip
+    assign cn = count | plus: 0
+    if cn >= 1000
+      assign ck = cn | divided_by: 1000
+      assign cr = cn | modulo: 1000 | prepend: '00' | slice: -3, 3
+      assign count = ck | append: ',' | append: cr
+    endif
+  endif
   assign shown = 0
 -%}
 {%- if feed.reviews.size > 0 -%}

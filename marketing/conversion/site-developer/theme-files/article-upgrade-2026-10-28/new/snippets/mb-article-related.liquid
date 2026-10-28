@@ -23,7 +23,8 @@
       {%- if shown >= 3 -%}{%- break -%}{%- endif -%}
       {%- if h == current -%}{%- continue -%}{%- endif -%}
       {%- for a in blog.articles -%}
-        {%- if a.handle == h -%}
+        {%- assign ah = a.handle | split: '/' | last -%}
+        {%- if ah == h -%}
           {%- render 'mb-article-related-card', a: a -%}
           {%- assign shown = shown | plus: 1 -%}
           {%- assign used = used | append: ',' | append: h -%}
@@ -35,7 +36,8 @@
       {%- assign used_list = used | split: ',' -%}
       {%- for a in blog.articles limit: 12 -%}
         {%- if shown >= 3 -%}{%- break -%}{%- endif -%}
-        {%- if used_list contains a.handle -%}{%- continue -%}{%- endif -%}
+        {%- assign ah = a.handle | split: '/' | last -%}
+        {%- if used_list contains ah -%}{%- continue -%}{%- endif -%}
         {%- render 'mb-article-related-card', a: a -%}
         {%- assign shown = shown | plus: 1 -%}
       {%- endfor -%}

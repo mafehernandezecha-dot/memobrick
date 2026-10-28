@@ -1,6 +1,7 @@
 {%- comment -%}
   "Make yours" product card for blog articles (templates/article.liquid).
-  series: 'calm' | 'christmas' | 'default'   place: 'intro' | 'end'
+  series: 'calm' | 'christmas' | 'default'   place: 'intro' | 'end'   hero: (optional) hero asset name to avoid
+  Self-contained (own CSS), so it can also be rendered from a GemPages Liquid element.
   Price and Loox rating from Shopify; picture is a Memobrick Studio example. Calm series points to the 16×16 kit
   (and to the Calm Build Gift page once a published page with handle
   calm-build-gift exists). No health claims.
@@ -65,3 +66,29 @@
     {%- endif -%}
   </div>
 </aside>
+<style>
+  .mba-card{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:center;max-width:var(--mba-col,700px);margin:30px auto 34px;padding:16px;background:var(--card,#fff);border:1px solid var(--line);border-radius:20px;box-shadow:0 16px 36px -28px rgba(21,23,27,.4);font-size:15px;line-height:1.5;color:var(--ink-2)}
+  .mba-card--end{max-width:var(--mba-wide,1040px);grid-template-columns:380px 1fr;margin-top:10px;margin-bottom:46px;padding:20px}
+  .mba-card-img{display:block;border-radius:14px;overflow:hidden;background:var(--paper,#f3f1ec)}
+  .mba-card-img{position:relative}
+  .mba-card-img span{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.92);color:var(--ink-2);font-size:11px;line-height:1.2;padding:4px 8px;border-radius:999px}
+  .mba-card-img img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;margin:0;border-radius:0}
+  .page-prose .mba-card a.btn{text-decoration:none}
+  .mba-card p{margin:0}
+  .mba-card-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--b-red)}
+  .mba-card-h{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.2;color:var(--ink);margin:6px 0 8px !important}
+  .mba-card--end .mba-card-h{font-size:28px}
+  .mba-card-price{margin:12px 0 14px !important;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;color:var(--ink-3);font-size:14px}
+  .mba-card-price b{font-family:var(--display);font-weight:600;font-size:18px;color:var(--ink)}
+  .mba-card-stars{color:var(--ink-2)}
+  .mba-card-stars span{color:#f7c90f}
+  .mba-card-btns{display:flex;flex-wrap:wrap;gap:10px}
+  .mba-card-btns .btn{flex:1 1 180px;text-decoration:none}
+  .mba-btn-ghost{background:transparent !important;color:var(--ink) !important;border:1.5px solid var(--ink) !important}
+  .mba-card-note{font-size:12.5px;color:var(--ink-3);margin-top:10px !important}
+  .page-prose .mba-card-note a{color:var(--ink-2)}
+  @media (max-width:760px){
+    .mba-card,.mba-card--end{grid-template-columns:1fr;gap:14px;padding:14px}
+    .mba-card--end .mba-card-h{font-size:24px}
+  }
+</style>
