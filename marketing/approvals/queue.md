@@ -414,8 +414,9 @@ Do first (as of 2026-10-28):
 - Commit: 7ebfa16
 - Reason: Plan for Memobrick's own Facebook group "Memobrick Builders": 7 rules, pinned welcome post, 14 daily prompts, monthly "Show your mosaic" day.
 - Expires: 2026-11-15
-- Status: pending
+- Status: approved
 - From: P-social-community-manager-20261028-2
+- Note (2026-10-28): Eden approved in chat: "approved" (reply to: approve 044 for the group posts, approve 043 for the own-group plan).
 
 ## A-2026W44-044
 - Agent: social-community-manager
@@ -425,8 +426,9 @@ Do first (as of 2026-10-28):
 - Commit: 4a658c2
 - Reason: Today's 5 Facebook group posts and 3 gift answers rewritten as awareness posts (no prices, codes, deadlines or sales calls to action), per Eden: "the post don't need to sell, the idea is for people to know about memobrick". Replaces 042.
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-social-community-manager-20261028-3
+- Note (2026-10-28): Eden approved in chat: "approved" (reply to: approve 044 for the group posts, approve 043 for the own-group plan).
 
 ## A-2026W44-014
 - Agent: email-campaign-writer
