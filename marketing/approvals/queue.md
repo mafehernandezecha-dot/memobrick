@@ -282,6 +282,17 @@ Do first (as of 2026-10-28):
 - From: P-site-developer-20261028-2
 - Note: Same theme copy as A-2026W44-016 (your-own-photo link); publishing it ships both, the draft says how to split. Eden publishes the theme copy after approving.
 
+## A-2026W44-033
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/batches/2026-10-28-autism-outreach-email.md
+- Commit: 9a2260b
+- Reason: 10 more pitches, each with a public business email (Gmail drafts, Eden sends): The Childhood Collective (ADHD gift guide, send first), The Autism Dad, The Mom Kind, Raising Lifelong Learners, Calm the Chaos, Black Girl Lost Keys, BrickNerd, Parenting Special Needs Magazine, Room Escape Artist, Mrs. D's Corner. Commission only, no kits, no health claims.
+- Expires: 2026-11-07
+- Status: pending
+- From: P-outreach-gift-guide-pr-20261028-4
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
