@@ -5,6 +5,8 @@ Post file: marketing/social/planner/2026-W44/S-20261029-1.md
 
 Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> AI label; TikTok: AI-generated content toggle; Pinterest: no setting, note it in the description).
 
+Studio redo (A-2026W42-037 note of 2026-10-28, Eden approved Hugo's Studio images in chat): the bricked image now comes from MemoBrick Studio, see marketing/social/planner/2026-W44/redo/README.md. Captions, links, hashtags and the other slides are unchanged.
+
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
@@ -25,7 +27,7 @@ Start your design at the link in our bio.
 Hashtags: #brickmosaic #photogift #personalizedgift #homedecor #giftideas
 Link (UTM): https://mymemobrick.com/collections/the-gift-for-everyone?utm_source=instagram&utm_medium=organic&utm_campaign=2026-10-size-guide
 Alt text: Four slides: a scene with a mosaic on a wall, two size comparison cards, and a how to start card.
-Media: marketing/social/planner/2026-W44/S-20261029-1.png
+Media: marketing/social/planner/2026-W44/redo/S-20261029-1-studio.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-2.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-3.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-4.png
@@ -48,7 +50,7 @@ Start your design at the link in our bio.
 Hashtags: #brickmosaic #photogift #personalizedgift #homedecor #giftideas
 Link (UTM): https://mymemobrick.com/collections/the-gift-for-everyone?utm_source=facebook&utm_medium=organic&utm_campaign=2026-10-size-guide
 Alt text: Four slides: a scene with a mosaic on a wall, two size comparison cards, and a how to start card.
-Media: marketing/social/planner/2026-W44/S-20261029-1.png
+Media: marketing/social/planner/2026-W44/redo/S-20261029-1-studio.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-2.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-3.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-4.png
@@ -61,7 +63,7 @@ Which size? 16×16, 20×20, 20×30 and more. Swipe for pieces, build time and pr
 Hashtags: #brickmosaic #photogift #giftideas
 Link (UTM): https://mymemobrick.com/collections/the-gift-for-everyone?utm_source=tiktok&utm_medium=organic&utm_campaign=2026-10-size-guide
 Alt text: Four slides: a scene with a mosaic on a wall, two size comparison cards, and a how to start card.
-Media: marketing/social/planner/2026-W44/S-20261029-1.png
+Media: marketing/social/planner/2026-W44/redo/S-20261029-1-studio.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-2.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-3.png
 Media: marketing/social/planner/2026-W44/S-20261029-1-4.png
@@ -73,7 +75,7 @@ Pin description: Compare custom brick mosaic kit sizes with pieces, build time a
 Board: Home decor
 Destination link: https://mymemobrick.com/collections/the-gift-for-everyone?utm_source=pinterest&utm_medium=organic&utm_campaign=2026-10-size-guide
 Alt text: Four slides: a scene with a mosaic on a wall, two size comparison cards, and a how to start card.
-Media: marketing/social/planner/2026-W44/S-20261029-1-pin.png
+Media: marketing/social/planner/2026-W44/redo/S-20261029-1-pin-studio.png
 
 ## Result
 

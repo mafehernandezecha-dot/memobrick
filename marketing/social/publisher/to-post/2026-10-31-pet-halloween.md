@@ -5,6 +5,8 @@ Post file: marketing/social/planner/2026-W44/S-20261031-1.md
 
 Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> AI label; TikTok: AI-generated content toggle; Pinterest: no setting, note it in the description).
 
+Studio redo (A-2026W42-037 note of 2026-10-28, Eden approved Hugo's Studio images in chat): the bricked image now comes from MemoBrick Studio, see marketing/social/planner/2026-W44/redo/README.md. Captions, links, hashtags and the other slides are unchanged.
+
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
@@ -23,7 +25,7 @@ Hashtags: #halloween #dogmom #petportrait #brickmosaic #giftsforpetlovers
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=instagram&utm_medium=organic&utm_campaign=2026-10-pet-halloween
 Alt text: Three slides: a dog in a Halloween costume, the same photo as a brick mosaic, and a text card.
 Media: marketing/social/planner/2026-W44/S-20261031-1.png
-Media: marketing/social/planner/2026-W44/S-20261031-1-2.png
+Media: marketing/social/planner/2026-W44/redo/S-20261031-1-2-studio.png
 Media: marketing/social/planner/2026-W44/S-20261031-1-3.png
 
 ## Facebook (carousel)
@@ -42,7 +44,7 @@ Hashtags: #halloween #dogmom #petportrait #brickmosaic #giftsforpetlovers
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=organic&utm_campaign=2026-10-pet-halloween
 Alt text: Three slides: a dog in a Halloween costume, the same photo as a brick mosaic, and a text card.
 Media: marketing/social/planner/2026-W44/S-20261031-1.png
-Media: marketing/social/planner/2026-W44/S-20261031-1-2.png
+Media: marketing/social/planner/2026-W44/redo/S-20261031-1-2-studio.png
 Media: marketing/social/planner/2026-W44/S-20261031-1-3.png
 
 ## TikTok (photo carousel)
@@ -54,7 +56,7 @@ Hashtags: #halloween #dogsoftiktok #brickmosaic #petportrait
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=tiktok&utm_medium=organic&utm_campaign=2026-10-pet-halloween
 Alt text: Three slides: a dog in a Halloween costume, the same photo as a brick mosaic, and a text card.
 Media: marketing/social/planner/2026-W44/S-20261031-1.png
-Media: marketing/social/planner/2026-W44/S-20261031-1-2.png
+Media: marketing/social/planner/2026-W44/redo/S-20261031-1-2-studio.png
 Media: marketing/social/planner/2026-W44/S-20261031-1-3.png
 
 ## Pinterest

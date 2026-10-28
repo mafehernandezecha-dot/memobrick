@@ -5,7 +5,9 @@ Post file: marketing/social/planner/2026-W44/S-20261030-1.md
 
 Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> AI label; TikTok: AI-generated content toggle; Pinterest: no setting, note it in the description).
 
-Caption wording, hashtags and links are exactly as approved in the post file. Sound: no audio in the file; the owner adds a trending sound only if posting by hand.
+Studio redo (A-2026W42-037 note of 2026-10-28, Eden approved Hugo's Studio images in chat): the bricked image now comes from MemoBrick Studio, see marketing/social/planner/2026-W44/redo/README.md. Captions, links, hashtags and the other slides are unchanged.
+
+Caption wording, hashtags and links are exactly as approved in the post file. Sound: original music is in the file (add-music.sh).
 
 ## Instagram (Reel)
 Buffer: 6ad8a591fe0d0b602285459b (scheduled 2026-10-30 19:00 ET; Buffer posts this channel, the Mac skips it)
@@ -22,7 +24,7 @@ See your own photo as a mosaic at mymemobrick.com.
 Hashtags: #guessthephoto #brickmosaic #catmom #petportrait #photogift
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=instagram&utm_medium=organic&utm_campaign=2026-10-guess-the-photo
 Alt text: Guess the photo reveal: close-up of studs zooming out to a finished brick portrait of a cat.
-Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-music.mp4
+Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4
 
 ## Facebook (Reel)
 Buffer: 6ad8a595befea41f139e7902 (scheduled 2026-10-30 19:00 ET; Buffer posts this channel, the Mac skips it)
@@ -39,7 +41,7 @@ See your own photo as a mosaic at mymemobrick.com.
 Hashtags: #guessthephoto #brickmosaic #catmom #petportrait #photogift
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=organic&utm_campaign=2026-10-guess-the-photo
 Alt text: Guess the photo reveal: close-up of studs zooming out to a finished brick portrait of a cat.
-Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-music.mp4
+Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4
 
 ## TikTok (video)
 Buffer: 6ad8a59c9c5d256f6599e2a4 (scheduled 2026-10-30 19:00 ET; Buffer posts this channel, the Mac skips it)
@@ -50,7 +52,7 @@ Guess the photo Friday! What is it? Follow for next week. DM us your photo to be
 Hashtags: #guessthephoto #catsoftiktok #brickmosaic #petportrait
 Link (UTM): https://mymemobrick.com/pages/editor?utm_source=tiktok&utm_medium=organic&utm_campaign=2026-10-guess-the-photo
 Alt text: Guess the photo reveal: close-up of studs zooming out to a finished brick portrait of a cat.
-Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-music.mp4
+Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4
 
 ## Pinterest
 
@@ -59,7 +61,7 @@ Pin description: Watch a cat photo become a DIY brick mosaic made of tiny 1×1 b
 Board: Pet gift ideas
 Destination link: https://mymemobrick.com/pages/editor?utm_source=pinterest&utm_medium=organic&utm_campaign=2026-10-guess-the-photo
 Alt text: Guess the photo reveal: close-up of studs zooming out to a finished brick portrait of a cat.
-Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-music.mp4
+Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4
 
 ## YouTube Shorts (added channel)
 
@@ -73,10 +75,10 @@ https://mymemobrick.com/pages/editor?utm_source=youtube&utm_medium=organic&utm_c
 
 Altered or synthetic content: Yes
 Audience: No, it's not made for kids
-Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-music.mp4
+Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4
 
 ## Result
 
-Music (A-2026W43-008): every channel uses marketing/social/publisher/media/2026-10-30-guess-the-photo-music.mp4 (original music added by add-music.sh); the Buffer posts use the same file on Shopify (memobrick-social-2026-10-30-guess-the-photo-music.mp4).
+Music (A-2026W43-008): every channel uses marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4 (the Studio redo video with original music added by add-music.sh, 2026-10-28); the Buffer posts use the same file on Shopify (memobrick-social-2026-10-30-guess-the-photo-studio.mp4).
 
 (filled in by the owner's Mac after posting)

@@ -1,14 +1,16 @@
-Status: ready
-Post time (ET): 2026-10-27 19:00
+Status: needs owner: re-approval (moved to Mon 2026-11-09 19:00 ET, after A-2026W42-037 expires on 2026-10-31; the planner re-proposes it in the next weekly batch)
+Post time (ET): 2026-11-09 19:00
 Approval: A-2026W42-037 S-20261027-1
 Post file: marketing/social/planner/2026-W44/S-20261027-1.md
 
 Turn on the AI label when posting (Instagram and Facebook: Advanced settings -> AI label; TikTok: AI-generated content toggle; Pinterest: no setting, note it in the description).
 
+Studio redo (A-2026W42-037 note of 2026-10-28, Eden approved Hugo's Studio images in chat): the bricked image now comes from MemoBrick Studio, see marketing/social/planner/2026-W44/redo/README.md. Captions, links, hashtags and the other slides are unchanged.
+
 Caption wording, hashtags and links are exactly as approved in the post file.
 
 ## Instagram (carousel)
-Buffer: 6ad8a5639c5d256f6599d871 (scheduled 2026-10-27 19:00 ET; Buffer posts this channel, the Mac skips it)
+Buffer: 6ad8a5639c5d256f6599d871 (draft, Studio slide 3 in place; not scheduled until re-approved; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Not sure your photo will work?
@@ -24,11 +26,11 @@ Link (UTM): https://mymemobrick.com/pages/free-preview?utm_source=instagram&utm_
 Alt text: Four slides: a woman choosing a photo on her phone, what makes a great photo, a photo and its brick mosaic, and the free design proof offer.
 Media: marketing/social/planner/2026-W44/S-20261027-1.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-2.png
-Media: marketing/social/planner/2026-W44/S-20261027-1-3.png
+Media: marketing/social/planner/2026-W44/redo/S-20261027-1-3-studio.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-4.png
 
 ## Facebook (carousel)
-Buffer: 6ad8a56bbefea41f139e715f (scheduled 2026-10-27 19:00 ET; Buffer posts this channel, the Mac skips it)
+Buffer: 6ad8a56bbefea41f139e715f (draft, Studio slide 3 in place; not scheduled until re-approved; Buffer posts this channel, the Mac skips it)
 
 Caption:
 Not sure your photo will work?
@@ -44,7 +46,7 @@ Link (UTM): https://mymemobrick.com/pages/free-preview?utm_source=facebook&utm_m
 Alt text: Four slides: a woman choosing a photo on her phone, what makes a great photo, a photo and its brick mosaic, and the free design proof offer.
 Media: marketing/social/planner/2026-W44/S-20261027-1.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-2.png
-Media: marketing/social/planner/2026-W44/S-20261027-1-3.png
+Media: marketing/social/planner/2026-W44/redo/S-20261027-1-3-studio.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-4.png
 
 ## TikTok (photo carousel)
@@ -57,7 +59,7 @@ Link (UTM): https://mymemobrick.com/pages/free-preview?utm_source=tiktok&utm_med
 Alt text: Four slides: a woman choosing a photo on her phone, what makes a great photo, a photo and its brick mosaic, and the free design proof offer.
 Media: marketing/social/planner/2026-W44/S-20261027-1.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-2.png
-Media: marketing/social/planner/2026-W44/S-20261027-1-3.png
+Media: marketing/social/planner/2026-W44/redo/S-20261027-1-3-studio.png
 Media: marketing/social/planner/2026-W44/S-20261027-1-4.png
 
 ## Pinterest
