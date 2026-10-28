@@ -142,3 +142,46 @@ The Childhood Collective, The Mom Kind, Parenting Special Needs and Room Escape 
 ## Next run
 
 Act on the approved batch (10 Gmail drafts, contacts-log rows). Search Gmail sent mail for today's drafts and replies on the regular Tuesday run (Nov 3).
+
+# outreach-gift-guide-pr 2026-10-28, executor run (Mario): A-2026W44-033 email batch
+
+## Summary
+
+Carried out A-2026W44-033: 10 Gmail drafts, one per pitch, to the emails in batches/2026-10-28-autism-outreach-email.md. The Childhood Collective was drafted first. Nothing sent; Eden sends from Gmail.
+
+## Done
+
+- `check.py approvals --agent outreach-gift-guide-pr --today 2026-10-28` printed A-2026W44-028, -029, -030 and -033. This run acted only on -033 (028 to 030 were carried out earlier today).
+- All 20 pitch files (.md and .html) match the batch hashes. `check.py copy` passes on all 20.
+- Gmail checked first (sent, all mail and drafts, by address and by domain): no earlier draft, send or thread for any of the 10.
+- Drafts (HTML file as htmlBody, .md text after the Subject line as body, subject from the .md), in this order:
+  1. The Childhood Collective, hello@thechildhoodcollective.com: r815425731051907931 (send first)
+  2. The Autism Dad, rob@theautismdad.com: r-265126318103545709
+  3. The Mom Kind, admin@themomkind.com: r-7140002716734386294
+  4. Raising Lifelong Learners, support@raisinglifelonglearners.com: r-8872595523821995284
+  5. Calm the Chaos, help@calmthechaos.co: r-9118047390143523421
+  6. Black Girl, Lost Keys, rene@blackgirllostkeys.com: r-1988349444980865724
+  7. BrickNerd, connect@bricknerd.com: r-4445024651008602008
+  8. Parenting Special Needs, info@parentingspecialneeds.org: r-8307870720952424303
+  9. Room Escape Artist, contact@roomescapeartist.com: r-7588775231956498003
+  10. Mrs. D's Corner, support@mrsdscorner.com: r-2427569067590295043
+- Read-back: exactly one draft per address, all subjects match. Plain text matches word for word apart from Gmail's own link display in the read view (redirect wrapping, http:// on bare domains).
+- 10 rows appended to marketing/shared/contacts-log.md (Status: drafted).
+
+## Proposed for approval
+
+None.
+
+## Blocked or unknown
+
+- Gmail's read view strips the page background, navy header colour and `role` attributes from the HTML (the same as with the Neurodiverging draft). Eden should open one draft and check the header and photos look right before sending.
+- Every email came from search text only (`unverified`). Rows 5 (Calm the Chaos) and 10 (Mrs. D's Corner) go to general help or support inboxes. For row 9, read Room Escape Artist's review-request guide before sending.
+- Raising Lifelong Learners was already in the log, but only as the podcast page of a different person (Autistic Mama, not sent), so this is not a repeat contact.
+
+## Sales impact
+
+Gift guides refreshed in early November (Childhood Collective, The Mom Kind, Parenting Special Needs, Room Escape Artist) can bring holiday orders before the December 15 order-by date if Eden sends this week. The feedback pitches mostly bring learning, plus later Collabs code sales. Unmeasured.
+
+## Next run
+
+Search Gmail sent mail for these 10 drafts and for replies, and append sent or replied rows.
