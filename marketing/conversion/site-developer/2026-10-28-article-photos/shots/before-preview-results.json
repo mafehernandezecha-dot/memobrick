@@ -1,0 +1,102 @@
+[
+ {
+  "device": "phone",
+  "h": "last-minute-personalized-christmas-gifts",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/cdn/shop/articles/last-minute-personalized-christmas-gifts-studio.png?v=1793173051&width=1100",
+  "heroBox": [
+   0,
+   311,
+   390,
+   390
+  ],
+  "heroNatural": [
+   390,
+   390
+  ],
+  "heroFit": "contain",
+  "sw": 390,
+  "iw": 390,
+  "h1": 1,
+  "cardImgs": [
+   "mb-studio-dog.jpg",
+   "mb-studio-dog.jpg"
+  ],
+  "broken": []
+ },
+ {
+  "device": "phone",
+  "h": "personalized-christmas-photo-gifts",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/cdn/shop/t/215/assets/mb-studio-christmas-couple.jpg?v=58335328478680815971793173099",
+  "heroBox": [
+   0,
+   311,
+   390,
+   390
+  ],
+  "heroNatural": [
+   1200,
+   1200
+  ],
+  "heroFit": "contain",
+  "sw": 390,
+  "iw": 390,
+  "h1": 1,
+  "cardImgs": [
+   "mb-studio-dog.jpg",
+   "mb-studio-dog.jpg"
+  ],
+  "broken": []
+ },
+ {
+  "device": "desktop",
+  "h": "last-minute-personalized-christmas-gifts",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/cdn/shop/articles/last-minute-personalized-christmas-gifts-studio.png?v=1793173051&width=1100",
+  "heroBox": [
+   200,
+   295,
+   1040,
+   520
+  ],
+  "heroNatural": [
+   1040,
+   1040
+  ],
+  "heroFit": "contain",
+  "sw": 1440,
+  "iw": 1440,
+  "h1": 1,
+  "cardImgs": [
+   "mb-studio-dog.jpg",
+   "mb-studio-dog.jpg"
+  ],
+  "broken": []
+ },
+ {
+  "device": "desktop",
+  "h": "personalized-christmas-photo-gifts",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/cdn/shop/t/215/assets/mb-studio-christmas-couple.jpg?v=58335328478680815971793173099",
+  "heroBox": [
+   200,
+   295,
+   1040,
+   520
+  ],
+  "heroNatural": [
+   1200,
+   1200
+  ],
+  "heroFit": "contain",
+  "sw": 1440,
+  "iw": 1440,
+  "h1": 1,
+  "cardImgs": [
+   "mb-studio-dog.jpg",
+   "mb-studio-dog.jpg"
+  ],
+  "broken": []
+ }
+]

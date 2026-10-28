@@ -1,0 +1,102 @@
+[
+ {
+  "device": "phone",
+  "h": "last-minute-personalized-christmas-gifts",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/__standin/%2Ftmp%2Fclaude-0%2F-home-user-memobrick%2F6c2afd08-63fe-5a7d-83a8-1df45d57cf83%2Fscratchpad%2Fjenny-art-1",
+  "heroBox": [
+   0,
+   311,
+   390,
+   293
+  ],
+  "heroNatural": [
+   526,
+   351
+  ],
+  "heroFit": "cover",
+  "sw": 390,
+  "iw": 390,
+  "h1": 1,
+  "cardImgs": [
+   "mb-real-woman-portrait.jpg",
+   "mb-real-woman-portrait.jpg"
+  ],
+  "broken": []
+ },
+ {
+  "device": "phone",
+  "h": "brick-mosaic-calm-activity-autistic-kids-adults",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/__standin/%2Ftmp%2Fclaude-0%2F-home-user-memobrick%2F6c2afd08-63fe-5a7d-83a8-1df45d57cf83%2Fscratchpad%2Fjenny-art-1",
+  "heroBox": [
+   0,
+   311,
+   390,
+   293
+  ],
+  "heroNatural": [
+   877,
+   585
+  ],
+  "heroFit": "cover",
+  "sw": 390,
+  "iw": 390,
+  "h1": 1,
+  "cardImgs": [
+   "mb-real-color-bags.jpg",
+   "mb-real-color-bags.jpg"
+  ],
+  "broken": []
+ },
+ {
+  "device": "desktop",
+  "h": "last-minute-personalized-christmas-gifts",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/__standin/%2Ftmp%2Fclaude-0%2F-home-user-memobrick%2F6c2afd08-63fe-5a7d-83a8-1df45d57cf83%2Fscratchpad%2Fjenny-art-1",
+  "heroBox": [
+   200,
+   295,
+   1040,
+   693
+  ],
+  "heroNatural": [
+   936,
+   624
+  ],
+  "heroFit": "cover",
+  "sw": 1440,
+  "iw": 1440,
+  "h1": 1,
+  "cardImgs": [
+   "mb-real-woman-portrait.jpg",
+   "mb-real-woman-portrait.jpg"
+  ],
+  "broken": []
+ },
+ {
+  "device": "desktop",
+  "h": "brick-mosaic-calm-activity-autistic-kids-adults",
+  "status": 200,
+  "heroSrc": "https://mymemobrick.com/__standin/%2Ftmp%2Fclaude-0%2F-home-user-memobrick%2F6c2afd08-63fe-5a7d-83a8-1df45d57cf83%2Fscratchpad%2Fjenny-art-1",
+  "heroBox": [
+   200,
+   343,
+   1040,
+   693
+  ],
+  "heroNatural": [
+   1560,
+   1040
+  ],
+  "heroFit": "cover",
+  "sw": 1440,
+  "iw": 1440,
+  "h1": 1,
+  "cardImgs": [
+   "mb-real-color-bags.jpg",
+   "mb-real-color-bags.jpg"
+  ],
+  "broken": []
+ }
+]
