@@ -58,8 +58,9 @@ Do first (as of 2026-10-28):
 - Commit: 530f23d
 - Reason: Adds a text link "Want it with your own photo?" under Buy now on ready-made design pages for half of visitors (A/B test CA-20261028-01); built and tested in theme copy "Memobrick fixes" (189310075100). Ready-made pages have about 640 sessions a month and no path to the editor.
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261028-1
+- Note (2026-10-28): Eden approved in chat: "016 and 032 approved". Eden publishes theme copy "Memobrick fixes" once the picture and homepage fixes are in.
 - Note: The connector cannot write to the live theme, so you publish the copy after approving. Approve this built version rather than A-2026W44-017. Theme count is 20 of 20; delete old copies so new ones can be made.
 
 ## A-2026W42-029
@@ -278,8 +279,9 @@ Do first (as of 2026-10-28):
 - Commit: ce17342
 - Reason: New default article template (all non-GemPages articles, incl. today's 8): large image, "Make yours" card with live price, real Loox star summary and photo reviews (from Loox data), trust strip (As seen on FOX, free proof, Dec 15, Gift Kit), phone sticky button clear of the chat bubble, related articles. Built in theme copy "Memobrick fixes" (189310075100); preview https://mymemobrick.com/blogs/news/last-minute-personalized-christmas-gifts?preview_theme_id=189310075100
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261028-2
+- Note (2026-10-28): Eden approved in chat: "016 and 032 approved". Eden publishes theme copy "Memobrick fixes" once the picture and homepage fixes are in.
 - Note: Same theme copy as A-2026W44-016 (your-own-photo link); publishing it ships both, the draft says how to split. Eden publishes the theme copy after approving.
 
 ## A-2026W44-033
