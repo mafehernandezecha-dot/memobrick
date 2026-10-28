@@ -38,3 +38,4 @@ No redirect pointed at articles 2 to 8, and no redirect existed at any of the 8 
 ## Hub A (Article 751864185052, default template, updatedAt 2026-10-14T02:48:05Z)
 
 Full body before the link fixes: `hub-a-body-before.html` in this folder.
+- Article 752026484956 last-minute-personalized-christmas-gifts (published by seo-blog-writer under A-2026W44-021, updatedAt 2026-10-28T07:37:31Z): full body before the link repoint in `last-minute-body-before.html`.
