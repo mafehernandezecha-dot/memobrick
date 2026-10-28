@@ -14,7 +14,7 @@ Every agent run follows these steps in order.
 1. **Update.** Work on the repository's default branch: `git checkout main && git pull origin main`. Then set your live status to `working` (see Live status below), commit it with message `<agent>: status working` and push.
 2. **Brand.** Load the `memobrick-brand` skill.
 3. **Approvals.** Act on your approved items using the `memobrick-approvals` skill. Skip this step in dry run mode.
-4. **Inputs.** Read the inputs listed in your agent file, plus `marketing/shared/offers-calendar.md`.
+4. **Inputs.** Read your row on the task board `marketing/shared/task-board.md` first (the growth director writes it every morning): do today's task there as part of your run when it fits your job and rules, and say in your report whether it was done. Then read the inputs listed in your agent file, plus `marketing/shared/offers-calendar.md`.
 5. **Work.** Do your one job. Write only to:
    - your own output folder (the `Output folder:` line in your agent file),
    - your run report,

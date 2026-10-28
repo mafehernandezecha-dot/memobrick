@@ -51,6 +51,19 @@
       "sprite": "sprites/betty.png"
     },
     {
+      "name": "growth-director",
+      "character": "gabriel",
+      "role": "Thinks for the team: decides each agent's daily task to drive sales",
+      "department": "Leadership",
+      "status": "active",
+      "displayName": "Gabriel",
+      "machine": "",
+      "avatar": "avatars/gabriel.png",
+      "sprite": "sprites/gabriel.png",
+      "folder": "marketing/coordination/director",
+      "agentFile": ".claude/agents/growth-director.md"
+    },
+    {
       "name": "marketing-coordinator",
       "character": "armando",
       "role": "Coordinates the team and builds your approval queue",
