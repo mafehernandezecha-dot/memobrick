@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-27T07:00:00-04:00",
+ "updated": "2026-10-27T22:50:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -771,24 +771,24 @@
   }
  ],
  "funnel": {
-  "period": "Sep 27 to Oct 26 2026 (store time, full days), referred sessions only (direct excluded because bots inflate it), vs Sep 27 to Oct 26 2025",
+  "period": "Last 30 days to Oct 27 2026 (store time, includes part of Oct 27), referred sessions only (direct excluded because bots inflate it), vs Sep 28 to Oct 28 2025",
   "now": {
-   "sessions": 2378,
-   "addedToCart": 141,
-   "reachedCheckout": 82,
+   "sessions": 2401,
+   "addedToCart": 143,
+   "reachedCheckout": 84,
    "purchased": 37
   },
   "lastYear": {
-   "sessions": 5109,
-   "addedToCart": 425,
-   "reachedCheckout": 173,
+   "sessions": 4942,
+   "addedToCart": 414,
+   "reachedCheckout": 170,
    "purchased": 66
   }
  },
  "weakPoints": [
   {
    "title": "Referred traffic is down 53%, add-to-cart and search weakest",
-   "detail": "Referred sessions, Sep 27 to Oct 26: 2,378 vs 5,109 last year (-53%). Add-to-cart rate 5.9% vs 8.3%; checkout-to-purchase 45% vs 38%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Purchases 37 vs 66. Direct sessions are bot-inflated and excluded.",
+   "detail": "Referred sessions, last 30 days: 2,401 vs 4,942 last year (-51%). Add-to-cart rate 6.0% vs 8.4%; checkout-to-purchase 44% vs 39%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Purchases 37 vs 66. Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -797,7 +797,7 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 10 in the 30 days to Oct 26 vs 71 in the same 30 days last year (-86%, unchanged). Online Store 62 vs 111. Total 73 vs 184, so draft orders explain 61 of the 111 lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 11 in the last 30 days vs 71 in the same 30 days last year (-85%, unchanged). Online Store 58 vs 113. Total 70 vs 186, so draft orders explain 60 of the 116 lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
