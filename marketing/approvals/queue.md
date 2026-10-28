@@ -460,7 +460,7 @@ Do first (as of 2026-10-28):
 - Commit: 89919a1
 - Reason: Instagram sprint reels rebuilt from real cleared footage (no AI, AI label off): S-20261029-2 v2 "We brick your pet" Ep. 1 (Oct 29 12:00 ET) and S-20261030-2 v2 "Same photo, 3 sizes" (Oct 30 12:00 ET, Studio mosaics from the Billo couple clip). IG, FB, TikTok, Pinterest, YouTube Shorts. Replaces 045.
 - Expires: 2026-10-30
-- Status: pending
+- Status: changes: replaced by A-2026W44-049 (Eden: distortion, better mosaics)
 - From: P-social-planner-20261028-3
 
 ## A-2026W44-048
@@ -474,6 +474,17 @@ Do first (as of 2026-10-28):
 - Status: approved
 - From: P-social-community-manager-20261028-4
 - Note (2026-10-28): Eden approved in chat: "approve 048". The 4 calm posts stay held until Eden OKs calm posts.
+
+## A-2026W44-049
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/sprint-2026-10-29/week-v3.md
+- Commit: 4c54b64
+- Reason: Instagram sprint reels v3 from real footage, fixing Eden's notes: pet reel without warped slow motion (Oct 29 12:00 ET); size reel with sharper Studio mosaics (18 colors, contrast +15, saturation -15) shown framed on a wall, children's family mosaic kept (Oct 30 12:00 ET). No AI, AI label off. Replaces 045 and 047.
+- Expires: 2026-10-30
+- Status: pending
+- From: P-social-planner-20261028-4
 
 ## A-2026W44-014
 - Agent: email-campaign-writer
