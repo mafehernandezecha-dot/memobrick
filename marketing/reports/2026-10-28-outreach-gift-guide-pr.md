@@ -63,3 +63,39 @@ Small and slow in the next two weeks, possibly larger over the holiday season. T
 
 - Act on approved items from the batch and kit offers (paste text or Gmail drafts, contacts-log rows).
 - Regular Tuesday run (Nov 3): check Gmail sent mail for these pitches, check for replies, and refresh the maybe list (Easterseals 2027 RFI, The OT Toolbox, Haley Moss) if Eden gives direction.
+
+# outreach-gift-guide-pr 2026-10-28, executor run (Mario): approved autism outreach
+
+## Summary
+
+Carried out A-2026W44-028 (10 pitches), A-2026W44-029 and A-2026W44-030 (both kits). One Gmail draft (Neurodiverging), nine pitches in a ready-to-paste sheet with the four gift guides first. Nothing sent.
+
+## Done
+
+- `check.py approvals --agent outreach-gift-guide-pr --today 2026-10-28` printed A-2026W44-028, -029 and -030. All 10 pitch .md and .html files match the batch hashes, and both kit files are unchanged since 7255305.
+- Searched Gmail drafts and sent mail first: no earlier draft or sent pitch to any of these targets.
+- A-2026W44-028 / Neurodiverging: Gmail draft r-8893228019586132618 to contact@neurodiverging.com, HTML (pitches/neurodiverging.html) as htmlBody and the .md text as body, unchanged. https://mail.google.com/mail/?authuser=memobrickofficial@gmail.com#all?compose=thread-f:1880278467371323808%2Bmsg-a:r-8893228019586132618
+- A-2026W44-028 / other nine pitches: ready-to-paste sheet at marketing/outreach/gift-guide-pr/to-send/2026-10-28-autism-outreach.md (contact link, route status, where to paste, subject and message copied word for word from each approved .md, checked by script). Order: gift guides first (Growing Hands-On Kids, Life Skills Advocate, Neurodiverging, TN Pathfinder), then NeuroDivergent Rebel, Miss Jaime OT, Autistic Mama, Not An Autism Mom, Autism Classroom Resources, TPGA.
+- A-2026W44-029 and A-2026W44-030: both kits approved, so the Growing Hands-On Kids and NeuroDivergent Rebel pitches keep their kit offer. The owner ships a kit only after a yes, a photo and an address.
+- 10 rows appended to marketing/shared/contacts-log.md (1 drafted, 9 "prepared: paste sheet, not sent").
+- `check.py copy` passes on the sheet. Pitch texts were not changed.
+
+## Proposed for approval
+
+None.
+
+## Blocked or unknown
+
+- Every outlet site is blocked from this session (proxy 403 and DNS failure), so no contact page was opened. Routes come from web search text only. The sheet marks each one CONFIRMED, PARTLY CONFIRMED or NOT CONFIRMED.
+- Routes NOT CONFIRMED: NeuroDivergent Rebel (no form or email seen; Substack is the fallback), Miss Jaime OT (nothing found), Autistic Mama (website URL not visible).
+- Emails seen but not used for drafts: tnpathfinder@vumc.org (one result, an exact search found nothing) and thinkingautism@gmail.com (2011 press release). If Eden confirms either, a Gmail draft takes one step.
+- The Gmail read-back of the Neurodiverging draft showed the photos and navy background stripped, but that may be the read view only. Eden should check the draft shows the header and photos before sending.
+- The Collabs page (https://mymemobrick.com/pages/collabs) still had old job-ad copy on 2026-10-14; pitches link there.
+
+## Sales impact
+
+Four gift guides refreshed in November reach families buying holiday gifts now. One inclusion with a Collabs code can bring orders before the December 15 order-by date. The six creator and expert pitches are slower and mostly feedback. Expect little direct sales from them this month.
+
+## Next run
+
+Search Gmail sent mail for the Neurodiverging draft and any replies. Mark contacts-log rows sent or replied as Eden reports them. Draft emails for any address Eden confirms.
