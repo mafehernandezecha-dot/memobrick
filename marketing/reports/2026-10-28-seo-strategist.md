@@ -64,7 +64,7 @@ Before writing them, I checked every topic against the article inventory and the
 
 ## Done
 
-- Task board: `marketing/shared/task-board.md` did not exist yet at this run (the growth director had only started), so I had no task-board row to follow.
+- Task board (read at the end of the run, after the growth director published it): Task 1 (backlog with stocking stuffers and dog lovers) is done. Task 2 (3 Christmas articles and the 5 calm-series URLs marked live in page-plan and keyword-map) is done. Task 3 (Thursday) is half done: the husband brief is written. "Christmas gift for mom from the kids" is queued first in the backlog for Thursday. The board's "10 by Nov 2" target is already met, with 11 ready.
 - Live site reachable. Checked the blog feed, the products JSON and the live HTML of the hubs, the 3 new Christmas articles, the size guide and the posts to be upgraded. Every internal link named in the briefs returns 200, except the 5 planned pages, which are marked "once live". None of the 11 new handles is in use.
 - Ran a WebSearch SERP read for 8 target terms (result types only, not Google, no volumes).
 - Briefs (all `Status: ready for writer`, in `marketing/seo/strategist/briefs/`): `personalized-stocking-stuffers`, `christmas-gifts-for-dog-lovers`, `photo-christmas-gift-for-husband`, `babys-first-christmas-gift`, `christmas-gift-in-memory-of-a-loved-one`, `can-you-turn-a-photo-into-a-lego-style-mosaic`, `corporate-christmas-gifts-for-employees`, `pet-memorial-gift-improve-blog-memorial`, `personalized-valentines-day-gift-upgrade`, `valentines-day-gift-for-boyfriend-photo`, `personalized-anniversary-gifts`.

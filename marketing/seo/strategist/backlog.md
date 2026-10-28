@@ -39,14 +39,15 @@ Ready count: 11.
 
 ## Next to brief (queue, in order)
 
-1. Christmas refresh of the three 2026-10-28 articles after Dec 1 (remove past codes; keep Dec 15). Scheduled for the December 7 run.
-2. Pet hub: improve the evergreen pet post (GemPages) rather than a new `custom-pet-photo-gifts` page, once the dog article is live.
-3. Mother's Day upgrade and first Mother's Day article (plan-2027 #4 and #5, brief by Feb 22 and Mar 1, 2027).
-4. Family hub (`family-photo-gifts`) and birthday hub upgrade (page plan ranks 12 and 13).
+1. Thu 2026-10-29 (task board): `christmas-gift-for-mom-from-kids` (kids as givers to mom, helped by dad or another adult). It is a different giver from hub A's "For parents and grandparents" section and from the grandkids article, so it does not overlap. Brief it after checking hub A's section text.
+2. Christmas refresh of the three 2026-10-28 articles after Dec 1 (remove past codes; keep Dec 15). Scheduled for the December 7 run.
+3. Pet hub: improve the evergreen pet post (GemPages) rather than a new `custom-pet-photo-gifts` page, once the dog article is live.
+4. Mother's Day upgrade and first Mother's Day article (plan-2027 #4 and #5, brief by Feb 22 and Mar 1, 2027).
+5. Family hub (`family-photo-gifts`) and birthday hub upgrade (page plan ranks 12 and 13).
 
 ## Not planned (overlap)
 
-- Christmas gifts for parents from adult children: covered by hub A "For parents and grandparents" and the grandkids article.
+- Christmas gifts for parents from adult children (not the kids-to-mom angle above): covered by hub A "For parents and grandparents" and the grandkids article.
 - Christmas gifts for cat lovers: would repeat the dog article; add a cat line there instead.
 - Another "build a Christmas memory together" page: hub B owns it.
 - Personalized gifts under $50: the stocking stuffers article covers the budget intent.
