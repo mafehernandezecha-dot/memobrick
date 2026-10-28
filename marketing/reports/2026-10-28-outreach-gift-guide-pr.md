@@ -99,3 +99,46 @@ Four gift guides refreshed in November reach families buying holiday gifts now. 
 ## Next run
 
 Search Gmail sent mail for the Neurodiverging draft and any replies. Mark contacts-log rows sent or replied as Eden reports them. Draft emails for any address Eden confirms.
+
+# outreach-gift-guide-pr 2026-10-28, second research run (Mario): neurodivergent targets with a public email
+
+## Summary
+
+Eden asked for "more with contact link", then "with email". Researched 24 new US-first targets (none repeated from the morning list or contacts-log). 16 show a business email on the outlet's own site in search results.
+Wrote 10 pitches (.md and .html), each with a confirmed email so each becomes a Gmail draft, filed as ONE send batch. No kits. Nothing sent.
+
+## Done
+
+- Read the research brief, the morning targets list, talking points (autism section), product facts, Facts table and contacts-log (10 rows, all from today, none repeated here).
+- Targets: marketing/outreach/gift-guide-pr/targets-2026-10-28-email-routes.md (24 rows: 10 pitch, 7 maybe or paid route, 7 dropped), with a "Contact confirmed" column and, for every email, the page it was seen on.
+- Pitches (.md and .html) in marketing/outreach/gift-guide-pr/pitches/: childhood-collective, the-autism-dad, the-mom-kind, raising-lifelong-learners, calm-the-chaos, black-girl-lost-keys, bricknerd, parenting-special-needs, room-escape-artist, mrs-ds-corner. Bodies are 165 to 178 words. Real product photos only. Each one says the bricks are small. All 20 files pass `check.py copy`.
+- Send batch draft: marketing/outreach/gift-guide-pr/batches/2026-10-28-autism-outreach-email.md (10 rows with emails and file hashes).
+- Method: WebFetch is blocked, so emails were found with site-restricted web searches (`allowed_domains` set to the outlet's domain, query "contact email"), which surface the contact, about or privacy page text.
+
+## Proposed for approval
+
+### P-outreach-gift-guide-pr-20261028-4
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/batches/2026-10-28-autism-outreach-email.md
+- Reason: Approves 10 commission-only pitches (Childhood Collective, Autism Dad, Mom Kind, Raising Lifelong Learners, Calm the Chaos, Black Girl Lost Keys, BrickNerd, Parenting Special Needs, Room Escape Artist, Mrs. D's Corner). Outreach creates a Gmail draft for each for Eden to send; guides refresh in early November.
+- Expires: 2026-11-07
+- Status: pending
+
+## Blocked or unknown
+
+- Outlet pages cannot be opened (DNS failure), so every detail is from search text and `unverified`.
+- Two emails are general help or support inboxes (help@calmthechaos.co, support@mrsdscorner.com), and Raising Lifelong Learners' address is labeled for media and speaking inquiries. They are public business addresses but not partnership inboxes.
+- Room Escape Artist has a review-request guide that could not be read; Eden should read it before sending.
+- Black Girl, Lost Keys and Calm the Chaos: 2026 blog activity was not seen in search.
+- No kit proposed: reach figures found are old or missing. The Autism Dad is the best kit candidate if Eden wants one (honest 2026 product reviews).
+- Kerry Magro's public address is for media and speaking requests only, so he is listed as "maybe" and not pitched.
+
+## Sales impact
+
+The Childhood Collective, The Mom Kind, Parenting Special Needs and Room Escape Artist publish holiday gift guides or lists that readers buy from; inclusion before the December 15 order-by date can bring orders with a Collabs code. The Autism Dad, Calm the Chaos and BrickNerd are mostly honest-feedback asks with slower, smaller direct sales. Because every route is an email, these can go out as Gmail drafts the same day they are approved, which the morning batch mostly could not. Expected effect: a few orders in November and December if 2 or 3 include Memobrick. Unmeasured.
+
+## Next run
+
+Act on the approved batch (10 Gmail drafts, contacts-log rows). Search Gmail sent mail for today's drafts and replies on the regular Tuesday run (Nov 3).
