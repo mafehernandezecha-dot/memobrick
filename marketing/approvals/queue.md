@@ -133,8 +133,9 @@ Do first (as of 2026-10-28):
 - Commit: d30ba59
 - Reason: Publishes 5 articles for a new audience (autistic kids and adults, families, OTs, special-education teachers): hub "Brick Mosaics: A Calm Activity for Autistic Kids and Adults", plus build-together roles, sensory-friendly tips, special interests, and an OT/teacher guide. No health claims, no quotes, small-parts note, FAQ schema. Default article template (not GemPages).
 - Expires: 2026-11-30
-- Status: pending
+- Status: approved
 - From: P-seo-blog-writer-20261028-1
+- Note (2026-10-28): Eden approved in chat: "approve 020 and 021".
 - Note: Eden asked in chat on 2026-10-28 to publish these today ("i want them to publish today"); set Status to approved when she confirms the final drafts.
 
 ## A-2026W44-021
