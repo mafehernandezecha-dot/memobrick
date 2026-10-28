@@ -373,7 +373,7 @@ Do first (as of 2026-10-28):
 - Commit: 6404961
 - Reason: One 16×16 sample kit ($69.88) for Samantha Ramos's family holiday gift guide (HARO requires a full-size sample). If rejected, her pitch is dropped.
 - Expires: 2026-10-30
-- Status: pending
+- Status: approved
 - From: P-outreach-link-builder-20261028-2
 
 ## A-2026W44-041
