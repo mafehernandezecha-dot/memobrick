@@ -53,3 +53,40 @@ Addresses the top weak point (referred sessions down about half vs last year) wi
 - If approved: write the HARO paste sheets first (deadlines Oct 30 to 31), then the other drafts, and log every send in contacts-log.md.
 - Check links-earned again; Eden's check of one FOX page decides whether to pitch an unlinked-mention request.
 - Next topics: grandparent and couple gifts, Miami and Florida local features, Homegrown Learners (kept for later).
+
+# Executor run: outreach-link-builder 2026-10-28 (approved items)
+
+## Summary
+
+Carried out A-2026W44-039 and A-2026W44-040 after Eden approved them in chat. Two Gmail drafts made (To left empty, no public address found) and one paste sheet with both HARO replies first, then The Vet Desk form. Nothing was sent; Eden sends.
+
+## Done
+
+- Checker (`check.py approvals --agent outreach-link-builder --today 2026-10-28`) printed A-2026W44-039 and A-2026W44-040.
+- Hashes: batch file and sample kit file match commit 6404961; all five pitch files match the Hash column of the batch.
+- Duplicate check: no existing Gmail drafts for these pitches; none of the five targets in contacts-log.md before today.
+- Route search: The Vet Desk contact form https://thevetdesk.com/contact-us/ confirmed in search. No public email found for HGTV (Laura James) or Little Bins for Little Hands.
+- A-2026W44-039, pitch 2 (HGTV dog lovers guide): Gmail draft r-2825876246743484738, To empty.
+- A-2026W44-039, pitch 4 (Little Bins building gifts + guest post idea): Gmail draft r-3434391702086288504, To empty. Eden checks the "Hi Sarah" name on the site's About page before sending.
+- A-2026W44-039, pitches 1, 3, 5 and A-2026W44-040: paste sheet marketing/outreach/link-builder/to-send/2026-10-28.md (Samantha Ramos HARO, deadline Oct 31 3:00 AM ET, with the approved sample kit line; Merilee Kern HARO, deadline Oct 31 12:00 AM ET, so by end of Oct 30; The Vet Desk form). Copy check passed.
+- Five rows appended to marketing/shared/contacts-log.md (status prepared or drafted, not sent).
+
+## Proposed for approval
+
+None.
+
+## Blocked or unknown
+
+- HARO replies need Eden's HARO (Featured) source account; the reply box was not seen from this session.
+- HGTV and Little Bins addresses not found. If Eden finds none, those drafts wait.
+- Links-earned check and new opportunities were not part of this executor run.
+
+## Sales impact
+
+Gets the two time-limited HARO gift guide chances (closing Oct 31) ready to send today, which are the fastest of the five to reach gift buyers before Black Friday, against the referred-sessions weak point.
+
+## Next run
+
+- Ask Eden which pitches went out and update contacts-log.md to sent.
+- If Samantha Ramos replies with a photo, Eden ships the 16×16 kit (A-2026W44-040).
+- Resume the daily links-earned check and 5 new opportunities.
