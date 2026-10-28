@@ -1,0 +1,65 @@
+# outreach-gift-guide-pr 2026-10-28 (special run: autistic builders, families, OTs and special-education teachers)
+
+## Summary
+
+Researched 27 US targets for Eden's new audience (autistic kids and adults, their families, OTs, special-education teachers) and wrote 10 pitches (.md and .html), filed as ONE send batch.
+Two of those pitches offer a free 16×16 kit, and each kit has its own offer item. The other 8 are commission or editorial only and ask for a free look at the editor preview instead.
+No pitch claims Memobrick treats, helps or is therapy for anything. Nothing was sent.
+
+## Done
+
+- Read the research brief and its hard rules, sales goals, latest sales, offers calendar (Facts table), product facts, talking points, buyer profile, contacts log (empty) and kit decisions of 2026-10-14.
+- Approvals: `check.py approvals --agent outreach-gift-guide-pr --today 2026-10-28` printed nothing, so there are no approved items to act on. No Gmail drafts were ever created by this agent (contacts-log.md is empty), so there was no sent-mail check to do.
+- Targets: marketing/outreach/gift-guide-pr/targets-2026-10-28.md (27 rows: 10 pitch, 9 maybe or watch, 5 not pitched by policy or paid route, 4 dropped). It holds audience-fit scores adapted to this audience, contact routes (public pages, forms and profiles only), timing, kit decisions and a paid-placements note.
+- Pitches, .md and .html, in marketing/outreach/gift-guide-pr/pitches/: growing-hands-on-kids, neurodivergent-rebel, life-skills-advocate, neurodiverging, miss-jaime-ot, autistic-mama, not-an-autism-mom, tn-pathfinder-compass, autism-classroom-resources, tpga. Each body is about 140 to 177 words. Each uses real product photos only and says the bricks are small. All 20 files pass `check.py copy`.
+- Send batch draft: marketing/outreach/gift-guide-pr/batches/2026-10-28-autism-outreach.md (all 10 pitches with file hashes, routes and kit dependency).
+- Kit offers: kit-offers/growing-hands-on-kids-kit.md and kit-offers/neurodivergent-rebel-kit.md (16×16, $69.88, Shopify price checked live today).
+- kit-offers/README.md: the task referred to a README there, but none existed. I wrote one that only restates Eden's existing kit rules (2026-10-11 Facts table, 2026-10-14 owner rule) and adds no new permission.
+- talking-points.md: added the section "Autistic builders, their families, OTs and special-education teachers" with the hard rules, allowed facts and asks.
+
+## Proposed for approval
+
+### P-outreach-gift-guide-pr-20261028-1
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/batches/2026-10-28-autism-outreach.md
+- Reason: Approves sending all 10 listed pitches, unchanged. For each, outreach writes the exact paste text and contact form or profile URL for Eden, or a Gmail draft if Eden finds a public email; Eden sends. Holiday guides refresh in November. Kits in rows 1 and 2 also need items -2 and -3.
+- Expires: 2026-11-07
+- Status: pending
+
+### P-outreach-gift-guide-pr-20261028-2
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: offer
+- Draft: marketing/outreach/gift-guide-pr/kit-offers/growing-hands-on-kids-kit.md
+- Reason: Lets the Growing Hands-On Kids pitch offer one free 16×16 kit ($69.88 retail) for an OT's honest view; Eden ships it by hand only if Heather says yes. Published sensory gift guide (kids and adults), 57K Facebook (unverified).
+- Expires: 2026-11-07
+- Status: pending
+
+### P-outreach-gift-guide-pr-20261028-3
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: offer
+- Draft: marketing/outreach/gift-guide-pr/kit-offers/neurodivergent-rebel-kit.md
+- Reason: Lets the NeuroDivergent Rebel pitch offer one free 16×16 kit ($69.88 retail) so an autistic self-advocate can tell us honestly whether the build works for autistic builders, with no obligation to post. Eden ships it by hand only on a yes.
+- Expires: 2026-11-07
+- Status: pending
+
+## Blocked or unknown
+
+- **Page fetches blocked.** WebFetch fails with DNS errors for every outlet domain tried (lifeskillsadvocate.com, neurodivergentinsights.com, theottoolbox.com), as in earlier runs. Every target detail comes from search text and is marked `unverified`. To let this agent open pages, the outlet domains have to be allowed in the session's network settings.
+- **No public email found for any of the 10.** Every route is a contact page, a form or a public profile, and for 8 of them the exact contact page was not seen in search. Eden should confirm each route before sending. So most sends will be paste-in text, not Gmail drafts.
+- **Audience-fit test adapted.** buyer-profile.md describes today's buyer, not this new audience, so targets were scored on the new audience's readers, country, price, content and buying signals. Say if you want the strict buyer-profile test instead; most of these targets would then score 3.
+- **No age warning** is in product-facts.md, so no pitch states an age. Please add the kit's age warning to product-facts.md.
+- **Collabs page copy:** https://mymemobrick.com/pages/collabs still had old job-ad copy when checked on 2026-10-14 (not rechecked today). Creators clicking from these pitches land there.
+- **Idea, not proposed:** if Memobrick wants autistic people to review its instructions or color map, that is paid consulting (for example through an autistic-led organization), not a pitch or a placement. It is Eden's call.
+
+## Sales impact
+
+Small and slow in the next two weeks, possibly larger over the holiday season. This run does not fix a listed weak point. It opens a new channel that Eden asked for, against a goal of 5 orders a day versus about 2.6 now. The gift-guide pitches (Life Skills Advocate, Neurodiverging, TN Pathfinder, and the Growing Hands-On Kids sensory guide) can bring holiday orders if they are included before the November refreshes. The feedback pitches (creators, OTs, teachers) are mainly for learning whether the product suits this audience. Their direct sales will come later through Collabs codes, if at all. Expected effect: a few orders in November and December if 2 or 3 guides include Memobrick. That figure is unmeasured.
+
+## Next run
+
+- Act on approved items from the batch and kit offers (paste text or Gmail drafts, contacts-log rows).
+- Regular Tuesday run (Nov 3): check Gmail sent mail for these pitches, check for replies, and refresh the maybe list (Easterseals 2027 RFI, The OT Toolbox, Haley Moss) if Eden gives direction.

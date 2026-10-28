@@ -1,6 +1,6 @@
 # Memobrick talking points for press and gift guide pitches
 
-Use this file for every pitch. Updated 2026-10-14 (kit vs commission rule, creator program, FOX line). Built 2026-10-12 from Eden's feedback ("talk more about Memobrick like an experience", "creating experiences with families building a special picture together; make it more sentimental") and checked against `marketing/shared/product-facts.md` and the Facts table in `marketing/shared/offers-calendar.md`. Re-check prices in Shopify (read-only) on the day you quote one.
+Use this file for every pitch. Updated 2026-10-14 (kit vs commission rule, creator program, FOX line) and 2026-10-28 (autistic builders, families, OTs and teachers section). Built 2026-10-12 from Eden's feedback ("talk more about Memobrick like an experience", "creating experiences with families building a special picture together; make it more sentimental") and checked against `marketing/shared/product-facts.md` and the Facts table in `marketing/shared/offers-calendar.md`. Re-check prices in Shopify (read-only) on the day you quote one.
 
 ## Who we are talking to
 
@@ -90,6 +90,19 @@ Not for press: product images that use celebrity photos (Emma Watson, Dwayne Joh
 - Sign-off may carry "As seen on FOX". Never "Fox News".
 - Body under about 170 words. Sign "Eden Biri, Memobrick" with mymemobrick.com.
 - Two versions: `pitches/<slug>.md` (plain text plus photo links) and `pitches/<slug>.html` (navy #1B264F, pink #D66A7E, white, hero photo, 2 small photos, signature). The HTML goes in the Gmail draft as `htmlBody` with the plain text as `body`; contact forms get the plain text with photo links.
+
+## Autistic builders, their families, OTs and special-education teachers (added 2026-10-28)
+
+Source and hard rules: `marketing/seo/briefs/2026-10-28-autism-calm-building-research.md`. Targets: `targets-2026-10-28.md`.
+
+- **Never** say Memobrick treats, improves, helps or is therapy for autism, anxiety, ADHD or anything medical. No "fine motor practice", "regulation" or "reduces stress" claims either. Allowed words: calm, focused, predictable, something to build together or alone.
+- Use identity-first language ("autistic people", "autistic builders"), the common preference of autistic self-advocates. Never "suffers from", never pity, never "cure".
+- Autistic people speak for themselves: no invented quotes or reactions, no AI people presented as autistic customers. Ask autistic people for their view; do not speak for them.
+- Product facts that fit (facts, not claims): one brick size (1×1); bricks in small labeled color bags; a printed color map; the same step repeated, row by row, with a clear finish; the subject is personal (a pet, a person, a favorite place); can be built alone or together (one reads the map, one sorts colors, one builds); the mosaic preview in the web editor is free with any photo.
+- Always say: the bricks are small, so the kit is not for young children who still put things in their mouths. Do not state an age (no age warning in product-facts.md yet).
+- Do not name characters or celebrities as subjects (IP risk). Say "a favorite place", "a pet", "a person".
+- Asks by target type: creators and families get an honest-feedback ask with no obligation to post ("this isn't for me" is a useful answer); OTs and teachers get a request for their professional view of the format; gift guides get the holiday angle. Default is commission only (Collabs 10% and 10%); the no-kit ask is a free look at the editor preview. Kits only with evidence and their own offer item (see `kit-offers/README.md`).
+- Do not pitch organizations that do not do product promotions (for example ASAN, AWN, NEXT for AUTISM's partner-only guide, Neurodivergent Insights' current partnership policy). Avoid tie-ins with ABA providers: many autistic self-advocates object to ABA.
 
 ## Lines to avoid
 
