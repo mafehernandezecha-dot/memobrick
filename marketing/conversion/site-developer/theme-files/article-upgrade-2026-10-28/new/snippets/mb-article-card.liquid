@@ -1,7 +1,7 @@
 {%- comment -%}
   "Make yours" product card for blog articles (templates/article.liquid).
   series: 'calm' | 'christmas' | 'default'   place: 'intro' | 'end'
-  Real product photo and price from Shopify. Calm series points to the 16×16 kit
+  Price and Loox rating from Shopify; picture is a Memobrick Studio example. Calm series points to the 16×16 kit
   (and to the Calm Build Gift page once a published page with handle
   calm-build-gift exists). No health claims.
 {%- endcomment -%}
@@ -16,18 +16,26 @@
     assign size = '20x20'
     assign size_label = '20×20 in kit'
   endif
-  assign img = p.featured_image
+  comment
+    Card picture: a Memobrick Studio example mosaic (theme asset), never a
+    lifestyle photo with people. Avoids repeating the hero picture.
+  endcomment
+  if series == 'calm'
+    assign card_img = 'mb-studio-cat.jpg'
+  elsif hero == 'mb-studio-dog.jpg'
+    assign card_img = 'mb-studio-sofa-couple.jpg'
+  else
+    assign card_img = 'mb-studio-dog.jpg'
+  endif
   assign rating = p.metafields.loox.avg_rating.value | default: p.metafields.loox.avg_rating
   assign raters = p.metafields.loox.num_reviews.value | default: p.metafields.loox.num_reviews
   assign calm_page = pages['calm-build-gift']
 -%}
 <aside class="mba-card mba-card--{{ place }}" aria-label="Make your own brick mosaic">
-  {%- if img -%}
-    <a class="mba-card-img" href="{{ p.url }}">
-      <img src="{{ img | image_url: width: 700 }}" srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 700 }} 700w"
-        sizes="(max-width: 760px) 100vw, 300px" alt="{{ img.alt | default: p.title | escape }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}">
-    </a>
-  {%- endif -%}
+  <a class="mba-card-img" href="/pages/editor?size={{ size }}#editor" tabindex="-1" aria-hidden="true">
+    <img src="{{ card_img | asset_url }}" alt="" loading="lazy" width="600" height="600">
+    <span>Example design made in the Memobrick Studio</span>
+  </a>
   <div class="mba-card-txt">
     {%- if series == 'calm' -%}
       <p class="mba-card-eyebrow">A calm build, one row at a time</p>
@@ -40,7 +48,6 @@
     {%- endif -%}
     <p class="mba-card-price">
       <b>{{ size_label }} {{ p.price_min | money }}</b>
-      {%- if p.compare_at_price_min > p.price_min %} <s>{{ p.compare_at_price_min | money }}</s>{% endif -%}
       {%- if series != 'calm' and p10.price_min > 0 %}<span> · sizes from {{ p10.price_min | money }}</span>{% endif -%}
       {%- if rating != blank %}<span class="mba-card-stars"><span aria-hidden="true">★</span> {{ rating }} ({{ raters }} reviews)</span>{% endif -%}
     </p>
