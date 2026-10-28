@@ -125,6 +125,30 @@ Do first (as of 2026-10-28):
 
 (Highest expected sales impact first.)
 
+## A-2026W44-020
+- Agent: seo-blog-writer
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/calm-building-series.md
+- Commit: d30ba59
+- Reason: Publishes 5 articles for a new audience (autistic kids and adults, families, OTs, special-education teachers): hub "Brick Mosaics: A Calm Activity for Autistic Kids and Adults", plus build-together roles, sensory-friendly tips, special interests, and an OT/teacher guide. No health claims, no quotes, small-parts note, FAQ schema. Default article template (not GemPages).
+- Expires: 2026-11-30
+- Status: pending
+- From: P-seo-blog-writer-20261028-1
+- Note: Eden asked in chat on 2026-10-28 to publish these today ("i want them to publish today"); set Status to approved when she confirms the final drafts.
+
+## A-2026W44-021
+- Agent: seo-strategist
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/strategist/publish-batches/2026-10-28-christmas-gap-articles.md
+- Commit: a03477d
+- Reason: Publishes 3 Christmas articles on searches no existing post targets: last-minute personalized Christmas gifts (honest Dec 15 date, Gift Kit after), Christmas gifts for grandparents from grandkids, photo Christmas gift for wife. All checks passed 2026-10-28 (links, prices, FAQ schema, Studio images, "As seen on FOX").
+- Expires: 2026-12-10
+- Status: pending
+- From: P-seo-strategist-20261028-1
+- Note: If seo-technical's Christmas consolidation is approved, the last-minute article's link to "dont-wait-until-december" moves to the kept hub.
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
