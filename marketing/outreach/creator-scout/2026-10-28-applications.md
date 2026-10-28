@@ -55,3 +55,7 @@ Read in the owner's Chrome (Shopify admin > Apps > Collabs > Recruiting > Applic
 
 ## Not read (time)
 - 357 Instagram-only applicants on coupon-style email domains (list viewed, applications not opened), and Anthony Mark Wood (2026-08-27).
+
+## Third run (04:41 ET)
+- Applied count 360 after the 4 declines of A-2026W44-036. Newest application is still Sheffie Gladi (2026-10-16), so there are no new applications since the morning read and the list was not re-read.
+- Niki Loheit's Collabs page now shows Instagram nikibuildsbricks 1.9K at 3.08% and TikTok nikibuildsbricks 23 at 2.69% (Collabs figures). Recent media includes "DAY 8/30 30-DAY LEGO ROOM CHALLENGE" and "LEGO Books I Bet You Didn't Know Existed! Part 1".

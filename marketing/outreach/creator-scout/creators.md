@@ -6,12 +6,12 @@ Engagement marked (C) is Collabs' figure for the main account; real post-level e
 
 | Handle | Platforms | First reviewed | Real engagement | Group | Status in Collabs | Item | Code | Code check |
 |---|---|---|---|---|---|---|---|---|
-| Niki Loheit (nikibuildsbricks) | IG, TT | 2026-10-14 | 2.7% (4 posts, 2026-10-14); 3.23% (C) | Top 3 #1 (2026-10-28, above the approved 2% floor) | pending | creators/2026-10-28-nikibuildsbricks.md; kits/2026-10-28-nikibuildsbricks.md | n/a | n/a |
-| Baldo Vivian (corelux1review) | IG | 2026-10-14 | 3.09% (C) | Decline (2026-10-28: Corelux Review coupon group) | pending | batch 2026-10-28 | n/a | n/a |
+| Niki Loheit (nikibuildsbricks) | IG, TT | 2026-10-14 | 2.7% (4 posts, 2026-10-14); 3.23% (C) | Top 3 #1 (2026-10-28, above the approved 2% floor) | pending (A-2026W44-034 and 035 approved; offer not sent, needs owner) | creators/2026-10-28-nikibuildsbricks.md; kits/2026-10-28-nikibuildsbricks.md | NIKIBUILDSBRICKS (shown in the offer form, not created yet) | n/a until approved |
+| Baldo Vivian (corelux1review) | IG | 2026-10-14 | 3.09% (C) | Decline (2026-10-28: Corelux Review coupon group) | declined 2026-10-28 (A-2026W44-036) | batch 2026-10-28 | n/a | n/a |
 | Nguyen Thi Truc My (ripplrcoupon) | IG, TT | 2026-10-14 | 13.64% (C) on 6 followers | Maybe (already connected under Open access; owner to decide) | pending | | n/a | n/a |
-| Duc Chung, applied 2026-03-31 (trust.coupon.review) | IG, TT, YT | 2026-10-28 | 0.89% IG, 1.4% TT (C) | Decline | pending | batch 2026-10-28 | n/a | n/a |
-| Huy Hoang (corelux.review) | IG | 2026-10-28 | 0 followers | Decline | pending | batch 2026-10-28 | n/a | n/a |
-| Sonia England (durjoy7jk) | IG | 2026-10-28 | 0 followers | Decline | pending | batch 2026-10-28 | n/a | n/a |
+| Duc Chung, applied 2026-03-31 (trust.coupon.review) | IG, TT, YT | 2026-10-28 | 0.89% IG, 1.4% TT (C) | Decline | declined 2026-10-28 (A-2026W44-036) | batch 2026-10-28 | n/a | n/a |
+| Huy Hoang (corelux.review) | IG | 2026-10-28 | 0 followers | Decline | declined 2026-10-28 (A-2026W44-036) | batch 2026-10-28 | n/a | n/a |
+| Sonia England (durjoy7jk) | IG | 2026-10-28 | 0 followers | Decline | declined 2026-10-28 (A-2026W44-036) | batch 2026-10-28 | n/a | n/a |
 | Hayes Charlotte (canecorsodog_daily) | FB, IG, TT, YT | 2026-10-14 | 0.36% (C) | Decline | declined 2026-10-28 | batch 2026-10-14 | n/a | n/a |
 | Roy Valenzuela (c_baby2015) | IG | 2026-10-14 | 0.06% (C) | Decline | declined 2026-10-28 | batch 2026-10-14 | n/a | n/a |
 | Jack Reed (getsavedeals) | FB, IG, TT | 2026-10-14 | 0.47% (C) | Decline | declined 2026-10-28 | batch 2026-10-14 | n/a | n/a |

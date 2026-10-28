@@ -81,3 +81,8 @@ Every action taken in Shopify Collabs and every message sent. Append-only.
 | 2026-10-28 | A-2026W42-035 | matthew gonzalez69668 | declined silently | none | done |
 | 2026-10-28 | A-2026W44-036 | Sonia England, Duc Chung (2026-03-31), Baldo Vivian, Huy Hoang | not declined: Collabs action blocked by session permission check | none | needs owner |
 | 2026-10-28 | A-2026W44-034, A-2026W44-035 | Niki Loheit | not approved, no message sent: same block | kits/2026-10-28-nikibuildsbricks.md (kit version applies) | needs owner |
+| 2026-10-28 | A-2026W44-036 | Sonia England (2026-10-01) | declined silently (Email creator unticked) | none | done |
+| 2026-10-28 | A-2026W44-036 | Duc Chung (2026-03-31) | declined silently (Email creator unticked) | none | done |
+| 2026-10-28 | A-2026W44-036 | Baldo Vivian (2026-05-30) | declined silently (Email creator unticked) | none | done |
+| 2026-10-28 | A-2026W44-036 | Huy Hoang (2026-06-30) | declined silently (Email creator unticked) | none | done |
+| 2026-10-28 | A-2026W44-034, A-2026W44-035 | Niki Loheit | not approved, no message sent: clipboard blocked and the welcome offer editor scrambled the entered text, so the exact message could not be placed; offer left without sending | kits/2026-10-28-nikibuildsbricks.md (kit version applies) | needs owner |
