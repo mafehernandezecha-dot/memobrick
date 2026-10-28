@@ -438,7 +438,7 @@ Do first (as of 2026-10-28):
 - Commit: 1297315
 - Reason: Instagram follower sprint, 2 extra reels at 12:00 ET (Studio mosaics only): S-20261029-2 "We brick your pet" Ep. 1 (Oct 29) and S-20261030-2 "Same photo, 3 sizes" (Oct 30), on IG, FB, TikTok, Pinterest, YouTube Shorts. AI label on (AI-made photos).
 - Expires: 2026-10-29
-- Status: pending
+- Status: changes: replaced by A-2026W44-047 (Eden: "Use new footage")
 - From: P-social-planner-20261028-1
 
 ## A-2026W44-046
@@ -451,6 +451,17 @@ Do first (as of 2026-10-28):
 - Expires: 2026-11-04
 - Status: pending
 - From: P-social-planner-20261028-2
+
+## A-2026W44-047
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/sprint-2026-10-29/week-v2.md
+- Commit: 89919a1
+- Reason: Instagram sprint reels rebuilt from real cleared footage (no AI, AI label off): S-20261029-2 v2 "We brick your pet" Ep. 1 (Oct 29 12:00 ET) and S-20261030-2 v2 "Same photo, 3 sizes" (Oct 30 12:00 ET, Studio mosaics from the Billo couple clip). IG, FB, TikTok, Pinterest, YouTube Shorts. Replaces 045.
+- Expires: 2026-10-30
+- Status: pending
+- From: P-social-planner-20261028-3
 
 ## A-2026W44-014
 - Agent: email-campaign-writer
