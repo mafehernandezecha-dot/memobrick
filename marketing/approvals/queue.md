@@ -352,6 +352,29 @@ Do first (as of 2026-10-28):
 - From: P-site-developer-20261028-4
 - Note (2026-10-28): Eden approved in chat: "yes" (to fixing "As seen on Fox News" on the home page) and "publish this ... becomes your live Loox rating".
 
+## A-2026W44-039
+- Agent: outreach-link-builder
+- Executor: outreach-link-builder
+- Type: send
+- Draft: marketing/outreach/link-builder/pitches/2026-10-28-batch.md
+- Commit: 6404961
+- Reason: Bertha's first 5 link pitches: HARO family gift guide (Samantha Ramos, deadline Oct 31 3am ET, needs the kit in 040), HGTV best gifts for dog lovers, HARO Luxe List free editorial (deadline Oct 31), Little Bins for Little Hands LEGO gifts + guest post idea, The Vet Desk cat lover gifts.
+- Expires: 2026-11-07
+- Status: pending
+- From: P-outreach-link-builder-20261028-1
+- Note: HARO replies need Eden's HARO (Featured) source account. Approve by Oct 30.
+
+## A-2026W44-040
+- Agent: outreach-link-builder
+- Executor: outreach-link-builder
+- Type: offer
+- Draft: marketing/outreach/link-builder/pitches/2026-10-28-sample-kit-samantha-ramos.md
+- Commit: 6404961
+- Reason: One 16×16 sample kit ($69.88) for Samantha Ramos's family holiday gift guide (HARO requires a full-size sample). If rejected, her pitch is dropped.
+- Expires: 2026-10-30
+- Status: pending
+- From: P-outreach-link-builder-20261028-2
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
