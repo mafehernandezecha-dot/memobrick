@@ -40,3 +40,11 @@ None. Everything this run did is covered by A-2026W44-031. The remaining steps a
 - Rebuild Dog v3 with the dog page link once Jenny's page is live (item 1).
 - Nov 2 review on Shopify UTMs.
 - Nov 23: check the code ad stopped and the no-code ad started.
+
+## Update about 08:15 UTC: item 1 done (dog page)
+- New ad **XMAS26 Dog v4 (dog page) 120252819439800597** (creative 1132439039322081) in the Christmas ad set 120252787082260597. Same video, text, headline and description as Dog v3; link https://mymemobrick.com/pages/dog-brick-mosaic, Shop now, usual UTMs in URL parameters.
+- Switched on: `ads_activate_entity` was allowed this time. Read back ACTIVE / IN_PROCESS (in Meta review).
+- No copy from Dog v2: it uses the same dogbillo video as Dog v3, so v4 replaces both.
+- Dog v2 (120252788012070597) and Dog v3 (120252819276350597) left ACTIVE. The 10:10 UTC main-session check pauses them once Dog v4 is approved.
+- Sales impact: dog-ad clickers (51 landing views, 0 sales on the general page) now land on a page about their dog with the dog editor, reviews and Dec 15 deadline. Judged on Shopify orders with utm_content=120252819439800597 after 7 days.
+- Record: `marketing/analytics/ads-analyst/changes/2026-10-28-applied.md`, section "Item 1".
