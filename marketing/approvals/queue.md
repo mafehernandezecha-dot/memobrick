@@ -463,6 +463,17 @@ Do first (as of 2026-10-28):
 - Status: pending
 - From: P-social-planner-20261028-3
 
+## A-2026W44-048
+- Agent: social-community-manager
+- Executor: social-community-manager
+- Type: publish
+- Draft: marketing/social/community/2026-10-29-posts.md
+- Commit: 99c4c70
+- Reason: 22 more awareness posts (no prices or codes) for 22 Facebook groups, each with its own text and a real Memobrick photo (URL checked): crafts, cat and dog lovers, Miami, homeschool, adult LEGO fans, gift groups; 2 reply-only (pet loss, grandparents raising grandkids); 4 calm posts held until Eden OKs calm posts. Posted by Eden's Claude in Chrome, max 5 groups per run, rules checked first.
+- Expires: 2026-11-12
+- Status: pending
+- From: P-social-community-manager-20261028-4
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
