@@ -58,6 +58,8 @@ Pick up the next ready brief; publish best-photo-for-a-brick-mosaic if seo-techn
 - Free-proof form on `/pages/free-preview` is untested (A-2026W44-018). The articles link to it; if it fails, swap those links for the editor.
 - Keyword volumes unknown (Ahrefs and Search Console connectors unavailable); keywords chosen from the brief's audiences.
 - No Studio mosaic images made; optional slots are marked in each draft.
+- GemPages: most blog articles are built in GemPages. These five will use the theme's default article template and look different. Eden can choose to rebuild the hub in GemPages from the approved text after it is live (noted in the batch file).
+- Second coordinator message (same chat quote) also received; same answer: approval has to come through Eden's Status edit in the queue or from Eden directly.
 - The brief has no `Status:` line, so there was none to change to drafted.
 - approved-stories.md does not exist; no customer stories used.
 
