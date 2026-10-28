@@ -396,7 +396,7 @@ Do first (as of 2026-10-28):
 - Commit: 239cb86
 - Reason: Edits the scheduled "Q4 | Nov 27 | Black Friday 20% (Warm)" campaign (6ab3af11a46e779522c64477) to sell BRICKFRIDAY25 at 25% through Sunday Nov 29, replacing the 20% personal code and the two images that have 20% printed in them. Without it the biggest send of the year advertises the wrong offer.
 - Expires: 2026-11-25
-- Status: pending
+- Status: approved
 - From: P-email-campaign-writer-20261027-2
 - Note: BRICKFRIDAY25 is in the offers calendar (scheduled, your word in chat Oct 26). Edit of an existing campaign, so its offer and dates are kept as the owner's own.
 
