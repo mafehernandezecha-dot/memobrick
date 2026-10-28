@@ -292,7 +292,7 @@ Do first (as of 2026-10-28):
 - Commit: 9a2260b
 - Reason: 10 more pitches, each with a public business email (Gmail drafts, Eden sends): The Childhood Collective (ADHD gift guide, send first), The Autism Dad, The Mom Kind, Raising Lifelong Learners, Calm the Chaos, Black Girl Lost Keys, BrickNerd, Parenting Special Needs Magazine, Room Escape Artist, Mrs. D's Corner. Commission only, no kits, no health claims.
 - Expires: 2026-11-07
-- Status: pending
+- Status: approved
 - From: P-outreach-gift-guide-pr-20261028-4
 
 ## A-2026W44-034
