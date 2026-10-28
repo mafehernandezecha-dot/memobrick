@@ -206,6 +206,17 @@ Do first (as of 2026-10-28):
 - Status: pending
 - From: P-seo-technical-20261028-5
 
+## A-2026W44-027
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/calm-build-gift.md
+- Commit: 28d31cd
+- Reason: Publishes the "Calm Build Gift" page (/pages/calm-build-gift): 16×16 kit $69.88, optional frame $49, free Calm Build Plan PDF, build-together roles, link to the 16×16 editor and free proof, small-parts note, FAQ (not a therapy). Built unpublished and tested on phone and desktop. Undo: unpublish.
+- Expires: 2026-11-04
+- Status: pending
+- From: P-site-developer-20261028-2
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
