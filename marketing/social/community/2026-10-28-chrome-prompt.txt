@@ -1,0 +1,108 @@
+You are helping Eden (Memobrick owner) share a few posts she approved in Facebook groups, from her own account, by hand-paced steps. Follow these rules exactly:
+
+1. Post ONLY the posts listed under TODAY'S POSTS, word for word, each in its own group. Never edit the text, never post the same text in two groups, never post anywhere else.
+2. Before each post: open the group, open "About" and read the rules. If the rules ban promotion, links, or business posts (or allow them only on another day/thread), do NOT post: write "skipped: <rule>" and go to the next. If the post is for a weekly promo thread, post it as a comment in that thread only.
+3. If you are not a member of the group, do NOT request to join or answer membership questions: write "skipped: not a member" (Eden joins herself).
+4. Attach the photo only if the post lists one (download it from the given mymemobrick.com URL first). Put the link where the post says (in the post, or as the first comment if the post says "link in comments").
+5. Wait at least 5 minutes between groups. Post at most 3 groups this session.
+6. Never comment on, like, or message other people's posts, never send friend requests, never message members.
+7. If you see a CAPTCHA, a login page, a security check, "you're posting too fast", or any warning, STOP everything and report it.
+8. At the end, report for each post: group, posted / skipped (reason), and the post URL.
+
+
+PHOTOS: where a post asks for the Bernese mountain dog mosaic photo, use the first product photo on https://mymemobrick.com/products/1-big-board (download it, then attach). Where it asks for the color-labeled brick bags photo, use https://cdn.shopify.com/s/files/1/0375/0107/5595/articles/10-color-bags-bright.jpg . If you can't get a photo, post without it.
+Search Facebook for the group by its name when no link is given. Post only the "Post text" part of each item (not the notes). Do posts 3, 4 and 5 in this session (max 3); posts 1 and 2 only if Eden says so.
+
+TODAY'S POSTS:
+### Post 1: neurodivergent families, Calm Build Plan
+
+- **Group:** Special Needs Community (Facebook group for parents and caregivers who support a child or adult with special needs). Search Facebook for "Special Needs Community". Row 1 in `groups.md`.
+- **Rule that allows it:** rules unknown: owner to check rules before posting. Post only if the rules allow resource shares from businesses (look for words like "resources", "helpful links", or a weekly share thread). If there is a resource thread, post it there instead.
+- **Where to paste:** a new post in the group, or the group's resource thread if it has one. Link in the post if links are allowed, otherwise in the first comment.
+- **Photo:** the 16×16 Bernese mountain dog mosaic next to its photo (16×16 kit product image).
+
+**Post text:**
+
+Hi everyone. I'm Eden, and I run Memobrick, a small company that turns photos into brick mosaic kits. I'm sharing a free printable we made, in case it's useful to anyone here.
+
+It's called the Calm Build Plan. It's one page with six simple steps for a quiet building session: pick a quiet spot, decide how long you'll build, open one color bag at a time, finish one row at a time, choose a clear stopping point, and look back at what you built.
+
+We made it because a mosaic is very predictable to build. Every brick is the same size, a color map shows exactly where each one goes, and the picture appears row by row. Some people like to build alone, and some like to build together with jobs: one person reads the map, one finds the colors, one places the bricks.
+
+It's a free download, no email needed: https://mymemobrick.com/pages/calm-build-gift?utm_source=facebook&utm_medium=group&utm_campaign=community-20261028
+
+It isn't a therapy or a treatment, just a calm activity some families may enjoy. One note: the kits have small bricks, so they are not for young children or anyone who may put small pieces in their mouth.
+
+If you try the plan, I'd love to hear what you would change.
+
+### Post 2: neurodivergent families, calm building article
+
+- **Group:** East Bay Autism Parents (Facebook group for families of autistic children in the East Bay, California). Search Facebook for "East Bay Autism Parents". Row 2 in `groups.md`.
+- **Rule that allows it:** as quoted by a public directory: "members appreciate being told about autism-related deals and resources. Advertising or selling autism-related resources is limited to once a week per item or service." Owner to confirm the rule inside the group, and that she may join (it is a local caregivers group). Post this at most once a week.
+- **Where to paste:** a new post in the group. Link in the post if allowed, otherwise in the first comment.
+- **Photo:** a real product photo of a finished 1×1 brick mosaic (any Shopify kit image without people).
+
+**Post text:**
+
+Hello, I'm Eden, owner of Memobrick (we make photo brick mosaic kits). Sharing a free resource under the group's resource rule.
+
+We wrote an article on building a brick mosaic as a calm, shared activity for autistic kids and adults. It covers how to set up a predictable session, how to split the build into jobs for two or three people (map reader, color finder, builder), and how to keep sessions short with a clear finish. It also explains, plainly, what research on brick building does and does not show. We say "autistic people" in it because many autistic self-advocates prefer it.
+
+Article: https://mymemobrick.com/blogs/news/brick-mosaic-calm-activity-autistic-kids-adults?utm_source=facebook&utm_medium=group&utm_campaign=community-20261028
+
+There's also a free one-page Calm Build Plan you can print, no email needed: https://mymemobrick.com/pages/calm-build-gift?utm_source=facebook&utm_medium=group&utm_campaign=community-20261028
+
+To be clear, this is an activity, not a therapy. The kits use small bricks, so they are not for young children or anyone who mouths small pieces. Happy to answer any questions, and I'd really value feedback from parents and autistic members.
+
+### Post 3: pet group, dog mosaic
+
+- **Group:** Dog Lover (public Facebook group for dog lovers, about 736K members per a directory). Search Facebook for "Dog Lover". Row 7 in `groups.md`.
+- **Rule that allows it:** rules unknown: owner to check rules before posting. Many big pet groups allow "share your dog" photos but not shop links: if so, post the photo and story without the link, and only answer with the link if someone asks.
+- **Where to paste:** a new photo post. Link in the first comment only if the rules allow it.
+- **Photo:** the 16×16 Bernese mountain dog mosaic next to its original photo (16×16 kit product image). Optional second photo: the framed Doberman (20×30 product image).
+
+**Post text:**
+
+Which one would you hang on the wall: the photo or the bricks? 🐾
+
+This Bernese mountain dog was turned into a 16×16 inch mosaic made of 2,500 tiny 1×1 bricks. Up close you see every brick, and from across the room you see the dog.
+
+Full disclosure, I'm Eden and I run Memobrick, the small company that makes these kits from people's own pet photos. I love seeing which photos work best. The ones that win are usually close-ups, face to the camera, with good light and a plain background.
+
+Tell me about the photo of your dog you'd pick. Ears up, tongue out, or the sleepy one?
+
+**First comment (only if links are allowed):** If you want to see your own dog as a mosaic, you can upload a photo and preview it here: https://mymemobrick.com/pages/dog-brick-mosaic?utm_source=facebook&utm_medium=group&utm_campaign=community-20261028
+
+### Post 4: gift ideas and local Florida group, awareness story
+
+- **Group:** Naples Moms Marketplace (the Naples Moms marketplace sub-group, Southwest Florida). Row 10 in `groups.md`.
+- **Rule that allows it:** described by a public source as a group "for members to sell their personal items or to advertise their businesses". Owner to confirm inside the group (some marketplaces allow business posts only on set days). This post doesn't sell, so it also suits the main Naples Moms group if its rules allow posts from local businesses (owner to check rules before posting).
+- **Where to paste:** a new photo post, on the allowed day if the group has one. No link in the post; if someone asks where to see more, reply with https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=group&utm_campaign=community-20261028 (the photo preview).
+- **Photos:** the 16×16 Bernese mountain dog mosaic next to its original photo, and a real photo of the color-labeled brick bags from a kit.
+
+**Post text:**
+
+Hi neighbors! I'm Eden, and I run Memobrick, a small Florida business based in Miami. I wanted to share a little of what we do, because people are always surprised by how it works.
+
+We turn a photo into a mosaic made of tiny 1×1 bricks, all the same size, in 40+ colors. Someone uploads a favorite photo, our editor shows it as a mosaic, and then we make a kit: the bricks sorted into small bags labeled by color, the baseplates, and a printed color map that shows where every brick goes. Then the fun part happens at home, one row at a time, until the picture appears.
+
+The photos people choose tell the best stories: a wedding day, grandparents with the grandkids, a dog who is part of the family.
+
+So I'm curious: if you could turn one photo into brick art for your wall, which one would it be? 🧱
+
+### Post 5: adult LEGO and brick fans
+
+- **Group:** KC area adult LEGO fans chat group, https://www.facebook.com/groups/LEGOFANSKC/ (adult fans, Kansas City). Row 20 in `groups.md`.
+- **Rule that allows it:** rules unknown: owner to check rules before posting, and check that the group accepts members from outside Kansas City. If it doesn't, use the same text in another adult brick fans group with a "share your build" rule (find one with a Facebook search for "LEGO mosaic" or "LEGO Art"). Post it in one group only.
+- **Where to paste:** a new photo post. No link: brick fan groups usually dislike shop links. Link only if a member asks and the rules allow it.
+- **Photo:** a close-up of a finished 1×1 brick mosaic showing the studs, plus the full mosaic from a distance (Shopify kit images).
+
+**Post text:**
+
+Question for the mosaic builders here.
+
+I'm Eden. I run Memobrick, a small company that makes photo mosaic kits from 1×1 bricks (not LEGO brand, and not affiliated with LEGO), so I spend a lot of time staring at faces turned into studs. 😄
+
+The part I find hardest is skin tones and shadows. With 40+ colors you can blend very smoothly, but sometimes fewer colors and harder edges read better from across the room. Here's one of ours close up and from a distance.
+
+When you build portrait mosaics, do you go for more colors and a smoother blend, or fewer colors and a bolder look? Any tricks for eyes? I'd love to learn from people who build these for fun.
