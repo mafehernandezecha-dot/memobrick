@@ -149,3 +149,38 @@ Trust bar on the first screen: a press claim the owner has not confirmed is remo
 
 ### Next run
 After Eden publishes "Memobrick fixes": check the live home page and a kit page on phone and desktop (FOX wording, 4.9 / 1,027, no hardcoded aggregateRating). Tell seo-technical that A-2026W41-012 is live. If Eden chooses, swap or remove the FOX NEWS logo image.
+## Special run: real product photos for blog articles (Eden: "no the picture is not good", 2026-10-28)
+
+### Summary
+Raw Studio exports are gone from the article template: the card, the no-image fallback and the related-article fallback now use real photos of finished mosaics, and the hero is a fixed 3:2 (desktop) / 4:3 (phone) frame with object-fit cover. One real photo per article is proposed for all 11 articles, ready to apply. The live article images are unchanged.
+
+### Done
+- Read all product media in Shopify (read-only) and downloaded 54 candidates through mymemobrick.com/cdn/shop. Left out the AI-generated 1254 px main product images, the Gift Kit photos 1 to 4 (Gemini), Loox review cards, other brands and price claims.
+- Contact sheet of the 12 best (numbered, 3:2 crops): `marketing/conversion/site-developer/2026-10-28-article-photos/contact-sheet.jpg`; files in `.../featured/`.
+- Theme copy "Memobrick fixes" 189310075100 (unpublished): templates/article.liquid 3ae9ed10c458abef8ea7dec0d36d46ec, snippets/mb-article-card.liquid 696279d1a8279a12e98dda60cc140892, snippets/mb-article-related-card.liquid 7a926ec26064b862fed8eeb58e0a8495, 5 new assets mb-real-*.jpg (md5s in the draft). The 5 old mb-studio-*.jpg assets stay in the copy unused (the connector refuses theme file deletes).
+- Tested phone 390×844 and desktop 1440×900: hero 1040×693 desktop, 390×293 phone, cover, no horizontal scroll, no broken images; card avoids repeating the hero; fallback checked on personalized-christmas-photo-gifts.
+- Before and after desktop tops for all 11 articles: `marketing/conversion/site-developer/2026-10-28-article-photos/before-after-desktop-top-11.jpg`.
+- A-2026W44-032 draft updated to revision (b); its checksums changed, so it needs approval again.
+
+### Proposed for approval
+#### P-site-developer-20261028-4
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/article-photo-swap.md
+- Reason: Replaces the featured image (image and alt text only) of 11 live articles with real photos of finished mosaics, starting with last-minute-personalized-christmas-gifts (framed couple on a wall); old URLs kept for undo.
+- Expires: 2026-11-04
+- Status: pending
+
+A-2026W44-032 (article template, revision b): same draft path `marketing/conversion/site-developer/fixes/article-template-upgrade.md`, changed after its Commit, needs re-approval.
+
+### Blocked or unknown
+- I did not change the live article images. The go-ahead reached me only as a relayed agent message, and I act on live changes only from an approved queue item where I am the Executor. Once P-site-developer-20261028-4 is approved in the queue, applying all 11 takes a few minutes (last-minute first).
+- Resolution: most real product photos are 1080 to 1230 px wide (one is 828 px); only 4 of the 12 are 1500 px or more. Not upscaled. A new 2000 px or larger daylight photo of a framed finished mosaic would be the best image for the Christmas articles.
+- No real hands-building or kit-box photo exists in Shopify product media (the ones there are AI). The calm series uses real labeled bag photos placed side by side. Owner footage (Drive, cleared) has an overhead hands build clip that could give a still later.
+
+### Sales impact
+Article readers now see a real finished product first, which supports the article-to-editor clicks the new template is built for. Effect is indirect; measure with the `data-mba-cta` clicks after publishing.
+
+### Next run
+Apply P-site-developer-20261028-4 if approved, then check every article live on phone and desktop.

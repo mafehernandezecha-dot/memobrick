@@ -1,5 +1,7 @@
 # Blog article template upgrade (default template), 2026-10-28
 
+**Revision 2026-10-28 (b), after Eden's "no the picture is not good":** every picture in the template is now a real product photo of a finished Memobrick mosaic (no raw Memobrick Studio exports anywhere), and the hero is a fixed 3:2 frame on desktop (4:3 on phones) filled edge to edge with `object-fit: cover` at the image's focal point, instead of a square picture shrunk inside a white 2:1 box. Checksums of `templates/article.liquid`, `snippets/mb-article-card.liquid` and `snippets/mb-article-related-card.liquid` changed and 5 new assets replace the 5 Studio assets, so this item needs approval again. The featured images themselves are a separate item: `fixes/article-photo-swap.md`.
+
 Built and tested by: site-developer (Jenny), on Eden's request ("add images and make it look nice ... adding Memobrick reviews or something that will drive sales").
 Status: built in theme copy **"Memobrick fixes", id 189310075100 (unpublished)**. Nothing live has changed. The connector cannot write to the live theme, so Eden publishes the copy after approval.
 
@@ -18,41 +20,42 @@ The same copy already contains the ready-made "your own photo" link (`templates/
 Every article without a GemPages layout (11 today: the 8 published this morning, brick-mosaic-sizes, gift-for-someone-who-has-everything, personalized-christmas-photo-gifts, plus a few old ones in other blogs) rendered as a plain text page: no featured image on 3 of them, no product, no price, no reviews, no trust signals, and only one plain button at the very end. Blog readers had no easy next step toward an order.
 
 ## What changes (only on articles that use the default template; GemPages articles are untouched)
-1. **Large featured image** under the title: the article's own featured image, or, when it has none, a Memobrick Studio example mosaic labeled "Example design made in the Memobrick Studio" (never presented as a customer). Full width on phones, up to 1040 px on desktop.
+1. **Large featured image** under the title, always in a fixed frame: 3:2 on desktop (1040×693 px), 4:3 on phones (full width), `object-fit: cover`, positioned at the image's focal point set in Shopify admin (default 50% 40%, faces sit in the upper half), served up to 2080 px through srcset. When an article has no featured image, the fallback is a real photo of a finished mosaic: the framed couple on a wall (`mb-real-couple-wall.jpg`); calm series: the labeled color bags (`mb-real-color-bags.jpg`); handles with "dog" or "pet": the framed dog with the dog below it (`mb-real-dog-framed.jpg`). No caption, no raw Studio export.
 2. **Readable text column**: 700 px wide, 17 to 17.5 px text, 1.75 line height, clearer H2/H3 spacing, tables that scroll sideways on phones. Read time and the Loox star line under the title.
-3. **"Make yours" product card** after the intro (before the first H2) and again at the end: Studio example mosaic, kit price read live from Shopify (20×20 $99.88 and "sizes from $35.00"; Loox rating 4.9 from the product's Loox data), buttons "Upload my photo" (editor) and "Get a free design proof" (/pages/free-preview), with the note that the proof is optional.
+3. **"Make yours" product card** after the intro (before the first H2) and again at the end: a real photo at 4:3 (the framed couple on a wall, or the woman with her framed portrait when the hero already shows the couple; captioned "A finished mosaic. Frame sold separately"), kit price read live from Shopify (20×20 $99.88 and "sizes from $35.00"; Loox rating 4.9 from the product's Loox data), buttons "Upload my photo" (editor) and "Get a free design proof" (/pages/free-preview), with the note that the proof is optional.
 4. **Real Loox reviews**: star summary from Loox's own `loox.global_stats` (4.9, 1,027 reviews today) and up to 10 photo reviews from Loox's own `loox.review_feed_agg` feed, in Loox's order, with "Verified buyer" when Loox marks it. Nothing is typed by hand. A Loox app block cannot be placed in this Liquid template and the Loox script widget is JavaScript only, so the block reads the same Loox data server-side; it updates whenever Loox updates its metafields. "Read all reviews" goes to /pages/happy-customers.
 5. **Trust strip**: "As seen on FOX" (FOX 4 holiday gift guide; never "Fox News"), "Free design proof" (optional), "Order by December 15 to receive it before Christmas" (offers calendar Facts), and "Too late? Gift Kit from $35, they pick the photo" (Art Gift Kit, live price). The Dec 15 item hides itself after Dec 15 and the Gift Kit item after Dec 25.
 6. **Sticky phone button** (screens up to 760 px) after the reader scrolls past the image: "Your photo in bricks, Kits from $35.00, Upload my photo". It stops 76 px short of the right edge and sits below other widgets (z-index 40), so the Shopify Inbox chat bubble (bottom right) stays visible and tappable. It hides while a product card or the footer is on screen. Desktop: no sticky bar.
 7. **Related articles**: 3 cards, hand-picked per series (Christmas, calm building, other), skipping the current and unpublished ones, topped up with the newest articles.
-8. **Calm building series (autism)**: the 5 handles (or tag `calm-building`) get the 16×16 kit card ($69.88, 2,500 bricks sorted by color in labeled bags, about 2.5 hours, easy to split into short sessions), a cat Studio mosaic, "Start a 16×16 design" (editor with 16×16 preselected), the small-parts note, calm headings ("What builders say about the kit"), and no Gift Kit push. No health claims anywhere. A link to the Calm Build Gift page appears automatically once a published page with handle `calm-build-gift` exists (none exists today; the gift page is not built yet).
+8. **Calm building series (autism)**: the 5 handles (or tag `calm-building`) get the 16×16 kit card ($69.88, 2,500 bricks sorted by color in labeled bags, about 2.5 hours, easy to split into short sessions), a photo of real labeled color bags (the other color set when the hero already shows the first), "Start a 16×16 design" (editor with 16×16 preselected), the small-parts note, calm headings ("What builders say about the kit"), and no Gift Kit push. No health claims anywhere. A link to the Calm Build Gift page appears automatically once a published page with handle `calm-build-gift` exists (none exists today; the gift page is not built yet).
 9. **Kept intact**: BlogPosting and Breadcrumb JSON-LD unchanged; the article body is printed whole (split once at its first `<h2>`), so each article's FAQPage JSON-LD stays in place; exactly one H1 (if an article body has its own H1, the template title becomes a styled paragraph).
 
 ## Files
 | File | Live (MAIN 189177626844) md5 | Copy (189310075100) md5 |
 |---|---|---|
-| templates/article.liquid | 82e7b853b14989438f955aeea5f60881 | 0a1d696d78529adb1e1487a88c870773 |
-| snippets/mb-article-card.liquid (new) | none | ada6871e8360494d0d3479494d58ac91 |
+| templates/article.liquid | 82e7b853b14989438f955aeea5f60881 | 3ae9ed10c458abef8ea7dec0d36d46ec (was 0a1d696d78529adb1e1487a88c870773) |
+| snippets/mb-article-card.liquid (new) | none | 696279d1a8279a12e98dda60cc140892 (was ada6871e8360494d0d3479494d58ac91) |
 | snippets/mb-article-reviews.liquid (new) | none | 3a90b9685b75efa613fc05ce3a24fe81 |
 | snippets/mb-article-trust.liquid (new) | none | bcfa3cc9f3df649c70f318240f0e25f3 |
 | snippets/mb-article-related.liquid (new) | none | 42c76f2755ce24014461721da72631f5 |
-| snippets/mb-article-related-card.liquid (new) | none | 48d11f31db257e18a744a904400455c4 |
-| assets/mb-studio-christmas-couple.jpg (new) | none | b40a47cb2249bc0dbc0b6450c73d75f5 |
-| assets/mb-studio-grandma.jpg (new) | none | fa5d75a75ad4ce604dd201151b01d098 |
-| assets/mb-studio-sofa-couple.jpg (new) | none | e8451e18b8377e5df98a2eab61d46abb |
-| assets/mb-studio-dog.jpg (new) | none | 61b84423d7285c33e76473300234cea8 |
-| assets/mb-studio-cat.jpg (new) | none | c5a8a8280cc718034187e64b14cbdc04 |
+| snippets/mb-article-related-card.liquid (new) | none | 7a926ec26064b862fed8eeb58e0a8495 (was 48d11f31db257e18a744a904400455c4) |
+| assets/mb-real-couple-wall.jpg (new) | none | d5e99ffa5a2c95f329dc0617a4f10617 |
+| assets/mb-real-woman-portrait.jpg (new) | none | edf4aed7bd011c0724fd122ae6769545 |
+| assets/mb-real-dog-framed.jpg (new) | none | 0f86f3343c3523874b1eb4d469435b59 |
+| assets/mb-real-color-bags.jpg (new) | none | f95d33350865e81d287c848c355e6c90 |
+| assets/mb-real-color-bags-soft.jpg (new) | none | fed6af9aeee8c44f4a61ca9c9f5236c8 |
+| assets/mb-studio-*.jpg (5 files from the first version) | none | still in the copy but no longer used by any file (the connector refuses theme file deletes); harmless, Eden may delete them in the code editor |
 | templates/product.liquid (A-2026W44-016, not part of this item) | a87bf50f20c4e21363b1ebc297cf44f1 | 845d653ed4879952c714e0c4ae2e7220 |
 
-All other files in the copy match live. Full before and after code: `marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/live/` (before) and `.../new/` (after), commit e1dfe50. Backup of the live file: `marketing/conversion/site-developer/backups/2026-10-28-article-upgrade/templates/article.liquid`.
+All other files in the copy match live. Full before and after code: `marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/live/` (before) and `.../new/` (after, revision b). Backup of the live file: `marketing/conversion/site-developer/backups/2026-10-28-article-upgrade/templates/article.liquid`.
 
-Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1, S-20261027-1, S-20261029-1, S-20261030-1) and `2026-W43/redo/` (S-20261024-1) raw Studio exports, resized to 1200 px JPEG. No AI-drawn mosaics, no AI people shown as customers, no product lifestyle photos with people.
+The 5 assets are crops of the store's own real product photos (product media, downloaded through mymemobrick.com/cdn/shop): framed couple on a wall (20×40 product), woman with her framed portrait (20×20 product), framed dog with the dog (20×20 product), and two side-by-side sets of the real bag-of-bricks product photos. No AI images (the 1254 px main product images and the Gift Kit photos 1 to 4 are AI generated and were left out), no raw Studio exports, no Loox review cards, no other brands, no price claims. The people in the photos are never presented as customers or quoted. Contact sheet of all candidates kept: `marketing/conversion/site-developer/2026-10-28-article-photos/contact-sheet.jpg`.
 
 ### Before and after: templates/article.liquid (unified diff)
 
 ```diff
---- marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/live/templates/article.liquid	2026-10-28 07:37:45.621311912 +0000
-+++ marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/new/templates/article.liquid	2026-10-28 07:49:12.589822547 +0000
+--- marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/live/templates/article.liquid	2026-10-28 07:55:40.759169287 +0000
++++ marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/new/templates/article.liquid	2026-10-28 08:04:07.977875771 +0000
 @@ -1,11 +1,73 @@
  {%- comment -%}
 -  [old comment line, contains a dash character; exact text in live/templates/article.liquid line 2]
@@ -62,7 +65,8 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
 -  that here, since real blog content is about to start flowing through
 -  this template.
 +  Default blog article template (every article without a GemPages layout).
-+  2026-10-28 upgrade (site-developer): large featured image, readable text
++  2026-10-28 upgrade (site-developer): large featured image (3:2 on desktop,
++  4:3 on phones, cropped with object-fit cover at the image's focal point), readable text
 +  column, a "Make yours" product card after the intro and at the end, real
 +  Loox reviews, a trust strip, related articles and a phone-only sticky
 +  button that leaves the chat bubble corner free.
@@ -84,26 +88,25 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
 +  endif
 +
 +  comment
-+    Fallback hero when the article has no featured image: a Memobrick Studio
-+    example mosaic (theme asset), captioned as an example, never as a customer.
++    Fallback hero when the article has no featured image: a real product photo
++    of a finished mosaic (theme asset, 3:2), never a raw Studio export.
++    mba_hero_key tells the card which picture the hero already shows.
 +  endcomment
-+  assign mba_fallback = 'mb-studio-dog.jpg'
-+  assign mba_fallback_alt = 'Example brick mosaic of a golden retriever, made of 1×1 bricks in the Memobrick Studio'
-+  if mba_handle contains 'grandparent'
-+    assign mba_fallback = 'mb-studio-grandma.jpg'
-+    assign mba_fallback_alt = 'Example brick mosaic of a grandmother and granddaughter, made of 1×1 bricks in the Memobrick Studio'
-+  elsif mba_handle contains 'wife' or mba_handle contains 'someone-who-has-everything'
-+    assign mba_fallback = 'mb-studio-sofa-couple.jpg'
-+    assign mba_fallback_alt = 'Example brick mosaic of a couple on a sofa, made of 1×1 bricks in the Memobrick Studio'
-+  elsif mba_series == 'christmas'
-+    assign mba_fallback = 'mb-studio-christmas-couple.jpg'
-+    assign mba_fallback_alt = 'Example brick mosaic of a couple in holiday sweaters, made of 1×1 bricks in the Memobrick Studio'
++  assign mba_fallback = 'mb-real-couple-wall.jpg'
++  assign mba_fallback_alt = 'A finished brick mosaic of a smiling couple, framed and hanging on a wall'
++  if mba_series == 'calm'
++    assign mba_fallback = 'mb-real-color-bags.jpg'
++    assign mba_fallback_alt = 'Memobrick bags of 1×1 bricks, each labeled with its color name and number'
++  elsif mba_handle contains 'dog' or mba_handle contains 'pet'
++    assign mba_fallback = 'mb-real-dog-framed.jpg'
++    assign mba_fallback_alt = 'A finished brick mosaic of a dog in a white frame, with the dog sitting below it'
 +  endif
 +
-+  assign mba_hero_asset = ''
-+  unless article.image
-+    assign mba_hero_asset = mba_fallback
-+  endunless
++  if article.image
++    assign mba_hero_key = article.image.src | split: '?' | first | split: '/' | last
++  else
++    assign mba_hero_key = mba_fallback
++  endif
 +
 +  assign mba_has_h1 = false
 +  if article.content contains '<h1'
@@ -133,7 +136,7 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
  <script type="application/ld+json">
  {
    "@context": "https://schema.org",
-@@ -31,32 +93,128 @@
+@@ -31,32 +93,127 @@
    ]
  }
  </script>
@@ -173,14 +176,14 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
 +
 +  <figure class="mba-hero">
 +    {%- if article.image -%}
-+      <img src="{{ article.image | image_url: width: 1400 }}"
-+        srcset="{{ article.image | image_url: width: 700 }} 700w, {{ article.image | image_url: width: 1100 }} 1100w, {{ article.image | image_url: width: 1600 }} 1600w"
++      {%- assign mba_focal = article.image.presentation.focal_point | default: '50% 40%' -%}
++      <img src="{{ article.image | image_url: width: 1600 }}"
++        srcset="{{ article.image | image_url: width: 800 }} 800w, {{ article.image | image_url: width: 1200 }} 1200w, {{ article.image | image_url: width: 1600 }} 1600w, {{ article.image | image_url: width: 2080 }} 2080w"
 +        sizes="(max-width: 760px) 100vw, 1040px"
 +        alt="{{ article.image.alt | default: article.title | escape }}" width="{{ article.image.width }}" height="{{ article.image.height }}"
-+        loading="eager" fetchpriority="high">
++        style="object-position:{{ mba_focal }}" loading="eager" fetchpriority="high">
 +    {%- else -%}
-+      <img src="{{ mba_fallback | asset_url }}" alt="{{ mba_fallback_alt | escape }}" width="1200" height="1200" loading="eager" fetchpriority="high">
-+      <figcaption>Example design made in the Memobrick Studio</figcaption>
++      <img src="{{ mba_fallback | asset_url }}" alt="{{ mba_fallback_alt | escape }}" width="1200" height="800" loading="eager" fetchpriority="high">
 +    {%- endif -%}
 +  </figure>
 +
@@ -189,14 +192,14 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
 +  <div class="mba-body page-prose">
 +    {{ mba_intro }}
 +    {%- if mba_rest != blank -%}
-+      {%- render 'mb-article-card', series: mba_series, place: 'intro', hero: mba_hero_asset -%}
++      {%- render 'mb-article-card', series: mba_series, place: 'intro', hero: mba_hero_key -%}
 +      {{ mba_rest }}
 +    {%- endif -%}
    </div>
 -  <p style="margin-top:40px"><a class="btn btn-red" href="/pages/editor">Start designing your MemoBrick</a></p>
 +
 +  {%- render 'mb-article-reviews', series: mba_series, rating: mba_rating, count: mba_count -%}
-+  {%- render 'mb-article-card', series: mba_series, place: 'end', hero: mba_hero_asset -%}
++  {%- render 'mb-article-card', series: mba_series, place: 'end', hero: mba_hero_key -%}
 +  {%- render 'mb-article-related', series: mba_series, current: mba_handle -%}
 +</article>
 +
@@ -256,9 +259,8 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
 +  .mba-meta{color:var(--ink-3);font-size:13.5px;margin:0 0 26px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
 +  .mba-meta-stars{color:var(--ink-2);text-decoration:none;font-weight:600}
 +  .mba-meta-stars span{color:#f7c90f;letter-spacing:1px}
-+  .mba-hero{max-width:var(--mba-wide);margin-top:0;margin-bottom:22px;background:var(--card,#fff);border-radius:20px;overflow:hidden;box-shadow:0 18px 40px -26px rgba(21,23,27,.35);position:relative}
-+  .mba-hero img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;aspect-ratio:2/1;background:var(--card,#fff)}
-+  .mba-hero figcaption{position:absolute;left:12px;bottom:12px;background:rgba(255,255,255,.92);color:var(--ink-2);font-size:12px;padding:5px 10px;border-radius:999px}
++  .mba-hero{max-width:var(--mba-wide);margin-top:0;margin-bottom:22px;background:var(--paper,#f3f1ec);border-radius:20px;overflow:hidden;box-shadow:0 18px 40px -26px rgba(21,23,27,.35);position:relative}
++  .mba-hero img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:50% 40%}
 +  .mba-body{color:var(--ink-2);font-size:17.5px;line-height:1.75}
 +  .mba-body.page-prose h2{font-family:var(--display);font-weight:600;font-size:clamp(23px,2.6vw,28px);line-height:1.2;color:var(--ink);margin:44px 0 14px;letter-spacing:-.01em}
 +  .mba-body.page-prose h3{font-family:var(--display);font-weight:600;font-size:20px;color:var(--ink);margin:30px 0 10px}
@@ -277,7 +279,7 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
 +  @media (max-width:760px){
 +    .mba{padding:22px 16px 30px}
 +    .mba-hero{margin-left:-16px;margin-right:-16px;border-radius:0}
-+    .mba-hero img{aspect-ratio:1/1;max-height:none}
++    .mba-hero img{aspect-ratio:4/3}
 +    .mba-body{font-size:17px}
 +    .mba-sticky{display:flex;align-items:center;gap:10px;position:fixed;left:0;right:76px;bottom:0;z-index:40;background:var(--card,#fff);border-top:1px solid var(--line);border-right:1px solid var(--line);border-top-right-radius:14px;padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -6px 18px -10px rgba(21,23,27,.25)}
 +    .mba-sticky[hidden]{display:none}
@@ -288,7 +290,124 @@ Studio assets come from `marketing/social/planner/2026-W44/redo/` (S-20261101-1,
  </style>
 ```
 
-## Tests (2026-10-28, preview of 189310075100 vs live, phone 390×844 Android UA and desktop 1440×900)
+### Revision (b) changes: snippets/mb-article-card.liquid (from revision a)
+
+```diff
+--- revision-a/snippets/mb-article-card.liquid	2026-10-28 08:03:34.248687341 +0000
++++ marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/new/snippets/mb-article-card.liquid	2026-10-28 08:12:43.569906419 +0000
+@@ -2,7 +2,7 @@
+   "Make yours" product card for blog articles (templates/article.liquid).
+   series: 'calm' | 'christmas' | 'default'   place: 'intro' | 'end'   hero: (optional) hero asset name to avoid
+   Self-contained (own CSS), so it can also be rendered from a GemPages Liquid element.
+-  Price and Loox rating from Shopify; picture is a Memobrick Studio example. Calm series points to the 16×16 kit
++  Price and Loox rating from Shopify; picture is a real photo of a finished mosaic. Calm series points to the 16×16 kit
+   (and to the Calm Build Gift page once a published page with handle
+   calm-build-gift exists). No health claims.
+ {%- endcomment -%}
+@@ -18,15 +18,25 @@
+     assign size_label = '20×20 in kit'
+   endif
+   comment
+-    Card picture: a Memobrick Studio example mosaic (theme asset), never a
+-    lifestyle photo with people. Avoids repeating the hero picture.
++    Card picture: a real product photo of a finished mosaic (theme asset),
++    never a raw Studio export. Avoids repeating the hero picture (hero is the
++    hero image file name).
+   endcomment
+   if series == 'calm'
+-    assign card_img = 'mb-studio-cat.jpg'
+-  elsif hero == 'mb-studio-dog.jpg'
+-    assign card_img = 'mb-studio-sofa-couple.jpg'
++    assign card_img = 'mb-real-color-bags.jpg'
++    assign card_alt = 'Memobrick bags of 1×1 bricks, each labeled with its color name and number'
++    assign card_cap = 'Bricks sorted by color in labeled bags'
++    if hero contains 'color-bags-bright' or hero == 'mb-real-color-bags.jpg'
++      assign card_img = 'mb-real-color-bags-soft.jpg'
++    endif
++  elsif hero contains 'framed-couple-wall' or hero == 'mb-real-couple-wall.jpg'
++    assign card_img = 'mb-real-woman-portrait.jpg'
++    assign card_alt = 'A woman at home with a finished, framed brick mosaic of her own portrait'
++    assign card_cap = 'A finished mosaic. Frame sold separately'
+   else
+-    assign card_img = 'mb-studio-dog.jpg'
++    assign card_img = 'mb-real-couple-wall.jpg'
++    assign card_alt = 'A finished brick mosaic of a smiling couple, framed and hanging on a wall'
++    assign card_cap = 'A finished mosaic. Frame sold separately'
+   endif
+   assign rating = p.metafields.loox.avg_rating.value | default: p.metafields.loox.avg_rating
+   assign raters = p.metafields.loox.num_reviews.value | default: p.metafields.loox.num_reviews
+@@ -34,8 +44,8 @@
+ -%}
+ <aside class="mba-card mba-card--{{ place }}" aria-label="Make your own brick mosaic">
+   <a class="mba-card-img" href="/pages/editor?size={{ size }}#editor" tabindex="-1" aria-hidden="true">
+-    <img src="{{ card_img | asset_url }}" alt="" loading="lazy" width="600" height="600">
+-    <span>Example design made in the Memobrick Studio</span>
++    <img src="{{ card_img | asset_url }}" alt="{{ card_alt | escape }}" loading="lazy" width="1200" height="800">
++    <span>{{ card_cap }}</span>
+   </a>
+   <div class="mba-card-txt">
+     {%- if series == 'calm' -%}
+@@ -72,7 +82,7 @@
+   .mba-card-img{display:block;border-radius:14px;overflow:hidden;background:var(--paper,#f3f1ec)}
+   .mba-card-img{position:relative}
+   .mba-card-img span{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.92);color:var(--ink-2);font-size:11px;line-height:1.2;padding:4px 8px;border-radius:999px}
+-  .mba-card-img img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;margin:0;border-radius:0}
++  .mba-card .mba-card-img img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:50% 40%;margin:0 !important;border-radius:0 !important}
+   .page-prose .mba-card a.btn{text-decoration:none}
+   .mba-card p{margin:0}
+   .mba-card-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--b-red)}
+```
+
+### Revision (b) changes: snippets/mb-article-related-card.liquid (from revision a)
+
+```diff
+--- revision-a/snippets/mb-article-related-card.liquid	2026-10-28 08:03:34.248710876 +0000
++++ marketing/conversion/site-developer/theme-files/article-upgrade-2026-10-28/new/snippets/mb-article-related-card.liquid	2026-10-28 08:04:07.977875771 +0000
+@@ -1,21 +1,23 @@
+-{%- comment -%} One related-article card (used by mb-article-related). Image: the article's featured image, else a Memobrick Studio example mosaic. {%- endcomment -%}
++{%- comment -%} One related-article card (used by mb-article-related). Image: the article's featured image, else a real photo of a finished mosaic. {%- endcomment -%}
+ <a class="mba-rel" href="{{ a.url }}">
+   {%- if a.image -%}
+     <img src="{{ a.image | image_url: width: 600 }}" alt="{{ a.image.alt | default: a.title | escape }}" loading="lazy" width="600" height="375">
+   {%- else -%}
+     {%- liquid
+-      assign fb = 'mb-studio-dog.jpg'
+-      if a.handle contains 'grandparent'
+-        assign fb = 'mb-studio-grandma.jpg'
+-      elsif a.handle contains 'wife' or a.handle contains 'everything'
+-        assign fb = 'mb-studio-sofa-couple.jpg'
+-      elsif a.handle contains 'christmas' or a.handle contains 'holiday'
+-        assign fb = 'mb-studio-christmas-couple.jpg'
+-      elsif a.handle contains 'size'
+-        assign fb = 'mb-studio-cat.jpg'
++      assign fb = 'mb-real-couple-wall.jpg'
++      assign fb_alt = 'A finished brick mosaic of a smiling couple, framed on a wall'
++      if a.handle contains 'calm' or a.handle contains 'sensory' or a.handle contains 'build-together' or a.handle contains 'special-interest' or a.handle contains 'occupational'
++        assign fb = 'mb-real-color-bags.jpg'
++        assign fb_alt = 'Memobrick bags of 1×1 bricks, labeled by color'
++      elsif a.handle contains 'dog' or a.handle contains 'pet'
++        assign fb = 'mb-real-dog-framed.jpg'
++        assign fb_alt = 'A finished brick mosaic of a dog in a frame, with the dog below it'
++      elsif a.handle contains 'wife' or a.handle contains 'everything' or a.handle contains 'size'
++        assign fb = 'mb-real-woman-portrait.jpg'
++        assign fb_alt = 'A woman at home with a finished, framed brick mosaic of her portrait'
+       endif
+     -%}
+-    <img src="{{ fb | asset_url }}" alt="Example brick mosaic made in the Memobrick Studio" loading="lazy" width="600" height="375">
++    <img src="{{ fb | asset_url }}" alt="{{ fb_alt }}" loading="lazy" width="600" height="400">
+   {%- endif -%}
+   <span class="mba-rel-t">{{ a.title | escape }}</span>
+   <span class="mba-rel-x">{{ a.excerpt_or_content | strip_html | truncate: 110 }}</span>
+```
+
+## Tests of revision (b) (2026-10-28, preview of 189310075100, phone 390×844 at 2x and desktop 1440×900)
+- Hero: object-fit cover, desktop box 1040×693 (3:2), phone 390×293 (4:3), on all 11 articles; no horizontal scroll (390 / 1440); no broken images.
+- Card pictures: couple photo, or woman photo when the hero is the couple (last-minute stand-in and the no-image fallback both checked); calm series: bright color bags, soft set when the hero is the bright set.
+- Fallback (personalized-christmas-photo-gifts, no featured image): framed couple photo at 3:2, card shows the woman photo.
+- Screenshots in `marketing/conversion/site-developer/2026-10-28-article-photos/shots/`: `after-full-<phone|desktop>-last-minute-personalized-christmas-gifts-<top|card|full>.jpg`, `after-full-<phone|desktop>-brick-mosaic-calm-activity-autistic-kids-adults-<top|card|full>.jpg` (proposed featured image swapped in the browser as a stand-in), `after-fallback-<phone|desktop>-personalized-christmas-photo-gifts-<top|card|full>.jpg`, before: `before-preview-...` (revision a). All 11 tops, before and after: `marketing/conversion/site-developer/2026-10-28-article-photos/before-after-desktop-top-11.jpg`.
+- Test script: `marketing/conversion/site-developer/tools/article-photo-shot.mjs`.
+
+## Tests of revision (a) (2026-10-28, preview of 189310075100 vs live, phone 390×844 Android UA and desktop 1440×900)
 Articles: personalized-christmas-photo-gifts (no featured image, fallback hero), last-minute-personalized-christmas-gifts (featured image, published today), brick-mosaic-calm-activity-autistic-kids-adults (calm series).
 - One H1 on every page; JSON-LD types unchanged from live: Organization, WebSite, BreadcrumbList, BlogPosting, BreadcrumbList, FAQPage (all parse).
 - No horizontal scroll (page width 390 / 1440).
@@ -306,22 +425,8 @@ Screenshots (JPEG, about 1000 px wide or less): `marketing/conversion/site-devel
 - results: `after-results.json`, `before-results.json`, `before-results-calm.json`
 Test script: `marketing/conversion/site-developer/tools/article-shot.mjs`.
 
-## Images for Sandra (body images; I did not edit any article body)
-None of the 11 default-template articles has an image inside the text. Proposed, 1 to 2 each, all from existing Studio exports or Shopify product photos (no AI people, no AI-drawn mosaics):
-| Article | Image 1 (where) | Image 2 (where) |
-|---|---|---|
-| personalized-christmas-photo-gifts | Featured image (it has none): `2026-W44/redo/S-20261101-1-studio-mosaic.png`, alt "Example brick mosaic of a couple in holiday sweaters, made in the Memobrick Studio" | Under "How a custom brick mosaic works": Shopify product photo of a labeled brick bag (e.g. Bag-of-Bricks-Shiny-Blue-05) |
-| brick-mosaic-sizes | Featured image (it has none): `2026-W44/redo/S-20261030-1-studio-mosaic.png` (20×30 cat) | In the size table section: `S-20261031-1-studio-mosaic.png` (16×16) next to `S-20261029-1-studio-mosaic.png` (20×20), captioned with their sizes |
-| gift-for-someone-who-has-everything | Featured image (it has none): `2026-W44/redo/S-20261029-1-studio-mosaic.png` (couple on sofa) | Under "How a custom brick mosaic works": brick bag product photo |
-| last-minute-personalized-christmas-gifts | Under "Missed the date? Give the Art Gift Kit": the Gift Kit product photo `gift-kit-main-2026-10-26.jpg` (Shopify) | none |
-| christmas-gifts-for-grandparents-from-grandkids | Under "Which photo to use": `2026-W43/redo/S-20261024-1-studio-mosaic.png` (dog, for "include the family pet") | none |
-| photo-christmas-gift-for-wife | Under "Choosing a size for your wall": `2026-W44/redo/S-20261101-1-studio-mosaic.png` | none |
-| brick-mosaic-calm-activity-autistic-kids-adults | Under "A clear map with no guessing": a second brick bag photo (e.g. Bag-of-Bricks-Aqua-Blue-07) | Optional: the Calm Build Plan tracker page as an image once the gift page exists |
-| build-together-reader-sorter-builder | Under "The three roles": two or three brick bag photos side by side (sorter role) | none |
-| sensory-friendly-building-tips | Under "Sort colors first": brick bag photos of 3 colors | none |
-| special-interest-brick-mosaic | Under "Pets": `2026-W44/redo/S-20261031-1-studio-mosaic.png` is a dog in a Halloween hat, so prefer `2026-W43/redo/S-20261024-1-studio-mosaic.png` (dog) | none (no characters) |
-| brick-mosaics-occupational-therapists-teachers | Under "What the kit involves": brick bag photo | none |
-Also: the calm series featured images are small bag photos on white, which look small in the new large hero. A Studio pet mosaic (cat or dog above) as the featured image would fill it better.
+## Featured images
+Replaced by `marketing/conversion/site-developer/fixes/article-photo-swap.md`: one real product photo per article (11 articles), with old and new image URLs. The earlier body-image suggestions that used Studio exports are withdrawn.
 
 ## Expected effect
 Blog articles are a growing share of organic entries in the Christmas season (11 default-template articles, 8 of them new today). Each article now offers a priced next step after the intro, at the end and on a sticky phone button, plus real reviews and the Dec 15 date. A realistic goal is article-to-editor clicks going from about zero (one plain end button) to a few percent of article sessions; a small number of extra orders per week until Dec 15. Measure: sessions landing on `/blogs/news/*` with a following `/pages/editor` or `/pages/free-preview` view (referred sessions only), and clicks on links with `data-mba-cta`.

@@ -24,7 +24,7 @@ For articles that are not about Christmas or gifts, use `series: 'default'` inst
 
 What each block shows:
 - **Trust strip:** As seen on FOX (FOX 4 holiday gift guide), Free design proof (optional), Order by December 15 to receive it before Christmas, and "Too late? Gift Kit" with its live price. The December 15 item hides itself after Dec 15 and the Gift Kit item after Dec 25, so nobody has to remember to remove them.
-- **Product card:** an example mosaic made in the Memobrick Studio, the 20×20 kit price and Loox rating read live from Shopify, and two buttons: "Upload my photo" (editor) and "Get a free design proof".
+- **Product card:** a real photo of a finished, framed mosaic, the 20×20 kit price and Loox rating read live from Shopify, and two buttons: "Upload my photo" (editor) and "Get a free design proof".
 - **Loox reviews:** the real star summary (4.9 from 1,027 reviews today) and up to 10 photo reviews from Loox's own review feed. Nothing is typed in, so the reviews are always real and update when Loox updates.
 
 ## Article 1: personalized-christmas-photo-gifts
