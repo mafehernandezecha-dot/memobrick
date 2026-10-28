@@ -159,8 +159,9 @@ Do first (as of 2026-10-28):
 - Commit: be1a05b
 - Reason: Merges 10 competing Christmas posts into 2 hubs (personalized-christmas-photo-gifts and a-holiday-activity-everyone-can-actually-join): hides 8 posts (kept, not deleted) with 301s, repoints 11 old redirects that go to the homepage, fixes hub links. Visible GemPages edits are on Eden's change list.
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261028-1
+- Note (2026-10-28): Eden approved in chat: "approve 022 to 026".
 
 ## A-2026W44-023
 - Agent: seo-technical
@@ -170,8 +171,9 @@ Do first (as of 2026-10-28):
 - Commit: be1a05b
 - Reason: Clean handles with 301s for 14 articles (baby-carrier-..., test-blog-post-..., copy-of-..., duplicate-from-..., random suffixes); grandparents waits until after Jan 4, Thanksgiving until after Nov 27.
 - Expires: 2026-11-11
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261028-2
+- Note (2026-10-28): Eden approved in chat: "approve 022 to 026".
 
 ## A-2026W44-024
 - Agent: seo-technical
@@ -181,8 +183,9 @@ Do first (as of 2026-10-28):
 - Commit: be1a05b
 - Reason: Retitles the 2024 Fox article to "As Seen on FOX: Memobrick in a Holiday Gift Guide" (handle memobrick-as-seen-on-fox, 301), fixes its SEO fields, removes "Fox News" from two other articles.
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261028-3
+- Note (2026-10-28): Eden approved in chat: "approve 022 to 026".
 
 ## A-2026W44-025
 - Agent: seo-technical
@@ -192,8 +195,9 @@ Do first (as of 2026-10-28):
 - Commit: be1a05b
 - Reason: Turns off SearchPie's meta tags: every page now shows two titles and two descriptions (36 articles show only "  Memobrick").
 - Expires: 2026-11-11
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261028-4
+- Note (2026-10-28): Eden approved in chat: "approve 022 to 026".
 
 ## A-2026W44-026
 - Agent: seo-technical
@@ -203,8 +207,9 @@ Do first (as of 2026-10-28):
 - Commit: be1a05b
 - Reason: Search Console task for Eden's Chrome: resubmit sitemap, read Pages report, request indexing (up to 10 URLs a day); part B after 022 to 024.
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-seo-technical-20261028-5
+- Note (2026-10-28): Eden approved in chat: "approve 022 to 026".
 
 ## A-2026W44-027
 - Agent: site-developer
