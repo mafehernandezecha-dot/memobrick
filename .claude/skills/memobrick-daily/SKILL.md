@@ -22,6 +22,7 @@ Use today's date and weekday in America/New_York.
 Then add, in this order:
 
 - growth-analyst every day, first (its daily sales pulse feeds the dashboard and tells everyone the weak points).
+- social-community-manager (Patricia) every day, after outreach-link-builder (Eden, 2026-10-28: Facebook group posts, prepared for her to post by hand).
 - outreach-link-builder (Bertha) every day, after growth-analyst (Eden, 2026-10-28: daily link building on all Memobrick topics).
 - ads-analyst every day from November 16 to December 20 (its daily pacing check), if not already due.
 - site-developer every day, after the day's other agents (it exits quickly when there is nothing to build or apply).
@@ -30,7 +31,7 @@ Then add, in this order:
 
 Not in this routine: outreach-creator-scout (María Beatriz). Shopify Collabs has no API in the Shopify connector and needs the owner's logged-in Chrome, so she runs only on the owner's Mac (the `com.memobrick.collabs` job and the `memobrick-collabs` skill), Mondays and, from November 1 to December 15, Thursdays. Never start her from here.
 
-Order of the run: growth-analyst first, then outreach-link-builder, then the day's other agents in the table order, then site-developer, then marketing-coordinator, then social-publisher.
+Order of the run: growth-analyst first, then outreach-link-builder, then social-community-manager, then the day's other agents in the table order, then site-developer, then marketing-coordinator, then social-publisher.
 
 ## 2. Run them
 

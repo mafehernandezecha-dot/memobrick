@@ -225,13 +225,13 @@
       "character": "patricia",
       "role": "Answers comments and spots buyers",
       "department": "Social",
-      "status": "planned",
+      "status": "active",
       "displayName": "Patricia",
       "machine": "",
       "avatar": "avatars/patricia.png",
       "sprite": "sprites/patricia.png",
-      "folder": null,
-      "agentFile": null
+      "folder": "marketing/social/community",
+      "agentFile": ".claude/agents/social-community-manager.md"
     },
     {
       "name": "conversion-auditor",
