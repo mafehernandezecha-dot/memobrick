@@ -304,7 +304,7 @@ Do first (as of 2026-10-28):
 - Commit: 97ac25a
 - Reason: Approves Niki Loheit (LEGO Masters S5, IG 1,903, 2.7% real engagement, already follows Memobrick) into the 10%/10% tier and sends her welcome message as written, on the next Mac Collabs run.
 - Expires: 2026-11-11
-- Status: pending
+- Status: approved
 - From: P-outreach-creator-scout-20261028-2
 
 ## A-2026W44-035
