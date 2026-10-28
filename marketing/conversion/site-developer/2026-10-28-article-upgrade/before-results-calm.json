@@ -1,0 +1,123 @@
+[
+ {
+  "device": "phone",
+  "h": "brick-mosaic-calm-activity-autistic-kids-adults",
+  "status": 200,
+  "title": "Brick Mosaics: A Calm Activity for Autistic Kids and Adults",
+  "h1s": [
+   "Building a Brick Mosaic as a Calm, Shared Activity for Autistic Kids and Adults"
+  ],
+  "ld": [
+   "Organization",
+   "WebSite",
+   "BreadcrumbList",
+   "BlogPosting",
+   "BreadcrumbList",
+   "FAQPage"
+  ],
+  "fixed": [
+   {
+    "tag": "HEADER",
+    "id": "",
+    "cls": "nav",
+    "x": 0,
+    "y": 0,
+    "w": 390,
+    "h": 75
+   }
+  ],
+  "sw": 390,
+  "iw": 390,
+  "cards": [],
+  "cardLinks": [],
+  "reviews": 0,
+  "related": [],
+  "heroSrc": null,
+  "heroH": null,
+  "looxWidgets": 0,
+  "brokenImgs": []
+ },
+ {
+  "device": "phone",
+  "h": "brick-mosaic-calm-activity-autistic-kids-adults",
+  "sticky": null,
+  "chat": [
+   {
+    "tag": "IFRAME",
+    "id": "web-pixel-sandbox-CUSTOM-171540700-LAX-78841ebdw6fd1eda2peb7ac126m6aaa99ab",
+    "x": 0,
+    "y": 9713,
+    "w": 4,
+    "h": 4
+   },
+   {
+    "tag": "IFRAME",
+    "id": "web-pixel-sandbox-CUSTOM-173375708-LAX-78841ebdw6fd1eda2peb7ac126m6aaa99ab",
+    "x": 0,
+    "y": 9738,
+    "w": 4,
+    "h": 4
+   },
+   {
+    "tag": "IFRAME",
+    "id": "web-pixel-sandbox-CUSTOM-shopify-custom-pixel-LAX-78841ebdw6fd1eda2peb7ac126m6aaa99ab",
+    "x": 0,
+    "y": 9764,
+    "w": 4,
+    "h": 4
+   }
+  ]
+ },
+ {
+  "device": "phone",
+  "jsErrors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.co"
+  ]
+ },
+ {
+  "device": "desktop",
+  "h": "brick-mosaic-calm-activity-autistic-kids-adults",
+  "status": 200,
+  "title": "Brick Mosaics: A Calm Activity for Autistic Kids and Adults",
+  "h1s": [
+   "Building a Brick Mosaic as a Calm, Shared Activity for Autistic Kids and Adults"
+  ],
+  "ld": [
+   "Organization",
+   "WebSite",
+   "BreadcrumbList",
+   "BlogPosting",
+   "BreadcrumbList",
+   "FAQPage"
+  ],
+  "fixed": [
+   {
+    "tag": "HEADER",
+    "id": "",
+    "cls": "nav",
+    "x": 0,
+    "y": 0,
+    "w": 1440,
+    "h": 75
+   }
+  ],
+  "sw": 1440,
+  "iw": 1440,
+  "cards": [],
+  "cardLinks": [],
+  "reviews": 0,
+  "related": [],
+  "heroSrc": null,
+  "heroH": null,
+  "looxWidgets": 0,
+  "brokenImgs": []
+ },
+ {
+  "device": "desktop",
+  "jsErrors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.co"
+  ]
+ }
+]

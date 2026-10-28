@@ -53,3 +53,6 @@ The connector's `themeFilesUpsert` takes a body of type URL (the result list com
 
 ## Check 2026-10-28
 Live (MAIN) "Memobrick holiday gift boxes" 189177626844 (updated 2026-10-25), product.liquid md5 a87bf50f20c4e21363b1ebc297cf44f1. Working copy **"Memobrick fixes" 189310075100**, UNPUBLISHED, duplicated from live 2026-10-28; only templates/product.liquid differs (md5 845d653ed4879952c714e0c4ae2e7220, ready-made "own photo" A/B link). Theme count 20 of 20. Note: the connector refuses live-theme writes, so the owner publishes copies.
+
+## Check 2026-10-28 (special run, blog articles)
+Live (MAIN) still "Memobrick holiday gift boxes" 189177626844 (updated 2026-10-25), templates/article.liquid 82e7b853b14989438f955aeea5f60881. Working copy "Memobrick fixes" 189310075100 now also holds the article template upgrade: templates/article.liquid 0a1d696d78529adb1e1487a88c870773, snippets mb-article-card ada6871e..., mb-article-reviews 3a90b968..., mb-article-trust bcfa3cc9..., mb-article-related 42c76f27..., mb-article-related-card 48d11f31..., assets mb-studio-*.jpg (5). product.liquid unchanged (845d653e..., A-2026W44-016). See fixes/article-template-upgrade.md. Theme count 20 of 20.
