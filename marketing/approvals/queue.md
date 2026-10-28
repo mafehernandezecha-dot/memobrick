@@ -420,7 +420,7 @@ Do first (as of 2026-10-28):
 - Commit: 239cb86
 - Reason: Creates and schedules a new Omnisend campaign "Q4 | Nov 20 | EARLYHOLIDAY20 Ends Sunday (Warm)" for Fri Nov 20, 10:00 ET, to Warm minus Past Buyers, recent buyers and Unengaged 180d, using the real Nov 22 end date. Last year's best email was a deadline email.
 - Expires: 2026-11-19
-- Status: pending
+- Status: approved
 - From: P-email-campaign-writer-20261027-3
 - Flag: A scheduled "VIP 20%" campaign goes out Nov 19, the day before, and its content has not been read (the writer lists it as next run work). Check it does not use another code or tell the same people the same thing before you approve.
 
