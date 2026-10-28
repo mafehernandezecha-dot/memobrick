@@ -293,6 +293,39 @@ Do first (as of 2026-10-28):
 - Status: pending
 - From: P-outreach-gift-guide-pr-20261028-4
 
+## A-2026W44-034
+- Agent: outreach-creator-scout
+- Executor: outreach-creator-scout
+- Type: send
+- Draft: marketing/outreach/creator-scout/creators/2026-10-28-nikibuildsbricks.md
+- Commit: 97ac25a
+- Reason: Approves Niki Loheit (LEGO Masters S5, IG 1,903, 2.7% real engagement, already follows Memobrick) into the 10%/10% tier and sends her welcome message as written, on the next Mac Collabs run.
+- Expires: 2026-11-11
+- Status: pending
+- From: P-outreach-creator-scout-20261028-2
+
+## A-2026W44-035
+- Agent: outreach-creator-scout
+- Executor: outreach-creator-scout
+- Type: offer
+- Draft: marketing/outreach/creator-scout/kits/2026-10-28-nikibuildsbricks.md
+- Commit: 97ac25a
+- Reason: Offers Niki one sample kit to build on camera (welcome message then includes the kit line); Eden ships after she replies.
+- Expires: 2026-11-11
+- Status: pending
+- From: P-outreach-creator-scout-20261028-3
+
+## A-2026W44-036
+- Agent: outreach-creator-scout
+- Executor: outreach-creator-scout
+- Type: send
+- Draft: marketing/outreach/creator-scout/batches/2026-10-28-batch.md
+- Commit: 97ac25a
+- Reason: Declines 4 more fake or coupon applicants silently (Duc Chung 2026-03-31, Baldo Vivian, Huy Hoang, Sonia England); no messages.
+- Expires: 2026-11-11
+- Status: pending
+- From: P-outreach-creator-scout-20261028-1
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
