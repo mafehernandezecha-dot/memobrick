@@ -403,7 +403,7 @@ Do first (as of 2026-10-28):
 - Commit: 7ebfa16
 - Reason: Patricia's first 5 Facebook group posts (Special Needs Community and East Bay Autism Parents with the free Calm Build Plan and calm hub article; Dog Lover with the dog page; Naples Moms Marketplace holiday post; KC adult LEGO fans mosaic question) plus 3 gift-question answers. Eden posts by hand or via the Claude in Chrome prompt, only where each group's rules allow.
 - Expires: 2026-11-04
-- Status: pending
+- Status: changes: replaced by A-2026W44-044 (Eden: posts should not sell)
 - From: P-social-community-manager-20261028-1
 
 ## A-2026W44-043
@@ -416,6 +416,17 @@ Do first (as of 2026-10-28):
 - Expires: 2026-11-15
 - Status: pending
 - From: P-social-community-manager-20261028-2
+
+## A-2026W44-044
+- Agent: social-community-manager
+- Executor: social-community-manager
+- Type: publish
+- Draft: marketing/social/community/2026-10-28-posts-v2.md
+- Commit: 4a658c2
+- Reason: Today's 5 Facebook group posts and 3 gift answers rewritten as awareness posts (no prices, codes, deadlines or sales calls to action), per Eden: "the post don't need to sell, the idea is for people to know about memobrick". Replaces 042.
+- Expires: 2026-11-04
+- Status: pending
+- From: P-social-community-manager-20261028-3
 
 ## A-2026W44-014
 - Agent: email-campaign-writer
