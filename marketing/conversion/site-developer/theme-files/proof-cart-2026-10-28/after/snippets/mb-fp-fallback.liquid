@@ -1,0 +1,31 @@
+{%- comment -%}
+  A-2026W44-018. Free-proof form fallback. Render it inside .hulk-form-embed,
+  right after the pxFormGenerator div. It stays hidden while the Hulk form has
+  fields. If no field has appeared after 8 seconds (blocked script, slow
+  network, Hulk app embed off after a theme publish, Hulk outage), it shows an
+  email button so the visitor can still ask for a free proof. It keeps checking
+  until 60 seconds and hides again as soon as the form shows up.
+{%- endcomment -%}
+<div class="fp-fallback" hidden style="text-align:center;padding:20px 8px">
+  <p style="margin:0 0 12px;font-size:15px;line-height:1.5;color:var(--ink-2)">The form is taking a while to load. You can also email your photo to us and our designers will send your free proof.</p>
+  <a class="btn btn-red big" href="mailto:{{ shop.email | default: 'support@memobrickofficial.com' }}?subject=Free%20design%20proof%20request&amp;body=Please%20attach%20your%20photo%20and%20tell%20us%20the%20size%20you%20like.">Email my photo for a free proof</a>
+</div>
+<script>
+  (function () {
+    var me = document.currentScript;
+    var wrap = me && me.closest('.hulk-form-embed');
+    if (!wrap) return;
+    var fb = wrap.querySelector('.fp-fallback');
+    if (!fb) return;
+    var start = Date.now();
+    function ready() {
+      return !!wrap.querySelector('.pxFormGenerator input, .pxFormGenerator textarea, .pxFormGenerator select, .pxFormGenerator iframe, .pxFormGenerator form');
+    }
+    function check() {
+      if (ready()) { fb.hidden = true; return; }
+      fb.hidden = false;
+      if (Date.now() - start < 60000) setTimeout(check, 3000);
+    }
+    setTimeout(check, 8000);
+  })();
+</script>
