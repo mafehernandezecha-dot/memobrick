@@ -1,0 +1,94 @@
+[
+ {
+  "device": "phone",
+  "errs": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D978Q9JC77U49KGPM850"
+  ],
+  "scrollW": 390,
+  "innerW": 390,
+  "imgs": [
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=1120",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/products/Frame-16x16_-Memobrick-59272193.jpg?width=200",
+    "ok": true
+   }
+  ],
+  "links": [
+   {
+    "text": "Download the free plan (PDF)",
+    "href": "https://mymemobrick.com/cdn/shop/files/calm-build-plan.pdf?v=1793172038",
+    "top": 2035,
+    "w": 332,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →",
+    "type": ""
+   },
+   {
+    "text": "Make your 16×16 mosaic",
+    "href": "https://mymemobrick.com/pages/editor?size=16x16#editor",
+    "top": 3272,
+    "w": 296,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →",
+    "type": ""
+   },
+   {
+    "text": "Send us a photo and get a free proof",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 3395,
+    "w": 242,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →",
+    "type": ""
+   }
+  ]
+ },
+ {
+  "device": "phone",
+  "editorUrl": "https://mymemobrick.com/pages/editor?size=16x16"
+ },
+ {
+  "device": "desktop",
+  "errs": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D978Q9JC77U49KGPM850"
+  ],
+  "scrollW": 1440,
+  "innerW": 1440,
+  "imgs": [
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=1120",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/products/Frame-16x16_-Memobrick-59272193.jpg?width=200",
+    "ok": true
+   }
+  ],
+  "links": [
+   {
+    "text": "Download the free plan (PDF)",
+    "href": "https://mymemobrick.com/cdn/shop/files/calm-build-plan.pdf?v=1793172038",
+    "top": 1552,
+    "w": 292
+   },
+   {
+    "text": "Make your 16×16 mosaic",
+    "href": "https://mymemobrick.com/pages/editor?size=16x16#editor",
+    "top": 2318,
+    "w": 254
+   },
+   {
+    "text": "Send us a photo and get a free proof",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 2422,
+    "w": 278
+   }
+  ]
+ },
+ {
+  "device": "desktop",
+  "editorUrl": "https://mymemobrick.com/pages/editor?size=16x16"
+ }
+]
