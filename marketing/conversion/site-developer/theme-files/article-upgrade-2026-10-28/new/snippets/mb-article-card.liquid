@@ -1,0 +1,60 @@
+{%- comment -%}
+  "Make yours" product card for blog articles (templates/article.liquid).
+  series: 'calm' | 'christmas' | 'default'   place: 'intro' | 'end'
+  Real product photo and price from Shopify. Calm series points to the 16×16 kit
+  (and to the Calm Build Gift page once a published page with handle
+  calm-build-gift exists). No health claims.
+{%- endcomment -%}
+{%- liquid
+  assign p10 = all_products['custom-bricked-mosaic-10x10']
+  if series == 'calm'
+    assign p = all_products['1-big-board']
+    assign size = '16x16'
+    assign size_label = '16×16 in kit'
+  else
+    assign p = all_products['2-2-boards']
+    assign size = '20x20'
+    assign size_label = '20×20 in kit'
+  endif
+  assign img = p.featured_image
+  assign rating = p.metafields.loox.avg_rating.value | default: p.metafields.loox.avg_rating
+  assign raters = p.metafields.loox.num_reviews.value | default: p.metafields.loox.num_reviews
+  assign calm_page = pages['calm-build-gift']
+-%}
+<aside class="mba-card mba-card--{{ place }}" aria-label="Make your own brick mosaic">
+  {%- if img -%}
+    <a class="mba-card-img" href="{{ p.url }}">
+      <img src="{{ img | image_url: width: 700 }}" srcset="{{ img | image_url: width: 400 }} 400w, {{ img | image_url: width: 700 }} 700w"
+        sizes="(max-width: 760px) 100vw, 300px" alt="{{ img.alt | default: p.title | escape }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}">
+    </a>
+  {%- endif -%}
+  <div class="mba-card-txt">
+    {%- if series == 'calm' -%}
+      <p class="mba-card-eyebrow">A calm build, one row at a time</p>
+      <p class="mba-card-h">{% if place == 'end' %}Ready when you are: start with the 16×16{% else %}Make yours with the 16×16 kit{% endif %}</p>
+      <p class="mba-card-p">The smallest size: one baseplate and 2,500 bricks, sorted by color in labeled bags, with a printed color map. About 2.5 hours in total, easy to split into short sessions. Use a photo that matters to the builder.</p>
+    {%- else -%}
+      <p class="mba-card-eyebrow">{% if series == 'christmas' %}A gift they build, then hang on the wall{% else %}Your photo, built in bricks{% endif %}</p>
+      <p class="mba-card-h">{% if place == 'end' %}Ready to make yours?{% else %}Make yours from a photo you love{% endif %}</p>
+      <p class="mba-card-p">Upload a photo and see it as a custom brick mosaic before you order. Every kit comes with the 1×1 bricks, baseplates, your building map and the tool.</p>
+    {%- endif -%}
+    <p class="mba-card-price">
+      <b>{{ size_label }} {{ p.price_min | money }}</b>
+      {%- if p.compare_at_price_min > p.price_min %} <s>{{ p.compare_at_price_min | money }}</s>{% endif -%}
+      {%- if series != 'calm' and p10.price_min > 0 %}<span> · sizes from {{ p10.price_min | money }}</span>{% endif -%}
+      {%- if rating != blank %}<span class="mba-card-stars"><span aria-hidden="true">★</span> {{ rating }} ({{ raters }} reviews)</span>{% endif -%}
+    </p>
+    <div class="mba-card-btns">
+      <a class="btn btn-red" href="/pages/editor?size={{ size }}#editor" data-mba-cta="card-{{ place }}">{% if series == 'calm' %}Start a 16×16 design{% else %}Upload my photo{% endif %}</a>
+      <a class="btn mba-btn-ghost" href="/pages/free-preview" data-mba-cta="proof-{{ place }}">Get a free design proof</a>
+    </div>
+    {%- if series == 'calm' -%}
+      {%- if calm_page != blank and calm_page.handle == 'calm-build-gift' -%}
+        <p class="mba-card-note"><a href="{{ calm_page.url }}">See the Calm Build Gift, with a free printable build plan</a></p>
+      {%- endif -%}
+      <p class="mba-card-note">Small bricks: not for young children who put things in their mouths.</p>
+    {%- else -%}
+      <p class="mba-card-note">The free proof is optional: our designers make the design for you and send it before anything is made.</p>
+    {%- endif -%}
+  </div>
+</aside>

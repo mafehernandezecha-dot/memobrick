@@ -1,0 +1,48 @@
+{%- comment -%}
+  Trust strip for blog articles. Facts from marketing/shared/offers-calendar.md:
+  "As seen on FOX" (FOX 4 holiday gift guide; never "Fox News"), the optional
+  free design proof, the Christmas order-by date December 15, 2026 and the
+  Art Gift Kit for late buyers. The date items switch off by themselves:
+  "Order by December 15" until Dec 15, the Gift Kit line until Dec 25.
+{%- endcomment -%}
+{%- liquid
+  assign today = 'now' | date: '%Y%m%d' | plus: 0
+  assign gk = all_products['unlimited-memobrick']
+-%}
+<ul class="mba-trust" aria-label="Why Memobrick">
+  <li><span class="mba-ti mba-ti--tv" aria-hidden="true"></span><span><b>As seen on FOX</b> in FOX 4's holiday gift guide</span></li>
+  <li><span class="mba-ti mba-ti--proof" aria-hidden="true"></span><span><a href="/pages/free-preview"><b>Free design proof</b></a>, if you want one, before anything is made</span></li>
+  {%- if series == 'calm' -%}
+    <li><span class="mba-ti mba-ti--bags" aria-hidden="true"></span><span><b>Sorted by color</b> in labeled bags, with a printed map</span></li>
+    {%- if today <= 20261215 -%}
+      <li><span class="mba-ti mba-ti--date" aria-hidden="true"></span><span><b>Order by December 15</b> for Christmas</span></li>
+    {%- endif -%}
+  {%- else -%}
+    {%- if today <= 20261215 -%}
+      <li><span class="mba-ti mba-ti--date" aria-hidden="true"></span><span><b>Order by December 15</b> for Christmas</span></li>
+    {%- endif -%}
+    {%- if today <= 20261225 and gk != blank -%}
+      <li><span class="mba-ti mba-ti--gift" aria-hidden="true"></span><span>Too late? <a href="{{ gk.url }}"><b>Give the Gift Kit</b></a>{% if gk.price_min > 0 %} from {{ gk.price_min | money }}{% endif %}, they pick the photo</span></li>
+    {%- endif -%}
+  {%- endif -%}
+</ul>
+<style>
+  .mba-trust{list-style:none;max-width:var(--mba-wide,1040px);margin:0 auto 34px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+  .mba-trust li{display:flex;align-items:center;gap:10px;background:var(--card,#fff);border:1px solid var(--line-soft,rgba(0,0,0,.07));border-radius:14px;padding:10px 12px;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
+  .mba-trust b{color:var(--ink);font-weight:600}
+  .mba-trust a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+  .mba-ti{flex:0 0 auto;width:28px;height:28px;border-radius:8px;position:relative;background:var(--b-red,#E2382B)}
+  .mba-ti::before,.mba-ti::after{content:"";position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);top:5px}
+  .mba-ti::before{left:6px}.mba-ti::after{right:6px}
+  .mba-ti--proof{background:var(--azur,#2AA5DE)}
+  .mba-ti--date{background:var(--green,#3AA35F)}
+  .mba-ti--gift{background:var(--yellow,#FFC83D)}
+  .mba-ti--bags{background:var(--azur,#2AA5DE)}
+  @media (max-width:760px){
+    .mba-trust{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:26px}
+    .mba-trust li{font-size:12.5px;padding:9px 10px;gap:8px}
+    .mba-ti{width:22px;height:22px;border-radius:6px}
+    .mba-ti::before,.mba-ti::after{width:5px;height:5px;top:4px}
+    .mba-ti::before{left:4px}.mba-ti::after{right:4px}
+  }
+</style>

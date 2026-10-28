@@ -1,0 +1,53 @@
+{%- comment -%}
+  Related articles for blog articles: a short hand-picked list per series
+  (unpublished or missing handles are skipped), topped up with the newest
+  articles of the blog. Shows 3, never the current article.
+{%- endcomment -%}
+{%- liquid
+  case series
+    when 'calm'
+      assign picks = 'brick-mosaic-calm-activity-autistic-kids-adults,sensory-friendly-building-tips,build-together-reader-sorter-builder,special-interest-brick-mosaic,brick-mosaics-occupational-therapists-teachers,brick-mosaic-sizes'
+    when 'christmas'
+      assign picks = 'last-minute-personalized-christmas-gifts,personalized-christmas-photo-gifts,christmas-gifts-for-grandparents-from-grandkids,photo-christmas-gift-for-wife,gift-for-someone-who-has-everything,a-holiday-activity-everyone-can-actually-join,brick-mosaic-sizes'
+    else
+      assign picks = 'personalized-christmas-photo-gifts,brick-mosaic-sizes,gift-for-someone-who-has-everything,last-minute-personalized-christmas-gifts,a-holiday-activity-everyone-can-actually-join'
+  endcase
+  assign picks = picks | split: ','
+  assign shown = 0
+  assign used = current
+-%}
+<section class="mba-related" aria-labelledby="mba-related-h">
+  <h2 id="mba-related-h" class="mba-related-h">{% if series == 'calm' %}More in the calm building series{% else %}Keep reading{% endif %}</h2>
+  <div class="mba-related-grid">
+    {%- for h in picks -%}
+      {%- if shown >= 3 -%}{%- break -%}{%- endif -%}
+      {%- if h == current -%}{%- continue -%}{%- endif -%}
+      {%- assign key = 'news/' | append: h -%}
+      {%- assign a = articles[key] -%}
+      {%- if a == blank or a.handle != h -%}{%- continue -%}{%- endif -%}
+      {%- render 'mb-article-related-card', a: a -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- assign used = used | append: ',' | append: h -%}
+    {%- endfor -%}
+    {%- if shown < 3 -%}
+      {%- assign used_list = used | split: ',' -%}
+      {%- for a in blog.articles limit: 12 -%}
+        {%- if shown >= 3 -%}{%- break -%}{%- endif -%}
+        {%- if used_list contains a.handle -%}{%- continue -%}{%- endif -%}
+        {%- render 'mb-article-related-card', a: a -%}
+        {%- assign shown = shown | plus: 1 -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+<style>
+  .mba-related{max-width:var(--mba-wide,1040px);margin:10px auto 30px}
+  .mba-related-h{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.4vw,28px);color:var(--ink);margin:0 0 16px}
+  .mba-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .mba-rel{display:flex;flex-direction:column;background:var(--card,#fff);border:1px solid var(--line-soft,rgba(0,0,0,.07));border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .15s ease,box-shadow .15s ease}
+  .mba-rel:hover{transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(21,23,27,.45)}
+  .mba-rel img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--paper,#eee)}
+  .mba-rel-t{font-family:var(--display);font-weight:600;font-size:17px;line-height:1.25;padding:12px 14px 4px}
+  .mba-rel-x{font-size:13.5px;line-height:1.45;color:var(--ink-3);padding:0 14px 14px}
+  @media (max-width:760px){.mba-related-grid{grid-template-columns:1fr;gap:12px}.mba-rel{flex-direction:row}.mba-rel img{width:116px;aspect-ratio:1/1;flex:0 0 auto}.mba-rel-x{display:none}.mba-rel-t{font-size:15.5px;padding:12px}}
+</style>

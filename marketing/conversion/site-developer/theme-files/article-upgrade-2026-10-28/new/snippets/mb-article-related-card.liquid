@@ -1,0 +1,22 @@
+{%- comment -%} One related-article card (used by mb-article-related). Image: the article's featured image, else a Memobrick Studio example mosaic. {%- endcomment -%}
+<a class="mba-rel" href="{{ a.url }}">
+  {%- if a.image -%}
+    <img src="{{ a.image | image_url: width: 600 }}" alt="{{ a.image.alt | default: a.title | escape }}" loading="lazy" width="600" height="375">
+  {%- else -%}
+    {%- liquid
+      assign fb = 'mb-studio-dog.jpg'
+      if a.handle contains 'grandparent'
+        assign fb = 'mb-studio-grandma.jpg'
+      elsif a.handle contains 'wife' or a.handle contains 'everything'
+        assign fb = 'mb-studio-sofa-couple.jpg'
+      elsif a.handle contains 'christmas' or a.handle contains 'holiday'
+        assign fb = 'mb-studio-christmas-couple.jpg'
+      elsif a.handle contains 'size'
+        assign fb = 'mb-studio-cat.jpg'
+      endif
+    -%}
+    <img src="{{ fb | asset_url }}" alt="Example brick mosaic made in the Memobrick Studio" loading="lazy" width="600" height="375">
+  {%- endif -%}
+  <span class="mba-rel-t">{{ a.title | escape }}</span>
+  <span class="mba-rel-x">{{ a.excerpt_or_content | strip_html | truncate: 110 }}</span>
+</a>

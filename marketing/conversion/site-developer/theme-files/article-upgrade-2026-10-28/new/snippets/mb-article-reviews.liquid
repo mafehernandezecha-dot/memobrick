@@ -1,0 +1,83 @@
+{%- comment -%}
+  Real Loox reviews for blog articles. Everything here comes from Loox's own
+  shop metafields, which the Loox app writes and keeps in sync:
+    loox.global_stats     -> "rating,count" star summary
+    loox.review_feed_agg  -> Loox's featured review feed (text, author, photos)
+  Nothing is typed in by hand, so no review can be invented or edited here.
+  Rendered server-side (article.liquid is a Liquid template, so Loox app blocks
+  cannot be placed in it, and the Loox script widget is JavaScript-only).
+  Shows photo reviews only, in Loox's own order.
+{%- endcomment -%}
+{%- liquid
+  assign feed = shop.metafields.loox.review_feed_agg.value
+  assign shown = 0
+-%}
+{%- if feed.reviews.size > 0 -%}
+<section class="mba-reviews" id="mba-reviews" aria-labelledby="mba-reviews-h">
+  <div class="mba-reviews-head">
+    <div>
+      <p class="mba-reviews-eyebrow">Real reviews from Loox</p>
+      <h2 id="mba-reviews-h" class="mba-reviews-h">{% if series == 'calm' %}What builders say about the kit{% else %}Built, gifted and hung on the wall{% endif %}</h2>
+    </div>
+    {%- if rating != blank -%}
+      <p class="mba-reviews-sum"><span class="mba-stars" aria-hidden="true">★★★★★</span> <b>{{ rating }}</b> out of 5 · {{ count }} reviews</p>
+    {%- endif -%}
+  </div>
+  <div class="mba-revs" id="mbaRevs" tabindex="0">
+    {%- for r in feed.reviews -%}
+      {%- assign photo = nil -%}
+      {%- for m in r.media -%}{%- if m.t == 'photo' and photo == nil -%}{%- assign photo = m -%}{%- endif -%}{%- endfor -%}
+      {%- if photo == nil or r.review == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      <figure class="mba-rev">
+        <img src="https:{{ photo.src | remove: 'https:' }}" alt="{{ photo.alt | default: 'Customer photo review' | escape }}" loading="lazy" width="300" height="400">
+        <figcaption>
+          <span class="mba-rev-stars" aria-label="{{ r.rating }} out of 5 stars">{% for i in (1..5) %}{% if i <= r.rating %}★{% else %}☆{% endif %}{% endfor %}</span>
+          <q>{{ r.review | strip | truncate: 170 | escape }}</q>
+          <span class="mba-rev-by">{{ r.author | escape }}{% if r.verified %} · Verified buyer{% endif %}</span>
+          {%- if r.product.name != blank %}<span class="mba-rev-prod">{{ r.product.name | escape }}</span>{% endif -%}
+        </figcaption>
+      </figure>
+      {%- if shown >= 10 -%}{%- break -%}{%- endif -%}
+    {%- endfor -%}
+  </div>
+  <div class="mba-reviews-foot">
+    <button type="button" class="mba-revnav" data-dir="-1" aria-label="Previous reviews">‹</button>
+    <button type="button" class="mba-revnav" data-dir="1" aria-label="More reviews">›</button>
+    <a class="mba-reviews-all" href="/pages/happy-customers">Read all reviews</a>
+  </div>
+</section>
+<script>
+(function(){
+  var t = document.getElementById("mbaRevs"); if (!t) return;
+  document.querySelectorAll(".mba-revnav").forEach(function(b){
+    b.addEventListener("click", function(){ t.scrollBy({ left: (+b.dataset.dir) * t.clientWidth * 0.9, behavior: "smooth" }); });
+  });
+})();
+</script>
+<style>
+  .mba-reviews{max-width:var(--mba-wide,1040px);margin:50px auto 34px}
+  .mba-reviews-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:8px 20px;margin-bottom:16px}
+  .mba-reviews-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0}
+  .mba-reviews-h{font-family:var(--display);font-weight:600;font-size:clamp(23px,2.6vw,30px);color:var(--ink);margin:4px 0 0;letter-spacing:-.01em}
+  .mba-reviews-sum{margin:0;color:var(--ink-2);font-size:15px}
+  .mba-reviews-sum b{color:var(--ink);font-family:var(--display);font-size:18px}
+  .mba-stars,.mba-rev-stars{color:#f7c90f;letter-spacing:1px}
+  .mba-revs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 12px;scrollbar-width:thin}
+  @media (min-width:1000px){.mba-revs{grid-auto-columns:calc((100% - 42px)/4)}}
+  .mba-rev{scroll-snap-align:start;margin:0;background:var(--card,#fff);border:1px solid var(--line-soft,rgba(0,0,0,.07));border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .mba-rev img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--paper,#eee)}
+  .mba-rev figcaption{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.45;color:var(--ink-2)}
+  .mba-rev q{color:var(--ink);quotes:"\201C" "\201D"}
+  .mba-rev-by{font-weight:600;color:var(--ink-2);font-size:13px}
+  .mba-rev-prod{font-size:12px;color:var(--ink-3)}
+  .mba-reviews-foot{display:flex;align-items:center;gap:10px;margin-top:6px}
+  .mba-revnav{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card,#fff);font-size:20px;line-height:1;cursor:pointer;color:var(--ink)}
+  .mba-reviews-all{margin-left:auto;color:var(--b-red);font-weight:600;text-decoration:underline;font-size:15px}
+  @media (max-width:760px){
+    .mba-reviews{margin:40px -16px 28px;padding:0 16px}
+    .mba-revs{grid-auto-columns:72%;margin:0 -16px;padding:2px 16px 12px;scroll-padding:0 16px}
+    .mba-revnav{display:none}
+  }
+</style>
+{%- endif -%}
