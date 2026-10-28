@@ -326,7 +326,7 @@ Do first (as of 2026-10-28):
 - Commit: 97ac25a
 - Reason: Declines 4 more fake or coupon applicants silently (Duc Chung 2026-03-31, Baldo Vivian, Huy Hoang, Sonia England); no messages.
 - Expires: 2026-11-11
-- Status: pending
+- Status: approved
 - From: P-outreach-creator-scout-20261028-1
 
 ## A-2026W44-037
