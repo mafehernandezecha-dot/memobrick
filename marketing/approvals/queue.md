@@ -276,11 +276,12 @@ Do first (as of 2026-10-28):
 - Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/site-developer/fixes/article-template-upgrade.md
-- Commit: ce17342
+- Commit: e82bb72
 - Reason: New default article template (all non-GemPages articles, incl. today's 8): large image, "Make yours" card with live price, real Loox star summary and photo reviews (from Loox data), trust strip (As seen on FOX, free proof, Dec 15, Gift Kit), phone sticky button clear of the chat bubble, related articles. Built in theme copy "Memobrick fixes" (189310075100); preview https://mymemobrick.com/blogs/news/last-minute-personalized-christmas-gifts?preview_theme_id=189310075100
 - Expires: 2026-11-04
 - Status: approved
 - From: P-site-developer-20261028-2
+- Note (2026-10-28, revision b): real product photos in the card and fallback, fixed 3:2 / 4:3 hero; covered by Eden's "approve photos" after seeing the before/after sheet.
 - Note (2026-10-28): Eden approved in chat: "016 and 032 approved". Eden publishes theme copy "Memobrick fixes" once the picture and homepage fixes are in.
 - Note: Same theme copy as A-2026W44-016 (your-own-photo link); publishing it ships both, the draft says how to split. Eden publishes the theme copy after approving.
 
@@ -374,6 +375,18 @@ Do first (as of 2026-10-28):
 - Expires: 2026-10-30
 - Status: pending
 - From: P-outreach-link-builder-20261028-2
+
+## A-2026W44-041
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/article-photo-swap.md
+- Commit: e82bb72
+- Reason: Replaces the featured images of 11 default-template articles with sharp real product photos (framed couple on a wall, woman with her portrait, framed pets, labeled color bags...). Old URLs kept in the draft for undo.
+- Expires: 2026-11-04
+- Status: approved
+- From: P-site-developer-20261028-4 (photo swap)
+- Note (2026-10-28): Eden approved in chat after seeing the before/after sheet: "approve photos".
 
 ## A-2026W44-014
 - Agent: email-campaign-writer
