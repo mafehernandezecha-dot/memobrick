@@ -51,3 +51,35 @@ Addresses the weak point "Referred traffic is down 53%": 5 posts and 3 answers p
 
 ## Next run
 Add 5 new groups (gift ideas and Christmas shopping, grandparents, adult brick fans with share threads, Miami local), update groups.md with any rules or results Eden pastes, write the next posts for groups marked `ok to post`, and prepare 3 own-group prompts a week once P-social-community-manager-20261028-2 is approved.
+
+## Update 2 (same day): posts for every other group, pictures, Chrome prompt
+
+### Summary
+Eden wants her Mac to keep posting in more Facebook groups through Claude in Chrome. I wrote 22 new group texts (20 posts plus 2 reply-only texts for support groups), each different and fitted to one group, gave every post (including the 5 in v2) a verified real Memobrick photo, and built the Chrome prompt.
+
+### Done
+- `marketing/social/community/2026-10-29-posts.md`: one text for each of the 17 groups that v2 doesn't cover (rows 3 to 6, 8, 9, 11 to 19, 21, 22) and for 5 new groups (rows 23 to 27). The formats mix questions, before/after, how it's made, free resources and Eden's small business story. No prices, codes, deadlines or sales calls to action. Posts 6 to 9 are calm posts: they follow the autism brief (no health or therapy claims, "autistic people", small-parts note, no invented stories) and are marked "wait for Eden's OK". Posts 10 and 19 (pet loss and grandparents raising grandchildren support groups) are reply-only texts for Eden to paste by hand, and they are not in the Chrome prompt.
+- Pictures: 15 distinct images, all real Shopify product photos of finished mosaics or the real color bags. Nine of them are the article photos uploaded today; one, the cat (post 22), is a Shopify design preview and its post says so. Each image has an alt line. I left out the AI "main" images, Loox review cards and product images showing famous people. Every image URL returned 200 with an image content type through `mymemobrick.com/cdn/shop/...`, and every page link returned 200.
+- `marketing/social/community/groups.md`: added 5 groups (Cat Lovers Group Official, Tigers Passion, Steel City LUG, Lifestyle Miami, Toddler Approved's Small Business Sharing Saturday thread). The list now has 27 groups.
+- `marketing/social/community/2026-10-29-chrome-prompt.txt`: same safety rules as 2026-10-28, plus these. At most 5 groups per run, 5 minutes apart. It reads the rules first and skips if promotion isn't allowed. It skips groups Eden isn't a member of and never joins. It skips groups where Eden posted in the last 7 days. It stops at any warning. It downloads and attaches each post's image and reports each post's URL. The 20 posts are in priority order (biggest relevant groups first), the Toddler Approved comment runs on Saturdays only, and the 4 calm posts come last, marked "only if Eden says the calm posts can go".
+- The copy check passes on both files.
+
+### Proposed for approval
+
+### P-social-community-manager-20261028-4
+- Agent: social-community-manager
+- Executor: social-community-manager
+- Type: publish
+- Draft: marketing/social/community/2026-10-29-posts.md
+- Reason: Eden's Mac runs 2026-10-29-chrome-prompt.txt (or Eden posts by hand) to share these 20 awareness posts with their photos, at most 5 groups a run, after each group's rules are checked (calm posts 6 to 9 only after her separate OK, reply-only texts 10 and 19 by hand when asked). Patricia then records the results in groups.md.
+- Expires: 2026-11-12
+- Status: pending
+
+### Blocked or unknown
+- Facebook can't be opened from here, and thehiveindex.com, toddlerapproved.com and thealmanac.net are outside this session's network allowlist. The 5 new groups come from search-result summaries only, so names, sizes and the Toddler Approved Saturday rule still need Eden's (or Chrome's) check. Tigers Passion may be about big cats rather than pets, so the prompt checks the topic first.
+- Rules are unknown for every group except East Bay Autism Parents, Naples Moms Marketplace and the Toddler Approved thread (all paraphrased by third parties). The Chrome prompt reads them before each post.
+- NMLUG is invite only, and Steel City LUG, GayFOLs and the KC group may not welcome non-LEGO bricks. Expect skips there.
+- The calm posts are waiting for Eden's decision on the Calm Build Plan tester step.
+
+### Sales impact
+This addresses the drop in referred traffic. Up to 16 groups (about 4 Chrome runs) put Memobrick, with a real photo, in front of crafters, pet owners, Florida families, homeschoolers and brick fans for free. The biggest groups (Craft & Creative Ideas DIY, Cat Lovers, Tigers Passion) go first. These posts are awareness only, so expect tagged visits (utm_campaign=community-20261029, one utm_content per group) more than direct orders.

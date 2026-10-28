@@ -1,0 +1,340 @@
+You are helping Eden (Memobrick owner) share posts she approved in Facebook groups, from her own account, by hand-paced steps. Only run this after Eden has approved the 2026-10-29 group posts (proposal P-social-community-manager-20261028-4). Follow these rules exactly:
+
+1. Post ONLY the posts listed under POSTS, word for word, each in its own group. Never edit the text, never post the same text in two groups, never post anywhere else.
+2. Before each post: open the group, open "About" and read the rules and pinned posts. If the rules ban promotion, links, business posts or posts about non-LEGO brick products (for the brick fan groups), or allow them only on another day or in another thread, do NOT post: write "skipped: <the rule, in its own words>" and go to the next post. If the rules say business posts go in a weekly thread, post the text as a comment in that thread only, and only on its day.
+3. If Eden is not a member of the group, do NOT request to join, answer membership questions or accept invites: write "skipped: not a member" (Eden joins herself).
+4. Before posting, scroll the group (or search it for "Memobrick"). If Eden already posted there in the last 7 days, do NOT post: write "skipped: already posted on <date>".
+5. Attach the post's image: download it from the IMAGE URL given (it is a mymemobrick.com image), then attach that file to the post. Use the given alt text if Facebook offers an alt text field. If the image can't be downloaded or attached, post without it and say so in the report.
+6. Links: put the link only where the post says. "LINK: first comment" means post the text first, then add the given first comment as a comment on Eden's own new post, and only if the rules allow links. If the rules don't allow links, skip the first comment. "LINK: none" means no link anywhere.
+7. Post at most 5 groups this session, and wait at least 5 minutes between groups. Go down the list in order, skipping posts that rules 2 to 4 skip, until 5 have been posted or the list ends.
+8. Never comment on, like, react to or share other people's posts (the only comment allowed is the first comment on Eden's own post, or a comment in a group's official weekly business thread). Never send friend requests, never message members or admins.
+9. If you see a CAPTCHA, a login page, a security check, "you're posting too fast", "your post goes against our community standards", "pending admin approval" on more than one post in a row, or any other warning, STOP everything and report it.
+10. Posts 6 to 9 are CALM POSTS. Post them ONLY if Eden says in this chat, today, that the calm posts can go. Otherwise write "skipped: calm posts waiting for Eden's OK".
+11. Post 26 is a comment for the Saturday "Small Business Sharing Saturday" thread on the Toddler Approved Facebook page. Do it only on a Saturday, and only as a comment in that week's thread. On any other day write "skipped: not Saturday".
+12. At the end, report for each post: post number, group, posted / skipped (reason), image attached yes/no, link placed (in post / first comment / none), and the post URL (copy it from the post's timestamp link).
+
+Search Facebook for the group by its name when no link is given. Post only the TEXT part of each item (not the notes).
+
+POSTS (priority order: biggest relevant groups first, calm posts last):
+
+=== 1. Post 16: Craft & Creative Ideas DIY
+GROUP: Craft & Creative Ideas DIY (search Facebook for: Craft & Creative Ideas DIY) (row 15)
+RULE CHECK: rules unknown: check before posting. It's a public group for sharing craft and DIY ideas, so a how-it's-made post with no selling should fit if business posts are allowed.
+LINK: first comment (photo editor)
+IMAGE: https://mymemobrick.com/cdn/shop/articles/10-color-bags-bright.jpg?width=1200
+ALT TEXT: Five Memobrick bags of 1×1 bricks in red, yellow, green, blue and magenta, each labeled with its color
+TEXT:
+How a photo becomes a picture made of tiny bricks, in 4 steps 🧱
+
+I'm Eden, and I run Memobrick, a small company in Miami that makes photo brick mosaic kits. Crafters always ask how it works, so here's the behind-the-scenes version:
+
+1. Pick a photo. Close-ups in good light turn out best.
+2. The photo becomes a grid. Every square is one 1×1 brick in one of 40+ colors.
+3. The bricks get sorted into small bags, each labeled with its color name and number (that's them in the picture).
+4. You build from a printed color map, pressing each brick onto a white baseplate, row by row, until the picture appears.
+
+The smallest one, 16×16 inches, is 2,500 bricks and about 2.5 hours of building. The big ones join several baseplates together.
+
+For the cross-stitch, diamond painting and perler bead people here: how does that compare to what you make? I'd love to hear what you think.
+FIRST COMMENT (only if links are allowed):
+You can see your own photo as a mosaic here, free: https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=craft-creative-diy
+
+=== 2. Post 22: Cat Lovers Group Official (new group)
+GROUP: Cat Lovers Group Official (about 535K members per a directory; search Facebook for: Cat Lovers Group Official) (row 23)
+RULE CHECK: rules unknown: check before posting. Big pet groups often allow "share your cat" posts but no shop links.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/files/Funny-Cat-Selfie-Decoration-Bricked-Mosaic-Portrait-16x16.png?width=1200
+ALT TEXT: A design preview of a ginger cat's face as a mosaic of 1×1 bricks, with a close-up circle showing the bricks
+TEXT:
+Cat people, help me settle something. 🐱
+
+I'm Eden from Memobrick (we turn photos into brick mosaics), and I go back and forth on which cat photos make the best mosaics. Option A: the dramatic side-eye. Option B: the sleepy loaf. This ginger one is a design preview, and the eyes are what make it work.
+
+What I've learned so far: get close to the face, make sure the eyes are visible, and pick a background that's a different color from the fur. (A black cat on a black sofa is a real challenge!)
+
+So, side-eye or sleepy loaf? Share the one photo of your cat you'd put on the wall.
+
+=== 3. Post 23: Tigers Passion (new group)
+GROUP: Tigers Passion (listed by a directory as a Facebook group for pet owners, about 97K members; search Facebook for: Tigers Passion) (row 24)
+RULE CHECK: rules unknown: check before posting. First check that the group really is about pets. The name may mean big cats; if so, skip.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20_20_-Memobrick-59267150.jpg?width=1200
+ALT TEXT: A small dog sitting on the floor below a framed brick mosaic of a dog
+TEXT:
+This photo makes me smile every time. 🐾 A little pup sitting right below a framed mosaic of a dog, made of tiny 1×1 bricks.
+
+I'm Eden, and I run Memobrick, the small company that makes these mosaics from people's pet photos. Up close, the picture on the wall is just thousands of little squares. From across the room, it's a face.
+
+Honest question for pet owners: if your pet saw their own portrait on the wall, would they be impressed, confused, or totally bored?
+
+=== 4. Post 12: Naples Moms (main group)
+GROUP: Naples Moms (search Facebook for: Naples Moms) (row 11)
+RULE CHECK: rules unknown: check before posting. Business posts may belong in the Marketplace sub-group (v2 post 4 already goes there). Post here only if the rules allow posts from local businesses.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/articles/05-dog-mosaic-holiday-mantel.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a fluffy white dog on a mantel with holiday decorations
+TEXT:
+Holiday photo season is here, so a question for this group. 📸
+
+When you take the family picture, do you keep the posed one where everyone's looking at the camera, or the blurry one where everyone's laughing?
+
+I'm Eden, and I run Memobrick, a small Florida business that turns photos into brick mosaics. I see a lot of family photos, and the ones people choose to keep on the wall are almost never the perfect ones. They're the dog in the middle of everything, the grandparents squeezed into the frame, or the kid mid-giggle. This fluffy one ended up on a mantel next to the holiday decorations.
+
+Which photo from last year would you hang if you could only pick one?
+
+=== 5. Post 17: The Homeschool Help Desk
+GROUP: The Homeschool Help Desk (search Facebook for: The Homeschool Help Desk) (row 16)
+RULE CHECK: rules unknown: check before posting. It's large and moderated, so look for a resource or curriculum share thread.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/articles/11-color-bags-soft.jpg?width=1200
+ALT TEXT: Six Memobrick bags of 1×1 bricks in aqua, lilac, nougat, orange, blue and white, each labeled with its color
+TEXT:
+A hands-on idea for teaching coordinates and grids, in case it's useful to anyone planning lessons.
+
+A brick mosaic is basically a giant coordinate grid. Each spot on the baseplate has a row and a column, and the color map says which color goes where. Kids practice reading a grid ("row 12, column 7: orange"), counting, sorting by color, and following a pattern, and at the end a picture shows up, which is a nice reward for careful work.
+
+Full disclosure, I'm Eden and I run Memobrick, which makes photo mosaic kits, so I'm biased. You can do the same idea with graph paper and colored pencils: draw a simple picture on a 20×20 grid, write the coordinates, and have a sibling rebuild it from the list.
+
+One safety note if you use bricks: they're small, so keep them away from little ones who put things in their mouths.
+
+What are your favorite hands-on ways to teach grids or graphing?
+
+=== 6. Post 18: Homeschooling Moms (and Dads!)
+GROUP: Homeschooling Moms (and Dads!) (search Facebook for: Homeschooling Moms (and Dads!)) (row 17)
+RULE CHECK: rules unknown: check before posting.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20_20_-Memobrick-59267150.jpg?width=1200
+ALT TEXT: A small dog sitting on the floor below a framed brick mosaic of a dog
+TEXT:
+Question for homeschool families: what's the best long, slow project your kids have done as a team?
+
+I'm Eden. I run Memobrick, a small company that makes brick mosaic kits from family photos, so I think about this a lot. The way we suggest splitting a big build is to give each person a job (one reads the map, one finds colors, one places bricks) and leave it out on the table like a puzzle for a week. Little by little, a picture appears, like this dog sitting under a portrait of a dog.
+
+I'd love ideas from this group: puzzles, models, quilts, gardens, anything that takes a few days and a few pairs of hands. What worked, and what did your kids get bored of?
+
+(If you try bricks, they're small pieces, so keep them away from toddlers.)
+
+=== 7. Post 27: Homeschool Lifestyle Community
+GROUP: Homeschool Lifestyle Community (search Facebook for: Homeschool Lifestyle Community) (row 18)
+RULE CHECK: rules unknown: check before posting.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/articles/09-dog-mosaic-finished-table.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a resting dog, laid flat on a wooden table
+TEXT:
+Let's make a list: screen-free afternoon projects that older kids actually stick with. ✋
+
+I'll start, with full disclosure that I'm Eden and I run Memobrick, a company that makes brick mosaic kits, so mine is a little biased. A mosaic of the family dog, built a few rows at a time, lives on the table all week and slowly turns into the picture. This one is finished and resting on a table.
+
+A few other ideas I've heard from families: a 1,000-piece puzzle of a place you've visited, a kitchen-table herb garden, hand-sewn pillow covers, a family recipe book with drawings.
+
+What would you add? Bonus points for projects that use up a whole rainy afternoon.
+
+(Bricks are small pieces, so keep them away from toddlers.)
+
+=== 8. Post 13: South Florida MoMs (buy-and-sell page)
+GROUP: South Florida MoMs, buy-and-sell page (members only; search Facebook for: South Florida MoMs) (row 12)
+RULE CHECK: it has a buy-and-sell page (per southfloridamoms.org). Membership is required and the exact rules are unknown, so check before posting.
+LINK: in the post if allowed (photo editor)
+IMAGE: https://mymemobrick.com/cdn/shop/articles/06-baby-mosaic-dresser.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a smiling baby in a winter hat, displayed on a dresser at home
+TEXT:
+Hi everyone! I'm Eden, owner of Memobrick, a local business here in Miami. Our mosaics are made and shipped from Miami.
+
+What we do: you pick a photo, our editor turns it into a mosaic of tiny 1×1 bricks in 40+ colors, and we send it as a kit you build at home, with the bricks sorted into labeled color bags and a printed map that shows where each one goes. This one is a baby photo, finished and sitting on a dresser.
+
+If you're curious what one of your photos would look like, you can try it in the editor. You don't have to order anything to see the preview: https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=sflmoms
+
+Happy to answer any questions here. Small bricks, so build it out of reach of little ones.
+
+=== 9. Post 14: Miami Mom Collective
+GROUP: Miami Mom Collective (Facebook page or group linked from miamimomcollective.com; search Facebook for: Miami Mom Collective) (row 13)
+RULE CHECK: rules unknown: check before posting. They work with local brands, so look for a "local business" thread or day.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/articles/07-sisters-mosaic-family-wall.jpg?width=1200
+ALT TEXT: A finished brick mosaic of two smiling sisters hanging on a family room wall
+TEXT:
+Hello Miami! 🌴 I'm Eden, and I run Memobrick, a small business here in town. We make brick mosaic kits from people's own photos, and every kit is made and shipped from Miami.
+
+What I love most about this work is seeing which photo someone picks. The best mosaics rarely come from stiff, posed portraits. They come from photos like this one: two sisters squished together, smiling. Then the photo becomes a grid of tiny 1×1 bricks, gets sorted into little color bags, and someone builds it at their kitchen table, one row at a time, until the faces appear.
+
+Running a small business means I do a bit of everything. The best part is still opening a photo and thinking, "this one is going to look amazing in bricks."
+
+Fellow Miami small business owners, what's the part of your work you'd never give up?
+
+=== 10. Post 15: Boca Raton Moms Connect
+GROUP: Boca Raton Moms Connect (search Facebook for: Boca Raton Moms Connect) (row 14)
+RULE CHECK: rules unknown: check before posting.
+LINK: none. If someone asks, reply with the editor: https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=bocamoms
+IMAGE: https://mymemobrick.com/cdn/shop/articles/08-two-faces-brick-closeup.jpg?width=1200
+ALT TEXT: Close-up of a finished brick mosaic of two smiling faces, showing every 1×1 brick
+TEXT:
+Fun fact about brick mosaics: you can't really see them up close. 😄
+
+From a few inches away, it's just a field of tiny colored squares. Take three steps back and suddenly there are two people smiling at you. Our eyes fill in the rest.
+
+I'm Eden, and I run Memobrick, a small South Florida business that makes these kits from family photos. The trick to a good one is a photo with faces large in the frame and light falling on them evenly. Group shots from far away lose the faces; close-ups win.
+
+Is there a photo on your phone you'd love to see from across the room like this?
+
+=== 11. Post 25: Lifestyle Miami (new group)
+GROUP: Lifestyle Miami (Facebook community for Miami locals and small business owners; search Facebook for: Lifestyle Miami) (row 26)
+RULE CHECK: rules unknown: check before posting. Press describes it as a place where Miami small business owners connect. Look for a business intro thread or day.
+LINK: none. If someone asks, reply with https://mymemobrick.com/?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=lifestylemiami
+IMAGE: https://mymemobrick.com/cdn/shop/articles/04-framed-doberman-home.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a Doberman in a black frame at home
+TEXT:
+Hi Lifestyle Miami! 👋 I'm Eden, and I'd love to introduce a small local business: Memobrick.
+
+We turn people's photos into brick mosaic kits. You choose a photo of your family, your partner, or your dog (like this framed Doberman), and it becomes a picture made of thousands of tiny 1×1 bricks that you build yourself at home. Every kit is made and shipped right here from Miami.
+
+I'd love to connect with other Miami small business owners, especially anyone in gifts, home decor, pets or family events. What are you working on this season?
+
+=== 12. Post 11: Dogs of Lakewood Ranch
+GROUP: Dogs of Lakewood Ranch (search Facebook for: Dogs of Lakewood Ranch) (row 8)
+RULE CHECK: rules unknown: check before posting. It is a local dog club group where members share referrals. Post only if non-member businesses may post, or if there's a local business thread.
+LINK: none in the post. If someone asks, reply with the dog page: https://mymemobrick.com/pages/dog-brick-mosaic?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=dogs-lwr
+IMAGE: https://mymemobrick.com/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20x30_-Memobrick-59267798.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a Doberman with a red collar, in a black frame
+TEXT:
+Hi Lakewood Ranch dog people! 🐕 I'm Eden, from Memobrick, a small Miami business that turns pet photos into brick mosaics. I look at a lot of dog photos, so here are my tips for getting a great one in our Florida sun:
+
+1. Skip midday. Early morning or the hour before sunset gives soft light and no squinting.
+2. Find open shade, like a porch or under a tree, so the face isn't half in shadow.
+3. Get down to their eye level.
+4. Hold a treat right above your phone to get the ears up and the eyes on you.
+5. Choose a background that's a different color from their fur.
+
+These work for any photo, not just a mosaic like this Doberman. What's your best trick for getting your dog to sit still for a picture?
+
+=== 13. Post 20: GayFOLs
+GROUP: GayFOLs, adult LEGO fans, LGBTQ+ and allies (search Facebook for: GayFOLs) (row 21)
+RULE CHECK: rules unknown: check before posting. Brick fan groups often dislike non-LEGO products. Post only if the rules allow posts about other brick brands or mosaics.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/articles/01-framed-couple-wall.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a smiling couple, framed and hanging on a wall at home
+TEXT:
+Mosaic question for the builders here. 🧱
+
+I'm Eden, and I run Memobrick, a small company that makes photo mosaic kits from 1×1 bricks. They aren't LEGO brand and we have no connection to LEGO, so please tell me if this is off-topic and I'll take it down.
+
+Something I keep thinking about: backgrounds. In this couple portrait, the light blue background makes the faces jump out, but a lot of people want their real background, like a beach or a living room. In a portrait mosaic, would you flatten the background to one color, or keep the scene and accept that it gets a bit busy?
+
+Curious how people who build for fun approach it.
+
+=== 14. Post 24: Steel City LUG (new group)
+GROUP: Steel City LUG, Western Pennsylvania adult LEGO fans, 18+, about 700 registered members (search Facebook for: Steel City LUG) (row 25)
+RULE CHECK: rules unknown: check before posting. It's a fan club with an 18+ rule; if non-LEGO brick posts aren't allowed, skip.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/articles/07-sisters-mosaic-family-wall.jpg?width=1200
+ALT TEXT: A finished brick mosaic of two smiling sisters hanging on a family room wall
+TEXT:
+Question for anyone who has built a large mosaic across several baseplates.
+
+I'm Eden. I run Memobrick, a small company that makes photo mosaic kits from 1×1 bricks (not LEGO brand, no connection to LEGO). Our bigger mosaics join several baseplates edge to edge, so a large portrait is built in sections and then put together.
+
+People do it differently. Some finish one baseplate completely before they start the next. Others build the whole picture row by row across every plate, so the image grows from top to bottom. The second way is more satisfying to watch, but the seams are harder to keep straight.
+
+Which way do you build large mosaics, and how do you keep the plates aligned when you join them?
+
+=== 15. Post 21: New Mexico LEGO Users Group (NMLUG)
+GROUP: New Mexico LEGO Users Group (invite only; see https://sites.google.com/view/nmlug/home) (row 22)
+RULE CHECK: rules unknown: check before posting. It's invite only and 18+. If Eden isn't a member, skip.
+LINK: none
+IMAGE: https://mymemobrick.com/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20_20_-Memobrick-59267073.jpg?width=1200
+ALT TEXT: A finished brick mosaic portrait of an older man in warm brown tones, standing on a wooden shelf
+TEXT:
+Sharing a build detail I find fascinating, for anyone who likes mosaics.
+
+This portrait uses almost only browns, tans and black, and the shading still reads as a face with real depth. Fewer colors force the bricks to do the work: the jump from dark brown to tan becomes the line of a cheekbone.
+
+I'm Eden. I run Memobrick, a small company that makes photo mosaic kits from 1×1 bricks (not LEGO brand, and not affiliated with LEGO). When we convert a photo, the hardest call is how many shades to allow. Too many, and it gets noisy up close. Too few, and faces go flat.
+
+Have any of you built a portrait mosaic in a limited palette? How many colors did you end up using?
+
+=== 16. Post 26: Toddler Approved "Small Business Sharing Saturday" thread (new)
+GROUP: Toddler Approved, Facebook page of a family activities blog, which runs a weekly "Small Business Sharing Saturday" thread (search Facebook for: Toddler Approved) (row 27)
+RULE CHECK: the blog's rule, as reported in search results: links to your small business only on Saturdays, on the Facebook page, in the sharing thread. Check the current week's thread before posting.
+WHERE: as a comment in that Saturday's thread only. Never as a separate post, and never on another day.
+LINK: in the comment (photo editor)
+IMAGE: https://mymemobrick.com/cdn/shop/articles/10-color-bags-bright.jpg?width=1200
+ALT TEXT: Five Memobrick bags of 1×1 bricks in red, yellow, green, blue and magenta, each labeled with its color
+TEXT:
+Hi! I'm Eden from Memobrick, a small Miami business. We turn a family photo into a brick mosaic kit for older kids and grown-ups to build together: the bricks come sorted by color in labeled bags, with a map that shows where each one goes. It's a fun one for a long weekend at the kitchen table. Small bricks, so not for toddlers! You can see any photo as a mosaic here: https://mymemobrick.com/pages/editor?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=toddlerapproved
+
+=== 17. Post 6: Actual Autistic Adults and Allies (calm post, wait for Eden's OK)  [CALM POST: only if Eden says the calm posts can go]
+GROUP: Actual Autistic Adults and Allies, https://www.facebook.com/groups/AAAandA (row 3)
+RULE CHECK: rules unknown: check before posting. It is an autistic-led space. Post only if the rules clearly welcome resource or business shares; if they're unclear, skip.
+LINK: first comment (special interest article)
+IMAGE: https://mymemobrick.com/cdn/shop/articles/04-framed-doberman-home.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a Doberman in a black frame at home
+TEXT:
+Hi all. I'm Eden, and I run Memobrick, a small company that turns photos into brick mosaics built from 1×1 bricks. Before I write anything more about autistic builders, I'd rather ask autistic adults directly.
+
+We wrote a short guide on turning a special interest into a mosaic: a pet, a train, a favorite character. The idea is simple. A long, repetitive build feels more worth it when the picture that appears is something you already care about.
+
+My questions for anyone who builds: does a fixed color map and one-row-at-a-time building appeal to you, or does it feel too rigid? And what would you want a company like mine to stop saying?
+
+I'm not claiming this is therapy or that it helps anything. It's a hobby, and I want to describe it in a way that's fair to the people who might enjoy it. Note that the kits have small bricks.
+FIRST COMMENT (only if links are allowed):
+The guide, if anyone wants to read it and tell me what's off: https://mymemobrick.com/blogs/news/special-interest-brick-mosaic?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=aaaanda
+
+=== 18. Post 7: Autistics Worldwide (calm post, wait for Eden's OK)  [CALM POST: only if Eden says the calm posts can go]
+GROUP: Autistics Worldwide, https://www.facebook.com/groups/autisticsworldwide (row 4)
+RULE CHECK: rules unknown: check before posting. It is likely members-only and autistic-led. Skip unless the rules allow resource shares.
+LINK: first comment (sensory-friendly tips article)
+IMAGE: https://mymemobrick.com/cdn/shop/articles/09-dog-mosaic-finished-table.jpg?width=1200
+ALT TEXT: A finished brick mosaic of a resting dog, laid flat on a wooden table
+TEXT:
+Sharing something free, in case it's useful. I'm Eden, owner of Memobrick (we make brick mosaic kits from photos).
+
+We put together a list of sensory-friendly building tips, written as a menu rather than a rulebook, because everyone's senses are different. A few from the list:
+• Decide the end point before you start: 10 minutes, five rows, or one baseplate.
+• Open one color bag at a time so the table never gets crowded.
+• Build in good, even light, and use a tray with a lip so bricks don't roll away.
+• Stop while it still feels good, and leave the next row marked.
+
+I'd really like to know what's missing. What helps you settle into a hands-on project, and what makes you put one down?
+
+It's a hobby, not a treatment. The kits have small bricks, so keep them away from young children who put things in their mouths.
+FIRST COMMENT (only if links are allowed):
+Full list here, free to read: https://mymemobrick.com/blogs/news/sensory-friendly-building-tips?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=autisticsworldwide
+
+=== 19. Post 8: Embracing Autism Community (calm post, wait for Eden's OK)  [CALM POST: only if Eden says the calm posts can go]
+GROUP: Embracing Autism Community, https://www.facebook.com/groups/179096277403652 (row 5)
+RULE CHECK: rules unknown: check before posting. Post only if resource shares from businesses are allowed.
+LINK: first comment (Reader, Sorter, Builder article)
+IMAGE: https://mymemobrick.com/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-40x30_-Memobrick-59270881.jpg?width=1200
+ALT TEXT: A finished brick mosaic of two smiling faces built from 1×1 bricks, laid on a table
+TEXT:
+Hello everyone. I'm Eden, and I run Memobrick, a small company that makes photo brick mosaics. I'm sharing a way of building together that some families and friends like, because everyone gets one clear job.
+
+Reader: reads the color map and says what's next ("three dark blue, then one white").
+Sorter: finds those colors and hands them over.
+Builder: presses the bricks onto the baseplate.
+
+Swap roles every few rows, or don't, if someone loves their job. It works for siblings, a parent and a teen, or autistic adults building with a friend. The roles idea comes from how LEGO-based therapy groups set up turns. To be clear, a family build is an activity, not therapy, and not a replacement for it.
+
+Has anyone here tried giving each person a set role in a shared project? I'd love to hear how it went.
+
+Small bricks, so this one is not for young children who mouth small pieces.
+FIRST COMMENT (only if links are allowed):
+We wrote the roles up step by step here: https://mymemobrick.com/blogs/news/build-together-reader-sorter-builder?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=embracingautism
+
+=== 20. Post 9: National Autism Association grandparents group (calm post, wait for Eden's OK)  [CALM POST: only if Eden says the calm posts can go]
+GROUP: National Autism Association grandparents group (linked from nationalautismassociation.org; search Facebook for: National Autism Association grandparents) (row 6)
+RULE CHECK: rules unknown: check before posting. It is a support group run by an organization, so post only if the rules allow resource shares.
+LINK: in the post if allowed, otherwise first comment (Calm Build Plan)
+IMAGE: https://mymemobrick.com/cdn/shop/articles/07-sisters-mosaic-family-wall.jpg?width=1200
+ALT TEXT: A finished brick mosaic of two smiling sisters hanging on a family room wall
+TEXT:
+Hi grandparents. I'm Eden, owner of Memobrick, a small company that turns family photos into brick mosaics you build at home. I'm sharing a free printable in case it gives you an idea for a quiet afternoon with a grandchild.
+
+It's a one-page Calm Build Plan: choose a quiet spot, agree how long you'll build, open one color bag at a time, finish one row at a time, pick a clear place to stop, and look back at what you made together. One of you can read the color map while the other places the bricks.
+
+Free, no email needed: https://mymemobrick.com/pages/calm-build-gift?utm_source=facebook&utm_medium=group&utm_campaign=community-20261029&utm_content=naa-grandparents
+
+It's simply an activity to share, not a therapy. The bricks are small, so it's for older children and adults, not little ones who put things in their mouths.
+
+What do you and your grandchildren like to make together?
+
+NOT IN THIS PROMPT: posts 10 and 19 are reply-only texts for support groups; Eden pastes them by hand only when a member asks. The 2026-10-28 posts are in 2026-10-28-chrome-prompt.txt; their images are listed at the top of 2026-10-29-posts.md.

@@ -2,7 +2,7 @@
 
 Started 2026-10-28. Found with public web search only: Facebook itself cannot be opened from the agent session, so names, links and sizes come from third-party directories and organization pages and may be out of date. Group rules are usually visible only to members. Where a rule is not quoted below, it says **rules unknown: owner to check before posting**. When the owner opens a group, paste its rules (or a screenshot's text) into the Rules column and I will keep it updated.
 
-Target: 40 groups, 5 new a day. Today: 22.
+Target: 40 groups, 5 new a day. Now: 27 (5 added 2026-10-28 in the second pass, rows 23 to 27). Posts for every row are in `2026-10-28-posts-v2.md` (rows 1, 2, 7, 10, 20) and `2026-10-29-posts.md` (all other rows).
 
 Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (rules checked by owner and allow it), `skip` (rules ban promotion or no fit).
 
@@ -30,10 +30,16 @@ Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (ru
 | 20 | KC area adult LEGO fans (chat group) | https://www.facebook.com/groups/LEGOFANSKC/ | unknown | adult LEGO and brick fans (Kansas City) | rules unknown: owner to check before posting; local group, check it accepts members from outside KC | unknown | never | | candidate | https://www.flickr.com/groups/kcbricklab/ |
 | 21 | GayFOLs | unknown | over 850 (Brothers Brick) | adult LEGO fans, LGBTQ+ and allies | rules unknown: owner to check before posting | unknown | never | | candidate | https://www.brothers-brick.com/category/lego/people/page/24 |
 | 22 | New Mexico LEGO Users Group (NMLUG) | invite only (see site) | unknown | adult LEGO fans, 18+ | rules unknown: owner to check before posting; invite required | unknown | never | | candidate | https://sites.google.com/view/nmlug/home |
+| 23 | Cat Lovers Group Official | unknown (search Facebook: "Cat Lovers Group Official") | about 535K (directory figure) | pet lovers (cats) | rules unknown: owner to check before posting | unknown | never | | candidate | https://thehiveindex.com/communities/cat-lovers-group-official/ (search result summary; page itself not reachable from the agent session) |
+| 24 | Tigers Passion | unknown (search Facebook: "Tigers Passion") | about 97K (directory figure) | listed as a group for pet owners; the name may mean big cats, check the topic first | rules unknown: owner to check before posting | unknown | never | | candidate | https://thehiveindex.com/communities/tigers-passion/ (search result summary) |
+| 25 | Steel City LUG | unknown (search Facebook: "Steel City LUG") | about 700 registered members (article) | adult LEGO and brick fans, Western Pennsylvania, 18+ | rules unknown: owner to check before posting; adult fan club, may not welcome non-LEGO brick posts | unknown | never | | candidate | https://www.thealmanac.net/bethel-park/2025/jan/23/not-just-for-kids-steel-city-lug-offers-adults-creative-social-outlets-through-legos/ |
+| 26 | Lifestyle Miami | unknown (search Facebook: "Lifestyle Miami") | unknown | Miami locals and small business owners | rules unknown: owner to check before posting (described in press as a community for Miami small business owners) | unknown | never | | candidate | https://hauteliving.com/2021/03/vocal-local-miami-lifestyles-evolution-social-media-page-thriving-community/695897/ |
+| 27 | Toddler Approved "Small Business Sharing Saturday" (Facebook page thread, not a group) | search Facebook: "Toddler Approved" | unknown | family activities; weekly small business thread | "links to your small business should be posted only on Saturdays on the FB page" (as summarized in search results from the blog; owner to confirm in the current thread) | Saturdays, in that week's sharing thread only | never | | candidate | https://toddlerapproved.com/small-business-sharing-saturday/ |
 
 ## Notes for the owner
 
 - Adult LEGO groups often dislike non-LEGO bricks. Memobrick is not affiliated with LEGO: never call the kits LEGO, and lead with the build, not the sale.
 - Autism and neurodivergent groups: only those whose rules welcome resource or product shares. Autistic-led groups (rows 3 to 5) are for autistic people first; if the rules are unclear, skip.
 - Grief and support groups (rows 9, 19): no posts. Use the gift-question answers only when someone asks.
+- Row 27 is a Facebook page's weekly thread, not a group: comment only in that Saturday's thread.
 - Next runs: 5 new groups a day (topics still thin: gift ideas and Christmas shopping, grandparents, adult brick fans with "share your build" threads, Miami local).
