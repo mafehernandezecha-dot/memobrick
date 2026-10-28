@@ -28,6 +28,13 @@ Output folder: marketing/social/community/
 - `marketing/social/community/groups.md`: the groups list you keep. For each group: name, link, size, topic, its promotion rules in its own words (from public search or what the owner pastes in), allowed days or threads (for example "Small business Saturday" threads), last time we posted, and the result.
 - Public web search. Group rules are often visible only to members. When unknown, write `rules unknown: owner to check before posting`.
 
+## Posts make people know Memobrick, they don't sell (owner rule, 2026-10-28)
+
+Eden: "the post don't need to sell, the idea is for people to know about memobrick". Group posts build awareness and trust:
+- Share something interesting or useful: a before/after photo, how a mosaic is built, a question for the group, a free resource, the story behind Memobrick.
+- No prices, discount codes, "order by" deadlines, "buy now" or sales calls to action in group posts. Mention the name Memobrick naturally; a link only where the rules allow it and it adds value (a free resource, an article, the photo preview).
+- Gift-question answers can name Memobrick as an idea, still without prices or codes.
+
 ## Cadence
 
 Every day, as part of the memobrick-daily routine.
