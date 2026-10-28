@@ -1,0 +1,286 @@
+[
+ {
+  "device": "phone",
+  "errs": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D978Q9JC77U49KGPM850"
+  ],
+  "scrollW": 390,
+  "innerW": 390,
+  "innerH": 844,
+  "imgs": [
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=900",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=300",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/files/dog-brick-mosaic-studio.jpg?width=400",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20x30_-Memobrick-59267798.jpg?width=400",
+    "ok": true
+   }
+  ],
+  "links": [
+   {
+    "text": "Upload your dog's photo",
+    "href": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+    "top": 587,
+    "bottom": 640,
+    "w": 332,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Free design proof",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 813,
+    "bottom": 830,
+    "w": 140,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Start a 16×16",
+    "href": "https://mymemobrick.com/pages/editor?size=16x16#editor",
+    "top": 1880,
+    "bottom": 1927,
+    "w": 298,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Start a 20×20",
+    "href": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+    "top": 2092,
+    "bottom": 2145,
+    "w": 298,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Start a 30×30",
+    "href": "https://mymemobrick.com/pages/editor?size=30x30#editor",
+    "top": 2310,
+    "bottom": 2358,
+    "w": 298,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Read all reviews",
+    "href": "https://mymemobrick.com/pages/happy-customers",
+    "top": 3431,
+    "bottom": 3448,
+    "w": 113,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Get a free design proof",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 3649,
+    "bottom": 3696,
+    "w": 300,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "See the Gift Kit",
+    "href": "https://mymemobrick.com/products/unlimited-memobrick",
+    "top": 3866,
+    "bottom": 3914,
+    "w": 300,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 4368,
+    "bottom": 4387,
+    "w": 138,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   },
+   {
+    "text": "Upload your dog's photo",
+    "href": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+    "top": 4504,
+    "bottom": 4558,
+    "w": 300,
+    "status": "ERR apiRequestContext.get: getaddrinfo ENOTFOUND mymemobrick.com\nCall log:\n\u001b[2m  - →"
+   }
+  ],
+  "hidden": [
+   {
+    "until": "2026-12-15T23:59:59-05:00",
+    "shown": true
+   },
+   {
+    "until": "2026-11-22T23:59:59-05:00",
+    "shown": true
+   },
+   {
+    "until": "2026-11-22T23:59:59-05:00",
+    "shown": true
+   },
+   {
+    "until": "2026-12-15T23:59:59-05:00",
+    "shown": true
+   }
+  ]
+ },
+ {
+  "device": "phone",
+  "cta": "hero",
+  "editorUrl": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+  "after": [
+   "MEMOBRICK ‹ Back ? 20 × 20\" $159 $99.88 Finish Editing → Photo tips",
+   "‹ STEP 1 · SETUP › Photo Size 20 × 20\" Crop 100% Background MEMOBRICK How it w"
+  ]
+ },
+ {
+  "device": "phone",
+  "cta": "size-16",
+  "editorUrl": "https://mymemobrick.com/pages/editor?size=16x16#editor",
+  "after": [
+   "MEMOBRICK ‹ Back ? 16 × 16\" $89 $69.88 Finish Editing → Photo tips ",
+   "‹ STEP 1 · SETUP › Photo Size 16 × 16\" Crop 100% Background MEMOBRICK How it w"
+  ]
+ },
+ {
+  "device": "phone",
+  "cta": "size-30",
+  "editorUrl": "https://mymemobrick.com/pages/editor?size=30x30#editor",
+  "after": [
+   "MEMOBRICK ‹ Back ? 30 × 30\" $295 $209.99 Finish Editing → Photo tip",
+   "‹ STEP 1 · SETUP › Photo Size 30 × 30\" Crop 100% Background MEMOBRICK How it w"
+  ]
+ },
+ {
+  "device": "desktop",
+  "errs": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D978Q9JC77U49KGPM850"
+  ],
+  "scrollW": 1440,
+  "innerW": 1440,
+  "innerH": 900,
+  "imgs": [
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=900",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=300",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/files/dog-brick-mosaic-studio.jpg?width=400",
+    "ok": true
+   },
+   {
+    "src": "/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20x30_-Memobrick-59267798.jpg?width=400",
+    "ok": true
+   }
+  ],
+  "links": [
+   {
+    "text": "Upload your dog's photo",
+    "href": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+    "top": 458,
+    "bottom": 512,
+    "w": 300
+   },
+   {
+    "text": "Free design proof",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 789,
+    "bottom": 806,
+    "w": 222
+   },
+   {
+    "text": "Start a 16×16",
+    "href": "https://mymemobrick.com/pages/editor?size=16x16#editor",
+    "top": 1356,
+    "bottom": 1403,
+    "w": 291
+   },
+   {
+    "text": "Start a 20×20",
+    "href": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+    "top": 1349,
+    "bottom": 1403,
+    "w": 291
+   },
+   {
+    "text": "Start a 30×30",
+    "href": "https://mymemobrick.com/pages/editor?size=30x30#editor",
+    "top": 1356,
+    "bottom": 1403,
+    "w": 291
+   },
+   {
+    "text": "Read all reviews",
+    "href": "https://mymemobrick.com/pages/happy-customers",
+    "top": 1889,
+    "bottom": 1906,
+    "w": 113
+   },
+   {
+    "text": "Get a free design proof",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 2083,
+    "bottom": 2131,
+    "w": 300
+   },
+   {
+    "text": "See the Gift Kit",
+    "href": "https://mymemobrick.com/products/unlimited-memobrick",
+    "top": 2061,
+    "bottom": 2108,
+    "w": 300
+   },
+   {
+    "text": "",
+    "href": "https://mymemobrick.com/pages/free-preview",
+    "top": 2585,
+    "bottom": 2604,
+    "w": 138
+   },
+   {
+    "text": "Upload your dog's photo",
+    "href": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+    "top": 2687,
+    "bottom": 2741,
+    "w": 300
+   }
+  ],
+  "hidden": [
+   {
+    "until": "2026-12-15T23:59:59-05:00",
+    "shown": true
+   },
+   {
+    "until": "2026-11-22T23:59:59-05:00",
+    "shown": true
+   },
+   {
+    "until": "2026-11-22T23:59:59-05:00",
+    "shown": true
+   },
+   {
+    "until": "2026-12-15T23:59:59-05:00",
+    "shown": true
+   }
+  ]
+ },
+ {
+  "device": "desktop",
+  "cta": "hero",
+  "editorUrl": "https://mymemobrick.com/pages/editor?size=20x20#editor",
+  "after": [
+   "te My MemoBrick ‹ Back ? Tour 20 × 20\" $159 $99.88 Finish Editing → ← Change p",
+   "olors Adjust Styles Edit Size 20 × 20\" · 4 baseplates 10 × 10\" $35 16 × 16\" $6",
+   "9.88 20 × 20\" $99.88 20 × 30\" $149 30 × 20\" $149 20 × 40\" $189.88 40 ",
+   "× 20\" $189.99 30 × 30\" $209.99 20 × 50\" $234.99 50 × 20\" $234."
+  ]
+ }
+]

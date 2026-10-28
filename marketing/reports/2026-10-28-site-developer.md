@@ -78,3 +78,38 @@ Addresses the blog as an entry point with no priced next step. 11 default-templa
 
 ### Next run
 Once approved and published: confirm live md5s, take after-screenshots on the live store, then follow up on article to editor sessions (referred only). If A-2026W44-016 and this item get different decisions, split the copy as described in the draft.
+
+## Special run: dog landing page for Meta "XMAS26 Dog v2" (Eden's request, 2026-10-28)
+
+### Summary
+Built the unpublished Shopify page "Your Dog in Bricks" (handle `dog-brick-mosaic`, page 167410106588), tested on phone and desktop, and proposed the publish as P-site-developer-20261028-3.
+
+### Done
+- Re-checked prices in Shopify today: 16×16 $69.88, 20×20 $99.88, 30×30 $209.99 (variant "No (Build at home)"); Gift Kit from $35; Loox 4.9 from 1,027 reviews.
+- Uploaded the Studio dog mosaic to Shopify Files (`dog-brick-mosaic-studio.jpg`, gid://shopify/MediaImage/46715505049820, READY).
+- Created page gid://shopify/Page/167410106588, unpublished, default page template, with SEO title and description. Body: `marketing/conversion/site-developer/dog-landing-page/page-body.html`; read back from Shopify, style and script kept.
+- Reviews: four real 5-star verified Loox dog reviews found in the Loox metafields (Loox's widget cannot filter by keyword), quoted word for word, no photos.
+- Tested at 390×844 and 1440×900: hero button inside the first phone screen, no horizontal scroll, images load, editor opens with 20×20 $99.88 (hero), 16×16 $69.88 and 30×30 $209.99 after a generated test upload; date lines hide after Nov 22 and Dec 15. Screenshots: `marketing/conversion/site-developer/2026-10-28-dog-landing-page/`.
+- Draft: `marketing/conversion/site-developer/fixes/dog-landing-page.md`. Admin preview: https://admin.shopify.com/store/photobrickusa/pages/167410106588
+
+### Proposed for approval
+### P-site-developer-20261028-3
+- Agent: site-developer
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/site-developer/fixes/dog-landing-page.md
+- Reason: site-developer publishes the unpublished page "Your Dog in Bricks" (page 167410106588, one pageUpdate isPublished true) at mymemobrick.com/pages/dog-brick-mosaic; then Daniel points Meta ad XMAS26 Dog v2 to it (A-2026W44-031 item 1). No theme, product or price change.
+- Expires: 2026-11-04
+- Status: pending
+
+### Blocked or unknown
+- An unpublished page has no public URL, so the test rendered the body inside the live default page template (/pages/about-us). Eden sees the real page with "Preview" in Shopify admin.
+- images.loox.io is blocked here, so no review photos are used (one checked review photo shows a couple, not a dog).
+- This report already lists P-site-developer-20261028-2 twice (calm page and article upgrade); this proposal uses -3 to avoid a third clash.
+- Daniel must wait for the page to return 200 before changing Dog v2's link.
+
+### Sales impact
+Targets the Dog v2 ad (51 landing page views, 0 purchases in 7 days on a general page). A dog-specific page with price and a size-set editor button on the first phone screen should turn some of those clicks into editor starts and orders; expect 1 to 3 orders a week at today's spend, judged on the Nov 2 review.
+
+### Next run
+Once P-site-developer-20261028-3 is approved: confirm the page is not already published, publish it, check it returns 200 on phone and desktop, take live screenshots, and tell Daniel to repoint Dog v2.

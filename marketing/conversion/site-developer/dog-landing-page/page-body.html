@@ -1,0 +1,181 @@
+<style>
+/* this page only: the body has its own h1, so hide the template's breadcrumb and title and tighten the top */
+.wrap:has(> .page-prose .dlp){padding-top:14px !important;max-width:1040px !important}
+.wrap:has(> .page-prose .dlp) > h1,.wrap:has(> .page-prose .dlp) > p:first-child{display:none !important}
+.dlp{--dlp-red:var(--b-red,#d6322b);--dlp-ink:var(--ink,#1d1d1f);--dlp-ink2:var(--ink-2,#3a3a3c);--dlp-ink3:var(--ink-3,#6e6e73);--dlp-soft:#f6f3ee;--dlp-line:#e3ded6;color:var(--dlp-ink2);font-size:16px;line-height:1.55}
+.dlp *{box-sizing:border-box}
+.dlp p{margin:0 0 10px}
+.dlp h2{font-size:24px;line-height:1.2;color:var(--dlp-ink);margin:0 0 14px}
+.dlp img{display:block;max-width:100%;height:auto;margin:0}
+.dlp a.dlp-btn{display:block;width:100%;background:var(--dlp-red);color:#fff !important;text-decoration:none !important;font-weight:700;font-size:18px;line-height:1.2;padding:16px 20px;border-radius:999px;text-align:center;border:0}
+.dlp a.dlp-btn:hover{opacity:.92}
+.dlp a.dlp-btn-ghost{background:#fff;color:var(--dlp-ink) !important;border:2px solid var(--dlp-ink);font-size:16px;padding:12px 18px}
+.dlp-hero{display:grid;gap:14px;margin:0 0 18px}
+.dlp-hero-img{position:relative;border-radius:16px;overflow:hidden;background:var(--dlp-soft)}
+.dlp-hero-img img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 35%}
+.dlp-tag{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.93);color:var(--dlp-ink2);font-size:11.5px;line-height:1.2;padding:4px 9px;border-radius:999px}
+.dlp-eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dlp-red);font-weight:700;margin:0 0 4px !important}
+.dlp h1.dlp-h{font-family:var(--display,inherit);font-size:32px;line-height:1.1;font-weight:700;color:var(--dlp-ink);margin:0 0 8px !important;letter-spacing:-.01em}
+.dlp-lead{font-size:17px;color:var(--dlp-ink);margin:0 0 14px !important}
+.dlp-sub{font-size:14px;color:var(--dlp-ink3);text-align:center;margin:8px 0 0 !important}
+.dlp-stars{color:#f7c90f;letter-spacing:1px}
+.dlp-rating{font-size:14px;color:var(--dlp-ink2);text-align:center;margin:6px 0 0 !important}
+.dlp-trust{list-style:none;padding:0 !important;margin:0 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dlp-trust li{background:#fff;border:1px solid var(--dlp-line);border-radius:12px;padding:9px 10px;font-size:13px;line-height:1.3;margin:0;display:flex;flex-direction:column}
+.dlp-trust li b{color:var(--dlp-ink)}
+.dlp-trust li small{font-size:11.5px;color:var(--dlp-ink3)}
+.dlp-trust a{color:inherit}
+.dlp-trust code{font-family:inherit;font-weight:700;color:var(--dlp-red)}
+.dlp-steps{list-style:none;padding:0 !important;margin:0 0 32px;display:grid;gap:14px;counter-reset:s}
+.dlp-steps li{counter-increment:s;margin:0;background:var(--dlp-soft);border-radius:16px;padding:14px;display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center}
+.dlp-steps li img{width:96px;height:96px;object-fit:cover;border-radius:12px}
+.dlp-steps b{display:block;color:var(--dlp-ink);font-size:17px;margin-bottom:2px}
+.dlp-steps b:before{content:counter(s) ". "}
+.dlp-steps p{margin:0;font-size:14.5px}
+.dlp-steps small{display:block;font-size:11.5px;color:var(--dlp-ink3);margin-top:4px}
+.dlp-sizes{display:grid;gap:12px;margin:0 0 10px}
+.dlp-size{position:relative;border:1.5px solid var(--dlp-line);border-radius:16px;padding:16px;background:#fff}
+.dlp-size--pick{border-color:var(--dlp-red);box-shadow:0 10px 26px -20px rgba(214,50,43,.7)}
+.dlp-badge{position:absolute;top:-11px;left:14px;background:var(--dlp-red);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.dlp-size-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:4px}
+.dlp-size-name{font-size:20px;font-weight:700;color:var(--dlp-ink)}
+.dlp-size-price{font-size:20px;font-weight:700;color:var(--dlp-ink)}
+.dlp-size-facts{font-size:13.5px;color:var(--dlp-ink3);margin:0 0 6px !important}
+.dlp-size p.dlp-size-why{font-size:14.5px;margin:0 0 12px}
+.dlp-note{font-size:13.5px;color:var(--dlp-ink3);margin:0 0 32px !important}
+.dlp-revs{display:grid;gap:12px;margin:0 0 12px}
+.dlp-rev{margin:0;border:1px solid var(--dlp-line);border-radius:16px;padding:14px 16px;background:#fff}
+.dlp-rev q{display:block;color:var(--dlp-ink);font-size:15.5px;margin:4px 0 8px;quotes:"\201C" "\201D"}
+.dlp-rev figcaption{font-size:13px;color:var(--dlp-ink3)}
+.dlp-rev figcaption b{color:var(--dlp-ink2)}
+.dlp-revsum{font-size:14.5px;margin:0 0 32px !important}
+.dlp-revsum a{color:var(--dlp-red);font-weight:600}
+.dlp-help{display:grid;gap:12px;margin:0 0 32px}
+.dlp-help > div{background:var(--dlp-soft);border-radius:16px;padding:16px}
+.dlp-help h3{font-size:18px;color:var(--dlp-ink);margin:0 0 6px}
+.dlp-help p{font-size:14.5px;margin:0 0 12px}
+.dlp details{border-bottom:1px solid var(--dlp-line);padding:13px 0}
+.dlp summary{cursor:pointer;font-weight:700;color:var(--dlp-ink);font-size:16.5px}
+.dlp details p,.dlp details ul{margin:10px 0 4px;font-size:15px}
+.dlp details ul{padding-left:20px}
+.dlp-faq{margin:0 0 30px}
+.dlp-end{text-align:center;background:var(--dlp-soft);border-radius:18px;padding:24px 16px;margin:0 0 20px}
+.dlp-end p.dlp-end-h{font-size:22px;font-weight:700;color:var(--dlp-ink);margin:0 0 12px}
+.dlp-small{font-size:13px;color:var(--dlp-ink3)}
+@media (min-width:760px){
+  .dlp-hero{grid-template-columns:1.05fr 1fr;gap:28px;align-items:center;margin-bottom:24px}
+  .dlp-hero-img{order:2}
+  .dlp-hero-img img{aspect-ratio:1/1}
+  .dlp h1.dlp-h{font-size:46px}
+  .dlp-lead{font-size:19px}
+  .dlp a.dlp-btn{display:inline-block;width:auto;min-width:300px}
+  .dlp-sub,.dlp-rating{text-align:left}
+  .dlp-trust{grid-template-columns:repeat(4,1fr)}
+  .dlp-steps{grid-template-columns:repeat(3,1fr)}
+  .dlp-steps li{align-items:start}
+  .dlp-sizes{grid-template-columns:repeat(3,1fr);align-items:stretch}
+  .dlp-size{display:flex;flex-direction:column}
+  .dlp-size .dlp-btn{margin-top:auto;width:100% !important;min-width:0 !important}
+  .dlp-revs{grid-template-columns:1fr 1fr}
+  .dlp-help{grid-template-columns:1fr 1fr}
+  .dlp h2{font-size:28px}
+}
+</style>
+<div class="dlp">
+
+<section class="dlp-hero">
+<div class="dlp-hero-img">
+<img src="/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=900" alt="A 16 by 16 inch brick mosaic of a Bernese mountain dog next to the dog's photo" width="900" height="900" loading="eager" fetchpriority="high">
+<span class="dlp-tag">A real Memobrick kit: 16×16, next to the original photo</span>
+</div>
+<div>
+<p class="dlp-eyebrow">Custom dog brick mosaic</p>
+<h1 class="dlp-h">Your dog, in 1×1 bricks</h1>
+<p class="dlp-lead">Upload your dog's photo, see it as a brick mosaic before you order, and build it at home, one row at a time.</p>
+<a class="dlp-btn" href="/pages/editor?size=20x20#editor" data-dlp-cta="hero">Upload your dog's photo</a>
+<p class="dlp-sub">Opens on the 20×20 kit ($99.88). You can switch sizes in the editor.</p>
+<p class="dlp-rating"><span class="dlp-stars" aria-hidden="true">★★★★★</span> 4.9 out of 5 from 1,027 reviews on Loox</p>
+</div>
+</section>
+
+<ul class="dlp-trust" aria-label="Why Memobrick">
+<li><b>As seen on FOX</b><small>FOX 4 holiday gift guide</small></li>
+<li><a href="/pages/free-preview"><b>Free design proof</b></a><small>optional, before anything is made</small></li>
+<li data-dlp-until="2026-12-15T23:59:59-05:00"><b>Order by December 15</b><small>to receive it before Christmas</small></li>
+<li data-dlp-until="2026-11-22T23:59:59-05:00"><b>20% off: <code>EARLYHOLIDAY20</code></b><small>until November 22</small></li>
+</ul>
+
+<h2>How it works</h2>
+<ol class="dlp-steps">
+<li><img src="/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-59266047.jpg?width=300" alt="" width="96" height="96" loading="lazy"><div><b>Upload</b><p>Pick a clear photo of your dog and upload it in our editor.</p></div></li>
+<li><img src="/cdn/shop/files/dog-brick-mosaic-studio.jpg?width=400" alt="Brick mosaic of a golden retriever made of 1×1 bricks" width="96" height="96" loading="lazy"><div><b>Preview</b><p>See your dog as a mosaic before you order. Try another photo or size if you like.</p><small>Example design made in the Memobrick Studio</small></div></li>
+<li><img src="/cdn/shop/products/Custom-Bricked-Mosaic-Portrait-20x30_-Memobrick-59267798.jpg?width=400" alt="A finished brick mosaic of a Doberman in a black frame" width="96" height="96" loading="lazy" style="object-position:50% 30%"><div><b>Build</b><p>Your kit comes with the bricks sorted by color in labeled bags, the baseplates, a printed color map and the tool. Build it, then hang it.</p><small>Frames are sold separately</small></div></li>
+</ol>
+
+<h2>Pick a size</h2>
+<div class="dlp-sizes">
+<div class="dlp-size">
+<div class="dlp-size-top"><span class="dlp-size-name">16×16 in</span><span class="dlp-size-price">$69.88</span></div>
+<p class="dlp-size-facts">1 baseplate · 2,500 bricks · about 2.5 hours</p>
+<p class="dlp-size-why">A close-up of your dog's face. Our smallest kit and an easy first build.</p>
+<a class="dlp-btn dlp-btn-ghost" href="/pages/editor?size=16x16#editor" data-dlp-cta="size-16">Start a 16×16</a>
+</div>
+<div class="dlp-size dlp-size--pick">
+<span class="dlp-badge">Our pick for dogs</span>
+<div class="dlp-size-top"><span class="dlp-size-name">20×20 in</span><span class="dlp-size-price">$99.88</span></div>
+<p class="dlp-size-facts">4 baseplates · 4,096 bricks · about 4 hours</p>
+<p class="dlp-size-why">More bricks, so more detail in the fur and the eyes.</p>
+<a class="dlp-btn" href="/pages/editor?size=20x20#editor" data-dlp-cta="size-20">Start a 20×20</a>
+</div>
+<div class="dlp-size">
+<div class="dlp-size-top"><span class="dlp-size-name">30×30 in</span><span class="dlp-size-price">$209.99</span></div>
+<p class="dlp-size-facts">9 baseplates · 9,216 bricks · about 9 hours</p>
+<p class="dlp-size-why">A big wall piece with the most detail. A great project to build together.</p>
+<a class="dlp-btn dlp-btn-ghost" href="/pages/editor?size=30x30#editor" data-dlp-cta="size-30">Start a 30×30</a>
+</div>
+</div>
+<p class="dlp-note">Every kit has the 1×1 bricks, baseplates, your printed color map and the tool. Free US shipping on orders of $125 and up.<span data-dlp-until="2026-11-22T23:59:59-05:00"> Until November 22, code EARLYHOLIDAY20 takes 20% off. Codes can't be combined with free shipping, so you get one or the other.</span></p>
+
+<h2>Dog people on Loox</h2>
+<div class="dlp-revs">
+<figure class="dlp-rev"><span class="dlp-stars" aria-label="5 out of 5 stars">★★★★★</span><q>Was my wife's favorite picture of our dog. Put her to tears to see what I was working on. She loves it. Thank you very much</q><figcaption><b>Tim A.</b> · Verified buyer · 20×20 · May 2023</figcaption></figure>
+<figure class="dlp-rev"><span class="dlp-stars" aria-label="5 out of 5 stars">★★★★★</span><q>Looks so good! Husband absolutely loved this gift to honor our dog who passed.</q><figcaption><b>Cortney E.</b> · Verified buyer · 16×16 · January 2025</figcaption></figure>
+<figure class="dlp-rev"><span class="dlp-stars" aria-label="5 out of 5 stars">★★★★★</span><q>Wow, the custom bricked mosaic portrait I got for my wife’s birthday, featuring her favorite dog, was a hit! She absolutely adores it. The attention to detail is incredible…</q><figcaption><b>Rudy G.</b> · Verified buyer · 16×16 · April 2024</figcaption></figure>
+<figure class="dlp-rev"><span class="dlp-stars" aria-label="5 out of 5 stars">★★★★★</span><q>This was the best valentine's gift for my wife. We enjoyed putting it together. We liked it so much we sent one to my sister of her dog and she absolutely loved it. Thank you!</q><figcaption><b>Adam L.</b> · Verified buyer · 20×20 · March 2025</figcaption></figure>
+</div>
+<p class="dlp-revsum"><span class="dlp-stars" aria-hidden="true">★★★★★</span> 4.9 out of 5 from 1,027 reviews. <a href="/pages/happy-customers">Read all reviews</a></p>
+
+<div class="dlp-help">
+<div>
+<h3>Not sure which photo to use?</h3>
+<p>Send us a few photos. Our designers make the design and send you a free proof before anything is made. It's optional.</p>
+<a class="dlp-btn dlp-btn-ghost" href="/pages/free-preview" data-dlp-cta="proof">Get a free design proof</a>
+</div>
+<div>
+<h3>No photo ready?</h3>
+<p>Give the Gift Kit now and they pick the photo later. From $35.</p>
+<a class="dlp-btn dlp-btn-ghost" href="/products/unlimited-memobrick" data-dlp-cta="giftkit">See the Gift Kit</a>
+</div>
+</div>
+
+<h2>Questions</h2>
+<div class="dlp-faq">
+<details><summary>Which dog photos work best?</summary><p>A sharp, bright photo where your dog's face fills most of the picture and both eyes are clear. A photo taken at your dog's eye level works better than one from above, and a simple background helps the face stand out. Skip dark, blurry or far-away shots. You see the mosaic before you order, so try a few.</p></details>
+<details><summary>Which size should I pick?</summary><p>For one dog's face, the 16×16 and the 20×20 both work well. The 20×20 has 4,096 bricks instead of 2,500, so it shows more detail. The 30×30 is a big wall piece. You can compare sizes in the editor before you order.</p></details>
+<details><summary>How long does it take to build?</summary><p>About 2.5 hours for the 16×16, 4 hours for the 20×20 and 9 hours for the 30×30. You can build a few rows at a time.</p></details>
+<details><summary>When will it arrive?</summary><p><span data-dlp-until="2026-12-15T23:59:59-05:00">Order by December 15 to receive it before Christmas. </span>Kits are made and shipped from Miami, Florida.</p></details>
+<details><summary>How much is shipping?</summary><p>US orders of $125 and up ship free. Below that, the cost depends on your address, and you see it before you pay. Discount codes can't be combined with free shipping.</p></details>
+<details><summary>What's in the kit?</summary><ul><li>1×1 bricks in 40+ colors, sorted in labeled bags</li><li>White baseplates</li><li>A printed color map made from your photo</li><li>The building tool</li></ul><p>Frames are sold separately.</p></details>
+<details><summary>Can you make the design for me?</summary><p>Yes. <a href="/pages/free-preview">Send us your photo</a> and our designers send a free proof before anything is made. It's optional. You can also make the design yourself in the editor.</p></details>
+</div>
+
+<div class="dlp-end">
+<p class="dlp-end-h">Ready to see your dog in bricks?</p>
+<a class="dlp-btn" href="/pages/editor?size=20x20#editor" data-dlp-cta="end">Upload your dog's photo</a>
+<p class="dlp-small" style="margin:10px 0 0">Small bricks: not for young children or anyone who may put small pieces in their mouth.</p>
+</div>
+
+</div>
+<script>
+(function(){var n=Date.now();document.querySelectorAll('.dlp [data-dlp-until]').forEach(function(e){if(n>Date.parse(e.getAttribute('data-dlp-until')))e.style.display='none';});})();
+</script>
