@@ -199,13 +199,13 @@
       "character": "bertha",
       "role": "Earns links and mentions",
       "department": "Outreach & PR",
-      "status": "planned",
+      "status": "active",
       "displayName": "Bertha",
       "machine": "",
       "avatar": "avatars/bertha.png",
       "sprite": "sprites/bertha.png",
-      "folder": null,
-      "agentFile": null
+      "folder": "marketing/outreach/link-builder",
+      "agentFile": ".claude/agents/outreach-link-builder.md"
     },
     {
       "name": "outreach-creator-scout",

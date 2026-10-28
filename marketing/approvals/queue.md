@@ -336,8 +336,9 @@ Do first (as of 2026-10-28):
 - Commit: d92d379
 - Reason: Publishes "Your Dog in Bricks" (/pages/dog-brick-mosaic) for the Meta Dog ads (51 landing views, 0 sales on a general page): real dog mosaic photo, "Upload your dog's photo" (20×20 editor), 3 steps, size cards 16×16/20×20/30×30, 4 real Loox dog reviews, FOX / free proof / Dec 15 / EARLYHOLIDAY20 (hides after Nov 22), Gift Kit, FAQ. Preview: https://admin.shopify.com/store/photobrickusa/pages/167410106588 . After it is live, Daniel points the Dog ads to it.
 - Expires: 2026-11-04
-- Status: pending
+- Status: approved
 - From: P-site-developer-20261028-3
+- Note (2026-10-28): Eden approved in chat: "approve 037". Published by the main session the same day (pageUpdate isPublished true); live at /pages/dog-brick-mosaic.
 
 ## A-2026W44-014
 - Agent: email-campaign-writer
