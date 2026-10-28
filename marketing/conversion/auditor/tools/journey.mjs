@@ -8,7 +8,7 @@ import { chromium } from '/opt/node-tools/node_modules/playwright-core/index.mjs
 // Walks the purchase path and STOPS at the checkout page. Never fills payment or places an order.
 const [,, device, start, outdir, prefix] = process.argv;
 const vp = device === 'phone' ? { width: 390, height: 844 } : { width: 1440, height: 900 };
-const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-sandbox'] });
+const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome', args: ['--no-sandbox'] });
 const ctx = await browser.newContext({ viewport: vp, isMobile: device==='phone', hasTouch: device==='phone', deviceScaleFactor: 1,
   userAgent: device==='phone' ? 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36' : undefined });
 const page = await ctx.newPage();
