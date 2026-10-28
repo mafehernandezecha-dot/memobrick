@@ -14,12 +14,12 @@ Most group rules could not be seen from here: each post says which rule allows i
 
 ## Proposed for approval
 
-### P-social-community-manager-20261028-1
+### P-social-community-manager-20261028-3
 - Agent: social-community-manager
 - Executor: social-community-manager
 - Type: publish
-- Draft: marketing/social/community/2026-10-28-posts.md
-- Reason: Eden posts these 5 group posts by hand (after checking each group's rules) and pastes the 3 gift answers when she sees such questions; Patricia then records date and result per group in groups.md. Now because the Christmas gift search season has started and referred traffic is down 51%.
+- Draft: marketing/social/community/2026-10-28-posts-v2.md
+- Reason: Eden posts these 5 awareness posts by hand (after checking each group's rules) and pastes the 3 gift answers when she sees such questions; no prices, codes or deadlines, per her rule. Patricia then records date and result per group in groups.md. Replaces the withdrawn P-social-community-manager-20261028-1.
 - Expires: 2026-11-04
 - Status: pending
 
@@ -32,6 +32,12 @@ Most group rules could not be seen from here: each post says which rule allows i
 - Expires: 2026-11-15
 - Status: pending
 
+## Update (same day, after Eden's feedback)
+- Eden: "the post don't need to sell, the idea is for people to know about memobrick" (now an owner rule in the agent file).
+- **Withdrawn: P-social-community-manager-20261028-1** (draft `marketing/social/community/2026-10-28-posts.md`, kept unedited for the record). Coordinator: please mark its queue item withdrawn; do not act on it.
+- Wrote `marketing/social/community/2026-10-28-posts-v2.md`: prices, the EARLYHOLIDAY20 code, "order by December 15" lines and sales calls to action removed. Post 4 (Naples Moms) is now an awareness story: a Miami small business, how the mosaics are made, a question for the group. Gift answers now link to the photo preview instead of a deadline. Honest intro, no-health-claims wording and small-parts notes kept. Copy check passes. Proposed as P-social-community-manager-20261028-3.
+- `own-group.md` (P-2) still mentions the Dec 15 date and the free proof in Memobrick's own group welcome post; it is our own group, so I left it, but I can remove them if Eden wants the same rule there.
+
 ## Blocked or unknown
 - Facebook could not be opened from this session, so group links, sizes, activity and rules come from third-party directories. Most links are unknown (search the group name on Facebook). Member counts may be out of date.
 - Group rules are members-only for almost every group: Eden must read them before each post. Groups that ban promotion get marked `skip`.
@@ -41,7 +47,7 @@ Most group rules could not be seen from here: each post says which rule allows i
 - Product photos: posts name the Shopify product images to use; Eden attaches them from her phone.
 
 ## Sales impact
-Addresses the weak point "Referred traffic is down 53%": 5 posts and 3 answers put Memobrick links in front of gift buyers, dog owners, Florida moms and neurodivergent families, at no ad cost. The gift and dog posts point straight to the editor and the dog page with the Dec 15 date and the active EARLYHOLIDAY20 code. Expected: tens of tagged visits a day once Eden posts in 3 to 5 groups, and an occasional order; the own group builds a repeat audience for Black Friday and the Christmas rush. The calm posts are slower to convert (free plan first) and mainly reach a new audience.
+Addresses the weak point "Referred traffic is down 53%": 5 posts and 3 answers put Memobrick links in front of gift buyers, dog owners, Florida moms and neurodivergent families, at no ad cost. Per the owner rule the posts build awareness rather than sell: the dog post and gift answers link to the photo preview, the calm posts to the free plan and article. Expected: tens of tagged visits a day once Eden posts in 3 to 5 groups, and an occasional order; the own group builds a repeat audience for Black Friday and the Christmas rush. The calm posts are slower to convert (free plan first) and mainly reach a new audience.
 
 ## Next run
 Add 5 new groups (gift ideas and Christmas shopping, grandparents, adult brick fans with share threads, Miami local), update groups.md with any rules or results Eden pastes, write the next posts for groups marked `ok to post`, and prepare 3 own-group prompts a week once P-social-community-manager-20261028-2 is approved.
