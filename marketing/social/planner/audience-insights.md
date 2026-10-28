@@ -85,3 +85,12 @@ About 70% of each week from the themes and formats above (family, pet, couple; r
 - **Mix this week:** about 70% from proven themes (family photo gift reel, pet reel, gift guide, how-it-works) and about 30% tests (a tag-someone carousel, a photo-tips carousel, a reel ending on the finished piece on the wall), logged as EXP-SP-20261102-01 to -03.
 - **Stop doing (added):** repeating the same subject two weeks running in a series. Guess the photo Friday subjects so far: a cat (W44), a grandmother (W45); keep rotating.
 - **Not repeated:** the Pixel Brick Art dog ad is still the only recent competitor signal; no new ad-library evidence this week.
+
+## Update 2026-10-28 (Instagram follower sprint, first organic data)
+
+- **First own-post numbers** (Buffer, Instagram, 8 posts Oct 21 to 26; full table in `followers.md`): reach 1,112, 33 likes, 4 comments, 2 saves, 0 shares, 0 follows, average reel watch 3.05 s. Still a small sample; treat as signals.
+- **Formats:** reels reach about 1.9× more people (average 168 vs 90) but carousels get about 4× the engagement rate (8.6% vs 2.3%) and all the comments. Plan reels to reach new people and carousels to turn them into fans; keep both.
+- **Hooks:** the reel that opened on real hands pressing 1×1 bricks held people longest (4.09 s) and reached the most (321). The 38 s family reel held them shortest (2.17 s). Open every reel on bricks in the first second and keep reels under 20 s.
+- **Best times:** the three 19:00 ET reels reached 321, 195 and 160; the one noon reel 118. Evening stays the main slot; the sprint tests noon for the two extra reels.
+- **Stop doing (added):** posts with no reason to share or follow. Nothing so far asked for a comment, a tag that brings a friend, or the viewer's own photo with a promise of a next episode; shares and follows were 0. The sprint adds a numbered series and a "which would you hang" question (EXP-SP-20261029-01 and EXP-SP-20261030-01).
+- **Not available:** follower counts (Buffer has no field; the Meta connector has no Instagram account linked) and trending Instagram audio (Buffer needs the channel reconnected through Facebook Login).
