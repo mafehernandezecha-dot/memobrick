@@ -57,6 +57,15 @@ The 2 reels go to Eden as one publish item. The profile text is in `sprint-2026-
 - Expires: 2026-10-29
 - Status: pending
 
+### P-social-planner-20261028-4
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/sprint-2026-10-29/week-v3.md
+- Reason: Replaces P-social-planner-20261028-3 (week-v2) and P-social-planner-20261028-1 (A-2026W44-045); neither should be approved. Approving it approves both sprint reels v3, fixed after Eden's notes (no distortion in the pet reel, better Studio mosaics shown framed in the size reel, children OK), on every channel in their Channels column (Instagram, Facebook, TikTok, Pinterest and YouTube Shorts): S-20261029-2 "We brick your pet" Ep. 1, Thu Oct 29 12:00 ET and S-20261030-2 "Same photo, 3 sizes", Fri Oct 30 12:00 ET. No AI images, AI label off. The publisher prepares the kits for the owner's Mac. Send one back with `changes: <post-id> <note>`; posts not named stay approved. Urgent: the first reel posts tomorrow at noon.
+- Expires: 2026-10-29
+- Status: pending
+
 ## Blocked or unknown
 
 - **Instagram follower count is missing.** Buffer has no follower field. The Meta connector shows no Instagram account linked to any ad account (`ads_get_ig_accounts` on PhotoBrick returned none). `marketing/data/latest.md` says nothing has been pulled yet. I added a request in `marketing/data/requests.md`.
@@ -103,3 +112,20 @@ Blocked or unknown:
 - The Stories plan still names the AI dachshund files for two Stories (`stories.md`). They keep the AI label if used. Eden can use any frame of the new pet reel instead.
 
 Sales impact: real people building real kits and a real reveal are more believable than AI photos, and that matters most for a first-time buyer. The size reel shows how much detail each size gives with a real couple's selfie, then sends people to the editor before the Dec 15 order-by date. Same tracking as before (`utm_campaign=2026-10-brick-your-pet`, `2026-10-size-check`).
+
+## Follow-up 2, later on 2026-10-28: sprint reels v3 after Eden's notes
+
+Eden's notes on v2: "show Children" (keep the size reel's reveal), "the media of connie is distorted", "the second video improve the memobrick result". Proposed as P-social-planner-20261028-4 (above), which replaces P-social-planner-20261028-3.
+
+- `S-20261029-2-v3.md` and `.mp4` (15.4 s, 8.4 MB): the distortion came from the motion-interpolated slow motion in the opening shot. In v3:
+  - No clip uses interpolation. The opening runs at real speed, and sped-up shots drop frames instead of blending them.
+  - Every crop is exactly 9:16 and scaled evenly. The end card keeps the photo's aspect.
+  - I checked every 10th frame and full-size frames of the hook, the hug and the end card: no warping, stretching or smearing.
+  - The end card photo is cropped clear of the candelabra figurine.
+- `S-20261030-2-v3.md` and `.mp4` (23 s, 6.0 MB):
+  - The selfie frame is the sharpest stretch of the clip (measured), cropped tight on the two faces.
+  - The 16×16, 20×20 and 30×30 Studio mosaics are re-exported with 18 colors (the maximum), contrast +15, saturation -15 and temperature -15. Side by side with Eden's people settings (saturation -35), they gave warmer skin and clearer eyes and mouths.
+  - Each is shown 820 px wide in a white frame on a wall (downscaled from the 1216 to 1250 px export, never upscaled), then all three on one wall at their real relative sizes.
+  - The children stay in the reveal.
+- 4 check frames per reel: `marketing/social/planner/sprint-2026-10-29/v3-check/`. Also `week-v3.md`, `reels_v3.py`, the v3 Studio exports and photo, `studio_export.js` (now takes an optional background-removal switch; not used, because removal did not apply headless), calendar rows pointed at v3, and footage-rights usage notes.
+- v3 is ready for the Oct 29 12:00 ET slot; nothing needs to shift if it is approved before noon.

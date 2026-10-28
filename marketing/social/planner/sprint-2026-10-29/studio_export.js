@@ -1,6 +1,7 @@
 // Drives MemoBrick Studio (team editor, branch claude/memobrick-editor-standalone-0dyk45)
 // headless through window.MB_TEAM: new project, photo, size, crop reset to the full photo,
-// saturation -35, temperature -15, then exports the Studio mosaic canvas as PNG.
+// adjustments from ADJ (default saturation -35, temperature -15), optional background removal (BG=none,
+// the Remove background button), then exports the Studio mosaic canvas as PNG.
 const { chromium } = require('/opt/node22/lib/node_modules/playwright');
 const path = require('path'), fs = require('fs');
 const MP = '/tmp/claude-0/-home-user-memobrick/6c2afd08-63fe-5a7d-83a8-1df45d57cf83/scratchpad/mon/mp';
@@ -54,6 +55,10 @@ const MP = '/tmp/claude-0/-home-user-memobrick/6c2afd08-63fe-5a7d-83a8-1df45d57c
   await p.evaluate((a) => { const T = window.MB_TEAM, S = T.S;
     Object.assign(S, a); T.syncSliders(); T.render(); }, ADJ);
   await settle('adjusted');
+  if (process.env.BG === 'none') {
+    await p.evaluate(() => document.querySelector('#bgRemoveBtn').click());
+    await settle('background removed');
+  }
   const data = await p.evaluate(() => { const T = window.MB_TEAM, S = T.S;
     return { size: S.size.label, id: S.size.id, gw: S.size.gw, gh: S.size.gh, colors: S.usedPal.length,
       state: window.MB_debugState(), temp: S.temp, adj: null, canvas: [T.mosaic.width, T.mosaic.height] }; });
