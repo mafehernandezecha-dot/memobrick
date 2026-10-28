@@ -19,6 +19,8 @@ Use today's date and weekday in America/New_York.
 | Thursday | social-planner |
 | Friday | seo-technical, ads-analyst |
 
+**Everyone works every day (Eden, 2026-10-28: "make sure everyone will work all the time").** Every agent in this skill runs every day. On its table day an agent does its full weekly run; on every other day it does its task from the task board `marketing/shared/task-board.md` (written each morning by growth-director), plus any approved items it must carry out. An agent with no task on the board still checks its approved items and its own backlog, then exits quickly.
+
 Then add, in this order:
 
 - growth-director (Gabriel) every day, right after growth-analyst: writes the task board every other agent reads (Eden, 2026-10-28).
@@ -33,7 +35,7 @@ Then add, in this order:
 
 Not in this routine: outreach-creator-scout (María Beatriz). Shopify Collabs has no API in the Shopify connector and needs the owner's logged-in Chrome, so she runs only on the owner's Mac (the `com.memobrick.collabs` job and the `memobrick-collabs` skill), Mondays and, from November 1 to December 15, Thursdays. Never start her from here.
 
-Order of the run: growth-analyst first, then growth-director, then outreach-link-builder, then social-community-manager, then seo-strategist, seo-blog-writer and seo-technical, then the day's other agents in the table order, then site-developer, then marketing-coordinator, then social-publisher.
+Order of the run: growth-analyst first, then growth-director, then outreach-link-builder, then social-community-manager, then seo-strategist, seo-blog-writer and seo-technical, then all other table agents (outreach-gift-guide-pr, email-campaign-writer, email-flow-optimizer, conversion-auditor, social-planner, ads-analyst), then site-developer, then marketing-coordinator, then social-publisher.
 
 ## 2. Run them
 
@@ -49,5 +51,5 @@ Wait for each agent to finish before starting the next. If one fails or stops ea
 
 ## Never
 
-- Run an agent that is not due today, or the same agent twice in one day.
+- Run the same agent twice in one day.
 - Do any agent's work yourself.
