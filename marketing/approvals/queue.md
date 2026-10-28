@@ -432,7 +432,7 @@ Do first (as of 2026-10-28):
 - Commit: 0bc1f7c
 - Reason: The cart page shows "This kit has no photo yet. Add your photo" on any custom kit line with no design or photo attached, in a theme copy for you to publish, so photo-less kits like the second line of #21109 are caught before payment ahead of the December rush.
 - Expires: 2026-11-30
-- Status: pending
+- Status: approved
 - From: P-conversion-auditor-20261026-2
 - Note: Cart display only; it changes no order email, checkout step or fulfillment. Reported Oct 26 but missed by earlier runs; first queued Oct 28.
 
