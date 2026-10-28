@@ -1,6 +1,8 @@
 # seo-technical 2026-10-28 (executor run: approved blog fixes A-2026W44-022 to 026)
 
 ## Summary
+> **Correction (fix run, 2026-10-28 14:40 UTC):** the line below about 023 was wrong from 08:35 UTC. The 14 handle changes worked at 07:52 UTC, then were written back to the old handles at 08:34 to 08:35 UTC by something outside this session (most likely GemPages pushing its stored handles), and Shopify dropped the 301s. Re-applied and verified at 14:34 UTC: all 14 old URLs 301 to their new URL, which returns 200. Details in `marketing/seo/technical/applied-2026-10-28.md`.
+
 Applied 022 (Christmas consolidation), 023 (14 clean handles), 024 (FOX retitle) through the API, all verified live: every old URL returns one 301 to a 200 page, no chains or loops, and no published article says "Fox News".
 025 (SearchPie duplicate titles) could not be applied: the connector blocks live-theme writes, so Eden has exact click steps. 026 (Search Console) is ready for Eden to paste: Part A today, Part B on Oct 29 or later.
 
