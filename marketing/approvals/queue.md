@@ -430,6 +430,28 @@ Do first (as of 2026-10-28):
 - From: P-social-community-manager-20261028-3
 - Note (2026-10-28): Eden approved in chat: "approved" (reply to: approve 044 for the group posts, approve 043 for the own-group plan).
 
+## A-2026W44-045
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/sprint-2026-10-29/week.md
+- Commit: 1297315
+- Reason: Instagram follower sprint, 2 extra reels at 12:00 ET (Studio mosaics only): S-20261029-2 "We brick your pet" Ep. 1 (Oct 29) and S-20261030-2 "Same photo, 3 sizes" (Oct 30), on IG, FB, TikTok, Pinterest, YouTube Shorts. AI label on (AI-made photos).
+- Expires: 2026-10-29
+- Status: pending
+- From: P-social-planner-20261028-1
+
+## A-2026W44-046
+- Agent: social-planner
+- Executor: social-planner
+- Type: offer
+- Draft: marketing/social/planner/follower-goals.md
+- Commit: 1c2cb58
+- Reason: Re-approval of the weekly follower goals (A-2026W42-034), whose draft changed after approval (one Pinterest note).
+- Expires: 2026-11-04
+- Status: pending
+- From: P-social-planner-20261028-2
+
 ## A-2026W44-014
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
