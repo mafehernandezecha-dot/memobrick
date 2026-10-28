@@ -361,7 +361,7 @@ Do first (as of 2026-10-28):
 - Commit: 6404961
 - Reason: Bertha's first 5 link pitches: HARO family gift guide (Samantha Ramos, deadline Oct 31 3am ET, needs the kit in 040), HGTV best gifts for dog lovers, HARO Luxe List free editorial (deadline Oct 31), Little Bins for Little Hands LEGO gifts + guest post idea, The Vet Desk cat lover gifts.
 - Expires: 2026-11-07
-- Status: pending
+- Status: approved
 - From: P-outreach-link-builder-20261028-1
 - Note: HARO replies need Eden's HARO (Featured) source account. Approve by Oct 30.
 
