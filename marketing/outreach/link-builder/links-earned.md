@@ -24,3 +24,8 @@ Links and mentions on other websites that point to mymemobrick.com (or name Memo
 - **Second storefront found:** https://memobrickofficial.com/ shows in search with the same "Build Your Own Bricked Mosaic" home page and product pages. Duplicate content on a second domain can split search signals. Flag for seo-technical: check whether it redirects (301) to mymemobrick.com.
 - The old store domain photobrickusa.myshopify.com also shows in search (/collections/newest-products). Shopify normally redirects it to the main domain. Flag for seo-technical to confirm.
 - No backlink tool is connected (Ahrefs failed to connect, Search Console is not reachable from this session). Search Console's Links report would give a fuller baseline; ask the data pull to add it.
+
+## 2026-10-29 check
+
+- Searched "mymemobrick.com", "Memobrick" with review and blog. No new third-party link or mention found. Only the Walmart seller listing (own).
+- Backlink tool still not connected.
