@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: personalized stocking stuffers
 Hub: Christmas
 Page type: article

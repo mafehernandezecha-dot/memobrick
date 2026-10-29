@@ -10,7 +10,7 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 
 | # | Brief | Target keyword | Hub | Type | Publish by | Why it sells | Status |
 |---|---|---|---|---|---|---|---|
-| 1 | [personalized-stocking-stuffers](briefs/personalized-stocking-stuffers.md) | personalized stocking stuffers | Christmas | article | 2026-11-12 | Low-price entry ($35 one-face kit, $35 Gift Kit, gift cards from $10) for Black Friday weekend shoppers; no page targets small budgets | ready |
+| 1 | [personalized-stocking-stuffers](briefs/personalized-stocking-stuffers.md) | personalized stocking stuffers | Christmas | article | 2026-11-12 | Low-price entry ($35 one-face kit, $35 Gift Kit, gift cards from $10) for Black Friday weekend shoppers; no page targets small budgets | taken 2026-10-29 |
 | 2 | [christmas-gifts-for-dog-lovers](briefs/christmas-gifts-for-dog-lovers.md) | christmas gifts for dog lovers | Pets / Christmas | article | 2026-11-16 | Pet buyers are a core audience; feeds the live dog page (Meta dog ad) from search | ready |
 | 3 | [photo-christmas-gift-for-husband](briefs/photo-christmas-gift-for-husband.md) | christmas gift for husband photo | Christmas | article | 2026-11-16 | Partners buy late and buy bigger sizes; the wife article is live, "for him" has no page | ready |
 | 4 | [babys-first-christmas-gift](briefs/babys-first-christmas-gift.md) | baby's first christmas gift | Kids / Christmas | article | 2026-11-19 | New grandparents buy with high intent; baby article is evergreen, no Christmas page | ready |
