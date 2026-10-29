@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/best-photo-for-a-brick-mosaic.md
 Title: Best Photo for a Brick Mosaic: 7 Simple Tips
 Meta description: Which photo makes the best brick mosaic? Seven simple tips on light, faces, backgrounds, groups and pets, plus how to preview your design first.

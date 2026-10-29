@@ -22,3 +22,9 @@ GemPages articles: visible text, headings and links are edited by Eden in GemPag
 | `memobrick-named-one-of-the-best-holiday-gifts-by-fox-news` body | Em dashes in customer copy, and "unlimited revisions" (not in product-facts.md; verify or remove). Not touched by the retitle item |
 | `duplicate-from-the-best-summer-vacation-souvenirs-...` | Title has an em dash ("Bought—They're Built"); title is a Shopify field, writer can fix through the API |
 | `the-ideal-present` | Two H1 tags (body starts with its own H1); image alts "picture lego dog", "lego pic" |
+
+## Update 2026-10-29
+- Hub B meta description: proposed as a site-change (`site-changes/hub-b-meta-description.md`), so it leaves the strategist's list once approved.
+- New default-template articles (calm series, 3 Christmas gap articles, size guide, gift guide) all have a second SearchPie title and description until A-2026W44-025 is done by Eden.
+- Writer refresh list: `personalized-stocking-stuffers` names three discount codes that end Nov 22, Nov 29 and Nov 30; remove the offer list after Nov 30.
+- Next fixes in line (oldest first): the 8 articles with a 320-character auto excerpt, then the 36 articles with a blank description (Christmas, Thanksgiving, grandparents, pets, couples first).

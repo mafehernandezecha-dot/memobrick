@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/personalized-stocking-stuffers.md
 Title: Personalized Stocking Stuffers Made From a Photo
 Meta description: Personalized stocking stuffers from a photo: a one-face mini brick mosaic kit for $35, an Art Gift Kit, or a gift card. Order by Dec 15, 2026.
