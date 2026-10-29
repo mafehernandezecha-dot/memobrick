@@ -1,6 +1,6 @@
 # Audience insights
 
-Kept by the social planner. Evidence only; every line says where it comes from. Updated 2026-10-15 (second version; the evidence is unchanged because no snapshots exist yet).
+Kept by the social planner. Evidence only; every line says where it comes from. Updated 2026-10-29 (third version; first organic evidence is in the Update 2026-10-29 section below).
 
 ## Data gaps (read first)
 
@@ -94,3 +94,27 @@ About 70% of each week from the themes and formats above (family, pet, couple; r
 - **Best times:** the three 19:00 ET reels reached 321, 195 and 160; the one noon reel 118. Evening stays the main slot; the sprint tests noon for the two extra reels.
 - **Stop doing (added):** posts with no reason to share or follow. Nothing so far asked for a comment, a tag that brings a friend, or the viewer's own photo with a promise of a next episode; shares and follows were 0. The sprint adds a numbered series and a "which would you hang" question (EXP-SP-20261029-01 and EXP-SP-20261030-01).
 - **Not available:** follower counts (Buffer has no field; the Meta connector has no Instagram account linked) and trending Instagram audio (Buffer needs the channel reconnected through Facebook Login).
+
+## Update 2026-10-29 (W46 plan; first organic evidence)
+
+Sources: Buffer (Instagram @memobrick, `list_posts` with metrics, 2026-10-29), the Results column of `content-calendar.md`, `followers.md`, `marketing/sales/latest.json`. Still no Meta, TikTok or Pinterest snapshots (`marketing/data/latest.md` says never; requests renewed), no Instagram account on the Meta connector, so followers are `missing` on every platform. About 1,100 people reached in 10 days, so every line below is a signal, not proof.
+
+**Top 3 themes**
+1. Family photo as the gift: the best-selling ad (8 purchases) and the grandparent and couple gifts carry the biggest orders ($149 to $432, outreach buyer profile). Organic: no clear winner by reach (family reel 162, grandparent-style carousels 76 to 96).
+2. Pets, especially dogs: cheapest purchases in ads ($25.45). Organic: the dog carousel S-20261024-1 was deleted before it had metrics; no pet post has numbers yet.
+3. Couples and "for him": best click-through in ads (MEN 2.08% to 2.25%, 5 purchases). Organic: the couple reel reached 48 before it was deleted; too little to judge.
+
+**Top 3 formats**
+1. Reels with real hands pressing bricks in the first second: the best reel (S-20261021-1) reached 310 on Instagram and 182 on TikTok with the longest average watch (4.1 s and 4.0 s).
+2. Reveal reels (guess the photo, family photo): both reels with a reveal got the only 2 saves; reach 190 and 162.
+3. Carousels: 8.6% average engagement against 2.3% for reels, and all 4 comments; reach about half a reel's. Use them for saves (guides, timelines).
+
+**Hooks that worked:** "Every Memobrick mosaic is built from tiny 1×1 bricks" (real hands, reach 310); "Guess the photo Friday" (reach 190, a save). **Hooks that did not:** long reels (38 s, average watch 2.2 s) and an opening that is a photo, not bricks (S-20261019-1, watch 2.9 s).
+
+**Best days and times:** evening (19:00 ET) reels reached 310, 190 and 162 against 114 for a noon reel; carousels at 11:00 and 19:00 reached the same (76 to 96). Keep reels at 19:00 and carousels split between 19:00 on weekdays and 11:00 at weekends until the Meta snapshot gives hourly data.
+
+**Facebook:** posts show 23 to 207 impressions and 0 link clicks, yet Facebook brought 20 orders against Instagram's 6 in the 90-day Shopify referrers. Facebook is probably driven by the ads and by existing customers, not these posts; keep the Facebook caption's link line plain and test a link in the first line of one post if the numbers stay at 0 (not done in W46).
+
+**What to stop:** reels over 25 seconds, photo-first openings, any bricked image not made in the Studio, and AI scenes that draw the mosaic (all W45 posts redone on 2026-10-29).
+
+**Plan rule for W46:** about 70% proven (Mon free-proof carousel, Wed "for him", Thu pet series, Sat grandparents), about 30% tests (Tue stud-by-stud build reel with an hour counter, EXP-SP-20261110-01; Sun deadline carousel, EXP-SP-20261115-01).

@@ -4,7 +4,7 @@ Kept by the social planner. One row per platform each week, from the newest snap
 
 ## Goals
 
-Eden approved the proposed goals as growth rates (A-2026W42-034: Instagram +1.5% a week, Facebook +0.5%, TikTok +3%, Pinterest +2%), but the draft changed after approval (one Pinterest note), so the checker asks for re-approval; proposed again on 2026-10-28 as P-social-planner-20261028-2. The rates cannot turn into numbers until a follower count exists (still missing on every platform). Until then, progress is reported against last week.
+Status 2026-10-29: re-approval item P-social-planner-20261028-2 (A-2026W42-034) is still waiting; the checker says the draft changed after approval. Eden approved the proposed goals as growth rates (A-2026W42-034: Instagram +1.5% a week, Facebook +0.5%, TikTok +3%, Pinterest +2%), but the draft changed after approval (one Pinterest note), so the checker asks for re-approval; proposed again on 2026-10-28 as P-social-planner-20261028-2. The rates cannot turn into numbers until a follower count exists (still missing on every platform). Until then, progress is reported against last week.
 
 ## Weekly
 
@@ -26,6 +26,10 @@ Eden approved the proposed goals as growth rates (A-2026W42-034: Instagram +1.5%
 | 2026-10-28 | Facebook | missing | missing | not measured this run (Instagram-only special run) |
 | 2026-10-28 | TikTok | missing | missing | not measured this run (Instagram-only special run) |
 | 2026-10-28 | Pinterest | missing | missing | not measured this run (Instagram-only special run) |
+| 2026-10-29 | Instagram | missing (no snapshot; Buffer has no follower count; request in `marketing/data/requests.md`) | missing | S-20261023-1 guess-the-photo reel (reach 197, 1 save, 0 shares) and S-20261025-1 family reel (reach 162, 1 save); no post shows a follow. The Oct 28 build-time reel has no metrics yet |
+| 2026-10-29 | Facebook | missing | missing | missing (Buffer shows only impressions for Facebook: 23 to 207 per post, 0 link clicks) |
+| 2026-10-29 | TikTok | missing | missing | S-20261021-1 build reel (reach 182, average watch 4.0 s, 5 reactions); no saves or shares reported |
+| 2026-10-29 | Pinterest | missing | missing | missing (Pinterest posts are still kits for the Mac; no snapshot) |
 
 ## Instagram post metrics, 2026-10-19 to 2026-10-28 (Buffer, special run 2026-10-28)
 
