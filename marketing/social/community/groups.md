@@ -2,7 +2,7 @@
 
 Started 2026-10-28. Found with public web search only: Facebook itself cannot be opened from the agent session, so names, links and sizes come from third-party directories and organization pages and may be out of date. Group rules are usually visible only to members. Where a rule is not quoted below, it says **rules unknown: owner to check before posting**. When the owner opens a group, paste its rules (or a screenshot's text) into the Rules column and I will keep it updated.
 
-Target: 40 groups, 5 new a day. Now: 27 (5 added 2026-10-28 in the second pass, rows 23 to 27). Posts for every row are in `2026-10-28-posts-v2.md` (rows 1, 2, 7, 10, 20) and `2026-10-29-posts.md` (all other rows).
+Target: 40 groups, 5 new a day. Now: 32 (5 added 2026-10-29, rows 28 to 32). Posts for every row are in `2026-10-28-posts-v2.md` (rows 1, 2, 7, 10, 20) and `2026-10-29-posts.md` (all other rows).
 
 Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (rules checked by owner and allow it), `skip` (rules ban promotion or no fit).
 
@@ -35,6 +35,11 @@ Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (ru
 | 25 | Steel City LUG | unknown (search Facebook: "Steel City LUG") | about 700 registered members (article) | adult LEGO and brick fans, Western Pennsylvania, 18+ | rules unknown: owner to check before posting; adult fan club, may not welcome non-LEGO brick posts | unknown | never | | candidate | https://www.thealmanac.net/bethel-park/2025/jan/23/not-just-for-kids-steel-city-lug-offers-adults-creative-social-outlets-through-legos/ |
 | 26 | Lifestyle Miami | unknown (search Facebook: "Lifestyle Miami") | unknown | Miami locals and small business owners | rules unknown: owner to check before posting (described in press as a community for Miami small business owners) | unknown | never | | candidate | https://hauteliving.com/2021/03/vocal-local-miami-lifestyles-evolution-social-media-page-thriving-community/695897/ |
 | 27 | Toddler Approved "Small Business Sharing Saturday" (Facebook page thread, not a group) | search Facebook: "Toddler Approved" | unknown | family activities; weekly small business thread | "links to your small business should be posted only on Saturdays on the FB page" (as summarized in search results from the blog; owner to confirm in the current thread) | Saturdays, in that week's sharing thread only | never | | candidate | https://toddlerapproved.com/small-business-sharing-saturday/ |
+| 28 | Surrogate Grandparents USA | unknown (search Facebook: "Surrogate Grandparents USA") | over 14,000 (2026 article) | grandparents: matches families with older adults | rules unknown: owner to check. It is a matching group for people looking for a grandparent figure, not a gift or craft group | unknown | never | | skip (no product fit; do not post) | https://seniorplanet.org/articles/the-surrogate-grandparents-facebook-group |
+| 29 | The Grandma's Club | https://www.facebook.com/LikeGrandmasClub/ | about 837K likes (Page, not a group) | grandparents | A Page: we can't post on it. No post unless the Page runs a members share thread | none | never | | skip unless a share thread appears | search result for grandparent communities |
+| 30 | Grandkids R Amazing | https://www.facebook.com/grandkidsramazing/ | about 441K followers (Page, not a group) | grandparents | A Page: no post possible | none | never | | skip unless a share thread appears | same search |
+| 31 | Grandparents and Grandkids | https://www.facebook.com/grandparents.grandkids/ | unknown (Page) | grandparents | A Page: no post possible | none | never | | skip unless a share thread appears | same search |
+| 32 | Christmas Gifts | https://www.facebook.com/ChristmasGifts/ | about 8,700 likes (old figure; may be inactive) | gift ideas | A Page, probably inactive: no post | none | never | | skip | search result for Christmas gift ideas |
 
 ## Notes for the owner
 
@@ -43,3 +48,5 @@ Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (ru
 - Grief and support groups (rows 9, 19): no posts. Use the gift-question answers only when someone asks.
 - Row 27 is a Facebook page's weekly thread, not a group: comment only in that Saturday's thread.
 - Next runs: 5 new groups a day (topics still thin: gift ideas and Christmas shopping, grandparents, adult brick fans with "share your build" threads, Miami local).
+- 2026-10-29 pass: web search finds almost no named Facebook groups for gift ideas or grandparents, only Pages (rows 29 to 32) and one matching group (row 28). None is postable. **Eden: please paste the names (or links) of any gift-ideas, grandparent, dog or Christmas groups you are already a member of.** Groups you belong to beat any I can find from here, and I will write a post for each.
+- Posting order and a result column for the approved posts: `2026-10-29-posting-sheet.md`.
