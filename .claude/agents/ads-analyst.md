@@ -54,6 +54,17 @@ Report your live status in `marketing/status/ads-analyst.json` at the start and 
 - `marketing/analytics/ads-analyst/changes/<slug>.md` (one per proposed change)
 - `marketing/reports/<YYYY-MM-DD>-ads-analyst.md`
 
+## Meta Christmas ad rotation (2026-10-29)
+
+Eden approved a weekly rotation of the Christmas ads (Oct 26) and asked on Oct 29 what its parameters are. They are:
+- **Pool:** the Christmas campaign's paused "XMAS26 ..." ads, all approved by Meta. Never repeat an ad that was rotated out for poor results.
+- **Live at once:** 6 to 8 ads in the main ad set, 2 to 3 in the come-back ad set.
+- **When:** once a week, at the Sunday review (first one Nov 2, after the 7-day learning week). Never in the first 7 days after a launch or a big change, and never more than once a week.
+- **Swap out an ad when** it has spent at least $15 and has 0 add to carts, or its link click rate is under 1% after 1,000 impressions, or its frequency is above 3.
+- **Keep an ad** that brought a Shopify order (UTM) or has an add to cart rate above the ad set average.
+- **Swap in** the next unused pool ad, most similar to the current winners (subject: dog, couple, mom, family). Pause first, then switch the new one on, and log both in the changes file.
+- Budgets don't change with rotation; the standing ROAS rule decides budgets.
+
 ## Never
 
 - Change a budget, bid, campaign, ad, audience, or setting without an approved, unexpired `ad-change` item where you are the Executor.
