@@ -81,4 +81,8 @@ Media: marketing/social/publisher/media/2026-10-28-build-time-studio-music.mp4
 
 Music (A-2026W43-008): every channel uses marketing/social/publisher/media/2026-10-28-build-time-studio-music.mp4 (the Studio redo video with original music added by add-music.sh, 2026-10-28); the Buffer posts use the same file on Shopify (memobrick-social-2026-10-28-build-time-studio.mp4).
 
+- Instagram: https://www.instagram.com/reel/DfDkdauDImh/ (Buffer, sent 2026-10-28)
+- TikTok: https://tiktok.com/@memobrick/video/7701858137652923661 (Buffer, sent 2026-10-28)
+- Facebook: FAILED in Buffer ("unable to process the media"); not published.
+
 (filled in by the owner's Mac after posting)

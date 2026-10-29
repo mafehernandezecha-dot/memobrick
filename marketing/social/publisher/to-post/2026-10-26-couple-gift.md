@@ -79,4 +79,8 @@ Media: marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4
 
 Music (A-2026W43-008): every channel uses marketing/social/publisher/media/2026-10-26-couple-gift-music.mp4 (original music added by add-music.sh); the Buffer posts use the same file on Shopify (memobrick-social-2026-10-26-couple-gift-music.mp4).
 
+- Instagram: https://www.instagram.com/reel/De-a0DckmRv/ (Buffer, sent 2026-10-26)
+- TikTok: https://tiktok.com/@memobrick/video/7701115656410025230 (Buffer, sent 2026-10-26)
+- Facebook: FAILED in Buffer ("unable to process the media"); not published.
+
 (filled in by the owner's Mac after posting)
