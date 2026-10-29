@@ -73,3 +73,7 @@ Approval: the three drafts are proposed as one publish item (P-seo-strategist-20
 - Evergreen briefed: `can-you-turn-a-photo-into-a-lego-style-mosaic` (was planned for Nov 16) and the rank 11 improvement of `blog-memorial` (pet memorial).
 - 2027 briefed early: plan-2027 #1 (Valentine's upgrade), #2 (boyfriend), #3 (anniversary hub, page plan rank 10).
 - Handle renames from A-2026W44-023 were not live at this run's check (old URLs 200, new 404); briefs link to whichever returns 200. Flagged for seo-technical.
+
+## Update 2026-10-29 (live URLs, from the backlog and the 2026-10-28 live check)
+
+Live now: personalized-christmas-photo-gifts (hub A, 2026-10-14), gift-for-someone-who-has-everything (2026-10-21), brick-mosaic-sizes (2026-10-26), last-minute-personalized-christmas-gifts, christmas-gifts-for-grandparents-from-grandkids, photo-christmas-gift-for-wife (all 2026-10-28), plus the calm-building hub and 4 supporting articles (2026-10-28). Briefs added today: christmas-gift-for-mom-from-kids, christmas-gift-for-dad-from-kids (backlog rows 12 and 13). Waiting on the technical check: best-photo-for-a-brick-mosaic.

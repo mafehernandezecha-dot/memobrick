@@ -150,3 +150,7 @@ Status changes: the 3 Christmas keywords above are **live 2026-10-28** (were "dr
 | personalized anniversary gift from photo | Couples | commercial | /blogs/news/personalized-anniversary-gifts (briefed hub) | A | unknown |
 | calming activities for autistic kids and adults | Kids / Family | informational | /blogs/news/brick-mosaic-calm-activity-autistic-kids-adults (live 2026-10-28, writer's series) | E | unknown |
 | fine motor activities for occupational therapy | Kids | informational | /blogs/news/brick-mosaics-occupational-therapists-teachers (live 2026-10-28) | E | unknown |
+
+## Update 2026-10-29 (live URLs)
+
+Live targets: /blogs/news/personalized-christmas-photo-gifts, gift-for-someone-who-has-everything, brick-mosaic-sizes, last-minute-personalized-christmas-gifts, christmas-gifts-for-grandparents-from-grandkids, photo-christmas-gift-for-wife (plus calm-building hub and 4 articles). New planned targets: "christmas gift for mom from kids" -> christmas-gift-for-mom-from-kids; "christmas gift for dad from kids" -> christmas-gift-for-dad-from-kids (Christmas/Family hub; evidence: SERP pattern, no existing page; volume unknown).

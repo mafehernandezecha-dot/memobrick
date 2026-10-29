@@ -21,8 +21,12 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | 9 | [personalized-valentines-day-gift-upgrade](briefs/personalized-valentines-day-gift-upgrade.md) | personalized valentine's day gift | Couples | improve (GemPages: Eden) | 2026-12-21 | plan-2027 #1: existing post has no H1, no description, broken title | ready |
 | 10 | [valentines-day-gift-for-boyfriend-photo](briefs/valentines-day-gift-for-boyfriend-photo.md) | valentine's day gift for boyfriend | Couples | article | 2027-01-04 | plan-2027 #2: "for him" Valentine's gap | ready |
 | 11 | [personalized-anniversary-gifts](briefs/personalized-anniversary-gifts.md) | personalized anniversary gift from photo | Couples | hub | 2027-01-11 | plan-2027 #3: parent page for all couples posts before Valentine's | ready |
+| 12 | [christmas-gift-for-mom-from-kids](briefs/christmas-gift-for-mom-from-kids.md) | christmas gift for mom from kids | Christmas / Family | article | 2026-11-19 | Kids-as-givers angle, no page targets it; mom is a top gift recipient | ready |
+| 13 | [christmas-gift-for-dad-from-kids](briefs/christmas-gift-for-dad-from-kids.md) | christmas gift for dad from kids | Christmas / Family | article | 2026-11-19 | Pair to the mom article; "dad who wants nothing" intent | ready |
 
-Ready count: 11.
+Ready count: 13.
+
+Note 2026-10-29: the task-board request for a "ready by Christmas / last order date" brief is covered by the live `last-minute-personalized-christmas-gifts` article; no new brief (would duplicate). New-dog-owner and pet-loss angles are covered by the dog-lovers brief and `pet-memorial-gift-improve-blog-memorial`.
 
 ## In progress or done (for reference, not to take)
 
@@ -39,7 +43,7 @@ Ready count: 11.
 
 ## Next to brief (queue, in order)
 
-1. Thu 2026-10-29 (task board): `christmas-gift-for-mom-from-kids` (kids as givers to mom, helped by dad or another adult). It is a different giver from hub A's "For parents and grandparents" section and from the grandkids article, so it does not overlap. Brief it after checking hub A's section text.
+1. DONE 2026-10-29: `christmas-gift-for-mom-from-kids` (kids as givers to mom, helped by dad or another adult). It is a different giver from hub A's "For parents and grandparents" section and from the grandkids article, so it does not overlap. Brief it after checking hub A's section text.
 2. Christmas refresh of the three 2026-10-28 articles after Dec 1 (remove past codes; keep Dec 15). Scheduled for the December 7 run.
 3. Pet hub: improve the evergreen pet post (GemPages) rather than a new `custom-pet-photo-gifts` page, once the dog article is live.
 4. Mother's Day upgrade and first Mother's Day article (plan-2027 #4 and #5, brief by Feb 22 and Mar 1, 2027).

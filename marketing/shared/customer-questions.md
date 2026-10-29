@@ -20,3 +20,5 @@ Append-only for all agents. Social planner and SEO strategist turn these into po
 | 2026-10-28 | seo-strategist: SERP read for "baby's first christmas gift" | Is a brick mosaic safe to give for a baby? | 1 | brief: babys-first-christmas-gift |
 | 2026-10-28 | seo-strategist: SERP read for "can you turn a photo into a lego mosaic" | Is a Memobrick kit LEGO, and is it different from an AI brick filter? | 1 | brief: can-you-turn-a-photo-into-a-lego-style-mosaic |
 | 2026-10-28 | seo-strategist: brands page and SERP for corporate gifts | Can our team build one mosaic together at the holiday party, and how are corporate orders priced? | 1 | brief: corporate-christmas-gifts-for-employees |
+| 2026-10-29 | seo-strategist: SERP read for "christmas gift for mom from kids" | Can my young kids help make a gift for mom, and what photo should we use? | 1 | brief: christmas-gift-for-mom-from-kids |
+| 2026-10-29 | seo-strategist: SERP read for "christmas gift for dad from kids" | What do we give a dad who says he wants nothing, from the kids? | 1 | brief: christmas-gift-for-dad-from-kids |
