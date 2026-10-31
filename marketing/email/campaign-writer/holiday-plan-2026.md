@@ -1,6 +1,6 @@
 # Holiday campaign plan 2026
 
-Updated: 2026-10-27. Owner: email-campaign-writer.
+Updated: 2026-10-30 (see Update 2026-10-30 at the end). Owner: email-campaign-writer.
 
 Dates and offers come only from `marketing/shared/offers-calendar.md`. Facts now verified by the owner: Christmas order-by date Dec 15, 2026; Miami fulfillment claim; gift cards offered; free design proof; free US shipping over $125. Active offers: EARLYHOLIDAY20 (20%, from Oct 12, end date unconfirmed) and the two automated 20% flow codes.
 
@@ -65,3 +65,14 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Existing Nov 19 VIP Early Access 20% (Past Buyers) falls inside the EARLYHOLIDAY20 window. Dec 3 to Dec 14 countdown emails run after all codes end: check they offer no discount (not reviewed this run).
 - Gap 7: Fri Nov 20 10:00 ET "EARLYHOLIDAY20 ends Sunday night" to Warm, draft `2026-11-20-code-ends-sunday.md`, proposed. Also open: nothing is scheduled Nov 4 to Nov 18; consider one mid-November email.
 - Oct 27 Reminder campaign sends today 11:00 ET; the old booster `6ab3ae904dae2e28118748a6` is also still "scheduled" for 2026-10-27 11:07 ET, titled UNUSED (a booster to non-clickers of the Oct 20 campaign that would send the Oct 20 content again). Owner should cancel it.
+
+
+## Update 2026-10-30
+
+- A-2026W44-014 applied: Nov 27 campaign 6ab3af11a46e779522c64477 now sells BRICKFRIDAY25 25% through Sun Nov 29 (subject "Black Friday: 25% off, code inside"); restored to draft, edited, rescheduled for Nov 27 09:00 ET, read back as scheduled. Internal name still says "20%".
+- A-2026W44-015 applied: new campaign "Q4 | Nov 20 | EARLYHOLIDAY20 Ends Sunday (Warm)" 6ae55a1aead775b0ac41ecc5, scheduled Fri Nov 20 10:00 ET (15:00 UTC), Warm minus Past Buyers, recent buyers, Unengaged 180d.
+- Oct 27 booster "UNUSED" DID send (5,275 sends, 17 unsubscribes). Oct 27 and 29 results in `performance-2026-10.md`.
+- Nov 19 VIP email says "Black Friday price a week early, 20% off everything": fix proposed in `improve-nov19-vip.md`.
+- Gap 8: Thu Nov 12 10:00 ET "Your dog, in 1x1 bricks" to Warm, draft `2026-11-12-your-dog-in-bricks.md`, proposed.
+- Dec 3 and Dec 8 contain unverifiable claims ("most-gifted size", "Thousands of satisfied customers" image); Dec 11 and Dec 14 content not yet read.
+- Waiting on owner: nothing for Dec 15 to Dec 31. Gift card email after Dec 15 (gift cards are offered) is not drafted yet.

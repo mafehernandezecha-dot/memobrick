@@ -31,3 +31,15 @@ Delivered = sent minus failed. Attribution is Omnisend's own.
 - Oct 20 (first send with the 20% code) beat the Oct 6 and Sep 24 sends per recipient ($0.025 vs $0.016 to $0.018) but is far below last year's $0.064 best. Only 1 order from 56 clicks again.
 - Oct 14 had 5,611 failed sends out of 18,120 (31%). That hurts sender reputation. Eden should consider not mailing Unengaged 180d again. Its revenue per recipient was the highest of the three only because of one $300+ order.
 - Oct 27 Reminder (sends today 11:00 ET) will be reported next run.
+
+## Oct 27 and Oct 29 sends (read 2026-10-30 from Omnisend analytics, attributed, by send date)
+
+| Campaign | Sent | Failed | Unique clicks | Orders | Revenue | Revenue per sent | Unsubscribes |
+|---|---|---|---|---|---|---|---|
+| Q4 Oct 27 Early Bird LAST CALL 15% (Warm + Past Buyers) | 5,282 | 24 | 53 | 0 | $0 | $0 | 12 |
+| UNUSED old booster, sent Oct 27 15:07 UTC (same audience, nonClickers) | 5,275 | 23 | 4 | 1 | $91.43 | $0.017 | 17 |
+| Q4 Oct 29 Who Else Is On Your List (Past Buyers) | 2,684 | 9 | 25 | 0 | $0 | $0 | 10 (0.37%) |
+
+- The "UNUSED" booster was not cancelled and did send, two hours after the Oct 27 Last Call, to the same people. It added 17 unsubscribes and one $91.43 order. Cancel proposal P-email-campaign-writer-20261027-1 was not approved in time.
+- Oct 27 and Oct 29 together: 1 order, $91.43, from 7,958 sends, 39 unsubscribes. Both were below the Oct 20 benchmark ($0.025 per recipient). Click rates (about 1% and 0.9%) are similar to earlier sends, so the gap is click-to-order, not interest. The Oct 29 email had no deadline and the code expires Nov 22; deadline emails are the best lever on record.
+- Oct 29 audience is Past Buyers; 0 orders from 2,684 means past-buyer gifting emails should be tested against a deadline version (Nov 19 VIP).
