@@ -81,4 +81,7 @@ Media: marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.
 
 Music (A-2026W43-008): every channel uses marketing/social/publisher/media/2026-10-30-guess-the-photo-studio-music.mp4 (the Studio redo video with original music added by add-music.sh, 2026-10-28); the Buffer posts use the same file on Shopify (memobrick-social-2026-10-30-guess-the-photo-studio.mp4).
 
+- Instagram: https://www.instagram.com/reel/DfIuDGjEwhy/ (Buffer, sent 2026-10-30)
+- TikTok: https://tiktok.com/@memobrick/video/7702600106897394957 (Buffer, sent 2026-10-30)
+- Facebook: FAILED in Buffer ("unable to process the media"); not published.
 (filled in by the owner's Mac after posting)

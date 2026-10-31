@@ -79,4 +79,6 @@ Media: marketing/social/planner/2026-W44/redo/S-20261029-1-pin-studio.png
 
 ## Result
 
+- Instagram: https://www.instagram.com/p/DfGJRK5FFKi/ (Buffer, sent 2026-10-29)
+- Facebook: https://www.facebook.com/1539743704853420/posts/1548589183968872 (Buffer, sent 2026-10-29)
 (filled in by the owner's Mac after posting)
