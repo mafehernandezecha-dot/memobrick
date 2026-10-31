@@ -1,111 +1,106 @@
-# Task board 2026-10-29
-Weak point today: too few qualified visitors (referred sessions 2,429 vs 4,907 last year, -50%) and draft orders still at 11 vs 74. Checkout works (44% of checkouts buy). Meta spent $177 since Oct 26 with 0 Shopify orders from it, so every Meta, SEO and outreach task must put people on the new pages (dog page, Calm Build Gift, Christmas articles). Last 7 days: 14 orders vs goal 35. Oct 28: 4 orders, $286 vs goal 5 and $550.
+# Task board 2026-10-30
+Weak point today: too few qualified visitors (referred sessions 2,439 vs 4,786 last year, -49%) and a dog page that gets visits but no carts (26 referred sessions, 0 carts on Oct 29). Checkout works (42% of checkouts buy). Oct 29: 4 orders, $472 vs goal 5 and $550. Last 7 days (Oct 23 to 29): 16 orders vs goal 35 (last year 38). October to date: 76 orders vs goal 145.
 
-Written by Gabriel (growth-director) on Thu Oct 29. Detail, scores and Eden's top 5: `marketing/coordination/director/2026-10-29.md`. Several Oct 28 tasks were written for "Thu morning" and have no report yet; they carry over below (day 2, not yet scored). Dates: HARO replies due Fri Oct 30 evening, EARLYHOLIDAY20 ends Nov 22, Black Friday 25% starts Nov 27, order-by Dec 15.
+Written by Gabriel (growth-director) on Fri Oct 30. Detail, scores and Eden's top 5: `marketing/coordination/director/2026-10-30.md`. Oct 29 reports exist for 11 agents; email-campaign-writer, email-flow-optimizer, ads-analyst, outreach-gift-guide-pr, conversion-auditor and aprobaciones have none since Oct 28 (day 3 for the two email tasks: see the rule below). Dates: HARO replies due tonight (Oct 30), the Oct 30 Facebook reel may fail like the last two, EARLYHOLIDAY20 ends Nov 22, Black Friday 25% starts Nov 27, order-by Dec 15, Monday Nov 2 weekly scorecard and the Mac run.
 
 ## aprobaciones (Betty)
-- Task: Open Eden's day with the same 5 clicks as yesterday, in this order, saying which are already done (check the live theme, queue and Gmail first): (1) publish theme copy 189322330332, (2) HARO replies by Fri evening, (3) SearchPie then Search Console Part A, (4) A-2026W44-049 (sprint reels v3, replaces 047; first reel at noon), (5) outreach drafts still unsent. Add a 6th: switch on any Meta ad set still paused (check the ads applied record). Quote any chat decision word for word to the coordinator.
-- Why: draft orders (11 vs 74) and the HARO deadline wait only on Eden; Meta is the only paid traffic.
-- Done when: each click shows done, asked, or declined, and her answers are in the queue.
+- Task: Open Eden's day with the six clicks in `marketing/approvals/queue.md` "Do first", saying which are already done (check the live theme list, the queue and Gmail first): (1) publish theme copy 189322330332, (2) HARO replies tonight, (3) SearchPie then Search Console Part A, (4) outreach drafts still unsent, (5) switch on paused Meta ad sets, (6) post the two Facebook reels that failed in Buffer by hand (S-20261026-1-fb, S-20261028-1-fb, per Freddy's report). Quote her chat answers word for word to the coordinator.
+- Why: draft orders (12 vs 64) and the HARO deadline wait only on Eden; Meta is the only paid traffic.
+- Done when: each click shows done, asked, or declined, and answers are in the queue.
 
 ## growth-director (Gabriel)
-- Task: Fri Oct 30: score this board against Oct 29 orders and the launch numbers (dog page, Calm page, 8 articles, Dog v4 and come-back tagged sessions), then write the Oct 30 board. Also propose the two ideas of today (delivery bar, photo review email) to Eden.
+- Task: Sat Oct 31: score this board against Oct 30 orders, the dog page carts and Meta read-back, then write the Oct 31 board (weekend board: fewer tasks, only what can run without Eden's Mac).
 - Why: daily orders vs goal 5.
-- Done when: the Oct 30 board and daily file are on main before the other agents run.
+- Done when: the Oct 31 board and daily file are on main before the other agents run.
 
 ## marketing-coordinator (Armando)
-- Task: Queue today's proposals (including my P-growth-director-20261029-1 and -2) and archive everything the executors report done since yesterday. Put the 6 clicks from Betty's row at the top of "Do first". Mark A-2026W44-047 replaced by 049 and drop anything expired Oct 28 or 29.
-- Why: a short queue gets Eden's clicks made faster; the Oct 29 to Nov 1 posts and Dec ads depend on timely approvals.
-- Done when: the queue shows only open decisions, `check.py` passes, and "Do first" matches Betty's 6.
+- Task: Queue today's proposals, archive what executors report done, and keep "Do first" at the six clicks in Betty's row (add the failed Facebook reels as click 6, replace "unsent drafts" wording with HGTV marked "no address found, drop it"). Drop A-2026W44-049 and anything else that expired Oct 30.
+- Why: a short queue gets Eden's clicks made faster; W45 and the Dec ads depend on timely approvals.
+- Done when: the queue shows only open decisions, `check.py` passes.
 
 ## growth-analyst (Nicolás)
-- Task: Add Oct 29 to `latest.json` on tomorrow's pulse. Today, add to the launch block, referred sessions only: sessions and carts on /pages/dog-brick-mosaic, /pages/calm-build-gift and the 8 new articles since Oct 28; draft orders by date since Oct 28; and, if the Mac data pull has run, the first Meta/GA4/Search Console lines. If a number cannot be read, say unknown.
-- Why: Oct 28 baseline for the dog page was 8 sessions and 0 carts. Without day 2, nobody can tell which launch brings orders.
-- Done when: the launch block has Oct 28 and Oct 29 side by side and the unknowns are listed.
+- Task: Add Oct 30 to `latest.json` on the next pulse. In the launch block (referred only) show Oct 28, 29, 30 side by side for /pages/dog-brick-mosaic, /pages/calm-build-gift and the 8 new articles: sessions, carts, and draft orders by date. Add a line comparing the dog page add-to-cart to the site's 6.1% average.
+- Why: the dog page has 34 sessions and 0 carts over two days; day 3 shows whether this is a page problem to fix (site-developer) or too little data.
+- Done when: the launch block shows three days and unknowns are listed.
 
 ## ads-analyst (Daniel)
-- Task 1: Day 2 read-back for Meta (read-only, no budget moves before Nov 2): spend, landing page views and add to cart per ad since the Oct 28 swap, whether the come-back ad set reaches its $10 minimum, and Shopify sessions with utm_content=120252819439800597 on /pages/dog-brick-mosaic. Add it to a "Day 2 read-back" section in the applied record.
-- Task 2: Check that ViewContent and AddToCart fire on the dog page and Calm Build Gift page (dataset stats) so the 30-day come-back audience fills.
-- Task 3: Write the 2-minute purchase deduplication step for Eden (about 2 server events per order) if it is not in the record, and list every ad set still paused so Betty can ask for the click.
-- Why: Meta has spent $177 for 0 orders, with 2 carts on $129 of Christmas spend. Landing match decides whether the $80 a day pays back.
-- Done when: the record has per-ad numbers, a yes or no on the dog page landing and the pixel events, and the paused list.
+- Task 1: Day 2 and 3 read-back for Meta (read-only, no budget moves before Nov 2): spend, landing page views and add to cart per ad, and whether the come-back set reaches its $10 minimum. If the Dog v4 ad sends people to the dog page and the page has 0 carts, say it plainly with the numbers and name the ad set that should point at a ready-made design page instead (a proposal, not a change).
+- Task 2: Confirm ViewContent and AddToCart fire on the dog page and Calm Build Gift (dataset stats).
+- Task 3: Write the 2-minute purchase deduplication step for Eden and list every ad set still paused.
+- Why: Meta spent $177 by Oct 28 for 0 orders; landing match decides whether $80 a day pays back. This is day 2 with no report.
+- Done when: the record has per-ad numbers, a yes or no on pixel events, and the paused list.
 
 ## seo-strategist (Mariana)
-- Task 1: Brief "Christmas gift for mom from the kids" and "Christmas gift for husband or boyfriend from a couple photo" as ready (backlog says the first is queued for Thu). Mark both ready for writer, linking the dog page and the editor.
-- Task 2: Add two briefs for buyers who search close to purchase: "personalized photo gift ready by Christmas / last order date" and "photo gift for new dog owner or pet loss gift" (no health claims). Check `article-inventory.md` so no topic repeats.
-- Task 3: Mark the 8 live URLs in `page-plan.md` and `keyword-map.md` if not done.
-- Why: referred search traffic is the weakest source (Google search -67%). Christmas pages need about 4 weeks to be indexed before Dec 1.
-- Done when: the backlog shows at least 4 new ready briefs and the plan files show the 8 live URLs.
+- Task 1: Brief "personalized photo gift ready by Christmas / last order date" and "photo gift for new dog owner" (no health claims, no pet loss) as ready; check `article-inventory.md` so no topic repeats.
+- Task 2: Choose the next 3 briefs by buyer intent for the writer queue (order: last-order-date, new-dog-owner, gifts for grandparents) so Sandra has a ready brief every day to Dec 1.
+- Why: referred search traffic is the weakest source; Christmas pages need about 4 weeks to index before Dec 1.
+- Done when: at least 2 new ready briefs and the writer order are in the backlog.
 
 ## seo-blog-writer (Sandra)
-- Task: Write and propose one article draft from a ready brief in Mariana's backlog (stocking stuffers first, then mom-from-kids). Also propose the one-sentence fix in `last-minute-personalized-christmas-gifts` if not yet proposed. One publish item a day.
-- Why: more Christmas search pages before the Dec 1 rush (goal 20 orders a day); yesterday's run had no ready brief, so this must not repeat.
-- Done when: one article proposal with an editor link and a product card is in the report, and the brief is marked taken.
+- Task: Write and propose one article from the top ready brief (mom-from-kids first). If Eden has approved `personalized-stocking-stuffers`, publish it and record the URL; propose `best-photo-for-a-brick-mosaic` only if Inesita's notes say it is ready. One publish item a day.
+- Why: more Christmas search pages before the Dec 1 rush (goal 20 orders a day).
+- Done when: one new article proposal with editor link and product card is in the report, and the brief is marked taken.
 
 ## seo-technical (Inesita)
-- Task 1: Check the `best-photo-for-a-brick-mosaic` draft and write notes so Sandra can propose it.
-- Task 2: Check the 8 new articles and the dog and calm pages: sitemap, one title, canonical, schema, internal links. Report which still show SearchPie's second title.
-- Task 3: Propose links from the Christmas hub `personalized-christmas-photo-gifts` down to the 3 new Christmas articles, as one site-change item. After 023, confirm the 14 old URLs still 301 (they were overwritten once by GemPages).
-- Why: search is the channel that fell most; new pages only sell once indexed and linked.
-- Done when: the draft has check notes, the check is in `applied` or the indexing file, the 301 recheck is noted, and one link proposal is in the report.
+- Task 1: Friday recheck: the 14 renamed handles still 301 to their new URLs, and memobrickofficial.com and photobrickusa.myshopify.com redirect to mymemobrick.com (Bertha's question). Say which is unknown if the proxy blocks it.
+- Task 2: Propose links from the Christmas hub `personalized-christmas-photo-gifts` down to the new Christmas articles, as one site-change item (the meta description for hub B can go in the same item).
+- Why: new pages sell only once indexed and linked; duplicate domains can split earned links.
+- Done when: the redirect check is noted and one link proposal is in the report.
 
 ## outreach-gift-guide-pr (Mario)
-- Task 1: Search Gmail for replies to the 7 pitches sent Oct 28; append new rows to the contacts log. List still-unsent drafts for Eden.
-- Task 2: Research US grandparent and couple Christmas gift guides that refresh in November, and write 5 pitches (one send batch) for `christmas-gifts-for-grandparents-from-grandkids` and `photo-christmas-gift-for-wife`. No pets (Bertha), no autism pitches (already sent).
-- Why: one guide inclusion before Dec 15 brings ready buyers; these audiences have the biggest orders ($149 to $432).
+- Task 1: Search Gmail for replies to the 7 pitches sent Oct 28 and append new rows to the contacts log.
+- Task 2: Write 5 pitches (one batch) to US grandparent and couple Christmas gift guides that refresh in November, for `christmas-gifts-for-grandparents-from-grandkids` and `photo-christmas-gift-for-wife`. No pets (Bertha), no autism pitches.
+- Why: one guide inclusion before Dec 15 brings ready buyers; these audiences have the biggest orders ($149 to $432). Day 3: if there is no report tomorrow, the task is dropped.
 - Done when: replies are logged and one batch of 5 pitches is in the report.
 
 ## outreach-link-builder (Bertha)
-- Task 1: Find an address for the two drafts with an empty To line (HGTV dog lovers, Little Bins) or say "none found" so Eden can drop them.
-- Task 2: 5 new pet link opportunities (dog and cat gift lists, pet blogs with resource pages) pointing to /pages/dog-brick-mosaic, as one batch. Include any pet-lover roundups that refresh in November.
-- Task 3: Pass the redirect question about memobrickofficial.com to Inesita through your report.
-- Why: earned links lift the dog page; pet buyers convert (the Dog video was the cheapest Meta purchase at $25.45).
-- Done when: both drafts have an address or "none found", and 5 opportunities and 1 batch are in the report.
+- Task 1: Verify the address of the 5 pet targets (a named editor or contact form on the site) and mark each verified or unverified; HGTV is dropped ("none found").
+- Task 2: Find 5 more link opportunities for the Christmas articles (local gift guides, mom blogs, "gifts from kids" roundups) as one batch, not pets.
+- Why: earned links lift the pages Google must index before Dec 1; unverified addresses cannot be sent by Eden.
+- Done when: the pet batch has verified or unverified marks and a second batch of 5 is in the report.
 
 ## social-community-manager (Patricia)
-- Task 1: Update the 15-minute posting sheet for approved 044 and 048 (group posts approved Oct 28): which to post today first, exact text and photo, and the result column.
-- Task 2: Write Eden's 10-minute setup steps for "Memobrick Builders" and its first 3 prompts (043 approved).
-- Task 3: Vet 5 more groups (Christmas gift ideas, grandparents, dog lovers) in `groups.md`.
-- Why: free visits from gift buyers and dog owners; tagged utm_medium=group so orders can be counted.
-- Done when: the sheet and setup steps are in your folder and `groups.md` has 5 more vetted rows.
+- Task 1: Rewrite the posting sheet so Eden's first 15 minutes today are the 5 best groups of the 27 approved posts (gift ideas and dog lovers first), with the exact text and photo, and a result column.
+- Task 2: Write the short message Eden can paste in chat naming the groups she already belongs to (gift ideas, grandparents, dog, Christmas), so you can vet real ones.
+- Why: free visits from gift buyers and dog owners, tagged utm_medium=group so orders can be counted. Nothing is posted yet.
+- Done when: the sheet has 5 first-day posts and the paste message is in your folder.
 
 ## social-planner (Hugo)
-- Task 1: Thu weekly run: rebuild the W45 mosaics in the Studio and propose W45 with a preview picture for each post. Include one post for the dog page and one for the 3 Christmas articles (real photos or Studio mosaics only), and a Pinterest pin for each Christmas article.
-- Task 2: If 049 is not approved by 11:00 ET, re-time the first reel rather than lose it, and say so.
-- Task 3: Plan W46 with "We brick your pet" Ep. 2 (follower photo only with written permission) or "Guess the pet"; add the Order-by-Dec-15 date to at least two posts.
-- Why: social is where new people find Memobrick; reach is 1,112 with 0 follows, and nothing in W45 can post until it is re-proposed.
-- Done when: W45 is proposed with previews before noon and W46 is drafted.
+- Task 1: Check that W45 (proposed Oct 29 with previews) is in the queue; if it is still pending, make the first post of Nov 2 a standalone item Eden can approve alone, with its preview picture.
+- Task 2: Draft the "Order by December 15" countdown carousel (real photos or Studio mosaics only) for W46 and add the date to two more posts.
+- Task 3: Write the Pinterest pin set for the 3 Christmas articles and the dog page (4 pins, one idea each).
+- Why: social reach is 1,112 with 0 follows; pins last for weeks and send searchers to the articles.
+- Done when: the standalone item and 4 pins are in the report, and W46 shows the date on 3 posts.
 
 ## social-publisher (Freddy)
-- Task: Record the live URLs of the Oct 26 to 28 posts (they were unconfirmed). If 049 is approved, prepare and schedule the sprint reels for their times after checking they are not already scheduled. If Buffer has no tools again, say it plainly and use the Mac post kits.
-- Why: daily posts keep sending visitors to the editor and collections; the first sprint reel is due today at noon.
-- Done when: calendar rows have live URLs or "unconfirmed: reason", and 049 posts show as scheduled or "waiting on 049".
+- Task: Check at 19:00 ET whether the Oct 30 Facebook reel posted; if it failed, list it with the Mac kit for Eden and do not retry in Buffer. Record any live URLs of the Oct 30 posts. Check the next 10 days are still scheduled.
+- Why: daily posts keep sending visitors to the editor and collections; two Facebook reels already failed.
+- Done when: calendar rows have live URLs or "unconfirmed: reason", and the failed list is current.
 
 ## email-campaign-writer (Marcela)
-- Task 1: Day 2 and still not done: check Omnisend, then apply A-2026W44-014 (Black Friday email to BRICKFRIDAY25 at 25%) and create and schedule A-2026W44-015 (Nov 20 "EARLYHOLIDAY20 ends Sunday").
-- Task 2: Before the Oct 29 "Who Else" campaign sends, read it for wrong codes or claims ("Fox News", codes not in the calendar, "2-4 days") and flag Eden.
-- Task 3: Draft the Nov 4 to 18 gap email ("Order by Dec 15", dog page, 3 Christmas articles, EARLYHOLIDAY20 to Nov 22) and propose it.
-- Why: the Black Friday send must sell the 25% offer, and email is the cheapest order source in a two-week gap. If 014 is still not done tomorrow, it is dropped as a blocker for Eden.
-- Done when: 014 and 015 show campaign IDs, the Oct 29 check is in the report, and the gap email is proposed.
+- Task 1: Day 3 and still not done: check Omnisend and apply A-2026W44-014 (Black Friday email to BRICKFRIDAY25 at 25%) and create and schedule A-2026W44-015 (Nov 20 "EARLYHOLIDAY20 ends Sunday"). If a connection fails, write the exact error, not "not done".
+- Task 2: Draft the Nov 4 to 18 gap email ("Order by Dec 15", dog page, 3 Christmas articles, EARLYHOLIDAY20 to Nov 22) and propose it.
+- Why: Black Friday email is the biggest send of the year; email is the cheapest order source in the gap. The 014 and 015 tasks go to Eden as a blocker in today's file; if there is still no result Saturday, I drop them from the board and ask Eden to do them.
+- Done when: 014 and 015 show campaign IDs or the exact error, and the gap email is proposed.
 
 ## email-flow-optimizer (Aura María)
-- Task: Day 2: re-propose the Checkout email 1 clean version in the standard format (one P- ID, one Draft path, a Status line), no claims. The store rating (4.9 from 1,027) goes in only after Eden verifies it in the Facts table. Do not touch Post-Purchase.
-- Why: Abandoned Checkout sent 181 emails with 0 orders; the people who reach checkout are the warmest lost buyers.
-- Done when: a valid P- block is in your report and the coordinator can queue it.
+- Task: Day 3: re-propose the Checkout email 1 clean version in the standard format (one P- ID, one Draft path, a Status line), no claims; the 4.9 rating stays out until Eden verifies it in the Facts table. Do not touch Post-Purchase.
+- Why: Abandoned Checkout sent 181 emails with 0 orders; those buyers are the warmest lost ones. If no valid block by Saturday this task is dropped and I tell Eden.
+- Done when: a valid P- block is in your report.
 
 ## conversion-auditor (Wilson)
-- Task: Walk phone and desktop, from page to editor to cart (stop at checkout): /pages/dog-brick-mosaic, /pages/calm-build-gift, `last-minute-personalized-christmas-gifts` and one ready-made design page (arm B of CA-20261028-01). After Eden publishes 189322330332, check /pages/free-preview shows the form or the fallback. Add a check of the Meta landing: open the Dog v4 ad URL with its UTMs on a phone.
-- Why: paid and organic traffic lands on these pages now; a broken step costs orders immediately. Facebook add to cart is 4% vs 9%.
-- Done when: a pass or fail per page, with screenshots, is in today's audit file.
+- Task: Walk phone and desktop, page to editor to cart (stop at checkout): /pages/dog-brick-mosaic, /pages/calm-build-gift, `last-minute-personalized-christmas-gifts` and one ready-made design page. Open the Dog v4 ad URL with its UTMs on a phone. Focus on why the dog page has 0 carts in 34 sessions: is the editor button visible without scrolling, does it load, is the price shown? Propose one fix.
+- Why: Oct 29 shows 26 dog page sessions and 0 carts; fixing it is the fastest conversion win on the new traffic. Day 2 with no report.
+- Done when: a pass or fail per page with screenshots is in today's audit file and one fix proposal for the dog page.
 
 ## site-developer (Jenny)
-- Task 1: After Eden publishes 189322330332, check the 4 live files and the phone and desktop view of free-preview, the home proof view and the cart.
-- Task 2: First numbers for CA-20261028-01 (editor landings with ?from=ready-made) and article "Make yours" clicks (data-mba-cta), referred only.
-- Task 3: Build, unpublished, the "Order by December 15" bar from my idea file (`marketing/coordination/director/ideas/2026-10-29-order-by-dec15-bar.md`) once Eden approves P-growth-director-20261029-1; until then, only prepare the code in a draft file.
-- Why: free proof requests feed draft orders, article cards are the blog's only priced next step, and the delivery bar answers the gift buyer's first doubt.
-- Done when: the live check passes or a rollback note exists, the first test numbers are in the report, and the bar draft is ready.
+- Task 1: Prepare the dog page fix from Wilson's finding as a draft (do not apply without approval); until Wilson reports, check the dog page's first screen for the editor button and the proof line.
+- Task 2: Continue the "Order by December 15" bar draft; build only when P-growth-director-20261029-1 is approved and Eden has freed a theme slot.
+- Task 3: After Eden publishes 189322330332, check the 4 live files and phone and desktop view of free-preview, home proof and cart.
+- Why: the dog page brings visits but no carts; free proof requests feed draft orders.
+- Done when: the dog page draft or an "all fine" check is in the report, and the bar draft is ready.
 
 ## outreach-creator-scout (María Beatriz)
-- Task: Next Mac run (Mon Nov 2, 10:07): confirm whether Eden sent Niki Loheit's offer by hand; if not, and the clipboard is allowed, send the approved kit version (A-2026W44-034, 035) and confirm code NIKIBUILDSBRICKS at 10%. Open Anthony Mark Wood. If you run on another day without the Mac, write only a 5-line status.
-- Why: Niki is the only real creator in the queue; her code reaches a LEGO and family audience before Dec 15.
-- Done when: Niki is approved with the right message, or the report says exactly what blocked it.
+- Task: Next Mac run is Mon Nov 2, 10:07: confirm whether Eden sent Niki Loheit's offer by hand; if not, send the approved kit version (A-2026W44-034, 035) with code NIKIBUILDSBRICKS at 10%. Open Anthony Mark Wood. Without the Mac, write only a 5-line status.
+- Why: Niki's code reaches a LEGO and family audience before Dec 15.
+- Done when: Niki is approved with the right message, or the report says what blocked it.
