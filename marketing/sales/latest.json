@@ -1,27 +1,7 @@
 {
- "updated": "2026-10-29T08:30:00-04:00",
+ "updated": "2026-10-30T22:55:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
-  {
-   "date": "2026-08-27",
-   "orders": 1,
-   "netSales": 31.5
-  },
-  {
-   "date": "2026-08-28",
-   "orders": 2,
-   "netSales": 169.76
-  },
-  {
-   "date": "2026-08-29",
-   "orders": 6,
-   "netSales": 592.29
-  },
-  {
-   "date": "2026-08-30",
-   "orders": 2,
-   "netSales": 139.76
-  },
   {
    "date": "2026-08-31",
    "orders": 1,
@@ -316,6 +296,11 @@
    "date": "2026-10-28",
    "orders": 4,
    "netSales": 285.61
+  },
+  {
+   "date": "2026-10-29",
+   "orders": 4,
+   "netSales": 471.84
   }
  ],
  "lastYear": [
@@ -781,33 +766,34 @@
   }
  ],
  "funnel": {
-  "period": "Last 30 days to Oct 28 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Sep 29 to Oct 28 2025",
+  "period": "Last 30 days to Oct 29 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Sep 30 to Oct 29 2025",
   "now": {
-   "sessions": 2429,
-   "addedToCart": 149,
+   "sessions": 2439,
+   "addedToCart": 148,
    "reachedCheckout": 90,
-   "purchased": 40
+   "purchased": 38
   },
   "lastYear": {
-   "sessions": 4907,
-   "addedToCart": 414,
-   "reachedCheckout": 171,
+   "sessions": 4786,
+   "addedToCart": 410,
+   "reachedCheckout": 170,
    "purchased": 66
   }
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down 51%, add-to-cart rate lower",
-   "detail": "Referred sessions, last 30 days to Oct 28: 2,429 vs 4,907 last year (-50%). Add-to-cart rate 6.1% vs 8.4%; checkout-to-purchase 44% vs 39%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Purchases 40 vs 66. Direct sessions are bot-inflated and excluded.",
+   "title": "Referred traffic is down 49%, add-to-cart rate lower",
+   "detail": "Referred sessions, last 30 days to Oct 29: 2,439 vs 4,786 last year (-49%). Add-to-cart rate 6.1% vs 8.6%; checkout-to-purchase 42% vs 39%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Purchases 38 vs 66. The new /pages/dog-brick-mosaic got 26 referred sessions and 0 carts on Oct 29 (8 and 0 on Oct 28), so it brings visits but no carts yet. Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
-    "seo-strategist"
+    "seo-strategist",
+    "site-developer"
    ]
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 11 in the last 30 days vs 74 in the same 30 days last year (-85%, unchanged). Online Store 62 vs 111. Total 74 vs 187, so draft orders explain 63 of the 113 lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 12 in the last 30 days (Sep 30 to Oct 29) vs 64 in the same 30 days last year (-81%). Online Store 62 vs 109. Total 76 vs 175, so draft orders explain 52 of the 99 lost orders. One draft order on Oct 29. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
@@ -815,7 +801,7 @@
   },
   {
    "title": "Daily goal missed: orders and sales under pace all October",
-   "detail": "October 1 to 28: 72 orders and $8,179 net sales vs goal 140 and $15,400 (51% and 53%). Yesterday (Oct 28) 4 orders, $286 vs 5 and $550. Last 7 days (Oct 22 to 28): 14 orders, $1,165 vs goal 35 and $3,850. Last year Oct 1 to 28 had 163 orders. Black Friday goals (12 orders a day from Nov 16) are far above the current run rate of about 2.6 a day.",
+   "detail": "October 1 to 29: 76 orders and $8,651 net sales vs goal 145 and $15,950 (52% and 54%). Yesterday (Oct 29) 4 orders, $472 vs 5 and $550. Last 7 days (Oct 23 to 29): 16 orders, $1,522 vs goal 35 and $3,850. Last year Oct 1 to 29 had 168 orders. Black Friday goals (12 orders a day from Nov 16) are far above the current run rate of about 2.6 a day.",
    "owners": [
     "owner",
     "email-campaign-writer",
