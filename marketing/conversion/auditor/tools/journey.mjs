@@ -46,7 +46,13 @@ const step = async (name, fn, opts={}) => {
 const nav = async (url) => { for (let i=0;i<4;i++){ try { await page.goto(url, { waitUntil: 'load', timeout: 60000 }); return; } catch(e){ if (i==3 || !/TUNNEL|RESET|CLOSED/.test(e.message)) throw e; await page.waitForTimeout(3000); } } };
 const click = async (sel) => { const l = page.locator(sel).filter({ visible: true }).first(); await l.click({ timeout: 15000 }); };
 
-if (start === 'home') {
+if (start.startsWith('url:')) {
+  // Landing page walk: url:<full URL>. Finds the first editor link visible on the page and taps it.
+  const u = start.slice(4);
+  await step('landing', () => nav(u));
+  await step('landing-full', async () => {}, { full: true });
+  await step('landing-cta-to-editor', async () => { await Promise.all([page.waitForURL(/\/pages\/editor/, {timeout: 30000}), click('a[href*="/pages/editor"]')]); await page.waitForLoadState('load'); });
+} else if (start === 'home') {
   await step('home', () => nav('https://mymemobrick.com/'));
   await step('home-cta-to-editor', async () => { await Promise.all([page.waitForURL(/\/pages\/editor/, {timeout: 30000}), click('a[href^="/pages/editor"]')]); await page.waitForLoadState('load'); });
 } else {

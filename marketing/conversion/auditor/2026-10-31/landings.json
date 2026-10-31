@@ -1,0 +1,299 @@
+[
+ {
+  "dev": "phone",
+  "k": "calm",
+  "ms": 467,
+  "title": "Something went wrong",
+  "sw": 390,
+  "iw": 390,
+  "btns": [
+   "Refresh Page@205"
+  ],
+  "price": [],
+  "flags": {
+   "proof": false,
+   "dec15": false,
+   "reviews": false
+  }
+ },
+ {
+  "dev": "phone",
+  "k": "xmas",
+  "ms": 116,
+  "title": "Something went wrong",
+  "sw": 390,
+  "iw": 390,
+  "btns": [
+   "Refresh Page@205"
+  ],
+  "price": [],
+  "flags": {
+   "proof": false,
+   "dec15": false,
+   "reviews": false
+  }
+ },
+ {
+  "dev": "phone",
+  "k": "ready",
+  "ms": 3305,
+  "title": "Yin and Yang Brick Mosaic Kit 10x10 | Memobrick",
+  "sw": 390,
+  "iw": 390,
+  "btns": [
+   "Menu@19",
+   "Cart, 0 items@21",
+   "MEMOBRICK@127",
+   "★★★★★ 4.9 from 1,027 reviews@256",
+   "AS FEATURED IN@409",
+   "Show photo 1@818",
+   "Show photo 2@818",
+   "Buy now — $30.00@964",
+   "Want it with your own photo? Make yours @1025",
+   "Buy now@790",
+   "★★★★★ 4.9 from 1,027 reviews. Customers @4222",
+   "Show more reviews@5719",
+   "← Back to MemoBrick@5857",
+   "How it works@6123",
+   "Get My Free Proof@6123",
+   "Reviews@6123",
+   "Blog@6123",
+   "Business services@6163",
+   "Ready-made designs@6163",
+   "Frames@6163",
+   "Track your order@6203",
+   "Sizes@6203",
+   "Gift kit@6203",
+   "FAQs@6203",
+   "Corporate & bulk@6242",
+   "Contact@6242"
+  ],
+  "price": [
+   "$30.00",
+   "$30.00",
+   "$30.00"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": true,
+   "reviews": true
+  }
+ },
+ {
+  "dev": "phone",
+  "k": "dogutm",
+  "ms": 1853,
+  "title": "Custom Dog Brick Mosaic Kit | Your Dog in 1×1 Bricks | Memobrick",
+  "sw": 390,
+  "iw": 390,
+  "btns": [
+   "Menu@19",
+   "Cart, 0 items@21",
+   "Upload your dog's photo@587",
+   "Free design proof@813",
+   "Start a 16×16@1880",
+   "Start a 20×20@2092",
+   "Start a 30×30@2310",
+   "Read all reviews@3431",
+   "Get a free design proof@3649",
+   "See the Gift Kit@3866",
+   "Upload your dog's photo@4504",
+   "How it works@4879",
+   "Get My Free Proof@4879",
+   "Reviews@4879",
+   "Blog@4879",
+   "Business services@4919",
+   "Ready-made designs@4919",
+   "Frames@4919",
+   "Track your order@4959",
+   "Sizes@4959",
+   "Gift kit@4959",
+   "FAQs@4959",
+   "Corporate & bulk@4998",
+   "Contact@4998"
+  ],
+  "price": [
+   "$99.88",
+   "$69.88",
+   "$99.88",
+   "$209.99",
+   "$125",
+   "$35"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": true,
+   "reviews": true
+  }
+ },
+ {
+  "dev": "desktop",
+  "k": "calm",
+  "ms": 2043,
+  "title": "Calm Build Gift",
+  "sw": 1440,
+  "iw": 1440,
+  "btns": [
+   "Create@23",
+   "Let us design it@23",
+   "Ready-made designs@29",
+   "Frames@29",
+   "Corporate & bulk@23",
+   "Reviews@29",
+   "How it works@29",
+   "Create My MemoBrick@17",
+   "Cart, 0 items@21",
+   "MEMOBRICK@135",
+   "Download the free plan (PDF)@1552",
+   "Building a Brick Mosaic as a Calm, Share@2225",
+   "Make your 16×16 mosaic@2389",
+   "Send us a photo and get a free proof@2493",
+   "How it works@3352",
+   "Get My Free Proof@3352",
+   "Reviews@3352",
+   "Blog@3352",
+   "Business services@3352",
+   "Ready-made designs@3352",
+   "Frames@3352",
+   "Track your order@3352",
+   "Sizes@3352",
+   "Gift kit@3352",
+   "FAQs@3352",
+   "Corporate & bulk@3352",
+   "Contact@3352"
+  ],
+  "price": [
+   "$69.88",
+   "$49",
+   "$69.88"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": false,
+   "reviews": true
+  }
+ },
+ {
+  "dev": "desktop",
+  "k": "xmas",
+  "ms": 2117,
+  "title": "Last-Minute Personalized Christmas Gifts (Honest Dates)",
+  "sw": 1440,
+  "iw": 1440,
+  "btns": [
+   "Create@23",
+   "Let us design it@23",
+   "Ready-made designs@29",
+   "Frames@29",
+   "Corporate & bulk@23",
+   "Reviews@29",
+   "How it works@29",
+   "Create My MemoBrick@17",
+   "Cart, 0 items@21",
+   "MEMOBRICK@112",
+   "NEWS@112",
+   "★★★★★ 4.9 from 1,027 reviews@248",
+   "Free design proof@1022",
+   "Too late? Gift Kit@1030",
+   "A finished mosaic. Frame sold separately@1417",
+   "Upload my photo@1556",
+   "Get a free design proof@1556",
+   "editor@2179",
+   "Art Gift Kit@2457",
+   "Memobrick gift card@3153",
+   "free proof@3564",
+   "brick mosaic size guide@4047",
+   "personalized Christmas gifts to order no@4413",
+   "Upload it in the editor and see your cus@5399",
+   "personalized Christmas photo gifts for e@5497",
+   "a gift for the person who has everything@5497",
+   "all kit sizes@5527",
+   "‹@6360",
+   "›@6360",
+   "Read all reviews@6367"
+  ],
+  "price": [
+   "$35",
+   "$99.88",
+   "$35.00",
+   "$35.00",
+   "$69.88",
+   "$99.88"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": true,
+   "reviews": true
+  }
+ },
+ {
+  "dev": "desktop",
+  "k": "ready",
+  "ms": 105,
+  "title": "Something went wrong",
+  "sw": 1440,
+  "iw": 1440,
+  "btns": [
+   "Refresh Page@471"
+  ],
+  "price": [],
+  "flags": {
+   "proof": false,
+   "dec15": false,
+   "reviews": false
+  }
+ },
+ {
+  "dev": "desktop",
+  "k": "dogutm",
+  "ms": 1343,
+  "title": "Custom Dog Brick Mosaic Kit | Your Dog in 1×1 Bricks | Memobrick",
+  "sw": 1440,
+  "iw": 1440,
+  "btns": [
+   "Create@23",
+   "Let us design it@23",
+   "Ready-made designs@29",
+   "Frames@29",
+   "Corporate & bulk@23",
+   "Reviews@29",
+   "How it works@29",
+   "Create My MemoBrick@17",
+   "Cart, 0 items@21",
+   "Upload your dog's photo@458",
+   "Free design proof@789",
+   "Start a 16×16@1356",
+   "Start a 20×20@1349",
+   "Start a 30×30@1356",
+   "Read all reviews@1889",
+   "Get a free design proof@2083",
+   "See the Gift Kit@2061",
+   "Upload your dog's photo@2687",
+   "How it works@3018",
+   "Get My Free Proof@3018",
+   "Reviews@3018",
+   "Blog@3018",
+   "Business services@3018",
+   "Ready-made designs@3018",
+   "Frames@3018",
+   "Track your order@3018",
+   "Sizes@3018",
+   "Gift kit@3018",
+   "FAQs@3018",
+   "Corporate & bulk@3018"
+  ],
+  "price": [
+   "$99.88",
+   "$69.88",
+   "$99.88",
+   "$209.99",
+   "$125",
+   "$35"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": true,
+   "reviews": true
+  }
+ }
+]
