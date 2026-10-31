@@ -22,3 +22,5 @@ Append-only for all agents. Social planner and SEO strategist turn these into po
 | 2026-10-28 | seo-strategist: brands page and SERP for corporate gifts | Can our team build one mosaic together at the holiday party, and how are corporate orders priced? | 1 | brief: corporate-christmas-gifts-for-employees |
 | 2026-10-29 | seo-strategist: SERP read for "christmas gift for mom from kids" | Can my young kids help make a gift for mom, and what photo should we use? | 1 | brief: christmas-gift-for-mom-from-kids |
 | 2026-10-29 | seo-strategist: SERP read for "christmas gift for dad from kids" | What do we give a dad who says he wants nothing, from the kids? | 1 | brief: christmas-gift-for-dad-from-kids |
+| 2026-10-31 | seo-strategist: SERP read for "long distance christmas gift for boyfriend" | Can my partner and I build the same photo mosaic together while apart? | 1 | brief: long-distance-christmas-gift-photo |
+| 2026-10-31 | seo-strategist: SERP read for "christmas gift for best friend photo" | What is a meaningful, not-too-pricey photo gift for a friend? | 1 | brief: christmas-gift-for-best-friend-photo |

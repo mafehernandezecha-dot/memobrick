@@ -23,8 +23,10 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | 11 | [personalized-anniversary-gifts](briefs/personalized-anniversary-gifts.md) | personalized anniversary gift from photo | Couples | hub | 2027-01-11 | plan-2027 #3: parent page for all couples posts before Valentine's | ready |
 | 12 | [christmas-gift-for-mom-from-kids](briefs/christmas-gift-for-mom-from-kids.md) | christmas gift for mom from kids | Christmas / Family | article | 2026-11-19 | Kids-as-givers angle, no page targets it; mom is a top gift recipient | ready |
 | 13 | [christmas-gift-for-dad-from-kids](briefs/christmas-gift-for-dad-from-kids.md) | christmas gift for dad from kids | Christmas / Family | article | 2026-11-19 | Pair to the mom article; "dad who wants nothing" intent | ready |
+| 14 | [long-distance-christmas-gift-photo](briefs/long-distance-christmas-gift-photo.md) | long distance christmas gift for boyfriend or girlfriend | Christmas / Couples | article | 2026-11-23 | Couples buy bigger sizes; apart-at-Christmas intent has no page | ready |
+| 15 | [christmas-gift-for-best-friend-photo](briefs/christmas-gift-for-best-friend-photo.md) | christmas gift for best friend photo | Christmas / Family | article | 2026-11-23 | Mid-price friend gifting; no page targets friends | ready |
 
-Ready count: 13.
+Ready count: 14 (rows 2 to 15; row 1 is taken). Updated 2026-10-31.
 
 Note 2026-10-29: the task-board request for a "ready by Christmas / last order date" brief is covered by the live `last-minute-personalized-christmas-gifts` article; no new brief (would duplicate). New-dog-owner and pet-loss angles are covered by the dog-lovers brief and `pet-memorial-gift-improve-blog-memorial`.
 
