@@ -14,6 +14,8 @@ People who start checkout with their own design already want it. They leave beca
 
 Baseline (2026-09-28 to 2026-10-27, Omnisend): 64 sent, 3 unique clicks (about 5%), 0 attributed orders, 0 unsubscribes, 0 complaints.
 
+Update 2026-10-30 (Omnisend, 2026-09-28 to 10-30): block 59841a953e40551380000002 now shows 76 sent, 4 unique clicks, 1 attributed order ($281.67), 0 unsubscribes, 0 complaints. Use 76 sent and 1 order as the baseline. Re-proposed in the standard format as P-email-flow-optimizer-20261030-1.
+
 ## The one variable
 
 The content of the email below the headline: the live trust blocks (ratings line, "As seen on Fox News, NBC and Yahoo", three promise tiles, named quote) against the clean, designed version. Kept the same in both: send timing, sender, the personalized saved-design image block, the checkout link, the footer.
