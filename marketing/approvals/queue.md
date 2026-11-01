@@ -25,6 +25,16 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W44-050
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ads
+- Draft: marketing/analytics/ads-analyst/changes/meta-proven-winners-2026-11-01.md
+- Reason: New paused "Proven Winners" campaign ($40/day, the 2 copyable ads with the cheapest purchases, winner interests, past customers excluded) and Christmas cut from $60 to $20/day; ALWAYON stays $20; total stays $80/day. Built paused, spends nothing until approved.
+- Expires: 2026-11-08
+- Status: pending
+- From: Eden in chat 2026-11-01: "The idea is to bring more sales", "Can we scale always on?", "Create a profitable campaign"
+
 ## A-2026W44-049
 - Agent: social-planner
 - Executor: social-publisher
