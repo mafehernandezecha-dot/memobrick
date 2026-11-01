@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: christmas gifts for dog lovers
 Hub: Pets (and Christmas)
 Page type: article

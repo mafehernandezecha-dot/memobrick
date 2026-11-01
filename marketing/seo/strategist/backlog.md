@@ -11,7 +11,7 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | # | Brief | Target keyword | Hub | Type | Publish by | Why it sells | Status |
 |---|---|---|---|---|---|---|---|
 | 1 | [personalized-stocking-stuffers](briefs/personalized-stocking-stuffers.md) | personalized stocking stuffers | Christmas | article | 2026-11-12 | Low-price entry ($35 one-face kit, $35 Gift Kit, gift cards from $10) for Black Friday weekend shoppers; no page targets small budgets | drafted (draft exists 2026-11-01) |
-| 2 | [christmas-gifts-for-dog-lovers](briefs/christmas-gifts-for-dog-lovers.md) | christmas gifts for dog lovers | Pets / Christmas | article | 2026-11-16 | Pet buyers are a core audience; feeds the live dog page (Meta dog ad) from search | ready |
+| 2 | [christmas-gifts-for-dog-lovers](briefs/christmas-gifts-for-dog-lovers.md) | christmas gifts for dog lovers | Pets / Christmas | article | 2026-11-16 | Pet buyers are a core audience; feeds the live dog page (Meta dog ad) from search | drafted (draft exists 2026-11-01) |
 | 3 | [photo-christmas-gift-for-husband](briefs/photo-christmas-gift-for-husband.md) | christmas gift for husband photo | Christmas | article | 2026-11-16 | Partners buy late and buy bigger sizes; the wife article is live, "for him" has no page | ready |
 | 4 | [babys-first-christmas-gift](briefs/babys-first-christmas-gift.md) | baby's first christmas gift | Kids / Christmas | article | 2026-11-19 | New grandparents buy with high intent; baby article is evergreen, no Christmas page | ready |
 | 5 | [christmas-gift-in-memory-of-a-loved-one](briefs/christmas-gift-in-memory-of-a-loved-one.md) | christmas gift in memory of a loved one | Memorial / Christmas | article | 2026-11-19 | Strong emotional intent, family-photo sizes; only a pet-loss page exists | ready |
@@ -26,7 +26,7 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | 14 | [long-distance-christmas-gift-photo](briefs/long-distance-christmas-gift-photo.md) | long distance christmas gift for boyfriend or girlfriend | Christmas / Couples | article | 2026-11-23 | Couples buy bigger sizes; apart-at-Christmas intent has no page | ready |
 | 15 | [christmas-gift-for-best-friend-photo](briefs/christmas-gift-for-best-friend-photo.md) | christmas gift for best friend photo | Christmas / Family | article | 2026-11-23 | Mid-price friend gifting; no page targets friends | ready |
 
-Ready count: 13 (rows 2 to 11 and 13 to 15; rows 1 and 12 drafted). Checked 2026-11-01, no new briefs needed (10 minimum met). No new buyer questions since 2026-10-31.
+Ready count: 12 (rows 3 to 11 and 13 to 15; rows 1, 2 and 12 drafted). Checked 2026-11-01, no new briefs needed (10 minimum met). No new buyer questions since 2026-10-31.
 
 Note 2026-10-29: the task-board request for a "ready by Christmas / last order date" brief is covered by the live `last-minute-personalized-christmas-gifts` article; no new brief (would duplicate). New-dog-owner and pet-loss angles are covered by the dog-lovers brief and `pet-memorial-gift-improve-blog-memorial`.
 
