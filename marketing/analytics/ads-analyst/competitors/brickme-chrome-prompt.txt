@@ -1,0 +1,15 @@
+Read-only research task. Do not click any ad links, do not like, comment, follow or message anyone, and do not log in to anything new.
+
+1. Open this page (Brick Me's active US ads, sorted by most impressions):
+https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&is_targeted_country=false&media_type=all&search_type=page&sort_data[direction]=desc&sort_data[mode]=total_impressions&view_all_page_id=109585607582896
+2. Check the sort says "Impressions: high to low". If not, set it.
+3. For the first 10 ads on the page, in order, write down:
+   - position (1 to 10) and the Library ID
+   - "Started running on" date
+   - how many ads use this creative ("X ads use this creative and text"), if shown
+   - format: photo, video or carousel
+   - the full primary text, the headline and the button text
+   - what the picture or video shows, in 2 or 3 sentences (for videos, describe the first 3 seconds closely)
+   - any price, discount, code or deadline shown
+4. Take one screenshot of each of the 10 ads.
+5. Save everything in one note titled "Brick Me top 10 US ads <today's date>" and show it to me when done.
