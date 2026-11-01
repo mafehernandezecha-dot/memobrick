@@ -1,12 +1,7 @@
 {
- "updated": "2026-10-30T22:55:00-04:00",
+ "updated": "2026-11-01T02:55:00-04:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
-  {
-   "date": "2026-08-31",
-   "orders": 1,
-   "netSales": 92.9
-  },
   {
    "date": "2026-09-01",
    "orders": 2,
@@ -301,6 +296,11 @@
    "date": "2026-10-29",
    "orders": 4,
    "netSales": 471.84
+  },
+  {
+   "date": "2026-10-30",
+   "orders": 3,
+   "netSales": 238.79
   }
  ],
  "lastYear": [
@@ -766,24 +766,78 @@
   }
  ],
  "funnel": {
-  "period": "Last 30 days to Oct 29 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Sep 30 to Oct 29 2025",
+  "period": "Oct 1 to Oct 30 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 1 to Oct 30 2025",
   "now": {
-   "sessions": 2439,
-   "addedToCart": 148,
-   "reachedCheckout": 90,
-   "purchased": 38
+   "sessions": 2472,
+   "addedToCart": 150,
+   "reachedCheckout": 93,
+   "purchased": 41
   },
   "lastYear": {
-   "sessions": 4786,
-   "addedToCart": 410,
-   "reachedCheckout": 170,
-   "purchased": 66
+   "sessions": 4771,
+   "addedToCart": 409,
+   "reachedCheckout": 169,
+   "purchased": 65
+  },
+  "launch": {
+   "period": "Referred sessions by landing page, Oct 28 to 30 2026 (day 1 to 3)",
+   "dogBrickMosaic": [
+    {
+     "date": "2026-10-28",
+     "sessions": 8,
+     "carts": 0
+    },
+    {
+     "date": "2026-10-29",
+     "sessions": 26,
+     "carts": 0
+    },
+    {
+     "date": "2026-10-30",
+     "sessions": 17,
+     "carts": 0
+    }
+   ],
+   "calmBuildGift": "no referred sessions landed on it in Oct 28 to 30",
+   "newArticles": "no referred sessions landed on any /blogs/ path in Oct 28 to 30",
+   "siteReferred": [
+    {
+     "date": "2026-10-28",
+     "sessions": 80,
+     "carts": 9
+    },
+    {
+     "date": "2026-10-29",
+     "sessions": 99,
+     "carts": 6
+    },
+    {
+     "date": "2026-10-30",
+     "sessions": 86,
+     "carts": 5
+    }
+   ],
+   "draftOrders": [
+    {
+     "date": "2026-10-28",
+     "orders": 0
+    },
+    {
+     "date": "2026-10-29",
+     "orders": 1
+    },
+    {
+     "date": "2026-10-30",
+     "orders": 0
+    }
+   ],
+   "unknown": "Which ad or post sent each dog page visit (ShopifyQL has no UTM)."
   }
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down 49%, add-to-cart rate lower",
-   "detail": "Referred sessions, last 30 days to Oct 29: 2,439 vs 4,786 last year (-49%). Add-to-cart rate 6.1% vs 8.6%; checkout-to-purchase 42% vs 39%, so visitors who reach checkout do buy; the problem is volume of qualified visitors. Purchases 38 vs 66. The new /pages/dog-brick-mosaic got 26 referred sessions and 0 carts on Oct 29 (8 and 0 on Oct 28), so it brings visits but no carts yet. Direct sessions are bot-inflated and excluded.",
+   "title": "Referred traffic is down 48% and add-to-cart rate is lower",
+   "detail": "Oct 1 to 30: 2,472 referred sessions vs 4,771 last year (-48%). Add-to-cart rate 6.1% vs 8.6%; checkout-to-purchase 44% vs 38%, so people who reach checkout do buy; the problem is volume of qualified visitors. Purchases 41 vs 65. The new /pages/dog-brick-mosaic has 51 referred sessions and 0 carts over three days (8, 26, 17), against the site's 6.1% average (about 3 carts expected at that rate; small sample, but the trend is flat zero). Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -793,7 +847,7 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 12 in the last 30 days (Sep 30 to Oct 29) vs 64 in the same 30 days last year (-81%). Online Store 62 vs 109. Total 76 vs 175, so draft orders explain 52 of the 99 lost orders. One draft order on Oct 29. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 12 in Oct 1 to 30 vs 60 in the same days last year (-80%). Online Store 65 vs 111. Total 79 vs 173, so draft orders explain 48 of the 94 lost orders. One draft order Oct 28 to 30 (Oct 29). Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
@@ -801,7 +855,7 @@
   },
   {
    "title": "Daily goal missed: orders and sales under pace all October",
-   "detail": "October 1 to 29: 76 orders and $8,651 net sales vs goal 145 and $15,950 (52% and 54%). Yesterday (Oct 29) 4 orders, $472 vs 5 and $550. Last 7 days (Oct 23 to 29): 16 orders, $1,522 vs goal 35 and $3,850. Last year Oct 1 to 29 had 168 orders. Black Friday goals (12 orders a day from Nov 16) are far above the current run rate of about 2.6 a day.",
+   "detail": "Oct 1 to 30: 79 orders and $8,890 net sales vs goal 150 and $16,500 (53% and 54%). Yesterday (Oct 30) 3 orders, $239 vs 5 and $550. Last 7 days (Oct 24 to 30): 16 orders, $1,457 vs goal 35 and $3,850. Last year Oct 1 to 30 had 173 orders. Black Friday goals (12 orders a day from Nov 16) are far above the current run rate of about 2.6 a day.",
    "owners": [
     "owner",
     "email-campaign-writer",
