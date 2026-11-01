@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/christmas-gifts-for-dog-lovers.md
 Title: Christmas Gifts for Dog Lovers: Their Dog in Bricks
 Meta description: Christmas gifts for dog lovers: turn a photo of their dog into a custom brick mosaic kit they build and hang. From $35. Order by Dec 15.
