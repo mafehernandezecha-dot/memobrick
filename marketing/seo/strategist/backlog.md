@@ -10,7 +10,7 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 
 | # | Brief | Target keyword | Hub | Type | Publish by | Why it sells | Status |
 |---|---|---|---|---|---|---|---|
-| 1 | [personalized-stocking-stuffers](briefs/personalized-stocking-stuffers.md) | personalized stocking stuffers | Christmas | article | 2026-11-12 | Low-price entry ($35 one-face kit, $35 Gift Kit, gift cards from $10) for Black Friday weekend shoppers; no page targets small budgets | taken 2026-10-29 |
+| 1 | [personalized-stocking-stuffers](briefs/personalized-stocking-stuffers.md) | personalized stocking stuffers | Christmas | article | 2026-11-12 | Low-price entry ($35 one-face kit, $35 Gift Kit, gift cards from $10) for Black Friday weekend shoppers; no page targets small budgets | drafted (draft exists 2026-11-01) |
 | 2 | [christmas-gifts-for-dog-lovers](briefs/christmas-gifts-for-dog-lovers.md) | christmas gifts for dog lovers | Pets / Christmas | article | 2026-11-16 | Pet buyers are a core audience; feeds the live dog page (Meta dog ad) from search | ready |
 | 3 | [photo-christmas-gift-for-husband](briefs/photo-christmas-gift-for-husband.md) | christmas gift for husband photo | Christmas | article | 2026-11-16 | Partners buy late and buy bigger sizes; the wife article is live, "for him" has no page | ready |
 | 4 | [babys-first-christmas-gift](briefs/babys-first-christmas-gift.md) | baby's first christmas gift | Kids / Christmas | article | 2026-11-19 | New grandparents buy with high intent; baby article is evergreen, no Christmas page | ready |
@@ -21,12 +21,12 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | 9 | [personalized-valentines-day-gift-upgrade](briefs/personalized-valentines-day-gift-upgrade.md) | personalized valentine's day gift | Couples | improve (GemPages: Eden) | 2026-12-21 | plan-2027 #1: existing post has no H1, no description, broken title | ready |
 | 10 | [valentines-day-gift-for-boyfriend-photo](briefs/valentines-day-gift-for-boyfriend-photo.md) | valentine's day gift for boyfriend | Couples | article | 2027-01-04 | plan-2027 #2: "for him" Valentine's gap | ready |
 | 11 | [personalized-anniversary-gifts](briefs/personalized-anniversary-gifts.md) | personalized anniversary gift from photo | Couples | hub | 2027-01-11 | plan-2027 #3: parent page for all couples posts before Valentine's | ready |
-| 12 | [christmas-gift-for-mom-from-kids](briefs/christmas-gift-for-mom-from-kids.md) | christmas gift for mom from kids | Christmas / Family | article | 2026-11-19 | Kids-as-givers angle, no page targets it; mom is a top gift recipient | taken 2026-10-31 |
+| 12 | [christmas-gift-for-mom-from-kids](briefs/christmas-gift-for-mom-from-kids.md) | christmas gift for mom from kids | Christmas / Family | article | 2026-11-19 | Kids-as-givers angle, no page targets it; mom is a top gift recipient | drafted (draft exists 2026-11-01) |
 | 13 | [christmas-gift-for-dad-from-kids](briefs/christmas-gift-for-dad-from-kids.md) | christmas gift for dad from kids | Christmas / Family | article | 2026-11-19 | Pair to the mom article; "dad who wants nothing" intent | ready |
 | 14 | [long-distance-christmas-gift-photo](briefs/long-distance-christmas-gift-photo.md) | long distance christmas gift for boyfriend or girlfriend | Christmas / Couples | article | 2026-11-23 | Couples buy bigger sizes; apart-at-Christmas intent has no page | ready |
 | 15 | [christmas-gift-for-best-friend-photo](briefs/christmas-gift-for-best-friend-photo.md) | christmas gift for best friend photo | Christmas / Family | article | 2026-11-23 | Mid-price friend gifting; no page targets friends | ready |
 
-Ready count: 14 (rows 2 to 15; row 1 is taken). Updated 2026-10-31.
+Ready count: 13 (rows 2 to 11 and 13 to 15; rows 1 and 12 drafted). Checked 2026-11-01, no new briefs needed (10 minimum met). No new buyer questions since 2026-10-31.
 
 Note 2026-10-29: the task-board request for a "ready by Christmas / last order date" brief is covered by the live `last-minute-personalized-christmas-gifts` article; no new brief (would duplicate). New-dog-owner and pet-loss angles are covered by the dog-lovers brief and `pet-memorial-gift-improve-blog-memorial`.
 
