@@ -154,3 +154,26 @@ All in `marketing/social/planner/brickme-style-ads-2026-11-01/`: `A1-look-closer
 1. Eden: turn link sharing back on for "footage memobrick" (Anyone with the link, Viewer).
 2. Hugo: review the 7 big files, cut A4 and A5 from the originals, and make 9:16 versions of A1 to A3.
 3. Hand off to the ads analyst to propose them as one Meta test (same text, video-only variations, like Brick Me) through the approvals process.
+
+## v2 rough cuts (after Eden: "the ad is boring")
+
+Same cleared footage. Real product only (real built kits, plus the MemoBrick Studio preview of the couple's real selfie), no AI, no interpolation, no warping. Built by `brickme-style-ads-2026-11-01/cuts_v2.py`.
+
+What changed in all three:
+- The payoff or a face in frame 1, with a big curiosity hook.
+- Cuts every 0.5 to 1.1 s, on the beat of an upbeat original track (`add-music.sh playful`, 112 bpm).
+- Punch-in zooms on every shot. These are crops of the frame's own shape, scaled evenly.
+- White flashes between the photo and the bricks.
+- Big 72 to 90 px dark-on-white caption cards, 2 to 4 words, a new one every cut.
+- The fill timelapse sped up to 2.7 s, mid-ad.
+- A bright 1.5 s end card: "See your photo in bricks", "Free preview" pill, mymemobrick.com.
+- 10.3 to 10.6 s each.
+
+| File | What changed |
+|---|---|
+| `A3-pet-bricks-first-4x5-v2.mp4` (best) | Opens on the woman hugging her real pink dog ("Her dog... in bricks?"), then the framed mosaic ("Yes. Real bricks."). Flash, then rewinds into the build: color map, bags, macro presses, the shih tzu. Back to the wall and the real dog. |
+| `A3-pet-bricks-first-9x16-v2.mp4` | The same edit in 9:16 for Reels and Stories. The zoom is anchored on the old caption band, so the caption cards always cover it (checked on the first and last frame of every shot). |
+| `A2-family-build-at-home-4x5-v2.mp4` | A hard punch-in on the creator smiling with her family mosaic ("Their family photo..." / "...in 1×1 bricks"), card placed above her face. Then "How? A kit", the build, the fast fill and back to her. |
+| `A1-look-closer-fill-4x5-v2.mp4` | Now a clear transformation: their finished mosaic ("This was a selfie"), the real selfie, the Studio preview of it (flash), the fill at 3.6×, the build, their mosaic again, "Look closer". It's no longer about 70% one static shot. |
+
+Each has a `-sheet.png` contact sheet. Captions describe what is on screen. There are no quotes and no numbers.
