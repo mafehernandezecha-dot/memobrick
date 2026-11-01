@@ -2,7 +2,7 @@
 
 Started 2026-10-28. Found with public web search only: Facebook itself cannot be opened from the agent session, so names, links and sizes come from third-party directories and organization pages and may be out of date. Group rules are usually visible only to members. Where a rule is not quoted below, it says **rules unknown: owner to check before posting**. When the owner opens a group, paste its rules (or a screenshot's text) into the Rules column and I will keep it updated.
 
-Target: 40 groups, 5 new a day. Now: 32 (5 added 2026-10-29, rows 28 to 32). Posts for every row are in `2026-10-28-posts-v2.md` (rows 1, 2, 7, 10, 20) and `2026-10-29-posts.md` (all other rows).
+Target: 40 groups, 5 new a day. Now: 33 (5 added 2026-10-29, rows 28 to 32; 1 added 2026-11-01, row 33). Posts for every row are in `2026-10-28-posts-v2.md` (rows 1, 2, 7, 10, 20) and `2026-10-29-posts.md` (all other rows).
 
 Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (rules checked by owner and allow it), `skip` (rules ban promotion or no fit).
 
@@ -40,6 +40,7 @@ Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (ru
 | 30 | Grandkids R Amazing | https://www.facebook.com/grandkidsramazing/ | about 441K followers (Page, not a group) | grandparents | A Page: no post possible | none | never | | skip unless a share thread appears | same search |
 | 31 | Grandparents and Grandkids | https://www.facebook.com/grandparents.grandkids/ | unknown (Page) | grandparents | A Page: no post possible | none | never | | skip unless a share thread appears | same search |
 | 32 | Christmas Gifts | https://www.facebook.com/ChristmasGifts/ | about 8,700 likes (old figure; may be inactive) | gift ideas | A Page, probably inactive: no post | none | never | | skip | search result for Christmas gift ideas |
+| 33 | BayLUG (Bay Area LEGO User Group) | unknown (search Facebook: "BayLUG") | unknown | adult LEGO and brick fans, San Francisco Bay Area, all ages | rules unknown: owner to check before posting; builder club, may not welcome non-LEGO bricks | unknown | never | | candidate | https://makerfaire.com/maker/entry/77949 (the Facebook group itself is not confirmed) |
 
 ## Notes for the owner
 
@@ -50,3 +51,4 @@ Status values: `candidate` (found, not vetted on Facebook yet), `ok to post` (ru
 - Next runs: 5 new groups a day (topics still thin: gift ideas and Christmas shopping, grandparents, adult brick fans with "share your build" threads, Miami local).
 - 2026-10-29 pass: web search finds almost no named Facebook groups for gift ideas or grandparents, only Pages (rows 29 to 32) and one matching group (row 28). None is postable. **Eden: please paste the names (or links) of any gift-ideas, grandparent, dog or Christmas groups you are already a member of.** Groups you belong to beat any I can find from here, and I will write a post for each.
 - Posting order and a result column for the approved posts: `2026-10-29-posting-sheet.md`.
+- 2026-11-01 pass: two more searches (gift ideas and Christmas shopping groups, brick art groups) found no named Facebook group to vet, only features and non-Facebook clubs. One lead added (row 33). No results from Eden recorded yet, so every Last posted is still never. Sheet for Nov 2: `2026-11-01-posting-sheet.md`.
