@@ -14,3 +14,9 @@ Proposed changes on approval:
 Total stays $80/day.
 
 Rules after launch: no edits for 3 days. Every 3 days: under $50 per purchase, raise that campaign 20%; over $70 per purchase after $150 spent, cut it 20% or pause. Shopify orders are checked alongside Meta counts.
+
+## Applied 2026-11-01 (Eden: "approve 050")
+- Proven Winners 120252873643310597: ACTIVE, $40/day; ads WIN | anniversary and WIN | Dog_vid in Meta review.
+- Christmas 120252787078920597: $20/day. Meta paused it on the budget edit; reactivated at once, in review.
+- ALWAYON: $20/day, untouched. Total $80/day.
+- First check: Nov 4. No edits before then.

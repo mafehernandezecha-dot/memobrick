@@ -32,8 +32,9 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Draft: marketing/analytics/ads-analyst/changes/meta-proven-winners-2026-11-01.md
 - Reason: New paused "Proven Winners" campaign ($40/day, the 2 copyable ads with the cheapest purchases, winner interests, past customers excluded) and Christmas cut from $60 to $20/day; ALWAYON stays $20; total stays $80/day. Built paused, spends nothing until approved.
 - Expires: 2026-11-08
-- Status: pending
+- Status: approved
 - From: Eden in chat 2026-11-01: "The idea is to bring more sales", "Can we scale always on?", "Create a profitable campaign"
+- Note (2026-11-01): Eden approved in chat: "approve 050". Applied: Proven Winners campaign, ad set and both ads ACTIVE at $40/day (in Meta review); Christmas daily budget $60 to $20 (Meta's budget edit paused the campaign, turned back on right away, in review); ALWAYON unchanged at $20. MEN and FAM BLUE not added (Eden did not ask yet).
 
 ## A-2026W44-049
 - Agent: social-planner
