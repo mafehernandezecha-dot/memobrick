@@ -25,6 +25,16 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W45-051
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ads
+- Draft: marketing/analytics/ads-analyst/changes/meta-pet-voice-ad-2026-11-02.md
+- Reason: Add the new pet video with voice-over (feed + Reels sizes) as a third ad in Proven Winners; budget unchanged at $40/day; turned off if no add to cart after $25.
+- Expires: 2026-11-09
+- Status: pending
+- From: Eden in chat 2026-11-02 after reviewing the video: "ok it looks good"
+
 ## A-2026W44-050
 - Agent: ads-analyst
 - Executor: ads-analyst
