@@ -38,6 +38,14 @@ KEY = {
     'She built it': 'built',
     'Now it hangs next to the real one': 'real one',
     'Want to see yours?': 'yours?',
+    'She turned her dog into art': 'art',
+    'A portrait made of tiny bricks': 'tiny bricks',
+    'Every piece placed by hand': 'by hand',
+    'It starts with your favorite photo': 'favorite photo',
+    'We send a kit, sorted by color': 'sorted by color',
+    'You build it at home': 'at home',
+    'Then hang it on your wall': 'your wall',
+    'Want one of your pet?': 'your pet?',
 }
 
 
@@ -51,19 +59,24 @@ def wrap(text, f, maxw, d):
     return [' '.join(w[:best]), ' '.join(w[best:])]
 
 
-def caption_layer(size, text, cy, min_w=0, min_h=0, px=76):
+def caption_layer(size, text, cy, min_w=0, min_h=0, px=76, light=False):
     W, H = size
     f = c2.font(px)
     d0 = ImageDraw.Draw(Image.new('RGB', (10, 10)))
     lines = wrap(text, f, 640, d0)
     lh = round(px * 1.25)
     tw = max(d0.textlength(l, font=f) for l in lines)
-    cw, ch = max(tw + 96, min_w), max(len(lines) * lh + 64, min_h)
+    pad_w, pad_h = (64, 40) if light else (96, 64)
+    cw, ch = max(tw + pad_w, min_w), max(len(lines) * lh + pad_h, min_h)
     box = (W / 2 - cw / 2, cy - ch / 2, W / 2 + cw / 2, cy + ch / 2)
     layer = Image.new('RGBA', size, (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
-    d.rounded_rectangle((box[0] + 6, box[1] + 10, box[2] + 6, box[3] + 10), radius=30, fill=(0, 0, 0, 70))
-    d.rounded_rectangle(box, radius=30, fill=(255, 255, 255, 255))
+    if light:   # Meta: don't obstruct the visuals. Smaller see-through card, white text
+        d.rounded_rectangle(box, radius=26, fill=(20, 20, 20, 150))
+    else:
+        d.rounded_rectangle((box[0] + 6, box[1] + 10, box[2] + 6, box[3] + 10), radius=30, fill=(0, 0, 0, 70))
+        d.rounded_rectangle(box, radius=30, fill=(255, 255, 255, 255))
+    ink, key_col = ((255, 255, 255), (255, 150, 132)) if light else (c2.INK, c2.CORAL)
     key = KEY.get(text, '')
     kstart = text.find(key) if key else -1
     kend = kstart + len(key)
@@ -74,7 +87,7 @@ def caption_layer(size, text, cy, min_w=0, min_h=0, px=76):
         start = text.find(line, pos)
         for i, ch_ in enumerate(line):
             gi = start + i
-            col = c2.CORAL if kstart <= gi < kend else c2.INK
+            col = key_col if kstart <= gi < kend else ink
             d.text((x, y), ch_, font=f, fill=col, anchor='lm')
             x += d.textlength(line[:i + 1], font=f) - d.textlength(line[:i], font=f)
         pos = start + len(line)
@@ -90,11 +103,9 @@ def apply(frames, layer):
 
 
 def endcard(img, n, size):
-    """Bright end card. In 9:16 all text stays above 65% of the height (Reels UI)."""
-    if size[1] < 1500:
-        return c2.endcard(img, n, size)
+    """Bright end card. 9:16: all text above 65% of the height (Reels UI). 4:5: all text above ~78%, bottom edge free."""
     W, H = size
-    side, top = 640, 290
+    side, top = (580, 130) if H < 1500 else (640, 290)
     im = img.copy()
     s = max(side / im.width, side / im.height)
     im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
@@ -105,12 +116,12 @@ def endcard(img, n, size):
     ImageDraw.Draw(mask).rounded_rectangle((0, 0, side - 1, side - 1), 24, fill=255)
     base.paste(im, ((W - side) // 2, top), mask)
     d = ImageDraw.Draw(base)
-    y = top + side + 80
+    y = top + side + (70 if H < 1500 else 80)
     d.text((W / 2, y), 'See your photo in bricks', font=c2.font(76), fill=c2.INK, anchor='mm')
-    pf = c2.font(64); pw = d.textlength('Free preview', font=pf); py = y + 125
+    pf = c2.font(64); pw = d.textlength('Free preview', font=pf); py = y + (115 if H < 1500 else 125)
     d.rounded_rectangle((W / 2 - pw / 2 - 56, py - 54, W / 2 + pw / 2 + 56, py + 54), radius=54, fill=c2.CORAL)
     d.text((W / 2, py), 'Free preview', font=pf, fill=(255, 255, 255), anchor='mm')
-    d.text((W / 2, py + 100), 'mymemobrick.com', font=c2.font(50), fill=(70, 70, 70), anchor='mm')
+    d.text((W / 2, py + (95 if H < 1500 else 100)), 'mymemobrick.com', font=c2.font(50), fill=(70, 70, 70), anchor='mm')
     return c2.zoom([base] * n, 1.0, 1.03)
 
 
@@ -127,7 +138,7 @@ def build(vo, size):
         cap = lambda t: caption_layer(size, t, cy=420, min_w=820, min_h=290)
     else:
         Z = c2.zoom
-        cap = lambda t: caption_layer(size, t, cy=330)
+        cap = lambda t: caption_layer(size, t, cy=300, px=64, light=True)
     vid = lambda ss, n, y=470: c2.video(PET, ss, n, win(y), size)
 
     def split(n, a):   # first part a of n frames
