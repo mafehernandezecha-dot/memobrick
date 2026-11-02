@@ -24,3 +24,9 @@ Test rule: if it has no add to cart after $25 spent, it is turned off. Under $50
 
 ## 2026-11-02: approved, upload blocked
 Eden: "approve 051". Meta needs the video at a public link or a file picker. The local file picker doesn't open in this session, and sending the files from this session to Shopify's video storage (to get a public link) was blocked by this session's safety check. Waiting on Eden: add it in Ads Manager herself, or allow the upload.
+
+## 2026-11-02: uploaded, last step blocked by Instagram account
+Eden: "upload here". Done:
+- Videos in Shopify Files (cdn.shopify.com) and in the Meta ad account: 4:5 video 1156967813941164, 9:16 video 1128585982890228 ("Pet voice 4x5/9x16 (Nov 2026)").
+- Creative 1885085852673681 "WIN | Pet voice": 4:5 everywhere, 9:16 on Facebook/Instagram Stories and Reels; approved text, headline "Your pet, in bricks", Shop now, https://mymemobrick.com.
+Blocked: creating the ad fails with "Instagram Account Is Missing". The Meta connection lists no Instagram accounts for this ad account (missing Instagram permission), so it cannot attach @Memobrick. Eden finishes the ad in Ads Manager (videos already in the library) or reconnects Meta with Instagram access.
