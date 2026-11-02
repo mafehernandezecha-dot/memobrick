@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: christmas gift for husband photo
 Hub: Christmas (and Couples and anniversaries)
 Page type: article
