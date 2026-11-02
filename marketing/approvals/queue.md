@@ -35,6 +35,7 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: approved
 - From: Eden in chat 2026-11-02 after reviewing the video: "ok it looks good"
 - Note (2026-11-02): Eden approved in chat: "approve 051".
+- Note (2026-11-02, later): ON HOLD. Eden: "wait the footage need better direction and focus". Not launched; creative 1885085852673681 stays unused until the footage is redone.
 
 ## A-2026W44-050
 - Agent: ads-analyst
