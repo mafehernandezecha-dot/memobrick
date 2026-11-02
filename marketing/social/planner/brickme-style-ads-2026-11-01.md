@@ -177,3 +177,8 @@ What changed in all three:
 | `A1-look-closer-fill-4x5-v2.mp4` | Now a clear transformation: their finished mosaic ("This was a selfie"), the real selfie, the Studio preview of it (flash), the fill at 3.6×, the build, their mosaic again, "Look closer". It's no longer about 70% one static shot. |
 
 Each has a `-sheet.png` contact sheet. Captions describe what is on screen. There are no quotes and no numbers.
+
+## v3: computer voice-over sample (2026-11-02)
+Eden asked whether the agent can do the voice-over. A3 v2 (4:5 and 9:16) with a free offline computer voice (Piper, "lessac" US English voice, open source, run locally; no paid app). Music at 22% under the voice. Script, spoken by a narrator, not as a customer:
+"Her dog, in bricks? Real bricks! One photo. A kit sorted by color. Press, click, repeat. Now it hangs next to the real one. Free preview at mymemobrick.com."
+Files: A3-pet-bricks-first-4x5-v3-voice.mp4, A3-pet-bricks-first-9x16-v3-voice.mp4. Draft only; nothing posted.
