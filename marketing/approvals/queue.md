@@ -25,6 +25,16 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W45-052
+- Agent: site-developer
+- Executor: site-developer
+- Type: site
+- Draft: marketing/site/premade-ai-images/README.md
+- Reason: Add 4 new photos to every pre-made design kit (Brick Mosaic Art Kit products): realistic main photo (Gemini from the exact-color brick render, colors kept close), angled brick close-up (exact colors), in a room and held by a person (Gemini scene only, real design pasted in). Pilot: Balloon Dog 16x16. Existing photos stay; new photos are added after the current first photo. Products that don't come out right are skipped and listed.
+- Expires: 2026-11-16
+- Status: approved
+- From: Eden in chat 2026-11-02: "approve photos for all pre-made kits"
+
 ## A-2026W45-051
 - Agent: ads-analyst
 - Executor: ads-analyst
