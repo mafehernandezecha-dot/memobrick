@@ -1,0 +1,37 @@
+You are helping Memobrick (Shopify store "mymemobrick", admin.shopify.com/store/mymemobrick) get its products approved on Google Shopping. Work only in Shopify admin, the Shopify "Google & YouTube" app, the Shopify "Microsoft Channel" app and Google Merchant Center, in the tabs I'm already signed in to.
+
+RULES
+- Do NOT change prices, compare-at prices, titles, descriptions, images, stock/inventory, shipping rates, Shopify Markets, orders or customers.
+- Do NOT delete any product. Do NOT buy anything or turn on anything paid.
+- Do NOT publish or unpublish products on the Online Store.
+- If a screen looks different from these steps, or a step would change something not listed here, STOP and ask me.
+- Take a screenshot before and after each part.
+
+PART 1. Google & YouTube app: countries and local inventory
+1. Shopify admin > Sales channels > Google & YouTube > Settings.
+2. Find where the target countries / markets for product listings are set. Keep ONLY United States. Remove every other country. (This is only the Google listing countries, not Shopify Markets.)
+3. If there is a "Local inventory", "Local listings" or "In-store" option, turn it OFF.
+4. Save.
+
+PART 2. Microsoft Channel app: same
+1. Shopify admin > Sales channels > Microsoft Channel > Settings.
+2. Keep ONLY United States as the listing country. Turn OFF local inventory / local listings if present.
+3. Save.
+
+PART 3. Mark products as custom products (no barcode)
+1. Shopify admin > Products. Select all products (all pages).
+2. Leave OUT of the selection: any gift card product ("Memobrick Gift Card ...") and "Heatblast Art Piece Home Wall Decor Bricked Mosaic Portrait 20x30".
+3. Open "Bulk edit". Add the columns for the Google & YouTube fields: "Custom product" and "Condition" (they may be listed as "Google: Custom product" / "Google: Condition" or under the Google & YouTube app's product fields).
+4. Set Custom product = TRUE (Yes) and Condition = New for every selected product. Save.
+5. If bulk edit can't show those fields, open the Google & YouTube app > Products and use its bulk option to mark the selected products as custom products. If neither exists, STOP and tell me.
+
+PART 4. Keep gift cards and Heatblast off Google only
+1. Open each gift card product and the Heatblast product > "Manage" sales channels / publishing.
+2. Turn OFF only "Google & YouTube" (and "Microsoft Channel"). Leave the Online Store and every other channel as they are. Save.
+
+PART 5. Report what Google still flags (read only)
+1. Google Merchant Center > Products > Needs attention (or Diagnostics). Filter country = United States.
+2. Write down every issue name and how many products it affects. Take a screenshot.
+3. Open the top 3 issues and write down 2 example products for each.
+
+When done, give me a short summary: what you changed in Parts 1-4 (with before/after screenshots) and the list from Part 5.
