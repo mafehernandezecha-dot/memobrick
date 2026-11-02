@@ -1,0 +1,30 @@
+PILOT: realistic photos for 3 Memobrick pre-made design kits, made with Gemini. Do NOT upload anything to Shopify in this pilot.
+
+You are helping Memobrick (Shopify store "mymemobrick"). Work in Shopify admin (read only) and gemini.google.com, in tabs I'm already signed in to.
+
+RULES
+- Shopify is READ ONLY in this pilot: don't change, add or delete any image, title, price or product.
+- The brick design must stay EXACTLY the same: same picture, same colors, same square 1x1 bricks, same grid. Gemini may only change what is AROUND the mosaic (wall, room, frame, light, person). If Gemini changes, redraws or "improves" the mosaic itself, throw that result away and try again with the reminder in step 4.
+- Size must be true: use the size in the product title (for example 16x16 in = about 41 x 41 cm; 20x30 in = about 51 x 76 cm). A 16x16 in mosaic is about the size of a large book cover, not a big painting.
+- No other brands, logos, TV screens, text or watermarks in the picture. No "LEGO".
+- Keep Gemini's AI marks/metadata on the files (don't remove or edit them).
+- If something doesn't work as described, STOP and ask me.
+
+PRODUCTS (pilot)
+1. "Balloon Dog Brick Mosaic Art Kit - 16x16 in DIY Wall Decor"
+2. "Cute Calico Kitten Brick Mosaic Art Kit - 20x20 in DIY Wall Decor"
+3. "Rainbow Pop Art Lion Brick Mosaic Art Kit - 20x30 in DIY Wall Decor"
+
+FOR EACH PRODUCT
+1. Shopify admin > Products > open the product. Download its first (main) image at full size. Note the size from the title.
+2. Open gemini.google.com (new chat for each product). Upload the image.
+3. Make PICTURE A (realistic room). Prompt:
+   "Use this exact brick mosaic artwork without changing it at all: keep every brick, color and the square grid identical. Show it as a real, finished brick mosaic made of small square 1x1 plastic studs, mounted in a thin black frame, hanging on a light wall in a bright, modern living room with soft daylight. Real photo, natural shadows, sharp focus on the mosaic. The mosaic is [SIZE] inches, so show it at that true size next to normal furniture. No text, no logos, no people."
+4. Check the result against the original: same design, same colors, studs visible, true size. If the mosaic changed, reply: "The mosaic changed. Keep the artwork exactly as in my image, pixel for pixel; only change the room around it." Max 3 tries; if it still changes, mark it FAILED.
+5. Make PICTURE B (next to a person, for scale). Prompt:
+   "Using the same exact brick mosaic artwork (do not change it at all), show a smiling adult holding the framed brick mosaic in front of their chest in a bright home, real photo style. The mosaic is [SIZE] inches square/rectangular, so it must look that size in their hands (a 16x16 inch piece is about as wide as their shoulders' half; a 20x30 inch piece covers from chest to waist). Natural light, no text, no logos."
+   Check the same way (design unchanged, true size). Max 3 tries.
+6. Download the best Picture A and Picture B as PNG/JPG. Name them: [product handle]-room.jpg and [product handle]-person.jpg.
+
+REPORT
+Put all 6 pictures (plus each original) side by side in one file and show me. For each: did the mosaic stay identical (yes/no), does the size look true (yes/no), how many tries. Don't upload anything to Shopify.
