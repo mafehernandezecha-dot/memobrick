@@ -1,0 +1,113 @@
+[
+ {
+  "name": "editor",
+  "sw": 390,
+  "iw": 390,
+  "clipped": [],
+  "small": [
+   "13.5 Arial span. \"Back\"",
+   "13 Arial button.mob-tour-btn \"?\"",
+   "11 \"JetBrains Mono\" s. \"$159\"",
+   "13 \"JetBrains Mono\" b. \"$99.88\"",
+   "12.5 Arial button.mob-tips-link \"Photo tips\"",
+   "12.5 Inter p. \"Looking blocky? A larger size \"",
+   "12 Arial button.mn-cta \"Change size\"",
+   "11 \"JetBrains Mono\" span.mob-stepnav-eyebrow \"Step 1 · Setup\"",
+   "10.5 \"JetBrains Mono\" span.mob-toolcard-sub \"20 × 20\"\"",
+   "10.5 \"JetBrains Mono\" span.mob-toolcard-sub \"100%\"",
+   "13.5 Inter a. \"How it works\"",
+   "12.5 Inter button.linky \"Get My Free Proof\"",
+   "13.5 Inter a. \"Reviews\"",
+   "13.5 Inter a. \"Blog\"",
+   "13.5 Inter a. \"Business services\"",
+   "13.5 Inter a. \"Ready-made designs\"",
+   "13.5 Inter a. \"Frames\"",
+   "13.5 Inter a. \"Track your order\"",
+   "13.5 Inter a. \"Sizes\"",
+   "13.5 Inter a. \"Gift kit\"",
+   "13.5 Inter a. \"FAQs\"",
+   "13.5 Inter button.footlink \"Corporate & bulk\"",
+   "13.5 Inter a. \"Contact\""
+  ],
+  "mono": [
+   "JetBrains Mono",
+   "monospace"
+  ]
+ },
+ {
+  "name": "cart-drawer",
+  "sw": 390,
+  "iw": 390,
+  "clipped": [
+   "b. \"Custom Photo Brick Mosaic Port\" 512>306"
+  ],
+  "small": [
+   "10 \"JetBrains Mono\" span.cart-count \"1\"",
+   "12.5 Inter p.cart-ship-msg \"Add $25.12 more for free shipp\"",
+   "13.5 Inter b. \"Custom Photo Brick Mosaic Port\"",
+   "12 Inter span. \"Build-at-home kit\"",
+   "12 Inter span. \"Qty 1 · $99.88\"",
+   "12 Arial button.cart-drawer-remove \"Remove\"",
+   "12.5 Inter a.cart-drawer-viewall \"View full cart\"",
+   "13.5 Arial span. \"Back\"",
+   "13 Arial button.mob-tour-btn \"?\"",
+   "11 \"JetBrains Mono\" s. \"$159\"",
+   "13 \"JetBrains Mono\" b. \"$99.88\"",
+   "12.5 Arial button.mob-tips-link \"Photo tips\"",
+   "12.5 Inter p. \"Looking blocky? A larger size \"",
+   "12 Arial button.mn-cta \"Change size\"",
+   "11 \"JetBrains Mono\" span.mob-stepnav-eyebrow \"Step 1 · Setup\"",
+   "10.5 \"JetBrains Mono\" span.mob-toolcard-sub \"20 × 20\"\"",
+   "10.5 \"JetBrains Mono\" span.mob-toolcard-sub \"100%\"",
+   "13.5 Inter a. \"How it works\"",
+   "12.5 Inter button.linky \"Get My Free Proof\"",
+   "13.5 Inter a. \"Reviews\"",
+   "13.5 Inter a. \"Blog\"",
+   "13.5 Inter a. \"Business services\"",
+   "13.5 Inter a. \"Ready-made designs\"",
+   "13.5 Inter a. \"Frames\"",
+   "13.5 Inter a. \"Track your order\"",
+   "13.5 Inter a. \"Sizes\"",
+   "13.5 Inter a. \"Gift kit\"",
+   "13.5 Inter a. \"FAQs\"",
+   "13.5 Inter button.footlink \"Corporate & bulk\"",
+   "13.5 Inter a. \"Contact\""
+  ],
+  "mono": [
+   "JetBrains Mono",
+   "monospace"
+  ]
+ },
+ {
+  "name": "cart-mosaic",
+  "sw": 390,
+  "iw": 390,
+  "clipped": [],
+  "small": [
+   "10 \"JetBrains Mono\" span.cart-count \"1\"",
+   "11 \"JetBrains Mono\" p. \"MemoBrick\"",
+   "12 \"JetBrains Mono\" div. \"Build-at-home kit\"",
+   "12.5 Inter div. \"MemoBrick Size: 20 × 20\"\"",
+   "12.5 Inter a. \"Edit this design again\"",
+   "12.5 Inter a. \"Remove\"",
+   "13 Inter button.mini \"Update\"",
+   "12 Inter p. \"Taxes are calculated at checko\"",
+   "13.5 Inter a. \"How it works\"",
+   "13.5 Inter a. \"Get My Free Proof\"",
+   "13.5 Inter a. \"Reviews\"",
+   "13.5 Inter a. \"Blog\"",
+   "13.5 Inter a. \"Business services\"",
+   "13.5 Inter a. \"Ready-made designs\"",
+   "13.5 Inter a. \"Frames\"",
+   "13.5 Inter a. \"Track your order\"",
+   "13.5 Inter a. \"Sizes\"",
+   "13.5 Inter a. \"Gift kit\"",
+   "13.5 Inter a. \"FAQs\"",
+   "13.5 Inter a. \"Corporate & bulk\"",
+   "13.5 Inter a. \"Contact\""
+  ],
+  "mono": [
+   "JetBrains Mono"
+  ]
+ }
+]

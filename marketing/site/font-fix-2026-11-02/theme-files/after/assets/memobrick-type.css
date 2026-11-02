@@ -1,0 +1,136 @@
+/* memobrick-type.css: type clean-up (2026-11-02, site-developer).
+   Loaded after memobrick.css. Class rules repeat the original selectors, so they replace only the
+   original declaration and never beat a more specific rule.
+   Undo: remove this file's stylesheet_tag from layout/theme.liquid and restore the old Google Fonts link.
+   1. The small-label font (was JetBrains Mono, a code font) is now Inter.
+   2. Former mono labels in capitals: Inter 600, letter-spacing .08em.
+   3. Phones (max-width 749px): readable text at least 14px, body copy 15px. Headings untouched. */
+
+:root{--mono:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+
+/* labels set in capitals (generated from every memobrick.css rule that used var(--mono) with uppercase) */
+.eyebrow,
+.chip,
+.zoomrow span,
+.label,
+.size-rec-k,
+.lbl-mini,
+.save,
+.press span,
+.size .tag,
+.ticket .k,
+.canvas-hold.squint:after,
+.bgrow span,
+.editrow>span:first-child,
+.pair figcaption b,
+.quicklist b,
+.tlabel,.tsep,
+.ep-h,
+table.legend th,
+.kicker,
+.cover-meta span,
+.factbar span,
+.tipbox b,
+.signoff span,
+.lbl,
+.demo .fix b,.demo .why b,
+.pressk,
+.press-strip-label,
+.tvcap,
+.tt-k,
+.buyk,
+.svc-size .tag,
+.fp-trust,
+.wv-spec .k,.wv-try .k,
+.wv-k,
+.wv-spec .k,
+.wv-tune label,
+.pdp-specs span,
+.pdp-press-k,
+.pdp-or,
+.sizegrp,
+.sec-tip .st-label,
+.step .k{font-weight:600;letter-spacing:.08em}
+@media (max-width:767px){
+.mob-stepnav-eyebrow,
+.lbl-mini,
+.mob-size-rec-k,
+.mob-size-badge{font-weight:600;letter-spacing:.08em}
+}
+
+/* size-comparison drawing in the Creator (its SVG text names the font as an attribute) */
+.scaleview svg text{font-family:var(--mono)}
+
+/* labels written as inline styles in templates */
+html body [style*="--mono"][style*="uppercase"]{font-weight:600!important;letter-spacing:.08em!important}
+
+@media (max-width:749px){
+/* labels, list items, small links and product meta */
+.promo-top p,
+.eyebrow,
+.hero-trustbar,
+.mini,
+.step .k,
+.linky,
+.size .dim,
+.size .p s,
+.size .per,
+.size ul,
+.viewlink,
+.size .tag,
+.tvcap,
+.pressk,
+.foot,
+.footlink,
+.trustrow,
+.trustrow .tr-stars,
+.pdp-press-k,
+.pdp-specs span,
+.pdp-path-label,
+.pdp-note,
+.pdp-or,
+.pdp-badge,
+.pdp-sticky-info s,
+.pdp-social-text,
+.pdp-rev-stat span,
+.rev .rev-date,
+.rev .rev-prod,
+.steps3 li,
+.upbenefits,
+.dropzone .fmt,
+.findrow .tsep,
+.privline,
+.findnote,
+.findnote kbd,
+.upload-foot,
+.cart-drawer-item-info b,
+.cart-drawer-item-info span,
+.cart-drawer-item-row b,
+.cart-drawer-remove,
+.cart-ship-msg,
+.cart-drawer-viewall,
+.mob-top-price b,
+.mob-top-price s,
+.mob-tips-link,
+.mob-notice,
+.mob-notice button.mn-cta,
+.mob-back span,
+.mob-stepnav-eyebrow,
+.mob-toolcard-sub{font-size:14px}
+/* the same for inline-styled small text in templates (cart lines, breadcrumbs); GemPages content excluded */
+html body [style*="font-size:9px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:9.5px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:10px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:10.5px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:11px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:11.5px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:12px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:12.5px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:13px"]:not([class*="gp-"]):not([class*="gp-"] *),
+html body [style*="font-size:13.5px"]:not([class*="gp-"]):not([class*="gp-"] *){font-size:14px!important}
+/* body copy */
+.step p,
+details p,
+.whyhead p{font-size:15px}
+html body p[style*="font-size:14px"]:not([class*="gp-"]):not([class*="gp-"] *){font-size:15px!important}
+}

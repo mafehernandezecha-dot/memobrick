@@ -1,0 +1,39 @@
+[
+ {
+  "name": "editor",
+  "sw": 390,
+  "iw": 390,
+  "clipped": [],
+  "small": [
+   "13 Arial button.mob-tour-btn \"?\""
+  ],
+  "mono": [
+   "monospace"
+  ]
+ },
+ {
+  "name": "cart-drawer",
+  "sw": 390,
+  "iw": 390,
+  "clipped": [
+   "b. \"Custom Photo Brick Mosaic Port\" 531>306"
+  ],
+  "small": [
+   "10 Inter span.cart-count \"1\"",
+   "13 Arial button.mob-tour-btn \"?\""
+  ],
+  "mono": [
+   "monospace"
+  ]
+ },
+ {
+  "name": "cart-mosaic",
+  "sw": 390,
+  "iw": 390,
+  "clipped": [],
+  "small": [
+   "10 Inter span.cart-count \"1\""
+  ],
+  "mono": []
+ }
+]
