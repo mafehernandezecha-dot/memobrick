@@ -60,3 +60,7 @@ Not yet posted: S-20261027-1 is a Buffer draft on hold (moved to Nov 9); Oct 28 
 5. **Evening reels did best.** The three 19:00 ET reels reached 321, 195 and 160; the noon reel reached 118. One noon post is not enough to rule noon out.
 
 **What the sprint changes (Oct 29 to Nov 4):** two extra reels that open on bricks in the first second and ask for a comment or a photo (shares and follows), a numbered weekly series ("We brick your pet"), daily Stories with stickers, a profile tune-up so profile visits turn into follows, and Eden's 15 minutes a day of hand engagement. Plan: `marketing/social/planner/sprint-2026-10-29/sprint.md`.
+| 2026-11-02 | Instagram | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
+| 2026-11-02 | Facebook | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
+| 2026-11-02 | TikTok | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
+| 2026-11-02 | Pinterest | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
