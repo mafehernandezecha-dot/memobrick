@@ -2,7 +2,7 @@ import base64, json, sys, urllib.request
 model, inp, out, prompt = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 img = base64.b64encode(open(inp,'rb').read()).decode()
 body = {"contents":[{"parts":[{"inline_data":{"mime_type":"image/jpeg","data":img}},{"text":prompt}]}],
-        "generationConfig":{"responseModalities":["IMAGE"]}}
+        "generationConfig":{"responseModalities":["IMAGE"],"imageConfig":{"aspectRatio":"1:1"}}}
 req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
     data=json.dumps(body).encode(), headers={"Content-Type":"application/json"})
 r = json.load(urllib.request.urlopen(req, timeout=180))
