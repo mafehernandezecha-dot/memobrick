@@ -35,6 +35,17 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: approved
 - From: Eden in chat 2026-11-02: "approve photos for all pre-made kits"
 
+## A-2026W45-053
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/meta-christmas-rotation-2026-11-02.md
+- Commit: d9c260f
+- Reason: Christmas weekly rotation, week 1, fitted to its new $20/day: main ad set from 7 to 4 live ads. Pause XMAS26 Couple v3 (reasons) 120252819286360597 ($19.72, 0 add to carts), connie_once_upon_a_time v2 (reasons) 120252819284130597, mom_video v2 (reasons) 120252819285310597 and Gift Pictures v2 (reasons) 120252819290860597 (budget fit); then switch on XMAS26 gen_vid 120252787413120597 (best unused pool ad, 96 past Meta purchases, no code). Keep Dog v4 120252819439800597, anniversary 120252819256390597, couple_vid v2 120252819285760597; come-back ad set unchanged. Budget unchanged at $20/day. If Shopify ROAS is still under 2.0 on Nov 9, ads-analyst proposes pausing the campaign.
+- Expires: 2026-11-07
+- Status: pending
+- From: P-ads-analyst-20261102-1
+
 ## A-2026W45-051
 - Agent: ads-analyst
 - Executor: ads-analyst
