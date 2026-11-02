@@ -76,3 +76,12 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Gap 8: Thu Nov 12 10:00 ET "Your dog, in 1x1 bricks" to Warm, draft `2026-11-12-your-dog-in-bricks.md`, proposed.
 - Dec 3 and Dec 8 contain unverifiable claims ("most-gifted size", "Thousands of satisfied customers" image); Dec 11 and Dec 14 content not yet read.
 - Waiting on owner: nothing for Dec 15 to Dec 31. Gift card email after Dec 15 (gift cards are offered) is not drafted yet.
+
+
+## Update 2026-11-02
+
+- Omnisend read today: schedule unchanged since Oct 31 (Nov 3 Gift Ideas, Nov 19 VIP, Nov 20 ends Sunday, Nov 27, Nov 30, Dec 3, 8, 11, 14). Nothing has sent since Oct 29. Nov 3 results due next run.
+- Gap 9 (replaces gap 8, the Nov 12 dog email): Tue Nov 10, 10:00 ET "Order by Dec 15 for Christmas" to Warm minus Past Buyers, draft `2026-11-10-order-by-dec-15.md`. Button to the web editor, three Christmas guides as small text links. The dog email waits: the dog page had 62 referred sessions and 0 carts in five days.
+- Gap 10: Tue Nov 10, 10:00 ET "Give them the evening, not just the photo" to Past Buyers (A-2026W44-052), draft `2026-11-10-second-mosaic-past-buyers.md`. Different audiences, so no overlap. Past buyers get Oct 29, Nov 10, Nov 19: three in 3 weeks, Eden can drop this one.
+- Still open: gift card email after Dec 15, Dec 11 and Dec 14 content not read, Dec 15 order-by-day email (draft by Dec 8).
+- Tooling note: `email_preview.py` hangs with the default Chromium here; setting CHROME to the headless shell (`/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`) and using python3.12 works.
