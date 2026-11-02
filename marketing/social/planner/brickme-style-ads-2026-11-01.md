@@ -182,3 +182,25 @@ Each has a `-sheet.png` contact sheet. Captions describe what is on screen. Ther
 Eden asked whether the agent can do the voice-over. A3 v2 (4:5 and 9:16) with a free offline computer voice (Piper, "lessac" US English voice, open source, run locally; no paid app). Music at 22% under the voice. Script, spoken by a narrator, not as a customer:
 "Her dog, in bricks? Real bricks! One photo. A kit sorted by color. Press, click, repeat. Now it hangs next to the real one. Free preview at mymemobrick.com."
 Files: A3-pet-bricks-first-4x5-v3-voice.mp4, A3-pet-bricks-first-9x16-v3-voice.mp4. Draft only; nothing posted.
+
+## A3 pet with voice-over (2026-11-02, after Eden: "make it more human, best practices for the text")
+
+There is one edit per computer voice in `voice/` (881, 886, 564), each in 4:5 and 9:16: `A3-pet-vo<voice>-4x5.mp4` and `-9x16.mp4`, with a `-sheet.png` showing one frame per phrase. They are built by `brickme-style-ads-2026-11-01/vo_cuts.py` from `voice/vo_cues.json`. They use the same cleared footage and real product only, with no interpolation and no warping. Draft only.
+
+- **Length:** voice + 0.5 s (13.4 to 13.7 s). Every shot starts on its phrase:
+  - "is that her dog?": the woman hugging the dog.
+  - "In bricks?!": a white flash to the framed mosaic.
+  - "Yep. Real bricks.": a macro of a finger pressing a brick.
+  - "one photo": the printed color map of her dog's photo.
+  - "We sent the kit": the color-sorted bags.
+  - "She built it": hands on the board.
+  - "next to the real one": the wall, then the real dog.
+  - "Want to see yours?": the mosaic close.
+  - Last phrase: a bright end card.
+- **Captions:** the exact caption text from the cue file. Each shows from its phrase's start until the next phrase starts, one at a time. They are on a white card, 76 px, with the key word in brand coral ("dog?", "bricks?!", "Real bricks.", "one photo", "kit", "built", "real one", "yours?"). Wrapping is balanced so no word sits alone on a line.
+  - The hook caption is on screen from frame 1.
+  - In 4:5 the card sits in the upper middle. In 9:16 it sits between 14% and 35% of the height, clear of the Reels UI. The end-card text ends above 65%.
+- **Audio:**
+  - Voice: high-passed at 90 Hz and lightly compressed (3:1).
+  - Music (original, generated): 20% under the voice, about 14 to 15 dB below it. It rises to 45% when the end card starts while the last phrase is still playing, and goes to full after the last word.
+  - Mix: -14.1 to -14.4 LUFS, sample peaks -1.4 to -1.5 dBFS, no clipping.
