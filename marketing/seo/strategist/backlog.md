@@ -25,8 +25,12 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | 13 | [christmas-gift-for-dad-from-kids](briefs/christmas-gift-for-dad-from-kids.md) | christmas gift for dad from kids | Christmas / Family | article | 2026-11-19 | Pair to the mom article; "dad who wants nothing" intent | ready |
 | 14 | [long-distance-christmas-gift-photo](briefs/long-distance-christmas-gift-photo.md) | long distance christmas gift for boyfriend or girlfriend | Christmas / Couples | article | 2026-11-23 | Couples buy bigger sizes; apart-at-Christmas intent has no page | ready |
 | 15 | [christmas-gift-for-best-friend-photo](briefs/christmas-gift-for-best-friend-photo.md) | christmas gift for best friend photo | Christmas / Family | article | 2026-11-23 | Mid-price friend gifting; no page targets friends | ready |
+| 16 | [christmas-gift-for-boyfriend-who-loves-lego](briefs/christmas-gift-for-boyfriend-who-loves-lego.md) | christmas gift for boyfriend who loves lego | Christmas / Couples | article | 2026-11-23 | Task-board gap; brick-fan buyers already search this; no page. Trademark rules in brief | ready |
+| 17 | [christmas-gift-for-girlfriend-photo](briefs/christmas-gift-for-girlfriend-photo.md) | christmas gift for girlfriend photo | Christmas / Couples | article | 2026-11-23 | Task-board gap "gifts for her under $100"; entry sizes $69.88 and $99.88 | ready |
 
-Ready count: 12 (rows 3 to 11 and 13 to 15; rows 1, 2 and 12 drafted). Checked 2026-11-01, no new briefs needed (10 minimum met). No new buyer questions since 2026-10-31.
+Ready count: 14 (rows 3 to 11, 13 to 17; rows 1, 2 and 12 drafted). Checked 2026-11-02: added rows 16 and 17 from the task-board gaps. "Photo gifts that arrive before Christmas" is already covered by the live last-minute article (no new brief).
+
+Weekly reorder 2026-11-02 for Dec 1 indexing, by buyer intent: top 5 to take next are rows 3 (husband), 13 (dad), 4 (baby), 5 (memorial), 17 (girlfriend). Rows 14, 15, 16, 7 follow; rows 8 to 11 (improvements and 2027 pages) after Nov 30. Search Console snapshots are still missing, so order is by intent, not measured demand. No new buyer questions since 2026-10-31.
 
 Note 2026-10-29: the task-board request for a "ready by Christmas / last order date" brief is covered by the live `last-minute-personalized-christmas-gifts` article; no new brief (would duplicate). New-dog-owner and pet-loss angles are covered by the dog-lovers brief and `pet-memorial-gift-improve-blog-memorial`.
 
