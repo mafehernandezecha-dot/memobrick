@@ -166,7 +166,7 @@ def mix(vo, video_path, dur, end_t, out):
     vend = json.load(open(os.path.join(VOICE, 'vo_cues.json')))[vo]['cues'][-1]['end']
     tmp = tempfile.mkdtemp()
     music = os.path.join(tmp, 'm.wav')
-    subprocess.run(['python3', COMPOSE, 'playful', str(dur + 1), music, str(3000 + int(vo))], check=True,
+    subprocess.run(['python3', COMPOSE, 'playful', str(dur + 1), music, str(3000 + (int(vo) if vo.isdigit() else sum(map(ord, vo))))], check=True,
                    capture_output=True)
     fc = (f"[0:a]aresample=44100,highpass=f=90,acompressor=threshold=-20dB:ratio=3:attack=5:release=120:makeup=2,"
           f"loudnorm=I=-16:TP=-2,aresample=44100,apad,atrim=0:{dur}[v];"
@@ -207,6 +207,6 @@ def render(vo, size, out):
 if __name__ == '__main__':
     out = os.path.abspath(sys.argv[1])
     os.makedirs(out, exist_ok=True)
-    for vo in ('881', '886', '564'):
+    for vo in (os.environ.get('VOS') or '881,886,564').split(','):
         for size in (c2.S45, c2.S916):
             render(vo, size, out)

@@ -175,5 +175,182 @@
     "spoken": "The preview's free, at my memo brick dot com."
    }
   ]
+ },
+ "heart": {
+  "duration": 13.0,
+  "cues": [
+   {
+    "start": 0.15,
+    "end": 1.35,
+    "caption": "Wait\u2026 is that her dog?",
+    "spoken": "Wait... is that her dog?"
+   },
+   {
+    "start": 1.49,
+    "end": 2.16,
+    "caption": "In bricks?!",
+    "spoken": "In bricks?!"
+   },
+   {
+    "start": 2.3,
+    "end": 3.44,
+    "caption": "Yep. Real bricks.",
+    "spoken": "Yep. Real bricks."
+   },
+   {
+    "start": 3.58,
+    "end": 5.08,
+    "caption": "It started with one photo",
+    "spoken": "It all started with one photo."
+   },
+   {
+    "start": 5.22,
+    "end": 6.07,
+    "caption": "We sent the kit",
+    "spoken": "We sent the kit."
+   },
+   {
+    "start": 6.21,
+    "end": 6.95,
+    "caption": "She built it",
+    "spoken": "She built it."
+   },
+   {
+    "start": 7.09,
+    "end": 9.17,
+    "caption": "Now it hangs next to the real one",
+    "spoken": "And now it hangs right next to the real one."
+   },
+   {
+    "start": 9.31,
+    "end": 10.28,
+    "caption": "Want to see yours?",
+    "spoken": "Want to see yours?"
+   },
+   {
+    "start": 10.42,
+    "end": 13.0,
+    "caption": "Free preview \u00b7 mymemobrick.com",
+    "spoken": "The preview's free, at my memo brick dot com."
+   }
+  ]
+ },
+ "bella": {
+  "duration": 13.14,
+  "cues": [
+   {
+    "start": 0.15,
+    "end": 1.46,
+    "caption": "Wait\u2026 is that her dog?",
+    "spoken": "Wait... is that her dog?"
+   },
+   {
+    "start": 1.6,
+    "end": 2.23,
+    "caption": "In bricks?!",
+    "spoken": "In bricks?!"
+   },
+   {
+    "start": 2.37,
+    "end": 3.57,
+    "caption": "Yep. Real bricks.",
+    "spoken": "Yep. Real bricks."
+   },
+   {
+    "start": 3.71,
+    "end": 5.17,
+    "caption": "It started with one photo",
+    "spoken": "It all started with one photo."
+   },
+   {
+    "start": 5.31,
+    "end": 6.08,
+    "caption": "We sent the kit",
+    "spoken": "We sent the kit."
+   },
+   {
+    "start": 6.22,
+    "end": 6.9,
+    "caption": "She built it",
+    "spoken": "She built it."
+   },
+   {
+    "start": 7.04,
+    "end": 9.29,
+    "caption": "Now it hangs next to the real one",
+    "spoken": "And now it hangs right next to the real one."
+   },
+   {
+    "start": 9.43,
+    "end": 10.34,
+    "caption": "Want to see yours?",
+    "spoken": "Want to see yours?"
+   },
+   {
+    "start": 10.48,
+    "end": 13.14,
+    "caption": "Free preview \u00b7 mymemobrick.com",
+    "spoken": "The preview's free, at my memo brick dot com."
+   }
+  ]
+ },
+ "sarah": {
+  "duration": 13.12,
+  "cues": [
+   {
+    "start": 0.15,
+    "end": 1.35,
+    "caption": "Wait\u2026 is that her dog?",
+    "spoken": "Wait... is that her dog?"
+   },
+   {
+    "start": 1.49,
+    "end": 2.15,
+    "caption": "In bricks?!",
+    "spoken": "In bricks?!"
+   },
+   {
+    "start": 2.29,
+    "end": 3.41,
+    "caption": "Yep. Real bricks.",
+    "spoken": "Yep. Real bricks."
+   },
+   {
+    "start": 3.55,
+    "end": 5.1,
+    "caption": "It started with one photo",
+    "spoken": "It all started with one photo."
+   },
+   {
+    "start": 5.24,
+    "end": 6.15,
+    "caption": "We sent the kit",
+    "spoken": "We sent the kit."
+   },
+   {
+    "start": 6.29,
+    "end": 7.05,
+    "caption": "She built it",
+    "spoken": "She built it."
+   },
+   {
+    "start": 7.19,
+    "end": 9.32,
+    "caption": "Now it hangs next to the real one",
+    "spoken": "And now it hangs right next to the real one."
+   },
+   {
+    "start": 9.46,
+    "end": 10.42,
+    "caption": "Want to see yours?",
+    "spoken": "Want to see yours?"
+   },
+   {
+    "start": 10.56,
+    "end": 13.12,
+    "caption": "Free preview \u00b7 mymemobrick.com",
+    "spoken": "The preview's free, at my memo brick dot com."
+   }
+  ]
  }
 }
