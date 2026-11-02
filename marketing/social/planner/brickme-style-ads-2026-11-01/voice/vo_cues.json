@@ -352,5 +352,64 @@
     "spoken": "The preview's free, at my memo brick dot com."
    }
   ]
+ },
+ "heart2": {
+  "duration": 15.1,
+  "cues": [
+   {
+    "start": 0.15,
+    "end": 1.56,
+    "caption": "She turned her dog into art",
+    "spoken": "She turned her dog into art."
+   },
+   {
+    "start": 1.7,
+    "end": 3.21,
+    "caption": "A portrait made of tiny bricks",
+    "spoken": "A portrait made of tiny bricks."
+   },
+   {
+    "start": 3.35,
+    "end": 4.83,
+    "caption": "Every piece placed by hand",
+    "spoken": "Every piece, placed by hand."
+   },
+   {
+    "start": 4.97,
+    "end": 6.54,
+    "caption": "It starts with your favorite photo",
+    "spoken": "It starts with your favorite photo."
+   },
+   {
+    "start": 6.68,
+    "end": 8.3,
+    "caption": "We send a kit, sorted by color",
+    "spoken": "We send a kit, sorted by color."
+   },
+   {
+    "start": 8.44,
+    "end": 10.17,
+    "caption": "You build it at home",
+    "spoken": "You build it at home, step by step."
+   },
+   {
+    "start": 10.31,
+    "end": 11.44,
+    "caption": "Then hang it on your wall",
+    "spoken": "Then hang it on your wall."
+   },
+   {
+    "start": 11.58,
+    "end": 12.55,
+    "caption": "Want one of your pet?",
+    "spoken": "Want one of your pet?"
+   },
+   {
+    "start": 12.69,
+    "end": 15.1,
+    "caption": "See it free first \u00b7 mymemobrick.com",
+    "spoken": "See it free first, at my memo brick dot com."
+   }
+  ]
  }
 }
