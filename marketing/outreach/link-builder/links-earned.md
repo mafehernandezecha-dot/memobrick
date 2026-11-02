@@ -37,3 +37,7 @@ Links and mentions on other websites that point to mymemobrick.com (or name Memo
 ## 2026-11-01 check
 
 - Searched "Memobrick OR mymemobrick.com" with photo brick mosaic gift, and brick mosaic gift guide and review queries. No third-party link or mention of Memobrick found; results were competitors only. Backlink tool still not connected. Total earned links: zero confirmed.
+
+## 2026-11-02 check
+
+- Searched web for Memobrick and mymemobrick.com mentions; none found in the gift guide searches (competitors and retailers only). Gmail inbox, last 7 days: no replies to pitches (none of the link-builder batches has been approved or sent yet). Total earned links: zero confirmed. Backlink tool still not connected.
