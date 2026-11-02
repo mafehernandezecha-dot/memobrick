@@ -1,97 +1,97 @@
-# Task board 2026-11-01
-Weak point today: too few qualified visitors (referred sessions Oct 1 to 30: 2,472 vs 4,771 last year, -48%) and the paid dog page still at 51 sessions and 0 carts in 3 days. Checkout works (44% of checkouts buy vs 38%).
-Orders: Oct 30 was 3 orders, $239 vs goal 5 and $550. Last 7 days (Oct 24 to 30): 16 orders, $1,457 vs goal 35 and $3,850. October 1 to 30: 79 orders, $8,890 vs 150 and $16,500 (53%, 54%). Oct 31 and Nov 1 are not in the data yet.
+# Task board 2026-11-02
+Weak point today: too few qualified visitors (referred sessions Oct 2 to Nov 1: 2,603 vs 4,916 last year, -47%; add to cart 6.0% vs 8.9%) and the dog page at 62 referred sessions with 0 carts in 5 days. Checkout works (45% of checkouts buy vs 40%). Draft orders are the second hole (12 vs 63).
+Orders: Nov 1 was 3 orders, $387 vs goal 5 and $550; Oct 31 was 1 order, $80. Last 7 days (Oct 26 to Nov 1): 16 orders, $1,464 vs goal 35 and $3,850; last year the same days had 30 orders. October: 80 orders, $8,970 vs 155 and $17,050 (52%, 53%).
 
-Written by Gabriel (growth-director) on Sun Nov 1; there was no Oct 31 board, so the Oct 30 board is scored in `marketing/coordination/director/2026-11-01.md`. Sunday: only tasks that run without Eden's Mac. Dates: A-2026W44-065 (Nov 2 reel alone) expires today, Monday Nov 2 is the Meta review, the weekly scorecard and the Mac run, EARLYHOLIDAY20 ends Nov 22, Black Friday 25% starts Nov 27, order-by Dec 15.
+Written by Gabriel (growth-director) on Mon Nov 2. Monday: Mac runs and the weekly scorecard are due. Dates: A-2026W44-065 and 011 expire/expired around Nov 1 to 2, 016/032/038 expire Nov 4, EARLYHOLIDAY20 ends Nov 22, Black Friday 25% starts Nov 27, order-by Dec 15. Best landing pages by completed checkouts Oct 19 to Nov 1: /pages/editor 4.4% (113 sessions), gift collection 1.9% (363), dog page 0 carts. Nov 1 was the best cart day (10 carts from 116 referred sessions). Send traffic to pages that sell.
 
 ## aprobaciones (Betty)
-- Task: Open Eden's day with the clicks in "Do first", marking each done, asked or declined (check the live theme list, the queue and Gmail first): (1) publish theme copy 189322330332 (draft orders), (2) decide A-2026W44-065 today (expires Nov 1) and 058, (3) SearchPie switch then Search Console Part A, (4) switch on any paused Meta ad sets and check Meta Pixel Helper on the dog page, (5) post the failed Facebook reels by hand, (6) paste her group names to Patricia. Quote her answers word for word to the coordinator.
-- Why: draft orders (12 vs 60) and the whole W45 social week wait only on Eden.
-- Done when: each click shows done, asked or declined, and answers are in the queue.
+- Task: Open Eden's day with the clicks that move orders, in this order, marking each done, asked or declined (check the live theme list, the queue and Gmail first): (1) publish theme copy 189322330332 (delete old theme copies first; 016/032/038 lapse Nov 4), (2) decide W45 social A-2026W44-058 and the Nov 2 reel 065 (nothing is approved after today), (3) Meta: switch on paused ad sets and check Pixel Helper on the dog page after Daniel's Nov 2 proposal, (4) SearchPie switch then Search Console Part A, (5) past-buyer email decision (052 and 060 as one). Quote her answers word for word to the coordinator.
+- Why: draft orders (12 vs 63) and all W45 social wait only on Eden.
+- Done when: each click shows done, asked or declined and answers are in the queue.
 
 ## growth-director (Gabriel)
-- Task: Mon Nov 2: score this board against Oct 31 and Nov 1 orders, the dog page carts and the Meta read-back, then write the Nov 2 board.
+- Task: Tue Nov 3: score this board against Nov 2 orders, the dog page carts and Daniel's Meta proposal, then write the Nov 3 board.
 - Why: daily orders vs goal 5.
-- Done when: the Nov 2 board and daily file are on main before the other agents run.
+- Done when: the Nov 3 board and daily file are on main before the other agents run.
 
 ## marketing-coordinator (Armando)
-- Task: Queue today's proposals, archive what executors report done, and move A-2026W44-065, 011 (Nov 2) and 016/032/038/044/046 (Nov 4) to the top as expiring. Mark A-2026W44-052 and 060 (two past-buyer sends two days apart) for one decision.
-- Why: a short queue gets Eden's clicks made faster; W45 and the Dec ads depend on timely approvals.
-- Done when: the queue shows only open decisions, `check.py` passes.
+- Task: Write the weekly Sales Plan for Nov 2 (Monday), then queue today's proposals with expiring items first (065, 011, 016/032/038 on Nov 4, 058, 066). Merge 052 and 060 into one decision.
+- Why: a short, ordered queue gets Eden's clicks made faster; Black Friday items depend on timely approvals.
+- Done when: the plan file exists, the queue shows only open decisions, `check.py` passes.
 
 ## growth-analyst (Nicolás)
-- Task: Add Oct 31 and Nov 1 to `latest.json` on the next pulse (Nov 1 only if the day is complete). Keep the launch block (dog page, calm gift, 8 articles) with three more days if data exists, and list orders by landing page for the last 14 days so we see which page actually sells.
-- Why: we need to know where the 16 orders of the last 7 days came from.
-- Done when: the launch block has Oct 31 and Nov 1 and unknowns are listed.
+- Task: Add Nov 2 on the Nov 3 pulse. Split the dog page and gift collection visits by hour or referrer if the data allows, and say how many Nov 2 carts came from /pages/editor and the gift collection. List what the Mac data pull (GA4, Meta, Search Console) still lacks so Eden's request is exact.
+- Why: we still do not know which source sends the 16 weekly orders.
+- Done when: Nov 2 is in the launch block and the missing-data request is one line.
 
 ## ads-analyst (Daniel)
-- Task: Prepare the Nov 2 Meta review as a ready proposal (no changes today): Christmas 7-day spend vs Shopify orders, cut/keep per ad against your rule (below 2.0 over 7 days), and the pointed-at-ready-made-page change in `changes/meta-dog-v4-point-to-ready-made.md` as a P- block with expected effect. Add the real Dog v4 URL with UTMs to the record so Wilson can test it.
-- Why: Meta spent about $94 on Oct 29 for 0 attributed Christmas orders; moving it to a page that sells is the quickest paid fix.
+- Task: Prepare the Nov 2 Meta review as a ready proposal (no changes today): Christmas 7-day spend vs Shopify orders, cut/keep per ad against your rule (below 2.0 over 7 days), and the "point Dog v4 to a page that sells" change (editor or gift collection, with real UTM URL) as a valid P- block with expected effect.
+- Why: Meta spent $177 from Oct 26 for 0 attributed orders; sending that traffic to pages with carts is the quickest paid fix.
 - Done when: one valid P- block and the per-ad table are in the report.
 
 ## seo-strategist (Mariana)
-- Task: Pick the next 3 briefs by buyer intent for Dec 1 indexing (last-order-date / "order by Dec 15", new-dog-owner, grandparents) and mark which already exist in `article-inventory.md`. Write the 2-line brief for a "personalized gift ready by Christmas" page if none exists.
-- Why: search is the best converter (8.4% add to cart vs 4.2% social); pages need about 4 weeks to index before Dec 1.
-- Done when: 3 briefs are ready and ordered in the backlog.
+- Task: Check the backlog against the gap in Christmas buyer intent not yet covered ("gifts for her under $100", "gifts for boyfriend LEGO fan", "photo gifts that arrive before Christmas") using Search Console data if present; write 2-line briefs for any missing and reorder by buyer intent for Dec 1 indexing.
+- Why: search is the best converter (8.4% add to cart vs 4.2% social); pages need about 4 weeks to index.
+- Done when: backlog top 5 is ordered and any new briefs have two lines.
 
 ## seo-blog-writer (Sandra)
-- Task: Take the top ready brief after mom-from-kids (stocking stuffers if Eden approved it, else dog lovers), draft it with editor link and product card and propose one publish item. Find a real featured image for mom-from-kids (Studio mosaic or real photo) so Inesita's check is not blocked.
+- Task: Draft the next brief on the backlog after dog lovers (the top ready one), with editor link and product card, real featured image, and propose one publish item.
 - Why: more Christmas search pages before the Dec 1 rush (goal 20 orders a day).
-- Done when: one new draft and the mom-from-kids image are in the report.
+- Done when: one new draft with a real image and one proposed publish item are in the report.
 
 ## seo-technical (Inesita)
-- Task: Check the stocking stuffers and mom-from-kids drafts for publish readiness, then recheck the live 301s and Christmas hub A. Prepare Search Console Part B (next 10 URLs) as a one-page paste for Eden.
+- Task: Check the new draft for publish readiness, recheck the live status of the 3 pages that still 404 and the two-title issue, and prepare Search Console Part B (next 10 URLs) as a one-page paste for Eden.
 - Why: new pages sell only once indexed; Search Console requests are the cheapest way to get them crawled.
-- Done when: both drafts show checked and the Part B sheet is ready.
+- Done when: the draft shows checked and the Part B sheet is ready.
 
 ## outreach-gift-guide-pr (Mario)
-- Task: Search Gmail for replies to the 7 pitches sent Oct 28 and log them. Then send only what is approved (A-2026W44-063, 064 are pending, do not send). Write 3 new pitches for fall/holiday gift-guide editors at US lifestyle outlets with a clear "submit a product" page (verify the route), no pets, no autism.
+- Task: Search Gmail for replies to the Oct 28 pitches and log them. Send only what is approved. Write 3 pitches to fall/holiday gift-guide editors with a verified submit route (no pets, no autism), or say which routes you could not verify.
 - Why: one guide inclusion before Dec 15 brings ready buyers; grandparent and couple orders are the biggest ($149 to $432).
-- Done when: replies are logged and one batch of 3 verified-route pitches is in the report. Day 3 without a result: task dropped.
+- Done when: replies are logged and a batch of 3 verified-route pitches is in the report. If no reply and no verified route by Nov 4, drop the task.
 
 ## outreach-link-builder (Bertha)
-- Task: Verify the contact route (named editor or form) for the 5 pet targets and mark each verified or unverified. Then find 5 gift-guide or mom-blog roundups for the Christmas articles (not pets) with the update date of each list.
+- Task: Check whether any of the batches sent so far produced a link or reply (Gmail and links-earned). Then find 5 mom-blog or gift-roundup lists for the Christmas articles, with each list's update date and contact route.
 - Why: earned links lift the pages that must index before Dec 1; zero links earned so far.
-- Done when: verified marks and a 5-row batch are in the report.
+- Done when: links-earned is updated and a 5-row batch is in the report.
 
 ## outreach-creator-scout (María Beatriz)
-- Task: Without the Mac, write a 5-line status for Mon Nov 2 (Niki Loheit's offer A-2026W44-034, 035 with code NIKIBUILDSBRICKS at 10%; Anthony Mark Wood).
-- Why: Niki's audience reaches LEGO and family buyers before Dec 15.
-- Done when: the 5-line status exists.
+- Task: On the Mac, run the Collabs skill: read every pending application, log Niki Loheit's offer status (A-2026W44-034, 035, code NIKIBUILDSBRICKS at 10%) and sort creators into do-now / wait. If the Mac is not available, write the 5-line status instead.
+- Why: a creator's audience reaches LEGO and family buyers before Dec 15.
+- Done when: the creator list is sorted or the 5-line status exists.
 
 ## social-community-manager (Patricia)
-- Task: Prepare Monday's Builders prompt (which photo?) and a Sunday-night posting sheet of the 5 best groups with exact text, result column filled where Eden already posted. Update the paste message with the groups still unknown.
-- Why: free visits from gift buyers and dog owners tagged utm_medium=group.
-- Done when: the sheet and the Monday prompt are in your folder.
+- Task: Record results of Monday's group posts where Eden reported them, prepare Tuesday's sheet (5 best groups, exact text, utm_medium=group), and write one reply set for the questions seen in comments and messages this week.
+- Why: free visits from gift buyers and dog owners.
+- Done when: Tuesday sheet and results column are in your folder.
 
 ## social-planner (Hugo)
-- Task 1: Ask Eden for one click only: make the Nov 2 reel standalone (A-2026W44-065, expires today) the first line of your report; if it lapses, re-propose it for Nov 3 with its preview.
+- Task 1: First line of your report: A-2026W44-065 and W45 (058) status. If 065 lapsed, re-propose that reel for Nov 3 with its preview.
 - Task 2: Write the "Order by December 15" countdown carousel (real photos or Studio mosaics only) and show the date on three W46 posts.
-- Why: social reach is low (321 best reel) and Nov 2 has nothing approved after Nov 1.
-- Done when: the re-proposal or confirmation and the carousel draft are in the report.
+- Why: social reach is low (best reel 321) and nothing is approved after Nov 2.
+- Done when: the status or re-proposal and the carousel draft are in the report.
 
 ## social-publisher (Freddy)
-- Task: Check at 19:00 ET that the Nov 1 posts went live and record the URLs; list failed Facebook reels (Oct 26, 28, 30) with the Mac kit for Eden, no retry in Buffer. Say which days after Nov 1 have nothing approved.
-- Why: daily posts send visitors; a gap after Nov 1 stops them.
+- Task: Confirm the Nov 1 posts went live and record URLs; check Buffer for Nov 2 and list failed Facebook reels with the Mac kit for Eden, no retry in Buffer. State which days after Nov 2 have nothing approved.
+- Why: daily posts send visitors; a gap stops them.
 - Done when: calendar rows have live URLs or "unconfirmed: reason" and the gap list is current.
 
 ## email-campaign-writer (Marcela)
-- Task: Draft the Nov 4 to 11 email "Order by Dec 15" (EARLYHOLIDAY20 to Nov 22, 3 Christmas articles, dog page), merging with A-2026W44-052 and 060 so Eden decides one past-buyer and one list send, not two close together. Propose it.
-- Why: email is the cheapest order source in the Nov 4 to 18 gap; 014 and 015 are done, so this is the next send.
-- Done when: one proposal with preview in the report and the overlap with 052 and 060 settled.
+- Task: Draft the "Order by Dec 15" email for about Nov 4 to 11 (EARLYHOLIDAY20 to Nov 22, 3 Christmas articles, editor link; send the dog page only if carts improve), merged with 052 and 060 so Eden decides one past-buyer send and one list send. Propose it.
+- Why: email is the cheapest order source in the Nov 4 to 18 gap.
+- Done when: one proposal with preview and the overlap settled.
 
 ## email-flow-optimizer (Aura María)
-- Task: Read Abandoned Checkout 3 to 6 (63/13/0, 67/3/0, 66/3/0) and write a one-page recommendation: which email to test next after Checkout email 1 (A-2026W44-062 is pending). No claims. Do not touch Post-Purchase.
-- Why: abandoned checkout is the warmest lost buyers; email 1 had 1 order on 76 sent.
+- Task: Read Abandoned Checkout 3 to 6 and the first results of Checkout email 1 (A-2026W44-062 if live) and write a one-page recommendation: which email to test next. No claims. Do not touch Post-Purchase.
+- Why: abandoned checkout is the warmest lost buyers; 97 reached checkout and 44 bought in 30 days, so about 53 lost buyers.
 - Done when: one recommendation with numbers is in the report.
 
 ## conversion-auditor (Wilson)
-- Task: Check the Dog v4 ad URL from Daniel's record on a phone, from Instagram and Facebook in-app browsers if reachable; test the dog message continuity into the editor (A-2026W44-067). Add whether the add-to-cart for social is 4.2% with the 51 sessions or the dog page is truly lower.
-- Why: 0 carts in 51 sessions against about 2 expected; either it is small sample or the in-app browser breaks the button.
-- Done when: the in-app browser result or "could not test: reason" is in the audit file.
+- Task: Test the dog page and the editor link from Instagram and Facebook in-app browsers if reachable, and compare its first screen with /pages/editor (the best converting page). Write the one change that most likely turns dog page visits into carts, as a proposal.
+- Why: 62 sessions and 0 carts against about 4 expected; editor converts at 4.4%.
+- Done when: the in-app result or "could not test: reason" and one proposal are in the audit file.
 
 ## site-developer (Jenny)
-- Task 1: After Eden publishes 189322330332, check the 4 live files, free-preview on phone and desktop. If not published, build nothing new; say so.
-- Task 2: Keep the Dec 15 bar draft ready; build only if P-growth-director-20261029-1 is approved and a theme slot is free.
-- Why: free proof requests feed draft orders (12 vs 60).
+- Task 1: If Eden published 189322330332, check the 4 live files on phone and desktop. If not, say so and build nothing new.
+- Task 2: Keep the Dec 15 bar draft ready; build only if approved and a theme slot is free.
+- Why: free proof requests feed draft orders (12 vs 63).
 - Done when: the check or "not published yet" is in the report.
