@@ -14,3 +14,16 @@ Read-only check of active Shopify products (150+). The Merchant Center reasons t
 
 ## Needed from Eden
 Merchant Center > Products > Needs attention: screenshot of the issue list (issue name + number of products). That shows which of the above is the real cause before anything changes.
+
+## Done by Eden's Claude in Chrome (2026-11-02)
+- Google & YouTube: listing countries 58 -> United States only (automatic country sync now off); local inventory off (0 of 2 locations).
+- Microsoft Channel: reconnected; country already United States; no local inventory option. App setup wizard still at step 1 of 4 (not finished).
+- Custom product = true on 278 products (bulk editor). Condition not settable there (Google not flagging it).
+- Off Google & YouTube and Microsoft: Gift Card (Choose an Amount), Gift Card (Choose a Size), Heatblast. Online Store unchanged.
+- Merchant Center (US), right after the change: Missing local inventory data 7,485 (96.5%); Missing shipping weight 2 (the 2 gift cards); Invalid product price 1 (Memobrick Proof, $0). No account-level issues, no missing barcode issue.
+
+## Next
+- Recheck Merchant Center Nov 4-5: "Missing local inventory data" should drop now that local inventory is off. It affects local (in-store) listings, which Memobrick does not have.
+- Take "Memobrick Proof" (and "Free MemoBrick Proof") off Google & YouTube: a $0 service item should not be a Shopping product.
+- Gift cards: will drop out of Merchant Center after the next sync; if not, exclude them in Merchant Center.
+- Google Ads: confirm campaign locations are United States.
