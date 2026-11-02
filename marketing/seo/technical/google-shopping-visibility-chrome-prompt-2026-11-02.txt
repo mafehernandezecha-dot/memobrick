@@ -1,0 +1,37 @@
+You are helping Memobrick (Shopify store "mymemobrick", website mymemobrick.com) get more people to see and click its products on Google Shopping and free Google listings. Work in Google Merchant Center (account linked to the Shopify "Google & YouTube" app, signed in as photobrickusa@gmail.com) and Shopify admin, in tabs I'm already signed in to.
+
+RULES
+- Do NOT change prices, compare-at prices, stock, Shopify Markets, orders, customers, Google Ads campaigns or budgets.
+- Do NOT create discounts, promotions or coupon codes. Do NOT buy or turn on anything paid.
+- Do NOT edit product titles, descriptions or images in Shopify. Write your suggestions in the report instead (Part 4).
+- Only state facts you can see on mymemobrick.com or in Shopify. Never invent reviews, ratings, delivery times or policies.
+- Never write "LEGO" in any text. If you mention press, write "As seen on FOX" (never "Fox News").
+- If a screen is different from these steps, or a step would change something not listed, STOP and ask me.
+- Screenshot before and after every change.
+
+PART 1. Merchant Center setup that adds badges and trust (change only if missing or wrong)
+1. Business info: check the store name is Memobrick, the website is mymemobrick.com and is verified/claimed. Report only, don't change.
+2. Shipping (Settings > Shipping and returns): read what is set for United States. Compare with Shopify > Settings > Shipping and delivery. If Merchant Center is missing the US shipping rates or delivery times that Shopify shows, report the difference and ask me before saving.
+3. Return policy: open mymemobrick.com/policies/refund-policy and read it. If Merchant Center has no US return policy, add one that matches the website policy exactly (return window, who pays return shipping, custom-item rules). Show me the text before saving.
+4. Free listings: check that "Free listings" (and free listings on YouTube/Images if offered) are turned ON for the products. Turn on only if off.
+5. Product ratings / Store reviews: report whether Memobrick is enrolled and whether reviews are showing. Shopify has the Loox reviews app. Report what Merchant Center says is needed to show star ratings. Don't sign up for anything paid.
+
+PART 2. Read Google's own suggestions (read only)
+1. Merchant Center > Products > Opportunities (or "Growth" / "Recommendations"). Write down every suggestion, how many products it affects, and the impact Google shows.
+2. Merchant Center > Products > Needs attention, country United States: list issues and counts (we fixed local inventory today; note if the count has dropped).
+3. Merchant Center > Performance (last 28 days): total clicks and impressions, and the top 10 products by clicks and by impressions. Note products with many impressions and few clicks.
+
+PART 3. Image check (read only)
+For the top 10 products by impressions (from Part 2), open each product in Merchant Center and check the main image: is it clear, not cropped, with no text, logos, watermarks, borders or collage? Is the product (the brick mosaic) the main thing in the photo? Note any image Google flags ("promotional overlay", "image too small", "generic image").
+
+PART 4. Title and description suggestions (do not apply)
+For the same top 10 products and for these messy listings:
+"Yelow Cat HOME DECOR BRICKED MOSAIC PORTRAIT 20X30", "Lady Bricked Mosaic Home Decor 20x30\"", "Red Kiss  Home Decor Bricked Mosaic Portrait 20x20", "Hope Art Home Decor Bricked Mosaic Portrait 20x20", "Swag Greek Statue  Home Decor Bricked Mosaic Portrait 20x20", "Cute Curios Cat Home decoration Bricked Mosaic Portrait 16x16\"", "Cat Selfie Home decoration Bricked Mosaic Portrait 16x16\"", "Candle Light Home decoration Bricked Mosaic Portrait 16x16\"", both "Baboon Abstract..." and both "Goldfish Abstract..." listings,
+write a suggested Google title in this pattern (max 150 characters, most important words first):
+- Photo kits: "Custom Photo Brick Mosaic Kit [size] in - Personalized Photo Gift, Build Your Own Portrait - Memobrick"
+- Art kits: "[Design] Brick Mosaic Art Kit [size] in - DIY Wall Art Gift - Memobrick"
+- Frames: "Black Frame for [size] in Brick Mosaic - Memobrick"
+Also note which listings look like duplicates.
+
+REPORT
+Give me one summary: Part 1 changes (with before/after screenshots, and anything waiting for my OK), Part 2 lists and numbers, Part 3 image problems, Part 4 table (current title -> suggested title). Do not apply Part 4.
