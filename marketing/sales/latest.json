@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T07:40:00-05:00",
+ "updated": "2026-11-02T22:00:00-05:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -309,8 +309,13 @@
   },
   {
    "date": "2026-11-01",
-   "orders": 3,
-   "netSales": 387.4
+   "orders": 4,
+   "netSales": 467.31
+  },
+  {
+   "date": "2026-11-02",
+   "orders": 2,
+   "netSales": 175.11
   }
  ],
  "lastYear": [
@@ -776,17 +781,17 @@
   }
  ],
  "funnel": {
-  "period": "Oct 2 to Nov 1 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 3 to Nov 2 2025",
+  "period": "Oct 3 to Nov 2 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 4 to Nov 2 2025",
   "now": {
-   "sessions": 2603,
-   "addedToCart": 157,
-   "reachedCheckout": 97,
+   "sessions": 2626,
+   "addedToCart": 159,
+   "reachedCheckout": 98,
    "purchased": 44
   },
   "lastYear": {
-   "sessions": 4916,
-   "addedToCart": 439,
-   "reachedCheckout": 184,
+   "sessions": 4934,
+   "addedToCart": 448,
+   "reachedCheckout": 190,
    "purchased": 74
   },
   "launch": {
@@ -916,7 +921,7 @@
  "weakPoints": [
   {
    "title": "Referred traffic is down 47% and add-to-cart rate is lower",
-   "detail": "Oct 2 to Nov 1: 2,603 referred sessions vs 4,916 last year (-47%). Add-to-cart rate 6.0% vs 8.9%; checkout-to-purchase 45% vs 40%, so people who reach checkout do buy; the gap is volume of qualified visitors. Purchases 44 vs 74. The new /pages/dog-brick-mosaic has 62 referred sessions and 0 carts over five days (8, 26, 17, 8, 3), against the site's 6.0% average (about 4 carts expected; small sample, but flat zero) and traffic to it is fading. Direct sessions are bot-inflated and excluded.",
+   "detail": "Oct 3 to Nov 2: 2,626 referred sessions vs 4,934 last year (-47%). Add-to-cart rate 6.1% vs 9.1%; checkout-to-purchase 45% vs 39%, so people who reach checkout do buy; the gap is volume of qualified visitors. Purchases 44 vs 74. The new /pages/dog-brick-mosaic had 62 referred sessions and 0 carts over Oct 28 to Nov 1 and traffic is fading (not refreshed today). Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -926,7 +931,7 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 12 in Oct 2 to Nov 1 vs 63 in Oct 3 to Nov 2 last year (-81%). Online Store 68 vs 120. Total 82 vs 185, so draft orders explain 51 of the 103 lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 12 in Oct 3 to Nov 2 vs 63 in Oct 3 to Nov 2 last year (-81%; last-year figure from the previous pulse). Online Store 68, Shop 2. Draft orders explain about half the lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
@@ -934,7 +939,7 @@
   },
   {
    "title": "Daily goal missed: orders and sales under pace all October and last week",
-   "detail": "Oct 1 to 31: 80 orders and $8,970 net sales vs goal 155 and $17,050 (52% and 53%); last year October had 182 orders and $18,428. Last 7 days (Oct 26 to Nov 1): 16 orders, $1,464 vs goal 35 and $3,850. Yesterday (Nov 1) 3 orders, $387 vs 5 and $550. Black Friday goals (12 orders a day from Nov 16) are far above the run rate of about 2.6 a day; last year Nov 16 to 30 averaged about 16 orders a day.",
+   "detail": "Oct 1 to 31: 80 orders and $8,970 net sales vs goal 155 and $17,050 (52% and 53%); last year October had 182 orders and $18,428. Last 7 days (Oct 27 to Nov 2): 19 orders, $1,719 vs goal 35 and $3,850 (54% and 45%). Yesterday (Nov 2) 2 orders, $175 vs 5 and $550. November so far: 6 orders, $642 vs 10 and $1,100. Black Friday goals (12 orders a day from Nov 16) are far above the run rate of about 2.7 a day; last year Nov 16 to 30 averaged about 16 orders a day.",
    "owners": [
     "owner",
     "email-campaign-writer",
