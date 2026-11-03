@@ -30,7 +30,7 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/site-developer/chat-faq-2026-11-03.md
-- Commit: 9ff6afc
+- Commit: bb2f640
 - Reason: Shopify Inbox chat on mymemobrick.com gets a new greeting and 15 instant answers (tap a question, get the answer at once, most with a link to the Creator, free proof or Gift Kit). Entered by Claude in Chrome on Eden's Mac with marketing/conversion/site-developer/chat-faq-chrome-prompt.txt, which reads the current settings first and saves nothing until Eden types "save"; it changes only the Inbox greeting (theme App embeds) and the instant answers, and turns off old answers only where Eden names them. Inbox agent (AI auto-replies) stays off; it is phase 2, a separate decision after the conflicting store texts listed in the draft are fixed. Upkeep: turn off answer 10 (EARLYHOLIDAY20) on Nov 23; change answer 3 and the greeting on Dec 16. Reply "approve 055", or "changes: 055 <answer number> <note>".
 - Expires: 2026-11-10
 - Status: pending
