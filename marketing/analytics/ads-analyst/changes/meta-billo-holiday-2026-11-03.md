@@ -1,9 +1,11 @@
 # Meta: Billo UGC holiday campaign (2026-11-03)
 
 - Eden's request (chat, 2026-11-03), word for word: "Build a campaign with ALL the videos made in billo and make sure the audience is high intent purchase for holidays", then "And include Lego lovers".
+- Update 1 (same day), word for word: "Ok about the new ad add more audiences" and "Add more audiences relates for customer potential customers". Also: "I don't want you do make changes if I don't approve", so only this paused campaign was touched.
+- Update 2 (same day), word for word: "Make sure everything the objective is purchase only".
 - Queue item: **A-2026W45-054** (pending). Executor: ads-analyst. Type: ad-change.
 - Account PhotoBrick 1493067227536648, Page 105916444396794, pixel 3444389275577775. Facebook connector only; no Google or Adspirer calls.
-- **Everything is PAUSED.** `ads_activate_entity` was not called. The campaign spends nothing until Eden approves A-054 and it is switched on.
+- **Everything is PAUSED and has spent $0.** `ads_activate_entity` was never called. No other campaign, budget or status was changed (read back after the update: Proven Winners $40 ACTIVE, Christmas $20 ACTIVE, ALWAYON $20 ACTIVE, exactly as before). The campaign spends nothing until Eden approves A-054 and it is switched on.
 - Review in Ads Manager: https://www.facebook.com/adsmanager/manage/campaigns?act=1493067227536648&selected_campaign_ids=120252917166090597
 
 ## What was built (read back 2026-11-03)
@@ -13,7 +15,8 @@
 | Campaign | MB \| Sales \| Billo UGC \| Holiday26 | 120252917166090597 | PAUSED. Sales objective, campaign budget (CBO) $30/day placeholder, lowest cost, no cap. Meta attached the store catalog (1094886087542510) by itself; no catalog ads are used. |
 | Ad set 1 | Warm high-intent \| Visitors 30-180d + ATC + IC + IG/FB engagers 180d \| Excl Purch \| US 24+ | 120252917169280597 | PAUSED. Purchase (OFFSITE_CONVERSIONS) on the pixel, 7-day click + 1-day view, US, 24+, Advantage+ placements. Advantage+ audience OFF (reason: custom audiences only), so it reaches only these people. |
 | Ad set 2 | Cold high-intent holiday \| Engaged Shoppers AND (Gift/Xmas OR LEGO lovers OR Family/Pets) \| Excl Purch \| US 24+ | 120252917175580597 | PAUSED. Same optimization, US, 24+, Advantage+ placements, Advantage+ audience ON (see the note below). |
-| Ads | 9 Billo videos in each ad set, 18 ads | listed below | All PAUSED. Meta shows them IN_PROCESS or PENDING_REVIEW, the normal review states. `ads_get_errors` on the campaign, both ad sets and two ads: no errors. |
+| Ad sets 3 to 11 | 9 more audiences, added in update 1 (see "More audiences" below) | listed below | PAUSED. Same settings as ad set 2: Purchase on the pixel, US, 24+, past buyers excluded, Advantage+ placements and audience. |
+| Ads | The same 9 Billo videos in every ad set: 11 ad sets, **99 ads** | listed below | All PAUSED. Meta shows the first ones IN_PROCESS or PENDING_REVIEW, the normal review states. `ads_get_errors` on the whole campaign after update 1: no errors. |
 
 Not done: no VALUE optimization (Meta rejected it on Sales before), no budget changes to any other campaign, nothing switched on, nothing deleted.
 
@@ -49,12 +52,63 @@ Built as **shoppers AND (gift/holiday OR LEGO lovers OR family/pets)** (two narr
 - Every interest ID comes from ad sets already in this account. The connector has no targeting search, so I couldn't check "LEGO Masters", "LEGO Ideas" or "building sets". None of them was in any past ad set, so they are not added. Eden can add them in Ads Manager under Detailed targeting if Meta offers them.
 - **Advantage+ audience is ON** (Meta's default and recommendation). With it on, Meta treats the interests as a starting suggestion and may go wider when it finds buyers. The hard limits stay hard: US, 24+, past buyers excluded. **If Eden wants Meta held strictly to "shoppers AND (gift OR LEGO OR family/pets)"**, she says "turn Advantage+ audience off on the cold ad set" and I switch it. My advice is to leave it on: last week the narrow, hand-picked audiences did not beat broad.
 
-### Excluded in both ad sets (past buyers)
+### Excluded in every ad set (past buyers)
 
 - customers_export.csv 120218644952060597
 - purchase 730 days sep 25 120252332056620597
 - MB_Purchasers_180d_EXCLUDE 120250587721690597
 - Purchase 120249604850310597
+
+## More audiences (update 1, 2026-11-03)
+
+Eden asked for more audiences of customers and potential customers. Each one is its own paused ad set inside the Billo campaign, so its results can be read alone. Every ad set has the same 9 Billo ads, the same Purchase optimization and the same 4 past-buyer exclusions as ad sets 1 and 2. No customer list was uploaded: the only customer list used is the one already in the account (customers_export.csv), as the seed of two new lookalikes.
+
+| # | Ad set | ID | Who it reaches |
+|---|---|---|---|
+| 3 | LAL Buyers 1% | 120252918727670597 | Lookalike (US, 1%) of pixel purchasers (existing, 120249606728920597, the one the Christmas campaign used) + **new** Lookalike (US, 1%) of the customer list customers_export.csv (120252918710460597) |
+| 4 | LAL Add to cart 1% | 120252918728120597 | Lookalike (US, 1%) of add to carts (existing, 120249606728960597) |
+| 5 | LAL 1-3% wider | 120252918728540597 | **New** Lookalike (US, 3%) of the customer list (120252918710780597) + Lookalike (3%) AddToCart (existing, 120249604985830597) + Lookalike (3%) InitiateCheckout (existing, 120249605068950597) |
+| 6 | Gift occasions | 120252918729390597 | Life events: anniversary within 30 days, anniversary within 31 to 60 days, anniversary within 61 to 90 days, newly engaged (3 months, 6 months, 1 year), newlywed (3 months, 6 months, 1 year), upcoming birthday, friends of people with a birthday in the next month |
+| 7 | Family | 120252918729920597 | Parents with children 6 to 8, parents with preteens 9 to 12, new parents (baby up to 12 months), interest Grandparent |
+| 8 | Pet owners | 120252918739290597 | Interests Dogs, Cats, Pets |
+| 9 | Hobby and creative | 120252918740000597 | Jigsaw puzzle, Do it yourself (DIY), Crafts, Creativity, Photo-book |
+| 10 | Brick lovers | 120252918740650597 | The Lego Group, Lego, Legoland, Collectible toys (targeting only; no "LEGO" in any ad text) |
+| 11 | Men buying gifts | 120252918741730597 | Men 24+ with interests Gift, Christmas shopping, Anniversary, Wedding anniversary, Wife (the MEN ad had the cheapest purchases historically, $27 to $38 each) |
+
+Ad IDs: every ad set has 9 ads named "BILLO \| <footage> \| <cut>", the same 9 creatives as rows 1 to 9 in the table further down. Read back in Ads Manager or with the campaign filter; all 99 are PAUSED.
+
+**Could not be added, and why:**
+- **High-value purchasers lookalike:** the account has no value-based customer list, and making one would mean uploading customer data with order values, which Eden asked us not to do. The 1% lookalike of the full customer list (ad set 3) is the closest honest option.
+- **Long-distance relationships:** no such option exists in any ad set in this account, and the connector has no targeting search, so I can't look it up.
+- **Dog owners / cat owners as behaviors:** Meta has no "owner" option in this account; the Dogs, Cats and Pets interests are used instead.
+- **Home decor and photography:** the IDs found in older ad sets (Home Décor Products, Interior design, Photography, Digital photography, Puzzles and brainteasers) and the extra pet and brick interests (Puppy, Dog training, PetSmart, Petco, Lego Creator, Lego Technic and similar) were **rejected by Meta**: "detailed targeting options that were discontinued". I rebuilt those ad sets with only interests that Meta still accepts.
+- **LEGO Masters, LEGO Ideas, building sets:** not available (same reasons as above).
+
+**How the audiences behave:**
+- **Advantage+ audience is ON in ad sets 3 to 11** (Meta's default). Meta treats the lookalikes, life events, interests and the "men" setting as a starting suggestion, and may show ads to similar people outside them when it finds buyers.
+- Hard limits stay in every ad set: US only, 24+, past buyers excluded.
+- If Eden wants each ad set held strictly to its audience, she says "turn Advantage+ audience off on the Billo ad sets" and I switch it. My advice: leave it on, because strict small audiences cost more per purchase.
+- **The two new lookalikes take a few hours to fill.** Meta builds them from the customer list in the background.
+
+## Purchase-only check (update 2, read back 2026-11-03)
+
+Eden: "Make sure everything the objective is purchase only".
+
+- **Campaign 120252917166090597:** objective OUTCOME_SALES, PAUSED.
+- **All 11 ad sets:** optimization_goal = OFFSITE_CONVERSIONS, promoted_object = pixel 3444389275577775, custom_event_type = PURCHASE, PAUSED.
+  - Warm high-intent 120252917169280597
+  - Cold high-intent holiday 120252917175580597
+  - LAL Buyers 1% 120252918727670597
+  - LAL Add to cart 1% 120252918728120597
+  - LAL 1-3% wider 120252918728540597
+  - Gift occasions 120252918729390597
+  - Family 120252918729920597
+  - Pet owners 120252918739290597
+  - Hobby and creative 120252918740000597
+  - Brick lovers 120252918740650597
+  - Men buying gifts 120252918741730597
+- **No other goal anywhere.** No add-to-cart, landing page view, link click, reach, engagement or value optimization. "Add to cart" in the ad set names only describes who is in the audience (people who look like past cart adders); those ad sets still optimize for Purchase.
+- Spend for the campaign and every ad set: **$0** (no spend recorded).
 
 ## The Billo videos: every one found, and what happened to it
 
@@ -64,7 +118,7 @@ How I found them:
 - Meta gives every creative its own copy of a video, without the file name. So I matched each ad's video to the Billo source file by exact length, down to the millisecond, plus Meta's thumbnail file.
 - Rule: one ad per distinct footage. A second cut of the same footage gets its own ad only when it really differs (a different opening or length).
 
-### Included: 9 videos from 7 Billo files (18 ads, 9 per ad set)
+### Included: 9 videos from 7 Billo files (9 ads in each of the 11 ad sets, 99 ads)
 
 All 9 reuse a Christmas creative that is already approved and has passed Meta review, as A-050 did. The only exception is 463980 (see its row).
 
@@ -118,7 +172,7 @@ The copy on these creatives is already in Meta and passed review. Every version 
 | "Untitled video (5)" | Do not use (Yamaha/Motul logos, AI watermark, not our product). Not in Meta. |
 | "review Elizabeth billo video ad" folder | No file named Elizabeth is in the Meta library. The 2025 Billo uploads in Meta are 193477, 193478, 221731 and 381968, and all four are in. If the Elizabeth file is a different clip, it is missing from Meta (same Drive blocker as 463981). |
 
-## Budget
+## Budget (updated after update 1)
 
 Today Meta spends $80/day: Proven Winners $40 (launched Nov 1, first check Nov 4), Christmas $20, ALWAYON $20.
 
@@ -126,18 +180,26 @@ Today Meta spends $80/day: Proven Winners $40 (launched Nov 1, first check Nov 4
 - ALWAYON: **0 tagged Shopify orders** last week.
 - The rule for raising total spend (Shopify ROAS above 2.8 over 7 days with 5+ orders) is **not met** by any Meta campaign.
 
+**What changed:** 11 ad sets instead of 2. On $30/day that is under $3 per ad set, too little for Meta to learn anything per audience. Two changes to my recommendation:
+
+1. **Billo gets $40/day instead of $30**, still inside $80/day total, by pausing ALWAYON as well as Christmas.
+2. **Switch on 6 of the 11 ad sets at launch** and keep 5 paused as reserves, so each live one gets about $6 to $7/day.
+   - **On at launch:** Warm high-intent, LAL Buyers 1%, LAL Add to cart 1%, Gift occasions, Pet owners, Men buying gifts. These are closest to past buyers, or to the angles that sold before: dog video, couples and men.
+   - **Reserves (stay paused):** Cold high-intent holiday, LAL 1-3% wider, Family, Hobby and creative, Brick lovers. Each reserve replaces the weakest live ad set after 7 days, in the order listed.
+
 | Option | Billo UGC | Christmas | ALWAYON | Proven Winners | Total Meta |
 |---|---|---|---|---|---|
-| **A (recommended): keep $80** | **$30** | **paused** (whole campaign, incl. come-back ad set) | **$10** (from $20) | $40, untouched | **$80** |
-| B: add spend | $40 | paused | $20 | $40 | **$100: +$20/day, +25%, above the 20% one-step limit, and the 2.8 ROAS rule is not met** |
+| **A (recommended): keep $80** | **$40**, 6 ad sets on | **paused** (whole campaign, incl. come-back ad set) | **paused** | $40, untouched | **$80** |
+| B: add spend | $50, 6 ad sets on | paused | $20 | $40 | **$110: +$30/day, +37.5%, above the 20% one-step limit, and the 2.8 ROAS rule is not met** |
 
 - **Why A.** It moves money from the two campaigns with no Shopify proof into the footage with the longest purchase history. Total spend stays the same.
-  - Christmas's best-selling ads (Dog v4, couple_vid v2, Couple v3, mom_video v2) are the same creatives as Billo rows 1, 3, 5 and 6. Most of the Christmas campaign moves over intact.
+  - Christmas's best-selling ads (Dog v4, couple_vid v2, Couple v3, mom_video v2) are the same creatives as Billo rows 1, 3, 5 and 6, so most of Christmas moves over intact.
   - The warm ad set covers the come-back ad set's people (30-day visitors and add to carts) and more.
-- **What A gives up.** Christmas's come-back ad set brought the only clean Shopify order (#21129, BACK anniversary). The anniversary video is not Billo, so it isn't in this campaign. It keeps running in Proven Winners (WIN | anniversary), so it isn't lost.
-- **Why not B.** It raises spend without proof, against the standing rule. Choose B only as a deliberate holiday bet. If you do, I'd pause it again on Nov 17 if Shopify ROAS is under 2.0.
-- **Under CBO, the warm ad set could take most of the $30.** It is the smaller, hotter audience. If after 3 days the cold ad set gets under $8/day, I'll propose an $8 minimum on it.
-- **18 ads on $30/day is thin.** Meta will concentrate spend on 2 or 3 ads per ad set within a few days. That is fine for a "find the winner" week. No ads are switched off by hand in the first 7 days.
+- **What A gives up:**
+  - Christmas's come-back ad set brought the only clean Shopify order (#21129, BACK anniversary). The anniversary video keeps running in Proven Winners (WIN | anniversary), so it isn't lost.
+  - ALWAYON's MEN ad had the best cart rate on Meta last week (5 of 42 visitors). The Billo "Men buying gifts" ad set is aimed at the same buyers. If Eden wants to keep MEN running, the alternative is ALWAYON at $10 and Billo at $30 (4 ad sets on: Warm, LAL Buyers 1%, Gift occasions, Men buying gifts).
+- **Why not B.** It raises spend without proof, against the standing rule. Choose it only as a deliberate holiday bet; if Shopify ROAS is under 2.0 on Nov 17 I'd cut it back.
+- **9 ads per live ad set is still a lot for $6 to $7/day.** Meta will concentrate spend on 2 or 3 ads per ad set within a few days. That is fine for a "find the winner" week. No ads are switched off by hand in the first 7 days.
 
 ## Overlap with A-2026W45-053 (Christmas rotation)
 
@@ -151,11 +213,13 @@ Today Meta spends $80/day: Proven Winners $40 (launched Nov 1, first check Nov 4
 
 **Option A:**
 1. Pause the Christmas campaign 120252787078920597.
-2. ALWAYON 120252425110090597: daily budget from $20 to $10.
-3. Billo UGC 120252917166090597: keep $30, switch on the campaign, both ad sets and all 18 ads (or fewer, if Eden switches some off after the previews).
-4. Read every setting back and log before and after in this file.
+2. Pause ALWAYON PROMO -v1 120252425110090597.
+3. Billo UGC 120252917166090597: campaign budget $30 to $40/day. Switch on the campaign and the 6 launch ad sets (Warm 120252917169280597, LAL Buyers 1% 120252918727670597, LAL Add to cart 1% 120252918728120597, Gift occasions 120252918729390597, Pet owners 120252918739290597, Men buying gifts 120252918741730597), with their 9 ads each (or fewer, if Eden switches some off after the previews). The 5 reserve ad sets stay paused.
+4. Read every setting back, including the Purchase-only check, and log before and after in this file.
 
-**Option B:** the same, but Billo goes to $40 and ALWAYON stays at $20.
+**Option B:** the same, but Billo goes to $50 and ALWAYON stays ACTIVE at $20.
+
+**Small version (if Eden wants to keep MEN in ALWAYON):** Christmas paused, ALWAYON $10, Billo $30 with 4 ad sets on (Warm, LAL Buyers 1%, Gift occasions, Men buying gifts). Total $80.
 
 **No edits for 7 days after launch**, then the standing rules:
 - Raise the budget one step only if Shopify ROAS is above 2.8 on 5+ tagged orders.
@@ -163,5 +227,5 @@ Today Meta spends $80/day: Proven Winners $40 (launched Nov 1, first check Nov 4
 - Per ad: swap out any ad with $15+ spent and 0 add to carts.
 
 **How I'll judge it (Nov 10 review, 7 days after launch):**
-- Shopify orders and net sales with utm_campaign=120252917166090597 (rows 1 to 8) or billo-holiday26 (row 9), split warm and cold by utm_term.
+- Shopify orders and net sales with utm_campaign=120252917166090597 (rows 1 to 8) or billo-holiday26 (row 9), split by ad set with utm_term (one ad set ID per audience).
 - Target: Shopify ROAS 3.0, or at least 2.0 with 3+ orders, to keep it running.
