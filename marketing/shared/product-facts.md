@@ -10,6 +10,7 @@ The reference every agent checks before writing about the product or making an i
 - In the kit: 1×1 bricks, white baseplates, personalized building instructions (a printed color map), and the building tool. Bricks come in small labeled bags sorted by color (seen in owner footage: a color name and number on each bag).
 - Packaging: a white box with a colorful pixel-mosaic graphic and the MEMOBRICK logo (seen in owner footage).
 - Frames are sold separately (see Frames).
+- Missing, damaged or defective pieces: replaced or refunded within 14 days (of delivery, as the live FAQ page words it). Owner decision 2026-11-03: Eden first said "30 days after purchasing", then corrected it: "Leave 14 days". Never promise a longer window or lifetime replacements. The $20 restocking fee was deleted the same day. Return shipping is paid by the customer (Eden 2026-11-03: "Customer pays"). Custom kits: full refund any time before the order ships, not after (refund policy). Frames are final sale.
 - Only the build-at-home kit is offered (the "No (Build at home)" option). Shopify still lists a pricier "Yes" option on most sizes; the owner said on 2026-10-12 it is not offered, so never mention, show, or link to it.
 
 ## Sizes
