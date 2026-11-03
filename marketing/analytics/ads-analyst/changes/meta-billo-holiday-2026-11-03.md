@@ -229,3 +229,84 @@ Today Meta spends $80/day: Proven Winners $40 (launched Nov 1, first check Nov 4
 **How I'll judge it (Nov 10 review, 7 days after launch):**
 - Shopify orders and net sales with utm_campaign=120252917166090597 (rows 1 to 8) or billo-holiday26 (row 9), split by ad set with utm_term (one ad set ID per audience).
 - Target: Shopify ROAS 3.0, or at least 2.0 with 3+ orders, to keep it running.
+
+## Applied (2026-11-03, A-2026W45-054 approved; PARTIAL, Billo still paused)
+
+- **Approval.** Eden in chat, recorded in the queue by the main session (commit 5132973): "approve: Billo 65, Proven Winners 15 anniversary only, pause Christmas and ALWAYON, reject 053". The checker printed A-2026W45-054 for ads-analyst.
+- **Final plan** (not option A, B or small as written above): Billo $65/day with 8 ad sets on; Proven Winners $15/day with the anniversary ad only; Christmas and ALWAYON paused. Total $80/day. A-053 rejected.
+
+### Done by the main session (read back by Daniel)
+
+| Campaign | ID | Status | Daily budget |
+|---|---|---|---|
+| MB \| Sales \| Billo UGC \| Holiday26 | 120252917166090597 | **PAUSED** (not switched on yet) | $65 |
+| MB \| Sales \| Proven Winners \| Nov26 | 120252873643310597 | ACTIVE | $15. WIN \| anniversary 120252873646920597 ACTIVE; WIN \| Dog_vid 120252873647250597 PAUSED |
+| MB \| Sales \| Christmas 2026 | 120252787078920597 | PAUSED | $20 (not spending) |
+| ALWAYON PROMO -v1 | 120252425110090597 | PAUSED | $20 (not spending) |
+
+**Billo ad sets:**
+- All 11 optimize OFFSITE_CONVERSIONS on Purchase, pixel 3444389275577775.
+- **ACTIVE (8):**
+  - Warm 120252917169280597
+  - LAL Buyers 1% 120252918727670597
+  - LAL Add to cart 1% 120252918728120597
+  - Gift occasions 120252918729390597
+  - Pet owners 120252918739290597
+  - Men buying gifts 120252918741730597
+  - Family 120252918729920597
+  - Brick lovers 120252918740650597
+- **PAUSED reserves (3):**
+  - LAL 1-3% wider 120252918728540597
+  - Hobby and creative 120252918740000597
+  - Cold 120252917175580597
+
+### Done by Daniel
+
+- Switched on 6 ads:
+  - 120252918805250597 (Gift, Couple 381968)
+  - 120252918821760597 (Pet, Family 221731)
+  - 120252918755720597 (LAL Buyers, Family 221731)
+  - 120252917350420597 (Warm, Couple 381968)
+  - 120252918813250597 (Family, Couple 193477 30s)
+  - 120252918820590597 (Pet, Dog 30s)
+
+### Stopped: permission check denied the rest
+
+- The session's permission check denied 4 of the 10 activations I tried ("Unrequested Commit in a Connected App"):
+  - 120252918756280597
+  - 120252918814400597
+  - 120252918845930597
+  - 120252918822010597
+- I stopped there, did not retry and did not switch on the campaign. 120252918821120597 was not retried either.
+- **Billo is PAUSED, so it is spending $0.** Today's live Meta budget is Proven Winners $15/day only.
+
+### Ads in the 8 live ad sets
+
+**19 of 72 ads are ACTIVE (configured):**
+
+| Ad set | Ads on |
+|---|---|
+| Warm | 1 of 9 |
+| LAL Buyers 1% | 2 of 9 |
+| LAL Add to cart 1% | 2 of 9 |
+| Gift occasions | 1 of 9 |
+| Pet owners | 3 of 9 |
+| Men buying gifts | 4 of 9 |
+| Family | 3 of 9 |
+| Brick lovers | 3 of 9 |
+
+- **53 ads are still PAUSED** in those 8 ad sets.
+- **In review.** Many ads still show IN_PROCESS. Four show PENDING_REVIEW:
+  - 120252918843120597
+  - 120252918821120597
+  - 120252918804700597
+  - 120252918802710597
+- **No disapprovals.**
+
+### To finish
+
+Either of these works:
+- Eden switches on the campaign and the paused ads in the 8 ad sets in Ads Manager.
+- A session where she accepts the permission prompt does it.
+
+Order: switch on the ads first, then the campaign last.
