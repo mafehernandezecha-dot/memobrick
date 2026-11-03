@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-girlfriend-photo.md
 Title: A Christmas Gift for Your Girlfriend, Built From a Photo
 Meta description: A Christmas gift for your girlfriend: turn a favorite photo of you two into a custom brick mosaic kit. Kits from $69.88. Order by Dec 15.
