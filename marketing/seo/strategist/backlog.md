@@ -26,7 +26,7 @@ Rules for every brief: facts only from the brand skill, `product-facts.md`, the 
 | 14 | [long-distance-christmas-gift-photo](briefs/long-distance-christmas-gift-photo.md) | long distance christmas gift for boyfriend or girlfriend | Christmas / Couples | article | 2026-11-23 | Couples buy bigger sizes; apart-at-Christmas intent has no page | ready |
 | 15 | [christmas-gift-for-best-friend-photo](briefs/christmas-gift-for-best-friend-photo.md) | christmas gift for best friend photo | Christmas / Family | article | 2026-11-23 | Mid-price friend gifting; no page targets friends | ready |
 | 16 | [christmas-gift-for-boyfriend-who-loves-lego](briefs/christmas-gift-for-boyfriend-who-loves-lego.md) | christmas gift for boyfriend who loves lego | Christmas / Couples | article | 2026-11-23 | Task-board gap; brick-fan buyers already search this; no page. Trademark rules in brief | ready |
-| 17 | [christmas-gift-for-girlfriend-photo](briefs/christmas-gift-for-girlfriend-photo.md) | christmas gift for girlfriend photo | Christmas / Couples | article | 2026-11-23 | Task-board gap "gifts for her under $100"; entry sizes $69.88 and $99.88 | ready |
+| 17 | [christmas-gift-for-girlfriend-photo](briefs/christmas-gift-for-girlfriend-photo.md) | christmas gift for girlfriend photo | Christmas / Couples | article | 2026-11-23 | Task-board gap "gifts for her under $100"; entry sizes $69.88 and $99.88 | drafted (draft exists 2026-11-03) |
 
 Ready count: 14 (rows 3 to 11, 13 to 17; rows 1, 2 and 12 drafted). Checked 2026-11-02: added rows 16 and 17 from the task-board gaps. "Photo gifts that arrive before Christmas" is already covered by the live last-minute article (no new brief).
 
