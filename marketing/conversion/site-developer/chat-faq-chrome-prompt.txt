@@ -1,0 +1,120 @@
+Memobrick: set up the Shopify Inbox chat greeting and instant answers (approval A-2026W45-055)
+
+You are Claude in Chrome on Eden's Mac. Eden is signed in to Shopify admin for mymemobrick.com. Your job is to enter the chat greeting and 15 instant answers below into Shopify Inbox, exactly as written, and to report back. Work at a normal human pace.
+
+GROUND RULES (read first, follow always)
+- Do not click any Save, Publish, Create or Add button until Eden has typed "save" in this chat after seeing your Step 2 report. Before that you may only read, open pages and type into fields.
+- Save only what is written in this prompt. Do not save anything else, even if Shopify suggests it (for example Shopify Magic suggested answers: read them, list them in your report, do not add them).
+- Never delete anything. To hide an old instant answer, use its "Turn off" switch, and only for the ones Eden names after your Step 2 report.
+- Do not turn on the Inbox agent, do not edit the agent persona, do not install any app (including Shopify Knowledge Base), do not change "Require sign-in", staff availability or any other setting. Phase 2 is a separate decision.
+- Do not touch orders, checkout, shipping, discounts, products, prices, notifications, or any theme setting other than the Shopify Inbox greeting message.
+- Do not reply to any customer conversation in Inbox, and do not open private conversations beyond what is needed to reach the settings.
+- Copy the text exactly, including the × sign in sizes (16×16) and the full links. Do not add emojis or change wording. If a field rejects the text (too long, links not allowed), stop, and report the field's limit and the exact message, and wait for Eden.
+- If anything looks different from these steps, stop and describe what you see.
+
+STEP 1: READ WHAT IS THERE NOW (no changes)
+1. Go to Shopify admin > Settings > Apps and sales channels > Shopify Inbox > Open sales channel > Chat settings. (If the menu is named differently, find "Chat settings" inside Shopify Inbox.)
+2. Write down, for the report:
+   a. Every existing instant answer: question, full answer text, and whether it is on or off.
+   b. Whether instant answers can be reordered (drag handle or arrows), and whether the newest one shows at the top or the bottom of the list.
+   c. Any character limit shown on the question and answer fields (type nothing yet; read the counter or help text if there is one).
+   d. The Inbox agent section: is it on or off, which assignment option is chosen, and does the page say anything about new customer accounts or requirements. Read only.
+   e. Whether "Suggested replies" (Shopify Magic) has a switch, and its current state. Read only.
+3. Open Online Store > Themes > the live (published) theme > Customize > App embeds (left bar) > Shopify Inbox. Write down the current greeting message word for word, and the button text and position. Do not change anything yet. Close the editor without saving.
+
+STEP 2: PREPARE, THEN STOP AND REPORT
+Without saving anything, check that each of the 15 answers below fits the fields (if there is a counter, compare lengths). Then send Eden this report in the chat and wait:
+- The old greeting (word for word).
+- The list of existing instant answers (on/off), and which of them say something different from the new ones (for example a different delivery time, price, or replacement promise). Suggest which to turn off; Eden decides.
+- Whether reordering is possible, and the order you will add the answers in so they display as 1 to 15.
+- Any field limit or text that will not fit.
+- Inbox agent and Suggested replies status (read only).
+- End with: "Type save to enter the greeting and the 15 answers, or tell me what to change. Tell me which old answers to turn off."
+Do not continue until Eden types "save".
+
+STEP 3: AFTER EDEN TYPES "save"
+1. Instant answers: add the 15 answers below so they display in order 1 to 15 (if the newest shows at the top, add them from 15 down to 1). For each: click Add instant answer (or the equivalent), paste the question and the answer, save that answer. Then read it back on screen and confirm it matches word for word.
+2. Turn off only the old answers Eden named.
+3. Greeting: Online Store > Themes > live theme > Customize > App embeds > Shopify Inbox > Greeting message. Replace the text with the greeting below. Click Save in the theme editor. Change nothing else in the theme editor.
+4. Suggested replies (Shopify Magic) for staff: turn it on only if Eden said yes to it in the chat after Step 2. Otherwise leave it.
+
+STEP 4: CHECK ON THE LIVE STORE
+1. Open https://mymemobrick.com in a new private window (and also at phone width if you can resize the window to about 390 px wide).
+2. Open the chat bubble. Confirm the new greeting shows and the questions appear in order 1 to 15 (or as many as the chat shows). Tap questions 1, 3 and 8 and confirm each answer shows in full and its link is clickable (tap one link and confirm it opens the right page).
+3. Do not type a message to the store and do not start a conversation beyond tapping instant answers.
+4. Take a screenshot of the open chat.
+
+STEP 5: FINAL REPORT TO EDEN
+- What was saved (greeting and each instant answer number), what was turned off, what was not done and why.
+- Old greeting word for word (so it can be restored).
+- Any answer that shows cut off, any link that is not clickable, any error.
+- Inbox agent status (unchanged).
+- Tell Eden: "Reminder: turn off answer 10 (holiday offer) on November 23, and change answer 3 and the greeting on December 16."
+
+----------------------------------------------------------------
+GREETING MESSAGE
+
+Hi, welcome to Memobrick! Questions about your photo, sizes or Christmas delivery? Tap a question below or type yours. You can also see your photo in bricks for free in our Creator.
+
+----------------------------------------------------------------
+INSTANT ANSWERS (display order 1 to 15)
+
+1
+Question: How does it work?
+Answer: Upload a photo in our Creator and see it as a brick mosaic in seconds. Pick your size and order. We send 1×1 bricks sorted in labeled color bags, white baseplates, your personal color map and a building tool, and you build it at home. Start here: https://mymemobrick.com/pages/editor
+
+2
+Question: Can I see my mosaic before I buy?
+Answer: Yes, for free. Upload your photo in the Creator and the mosaic preview appears right away, with nothing to pay. Try different sizes and crops until it looks right, then order when you're happy: https://mymemobrick.com/pages/editor
+
+3
+Question: Will it arrive before Christmas?
+Answer: Order by December 15 to receive it before Christmas. Each kit is made to order and shipped from Miami, and you get a tracking link by email as soon as it ships. Ordering later? The Art Gift Kit lets you give it now and choose the photo after: https://mymemobrick.com/products/unlimited-memobrick
+
+4
+Question: What size should I choose?
+Answer: For one face, 10×10 or 16×16. For two people, 20×20. For a family or group, 20×30 or larger, up to 60×60 for up to 9 people. Bigger sizes show more detail. Upload your photo and the Creator suggests the best size: https://mymemobrick.com/pages/editor
+
+5
+Question: How much is it and what's included?
+Answer: Kits start at $35 (10×10). For example: 16×16 $69.88, 20×20 $99.88, 30×30 $209.99. Every kit has the 1×1 bricks in labeled color bags, white baseplates, your printed color map and a building tool. Frames are sold separately. See every size and price: https://mymemobrick.com/pages/editor
+
+6
+Question: Can you design it for me?
+Answer: Yes. Send us your photo and Memobrick's designers will create the design and email you a free proof before production. It's optional and there's nothing to pay for the proof: https://mymemobrick.com/pages/free-preview
+
+7
+Question: It's a gift. What if I don't have their photo?
+Answer: Give the Art Gift Kit: buy now, no photo needed. We email you a personalization link, one per kit, to forward whenever you like. They choose their photo and approve the design, then we make and ship their kit: https://mymemobrick.com/products/unlimited-memobrick
+
+8
+Question: How much is shipping?
+Answer: US orders of $125 or more ship free. Under $125, checkout shows the live USPS and UPS rates for your address before you pay. Discount codes can't be combined with free shipping, so you get one or the other.
+
+9
+Question: Which photo works best?
+Answer: One clear subject filling most of the photo, with light on the faces and a quiet background. Close crops work best, and you can zoom and crop in the Creator. Tip: look at the preview from arm's length. Try yours: https://mymemobrick.com/pages/editor
+
+10
+Question: Is there a holiday offer?
+Answer: Through November 22, use code EARLYHOLIDAY20 for 20% off. It can't be combined with other offers or with free shipping on orders of $125 and up, so you get one or the other. Start your design: https://mymemobrick.com/pages/editor
+
+11
+Question: How long does it take to build? Is it OK for kids?
+Answer: About an hour per 1,000 bricks: 16×16 takes around 2.5 hours, 20×20 around 4, 30×30 around 9. Your color map guides you one plate at a time, so it's easy to follow and fun to build together. The 1×1 bricks are small, so little ones should build with an adult.
+
+12
+Question: Is a frame included?
+Answer: Frames are sold separately, in black, for most sizes (for example 16×16 $49, 20×20 $65, 30×30 $85). You can add one to the same order: https://mymemobrick.com/collections/photo-frames
+
+13
+Question: What happens to my photo?
+Answer: Your preview is built in your browser. We keep a copy of your photo and design so we can help you finish it and make your order. We never share or sell it.
+
+14
+Question: What if a piece is missing?
+Answer: Sorry about that! Send us your order number, the color name and number from the bag label, and a photo of your build, here or at support@memobrickofficial.com. Missing, damaged or defective pieces are replaced or refunded, as our refund policy explains: https://mymemobrick.com/policies/refund-policy
+
+15
+Question: Can I return it?
+Answer: Each kit is made from your photo, so custom kits can be refunded in full any time before the order ships, but not after. Missing, damaged or defective pieces are replaced or refunded. Frames are final sale. Details: https://mymemobrick.com/policies/refund-policy
