@@ -13,3 +13,8 @@ Files: 16x16-woof-bubble-dog-1-main.jpg, -2-closeup.jpg, -3-room.jpg, -4-person.
 
 ## Main photo, more real (2026-11-02)
 Eden: "make the flat design more real even if the color will change little bit". `gem.py` (gemini-3-pro-image, 1:1) turns the exact-color framed render into a real-looking photo (square frame, wall, natural light); a gentle global color match back toward the render (60/40) keeps colors close. File: 16x16-woof-bubble-dog-1-main-photo.jpg (replaces -1-main.jpg as the main photo if Eden prefers it).
+
+## Batch for all pre-made kits (A-2026W45-052, 2026-11-02/03)
+Finals per kit in `kits/<handle>/`, log in `batch-log.md`, check sheet `batch-check-1.jpg`.
+`tools/` holds the generalized scripts: `gridx.py` (any size, square stud pitch, cell centres found by colour uniformity), `render.py` (render2 without the Balloon-Dog row cut), `photox.py` (framed for any aspect, 2048px close-up), `gemx.py` (aspect ratio + 2K), `prompt_main.txt` (main photo prompt), `cmatch.py` (60/40 colour match), `mcheck2.py` (per-brick colour check of the main photo), `compx.py` (comp.py, but the fringe clean-up never touches the pasted design).
+Only 4 kits had a clean, uncovered design image; the rest have the zoom circle over the design and were skipped (see log).
