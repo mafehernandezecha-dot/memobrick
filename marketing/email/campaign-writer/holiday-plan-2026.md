@@ -85,3 +85,10 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Gap 10: Tue Nov 10, 10:00 ET "Give them the evening, not just the photo" to Past Buyers (A-2026W44-052), draft `2026-11-10-second-mosaic-past-buyers.md`. Different audiences, so no overlap. Past buyers get Oct 29, Nov 10, Nov 19: three in 3 weeks, Eden can drop this one.
 - Still open: gift card email after Dec 15, Dec 11 and Dec 14 content not read, Dec 15 order-by-day email (draft by Dec 8).
 - Tooling note: `email_preview.py` hangs with the default Chromium here; setting CHROME to the headless shell (`/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell`) and using python3.12 works.
+
+
+## Update 2026-11-03
+
+- Omnisend read: schedule unchanged (Nov 3 Gift Ideas still scheduled for 11:00 ET today, so no results yet; Nov 19, Nov 20, Nov 27, Nov 30, Dec 3, 8, 11, 14). Nothing has sent since Oct 29. No approved items for me today.
+- Gap 11: Wed Nov 25 10:00 ET "Black Friday starts Friday: pick your photo now" to Warm, draft `2026-11-25-friday-25-heads-up.md`. Prints no code (owner's no-code window Nov 23 to 26); names the 25% and Nov 27 to 29 dates only. Warm would get Nov 20, 25, 27, 30: four in ten days, Eden can drop it.
+- Cyber Monday (6ab50397de9e4985592a5cb0) is not on CYBERBRICK20: it prints an Omnisend personal code and says "every size, every photo". Fix in `improve-nov30-cyber-monday.md`.
