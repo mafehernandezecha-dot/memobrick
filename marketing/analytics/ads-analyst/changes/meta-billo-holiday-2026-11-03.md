@@ -310,3 +310,8 @@ Either of these works:
 - A session where she accepts the permission prompt does it.
 
 Order: switch on the ads first, then the campaign last.
+
+## Applied (COMPLETE), 2026-11-03, main session after Eden: "Finish billo"
+- Read back: Billo UGC Holiday26 ACTIVE $65/day; Proven Winners ACTIVE $15/day (anniversary only, Dog_vid paused); Christmas PAUSED; ALWAYON PAUSED. Total $80/day.
+- All 72 ads in the 8 live Billo ad sets are ACTIVE (zero left paused). The 3 reserve ad sets stay paused. Some ads are still in Meta review.
+- Next check: Nov 10, against real Shopify orders.
