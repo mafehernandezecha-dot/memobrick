@@ -64,3 +64,7 @@ Not yet posted: S-20261027-1 is a Buffer draft on hold (moved to Nov 9); Oct 28 
 | 2026-11-02 | Facebook | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
 | 2026-11-02 | TikTok | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
 | 2026-11-02 | Pinterest | missing | missing | missing (no data snapshot yet: `marketing/data/latest.md` still says never pulled; requests already in `requests.md`) |
+| 2026-11-03 | Instagram | missing (no snapshot in `marketing/data/`; Buffer has no follower count) | missing | missing (no new post metrics pulled this run) |
+| 2026-11-03 | Facebook | missing | missing | missing |
+| 2026-11-03 | TikTok | missing | missing | missing |
+| 2026-11-03 | Pinterest | missing | missing | missing |
