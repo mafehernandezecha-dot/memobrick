@@ -42,3 +42,28 @@ Chat visitors are people deciding to buy. They now get an answer in one tap on p
 
 ## Next run
 After Eden approves, she runs the Chrome prompt. Then check the live chat on phone and desktop. Swap or turn off answer 10 on Nov 23, and change answer 3 and the greeting on Dec 16. Propose phase 2 (Inbox agent and Knowledge Base) once the store-text conflicts are decided.
+
+## Follow-up (same day): replacement window and theme copy
+- Eden's decisions, relayed by the coordinator:
+  - Replacement window: she first said "30 days after purchasing", then corrected it to "Leave 14 days". Final rule: missing, damaged or defective pieces are replaced or refunded within 14 days of delivery.
+  - Return shipping: "Customer pays".
+  - The $20 restocking fee is deleted.
+  - The shipping policy is replaced by Shopify's template.
+- Repo:
+  - Chat answers 14 and 15 now say "within 14 days of delivery" in chat-faq-2026-11-03.md and chat-faq-chrome-prompt.txt. Copy check passes on both.
+  - product-facts.md: new kit bullet with both of Eden's messages, the return-shipping rule and the deleted fee.
+  - customer-questions.md: one row appended.
+- Theme copy "Memobrick proof and cart fixes" 189322330332 (unpublished; the live theme was not touched):
+  - The phrase "for as long as you own the kit" was replaced with "within 14 days of delivery" in 4 files, 5 places.
+  - Before and after files are in marketing/conversion/site-developer/theme-files/replacement-window-2026-11-03/. The before files are the undo.
+  - Checksums after the write match the after files.
+  - Preview check: the new text shows on home, product and editor. The served memobrick.js is the new version. No errors from memobrick.js (phone and desktop).
+  - Live still shows the old text until Eden publishes the copy.
+- Not theme, left for Eden:
+  - /pages/how-it-works page body says "Free replacements for life".
+  - A blog article ("why personalized gifts create stronger emotional connections") shows "30 Day Guarantee".
+  - The refund policy "14-day window" bullet already matches.
+- Ship-time claim, report only, nothing changed:
+  - "2–4 business days" is still on the home page, the Creator ("within 2–4 business days after approval") and /pages/how-it-works ("usually within 2–4 business days").
+  - The new shipping policy only says "processed as soon as possible", so the site promises a time the policy does not back.
+- A-2026W45-055: the note has the final answer 14, and the Commit line is the 14-day draft. The coordinator relayed Eden's "Approve 055"; the Status stays for the coordinator to set (agents never mark their own items approved).

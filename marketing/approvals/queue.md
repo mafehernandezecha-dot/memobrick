@@ -30,11 +30,13 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Executor: site-developer
 - Type: site-change
 - Draft: marketing/conversion/site-developer/chat-faq-2026-11-03.md
-- Commit: bb2f640
+- Commit: 596f976
 - Reason: Shopify Inbox chat on mymemobrick.com gets a new greeting and 15 instant answers (tap a question, get the answer at once, most with a link to the Creator, free proof or Gift Kit). Entered by Claude in Chrome on Eden's Mac with marketing/conversion/site-developer/chat-faq-chrome-prompt.txt, which reads the current settings first and saves nothing until Eden types "save"; it changes only the Inbox greeting (theme App embeds) and the instant answers, and turns off old answers only where Eden names them. Inbox agent (AI auto-replies) stays off; it is phase 2, a separate decision after the conflicting store texts listed in the draft are fixed. Upkeep: turn off answer 10 (EARLYHOLIDAY20) on Nov 23; change answer 3 and the greeting on Dec 16. Reply "approve 055", or "changes: 055 <answer number> <note>".
 - Expires: 2026-11-10
 - Status: pending
 - From: Eden in chat 2026-11-03: "I need an agent to add commons questions an answers to the chat with the intention of converting more customers and make the chat more smart"
+- Note (2026-11-03, site-developer): answer 14 changed after the first commit. Eden first said "30 days after purchasing", then corrected it: "Leave 14 days". Final answer 14: "Sorry about that! Send us your order number, the color name and number from the bag label, and a photo of your build, here or at support@memobrickofficial.com. Missing, damaged or defective pieces are replaced or refunded within 14 days of delivery: https://mymemobrick.com/policies/refund-policy". Answer 15 has the same 14-day wording. The Chrome prompt marketing/conversion/site-developer/chat-faq-chrome-prompt.txt is final with these texts.
+- Note (2026-11-03, site-developer): the coordinator relayed Eden's approval from her chat with the main session: "Approve 055". Status is left for the coordinator (or Eden) to set, because agents never mark their own items approved, and the Commit line above is the commit she approved (the final 14-day draft).
 
 ## A-2026W45-052
 - Agent: site-developer
