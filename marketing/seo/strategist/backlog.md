@@ -63,3 +63,5 @@ Note 2026-10-29: the task-board request for a "ready by Christmas / last order d
 - Personalized gifts under $50: the stocking stuffers article covers the budget intent.
 
 Daily 2026-11-03: ready count 11 of rows 4 to 11 and 13 to 17 minus none taken (rows 4,5,6,7,8,9,10,11,13,14,15,16,17 = 13 ready). Row 3 husband now drafted. No new briefs needed (13 >= 10). No new buyer questions since 2026-10-31. Internal link map for the new girlfriend and boyfriend briefs: [internal-link-map.md](internal-link-map.md). Next for the writer: row 13 (dad from kids), then row 4 (baby), row 5 (memorial), row 17 (girlfriend).
+
+Daily 2026-11-04: no row newly taken since 2026-11-03 (drafts exist for rows 1, 2, 3, 12, 17 only). Ready count still 13 (rows 4 to 11 and 13 to 16), above the 10 minimum, so no new briefs. No new buyer questions in customer-questions.md since 2026-10-31. Next for the writer: row 13 (dad from kids), row 4 (baby), row 5 (memorial), row 16 (boyfriend who loves bricks). Search Console snapshots still missing, so order stays by intent.
