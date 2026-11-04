@@ -45,3 +45,8 @@ Links and mentions on other websites that point to mymemobrick.com (or name Memo
 ## 2026-11-03 check
 
 - Searched web for Memobrick and mymemobrick.com: only Memobrick's own pages and the Loox review page (not a third-party link). Gmail inbox, last 7 days: no replies to pitches (nothing has been sent yet). Total earned links: zero confirmed. Backlink tool still not connected.
+
+## 2026-11-04 check
+
+- Searched web for Memobrick and mymemobrick.com: only own pages, Etsy shop, Loox reviews. No third-party link or mention. Total earned links: zero confirmed.
+- Gmail: one reply, Neurodiverging (contact@neurodiverging.com, assistant Kenna, 2026-11-03) to the Oct 28 pitch sent by outreach-gift-guide-pr. They will pass it to Danielle Sullivan and review product requests monthly. No link yet; no action needed, do not follow up before December.
