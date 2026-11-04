@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: christmas gift for boyfriend who loves lego
 Hub: Christmas / Couples
 Page type: article
