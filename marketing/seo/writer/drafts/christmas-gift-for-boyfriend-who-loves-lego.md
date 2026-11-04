@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-boyfriend-who-loves-lego.md
 Title: Christmas Gift for a Boyfriend Who Loves Building
 Meta description: A Christmas gift for a boyfriend who loves building: a custom brick mosaic kit from a photo of you two. From $69.88. Order by Dec 15.
