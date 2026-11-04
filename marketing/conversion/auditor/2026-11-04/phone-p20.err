@@ -1,0 +1,12 @@
+1 product ok=true 2214ms 
+2 product-full ok=true 0ms 
+3 product-cta-to-editor ok=true 1871ms 
+4 upload-photo ok=true 284ms 
+5 choose-design-myself ok=false 10084ms locator.waitFor: Timeout 10000ms exceeded.
+6 email-gate-skip ok=false 15000ms locator.click: Timeout 15000ms exceeded.
+7 adjust-crop ok=true 1258ms 
+8 adjust-next-step ok=true 1261ms 
+9 finish-editing-add-to-cart ok=true 1875ms 
+10 cart-page ok=true 1506ms 
+11 checkout-page ok=false 376ms page.waitForURL: net::ERR_TUNNEL_CONNECTION_FAILED
+12 checkout-page-skip-shop-pay ok=true 7722ms 
