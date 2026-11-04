@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T22:00:00-05:00",
+ "updated": "2026-11-04T08:30:00-05:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -314,8 +314,13 @@
   },
   {
    "date": "2026-11-02",
-   "orders": 2,
-   "netSales": 175.11
+   "orders": 3,
+   "netSales": 324.11
+  },
+  {
+   "date": "2026-11-03",
+   "orders": 1,
+   "netSales": 69.88
   }
  ],
  "lastYear": [
@@ -781,21 +786,21 @@
   }
  ],
  "funnel": {
-  "period": "Oct 3 to Nov 2 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 4 to Nov 2 2025",
+  "period": "Oct 5 to Nov 3 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 5 to Nov 3 2025",
   "now": {
-   "sessions": 2626,
-   "addedToCart": 159,
-   "reachedCheckout": 98,
-   "purchased": 44
+   "sessions": 2664,
+   "addedToCart": 167,
+   "reachedCheckout": 100,
+   "purchased": 42
   },
   "lastYear": {
-   "sessions": 4934,
-   "addedToCart": 448,
-   "reachedCheckout": 190,
-   "purchased": 74
+   "sessions": 4782,
+   "addedToCart": 432,
+   "reachedCheckout": 182,
+   "purchased": 72
   },
   "launch": {
-   "period": "Referred sessions by landing page, Oct 28 to Nov 1 2026 (day 1 to 5)",
+   "period": "Referred sessions by landing page, Oct 28 to Nov 3 2026 (day 1 to 7)",
    "dogBrickMosaic": [
     {
      "date": "2026-10-28",
@@ -819,35 +824,28 @@
     },
     {
      "date": "2026-11-01",
+     "sessions": 4,
+     "carts": 0
+    },
+    {
+     "date": "2026-11-02",
      "sessions": 3,
+     "carts": 0
+    },
+    {
+     "date": "2026-11-03",
+     "sessions": 5,
      "carts": 0
     }
    ],
-   "calmBuildGift": "no referred sessions landed on a path containing 'calm' in Oct 28 to Nov 1",
-   "newArticles": "no referred sessions landed on any /blogs/ path in Oct 28 to Nov 1",
-   "draftOrders": [
-    {
-     "date": "2026-10-28",
-     "orders": 0
-    },
-    {
-     "date": "2026-10-29",
-     "orders": 1
-    },
-    {
-     "date": "2026-10-30",
-     "orders": 0
-    },
-    {
-     "date": "2026-10-31",
-     "orders": 0
-    },
-    {
-     "date": "2026-11-01",
-     "orders": 0
-    }
-   ],
-   "unknown": "Which ad or post sent each dog page visit (ShopifyQL has no UTM). Landing page of checkout-page sessions is the checkout URL itself, so about 9 purchases cannot be tied to a landing page. Direct sessions (bots) inflate '/'.",
+   "calmBuildGift": "no referred sessions landed on a path containing 'calm' in Oct 28 to Nov 3",
+   "newArticles": "no referred sessions landed on any /blogs/ path in Oct 28 to Nov 3",
+   "draftOrders": {
+    "period": "Last 30 days (Oct 5 to Nov 3 2026) vs same days 2025, freshly queried by sales channel",
+    "now": 12,
+    "lastYear": 59
+   },
+   "unknown": "Which ad or post sent each dog page visit (ShopifyQL has no UTM). Landing page of checkout-page sessions is the checkout URL itself, so some purchases cannot be tied to a landing page. Direct sessions (bots) inflate '/'.",
    "siteReferred": [
     {
      "date": "2026-10-28",
@@ -871,48 +869,64 @@
     },
     {
      "date": "2026-11-01",
-     "sessions": 116,
-     "carts": 10
+     "sessions": 125,
+     "carts": 11
+    },
+    {
+     "date": "2026-11-02",
+     "sessions": 115,
+     "carts": 8
+    },
+    {
+     "date": "2026-11-03",
+     "sessions": 90,
+     "carts": 11
     }
    ],
    "ordersByLandingPage": {
-    "period": "Oct 19 to Nov 1 2026, all sessions incl. direct; counts sessions that completed checkout by landing page (not exact order attribution)",
+    "period": "Oct 28 to Nov 3 2026, referred sessions only (direct excluded); sessions that completed checkout by landing page (not exact order attribution)",
     "rows": [
      {
       "page": "/",
-      "sessions": 1300,
-      "carts": 82,
-      "purchased": 11
+      "sessions": 403,
+      "carts": 33,
+      "purchased": 4
      },
      {
       "page": "/collections/the-gift-for-everyone",
-      "sessions": 363,
-      "carts": 18,
-      "purchased": 7
+      "sessions": 124,
+      "carts": 12,
+      "purchased": 4
      },
      {
-      "page": "/pages/editor",
-      "sessions": 113,
-      "carts": 12,
-      "purchased": 5
+      "page": "/pages/dog-brick-mosaic",
+      "sessions": 71,
+      "carts": 0,
+      "purchased": 0
+     },
+     {
+      "page": "/products/2-2-boards",
+      "sessions": 13,
+      "carts": 1,
+      "purchased": 1
      },
      {
       "page": "/products/1-big-board",
-      "sessions": 43,
-      "carts": 5,
-      "purchased": 1
+      "sessions": 12,
+      "carts": 3,
+      "purchased": 2
      },
      {
       "page": "/products/custom-bricked-mosaic-10x10",
-      "sessions": 37,
-      "carts": 4,
+      "sessions": 11,
+      "carts": 2,
       "purchased": 1
      },
      {
-      "page": "/products/unlimited-memobrick",
-      "sessions": 47,
-      "carts": 2,
-      "purchased": 1
+      "page": "/pages/editor",
+      "sessions": 2,
+      "carts": 0,
+      "purchased": 0
      }
     ]
    }
@@ -920,8 +934,8 @@
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down 47% and add-to-cart rate is lower",
-   "detail": "Oct 3 to Nov 2: 2,626 referred sessions vs 4,934 last year (-47%). Add-to-cart rate 6.1% vs 9.1%; checkout-to-purchase 45% vs 39%, so people who reach checkout do buy; the gap is volume of qualified visitors. Purchases 44 vs 74. The new /pages/dog-brick-mosaic had 62 referred sessions and 0 carts over Oct 28 to Nov 1 and traffic is fading (not refreshed today). Direct sessions are bot-inflated and excluded.",
+   "title": "Referred traffic is down 44% and add-to-cart rate is lower",
+   "detail": "Oct 5 to Nov 3: 2,664 referred sessions vs 4,782 last year (-44%). Add-to-cart rate 6.3% vs 9.0%; checkout-to-purchase 42% vs 40%, so people who reach checkout do buy; the gap is volume of qualified visitors. Purchases 42 vs 72. The new /pages/dog-brick-mosaic had 71 referred sessions and 0 carts in 7 days and is down to 3 to 5 a day. /pages/editor had only 2 referred landings since Oct 28. No referred session reached any blog article. Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -931,15 +945,15 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 12 in Oct 3 to Nov 2 vs 63 in Oct 3 to Nov 2 last year (-81%; last-year figure from the previous pulse). Online Store 68, Shop 2. Draft orders explain about half the lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 12 in the last 30 days (Oct 5 to Nov 3) vs 59 in the same days last year (-80%), freshly queried. Online Store 65 vs 117 (-44%). Draft orders explain about half the lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
    ]
   },
   {
-   "title": "Daily goal missed: orders and sales under pace all October and last week",
-   "detail": "Oct 1 to 31: 80 orders and $8,970 net sales vs goal 155 and $17,050 (52% and 53%); last year October had 182 orders and $18,428. Last 7 days (Oct 27 to Nov 2): 19 orders, $1,719 vs goal 35 and $3,850 (54% and 45%). Yesterday (Nov 2) 2 orders, $175 vs 5 and $550. November so far: 6 orders, $642 vs 10 and $1,100. Black Friday goals (12 orders a day from Nov 16) are far above the run rate of about 2.7 a day; last year Nov 16 to 30 averaged about 16 orders a day.",
+   "title": "Daily goal missed: orders and sales under pace all October and this week",
+   "detail": "Oct 1 to 31: 80 orders and $8,970 net sales vs goal 155 and $17,050; last year October had 182 orders and $18,428. Last 7 days (Oct 28 to Nov 3): 20 orders, $1,937 vs goal 35 and $3,850 (57% and 50%). Yesterday (Nov 3) 1 order, $70 vs 5 and $550. November so far (Nov 1 to 3): 8 orders, $861 vs 15 and $1,650. Black Friday goals (12 orders a day from Nov 16) are far above the run rate of about 2.9 a day; last year Nov 16 to 30 averaged about 16 orders a day.",
    "owners": [
     "owner",
     "email-campaign-writer",
