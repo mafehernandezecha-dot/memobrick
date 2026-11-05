@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T08:30:00-05:00",
+ "updated": "2026-11-04T22:55:00-05:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -929,13 +929,58 @@
       "purchased": 0
      }
     ]
+   },
+   "entryComparison": {
+    "period": "Referred sessions Oct 5 to Nov 3 2026 vs Oct 5 to Nov 3 2025 (direct excluded)",
+    "rows": [
+     {
+      "entry": "Search (referrer_source search)",
+      "now": {
+       "sessions": 939,
+       "carts": 82,
+       "purchased": 28
+      },
+      "lastYear": {
+       "sessions": 2401,
+       "carts": 245,
+       "purchased": 48
+      }
+     },
+     {
+      "entry": "Gift collection /collections/the-gift-for-everyone (incl. its product paths)",
+      "now": {
+       "sessions": 515,
+       "carts": 33,
+       "purchased": 11
+      },
+      "lastYear": {
+       "sessions": 1217,
+       "carts": 93,
+       "purchased": 10
+      }
+     },
+     {
+      "entry": "/pages/editor",
+      "now": {
+       "sessions": 11,
+       "carts": 0,
+       "purchased": 0
+      },
+      "lastYear": {
+       "sessions": 0,
+       "carts": 0,
+       "purchased": 0
+      }
+     }
+    ],
+    "note": "Gift collection: this year 436 collection sessions + 79 via its 1-big-board path; last year 100 + 1,114 (that product path was the big entry). /pages/editor had no landings last year, so there is no baseline. Social sessions 1,433 vs 2,257 (-37%), cart rate 4.0% vs 8.0%."
    }
   }
  },
  "weakPoints": [
   {
    "title": "Referred traffic is down 44% and add-to-cart rate is lower",
-   "detail": "Oct 5 to Nov 3: 2,664 referred sessions vs 4,782 last year (-44%). Add-to-cart rate 6.3% vs 9.0%; checkout-to-purchase 42% vs 40%, so people who reach checkout do buy; the gap is volume of qualified visitors. Purchases 42 vs 72. The new /pages/dog-brick-mosaic had 71 referred sessions and 0 carts in 7 days and is down to 3 to 5 a day. /pages/editor had only 2 referred landings since Oct 28. No referred session reached any blog article. Direct sessions are bot-inflated and excluded.",
+   "detail": "Oct 5 to Nov 3: 2,664 referred sessions vs 4,782 last year (-44%). Add-to-cart rate 6.3% vs 9.0%; checkout-to-purchase 42% vs 40%, so checkout works; the gap is qualified visitors. Biggest loss by entry: search 939 sessions vs 2,401 (-61%, 28 purchases vs 48), though its cart rate held (8.7% vs 10.2%). Social 1,433 vs 2,257 (-37%) and cart rate halved (4.0% vs 8.0%). Gift collection group 515 sessions vs 1,217, 11 purchases vs 10 (it converts as well as last year, it just lacks traffic). /pages/editor 11 sessions, 0 carts; /pages/dog-brick-mosaic 75 sessions, 0 carts. Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
