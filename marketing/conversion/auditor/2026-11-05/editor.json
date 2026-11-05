@@ -1,0 +1,81 @@
+[
+ {
+  "dev": "phone",
+  "k": "editor",
+  "ms": 2906,
+  "title": "Memobrick Editor",
+  "sw": 390,
+  "iw": 390,
+  "btns": [
+   "MEMOBRICK@26",
+   "Menu@19",
+   "Cart, 0 items@21",
+   "← Back@145",
+   "Search@829",
+   "let us design it for you@2661",
+   "MEMOBRICK@2898",
+   "How it works@2952",
+   "Get My Free Proof@2952",
+   "Reviews@2952",
+   "Blog@2952",
+   "Business services@2992",
+   "Ready-made designs@2992",
+   "Frames@2992",
+   "Track your order@3032",
+   "Sizes@3032",
+   "Gift kit@3032",
+   "FAQs@3032",
+   "Corporate & bulk@3071",
+   "Contact@3071"
+  ],
+  "price": [],
+  "flags": {
+   "proof": true,
+   "dec15": false,
+   "reviews": true
+  }
+ },
+ {
+  "dev": "desktop",
+  "k": "editor",
+  "ms": 2461,
+  "title": "Memobrick Editor",
+  "sw": 1440,
+  "iw": 1440,
+  "btns": [
+   "MEMOBRICK@26",
+   "Create@23",
+   "Let us design it@26",
+   "Ready-made designs@29",
+   "Frames@29",
+   "Corporate & bulk@26",
+   "Reviews@29",
+   "How it works@29",
+   "Create My MemoBrick@17",
+   "Cart, 0 items@21",
+   "← Back@199",
+   "Search@885",
+   "let us design it for you@1530",
+   "MEMOBRICK@1827",
+   "How it works@1881",
+   "Get My Free Proof@1881",
+   "Reviews@1881",
+   "Blog@1881",
+   "Business services@1881",
+   "Ready-made designs@1881",
+   "Frames@1881",
+   "Track your order@1881",
+   "Sizes@1881",
+   "Gift kit@1881",
+   "FAQs@1881",
+   "Corporate & bulk@1881",
+   "Contact@1881"
+  ],
+  "price": [],
+  "flags": {
+   "proof": true,
+   "dec15": false,
+   "reviews": true
+  }
+ }
+]
