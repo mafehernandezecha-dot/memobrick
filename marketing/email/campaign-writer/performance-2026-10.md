@@ -43,3 +43,13 @@ Delivered = sent minus failed. Attribution is Omnisend's own.
 - The "UNUSED" booster was not cancelled and did send, two hours after the Oct 27 Last Call, to the same people. It added 17 unsubscribes and one $91.43 order. Cancel proposal P-email-campaign-writer-20261027-1 was not approved in time.
 - Oct 27 and Oct 29 together: 1 order, $91.43, from 7,958 sends, 39 unsubscribes. Both were below the Oct 20 benchmark ($0.025 per recipient). Click rates (about 1% and 0.9%) are similar to earlier sends, so the gap is click-to-order, not interest. The Oct 29 email had no deadline and the code expires Nov 22; deadline emails are the best lever on record.
 - Oct 29 audience is Past Buyers; 0 orders from 2,684 means past-buyer gifting emails should be tested against a deadline version (Nov 19 VIP).
+
+## Nov 3 send (Omnisend `post_analytics_reports`, send date, read 2026-11-05)
+
+| Campaign | Audience | Sent | Delivered (approx.) | Opens (unique) | Clicks (unique) | Orders | Revenue | Orders per delivered | Revenue per recipient | Unsubs |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Q4 Nov 3 Gift Ideas By Person | Warm | 5,278 | about 5,269 (fail rate 0.17%) | 2,934 (55.7%) | 42 (0.80%) | 2 | $80.72 | about 0.038% | about $0.015 | 12 (0.23%) |
+
+- Best orders per delivered email of the autumn Warm sends (Oct 20: 0.019%), but 2 orders is a small number. Revenue per recipient ($0.015) is below Oct 20 ($0.025) and far below last year's "Final Hours" ($0.064). Clicks are lower than earlier sends (0.80% vs about 1%), unsubscribes lowest so far.
+- Attribution is Omnisend's own and can still grow for a few days.
+- Pattern across all autumn sends: opens 50 to 56%, clicks about 1%, orders 0 to 2. Deadline-led emails are still untested on this list; first one is Nov 20 (code ends Sunday).

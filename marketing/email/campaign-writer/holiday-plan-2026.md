@@ -92,3 +92,9 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Omnisend read: schedule unchanged (Nov 3 Gift Ideas still scheduled for 11:00 ET today, so no results yet; Nov 19, Nov 20, Nov 27, Nov 30, Dec 3, 8, 11, 14). Nothing has sent since Oct 29. No approved items for me today.
 - Gap 11: Wed Nov 25 10:00 ET "Black Friday starts Friday: pick your photo now" to Warm, draft `2026-11-25-friday-25-heads-up.md`. Prints no code (owner's no-code window Nov 23 to 26); names the 25% and Nov 27 to 29 dates only. Warm would get Nov 20, 25, 27, 30: four in ten days, Eden can drop it.
 - Cyber Monday (6ab50397de9e4985592a5cb0) is not on CYBERBRICK20: it prints an Omnisend personal code and says "every size, every photo". Fix in `improve-nov30-cyber-monday.md`.
+
+## Update 2026-11-05
+
+- Omnisend re-read. Scheduled and unchanged: Nov 19 VIP (Past Buyers), Nov 20 "EARLYHOLIDAY20 Ends Sunday (Warm)" (campaign 6ae55a1aead775b0ac41ecc5, Fri Nov 20 10:00 ET, Warm minus Past Buyers, recent buyers, Unengaged 180d), Nov 27 Black Friday, Nov 30 Cyber Monday, Dec 3, 8, 11, 14. Nov 3 Gift Ideas sent (results in `performance-2026-10.md`).
+- Task board asked for a Nov 20 "Your photo, ready by Dec 15" email to Warm. The scheduled Nov 20 campaign already is that slot (same list, same time, code EARLYHOLIDAY20 only, Dec 15 in the steps and band). A second Nov 20 send would be a duplicate to the same people, so none was drafted. Pending Nov 10 sends (A-2026W45-003 and 004) and the Nov 25 heads-up (A-2026W45-010) remain awaiting the owner.
+- Remaining planned gaps: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
