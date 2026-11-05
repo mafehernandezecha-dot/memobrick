@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-girlfriend-photo.md
 Title: A Christmas Gift for Your Girlfriend, Built From a Photo
 Meta description: A Christmas gift for your girlfriend: turn a favorite photo of you two into a custom brick mosaic kit. Kits from $69.88. Order by Dec 15.
@@ -27,7 +27,7 @@ Pick the photo you would both smile at. A few ideas:
 - **The two of you with her pet.** Many people love their pet as much as their partner. If the pet is the star, our [guide to personalized Christmas photo gifts](https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts) has more ideas by recipient.
 - **A simple close-up.** Two faces, good light, nothing busy behind you.
 
-Choose a photo where faces are close to the camera and clear. Not sure which one? Upload two or three in the [editor](https://mymemobrick.com/pages/editor) and compare the previews. You see the mosaic before you order.
+Choose a photo where faces are close to the camera and clear. Not sure which one? Upload two or three in the [editor](https://mymemobrick.com/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=girlfriend-christmas#editor) and compare the previews. You see the mosaic before you order.
 
 ## Gifts for her under $100, and when to go bigger
 
@@ -91,7 +91,7 @@ Order by December 15, 2026 to receive your kit before Christmas. Kits are made a
 
 ## Start your design
 
-Have the photo already? [Upload it and see your mosaic in the editor](https://mymemobrick.com/pages/editor).
+Make yours from your photo. Order by December 15, 2026 for Christmas. [Upload it and see your mosaic in the editor](https://mymemobrick.com/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=girlfriend-christmas#editor).
 
 As seen on FOX.
 

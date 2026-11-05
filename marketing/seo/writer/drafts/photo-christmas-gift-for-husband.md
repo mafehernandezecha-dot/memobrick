@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/photo-christmas-gift-for-husband.md
 Title: A Photo Christmas Gift for Your Husband He Can Build
 Meta description: A photo Christmas gift for your husband: turn a favorite photo into a custom brick mosaic kit he builds and hangs. Sizes from $69.88. Order by Dec 15.
@@ -36,7 +36,7 @@ The car he keeps washing, the motorcycle, the boat, the team jersey, the trail h
 
 Sometimes the best gift is the picture he already looks at on his phone every day. A child laughing, a dog on the couch, a big family shot. Groups need more room, so look at the larger sizes below.
 
-Not sure which photo is best? Upload two or three in our [editor](https://mymemobrick.com/pages/editor) and compare the previews. You see the mosaic before you order.
+Not sure which photo is best? Upload two or three in our [editor](https://mymemobrick.com/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=husband-christmas#editor) and compare the previews. You see the mosaic before you order.
 
 ## How long it takes
 
@@ -57,6 +57,10 @@ Wrap the kit as it comes, with a printed copy of the photo tucked inside as a hi
 ## Let him choose the photo
 
 If he has a favorite you would never guess, give the [Art Gift Kit](https://mymemobrick.com/products/unlimited-memobrick). You buy it now with no photo and receive a personalisation link by email. He picks the photo and approves the design, and we make the kit and ship it to him. Write the link inside his card.
+
+## Shopping late for a husband gift?
+
+You still have time if you start now. Upload a photo, check the preview, and order by **December 15, 2026** to receive your kit before Christmas. Kits are made and shipped from Miami, Florida.
 
 ## Not sure how the photo will look?
 
@@ -104,7 +108,7 @@ Frames are sold separately. Order by December 15, 2026 to receive your kit befor
 
 ## Start your design
 
-Have the photo already? [Upload it and see your mosaic in the editor](https://mymemobrick.com/pages/editor).
+Make yours from your photo. Order by December 15, 2026 for Christmas. [Upload it and see your mosaic in the editor](https://mymemobrick.com/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=husband-christmas#editor).
 
 As seen on FOX. More ideas by recipient: [personalized Christmas photo gifts for everyone on your list](https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts).
 

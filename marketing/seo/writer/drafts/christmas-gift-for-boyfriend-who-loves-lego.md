@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-boyfriend-who-loves-lego.md
 Title: Christmas Gift for a Boyfriend Who Loves Building
 Meta description: A Christmas gift for a boyfriend who loves building: a custom brick mosaic kit from a photo of you two. From $69.88. Order by Dec 15.
@@ -30,7 +30,7 @@ Pick a photo that means something to him. A few ideas:
 - **His car, his bike, or his favorite spot.** The place where he is happiest.
 - **A game night or a game-day photo.** Something that looks like him.
 
-Choose a photo where faces and shapes are clear. Not sure which one? Upload two or three in the [editor](https://mymemobrick.com/pages/editor) and compare the previews. You see the mosaic before you order. For more tips, see our [guide to personalized Christmas photo gifts](https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts).
+Choose a photo where faces and shapes are clear. Not sure which one? Upload two or three in the [editor](https://mymemobrick.com/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=boyfriend-christmas#editor) and compare the previews. You see the mosaic before you order. For more tips, see our [guide to personalized Christmas photo gifts](https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts).
 
 ## What the build is like
 
@@ -93,7 +93,7 @@ Order by December 15, 2026 to receive your kit before Christmas. Kits are made a
 
 ## Start your design
 
-Have the photo already? [Upload it and see your mosaic in the editor](https://mymemobrick.com/pages/editor).
+Make yours from your photo. Order by December 15, 2026 for Christmas. [Upload it and see your mosaic in the editor](https://mymemobrick.com/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=boyfriend-christmas#editor).
 
 As seen on FOX.
 
