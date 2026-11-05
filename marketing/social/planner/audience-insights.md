@@ -118,3 +118,7 @@ Sources: Buffer (Instagram @memobrick, `list_posts` with metrics, 2026-10-29), t
 **What to stop:** reels over 25 seconds, photo-first openings, any bricked image not made in the Studio, and AI scenes that draw the mosaic (all W45 posts redone on 2026-10-29).
 
 **Plan rule for W46:** about 70% proven (Mon free-proof carousel, Wed "for him", Thu pet series, Sat grandparents), about 30% tests (Tue stud-by-stud build reel with an hour counter, EXP-SP-20261110-01; Sun deadline carousel, EXP-SP-20261115-01).
+
+## Update 2026-11-05
+
+No new evidence: `marketing/data/` still has no Meta, TikTok, Pinterest or GA4 snapshot, and W45 to W47 are not approved or posted, so there are no new organic results. Findings above stand. W48 plan follows them (pets, family photo, couples, gifts for him; real hands in the first 2 seconds; saveable carousels) and adds three tests: a stud-by-stud "watch it fill" reel, a Thanksgiving how-to carousel and a 09:00 deal-day post time (EXP-SP-20261124-01, EXP-SP-20261125-01, EXP-SP-20261127-01).
