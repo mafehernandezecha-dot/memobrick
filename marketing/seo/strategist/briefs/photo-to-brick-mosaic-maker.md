@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: photo to brick mosaic maker
 Hub: Buyer questions (editor intent)
 Page type: product-support
