@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T22:55:00-05:00",
+ "updated": "2026-11-06T08:30:00-05:00",
  "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
  "days": [
   {
@@ -321,6 +321,16 @@
    "date": "2026-11-03",
    "orders": 1,
    "netSales": 69.88
+  },
+  {
+   "date": "2026-11-04",
+   "orders": 3,
+   "netSales": 238.2
+  },
+  {
+   "date": "2026-11-05",
+   "orders": 1,
+   "netSales": 119.2
   }
  ],
  "lastYear": [
@@ -786,18 +796,18 @@
   }
  ],
  "funnel": {
-  "period": "Oct 5 to Nov 3 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 5 to Nov 3 2025",
+  "period": "Oct 7 to Nov 5 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 8 to Nov 6 2025",
   "now": {
-   "sessions": 2664,
-   "addedToCart": 167,
-   "reachedCheckout": 100,
-   "purchased": 42
+   "sessions": 2702,
+   "addedToCart": 170,
+   "reachedCheckout": 97,
+   "purchased": 39
   },
   "lastYear": {
-   "sessions": 4782,
-   "addedToCart": 432,
-   "reachedCheckout": 182,
-   "purchased": 72
+   "sessions": 4747,
+   "addedToCart": 450,
+   "reachedCheckout": 188,
+   "purchased": 76
   },
   "launch": {
    "period": "Referred sessions by landing page, Oct 28 to Nov 3 2026 (day 1 to 7)",
@@ -841,9 +851,9 @@
    "calmBuildGift": "no referred sessions landed on a path containing 'calm' in Oct 28 to Nov 3",
    "newArticles": "no referred sessions landed on any /blogs/ path in Oct 28 to Nov 3",
    "draftOrders": {
-    "period": "Last 30 days (Oct 5 to Nov 3 2026) vs same days 2025, freshly queried by sales channel",
+    "period": "Last 30 days (Oct 7 to Nov 5 2026) vs Oct 8 to Nov 6 2025, by sales channel",
     "now": 12,
-    "lastYear": 59
+    "lastYear": 58
    },
    "unknown": "Which ad or post sent each dog page visit (ShopifyQL has no UTM). Landing page of checkout-page sessions is the checkout URL itself, so some purchases cannot be tied to a landing page. Direct sessions (bots) inflate '/'.",
    "siteReferred": [
@@ -974,13 +984,14 @@
      }
     ],
     "note": "Gift collection: this year 436 collection sessions + 79 via its 1-big-board path; last year 100 + 1,114 (that product path was the big entry). /pages/editor had no landings last year, so there is no baseline. Social sessions 1,433 vs 2,257 (-37%), cart rate 4.0% vs 8.0%."
-   }
+   },
+   "note": "Landing-page launch tables below were last refreshed for Oct 28 to Nov 3 and were not re-queried on Nov 6."
   }
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down 44% and add-to-cart rate is lower",
-   "detail": "Oct 5 to Nov 3: 2,664 referred sessions vs 4,782 last year (-44%). Add-to-cart rate 6.3% vs 9.0%; checkout-to-purchase 42% vs 40%, so checkout works; the gap is qualified visitors. Biggest loss by entry: search 939 sessions vs 2,401 (-61%, 28 purchases vs 48), though its cart rate held (8.7% vs 10.2%). Social 1,433 vs 2,257 (-37%) and cart rate halved (4.0% vs 8.0%). Gift collection group 515 sessions vs 1,217, 11 purchases vs 10 (it converts as well as last year, it just lacks traffic). /pages/editor 11 sessions, 0 carts; /pages/dog-brick-mosaic 75 sessions, 0 carts. Direct sessions are bot-inflated and excluded.",
+   "title": "Referred traffic is down 43% and add-to-cart rate is lower",
+   "detail": "Oct 7 to Nov 5: 2,702 referred sessions vs 4,747 last year (-43%). Add-to-cart rate 6.3% vs 9.5%; checkout-to-purchase 40% vs 40%, so checkout works; the gap is qualified visitors. Entry-level detail (Oct 5 to Nov 3): search 939 sessions vs 2,401 (-61%), social 1,433 vs 2,257 (-37%) with cart rate halved (4.0% vs 8.0%), gift collection group converts as well as last year but lacks traffic; /pages/dog-brick-mosaic 0 carts from 71 sessions (Oct 28 to Nov 3). Direct sessions are bot-inflated and excluded.",
    "owners": [
     "ads-analyst",
     "social-publisher",
@@ -990,15 +1001,15 @@
   },
   {
    "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 12 in the last 30 days (Oct 5 to Nov 3) vs 59 in the same days last year (-80%), freshly queried. Online Store 65 vs 117 (-44%). Draft orders explain about half the lost orders. Find out why proof requests are not coming in or not being invoiced.",
+   "detail": "Draft orders were 12 in the last 30 days (Oct 7 to Nov 5) vs 58 in Oct 8 to Nov 6 last year (-79%). Online Store 63 vs 131 (-52%). Draft orders explain about half the lost orders. Find out why proof requests are not coming in or not being invoiced.",
    "owners": [
     "owner",
     "site-developer"
    ]
   },
   {
-   "title": "Daily goal missed: orders and sales under pace all October and this week",
-   "detail": "Oct 1 to 31: 80 orders and $8,970 net sales vs goal 155 and $17,050; last year October had 182 orders and $18,428. Last 7 days (Oct 28 to Nov 3): 20 orders, $1,937 vs goal 35 and $3,850 (57% and 50%). Yesterday (Nov 3) 1 order, $70 vs 5 and $550. November so far (Nov 1 to 3): 8 orders, $861 vs 15 and $1,650. Black Friday goals (12 orders a day from Nov 16) are far above the run rate of about 2.9 a day; last year Nov 16 to 30 averaged about 16 orders a day.",
+   "title": "Daily goal missed: orders and sales at about half of pace",
+   "detail": "Last 7 days (Oct 30 to Nov 5): 16 orders, $1,537 vs goal 35 and $3,850 (46% and 40%). Yesterday (Nov 5) 1 order, $119 vs 5 and $550; Nov 4 was 3 orders, $238. November so far (Nov 1 to 5): 12 orders, $1,219 vs goal 25 and $2,750; same days last year were 28 orders and $3,571. Black Friday goal (12 orders a day from Nov 16) is far above the current run rate of about 2.3 to 3 a day; last year Nov 16 to 30 averaged about 16 a day.",
    "owners": [
     "owner",
     "email-campaign-writer",
