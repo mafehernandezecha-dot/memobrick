@@ -1,94 +1,94 @@
-# Task board 2026-11-05
-Weak point today: too few qualified visitors, and the free fixes still wait on Eden. The one place that converts is the /pages/editor phone entry (205 sessions, 23 carts, 11.2%) and it gets almost no campaign traffic (7 of 300 sessions); home and gift pages convert at about 6%. Referred sessions Oct 5 to Nov 3: 2,664 vs 4,782 last year (-44%); search 939 vs 2,401 (-61%, cart rate held 8.7% vs 10.2%); draft orders 12 vs 59.
-Orders: Nov 4 was 3 orders, $238 vs goal 5 and $550 (last year 7, $880). Last 7 days (Oct 29 to Nov 4): 19 orders, $1,890 vs 35 and $3,850 (54%, 49%). October 80 orders vs goal 155. Dates: EARLYHOLIDAY20 ends Nov 22 (17 days), Black Friday 25% starts Nov 27 (22 days), Black Friday goal of 12 a day starts Nov 16 (11 days), order-by Dec 15.
-Rule for today: send visitors to the entry that converts. Every link in a new post, email or ad draft goes to `/pages/editor?size=20x20#editor` (with the agent's own UTM) unless the item is about a specific product. No agent re-asks for what it asked yesterday.
+# Task board 2026-11-06
+Weak point today: too few qualified visitors, and everything built so far is waiting on Eden. Nov 5 was 1 order, $119 vs goal 5 and $550 (last year Nov 5: 4 orders, $499). Last 7 days (Oct 30 to Nov 5): 16 orders, $1,537 vs 35 and $3,850 (46% and 40%). Nov 1 to 5: 12 orders vs goal 25 (same days last year: 28). Referred sessions Oct 7 to Nov 5: 2,702 vs 4,747 (-43%), add to cart 6.3% vs 9.5%, checkout to purchase 40% vs 40% (checkout is fine). Draft orders 12 vs 58. New unexplained gap: /pages/dog-brick-mosaic had 71 sessions and 0 carts in its first week.
+Dates: EARLYHOLIDAY20 ends Nov 22 (16 days), Black Friday goal of 12 orders a day starts Nov 16 (10 days), BRICKFRIDAY25 starts Nov 27 (21 days), order-by Dec 15 (39 days).
+Rules for today: (1) new links go to `/pages/editor?size=20x20#editor` with your own UTM unless the item is about a specific product; (2) do not ask Eden again for something already in the queue, point to its ID in one line; (3) yesterday 13 of 17 tasks ended as drafts waiting for approval, so today favour work that is measured, live-readable or a clean one-click proposal.
 
 ## aprobaciones (Betty)
-- Task: Open Eden's day with 5 clicks ranked by expected orders, one line and one link each: (1) publish theme 189322330332 (018 expires Nov 15, 019 Nov 30; 016/032/038/044/046 already lapsed), (2) A-2026W45-002 Meta Dog v5 (expires Nov 7), (3) A-2026W45-009 gift collection first screen, (4) emails 003/004 (expire Nov 9), (5) A-2026W44-058 W45 social (expires Nov 7). Add one line: what lapses on Nov 7 if she skips them. Record any answer she gave in chat and pass it to the coordinator.
-- Why: every path to more visitors or carts waits on a click; third day with no decision.
+- Task: Open Eden's day with a list of at most 5 clicks ranked by expected orders, one line and one link each, with what lapses if she skips it: (1) A-2026W45-014 or 018 (same two group texts, expires today, approve one), (2) A-2026W45-002 Meta Dog v5 (Nov 7; flag: its ad set is paused, ask her "re-activate Christmas, or reject 002"), (3) A-2026W44-058 W45 social (Nov 7), (4) A-2026W45-008 Black Friday paid plan (Nov 8) plus the one number only she has: Black Friday ad budget, (5) emails A-2026W45-003 and 004 (Nov 9; reject 060 and 052 if she approves them). Put the theme 189322330332 publish first if she has not done it. Pass any chat answer to the coordinator.
+- Why: orders cannot rise while every path to traffic waits on a click; fourth day with no decision.
 - Done when: the list is at the top of your output and each item shows done, asked or declined.
 
 ## growth-director (Gabriel)
-- Task: Fri Nov 6: score this board against Nov 5 orders and approvals, then write the Nov 6 board.
+- Task: Sat Nov 7: score this board against Nov 6 orders and approvals, then write the Nov 7 board.
 - Why: daily orders vs goal 5.
-- Done when: the Nov 6 board and daily file are on main before the agents run.
+- Done when: the Nov 7 board and daily file are on main before the agents run.
 
 ## marketing-coordinator (Armando)
-- Task: Put the top 5 block above the rest of the queue (lapsed items already archived) with the expiry of each, and mark A-2026W45-005 as reject-recommended. Then re-sort the "Do first" list: remove clicks that are already done or lapsed.
-- Why: a short queue is the only way approvals turn into orders; 37 pending is why none get clicked.
+- Task: Do yesterday's unfinished task, nothing else: put the top 5 block above the queue (with expiry per item), mark A-2026W45-005 reject-recommended, mark 014 vs 018 and 003 vs 060 and 004 vs 052 as "approve one" pairs, and remove lapsed or done clicks from "Do first". Queue Wilson's desktop editor header change only if Jenny sends it in the standard format.
+- Why: 37 pending items is why none get clicked; a short ranked queue is the only way approvals become orders.
 - Done when: top 5 block and clean Do first list are on main and `check.py` passes.
 
 ## growth-analyst (Nicolás)
-- Task: Add Nov 4 (3 orders, $238.20) to latest.json and re-state the 7-day numbers (19 orders, $1,890 vs 35 and $3,850). Then split /pages/editor sessions Oct 5 to Nov 4 by device and landing source (phone vs desktop, social vs search vs email), using ShopifyQL only; desktop add to cart is 5.5% vs 11.5% last year, so name which desktop entry loses most.
-- Why: Wilson found desktop add to cart halved; one table tells Jenny and Wilson which page to fix first.
-- Done when: latest.json has Nov 4 and a device-by-source table is in the report ("unknown" where ShopifyQL cannot split it).
+- Task: Re-query the launch tables for Oct 28 to Nov 5 (last refresh covered only to Nov 3): `/pages/dog-brick-mosaic` sessions and carts by day, `/pages/editor` and `/collections/the-gift-for-everyone` the same, and any `/blogs/` landings. Then do the task still open from yesterday: /pages/editor sessions Oct 5 to Nov 5 split by phone/desktop and social/search/email (ShopifyQL only, "unknown" where it cannot split). Add Nov 6 to latest.json tomorrow as usual.
+- Why: dog page 0 carts from 71 sessions is the sharpest unexplained leak; Wilson and Jenny need one table to pick the next fix.
+- Done when: both tables are in the report and latest.json launch section is dated Nov 5.
 
 ## ads-analyst (Daniel)
-- Task: Read-only: for Meta last 7 days, compare landing page views to carts for each ad that links to the home or gift pages vs any that link to the editor. Write a one-page draft of the Black Friday and Christmas ad link plan where every ad points to `/pages/editor?size=20x20#editor`; budget stays "unknown". Do not re-ask for the budget more than one line.
-- Why: Meta spends about $93 a day with about 0 tagged orders; the editor entry converts at 11% on phones.
-- Done when: the table and the one-page link plan are in the report; no changes made.
+- Task: Read Google now that Adspirer has reset (read-only, about 20 calls): 7-day spend, clicks, orders and cost per order by campaign, set against the 8 tagged orders ($801) in Shopify. Then write one line: where $1 more is most likely to bring an order before Nov 16 (a Google campaign, Meta Proven Winners, or neither), and add the dog-ad landing views vs carts. Propose a budget move only if the numbers support it; budget stays "unknown" for Black Friday and is not re-asked beyond A-2026W45-008.
+- Why: Meta spent $547 in 7 days for 1 tagged order (ROAS 0.22) while Google brings the tagged orders with spend unread; that decides where Black Friday money goes.
+- Done when: a Google table and the one-line recommendation are in the report, or "quota still blocked" with the exact error.
 
 ## seo-strategist (Mariana)
-- Task: Write the 3 briefs for search terms that bring buyers to the editor rather than to a blog (for example "turn photo into brick mosaic", "custom lego style photo mosaic", "photo to lego"), each with the editor URL as the call to action. Check against the backlog first; skip any already briefed.
-- Why: search lost the most traffic (-61%) but its cart rate held (8.7%); intent pages that end at the editor convert.
-- Done when: 3 briefs (or "already covered: <list>") are in your folder.
+- Task: Write 3 briefs for the buying-intent searches that peak Nov 20 to Dec 8 and end at the editor: for example "personalized gifts black friday", "gifts for grandparents from grandkids photo", "photo gift for husband last minute". Check the 16-ready backlog first and say "covered by <brief>" where it is. Offers only as in offers-calendar (no code before Nov 27 beyond EARLYHOLIDAY20, Dec 15 only as stated).
+- Why: search lost the most traffic (-61%) but kept its cart rate (8.7%); seasonal intent pages need to be published 2 to 3 weeks before the peak.
+- Done when: 3 briefs or "already covered: <list>" are in your folder and the backlog is re-ranked by publish-by date.
 
 ## seo-blog-writer (Sandra)
-- Task: Add a real editor call to action ("Make yours from your photo", link to the editor, Dec 15 order-by) to the girlfriend and boyfriend drafts if absent, and refresh the last-minute-gift section of the husband draft with the Dec 15 date. No new article.
-- Why: when the drafts publish, readers should land in the 11% entry, not leave.
-- Done when: the three drafts are updated and listed as ready for seo-technical.
+- Task: Write the first draft of the top-ranked brief for the editor (`photo-to-brick-mosaic-maker.md`) with the editor link, the Dec 15 order-by and a JSON-LD block, mark it ready for check. Skip anything outside the brief.
+- Why: it is the buying-intent page for the biggest lost source (search); without a new draft the three ready drafts are the whole pipeline.
+- Done when: the draft is in your folder, check.py copy passes, status `ready for check`.
 
 ## seo-technical (Inesita)
-- Task: Check Sandra's updated drafts, then re-check the 404 list (six drafts still 404) and write one paste sheet "publish order for Eden" using Mariana's ranking so one approval publishes the first three.
-- Why: drafts cannot earn traffic until published; Eden needs one click.
-- Done when: drafts show checked and the one-page publish sheet is ready.
+- Task: Write the one fix proposal for the 8 articles with a 320-character excerpt and the two titles from SearchPie (exact new titles, descriptions and article handles, in the standard approval block), and set the status of the live articles (wife, grandparents, last-minute, calm series, special-interest, sensory, size guide) to `live` where their drafts still say ready for check. Do not re-propose items already in the queue.
+- Why: search snippets decide whether people click; the same article currently shows two titles.
+- Done when: one proposal block and the corrected statuses are in your report.
 
 ## outreach-gift-guide-pr (Mario)
-- Task: Find 3 pages that list photo or personalised gifts for grandparents or couples and show a submit or "suggest a gift" route you can read. Write one short pitch each as a draft. Mark unverified routes. Skip Love Tabitha.
-- Why: one inclusion before Dec 15 reaches ready buyers; grandparent and couple orders are the largest ($149 to $432).
-- Done when: up to 3 drafts or a "none found, dropped" note are in the report.
+- Task: Different audience from yesterday: find 3 pet-lover gift guides, newsletters or podcasts (dog and cat owners) that show a submit or "suggest a product" route you can read. One short pitch each as a draft, unverified routes marked. If none is found, write "none found, dropped" and nothing more; grandparent search stays dropped.
+- Why: the dog mosaic launched Oct 28 with 0 carts from its own page; a pet guide is the only pet traffic that does not need ad money.
+- Done when: up to 3 drafts or the dropped note are in the report.
 
 ## outreach-link-builder (Bertha)
-- Task: Check Gmail and links-earned for replies and log them. Add nothing else. If the top-3 mails are still unsent on Nov 6, the task is dropped.
-- Why: zero links earned because nothing was sent.
-- Done when: replies logged (or "none") in one line.
+- Task: The top-3 mails are still unsent, so that task is dropped. New: check today's journalist and expert requests you can reach (HARO or Featured, Qwoted, SourceBottle, X) for custom photo gifts, family gifts, Dec 15 gifting or brick art, and draft up to 2 replies with the contact route. Log replies in links-earned.md in one line.
+- Why: a press link is the only outreach that can bring traffic before Dec 15 without Eden sending cold mail.
+- Done when: up to 2 reply drafts in your folder or "no matching requests today".
 
 ## outreach-creator-scout (María Beatriz)
-- Task: If the Mac is available run the Collabs skill. If not, write the single line "Mac unavailable" in status and stop. This task is dropped from the board after today.
-- Why: creators reach LEGO and family buyers before Dec 15.
-- Done when: the sorted list or the one line exists.
+- Task: No task. Mac unavailable and no report for two days. Write "Mac unavailable" in status and stop.
+- Why: nothing to move without the Mac.
+- Done when: status says so.
 
 ## social-community-manager (Patricia)
-- Task: Write Friday's sheet: up to 5 group posts with exact text, at least 2 for couples or grandparents, each ending with the editor link and utm_medium=group. Skip any group you cannot vet; say so. Record any result Eden reported.
-- Why: free visits to the entry that converts (11.2% phone).
-- Done when: Friday's sheet is in your folder.
+- Task: Write the weekend sheet (Sat Nov 7 and Sun Nov 8): replies to the 5 most common buyer questions in `customer-questions.md` for use in comments and group threads (no price or code, editor link with utm_medium=group only where it answers the question), plus 2 prompts for dog-owner groups. Record any result Eden reported on Nov 6 posts.
+- Why: free visits to the entry that converts (11.2% phone); group traffic is the only social that costs nothing.
+- Done when: the weekend sheet is in your folder.
 
 ## social-planner (Hugo)
-- Task: Write the "Order by December 15" carousel (real photos or Studio mosaics only) as one kit with the date on three posts and the editor link in every caption; propose it. Use W46 slots.
-- Why: reach is low (social sessions -37%, cart rate 4.0% vs 8.0%); the link and the date give a reason to click and buy now.
-- Done when: the carousel draft and one proposal are in the report.
+- Task: Replace three pending weeks with one slim proposal: a "Nov 9 to Nov 15" batch of the 5 strongest posts already marked Ready (W45 to W47), with Dec 15 and the editor link on each, so Eden decides once. Re-time the ~27 stale Pinterest, YouTube and TikTok rows dated Oct 19 to Nov 1 in the calendar to Nov 9 to 15 or mark them dropped.
+- Why: A-2026W44-058, 059 and W45-015 have sat for days; the biggest social lever is an approval, and one short batch is easier to approve than three weeks. Social sessions are down 37%.
+- Done when: one proposal and a clean calendar (no stale To post rows) are in the report.
 
 ## social-publisher (Freddy)
-- Task: Record Nov 4 results from Buffer (or "unconfirmed: reason"), list the failed posts that need hand posting (Facebook 10-26, 10-28, 10-30; Instagram 11-01), and list the days from Nov 6 with nothing approved.
-- Why: a gap stops traffic.
-- Done when: calendar rows have live URLs or reasons and the gap list is current.
+- Task: Pull Buffer metrics for the last 14 days (reach, clicks per post, `get_aggregated_post_metrics`) and write them to the followers/results file as the first real social numbers; list the 4 failed posts (Facebook 10-26, 10-28, 10-30; Instagram 11-01) with the Buffer error for Eden; list days from Nov 7 with nothing approved. If Buffer is unreachable, write "unconfirmed: reason".
+- Why: no social result is on record, so Hugo cannot tell which posts to repeat; a gap stops traffic.
+- Done when: the metrics table or the unconfirmed note, and the gap list, are in your log.
 
 ## email-campaign-writer (Marcela)
-- Task: Write the Black Friday week-before "Your photo, ready by Dec 15" email for Nov 20 to the Warm list: 2 subjects, preview text, one button to `/pages/editor?size=20x20#editor`, no code before Nov 27 beyond the live EARLYHOLIDAY20 (ends Nov 22). Propose it. Do not redo the Nov 10 pair or the Cyber Monday email.
-- Why: last year Nov 16 to 30 averaged about 16 orders a day; the week before decides the ramp.
-- Done when: one proposal with previews and dates is in the report and `check.py` passes.
+- Task: Fill the Thanksgiving gap: write "Take the photo at the table" for Tue Nov 25 to the Warm list (2 subjects, preview text, one button to the editor, no code, Dec 15 date, matches Hugo's Nov 25 post), and propose it. Check the schedule first: no other send on Nov 24 to 26.
+- Why: Nov 20 and Nov 27 are scheduled; the four code-free days before Black Friday have no email, and last year Nov 24 had 30 orders.
+- Done when: one proposal with previews and dates is in the report, check.py passes. Do not redo the Nov 10 pair, the Nov 20 or Cyber Monday emails.
 
 ## email-flow-optimizer (Aura María)
-- Task: Audit the Welcome flow first email read-only (subject, first screen, button link, Dec 15 date) and propose one test, with the button going to the editor. Do not touch Post-Purchase and do not repeat the checkout note.
-- Why: new subscribers are the cheapest buyers; a welcome email that points to the 11% entry should lift cart rate.
-- Done when: one welcome test proposal is in the report.
+- Task: Read-only audit of whether a browse or "started the editor" abandonment flow exists in Omnisend (trigger, delay, 90-day sent, clicks, orders). If none exists, write a one-email proposal for people who uploaded or visited the editor and did not reach cart (editor link, Dec 15, no code beyond the 20% in the cart flows). Welcome and checkout tests are already proposed: do not repeat them.
+- Why: draft orders fell from 58 to 12 and editor visitors are the highest-intent group; an automatic nudge can recover some of them.
+- Done when: an audit table and one proposal (or "flow exists, results: ...") are in the report.
 
 ## conversion-auditor (Wilson)
-- Task: Audit the desktop editor first screen (3.5% add to cart, 3 of 86) against the phone one (11.2%): what is different above the fold, the upload box, the proof line, the Dec 15 date. Write the one desktop change, with a measure.
-- Why: desktop add to cart is 5.5% vs 11.5% last year; it is the biggest funnel drop this week.
-- Done when: one audit and one proposal are in the audit file.
+- Task: Audit `/pages/dog-brick-mosaic` on phone and desktop (71 sessions, 0 carts, Oct 28 to Nov 3): first screen, where the buyer can start, link to editor, price, proof line, Dec 15 date. Write the one change, with a measure. Then compare the desktop and phone home first screens if time remains.
+- Why: it is a launched page with 0 carts; every session on it was paid or posted for.
+- Done when: audit and one proposal in the standard block are in the audit file.
 
 ## site-developer (Jenny)
-- Task: If theme 189322330332 is published, check its 4 files on phone and desktop. If not, say so and stop on that. Then walk the proof request path on desktop (read-only) from the editor to the confirmation, and list each step that could stop a buyer, comparing with Wilson's desktop finding.
-- Why: draft orders 12 vs 59 explain about half the lost orders; desktop is where carts halved.
-- Done when: the check or "not published yet" plus the step list are in the report.
+- Task: (1) Queue Wilson's desktop editor header change in the standard approval block (P- ID, Reason, Expires). (2) Read-only: list the 20 themes with ids, names and last-edited dates and name the ones that can be deleted (v22 to v26, "Copy of") so Eden can free slots in one pass; the Dec 15 bar (A-2026W44-050) needs one.
+- Why: the theme count is the reason nothing new is built; the proof and cart fixes have waited since Oct 28.
+- Done when: the proposal and the delete list are in the report.
