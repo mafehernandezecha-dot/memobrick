@@ -1,4 +1,4 @@
-Status: ready for check
+Status: live
 Brief: marketing/seo/briefs/2026-10-28-autism-calm-building-research.md
 Series: calm building (3 of 5)
 Title: Sensory-Friendly Building Tips for Brick Mosaics

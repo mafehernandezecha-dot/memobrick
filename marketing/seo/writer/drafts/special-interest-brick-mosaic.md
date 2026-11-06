@@ -1,4 +1,4 @@
-Status: ready for check
+Status: live
 Brief: marketing/seo/briefs/2026-10-28-autism-calm-building-research.md
 Series: calm building (4 of 5)
 Title: Turning a Special Interest Into a Brick Mosaic

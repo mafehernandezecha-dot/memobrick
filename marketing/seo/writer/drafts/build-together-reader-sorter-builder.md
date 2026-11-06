@@ -1,4 +1,4 @@
-Status: ready for check
+Status: live
 Brief: marketing/seo/briefs/2026-10-28-autism-calm-building-research.md
 Series: calm building (2 of 5)
 Title: How to Build Together: Reader, Sorter, Builder

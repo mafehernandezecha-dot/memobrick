@@ -1,4 +1,4 @@
-Status: ready for publish (pending approval, special run 2026-10-28)
+Status: live
 Brief: marketing/seo/strategist/briefs/photo-christmas-gift-for-wife.md
 Title: A Photo Christmas Gift for Your Wife She Can Build
 Meta description: Turn a photo of the two of you into a custom brick mosaic kit she can build and hang. Photo ideas, sizes, and the December 15, 2026 order date.

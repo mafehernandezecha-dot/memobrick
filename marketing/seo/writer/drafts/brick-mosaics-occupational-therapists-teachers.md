@@ -1,4 +1,4 @@
-Status: ready for check
+Status: live
 Brief: marketing/seo/briefs/2026-10-28-autism-calm-building-research.md
 Series: calm building (5 of 5)
 Title: Brick Mosaics for OTs and Special-Education Teachers

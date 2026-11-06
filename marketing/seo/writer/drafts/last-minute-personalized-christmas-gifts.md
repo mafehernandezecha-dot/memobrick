@@ -1,4 +1,4 @@
-Status: ready for publish (pending approval, special run 2026-10-28)
+Status: live
 Brief: marketing/seo/strategist/briefs/last-minute-personalized-christmas-gifts.md
 Title: Last-Minute Personalized Christmas Gifts (Honest Dates)
 Meta description: Order a custom brick mosaic by December 15, 2026 to have it for Christmas. Missed it? Give the Art Gift Kit and let them pick the photo.

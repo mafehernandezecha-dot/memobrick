@@ -1,4 +1,4 @@
-Status: ready for publish (pending approval, special run 2026-10-28)
+Status: live
 Brief: marketing/seo/strategist/briefs/christmas-gifts-for-grandparents-from-grandkids.md
 Title: Christmas Gifts for Grandparents From the Grandkids
 Meta description: A custom brick mosaic of the grandkids that they help build. Ideas, photo tips and sizes. Order by December 15, 2026 for Christmas.

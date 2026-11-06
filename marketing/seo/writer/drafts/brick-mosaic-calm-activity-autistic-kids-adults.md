@@ -1,4 +1,4 @@
-Status: ready for check
+Status: live
 Brief: marketing/seo/briefs/2026-10-28-autism-calm-building-research.md
 Series: calm building (1 of 5, hub)
 Title: Brick Mosaics: A Calm Activity for Autistic Kids and Adults

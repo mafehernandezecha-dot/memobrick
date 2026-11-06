@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/photo-to-brick-mosaic-maker.md
 Title: Photo to Brick Mosaic Maker: Upload, Preview, Build
 Meta description: Upload a photo, see it as a custom brick mosaic in 40+ colors, pick a size and order a DIY kit. Try the Memobrick editor, no commitment.
