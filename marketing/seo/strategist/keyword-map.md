@@ -154,3 +154,13 @@ Status changes: the 3 Christmas keywords above are **live 2026-10-28** (were "dr
 ## Update 2026-10-29 (live URLs)
 
 Live targets: /blogs/news/personalized-christmas-photo-gifts, gift-for-someone-who-has-everything, brick-mosaic-sizes, last-minute-personalized-christmas-gifts, christmas-gifts-for-grandparents-from-grandkids, photo-christmas-gift-for-wife (plus calm-building hub and 4 articles). New planned targets: "christmas gift for mom from kids" -> christmas-gift-for-mom-from-kids; "christmas gift for dad from kids" -> christmas-gift-for-dad-from-kids (Christmas/Family hub; evidence: SERP pattern, no existing page; volume unknown).
+
+## Update 2026-11-06 (new planned targets)
+
+| Keyword | Hub | Intent | Target URL | Evidence | Volume |
+|---|---|---|---|---|---|
+| personalized gifts black friday | Christmas | commercial | /blogs/news/personalized-gifts-black-friday (planned) | task board; BRICKFRIDAY25 and CYBERBRICK20 in offers-calendar | unknown |
+| christmas gift for sister photo | Christmas / Family | commercial | /blogs/news/christmas-gift-for-sister-photo (planned) | no existing page for siblings | unknown |
+| christmas gifts for adults who love lego | Christmas | commercial | /blogs/news/christmas-gifts-for-adults-who-love-lego (planned) | gap next to boyfriend brief | unknown |
+
+Covered, no new brief: "gifts for grandparents from grandkids photo" (live grandkids article); "photo gift for husband last minute" (husband brief plus live last-minute article).
