@@ -2,11 +2,13 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-11-06. Added A-2026W45-020 (seo-technical, meta descriptions for 8 live articles), 021 (seo-technical, photo to brick mosaic maker article, flagged: needs best-photo article 056 published first) and 022 (community-manager Nov 7 to 8 weekend sheet). Moved A-2026W44-062 and 064 to Time-sensitive (expire Nov 13). Nothing archived (nothing expired before today). Earlier run, 2026-11-05: Added A-2026W45-017 (email-flow-optimizer, Welcome email 1 claims-fix test), 018 (community-manager Nov 6 posting sheet) and 019 (social-planner W48 Black Friday week). Archived A-2026W44-016, 032, 038, 044 (approved) and 046 (pending), all expired Nov 4. Moved A-2026W44-054, 055, 056, 057 and 048 to Time-sensitive (expire Nov 12). Earlier run, 2026-11-04: Added A-2026W45-016 (seo-technical, boyfriend Christmas article). Archived A-2026W45-001 (expired Nov 3, never decided). Moved A-2026W44-060, 025, 034, 035 and A-2026W43-005 to Time-sensitive (expire Nov 11). Earlier run, 2026-11-03: Added A-2026W45-008 to 015 (ads-analyst Black Friday plan, conversion-auditor gift collection block, email-campaign-writer x2, email-flow-optimizer cart email, seo-technical girlfriend article, community-manager sheet, social-planner W47 week). Archived A-2026W44-011 (approved, expired Nov 2). Moved A-2026W43-003 to Time-sensitive (expires Nov 10). Earlier run, 2026-11-02: Added A-2026W45-001 to 007 (social-planner, ads-analyst, email-campaign-writer x2, outreach-gift-guide-pr, seo-technical, outreach-link-builder). Archived A-2026W44-065 (expired Nov 1, replaced by A-2026W45-001). Moved A-2026W44-063 to Time-sensitive (expires Nov 9). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-11-02.md`. Earlier run, 2026-11-01: Added A-2026W44-070 (seo-technical, dog lovers Christmas article) and 071 (link-builder, five pitches). Archived A-2026W42-037 (expired Oct 31). Earlier run, 2026-10-31: Added A-2026W44-060 to 069 (email-campaign-writer, email-flow-optimizer, outreach, social-planner, conversion-auditor, seo-technical). Archived 4: A-2026W44-049 and A-2026W42-034 (expired), A-2026W44-014 and 015 (email-campaign-writer reports both done in Omnisend). Earlier runs: Added A-2026W44-050 to 059 (growth-director, link-builder, blog-writer, seo-technical, social-planner). Not queued: P-growth-director-20261029-2 (photo review request to past buyers, see Flagged). Archived 27 items that their executors report done, replaced or expired (list in `marketing/approvals/archive/2026-W44.md`). Earlier runs: 2026-10-28: added A-2026W44-016 to 019 (site-developer, conversion-auditor; 018 and 019 were reported Oct 26 and missed earlier). Archived A-2026W44-013 (expired) and A-2026W43-006 (published Oct 26). Before that, 2026-10-27. Added A-2026W44-013 to 015 (email-campaign-writer). Not queued: the Checkout email 1 test from email-flow-optimizer (no P- ID or Status lines and two draft files on one line; asked to re-propose in the standard format). Archived 11 ads and offer items that their executors report done (A-2026W44-001 to 010 except 011, and 012). Before that, 2026-10-26. No new proposals (growth-analyst, seo-strategist and site-developer reports proposed none; the Oct 25 reports proposed none). Archived 4: A-2026W43-004 and A-2026W41-010 (expired Oct 25), A-2026W43-009 and 010 (done, live theme "Memobrick holiday gift boxes"). Moved A-2026W42-037 to Time-sensitive (expires Oct 31). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-10-26.md`. Earlier on 2026-10-25: archived A-2026W42-033, 030, 031 and 032 (expired). Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
+Updated 2026-11-07. Added A-2026W45-023 (seo-technical, Black Friday personalized photo gifts article; no code printed, says the offer starts Nov 27) and 024 (community-manager Nov 8 to 10 group sheet). Archived A-2026W44-052 and A-2026W45-014 (expired Nov 6, never decided). Moved items expiring by Nov 14 to Time-sensitive. Earlier run, 2026-11-06: Added A-2026W45-020 (seo-technical, meta descriptions for 8 live articles), 021 (seo-technical, photo to brick mosaic maker article, flagged: needs best-photo article 056 published first) and 022 (community-manager Nov 7 to 8 weekend sheet). Moved A-2026W44-062 and 064 to Time-sensitive (expire Nov 13). Nothing archived (nothing expired before today). Earlier run, 2026-11-05: Added A-2026W45-017 (email-flow-optimizer, Welcome email 1 claims-fix test), 018 (community-manager Nov 6 posting sheet) and 019 (social-planner W48 Black Friday week). Archived A-2026W44-016, 032, 038, 044 (approved) and 046 (pending), all expired Nov 4. Moved A-2026W44-054, 055, 056, 057 and 048 to Time-sensitive (expire Nov 12). Earlier run, 2026-11-04: Added A-2026W45-016 (seo-technical, boyfriend Christmas article). Archived A-2026W45-001 (expired Nov 3, never decided). Moved A-2026W44-060, 025, 034, 035 and A-2026W43-005 to Time-sensitive (expire Nov 11). Earlier run, 2026-11-03: Added A-2026W45-008 to 015 (ads-analyst Black Friday plan, conversion-auditor gift collection block, email-campaign-writer x2, email-flow-optimizer cart email, seo-technical girlfriend article, community-manager sheet, social-planner W47 week). Archived A-2026W44-011 (approved, expired Nov 2). Moved A-2026W43-003 to Time-sensitive (expires Nov 10). Earlier run, 2026-11-02: Added A-2026W45-001 to 007 (social-planner, ads-analyst, email-campaign-writer x2, outreach-gift-guide-pr, seo-technical, outreach-link-builder). Archived A-2026W44-065 (expired Nov 1, replaced by A-2026W45-001). Moved A-2026W44-063 to Time-sensitive (expires Nov 9). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-11-02.md`. Earlier run, 2026-11-01: Added A-2026W44-070 (seo-technical, dog lovers Christmas article) and 071 (link-builder, five pitches). Archived A-2026W42-037 (expired Oct 31). Earlier run, 2026-10-31: Added A-2026W44-060 to 069 (email-campaign-writer, email-flow-optimizer, outreach, social-planner, conversion-auditor, seo-technical). Archived 4: A-2026W44-049 and A-2026W42-034 (expired), A-2026W44-014 and 015 (email-campaign-writer reports both done in Omnisend). Earlier runs: Added A-2026W44-050 to 059 (growth-director, link-builder, blog-writer, seo-technical, social-planner). Not queued: P-growth-director-20261029-2 (photo review request to past buyers, see Flagged). Archived 27 items that their executors report done, replaced or expired (list in `marketing/approvals/archive/2026-W44.md`). Earlier runs: 2026-10-28: added A-2026W44-016 to 019 (site-developer, conversion-auditor; 018 and 019 were reported Oct 26 and missed earlier). Archived A-2026W44-013 (expired) and A-2026W43-006 (published Oct 26). Before that, 2026-10-27. Added A-2026W44-013 to 015 (email-campaign-writer). Not queued: the Checkout email 1 test from email-flow-optimizer (no P- ID or Status lines and two draft files on one line; asked to re-propose in the standard format). Archived 11 ads and offer items that their executors report done (A-2026W44-001 to 010 except 011, and 012). Before that, 2026-10-26. No new proposals (growth-analyst, seo-strategist and site-developer reports proposed none; the Oct 25 reports proposed none). Archived 4: A-2026W43-004 and A-2026W41-010 (expired Oct 25), A-2026W43-009 and 010 (done, live theme "Memobrick holiday gift boxes"). Moved A-2026W42-037 to Time-sensitive (expires Oct 31). Weekly Sales Plan: `marketing/coordination/coordinator/sales-plan-2026-10-26.md`. Earlier on 2026-10-25: archived A-2026W42-033, 030, 031 and 032 (expired). Earlier, 2026-10-23. Added A-2026W43-006 (brick mosaic size guide article) and A-2026W43-007 (W45 social batch, Nov 2 to 8). Not queued: the one-offer-per-order cart line (you said "leave it" on Oct 21) and the Art Gift Kit flow (it adds a ship-to form for gift kit orders, which touches fulfillment). Archived 4: A-2026W43-001 (done, live Oct 23), A-2026W42-038, 014 and 023 (expired). Earlier: 2026-10-21: added A-2026W43-001 (kit page buttons fix, urgent), 002 (duplicate of 001, flagged) and 003 (Starry Night and Mona Lisa republish, waits on you). Archived 11 items: 040, 041, 042, 043, 044 and 039 (done), 045 (replaced by 046), 046 (live), 007 (renewed as 040), 018 and 019 (expired Oct 20). Before that, 2026-10-19: no new proposals (growth-analyst, seo-strategist and site-developer reports proposed none); archived A-2026W41-003 (expired Oct 18, never posted). Previously, 2026-10-18: no new proposals; moved items expiring by Oct 25 to Time-sensitive. Earlier, 2026-10-16: Added A-2026W42-038 (ads-analyst: paused photo-to-mosaic Meta ad from the 1:1 video, replaces 006) and A-2026W42-039 (seo-technical: gift-for-someone-who-has-everything article). Archived 8 items: 020, 026, 027 (done on Google by ads-analyst), W41-013, W41-015, W41-016 (done by seo-technical), 006 (replaced by 038) and W41-002 (expired Oct 15). Earlier: 2026-10-15 added A-2026W42-037 and 2026-10-14 added 024 to 035. Items with a `- Flag:` line need the check it names before you approve. Details in `marketing/coordination/coordinator/overlaps-2026-10-16.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
+
+**New 2026-11-07:** Expire today with no decision: A-2026W45-002 (Christmas ad set paused: re-activate or reject), A-2026W44-058, 066. Tomorrow: A-2026W45-008 (Black Friday paid plan, needs your budget) and 018. Nov 9: A-2026W45-003, 004 (emails), 005 (reject, Love, Tabitha closed), 022, A-2026W44-063. Approved and still unapplied because they wait on you: publish theme copy 189322330332 (A-2026W44-018, 019, W41-012, 014), SearchPie switch-off (A-2026W44-025), A-2026W43-003 (expires Nov 10; needs your yes on the kits). New: A-2026W45-023 is a Black Friday article that should be live before Nov 27; A-2026W45-024 is the Nov 8 to 10 group sheet. A-2026W44-052 and A-2026W45-014 expired and were archived.
 
 **New 2026-11-06:** Expire today with no decision: A-2026W44-052 (past-buyer email; reject if you approve A-2026W45-004) and A-2026W45-014 (group texts; A-2026W45-018 repeats them). Still the biggest for sales: A-2026W45-002 (Nov 7, Christmas ad set is paused: re-activate it or reject), A-2026W45-008 (Black Friday paid plan, Nov 8, needs your budget), A-2026W45-003 and 004 (emails, Nov 9). Approved and still unapplied because they wait on you: publish theme copy 189322330332 (A-2026W44-018, 019), SearchPie switch-off (A-2026W44-025, still two titles on every page), and A-2026W43-003 (expires Nov 10). New: A-2026W45-021 needs A-2026W44-056 approved first; A-2026W45-022 is the Nov 7 to 8 group sheet; A-2026W45-020 is a low-risk SEO fields batch.
 
@@ -88,16 +90,16 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-email-campaign-writer-20261102-2
 - Flag: overlaps A-2026W44-052 (pending, past-buyer second-mosaic email, expires Nov 6). The writer says to reject 052 if you approve this one. Approving both would duplicate the idea. Also sends the same day as -003 (different audience).
 
-## A-2026W44-052
-- Agent: growth-director
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/coordination/director/ideas/2026-10-28-past-buyer-christmas-email.md
-- Commit: 4945632
-- Reason: If approved, Marcela drafts a past-buyer "second mosaic for Christmas" campaign for about Nov 10 (EARLYHOLIDAY20, Dec 15 date) and proposes it as her own send item; it fills the empty Nov 4 to 18 window. Nothing is sent on this approval.
-- Expires: 2026-11-06
+## A-2026W45-023
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/black-friday-personalized-photo-gifts.md
+- Commit: 22d7c79
+- Reason: Will publish "Personalized Black Friday Gifts Made From a Photo" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages afterward). Targets Black Friday personalized-gift searches and sends readers to the editor; needs to be live before Nov 27 to be indexed.
+- Expires: 2026-11-14
 - Status: pending
-- From: P-growth-director-20261028-2
+- From: P-seo-technical-20261107-1
 
 ## A-2026W44-058
 - Agent: social-planner
@@ -145,18 +147,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-outreach-gift-guide-pr-20261102-1
 - Flag: contact address contact@lovetabitha.com is unverified; Eden confirms or uses the submissions form. outreach-gift-guide-pr reports on 2026-11-03 that Love, Tabitha submissions closed Oct 27 and withdrew this pitch (contacts log row). Reject this item.
 
-## A-2026W45-014
-- Agent: social-community-manager
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/community/2026-11-03-posting-sheet.md
-- Commit: a903b1b
-- Reason: If approved, Eden may post the two new group texts (couples and anniversary, grandparents) by hand on Nov 4; no automatic posting happens.
-- Expires: 2026-11-06
-- Status: pending
-- From: P-social-community-manager-20261103-1
-- Flag: Three of the five texts on the sheet (Homeschool Lifestyle Community, Steel City LUG, GayFOLs) are already approved word for word under A-2026W44-048; only the Lifestyle Miami anniversary text and Palm Beach Moms grandparents text are new.
-
 ## A-2026W45-018
 - Agent: social-community-manager
 - Executor: social-publisher
@@ -179,6 +169,17 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Expires: 2026-11-09
 - Status: pending
 - From: P-social-community-manager-20261106-1
+
+## A-2026W45-024
+- Agent: social-community-manager
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/community/2026-11-07-sun-tue-sheet.md
+- Commit: 65cfc0e
+- Reason: If approved, Eden may use the 2 replies and 1 craft post by hand in Facebook groups on Nov 8 to 10; nothing is posted automatically.
+- Expires: 2026-11-11
+- Status: pending
+- From: P-social-community-manager-20261107-1
 
 ## A-2026W43-003
 - Agent: seo-technical
@@ -330,6 +331,101 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: pending
 - From: P-outreach-link-builder-20261030-1
 
+## A-2026W44-059
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W46/week.md
+- Commit: d690dd6
+- Reason: Approving it approves all 7 W46 posts (Nov 9 to 15) on every channel in each Channels column, including YouTube Shorts for the 3 reels; the publisher then prepares and schedules each one. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Monday's post is already approved in A-2026W42-037 and is scheduled once.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-social-planner-20261029-2
+- Flag: S-20261027-1 (free-proof carousel, Mon Nov 9 19:00) is also listed in approved A-2026W42-037 with the same file and date. The planner says the publisher schedules it once; if you would rather not rely on that, send it back with `changes: S-20261027-1 already in A-2026W42-037`.
+
+## A-2026W44-068
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/christmas-gift-for-mom-from-kids.md
+- Commit: bd6a3be
+- Reason: Will publish "A Christmas Gift for Mom From the Kids, in Bricks" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-10-31: links, prices, FAQ schema pass; no hero image yet.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-seo-technical-20261031-1
+
+## A-2026W44-069
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/hub-a-christmas-links.md
+- Commit: bd6a3be
+- Reason: Adds links from the Christmas hub (personalized-christmas-photo-gifts) to the new Christmas articles that are live, and the Dec 15 order-by sentence; body text edit only, so Google finds the new pages sooner.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-seo-technical-20261031-2
+
+## A-2026W44-070
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/christmas-gifts-for-dog-lovers.md
+- Commit: a7a02e6
+- Reason: Will publish "Christmas Gifts for Dog Lovers: Their Dog in Bricks" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-11-01: links, prices, FAQ schema pass; has a product-photo hero.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-seo-technical-20261101-1
+- Note: Dog lovers are the one audience where the dog page shows interest (51 referred sessions, 0 carts); this gives search and social a gift-intent page that links to it. Codes in the text end Nov 22 to 30 and must come out after Nov 30.
+
+## A-2026W44-071
+- Agent: outreach-link-builder
+- Executor: outreach-link-builder
+- Type: send
+- Draft: marketing/outreach/link-builder/pitches/2026-11-01-batch.md
+- Commit: ed330fd
+- Reason: Five pitches (Miami Mom Collective, GiftList, Friday We're in Love, Defend Young Minds, Everyday Reading); if approved I make a Gmail draft or paste sheet for each and Eden sends. Only two addresses are confirmed in search.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-outreach-link-builder-20261101-1
+- Note: Executor kept as outreach-link-builder, as in A-2026W44-054 and 064 (its own pitches). Editorial mention only, no paid placement.
+
+## A-2026W45-006
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/photo-christmas-gift-for-husband.md
+- Commit: 2436cb8
+- Reason: Will publish "A Photo Christmas Gift for Your Husband He Can Build" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-11-02: links, prices, codes, FAQ schema pass; targets a high-intent gift query.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-seo-technical-20261102-1
+- Note: codes in the text end Nov 22 to 30 and must come out after Nov 30.
+- Note (2026-11-05): seo-technical re-checked this draft today (editor entry link, Dec 15 CTA) and re-proposed it as P-seo-technical-20261105-1; same draft file, so no new item. Commit updated to the re-checked version.
+
+## A-2026W45-013
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/christmas-gift-for-girlfriend-photo.md
+- Commit: 2436cb8
+- Reason: Publishes "A Christmas Gift for Your Girlfriend, Built From a Photo" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages afterward). Checked 2026-11-03: links, prices, codes, FAQ schema pass; targets the under-$100 gift query.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-seo-technical-20261103-1
+- Note (2026-11-05): seo-technical re-checked this draft today (editor entry link, Dec 15 CTA) and re-proposed it as P-seo-technical-20261105-2; same draft file, so no new item. Commit updated to the re-checked version.
+
+## A-2026W45-016
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/christmas-gift-for-boyfriend-who-loves-lego.md
+- Commit: 2436cb8
+- Reason: Will publish "Christmas Gift for a Boyfriend Who Loves Building" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-11-04: links, prices, codes, FAQ schema pass; targets brick-fan boyfriend Christmas gift searches.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-seo-technical-20261104-1
+- Note (2026-11-05): seo-technical re-checked this draft today (editor entry link, Dec 15 CTA) and re-proposed it as P-seo-technical-20261105-3; same draft file, so no new item. Commit updated to the re-checked version.
+
 
 ## Open
 
@@ -417,18 +513,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: pending
 - From: P-growth-director-20261028-1
 
-## A-2026W44-059
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W46/week.md
-- Commit: d690dd6
-- Reason: Approving it approves all 7 W46 posts (Nov 9 to 15) on every channel in each Channels column, including YouTube Shorts for the 3 reels; the publisher then prepares and schedules each one. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Monday's post is already approved in A-2026W42-037 and is scheduled once.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-social-planner-20261029-2
-- Flag: S-20261027-1 (free-proof carousel, Mon Nov 9 19:00) is also listed in approved A-2026W42-037 with the same file and date. The planner says the publisher schedules it once; if you would rather not rely on that, send it back with `changes: S-20261027-1 already in A-2026W42-037`.
-
 ## A-2026W45-015
 - Agent: social-planner
 - Executor: social-publisher
@@ -510,17 +594,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-seo-technical-20261106-2
 - Flag: Its two links to /blogs/news/best-photo-for-a-brick-mosaic return 404 until A-2026W44-056 is published. Approve and publish 056 first, or have the two links removed.
 
-## A-2026W44-068
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/christmas-gift-for-mom-from-kids.md
-- Commit: bd6a3be
-- Reason: Will publish "A Christmas Gift for Mom From the Kids, in Bricks" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-10-31: links, prices, FAQ schema pass; no hero image yet.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-seo-technical-20261031-1
-
 ## A-2026W44-061
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
@@ -531,17 +604,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Expires: 2026-11-18
 - Status: pending
 - From: P-email-campaign-writer-20261030-2
-
-## A-2026W44-069
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/hub-a-christmas-links.md
-- Commit: bd6a3be
-- Reason: Adds links from the Christmas hub (personalized-christmas-photo-gifts) to the new Christmas articles that are live, and the Dec 15 order-by sentence; body text edit only, so Google finds the new pages sooner.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-seo-technical-20261031-2
 
 ## A-2026W44-043
 - Agent: social-community-manager
@@ -577,43 +639,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: approved
 - From: P-seo-technical-20261011-5
 
-## A-2026W44-070
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/christmas-gifts-for-dog-lovers.md
-- Commit: a7a02e6
-- Reason: Will publish "Christmas Gifts for Dog Lovers: Their Dog in Bricks" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-11-01: links, prices, FAQ schema pass; has a product-photo hero.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-seo-technical-20261101-1
-- Note: Dog lovers are the one audience where the dog page shows interest (51 referred sessions, 0 carts); this gives search and social a gift-intent page that links to it. Codes in the text end Nov 22 to 30 and must come out after Nov 30.
-
-## A-2026W44-071
-- Agent: outreach-link-builder
-- Executor: outreach-link-builder
-- Type: send
-- Draft: marketing/outreach/link-builder/pitches/2026-11-01-batch.md
-- Commit: ed330fd
-- Reason: Five pitches (Miami Mom Collective, GiftList, Friday We're in Love, Defend Young Minds, Everyday Reading); if approved I make a Gmail draft or paste sheet for each and Eden sends. Only two addresses are confirmed in search.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-outreach-link-builder-20261101-1
-- Note: Executor kept as outreach-link-builder, as in A-2026W44-054 and 064 (its own pitches). Editorial mention only, no paid placement.
-
-## A-2026W45-006
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/photo-christmas-gift-for-husband.md
-- Commit: 2436cb8
-- Reason: Will publish "A Photo Christmas Gift for Your Husband He Can Build" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-11-02: links, prices, codes, FAQ schema pass; targets a high-intent gift query.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-seo-technical-20261102-1
-- Note: codes in the text end Nov 22 to 30 and must come out after Nov 30.
-- Note (2026-11-05): seo-technical re-checked this draft today (editor entry link, Dec 15 CTA) and re-proposed it as P-seo-technical-20261105-1; same draft file, so no new item. Commit updated to the re-checked version.
-
 ## A-2026W45-007
 - Agent: outreach-link-builder
 - Executor: outreach-link-builder
@@ -626,30 +651,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-outreach-link-builder-20261102-1
 - Note: editorial mention only. Same Executor as A-2026W44-054, 064 and 071.
 
-## A-2026W45-013
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/christmas-gift-for-girlfriend-photo.md
-- Commit: 2436cb8
-- Reason: Publishes "A Christmas Gift for Your Girlfriend, Built From a Photo" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages afterward). Checked 2026-11-03: links, prices, codes, FAQ schema pass; targets the under-$100 gift query.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-seo-technical-20261103-1
-- Note (2026-11-05): seo-technical re-checked this draft today (editor entry link, Dec 15 CTA) and re-proposed it as P-seo-technical-20261105-2; same draft file, so no new item. Commit updated to the re-checked version.
-
-## A-2026W45-016
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/christmas-gift-for-boyfriend-who-loves-lego.md
-- Commit: 2436cb8
-- Reason: Will publish "Christmas Gift for a Boyfriend Who Loves Building" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages from this text afterward). Checked 2026-11-04: links, prices, codes, FAQ schema pass; targets brick-fan boyfriend Christmas gift searches.
-- Expires: 2026-11-14
-- Status: pending
-- From: P-seo-technical-20261104-1
-- Note (2026-11-05): seo-technical re-checked this draft today (editor entry link, Dec 15 CTA) and re-proposed it as P-seo-technical-20261105-3; same draft file, so no new item. Commit updated to the re-checked version.
-
 ## A-2026W45-020
 - Agent: seo-technical
 - Executor: seo-technical
@@ -660,7 +661,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Expires: 2026-11-20
 - Status: pending
 - From: P-seo-technical-20261106-1
-
 
 ## Flagged
 
@@ -780,6 +780,13 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-11-07:**
+
+- No Eden decision since Nov 3 (growth-director). Unchanged and blocking sales: Black Friday and Christmas Meta budgets, re-activate the Christmas ad set (A-2026W45-002), publish theme copy 189322330332 and delete old theme copies for a free slot (site-developer), SearchPie switch (A-2026W44-025), Mac data pull (no Google, GA4, Meta or Search Console numbers), Welcome 20% code listing, Loox permission.
+- Link-builder: nothing can earn a link until you send the top 3 pitches or approve A-2026W44-064, 071 and A-2026W45-007; Featured, Qwoted and SourceBottle need your logged-in accounts.
+- Community manager: Facebook not openable from the agent, group rules unknown; Calm posts still held for your OK; whether you posted on Nov 6 and 7 is unrecorded; whether the Memobrick Builders group exists.
+- seo-blog-writer: 30x30 and 30x40 prices not re-checked; stocking stuffers article link waits for its publish. Dog page address unknown to site-developer.
 
 **New 2026-11-06:**
 
