@@ -61,3 +61,8 @@ Links and mentions on other websites that point to mymemobrick.com (or name Memo
 - Searched web for Memobrick and mymemobrick.com: only own pages (mymemobrick.com, memobrickofficial.com). No third-party link or mention.
 - Gmail, last 2 days: no pitch replies (only a BixGrow app notice). Total earned links: zero confirmed.
 - Journalist and expert requests (Featured, Qwoted, SourceBottle, X) for photo gifts, family gifts or brick art: none reachable in public search today. No reply drafts.
+
+## 2026-11-07 check
+
+- Searched web for Memobrick and mymemobrick.com (plain and with review/gift guide terms): only own pages (mymemobrick.com, memobrickofficial.com), Loox reviews and Etsy. No third-party link or mention.
+- Gmail, last 2 days: no replies to pitches (inbox holds only Shopify, Loox, Google and vendor notices, plus a customer support thread that is not outreach). Total earned links: zero confirmed.
