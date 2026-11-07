@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: personalized gifts black friday
 Hub: Christmas
 Page type: article
