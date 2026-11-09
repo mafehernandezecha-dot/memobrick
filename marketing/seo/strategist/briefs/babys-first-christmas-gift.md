@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: baby's first christmas gift
 Hub: Kids (and Christmas)
 Page type: article
