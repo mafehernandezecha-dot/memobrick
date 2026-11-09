@@ -164,3 +164,11 @@ Live targets: /blogs/news/personalized-christmas-photo-gifts, gift-for-someone-w
 | christmas gifts for adults who love lego | Christmas | commercial | /blogs/news/christmas-gifts-for-adults-who-love-lego (planned) | gap next to boyfriend brief | unknown |
 
 Covered, no new brief: "gifts for grandparents from grandkids photo" (live grandkids article); "photo gift for husband last minute" (husband brief plus live last-minute article).
+
+
+## Update 2026-11-09
+
+| Keyword | Intent | Target URL | Evidence | Volume |
+|---|---|---|---|---|
+| christmas gift for in-laws photo | commercial | /blogs/news/christmas-gift-for-in-laws-photo (planned) | A, Q | unknown |
+| christmas gift for mother in law | commercial | same | A | unknown |

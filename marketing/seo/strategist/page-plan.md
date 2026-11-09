@@ -77,3 +77,8 @@ Approval: the three drafts are proposed as one publish item (P-seo-strategist-20
 ## Update 2026-10-29 (live URLs, from the backlog and the 2026-10-28 live check)
 
 Live now: personalized-christmas-photo-gifts (hub A, 2026-10-14), gift-for-someone-who-has-everything (2026-10-21), brick-mosaic-sizes (2026-10-26), last-minute-personalized-christmas-gifts, christmas-gifts-for-grandparents-from-grandkids, photo-christmas-gift-for-wife (all 2026-10-28), plus the calm-building hub and 4 supporting articles (2026-10-28). Briefs added today: christmas-gift-for-mom-from-kids, christmas-gift-for-dad-from-kids (backlog rows 12 and 13). Waiting on the technical check: best-photo-for-a-brick-mosaic.
+
+
+## Update 2026-11-09
+
+New: christmas-gift-for-in-laws-photo (Christmas hub, brief ready, publish by Nov 23). Publish-first order for the written-but-not-live articles is in link-plan-2026-11-09.md. Holiday pages still rank first until Dec 1.
