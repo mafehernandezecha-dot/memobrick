@@ -25,6 +25,15 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 
 (Items expiring within 7 days, highest expected sales impact first.)
 
+## A-2026W46-056
+- Agent: ads-analyst (short run by main session)
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/2026-11-09-second-week-review.md
+- Reason: Billo week 1: Shopify ROAS 1.47 ($604.55 / $412.51). Pause ad sets Family 120252918729920597 ($57.74, 0 sales) and Brick lovers 120252918740650597 ($40.56, 0 sales); activate reserves LAL 1-3% wider 120252918728540597 and Cold high-intent holiday 120252917175580597 (and their ads). Budget unchanged at $65/day. Reply "approve 056" or "reject 056".
+- Expires: 2026-11-16
+- Status: pending
+
 ## A-2026W45-055
 - Agent: site-developer
 - Executor: site-developer
