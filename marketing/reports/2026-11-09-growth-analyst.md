@@ -9,7 +9,7 @@
 - Sales pulse: `marketing/sales/latest.json` updated through Nov 8, funnel and weak points refreshed, launch section dated Nov 8.
 - Weekly scorecard row added for Nov 2-8 (net sales +21.6% WoW, orders -6.3% WoW; -68.4% and -65.9% YoY). Conversion 0.86% vs 1.64% last year. No omnisend referrer, so email orders stay unknown. Google search 6 orders, Facebook 3, Instagram 0 orders.
 - Task board items (all ShopifyQL, "unknown" where it cannot split):
-  1. Oct 28-Nov 8, referred: dog page 121 sessions, 1 cart, 0 purchases (all sessions 145, 3 carts); gift collection 278 sessions, 28 carts, 7 purchases, and Nov 6-8 ran 128 sessions with 15 carts (11.7%) vs 7.7% on Oct 28-Nov 5; no /blogs/ landing in the top 15 (LIKE filter unsupported, so not checked below it).
+  1. Oct 28-Nov 8, referred: dog page 121 sessions, 1 cart, 0 purchases (all sessions 145, 3 carts); gift collection 278 sessions, 28 carts, 7 purchases, and Nov 6-8 ran 128 sessions with 15 carts (11.7%) vs 6.8% on Oct 28-Nov 5; no /blogs/ landing in the top 15 (LIKE filter unsupported, so not checked below it).
   2. Draft orders by day Sep 15-Nov 8: only 15 in 55 days, 3 before Oct 12, and the busiest days were Oct 14-21 (8). The drop began before Sep 15, so I cannot date it or tie it to a site or ad change without earlier data; last year's daily series would show the usual level. Unknown.
   3. /pages/editor Oct 5-Nov 8: mobile 269 sessions, 30 carts (11.2%); desktop 94, 3 (3.2%).
 - Experiments: five social-planner rows whose windows ended (EXP-SP-20261026-02 to -05, EXP-SP-20261030-01) appended as inconclusive, since no social or GA4 snapshots exist. Conversion-auditor tests are not yet released, so nothing to judge.
