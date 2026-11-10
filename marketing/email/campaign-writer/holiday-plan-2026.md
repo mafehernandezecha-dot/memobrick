@@ -98,3 +98,9 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Omnisend re-read. Scheduled and unchanged: Nov 19 VIP (Past Buyers), Nov 20 "EARLYHOLIDAY20 Ends Sunday (Warm)" (campaign 6ae55a1aead775b0ac41ecc5, Fri Nov 20 10:00 ET, Warm minus Past Buyers, recent buyers, Unengaged 180d), Nov 27 Black Friday, Nov 30 Cyber Monday, Dec 3, 8, 11, 14. Nov 3 Gift Ideas sent (results in `performance-2026-10.md`).
 - Task board asked for a Nov 20 "Your photo, ready by Dec 15" email to Warm. The scheduled Nov 20 campaign already is that slot (same list, same time, code EARLYHOLIDAY20 only, Dec 15 in the steps and band). A second Nov 20 send would be a duplicate to the same people, so none was drafted. Pending Nov 10 sends (A-2026W45-003 and 004) and the Nov 25 heads-up (A-2026W45-010) remain awaiting the owner.
 - Remaining planned gaps: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
+
+
+## Update 2026-11-10
+
+- Omnisend read on 2026-11-10: schedule unchanged since Nov 5 (Nov 19 VIP, Nov 20 Ends Sunday, Nov 27, Nov 30, Dec 3/8/11/14). Nothing sent today. A-2026W45-003 and 004 (Nov 10 sends) expired Nov 9 undecided, so nothing was created in Omnisend. Nothing is scheduled Nov 21 to 26.
+- Gap 9: Tue Nov 24 10:00 ET "Take the photo at the table" to Warm, no code (Nov 23 to 26 no-code window), draft `2026-11-24-take-the-photo-at-the-table.md`, proposed as P-email-campaign-writer-20261110-1. It overlaps A-2026W45-010 (Nov 25 heads-up, same list): owner picks one.
