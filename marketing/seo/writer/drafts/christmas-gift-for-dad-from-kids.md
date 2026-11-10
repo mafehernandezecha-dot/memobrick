@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-dad-from-kids.md
 Title: A Christmas Gift for Dad From the Kids, Built From a Photo
 Meta description: A Christmas gift for dad from the kids: turn a favorite photo into a custom brick mosaic kit he builds and hangs. Kits from $69.88. Order by Dec 15.
