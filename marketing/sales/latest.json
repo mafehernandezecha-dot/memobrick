@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-09T08:30:00-05:00",
- "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included.",
+ "updated": "2026-11-09T21:50:00-05:00",
+ "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 9 so far: 2 orders, $151.91, not stored).",
  "days": [
   {
    "date": "2026-09-01",
@@ -1133,7 +1133,7 @@
   },
   {
    "title": "Daily goal missed: orders and sales under half of pace",
-   "detail": "Last 7 days (Nov 2 to 8): 15 orders, $1,780 vs goal 35 and $3,850 (43% and 46%). Yesterday (Nov 8) 1 order, $477 vs 5 and $550. November so far (Nov 1 to 8): 19 orders, $2,248 vs goal 40 and $4,400; same days last year were 46 orders and $5,727. The Black Friday goal (12 orders a day from Nov 16) is far above the current run rate of about 2.1 a day; last year Nov 16 to 30 averaged about 16 a day.",
+   "detail": "Last 7 days (Nov 2 to 8): 15 orders, $1,780 vs goal 35 and $3,850 (43% and 46%). Yesterday (Nov 8) 1 order, $477 vs 5 and $550. November so far (Nov 1 to 8): 19 orders, $2,248 vs goal 40 and $4,400; same days last year were 46 orders and $5,727. The Black Friday goal (12 orders a day from Nov 16) is far above the current run rate of about 2.1 a day; last year Nov 16 to 30 averaged about 16 a day. Nov 9 so far (partial, evening): 2 orders, $151.91 vs goal 5 and $550. Draft orders last 30 days to Nov 9: 13 of 73 orders.",
    "owners": [
     "owner",
     "email-campaign-writer",
