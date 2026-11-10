@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: christmas gift for dad from kids
 Hub: Christmas (Family)
 Page type: article
