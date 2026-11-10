@@ -2,11 +2,13 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-11-09. Added A-2026W46-001 (seo-technical, baby's first Christmas article) and 002 (community-manager Nov 11 to 13 group sheet). Archived A-2026W45-002, 008, 018, A-2026W44-058, 066 (expired Nov 7 and 8, never decided) to archive/2026-W46.md. Re-ordered both sections by expected sales impact. Earlier run, 2026-11-07: added A-2026W45-023 and 024.
+Updated 2026-11-10. Added A-2026W46-003 (dad Christmas article), 004 (Nov 12 to 15 group sheet) and 005 (Nov 24 no-code email, flagged against A-2026W45-010). Archived A-2026W44-063, A-2026W45-003, 004, 005, 022 (expired Nov 9, never decided). Earlier run, 2026-11-09: Added A-2026W46-001 (seo-technical, baby's first Christmas article) and 002 (community-manager Nov 11 to 13 group sheet). Archived A-2026W45-002, 008, 018, A-2026W44-058, 066 (expired Nov 7 and 8, never decided) to archive/2026-W46.md. Re-ordered both sections by expected sales impact. Earlier run, 2026-11-07: added A-2026W45-023 and 024.
 
 ## Needs your attention
 
 No Status line needs a fix.
+
+**New 2026-11-10:** The Nov 10 emails A-2026W45-003 and 004 expired undecided and were archived, so nothing was sent today (item 3 of the Monday list below is gone; the Warm list now waits on A-2026W45-010 or the new A-2026W46-005 for Nov 24, approve only one). Expires today: A-2026W43-003 (kits). Expire Nov 11: A-2026W44-025 (SearchPie off, approved, needs your switch), 060, A-2026W45-024. Still the biggest unlocks: publish theme 189322330332 (A-2026W44-018 expires Nov 15), the Meta Black Friday and Christmas budget, and the article publishes (A-2026W44-056 first, then A-2026W46-001 and the new dad article A-2026W46-003, publish by Nov 19). No social post is approved for any day Nov 9 to 16 until A-2026W44-059 is decided.
 
 **Eden's Monday, top 5 by expected orders (2026-11-09):**
 
@@ -62,30 +64,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: approved
 - From: P-conversion-auditor-20261026-1
 - Note: Reported Oct 26 but missed by earlier runs; first queued Oct 28.
-
-## A-2026W45-003
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/2026-11-10-order-by-dec-15.md
-- Commit: dd5e7d7
-- Reason: Creates and schedules the Omnisend campaign "Q4 | Nov 10 | Order By Dec 15 (Warm)" for Tue Nov 10, 10:00 ET, to Warm minus Past Buyers, recent buyers and Unengaged 180d. Approve this instead of A-2026W44-060 (dog email), which should be rejected for now.
-- Expires: 2026-11-09
-- Status: pending
-- From: P-email-campaign-writer-20261102-1
-- Flag: the writer asks you to reject A-2026W44-060 (Nov 12 dog email, same Warm audience) if you approve this one; the two would reach the same people two days apart. Also sends the same day as -004 (different audience, no overlap).
-
-## A-2026W45-004
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/2026-11-10-second-mosaic-past-buyers.md
-- Commit: dd5e7d7
-- Reason: Creates and schedules the Omnisend campaign "Q4 | Nov 10 | Second Mosaic For Christmas (Past Buyers)" for Tue Nov 10, 10:00 ET, to Past Buyers minus recent buyers and Unengaged 180d. Replaces the idea in A-2026W44-052, which should be closed.
-- Expires: 2026-11-09
-- Status: pending
-- From: P-email-campaign-writer-20261102-2
-- Flag: overlaps A-2026W44-052 (pending, past-buyer second-mosaic email, expires Nov 6). The writer says to reject 052 if you approve this one. Approving both would duplicate the idea. Also sends the same day as -003 (different audience).
 
 ## A-2026W44-025
 - Agent: seo-technical
@@ -204,6 +182,18 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: pending
 - From: P-seo-technical-20261109-1
 - Flag: the draft names BRICKFRIDAY25 and CYBERBRICK20, which are scheduled (owner chat 2026-10-26) not yet active in offers-calendar.md, and EARLYHOLIDAY20, which ends Nov 22; the writer must drop the EARLYHOLIDAY20 line if publishing after Nov 22.
+
+## A-2026W46-003
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/christmas-gift-for-dad-from-kids.md
+- Commit: d55a2c6
+- Reason: Will publish "A Christmas Gift for Dad From the Kids, Built From a Photo" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages afterward). Targets dad gift searches with kits from $69.88; publish by Nov 19 to be indexed before the Dec 15 cut-off.
+- Expires: 2026-11-17
+- Status: pending
+- From: P-seo-technical-20261110-1
+- Flag: Build times and people counts in the size table rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown. Dec 15 and prices match the Facts table and Shopify; no codes used.
 
 ## A-2026W44-059
 - Agent: social-planner
@@ -387,40 +377,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: pending
 - From: P-social-community-manager-20261107-1
 
-## A-2026W45-022
-- Agent: social-community-manager
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/community/2026-11-06-weekend-sheet.md
-- Commit: e7a1248
-- Reason: If approved, Eden may use the 5 gift-buyer replies and 2 dog prompts by hand in Facebook groups on Nov 7 and 8; nothing is posted automatically.
-- Expires: 2026-11-09
-- Status: pending
-- From: P-social-community-manager-20261106-1
-
-## A-2026W44-063
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/batches/2026-10-30-grandparents-couples.md
-- Commit: 40afe05
-- Reason: Approves sending the 3 listed pitches unchanged (commission only, no kit). Outreach writes the paste text and form URL for Eden, or a Gmail draft if Eden supplies a public email; Eden sends. Christmas guides refresh in November and the order-by date is Dec 15.
-- Expires: 2026-11-09
-- Status: pending
-- From: P-outreach-gift-guide-pr-20261030-1
-
-## A-2026W45-005
-- Agent: outreach-gift-guide-pr
-- Executor: outreach-gift-guide-pr
-- Type: send
-- Draft: marketing/outreach/gift-guide-pr/pitches/love-tabitha-2026.md
-- Commit: c88ed90
-- Reason: Approves the Love, Tabitha families guide pitch unchanged, commission only (no kit). Outreach creates a Gmail draft for Eden to send if Eden confirms the public address, otherwise a paste text for the submissions form. Eden sends. Christmas guides close in November; order-by date is Dec 15.
-- Expires: 2026-11-09
-- Status: pending
-- From: P-outreach-gift-guide-pr-20261102-1
-- Flag: contact address contact@lovetabitha.com is unverified; Eden confirms or uses the submissions form. outreach-gift-guide-pr reports on 2026-11-03 that Love, Tabitha submissions closed Oct 27 and withdrew this pitch (contacts log row). Reject this item.
-
 ## A-2026W46-002
 - Agent: social-community-manager
 - Executor: social-publisher
@@ -432,6 +388,18 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: pending
 - From: P-social-community-manager-20261109-1
 - Flag: Facebook group rules and Eden's memberships are unknown (community manager cannot open Facebook); no prices, codes or dates in the sheet.
+
+## A-2026W46-004
+- Agent: social-community-manager
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/community/2026-11-10-thu-sun-sheet.md
+- Commit: e3fcbd1
+- Reason: If approved, Eden may use the 2 replies and 1 grandparents post by hand in Facebook groups on Nov 12 to 15; nothing is posted automatically.
+- Expires: 2026-11-15
+- Status: pending
+- From: P-social-community-manager-20261110-1
+- Flag: Facebook group rules and Eden's memberships are unknown (community manager cannot open Facebook). No prices, codes or dates in the sheet.
 
 ## A-2026W44-043
 - Agent: social-community-manager
@@ -566,6 +534,18 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: pending
 - From: P-email-campaign-writer-20261103-1
 
+## A-2026W46-005
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/2026-11-24-take-the-photo-at-the-table.md
+- Commit: 9b22368
+- Reason: Creates and schedules the Omnisend campaign "Q4 | Nov 24 | Take The Photo At The Table (Warm)" for Tue Nov 24, 10:00 ET, to Warm minus recent buyers and Unengaged 180d, no code. Fills the empty Nov 21 to 26 window. Approve this or A-2026W45-010 (Nov 25 heads-up, same list), not both.
+- Expires: 2026-11-23
+- Status: pending
+- From: P-email-campaign-writer-20261110-1
+- Flag: Same list and channel as A-2026W45-010 (Nov 25, "Black Friday starts Friday") one day apart; approve one, or the Warm list gets two sends in two days. No code, matching the owner's no-code window Nov 23 to 26. The Nov 21 to 26 window claim is the writer's; preview PNGs not rendered, hero PNG 2.4 MB.
+
 ## A-2026W45-011
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
@@ -637,6 +617,13 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 
 
 ## Flagged
+
+Run 21 (2026-11-10). Details in `marketing/coordination/coordinator/overlaps-2026-11-10.md`.
+
+- A-2026W46-005 copied with a flag: same Warm list as A-2026W45-010 (Nov 25), one day apart; approve one. No code (matches the Nov 23 to 26 window).
+- A-2026W46-003 copied with a flag: build times and people counts rest on Shopify listings; Facts row for faces and build time is unknown. Dec 15 and prices fine.
+- A-2026W46-004 copied with a flag: Facebook group rules unknown. No offers or dates.
+- Not queued: none dropped. Archived A-2026W44-063, A-2026W45-003, 004, 005, 022.
 
 Run 20 (2026-11-09). Details in `marketing/coordination/coordinator/overlaps-2026-11-09.md`.
 
@@ -760,6 +747,15 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-11-10:**
+
+- Unchanged and blocking sales: theme 189322330332 publish and deleting old theme copies (site-developer; A-2026W44-018 expires Nov 15), Black Friday and Christmas Meta budgets and the Christmas ad set (ads-analyst), SearchPie switch (A-2026W44-025, expires Nov 11), Mac data pull (data/latest.md still "never"). Facts rows still unknown: holiday ad budget, product margins, faces per size and build time.
+- email-flow-optimizer: which flow test runs first (A-2026W45-017, A-2026W44-062 or A-2026W45-012); review count, delivery timing and Loox quote unverified.
+- email-campaign-writer: email preview PNGs not rendered (Chrome hangs in this environment), hero PNG 2.4 MB to compress; Nov 24 editor link has little conversion history.
+- outreach: 6 ready mails still unsent (link-builder; two approvals expire Nov 13); gift guide page routes unverifiable, domains blocked (gift-guide-pr).
+- social: Facebook group rules unknown and Nov 8 to 10 posting unrecorded (community manager); 4 failed Buffer posts, Mac kits Oct 19 to Nov 1 never posted (social-publisher).
+- Dad article build times and sizes: Facts row unknown (seo-technical).
 
 **New 2026-11-09:**
 
