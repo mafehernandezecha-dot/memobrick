@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: christmas gift in memory of a loved one
 Hub: Memorial (and Christmas)
 Page type: article
