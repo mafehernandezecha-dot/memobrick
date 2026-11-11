@@ -104,3 +104,12 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 
 - Omnisend read on 2026-11-10: schedule unchanged since Nov 5 (Nov 19 VIP, Nov 20 Ends Sunday, Nov 27, Nov 30, Dec 3/8/11/14). Nothing sent today. A-2026W45-003 and 004 (Nov 10 sends) expired Nov 9 undecided, so nothing was created in Omnisend. Nothing is scheduled Nov 21 to 26.
 - Gap 9: Tue Nov 24 10:00 ET "Take the photo at the table" to Warm, no code (Nov 23 to 26 no-code window), draft `2026-11-24-take-the-photo-at-the-table.md`, proposed as P-email-campaign-writer-20261110-1. It overlaps A-2026W45-010 (Nov 25 heads-up, same list): owner picks one.
+
+
+## Update 2026-11-11
+
+- Omnisend read 2026-11-11: schedule unchanged (Nov 19 VIP, Nov 20 Ends Sunday 6ae55a1aead775b0ac41ecc5, Nov 27, Nov 30, Dec 3, 8, 11, 14). Nothing sent since Nov 3 (results already in `performance-2026-10.md`). No approved items for me.
+- Gap 12 (replaces the expired Nov 10 list send): Mon Nov 16 10:00 ET "Order by Dec 15 for Christmas" to Warm minus Past Buyers, recent buyers and Unengaged 180d, draft `2026-11-16-order-by-dec-15-gift.md`. One button to the gift collection (best entry page), EARLYHOLIDAY20 until Nov 22, no new code. Proposed as P-email-campaign-writer-20261111-1, expires Nov 15.
+- If A-2026W44-060 (Nov 12 dog email) is approved today, Warm gets Nov 12, 16, 20: four days apart, acceptable.
+- Nov 24 table email now has preview PNGs (`2026-11-24-take-the-photo-at-the-table-preview*.png`); the draft text was left untouched so A-2026W46-005 stays valid.
+- Still open: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
