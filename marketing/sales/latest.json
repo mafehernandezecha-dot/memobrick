@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-09T21:50:00-05:00",
- "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 9 so far: 2 orders, $151.91, not stored).",
+ "updated": "2026-11-10T21:55:00-05:00",
+ "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 10 so far: 5 orders, $640.07, not stored).",
  "days": [
   {
    "date": "2026-09-01",
@@ -346,6 +346,11 @@
    "date": "2026-11-08",
    "orders": 1,
    "netSales": 477.0
+  },
+  {
+   "date": "2026-11-09",
+   "orders": 2,
+   "netSales": 151.91
   }
  ],
  "lastYear": [
@@ -811,18 +816,18 @@
   }
  ],
  "funnel": {
-  "period": "Oct 10 to Nov 8 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 11 to Nov 9 2025",
+  "period": "Oct 11 to Nov 9 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 12 to Nov 10 2025 (same weekdays)",
   "now": {
-   "sessions": 2771,
-   "addedToCart": 189,
-   "reachedCheckout": 105,
+   "sessions": 2775,
+   "addedToCart": 194,
+   "reachedCheckout": 110,
    "purchased": 40
   },
   "lastYear": {
-   "sessions": 4312,
-   "addedToCart": 431,
-   "reachedCheckout": 178,
-   "purchased": 71
+   "sessions": 4232,
+   "addedToCart": 427,
+   "reachedCheckout": 179,
+   "purchased": 72
   },
   "launch": {
    "period": "Referred sessions by landing page, Oct 28 to Nov 8 2026 (refreshed Nov 9)",
@@ -891,10 +896,126 @@
    "calmBuildGift": "no referred sessions landed on a path containing 'calm' in Oct 28 to Nov 8 (not in the top 15 landing pages)",
    "newArticles": "no /blogs/ landing page in the top 15 referred landing pages Oct 28 to Nov 8 (LIKE filter not supported by ShopifyQL, so not checked below the top 15)",
    "draftOrders": {
-    "period": "Oct 10 to Nov 8 2026 vs Oct 11 to Nov 9 2025, by sales channel",
-    "now": 12,
-    "lastYear": 51,
-    "note": "Only 15 draft orders Sep 15 to Nov 8 2026 (3 in Sep 15 to Oct 11), so the drop began before Sep 15; start date unknown without earlier data."
+    "period": "Oct 11 to Nov 9 2026 vs Oct 12 to Nov 10 2025, by sales channel",
+    "now": 13,
+    "lastYear": 61,
+    "note": "Online Store 58 vs 127. Monthly draft orders 2026: Jan 73, Feb 49, Mar 59, Apr 53, May 34, Jun 9, Jul 7, Aug 8, Sep 7, Oct 12, Nov 1-9 2. Weekly: 11 in the week of May 11, then 4, 6, 3, 3, 2, 1, 0 from May 18. The drop started the week of May 18 2026, not in the fall. 2025 had 13 to 22 a week from Aug to Oct.",
+    "weekly2026": [
+     [
+      "2026-04-06",
+      10
+     ],
+     [
+      "2026-04-13",
+      13
+     ],
+     [
+      "2026-04-20",
+      17
+     ],
+     [
+      "2026-04-27",
+      6
+     ],
+     [
+      "2026-05-04",
+      12
+     ],
+     [
+      "2026-05-11",
+      11
+     ],
+     [
+      "2026-05-18",
+      4
+     ],
+     [
+      "2026-05-25",
+      6
+     ],
+     [
+      "2026-06-01",
+      3
+     ],
+     [
+      "2026-06-08",
+      3
+     ],
+     [
+      "2026-06-15",
+      2
+     ],
+     [
+      "2026-06-22",
+      1
+     ],
+     [
+      "2026-06-29",
+      0
+     ],
+     [
+      "2026-07-06",
+      4
+     ]
+    ],
+    "weeklyLastYearAugToNov": [
+     [
+      "2025-08-04",
+      16
+     ],
+     [
+      "2025-08-11",
+      13
+     ],
+     [
+      "2025-08-18",
+      18
+     ],
+     [
+      "2025-08-25",
+      14
+     ],
+     [
+      "2025-09-01",
+      22
+     ],
+     [
+      "2025-09-08",
+      12
+     ],
+     [
+      "2025-09-15",
+      7
+     ],
+     [
+      "2025-09-22",
+      18
+     ],
+     [
+      "2025-09-29",
+      22
+     ],
+     [
+      "2025-10-06",
+      16
+     ],
+     [
+      "2025-10-13",
+      17
+     ],
+     [
+      "2025-10-20",
+      12
+     ],
+     [
+      "2025-10-27",
+      13
+     ],
+     [
+      "2025-11-03",
+      7
+     ]
+    ]
    },
    "unknown": "Which ad or post sent each dog page visit (ShopifyQL has no UTM). Landing page of checkout-page sessions is the checkout URL itself, so some purchases cannot be tied to a landing page. Direct sessions (bots) inflate '/'.",
    "siteReferred": [
@@ -982,51 +1103,77 @@
     ]
    },
    "entryComparison": {
-    "period": "Referred sessions Oct 5 to Nov 3 2026 vs Oct 5 to Nov 3 2025 (direct excluded)",
+    "period": "Referred sessions Oct 12 to Nov 8 2026 vs Oct 13 to Nov 9 2025 (same weekdays), by referrer_source",
     "rows": [
      {
-      "entry": "Search (referrer_source search)",
+      "entry": "Search (Google search, paid and organic mixed)",
       "now": {
-       "sessions": 939,
-       "carts": 82,
-       "purchased": 28
+       "sessions": 945,
+       "carts": 92,
+       "purchased": 23
       },
       "lastYear": {
-       "sessions": 2401,
-       "carts": 245,
-       "purchased": 48
+       "sessions": 2129,
+       "carts": 244,
+       "purchased": 47
       }
      },
      {
-      "entry": "Gift collection /collections/the-gift-for-everyone (incl. its product paths)",
+      "entry": "Social",
       "now": {
-       "sessions": 515,
-       "carts": 33,
-       "purchased": 11
-      },
-      "lastYear": {
-       "sessions": 1217,
-       "carts": 93,
+       "sessions": 1350,
+       "carts": 63,
        "purchased": 10
+      },
+      "lastYear": {
+       "sessions": 1528,
+       "carts": 133,
+       "purchased": 19
       }
      },
      {
-      "entry": "/pages/editor",
+      "entry": "Email",
       "now": {
-       "sessions": 11,
-       "carts": 0,
+       "sessions": 12,
+       "carts": 3,
        "purchased": 0
       },
       "lastYear": {
-       "sessions": 0,
-       "carts": 0,
+       "sessions": 27,
+       "carts": 2,
        "purchased": 0
+      }
+     },
+     {
+      "entry": "Unknown",
+      "now": {
+       "sessions": 258,
+       "carts": 13,
+       "purchased": 0
+      },
+      "lastYear": {
+       "sessions": 116,
+       "carts": 5,
+       "purchased": 1
+      }
+     },
+     {
+      "entry": "Direct (bot-inflated, context only)",
+      "now": {
+       "sessions": 5178,
+       "carts": 170,
+       "purchased": 31
+      },
+      "lastYear": {
+       "sessions": 3768,
+       "carts": 342,
+       "purchased": 72
       }
      }
     ],
-    "note": "Gift collection: this year 436 collection sessions + 79 via its 1-big-board path; last year 100 + 1,114 (that product path was the big entry). /pages/editor had no landings last year, so there is no baseline. Social sessions 1,433 vs 2,257 (-37%), cart rate 4.0% vs 8.0%."
+    "note": "Search sessions -56%, purchases 23 vs 47. Social sessions -12% but carts -53% (cart rate 4.7% vs 8.7%). A blank referrer_source row (33 sessions, 12 carts, 4 purchases) is left out. ShopifyQL cannot split paid from organic search or by UTM: unknown."
    },
-   "note": "entryComparison (search, social) was last refreshed for Oct 5 to Nov 3 and not re-queried on Nov 9.",
+   "note": "entryComparison refreshed Nov 10 evening for Oct 12 to Nov 8.",
    "dogBrickMosaic_note": "Daily rows include direct sessions (145 sessions, 3 carts, Oct 28 to Nov 8); referred only: 121 sessions, 1 cart, 0 purchases.",
    "giftCollectionByDay": [
     {
@@ -1114,18 +1261,19 @@
  },
  "weakPoints": [
   {
-   "title": "Referred traffic is down 36% and add-to-cart rate is lower",
-   "detail": "Oct 10 to Nov 8: 2,771 referred sessions vs 4,312 last year (-36%). Add-to-cart rate 6.8% vs 10.0%; checkout-to-purchase 38% vs 40%, so checkout works; the gap is qualified visitors. This week (Nov 2 to 8) all sessions 1,750 vs 2,384 (-27%), of which 1,017 are direct (bot-inflated); search 306 sessions with 34 carts, social 290 with 20. /pages/dog-brick-mosaic: 121 referred sessions, 1 cart, 0 purchases since Oct 28. Bright spot: the gift collection page got 128 sessions and 15 carts (11.7%) on Nov 6 to 8.",
+   "title": "Google search traffic is down by more than half",
+   "detail": "Oct 12 to Nov 8: search sent 945 sessions vs 2,129 last year (-56%) and 23 purchasing sessions vs 47, the largest loss among referred sources. Social sessions held up better (1,350 vs 1,528) but its cart rate halved (4.7% vs 8.7%; 63 carts vs 133). All referred sessions Oct 11 to Nov 9: 2,775 vs 4,232 (-34%), add to cart 7.0% vs 10.1%, checkout to purchase 36% vs 40%. The gift collection is still the best entry page (11.7% cart rate Nov 6 to 8).",
    "owners": [
     "ads-analyst",
-    "social-publisher",
     "seo-strategist",
+    "seo-technical",
+    "social-publisher",
     "site-developer"
    ]
   },
   {
-   "title": "Draft orders (designer proof, then invoice) still collapsed",
-   "detail": "Draft orders were 12 in Oct 10 to Nov 8 vs 51 in Oct 11 to Nov 9 last year (-76%). Online Store 58 vs 124 (-53%). Only 15 draft orders in the 55 days since Sep 15, and 3 of them before Oct 12, so the drop began before Sep 15. They explain about 38% of the lost orders (39 of 104). Find out why proof requests are not coming in or not being invoiced.",
+   "title": "Draft orders (designer proof, then invoice) collapsed in May, not in the fall",
+   "detail": "Draft orders were 13 in Oct 11 to Nov 9 vs 61 last year (-79%); Online Store 58 vs 127. They ran 49 to 75 a month Jan to Apr 2026, then fell from 11 in the week of May 11 to 4 in the week of May 18 and have stayed at 0 to 5 a week since (Jun 9, Jul 7, Aug 8, Sep 7, Oct 12). Something changed around May 18 2026 in how proof requests arrive or get invoiced; the owner is the one who can check what.",
    "owners": [
     "owner",
     "site-developer"
@@ -1133,7 +1281,7 @@
   },
   {
    "title": "Daily goal missed: orders and sales under half of pace",
-   "detail": "Last 7 days (Nov 2 to 8): 15 orders, $1,780 vs goal 35 and $3,850 (43% and 46%). Yesterday (Nov 8) 1 order, $477 vs 5 and $550. November so far (Nov 1 to 8): 19 orders, $2,248 vs goal 40 and $4,400; same days last year were 46 orders and $5,727. The Black Friday goal (12 orders a day from Nov 16) is far above the current run rate of about 2.1 a day; last year Nov 16 to 30 averaged about 16 a day. Nov 9 so far (partial, evening): 2 orders, $151.91 vs goal 5 and $550. Draft orders last 30 days to Nov 9: 13 of 73 orders.",
+   "detail": "Yesterday (Nov 9): 2 orders, $151.91 vs goal 5 and $550. November so far (Nov 1 to 9): 21 orders, $2,399.53 vs goal 45 and $4,950; same days last year 54 orders and $6,553.83. Week Nov 9 to 15 needs 33 more orders and $3,698 in 6 days. The Black Friday goal (12 orders a day from Nov 16) compares with about 2.3 a day now; last year Nov 16 to 30 averaged 15.6. Nov 10 so far (partial): 5 orders, $640.07, the best day since Oct 21.",
    "owners": [
     "owner",
     "email-campaign-writer",
