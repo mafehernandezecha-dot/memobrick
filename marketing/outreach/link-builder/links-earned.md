@@ -76,3 +76,7 @@ Links and mentions on other websites that point to mymemobrick.com (or name Memo
 
 - Searched web for Memobrick and mymemobrick.com: only own pages, Loox reviews. No third-party link or mention.
 - Gmail, last 3 days: no pitch replies (customer support thread, Pinterest sales follow-up, app notices). Total earned links: zero confirmed.
+
+## 2026-11-11 check
+
+- Searched web for "Memobrick" OR "mymemobrick.com" gift: no third-party mention or link (look-alike brands only). Gmail inbox, last 3 days: no pitch replies (one Pinterest sales follow-up, not a link). Total earned links: zero confirmed. Backlink tool still not connected.
