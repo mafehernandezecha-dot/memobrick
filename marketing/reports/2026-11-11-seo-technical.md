@@ -41,4 +41,4 @@ No articles were published or changed in the last 7 days. All 11 checked article
 Search is the largest lost source (-56% sessions). Turning SearchPie off fixes the duplicate titles and descriptions on every page, including the gift collection (11.7% cart rate). The memorial article adds one more gift search page that leads to the editor. Neither brings orders until approved. The 12 checked articles waiting are the larger lever, and 9 of them lapse Nov 12 to 14.
 
 ## Next run
-Fri Nov 13 (weekly): verify SearchPie if Eden switches it off, re-test the 404 table, apply any approved item, and check new drafts.
+Thu Nov 12 (daily), then Fri Nov 13 (weekly): verify SearchPie if Eden switches it off, re-test the 404 table, apply any approved item, and check new drafts.
