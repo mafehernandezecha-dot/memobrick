@@ -14,11 +14,11 @@ Story ideas for Instagram and Facebook Stories, posted by hand. Not in the calen
 - Background: slide 1 of S-20261125-1 (the three generations Studio mosaic).
 - Text on screen: "Which photo is easiest to turn into bricks?"
 - Sticker: **Quiz sticker**, answers "Close, faces fill the frame" (correct) / "Far away, everyone tiny" / "Dark and blurry".
-- Second frame: **Link sticker** to https://mymemobrick.com/pages/editor?utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-thanksgiving-photo with the text "Try your photo".
+- Second frame: **Link sticker** to https://mymemobrick.com/pages/editor?size=20x20&utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-thanksgiving-photo#editor with the text "Try your photo".
 
 ## Story 3: Saturday 2026-11-28, morning (after the 11:00 carousel)
 
 - Background: slide 1 of S-20261128-1 (the father and son Studio mosaic in the entryway).
 - Text on screen: "Code BRICKFRIDAY25 ends tomorrow night".
 - Sticker: **Countdown sticker** set to Sunday 2026-11-29 11:59 pm ET (name it "25% off ends"). People who tap it get a reminder.
-- Second frame: **Link sticker** to https://mymemobrick.com/pages/editor?utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-gift-for-dad with the text "Start your design". Order-by date for Christmas: December 15.
+- Second frame: **Link sticker** to https://mymemobrick.com/pages/editor?size=20x20&utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-gift-for-dad#editor with the text "Start your design". Order-by date for Christmas: December 15.

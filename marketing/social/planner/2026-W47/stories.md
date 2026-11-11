@@ -14,11 +14,11 @@ Story ideas for Instagram and Facebook Stories, posted by hand. Not in the calen
 - Background: slide 1 of S-20261118-1 (the dining nook with the Studio mosaic of a mother and her two grown children).
 - Text on screen: "Which photo would you give mom?"
 - Sticker: **Poll sticker**, "All of us" / "Just the kids".
-- Second frame: **Link sticker** to https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts?utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-gift-for-mom with the text "Read the gift guide".
+- Second frame: **Link sticker** to https://mymemobrick.com/collections/the-gift-for-everyone?utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-gift-for-mom with the text "Find her gift".
 
 ## Story 3: Saturday 2026-11-21, morning (after the 11:00 carousel)
 
 - Background: slide 3 of S-20261121-1 (the cream "Code ends tomorrow" card).
 - Text on screen: "Code EARLYHOLIDAY20 ends tomorrow".
 - Sticker: **Countdown sticker** set to Sunday 2026-11-22 (name it "20% off ends"). People who tap it get a reminder.
-- Second frame: **Link sticker** to https://mymemobrick.com/pages/editor?utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-code-last-day with the text "Start your design". Order-by date for Christmas: December 15.
+- Second frame: **Link sticker** to https://mymemobrick.com/pages/editor?size=20x20&utm_source=instagram&utm_medium=organic&utm_campaign=2026-11-code-last-day#editor with the text "Start your design". Order-by date for Christmas: December 15.
