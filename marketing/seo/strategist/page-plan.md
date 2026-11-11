@@ -82,3 +82,7 @@ Live now: personalized-christmas-photo-gifts (hub A, 2026-10-14), gift-for-someo
 ## Update 2026-11-09
 
 New: christmas-gift-for-in-laws-photo (Christmas hub, brief ready, publish by Nov 23). Publish-first order for the written-but-not-live articles is in link-plan-2026-11-09.md. Holiday pages still rank first until Dec 1.
+
+## Update 2026-11-11
+
+From the 6-query visibility check (`search-visibility-2026-11-11.md`), Memobrick is cited for none. New improvement, ranked just below the pending Christmas publishes: hub A `/blogs/news/personalized-christmas-photo-gifts` should say "a personalized Christmas gift you build from a photo" in its opening and one H2. The query "personalized christmas gift to build" gets an answer saying no product fits. GemPages, so Eden edits it. This is an improvement, not a new page. Writer priority for undrafted briefs: row 19 `custom-brick-portrait-from-photo` first (Brick Me and Sean Kenney own "custom lego portrait from photo", and we have no page).

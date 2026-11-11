@@ -58,6 +58,7 @@ Competitors either sell their own route or give a technical DIY guide. We answer
 - Can I see the mosaic before I buy? (Yes, in the editor; or a free proof.)
 - How long does it take to build? (Size table; e.g. 16×16 about 2.5 hours.)
 - What comes in the kit?
+- Is it a real kit or just an AI filter? (Added 2026-11-11 from customer-questions.md, 2026-11-09. It is a physical kit you build by hand: baseplates, 1×1 bricks, building map and tool. An AI filter or app only gives you a picture. Use only kit facts from the brand skill.)
 
 ## Internal links (re-check each returns 200 the day you draft)
 
