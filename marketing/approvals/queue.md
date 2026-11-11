@@ -2,11 +2,22 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-11-10. Added A-2026W46-003 (dad Christmas article), 004 (Nov 12 to 15 group sheet) and 005 (Nov 24 no-code email, flagged against A-2026W45-010). Archived A-2026W44-063, A-2026W45-003, 004, 005, 022 (expired Nov 9, never decided). Earlier run, 2026-11-09: Added A-2026W46-001 (seo-technical, baby's first Christmas article) and 002 (community-manager Nov 11 to 13 group sheet). Archived A-2026W45-002, 008, 018, A-2026W44-058, 066 (expired Nov 7 and 8, never decided) to archive/2026-W46.md. Re-ordered both sections by expected sales impact. Earlier run, 2026-11-07: added A-2026W45-023 and 024.
+Updated 2026-11-11. Added A-2026W46-006 to 015 (Nov 16 Warm email, two ad changes, SearchPie switch again, memorial article, smaller dog editor line, started-design event, three gift-guide items). Updated the Commit lines of A-2026W45-015 and 019 (W47 and W48 weeks re-proposed with new links). Archived A-2026W43-003 (expired) and A-2026W43-005 (test closed by its executor). Earlier run, 2026-11-10: Added A-2026W46-003 (dad Christmas article), 004 (Nov 12 to 15 group sheet) and 005 (Nov 24 no-code email, flagged against A-2026W45-010). Archived A-2026W44-063, A-2026W45-003, 004, 005, 022 (expired Nov 9, never decided). Earlier run, 2026-11-09: Added A-2026W46-001 (seo-technical, baby's first Christmas article) and 002 (community-manager Nov 11 to 13 group sheet). Archived A-2026W45-002, 008, 018, A-2026W44-058, 066 (expired Nov 7 and 8, never decided) to archive/2026-W46.md. Re-ordered both sections by expected sales impact. Earlier run, 2026-11-07: added A-2026W45-023 and 024.
 
 ## Needs your attention
 
 No Status line needs a fix.
+
+**New 2026-11-11, your Wednesday by expected orders:**
+
+1. Publish theme 189322330332 (delete old theme copies first). It ships approved A-2026W44-018 (lapses Nov 15) and 019. Ten days idle.
+2. Emails: A-2026W44-060 (Nov 12 dog email, expires today) and the new A-2026W46-006 (Mon Nov 16 "Order by Dec 15", EARLYHOLIDAY20, expires Nov 15). Without one of them, Warm gets nothing until your own Nov 20 campaign.
+3. Ads: A-2026W46-007 (move the dog-page Meta ads to the gift collection; reply with one daily budget for Nov 16 to 22) and A-2026W46-008 (pause Proven Winners and two Google ad groups with $180 and 0 conversions). Both expire Nov 16.
+4. SearchPie: approved A-2026W44-025 lapses today. Approve A-2026W46-009 (same switch, valid to Nov 25) and do the 2-minute click.
+5. One reply for the articles: "approve A-2026W44-056, 055, 070, 068, A-2026W45-023, 006, 013, 016, A-2026W46-001, 003, 010". Nine lapse Nov 12 to 14. Then social A-2026W44-059 (W46, Nov 14) and the re-proposed W47 week A-2026W45-015.
+6. Pick one: A-2026W46-011 (one line on the editor for dog visitors) or A-2026W44-067 (the bigger split test). Reject the other.
+
+The question from growth-director and conversion-auditor: what were the manual draft orders ("memobrick 16x16" at $82.10, marked paid) that ran 8 to 14 a week until May 2026, and why did they stop? Your answer is the only way to win back the largest lost-order source.
 
 **New 2026-11-10:** The Nov 10 emails A-2026W45-003 and 004 expired undecided and were archived, so nothing was sent today (item 3 of the Monday list below is gone; the Warm list now waits on A-2026W45-010 or the new A-2026W46-005 for Nov 24, approve only one). Expires today: A-2026W43-003 (kits). Expire Nov 11: A-2026W44-025 (SearchPie off, approved, needs your switch), 060, A-2026W45-024. Still the biggest unlocks: publish theme 189322330332 (A-2026W44-018 expires Nov 15), the Meta Black Friday and Christmas budget, and the article publishes (A-2026W44-056 first, then A-2026W46-001 and the new dad article A-2026W46-003, publish by Nov 19). No social post is approved for any day Nov 9 to 16 until A-2026W44-059 is decided.
 
@@ -65,6 +76,41 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-conversion-auditor-20261026-1
 - Note: Reported Oct 26 but missed by earlier runs; first queued Oct 28.
 
+## A-2026W46-006
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/2026-11-16-order-by-dec-15-gift.md
+- Commit: 4300178
+- Reason: Creates and schedules the Omnisend campaign "Q4 | Nov 16 | Order By Dec 15 Gift Collection (Warm)" for Mon Nov 16, 10:00 ET, to Warm minus Past Buyers, recent buyers and Unengaged 180d; EARLYHOLIDAY20 only, one button to the gift collection. Fills the empty Nov 4 to 19 Warm gap on day one of the 12-orders-a-day goal.
+- Expires: 2026-11-15
+- Status: pending
+- From: P-email-campaign-writer-20261111-1
+- Note: Not a conflict: Warm would get Nov 12 (A-2026W44-060, if approved today), Nov 16 (this) and your own Nov 20 "EARLYHOLIDAY20 Ends Sunday" campaign, four days apart. EARLYHOLIDAY20 (active to Nov 22) and Dec 15 match offers-calendar.
+
+## A-2026W44-060
+- Agent: email-campaign-writer
+- Executor: email-campaign-writer
+- Type: send
+- Draft: marketing/email/campaign-writer/2026-11-12-your-dog-in-bricks.md
+- Commit: 5efd18a
+- Reason: Creates and schedules a new Omnisend campaign "Q4 | Nov 12 | Your Dog In Bricks (Warm)" for Thu Nov 12, 10:00 ET, to Warm minus Past Buyers, recent buyers and Unengaged 180d, one button to the live dog page; fills the Nov 4 to 18 gap.
+- Expires: 2026-11-11
+- Status: pending
+- From: P-email-campaign-writer-20261030-1
+
+## A-2026W46-007
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/bf-week-landing-2026-11-16.md
+- Commit: b64fc01
+- Reason: If approved, Daniel moves the 4 Billo dog-page Meta ads to the gift collection (live, no budget change), writes a Chrome task to point any Brand or Holiday Gifts Google ad not already there to the gift collection, and on Nov 23 removes EARLYHOLIDAY20 text from Google ads. Eden: reply with one daily ads budget for Nov 16 to 22 (now about $141).
+- Expires: 2026-11-16
+- Status: pending
+- From: P-ads-analyst-20261111-1
+- Note: Moves paid traffic off the dog page (2.1% cart rate) to the gift collection (best entry page, 11.7%). If approved, the dog-page editor items (A-2026W46-011 or A-2026W44-067) reach fewer paid visitors. The Nov 23 removal matches the no-code window Nov 23 to 26.
+
 ## A-2026W44-025
 - Agent: seo-technical
 - Executor: seo-technical
@@ -76,6 +122,29 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: approved
 - From: P-seo-technical-20261028-4
 - Note (2026-10-28): Eden approved in chat: "approve 022 to 026".
+
+## A-2026W44-059
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W46/week.md
+- Commit: d690dd6
+- Reason: Approving it approves all 7 W46 posts (Nov 9 to 15) on every channel in each Channels column, including YouTube Shorts for the 3 reels; the publisher then prepares and schedules each one. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Monday's post is already approved in A-2026W42-037 and is scheduled once.
+- Expires: 2026-11-14
+- Status: pending
+- From: P-social-planner-20261029-2
+- Flag: S-20261027-1 (free-proof carousel, Mon Nov 9 19:00) is also listed in approved A-2026W42-037 with the same file and date. The planner says the publisher schedules it once; if you would rather not rely on that, send it back with `changes: S-20261027-1 already in A-2026W42-037`.
+
+## A-2026W46-008
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/trim-losers-2026-11-11.md
+- Commit: b64fc01
+- Reason: If approved, Daniel pauses Meta Proven Winners ($15/day, 1 order from $221 in 28 days) and writes a Chrome task to pause two Holiday Gifts ad groups with $180 spent and 0 conversions; Meta spend drops $15/day, Google budget unchanged.
+- Expires: 2026-11-16
+- Status: pending
+- From: P-ads-analyst-20261111-2
 
 ## A-2026W44-056
 - Agent: seo-technical
@@ -195,28 +264,28 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-seo-technical-20261110-1
 - Flag: Build times and people counts in the size table rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown. Dec 15 and prices match the Facts table and Shopify; no codes used.
 
-## A-2026W44-059
-- Agent: social-planner
-- Executor: social-publisher
+## A-2026W46-010
+- Agent: seo-technical
+- Executor: seo-blog-writer
 - Type: publish
-- Draft: marketing/social/planner/2026-W46/week.md
-- Commit: d690dd6
-- Reason: Approving it approves all 7 W46 posts (Nov 9 to 15) on every channel in each Channels column, including YouTube Shorts for the 3 reels; the publisher then prepares and schedules each one. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Monday's post is already approved in A-2026W42-037 and is scheduled once.
-- Expires: 2026-11-14
+- Draft: marketing/seo/writer/drafts/christmas-gift-in-memory-of-a-loved-one.md
+- Commit: 4d4e440
+- Reason: Will publish "A Christmas Gift in Memory of a Loved One" live on the Shopify blog. It uses the default article template, so it looks different from the GemPages articles; Eden can rebuild it in GemPages afterward. It targets memorial gift searches and points to the editor, the free proof and the Art Gift Kit. Publish by Nov 18 so Google indexes it before the Dec 15 cut-off.
+- Expires: 2026-11-18
 - Status: pending
-- From: P-social-planner-20261029-2
-- Flag: S-20261027-1 (free-proof carousel, Mon Nov 9 19:00) is also listed in approved A-2026W42-037 with the same file and date. The planner says the publisher schedules it once; if you would rather not rely on that, send it back with `changes: S-20261027-1 already in A-2026W42-037`.
+- From: P-seo-technical-20261111-1
+- Flag: The size table gives build times ("about 2.5 hours" to "about 12 hours") and people counts that rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown (same as A-2026W46-003). Dec 15 and prices match the Facts table and Shopify; no codes.
 
-## A-2026W44-060
+## A-2026W44-061
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
 - Type: send
-- Draft: marketing/email/campaign-writer/2026-11-12-your-dog-in-bricks.md
+- Draft: marketing/email/campaign-writer/improve-nov19-vip.md
 - Commit: 5efd18a
-- Reason: Creates and schedules a new Omnisend campaign "Q4 | Nov 12 | Your Dog In Bricks (Warm)" for Thu Nov 12, 10:00 ET, to Warm minus Past Buyers, recent buyers and Unengaged 180d, one button to the live dog page; fills the Nov 4 to 18 gap.
-- Expires: 2026-11-11
+- Reason: Edits the scheduled Nov 19 "VIP Early Access" campaign (6ab3af384dae2e28118748b8) so it stops saying "Black Friday price a week early, 20% off everything" (Black Friday is 25%, and 20% is already public until Nov 22). Wording only, same personal code.
+- Expires: 2026-11-18
 - Status: pending
-- From: P-email-campaign-writer-20261030-1
+- From: P-email-campaign-writer-20261030-2
 
 ## A-2026W44-062
 - Agent: email-flow-optimizer
@@ -228,6 +297,17 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Expires: 2026-11-13
 - Status: pending
 - From: P-email-flow-optimizer-20261030-1
+
+## A-2026W44-067
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/dog-page-editor-continuity.md
+- Commit: 81feae3
+- Reason: If approved, site-developer builds in a theme copy a change that shows "Upload your dog's photo" and the kit price on the editor's first screen, only for visitors who come from the dog page, shown to half of them as test CA-20261031-01; today that screen is generic and the dog page has 0 carts from 51 social sessions.
+- Expires: 2026-11-18
+- Status: pending
+- From: P-conversion-auditor-20261031-1
 
 ## A-2026W44-050
 - Agent: growth-director
@@ -318,18 +398,6 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Expires: 2026-11-15
 - Status: pending
 - From: P-growth-director-20261028-3
-
-## A-2026W43-003
-- Agent: seo-technical
-- Executor: seo-technical
-- Type: site-change
-- Draft: marketing/seo/technical/site-changes/republish-public-domain-designs.md
-- Commit: db7271f
-- Reason: Republishes the Starry Night (20x20, 20x30) and Mona Lisa kits with new listings on the Online Store and Google channels. These pages drew search buyers last holiday and are drafts today.
-- Expires: 2026-11-10
-- Status: approved
-- From: P-seo-technical-20261020-3
-- Flag: Not approved on Oct 20: waits for Eden to confirm these designs can still be made. Do not approve until then.
 
 ## A-2026W41-012
 - Agent: seo-technical
@@ -425,32 +493,9 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-social-community-manager-20261028-4
 - Note (2026-10-28): Eden approved in chat: "approve 048". The 4 calm posts stay held until Eden OKs calm posts.
 
-## A-2026W43-005
-- Agent: social-planner
-- Executor: social-planner
-- Type: publish
-- Draft: marketing/social/planner/research/2026-10-21-facebook-groups-test.md
-- Commit: 1c92140
-- Reason: 2-week Facebook groups test in 5 groups (Dog Mom Club, Golden Doodle Owners, Cat Lovers Group Official, Craft & Creative Ideas DIY, Scrapbooking, Cards, & Crafts), done by hand by Eden from her own profile: read-only rules check Oct 23 to 27, join and comment only Oct 28 to Nov 3, one post per group Nov 4 to 8, result Nov 11. Starts nothing automatic; the Mac does nothing in groups without a separate item. Real photos only, "I run Memobrick" in every post, tracked links (utm_medium=group) only when asked.
-- Expires: 2026-11-11
-- Status: approved
-- From: chat
-- Note: Eden approved in chat on 2026-10-21 ("approve groups test"), recorded by the coordinator session. Proposal P-social-planner-20261021-1. Who does the read-only rules check (Eden or the Mac) is still open.
-
 ## Open
 
 (Highest expected sales impact first.)
-
-## A-2026W44-067
-- Agent: conversion-auditor
-- Executor: site-developer
-- Type: site-change
-- Draft: marketing/conversion/auditor/site-changes/dog-page-editor-continuity.md
-- Commit: 81feae3
-- Reason: If approved, site-developer builds in a theme copy a change that shows "Upload your dog's photo" and the kit price on the editor's first screen, only for visitors who come from the dog page, shown to half of them as test CA-20261031-01; today that screen is generic and the dog page has 0 carts from 51 social sessions.
-- Expires: 2026-11-18
-- Status: pending
-- From: P-conversion-auditor-20261031-1
 
 ## A-2026W44-019
 - Agent: conversion-auditor
@@ -464,64 +509,54 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-conversion-auditor-20261026-2
 - Note: Cart display only; it changes no order email, checkout step or fulfillment. Reported Oct 26 but missed by earlier runs; first queued Oct 28.
 
-## A-2026W45-021
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/writer/drafts/photo-to-brick-mosaic-maker.md
-- Commit: ed17858
-- Reason: Publishes "Photo to Brick Mosaic Maker: Upload, Preview, Build" on the Shopify blog (default article template; Eden can rebuild it in GemPages later). Targets the "photo to mosaic maker" search and sends readers to the editor.
-- Expires: 2026-11-20
-- Status: pending
-- From: P-seo-technical-20261106-2
-- Flag: Its two links to /blogs/news/best-photo-for-a-brick-mosaic return 404 until A-2026W44-056 is published. Approve and publish 056 first, or have the two links removed.
-
-## A-2026W45-020
+## A-2026W46-009
 - Agent: seo-technical
 - Executor: seo-technical
 - Type: site-change
-- Draft: marketing/seo/technical/site-changes/article-meta-descriptions-batch1.md
-- Commit: ed17858
-- Reason: Writes meta descriptions for 8 live articles (graduation, Father's Day, baby, personalized gifts, summer souvenirs, military, screen-free, wedding) that show a cut-off excerpt, and fixes two titles (an em dash and a capitalization). Shopify SEO fields only; no layout, handle or body changes.
-- Expires: 2026-11-20
+- Draft: marketing/seo/technical/site-changes/disable-searchpie-meta-tags-v2.md
+- Commit: 4d4e440
+- Reason: Same change as A-2026W44-025, which lapses today unapplied. Eden switches off the SearchPie app embed (3 steps, 2 minutes) so every page has one title and one description again. Search traffic is down 56%, and the gift collection, our best entry page, is affected too.
+- Expires: 2026-11-25
 - Status: pending
-- From: P-seo-technical-20261106-1
+- From: P-seo-technical-20261111-2
+- Flag: Same change as A-2026W44-025, which you already approved and which expires today. Approve this one so the switch stays valid after today; it is your click in Shopify either way.
 
-## A-2026W45-009
-- Agent: conversion-auditor
+## A-2026W45-015
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W47/week.md
+- Commit: a381dda
+- Reason: Approving this item approves every listed W47 post (Nov 16 to 22) on every channel its post file lists (YouTube Shorts too, for the 3 reels); the publisher prepares the kits for the Mac to post at each time. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Posted before the code EARLYHOLIDAY20 ends on Nov 22.
+- Expires: 2026-11-21
+- Status: pending
+- From: P-social-planner-20261103-1
+- Note (2026-11-11): the planner changed week.md and re-proposed it as P-social-planner-20261111-1 (same draft file, so no new item; Commit updated to the new version). Links now go to the gift collection or the editor instead of articles and the dog page. Approving this item approves the new version.
+
+## A-2026W45-019
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W48/week.md
+- Commit: a381dda
+- Reason: Social week W48 (Nov 23 to 29): 7 posts (3 reels, 4 carousels) on IG, FB, TikTok, Pinterest and YouTube Shorts for the reels, 3 Stories by hand. Approving approves every listed post; send single posts back with `changes: <post-id> <note>`. Black Friday weekend is the biggest sales window of the year.
+- Expires: 2026-11-22
+- Status: pending
+- From: P-social-planner-20261105-1
+- Flag: The Nov 27 to 29 posts (S-20261127-1 and S-20261129-1 name the code) use BRICKFRIDAY25, which offers-calendar.md lists as "scheduled" (your chat 2026-10-26: "lets do black friday 25%"), not "active". Send those back if the offer changes. Nov 23 to 26 posts correctly carry no code.
+- Note (2026-11-11): the planner changed week.md and re-proposed it as P-social-planner-20261111-2 (same draft file, so no new item; Commit updated to the new version). Links now go to the gift collection or the editor instead of articles and the dog page. Approving this item approves the new version.
+
+## A-2026W46-012
+- Agent: email-flow-optimizer
 - Executor: site-developer
 - Type: site-change
-- Draft: marketing/conversion/auditor/site-changes/collection-gift-start-block.md
-- Commit: cc86880
-- Reason: If approved, Jenny builds in a theme copy a start block (instruction line, "Order by December 15 to get it before Christmas", red "Create My MemoBrick" button, free proof link) at the top of /collections/the-gift-for-everyone, shown to half the visitors as test CA-20261103-01; today the phone first screen has no button or date and the page converts 5.7% on phones.
-- Expires: 2026-11-20
+- Draft: marketing/email/flow-optimizer/spec-started-design-event.md
+- Commit: e92f416
+- Reason: site-developer adds a small stand-alone script that tells Omnisend "started design" when someone with a known email uploads a photo in the editor. It is the only way to reach our highest-intent visitors, who get no email today, and it must be live before Black Friday (Nov 27) to matter.
+- Expires: 2026-11-25
 - Status: pending
-- From: P-conversion-auditor-20261103-1
-- Flag: Needs a free theme slot (store is at 20 of 20) and publishing by Eden, like A-2026W44-018 and 019. Not order workflow (collection page only).
-
-## A-2026W45-012
-- Agent: email-flow-optimizer
-- Executor: email-flow-optimizer
-- Type: send
-- Draft: marketing/email/flow-optimizer/test-cart-first-email-clean-base-draft.md
-- Commit: 9bc141c
-- Reason: If approved, the optimizer switches off Abandoned Cart (64e86fedc0c2565cbe9d8ac8) for about 30 seconds, replaces email 1 (content 64e86fed3e80b6e748f5b7cd) with this designed version that drops five unbackable claims and adds the true Dec 15 deadline, keeps the saved-design block and cart link, and re-enables; emails 2 and 3 untouched. Test plan EFO-20261103-01.
-- Expires: 2026-11-24
-- Status: pending
-- From: P-email-flow-optimizer-20261103-1
-- Flag: Sister test to A-2026W44-062 (Abandoned Checkout email 1); the optimizer starts this one only after 062 has read, unless Eden says in chat both may run. Abandoned Cart is a recovery flow, not order emails or Post-Purchase.
-
-## A-2026W45-017
-- Agent: email-flow-optimizer
-- Executor: email-flow-optimizer
-- Type: send
-- Draft: marketing/email/flow-optimizer/test-welcome-first-email-claims-fix-draft.md
-- Commit: e5bbf1f
-- Reason: Test EFO-20261105-01 on Welcome email 1 (the email that brings the most flow revenue, about $1.1k attributed since Sep 28): remove the trust row, three promise tiles, Hope E. quote and superlative card labels, add kit contents, the Dec 15 date and the code terms; keep the 20% code block, subject, images and links. Welcome is switched off about 30 seconds while email 1 is edited; emails 2 and 3 untouched. Only one flow test runs at a time: agent recommends this one before A-2026W44-062 and A-2026W45-012.
-- Expires: 2026-11-24
-- Status: pending
-- From: P-email-flow-optimizer-20261105-1
-- Flag: choose the order against A-2026W44-062 (Abandoned Checkout email 1) and A-2026W45-012 (cart); only one flow test runs at a time. Welcome is a sign-up flow, not an order email or the Post-Purchase flow.
+- From: P-email-flow-optimizer-20261111-1
+- Note: Not order workflow (the draft says no change to cart, checkout or order emails). It is a theme setting, default off, so it needs a theme copy and your publish like A-2026W44-018. The flow email that would use the event is not proposed yet (due by Nov 17).
 
 ## A-2026W45-010
 - Agent: email-campaign-writer
@@ -546,6 +581,66 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-email-campaign-writer-20261110-1
 - Flag: Same list and channel as A-2026W45-010 (Nov 25, "Black Friday starts Friday") one day apart; approve one, or the Warm list gets two sends in two days. No code, matching the owner's no-code window Nov 23 to 26. The Nov 21 to 26 window claim is the writer's; preview PNGs not rendered, hero PNG 2.4 MB.
 
+## A-2026W45-009
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/collection-gift-start-block.md
+- Commit: cc86880
+- Reason: If approved, Jenny builds in a theme copy a start block (instruction line, "Order by December 15 to get it before Christmas", red "Create My MemoBrick" button, free proof link) at the top of /collections/the-gift-for-everyone, shown to half the visitors as test CA-20261103-01; today the phone first screen has no button or date and the page converts 5.7% on phones.
+- Expires: 2026-11-20
+- Status: pending
+- From: P-conversion-auditor-20261103-1
+- Flag: Needs a free theme slot (store is at 20 of 20) and publishing by Eden, like A-2026W44-018 and 019. Not order workflow (collection page only).
+
+## A-2026W45-021
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/writer/drafts/photo-to-brick-mosaic-maker.md
+- Commit: ed17858
+- Reason: Publishes "Photo to Brick Mosaic Maker: Upload, Preview, Build" on the Shopify blog (default article template; Eden can rebuild it in GemPages later). Targets the "photo to mosaic maker" search and sends readers to the editor.
+- Expires: 2026-11-20
+- Status: pending
+- From: P-seo-technical-20261106-2
+- Flag: Its two links to /blogs/news/best-photo-for-a-brick-mosaic return 404 until A-2026W44-056 is published. Approve and publish 056 first, or have the two links removed.
+
+## A-2026W46-011
+- Agent: conversion-auditor
+- Executor: site-developer
+- Type: site-change
+- Draft: marketing/conversion/auditor/site-changes/dog-editor-one-line.md
+- Commit: b33cd52
+- Reason: If approved, site-developer adds `&from=dog` to the dog page's editor buttons and shows one line ("Upload your dog's photo. Your kit is $99.88, and you can change the size next.", with the live size price) above the editor upload box for those visitors only. This is the smaller, no-split version of A-2026W44-067: approve this one and reject 067.
+- Expires: 2026-12-10
+- Status: pending
+- From: P-conversion-auditor-20261111-1
+- Flag: Same goal as pending A-2026W44-067 (dog visitors' editor first screen); approve one, not both. Built in a theme copy, so it also waits on a free theme slot and your publish. If A-2026W46-007 is approved, paid dog-page traffic drops.
+
+## A-2026W45-017
+- Agent: email-flow-optimizer
+- Executor: email-flow-optimizer
+- Type: send
+- Draft: marketing/email/flow-optimizer/test-welcome-first-email-claims-fix-draft.md
+- Commit: e5bbf1f
+- Reason: Test EFO-20261105-01 on Welcome email 1 (the email that brings the most flow revenue, about $1.1k attributed since Sep 28): remove the trust row, three promise tiles, Hope E. quote and superlative card labels, add kit contents, the Dec 15 date and the code terms; keep the 20% code block, subject, images and links. Welcome is switched off about 30 seconds while email 1 is edited; emails 2 and 3 untouched. Only one flow test runs at a time: agent recommends this one before A-2026W44-062 and A-2026W45-012.
+- Expires: 2026-11-24
+- Status: pending
+- From: P-email-flow-optimizer-20261105-1
+- Flag: choose the order against A-2026W44-062 (Abandoned Checkout email 1) and A-2026W45-012 (cart); only one flow test runs at a time. Welcome is a sign-up flow, not an order email or the Post-Purchase flow.
+
+## A-2026W45-012
+- Agent: email-flow-optimizer
+- Executor: email-flow-optimizer
+- Type: send
+- Draft: marketing/email/flow-optimizer/test-cart-first-email-clean-base-draft.md
+- Commit: 9bc141c
+- Reason: If approved, the optimizer switches off Abandoned Cart (64e86fedc0c2565cbe9d8ac8) for about 30 seconds, replaces email 1 (content 64e86fed3e80b6e748f5b7cd) with this designed version that drops five unbackable claims and adds the true Dec 15 deadline, keeps the saved-design block and cart link, and re-enables; emails 2 and 3 untouched. Test plan EFO-20261103-01.
+- Expires: 2026-11-24
+- Status: pending
+- From: P-email-flow-optimizer-20261103-1
+- Flag: Sister test to A-2026W44-062 (Abandoned Checkout email 1); the optimizer starts this one only after 062 has read, unless Eden says in chat both may run. Abandoned Cart is a recovery flow, not order emails or Post-Purchase.
+
 ## A-2026W45-011
 - Agent: email-campaign-writer
 - Executor: email-campaign-writer
@@ -558,16 +653,16 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-email-campaign-writer-20261103-2
 - Flag: Edit to an existing owner campaign; CYBERBRICK20 (Nov 30 only) matches offers-calendar.
 
-## A-2026W44-061
-- Agent: email-campaign-writer
-- Executor: email-campaign-writer
-- Type: send
-- Draft: marketing/email/campaign-writer/improve-nov19-vip.md
-- Commit: 5efd18a
-- Reason: Edits the scheduled Nov 19 "VIP Early Access" campaign (6ab3af384dae2e28118748b8) so it stops saying "Black Friday price a week early, 20% off everything" (Black Friday is 25%, and 20% is already public until Nov 22). Wording only, same personal code.
-- Expires: 2026-11-18
+## A-2026W45-020
+- Agent: seo-technical
+- Executor: seo-technical
+- Type: site-change
+- Draft: marketing/seo/technical/site-changes/article-meta-descriptions-batch1.md
+- Commit: ed17858
+- Reason: Writes meta descriptions for 8 live articles (graduation, Father's Day, baby, personalized gifts, summer souvenirs, military, screen-free, wedding) that show a cut-off excerpt, and fixes two titles (an em dash and a capitalization). Shopify SEO fields only; no layout, handle or body changes.
+- Expires: 2026-11-20
 - Status: pending
-- From: P-email-campaign-writer-20261030-2
+- From: P-seo-technical-20261106-1
 
 ## A-2026W45-007
 - Agent: outreach-link-builder
@@ -581,28 +676,17 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - From: P-outreach-link-builder-20261102-1
 - Note: editorial mention only. Same Executor as A-2026W44-054, 064 and 071.
 
-## A-2026W45-015
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W47/week.md
-- Commit: 12b9dd7
-- Reason: Approving this item approves every listed W47 post (Nov 16 to 22) on every channel its post file lists (YouTube Shorts too, for the 3 reels); the publisher prepares the kits for the Mac to post at each time. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Posted before the code EARLYHOLIDAY20 ends on Nov 22.
+## A-2026W46-013
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/cool-mom-picks-last-minute.md
+- Commit: 68415df
+- Reason: A Gmail draft to info@coolmompicks.com (the footer address for editor tips, from search text; check it on the site) is created for Eden to send. It pitches their December last-minute guide (gift collection link, order by Dec 15, gift card after that), commission only.
 - Expires: 2026-11-21
 - Status: pending
-- From: P-social-planner-20261103-1
-
-## A-2026W45-019
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W48/week.md
-- Commit: 31cd6d3
-- Reason: Social week W48 (Nov 23 to 29): 7 posts (3 reels, 4 carousels) on IG, FB, TikTok, Pinterest and YouTube Shorts for the reels, 3 Stories by hand. Approving approves every listed post; send single posts back with `changes: <post-id> <note>`. Black Friday weekend is the biggest sales window of the year.
-- Expires: 2026-11-22
-- Status: pending
-- From: P-social-planner-20261105-1
-- Flag: The Nov 27 to 29 posts (S-20261127-1 and S-20261129-1 name the code) use BRICKFRIDAY25, which offers-calendar.md lists as "scheduled" (your chat 2026-10-26: "lets do black friday 25%"), not "active". Send those back if the offer changes. Nov 23 to 26 posts correctly carry no code.
+- From: P-outreach-gift-guide-pr-20261111-1
+- Note: Invites them to the Collabs 10%/10% creator tier, which is active in offers-calendar. Address and guide date unverified (site not fetchable).
 
 ## A-2026W41-014
 - Agent: seo-technical
@@ -615,8 +699,40 @@ Still open from before: Reconnect Buffer and Facebook connectors and run the Mac
 - Status: approved
 - From: P-seo-technical-20261011-5
 
+## A-2026W46-014
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: send
+- Draft: marketing/outreach/gift-guide-pr/pitches/fox-steve-noviello.md
+- Commit: 68415df
+- Reason: A Gmail draft to Steve.Noviello@fox.com (his own address from his past emails to us) is created for Eden to send, but only if P-outreach-gift-guide-pr-20261111-3 is also approved. It pitches a Valentine's Day segment and asks him to put us back on his 2027 gift guide list.
+- Expires: 2026-11-21
+- Status: pending
+- From: P-outreach-gift-guide-pr-20261111-2
+- Note: Goes with A-2026W46-015 (the kit offer, P-outreach-gift-guide-pr-20261111-3); the draft is made only if both are approved. Aims at Valentine's Day and 2027, so it brings no Christmas orders.
+
+## A-2026W46-015
+- Agent: outreach-gift-guide-pr
+- Executor: outreach-gift-guide-pr
+- Type: offer
+- Draft: marketing/outreach/gift-guide-pr/kit-offers/fox-steve-noviello-kit.md
+- Commit: 68415df
+- Reason: Approves offering Steve Noviello one 16×16 build-at-home kit ($69.88 retail) in the FOX pitch. Eden ships it by hand only if he says yes. Evidence: he featured us in 2022 and his guide airs on FOX stations nationwide.
+- Expires: 2026-11-21
+- Status: pending
+- From: P-outreach-gift-guide-pr-20261111-3
+- Note: Press sample kits are allowed case by case with your approval (Facts table). Nothing automatic; you ship it.
 
 ## Flagged
+
+Run 22 (2026-11-11). Details in `marketing/coordination/coordinator/overlaps-2026-11-11.md`.
+
+- A-2026W46-009 copied with a flag: same SearchPie switch as A-2026W44-025 (approved, expires today). Approve 009 to keep the switch valid.
+- A-2026W46-010 copied with a flag: build times and people counts rest on Shopify listings; the Facts row for faces and build time is unknown. Dec 15 and prices fine, no codes.
+- A-2026W46-011 copied with a flag: same goal as A-2026W44-067; approve one. Needs a theme slot and your publish.
+- Not copied, same draft already open: P-social-planner-20261111-1 (W47, A-2026W45-015) and P-social-planner-20261111-2 (W48, A-2026W45-019). Commit lines updated with a Note. The BRICKFRIDAY25 flag on A-2026W45-019 still applies (scheduled, not active).
+- Checked, no flag: A-2026W46-006 (EARLYHOLIDAY20 to Nov 22, Dec 15), 007 and 008 (no new offer; 007 removes EARLYHOLIDAY20 text Nov 23), 012 (not order workflow), 013 (Collabs 10%/10% tier is active), 014 and 015 (press kit allowed case by case). Cool Mom Picks and Steve Noviello are not in the contacts log. All drafts exist and none is shared. Executors correct.
+- Dropped: none. Archived A-2026W43-003 (expired Nov 10) and A-2026W43-005 (done).
 
 Run 21 (2026-11-10). Details in `marketing/coordination/coordinator/overlaps-2026-11-10.md`.
 
@@ -747,6 +863,15 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-11-11:**
+
+- Draft orders: what the manual "memobrick 16x16" $82.10 draft orders (marked paid, Apr to May 2026) were and why they stopped after May 25 (conversion-auditor, growth-analyst, growth-director). Which theme was live in May (site-developer).
+- One daily ads budget for Nov 16 to 22 (A-2026W46-007; Facts row "Holiday ad budget" unknown). Meta claims 32 purchases in 28 days vs 9 tagged Shopify orders (ads-analyst).
+- Codes on orders but not in offers-calendar: MATHS (Meta order, $477, Nov 8) and EARLYBIRDB20 (PMax order, Nov 1) (ads-analyst). Whether the PMax headline "Use Code EARLYHOLIDAY20" is still live.
+- Abandoned checkouts: 9 since Nov 2 where shipping ($9.74 to $20.66) was added, and a $1,859.40 checkout on Nov 11 (conversion-auditor).
+- Facebook groups test closed with no posts recorded (social-planner); group rules still unknown (community manager). No social post approved Nov 14 to 22.
+- Unchanged: theme 189322330332 publish, Mac data pull ("never"), Facts rows unknown (holiday ad budget, product margins, faces per size and build time), email preview PNGs (headless Chrome hangs), outreach routes unverifiable, 4 Oct 28 Gmail drafts unsent (A-2026W44-033).
 
 **New 2026-11-10:**
 
