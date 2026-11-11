@@ -17,3 +17,4 @@ Written 2026-10-28 by outreach-gift-guide-pr. This file restates rules the owner
 | green-wedding-shoes-kit.md | Green Wedding Shoes | Withdrawn 2026-10-14 (score 3) |
 | growing-hands-on-kids-kit.md | Growing Hands-On Kids | Proposed 2026-10-28, pending |
 | neurodivergent-rebel-kit.md | NeuroDivergent Rebel | Proposed 2026-10-28, pending |
+| fox-steve-noviello-kit.md | Steve Noviello, FOX | Proposed 2026-11-11, pending |
