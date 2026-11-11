@@ -1,0 +1,40 @@
+{
+ "device": "desktop",
+ "steps": [
+  {
+   "step": "home",
+   "ms": 2768
+  },
+  {
+   "step": "hero-link-to-proof-view",
+   "ms": 6066,
+   "linkTop": 631,
+   "url": "https://mymemobrick.com/",
+   "card": {
+    "found": true,
+    "id": "2n1U3xnqHKzKiTv9oc59VA",
+    "h": 0,
+    "top": 807,
+    "inputs": 0,
+    "file": 0,
+    "text": ""
+   }
+  },
+  {
+   "step": "free-preview-page",
+   "ms": 7176,
+   "card": {
+    "found": true,
+    "id": "2n1U3xnqHKzKiTv9oc59VA",
+    "h": 0,
+    "top": 634,
+    "inputs": 0,
+    "file": 0,
+    "text": ""
+   }
+  }
+ ],
+ "hulk": [
+  "FAILED https://cdn.shopify.com/extensions/01a19bfe-e8c0-7266-a72e-c50ef94bd857/form-builder-by-hulkapps-83/assets/form-builder-script.js net::ERR_TUNNEL_CONNECTION_FAILED"
+ ]
+}

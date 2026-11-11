@@ -1,0 +1,102 @@
+[
+ {
+  "dev": "phone",
+  "k": "dog",
+  "ms": 1772,
+  "title": "Custom Dog Brick Mosaic Kit | Your Dog in 1×1 Bricks | Memobrick",
+  "sw": 390,
+  "iw": 390,
+  "btns": [
+   "Menu@19",
+   "Cart, 0 items@21",
+   "Upload your dog's photo@587",
+   "Free design proof@813",
+   "Start a 16×16@1880",
+   "Start a 20×20@2092",
+   "Start a 30×30@2310",
+   "Read all reviews@3431",
+   "Get a free design proof@3649",
+   "See the Gift Kit@3866",
+   "Upload your dog's photo@4504",
+   "How it works@4879",
+   "Get My Free Proof@4879",
+   "Reviews@4879",
+   "Blog@4879",
+   "Business services@4919",
+   "Ready-made designs@4919",
+   "Frames@4919",
+   "Track your order@4959",
+   "Sizes@4959",
+   "Gift kit@4959",
+   "FAQs@4959",
+   "Corporate & bulk@4998",
+   "Contact@4998"
+  ],
+  "price": [
+   "$99.88",
+   "$69.88",
+   "$99.88",
+   "$209.99",
+   "$125",
+   "$35"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": true,
+   "reviews": true
+  }
+ },
+ {
+  "dev": "desktop",
+  "k": "dog",
+  "ms": 1621,
+  "title": "Custom Dog Brick Mosaic Kit | Your Dog in 1×1 Bricks | Memobrick",
+  "sw": 1440,
+  "iw": 1440,
+  "btns": [
+   "Create@23",
+   "Let us design it@23",
+   "Ready-made designs@29",
+   "Frames@29",
+   "Corporate & bulk@23",
+   "Reviews@29",
+   "How it works@29",
+   "Create My MemoBrick@17",
+   "Cart, 0 items@21",
+   "Upload your dog's photo@458",
+   "Free design proof@789",
+   "Start a 16×16@1356",
+   "Start a 20×20@1349",
+   "Start a 30×30@1356",
+   "Read all reviews@1889",
+   "Get a free design proof@2083",
+   "See the Gift Kit@2061",
+   "Upload your dog's photo@2687",
+   "How it works@3018",
+   "Get My Free Proof@3018",
+   "Reviews@3018",
+   "Blog@3018",
+   "Business services@3018",
+   "Ready-made designs@3018",
+   "Frames@3018",
+   "Track your order@3018",
+   "Sizes@3018",
+   "Gift kit@3018",
+   "FAQs@3018",
+   "Corporate & bulk@3018"
+  ],
+  "price": [
+   "$99.88",
+   "$69.88",
+   "$99.88",
+   "$209.99",
+   "$125",
+   "$35"
+  ],
+  "flags": {
+   "proof": true,
+   "dec15": true,
+   "reviews": true
+  }
+ }
+]
