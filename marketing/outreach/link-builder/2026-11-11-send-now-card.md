@@ -11,3 +11,14 @@ Eden, 10 minutes. Best 5 of the 15 queued pitches, ranked by fit and how soon th
 Link swap (task board rule 1): in 1, 2 and 5, replace our blog link with https://mymemobrick.com/collections/the-gift-for-everyone?utm_source=linkbuilder&utm_medium=referral&utm_campaign=holiday-2026 (best entry page, 11.7% cart rate). Keep the dog page link in 3 and 4: those readers want a dog gift, and the page is made for them.
 
 After sending, reply "sent 1, 2..." and Bertha logs each one in the contacts log.
+
+## Status 2026-11-12
+
+**Lapses today, Nov 12 (A-2026W44-054):** 3 My Modern Met and 4 PureWow on this card, plus Wisdom Panel, Great Pet Care and Funeral.com from the same batch. Send 3 and 4 today or let them go. Bertha will not re-propose them while the queue is this long.
+
+**Still sendable:**
+- 1 InsideHook Miami and 5 What the Redhead Said (A-2026W44-064, until Nov 13).
+- 2 Miami Mom Collective (A-2026W44-071, until Nov 14).
+- Emily Reviews, SheScribes, Mom's Magazine, Mommy's Block Party, Making of a Mom (A-2026W45-007, until Nov 20). Emily Reviews closes about Dec 4.
+
+Nothing on this card was sent as of the Nov 12 run (Gmail Sent has none of these, and no replies have come in).
