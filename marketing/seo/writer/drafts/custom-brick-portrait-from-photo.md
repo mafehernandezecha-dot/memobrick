@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/custom-brick-portrait-from-photo.md
 Title: Custom LEGO-Style Portrait From Your Photo
 Meta description: Turn a photo of a person, couple, family or pet into a custom brick portrait you build yourself, in 40+ colors. See it in the editor first.
