@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-10T21:55:00-05:00",
- "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 10 so far: 5 orders, $640.07, not stored).",
+ "updated": "2026-11-11T21:48:19-05:00",
+ "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 11 so far, about 21:50 ET: 3 orders, $367.58, not stored).",
  "days": [
   {
    "date": "2026-09-01",
@@ -351,6 +351,11 @@
    "date": "2026-11-09",
    "orders": 2,
    "netSales": 151.91
+  },
+  {
+   "date": "2026-11-10",
+   "orders": 5,
+   "netSales": 640.07
   }
  ],
  "lastYear": [
@@ -816,18 +821,18 @@
   }
  ],
  "funnel": {
-  "period": "Oct 11 to Nov 9 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 12 to Nov 10 2025 (same weekdays)",
+  "period": "Oct 12 to Nov 10 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 13 to Nov 11 2025 (same weekdays)",
   "now": {
-   "sessions": 2775,
-   "addedToCart": 194,
-   "reachedCheckout": 110,
+   "sessions": 2827,
+   "addedToCart": 203,
+   "reachedCheckout": 115,
    "purchased": 40
   },
   "lastYear": {
-   "sessions": 4232,
-   "addedToCart": 427,
-   "reachedCheckout": 179,
-   "purchased": 72
+   "sessions": 4131,
+   "addedToCart": 425,
+   "reachedCheckout": 178,
+   "purchased": 73
   },
   "launch": {
    "period": "Referred sessions by landing page, Oct 28 to Nov 8 2026 (refreshed Nov 9)",
@@ -896,10 +901,10 @@
    "calmBuildGift": "no referred sessions landed on a path containing 'calm' in Oct 28 to Nov 8 (not in the top 15 landing pages)",
    "newArticles": "no /blogs/ landing page in the top 15 referred landing pages Oct 28 to Nov 8 (LIKE filter not supported by ShopifyQL, so not checked below the top 15)",
    "draftOrders": {
-    "period": "Oct 11 to Nov 9 2026 vs Oct 12 to Nov 10 2025, by sales channel",
-    "now": 13,
+    "period": "Oct 11 to Nov 10 2026 vs Oct 12 to Nov 11 2025, by sales channel (31 days)",
+    "now": 14,
     "lastYear": 61,
-    "note": "Online Store 58 vs 127. Monthly draft orders 2026: Jan 73, Feb 49, Mar 59, Apr 53, May 34, Jun 9, Jul 7, Aug 8, Sep 7, Oct 12, Nov 1-9 2. Weekly: 11 in the week of May 11, then 4, 6, 3, 3, 2, 1, 0 from May 18. The drop started the week of May 18 2026, not in the fall. 2025 had 13 to 22 a week from Aug to Oct.",
+    "note": "Online Store 62 vs 133. Monthly draft orders 2026: Jan 73, Feb 49, Mar 59, Apr 53, May 34, Jun 9, Jul 7, Aug 8, Sep 7, Oct 12, Nov 1-9 2. Weekly: 11 in the week of May 11, then 4, 6, 3, 3, 2, 1, 0 from May 18. The drop started the week of May 18 2026, not in the fall. 2025 had 13 to 22 a week from Aug to Oct.",
     "weekly2026": [
      [
       "2026-04-06",
@@ -1173,7 +1178,7 @@
     ],
     "note": "Search sessions -56%, purchases 23 vs 47. Social sessions -12% but carts -53% (cart rate 4.7% vs 8.7%). A blank referrer_source row (33 sessions, 12 carts, 4 purchases) is left out. ShopifyQL cannot split paid from organic search or by UTM: unknown."
    },
-   "note": "entryComparison refreshed Nov 10 evening for Oct 12 to Nov 8.",
+   "note": "entryComparison refreshed Nov 10 evening for Oct 12 to Nov 8; searchLandingPages and may18Check added Nov 11 evening.",
    "dogBrickMosaic_note": "Daily rows include direct sessions (145 sessions, 3 carts, Oct 28 to Nov 8); referred only: 121 sessions, 1 cart, 0 purchases.",
    "giftCollectionByDay": [
     {
@@ -1256,32 +1261,192 @@
       "carts": 0
      }
     ]
+   },
+   "may18Check": {
+    "period": "Weeks starting Apr 27 to Jun 15 2026 (store time). Referred sessions exclude direct.",
+    "rows": [
+     {
+      "week": "2026-04-27",
+      "referredSessions": 923,
+      "referredCarts": 62,
+      "onlineStoreOrders": 20,
+      "draftOrders": 6
+     },
+     {
+      "week": "2026-05-04",
+      "referredSessions": 1232,
+      "referredCarts": 81,
+      "onlineStoreOrders": 32,
+      "draftOrders": 12
+     },
+     {
+      "week": "2026-05-11",
+      "referredSessions": 1151,
+      "referredCarts": 70,
+      "onlineStoreOrders": 15,
+      "draftOrders": 11
+     },
+     {
+      "week": "2026-05-18",
+      "referredSessions": 1090,
+      "referredCarts": 86,
+      "onlineStoreOrders": 20,
+      "draftOrders": 4
+     },
+     {
+      "week": "2026-05-25",
+      "referredSessions": 1155,
+      "referredCarts": 93,
+      "onlineStoreOrders": 42,
+      "draftOrders": 6
+     },
+     {
+      "week": "2026-06-01",
+      "referredSessions": 927,
+      "referredCarts": 68,
+      "onlineStoreOrders": 21,
+      "draftOrders": 3
+     },
+     {
+      "week": "2026-06-08",
+      "referredSessions": 1281,
+      "referredCarts": 88,
+      "onlineStoreOrders": 28,
+      "draftOrders": 3
+     },
+     {
+      "week": "2026-06-15",
+      "referredSessions": 1230,
+      "referredCarts": 81,
+      "onlineStoreOrders": 22,
+      "draftOrders": 2
+     }
+    ],
+    "note": "Sessions, cart rate and Online Store orders did not fall the week of May 18 (Online Store 42 the week of May 25, the best of the period). Only draft orders dropped, so the May 18 change is in the proof or invoice path, not site traffic."
+   },
+   "searchLandingPages": {
+    "period": "Search referred sessions by landing page, Oct 12 to Nov 8 2026 vs Oct 13 to Nov 9 2025 (sessions / carts / completed checkout)",
+    "rows": [
+     {
+      "page": "/",
+      "now": [
+       482,
+       46,
+       7
+      ],
+      "lastYear": [
+       1557,
+       211,
+       38
+      ]
+     },
+     {
+      "page": "/collections/the-gift-for-everyone",
+      "now": [
+       216,
+       20,
+       7
+      ],
+      "lastYear": [
+       88,
+       8,
+       2
+      ]
+     },
+     {
+      "page": "/products/2-2-boards",
+      "now": [
+       93,
+       5,
+       3
+      ],
+      "lastYear": "not in top 15"
+     },
+     {
+      "page": "/products/custom-bricked-mosaic-10x10",
+      "now": [
+       27,
+       8,
+       2
+      ],
+      "lastYear": "not in top 15"
+     },
+     {
+      "page": "/products/1-big-board",
+      "now": [
+       27,
+       4,
+       2
+      ],
+      "lastYear": "not in top 15"
+     },
+     {
+      "page": "/collections/photo-frames",
+      "now": [
+       11,
+       0,
+       0
+      ],
+      "lastYear": [
+       21,
+       4,
+       4
+      ]
+     },
+     {
+      "page": "/products/frame-4x4",
+      "now": "not in top 15",
+      "lastYear": [
+       66,
+       2,
+       1
+      ]
+     },
+     {
+      "page": "/products/2-3-boards",
+      "now": [
+       6,
+       2,
+       0
+      ],
+      "lastYear": [
+       23,
+       1,
+       0
+      ]
+     },
+     {
+      "page": "Artist Collection product pages (Starry Night, Mona Lisa, cat, rock n roll, boat, phoenix, horse, joker)",
+      "now": "phoenix 2/0/0, others not in top 15",
+      "lastYear": "8 pages, 142 sessions, 6 carts, 0 purchases"
+     }
+    ],
+    "note": "Home page search landings lost 1,075 of the 1,184 search sessions lost in total (91%); the gift collection and some product pages gained. Purchasing sessions from search landing on / fell 38 to 7. Whether these were brand-name, paid or organic searches is unknown (no Search Console or Google Ads snapshot)."
    }
   }
  },
  "weakPoints": [
   {
-   "title": "Google search traffic is down by more than half",
-   "detail": "Oct 12 to Nov 8: search sent 945 sessions vs 2,129 last year (-56%) and 23 purchasing sessions vs 47, the largest loss among referred sources. Social sessions held up better (1,350 vs 1,528) but its cart rate halved (4.7% vs 8.7%; 63 carts vs 133). All referred sessions Oct 11 to Nov 9: 2,775 vs 4,232 (-34%), add to cart 7.0% vs 10.1%, checkout to purchase 36% vs 40%. The gift collection is still the best entry page (11.7% cart rate Nov 6 to 8).",
+   "title": "Google search visits that land on the home page fell by two thirds",
+   "detail": "Oct 12 to Nov 8: search sessions landing on the home page were 482 vs 1,557 last year (-69%), with 46 carts vs 211 and 7 purchasing sessions vs 38. That one page is 1,075 of the 1,184 search sessions lost (945 vs 2,129 in total); search landings on the gift collection grew from 88 to 216 and convert well (7 purchasing sessions). All referred sessions Oct 12 to Nov 10: 2,827 vs 4,131 (-32%), add to cart 7.2% vs 10.3%. Whether the lost home page visits were brand-name, paid or organic searches is unknown until Search Console and Google Ads snapshots arrive.",
    "owners": [
     "ads-analyst",
     "seo-strategist",
     "seo-technical",
-    "social-publisher",
-    "site-developer"
+    "owner"
    ]
   },
   {
-   "title": "Draft orders (designer proof, then invoice) collapsed in May, not in the fall",
-   "detail": "Draft orders were 13 in Oct 11 to Nov 9 vs 61 last year (-79%); Online Store 58 vs 127. They ran 49 to 75 a month Jan to Apr 2026, then fell from 11 in the week of May 11 to 4 in the week of May 18 and have stayed at 0 to 5 a week since (Jun 9, Jul 7, Aug 8, Sep 7, Oct 12). Something changed around May 18 2026 in how proof requests arrive or get invoiced; the owner is the one who can check what.",
+   "title": "Draft orders (designer proof, then invoice) collapsed the week of May 18, and only they did",
+   "detail": "Draft orders were 14 in Oct 11 to Nov 10 vs 61 last year (-77%); Online Store 62 vs 133. In 2026 they fell from 11 the week of May 11 to 4 the week of May 18 and have stayed at 0 to 5 a week. That same week referred sessions (1,090), carts (86, the best cart rate of the period) and Online Store orders (20, then 42) held up, so the break is in how proof requests arrive or get invoiced, not in site traffic. The owner is the one who can check what changed.",
    "owners": [
     "owner",
     "site-developer"
    ]
   },
   {
-   "title": "Daily goal missed: orders and sales under half of pace",
-   "detail": "Yesterday (Nov 9): 2 orders, $151.91 vs goal 5 and $550. November so far (Nov 1 to 9): 21 orders, $2,399.53 vs goal 45 and $4,950; same days last year 54 orders and $6,553.83. Week Nov 9 to 15 needs 33 more orders and $3,698 in 6 days. The Black Friday goal (12 orders a day from Nov 16) compares with about 2.3 a day now; last year Nov 16 to 30 averaged 15.6. Nov 10 so far (partial): 5 orders, $640.07, the best day since Oct 21.",
+   "title": "November is half of goal even after the first goal day in five weeks",
+   "detail": "Yesterday (Nov 10): 5 orders, $640.07 vs goal 5 and $550, the first day to meet both since Oct 3. November so far (Nov 1 to 10): 26 orders, $3,039.60 vs goal 50 and $5,500; same days last year 72 orders and $8,520.88. Week Nov 9 to 15 needs 28 more orders and $3,058 in 5 days. From Nov 16 the goal is 12 orders a day against about 2.6 now; last year Nov 16 to 30 averaged 15.6.",
    "owners": [
     "owner",
     "email-campaign-writer",
