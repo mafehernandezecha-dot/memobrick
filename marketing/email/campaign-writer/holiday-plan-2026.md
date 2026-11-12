@@ -113,3 +113,11 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - If A-2026W44-060 (Nov 12 dog email) is approved today, Warm gets Nov 12, 16, 20: four days apart, acceptable.
 - Nov 24 table email now has preview PNGs (`2026-11-24-take-the-photo-at-the-table-preview*.png`); the draft text was left untouched so A-2026W46-005 stays valid.
 - Still open: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
+
+
+## Update 2026-11-12
+
+- Omnisend read 2026-11-12: nothing is scheduled to Warm (6ab3a047d52351bd34134eb5) between Nov 12 and Nov 19. The only send in that window is the Nov 19 VIP Early Access (6ab3af384dae2e28118748b8) to Past Buyers (6ab3a04c426f40d1edc2e690). Next Warm send on the schedule is Nov 20 (6ae55a1aead775b0ac41ecc5). Last campaign sent: Nov 3 Gift Ideas. Warm segment size is not returned by the Omnisend segments API; last known reach about 5,000 sends per Warm campaign.
+- Shopify read 2026-11-12: EARLYHOLIDAY20 is ACTIVE, ends 2026-11-23 04:59:59 UTC (Nov 22 23:59:59 ET), no usage limit, combines with nothing, 15 uses so far. Matches offers-calendar.
+- A-2026W44-060 (Nov 12 dog email) expired undecided; nothing created. A-2026W46-006 (Nov 16) is still pending, expires Nov 15, draft unchanged since its commit 4300178, so it can be built as soon as it is approved.
+- No new gap: Nov 16 to 22 is covered by the Nov 16 draft (pending), Nov 19 VIP and Nov 20; Nov 23 to 26 by the Nov 24 or Nov 25 drafts (pending, pick one). Still open: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
