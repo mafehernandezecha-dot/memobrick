@@ -1,95 +1,96 @@
-# Task board 2026-11-11
-Weak point today: search traffic and Eden's clicks. Search sent 945 sessions vs 2,129 last year (-56%, 23 purchasing sessions vs 47); draft orders (proof, then invoice) collapsed the week of May 18 2026 and never came back (13 vs 61 in the last 30 days). Nov 9: 2 orders, $151.91 vs goal 5 / $550. Nov 1 to 9: 21 orders vs goal 45 (last year 54). Nov 10 so far (partial, not final): 5 orders, $640.07, best day since Oct 21.
-Dates: goal 12 orders a day from Nov 16 (5 days), EARLYHOLIDAY20 ends Nov 22, BRICKFRIDAY25 Nov 27 to 29, CYBERBRICK20 Nov 30, order-by Dec 15. Nine checked articles expire unpublished Nov 12 to 14. No email is scheduled before Nov 19 (A-2026W44-060 for Nov 12 expires today).
-Rules for today: (1) new links go to `/pages/editor?size=20x20#editor` with your own UTM, or the gift collection `/collections/the-gift-for-everyone` (best entry page, 11.7% cart rate); (2) do not re-ask Eden for anything already in the queue, point to its ID in one line; (3) CARRIED tasks missed 2 or more boards: do the smaller version or write "blocked: <reason>" in one line; (4) Wednesday is Wilson's and Sandra's weekly day; Hugo runs Thu, Daniel Fri, Marcela, Aura María and Mario Tue, so their rows are for their next run; (5) May 18 2026 is today's detective case: Nicolás, Wilson and Jenny each take one side of it.
-Scoring of the Nov 10 board: done: Nicolás, Mariana, Sandra, Inesita, Patricia, Freddy, Marcela, Aura María, Jenny (no slot, as expected). Partly: Armando (archive done, Black Friday countdown not written), Bertha (sheets listed, no ranked 5-line card), Mario (none found, dropped as agreed). No run: Daniel, Hugo, Wilson (not their day), María Beatriz (no Mac). No report: Betty. Sales result: none measurable; no Eden decision recorded in the queue since Nov 2.
+# Task board 2026-11-12
+Weak point today: two lost order sources that no site fix brings back, plus finished work that is not live. (1) Manual draft orders ("memobrick 16x16" $82.10, marked paid outside checkout) ran 8 to 14 a week and stopped after May 25 2026: 51 orders, $6,595 in Oct 12 to Nov 10 last year, 44% of the gap (Wilson). Only Eden knows what they were. (2) Google: search visits landing on the home page fell 1,557 to 482 (91% of the search loss); free Shopping listings fell 347 to 36 (-90%), paid clicks about 47% of the loss (Nicolás, Daniel). (3) Phone checkout: 5 of 24 phone checkouts completed last week while phone carts doubled.
+Numbers: Nov 10: 5 orders, $640.07, goal met (first time since Oct 3). Nov 1 to 10: 26 orders vs goal 50 (last year 72). Week Nov 9 to 15: 7 so far, needs 28 more in 5 days (last year same week 91). Nov 11 so far (partial, not final): 3 orders, $367.58. Goal is 12 a day from Mon Nov 16.
+Dates: EARLYHOLIDAY20 ends Nov 22, no code Nov 23 to 26, BRICKFRIDAY25 Nov 27 to 29, CYBERBRICK20 Nov 30, order-by Dec 15. Lapse today: A-2026W44-055, 056 (articles), 048 (group posts), 054 (pitches). Nov 13: 062, 064. Nov 14: 059 (W46 social), 070, 071, A-2026W45-016. Nov 15: A-2026W44-018 (theme), A-2026W46-006 (Nov 16 email, the only Warm email before Nov 20).
+Rules for today: (1) new links go to `/collections/the-gift-for-everyone` or `/pages/editor?size=20x20#editor` with your UTM; (2) no new proposal unless your row asks for one: 56 items wait, and Eden has decided nothing since Nov 2; (3) never re-ask Eden for something in the queue, point to its ID; (4) a task that brings no order says so in one line; (5) free US shipping over $125 is an automatic discount (offers-calendar Facts) and does not combine with codes, so a buyer using EARLYHOLIDAY20 pays shipping.
+Scoring of the Nov 11 board: done: Nicolás (both cuts), Daniel (paid/free/organic split a day early, A-2026W46-007, 008), Mariana (6 queries, 3 gaps), Sandra (memorial draft), Inesita (memorial check, SearchPie re-proposed as A-2026W46-009), Wilson (May 18 solved: manual orders, not the form; dog line A-2026W46-011), Jenny (form unchanged since 2022), Mario (2 pitches), Bertha (send-now card), Patricia (10-minute card), Hugo (gap list, W47/W48 links swapped), Freddy, Marcela (Nov 16 email A-2026W46-006), Aura María (event spec A-2026W46-012). Partly: Armando (Wednesday list done; countdown missed a third board, dropped). No run: María Beatriz (no Mac). No report: Betty. Sales result: Nov 10 met goal, but nothing the team made went live, so it is not ours to claim.
 
 ## aprobaciones (Betty)
-- Task: Give Eden her Wednesday as 5 clicks, one line and one link each, with what lapses if skipped: (1) delete old theme copies and publish theme 189322330332 (ships approved A-2026W44-018 free-proof fallback, lapses Nov 15); (2) one reply that decides the 10 checked articles at once: "approve A-2026W44-056, 055, 070, 068, A-2026W45-023, 006, 013, 016, A-2026W46-001, 003" (9 lapse Nov 12 to 14); (3) A-2026W44-060, the only email that can go out before Nov 19 (lapses today); (4) SearchPie switch-off A-2026W44-025 (approved, lapses today, 2 minutes); (5) one number for the Black Friday Meta budget. Then ask Eden one question in plain words: "What changed around May 18 in how free-proof requests reach you or get invoiced (form app, inbox, designer, invoice step)?" Pass any chat answer to the coordinator.
-- Why: every item above is finished work that brings no order until clicked; the proof question points at the largest lost-order cause.
-- Done when: the list and the question are at the top of your output and each item shows done, asked or declined.
+- Task: Give Eden her Thursday as one question and 4 clicks, one line each, with what lapses: (Q) "The manual draft orders 'memobrick 16x16' at $82.10, marked paid, 8 to 14 a week until May 25 2026: where did they come from (a marketplace, a reseller, phone or chat orders, someone entering them for you) and can that channel restart before Nov 16?" (1) Publish theme 189322330332 in Online Store > Themes (no slot needed to publish; undo: republish 189310075100; A-2026W44-018 lapses Nov 15). (2) Approve A-2026W46-006, the Nov 16 "Order by Dec 15" email (lapses Nov 15). (3) Reply with one daily ads budget for Nov 16 to 22 and approve A-2026W46-007 and 008. (4) One reply for the articles: the bundle item seo-technical adds today, or the ID list in queue.md item 5. Pass every answer to the coordinator in her words.
+- Why: the manual channel was 51 orders in 30 days last year; the 4 clicks put a site fix, the only Warm email and Black Friday ad traffic live before the 12-a-day goal.
+- Done when: question and list at the top of your output, each item marked answered, done, asked or declined.
 
 ## growth-director (Gabriel)
-- Task: Thu Nov 12: score this board against Nov 10 and Nov 11 orders and the queue, write the Nov 12 board.
-- Why: daily orders vs goal 5.
+- Task: Fri Nov 13: score this board against Nov 11 and Nov 12 orders and the queue, write the Nov 13 board.
+- Why: daily orders vs goal 5, then 12 from Nov 16.
 - Done when: board and daily file on main before the agents run.
 
 ## marketing-coordinator (Armando)
-- Task: CARRIED. (1) Write the Black Friday countdown in your folder: every sales item that must be live by Nov 16, Nov 22 and Nov 27, each with approval ID, expiry and the date after which it is worthless. Smaller version allowed: a table of ID, expires, worthless after. (2) At the top of "Needs your attention" add a "One-reply decisions" block: one line Eden can paste back that decides a whole group (all 10 checked articles; all 3 group sheets; the email pair A-2026W45-010 vs A-2026W46-005, approve only one). Archive what lapsed today (A-2026W44-025, 060, 034, 035, A-2026W45-024, A-2026W43-005) unless Eden acted.
-- Why: 30 items expire Nov 11 to 15, and single decisions are not happening; one-reply groups cut Eden's work to seconds.
-- Done when: countdown file written, the block at the top of the queue, `check.py` passes.
+- Task: (1) Shorten "Needs your attention" to one block for today (the Betty list above, same order) and move the dated blocks from Oct 29 to Nov 10 to the archive file; nothing else in the section. (2) If seo-technical adds the article bundle item today, copy it to the top of Time-sensitive and mark the single article items it covers "covered by <bundle ID>" in their Note. (3) Archive what lapsed today unless Eden acted (A-2026W44-055, 056, 048, 054). The Black Friday countdown is dropped after three boards.
+- Why: Eden opens a 1,082-line queue; one short block and one article decision instead of 11 make a decision more likely before Nov 16.
+- Done when: the section is one block, bundle placed (or "no bundle today"), lapsed items archived, `check.py` passes.
 
 ## growth-analyst (Nicolás)
-- Task: Two read-only cuts. (1) Search referred sessions by landing page, Oct 12 to Nov 8 2026 vs Oct 13 to Nov 9 2025, top 15 with carts and purchases: which pages lost the most search visits. (2) For the weeks of Apr 27 to Jun 15 2026: sessions, cart rate and Online Store orders by week, and orders by sales channel by week, so we can see whether May 18 hit only draft orders or the whole site. "Unknown" where ShopifyQL cannot split. Store Nov 10 as a full day.
-- Why: search lost the most purchasing sessions, and the May 18 drop is worth 10 to 15 orders a week if fixed.
-- Done when: both tables in your report and queries file, latest.json updated.
+- Task: (1) Store Nov 11 as a full day. (2) Read-only profile of the manual paid draft orders to help Eden recognise them: by week from Jan 2025 to Jun 2026, count, total, line item names and prices, tags, source name or app that created them, and the weekday and hour pattern. No customer fields. (3) Week Nov 9 to 15 pace line: orders so far vs 35.
+- Why: the manual channel is the largest single lost source (51 orders in 30 days last year); a profile with tags or app names lets Eden name it in one reply.
+- Done when: the profile table in your report and queries file, latest.json updated.
 
 ## ads-analyst (Daniel)
-- Task: Friday Nov 13. Split the search loss into paid and organic: Google Ads clicks, cost and conversions Oct 12 to Nov 8 vs last year (snapshot first; Adspirer only if `get_usage_status` shows included; else the exact error and a line in `marketing/data/requests.md`). Then one slim proposal (no budget named, ask Eden for one number) sending Google and Meta traffic to the gift collection or the editor for Nov 16 to 22.
-- Why: search sessions -56% and nobody knows if it is the ads or Google ranking; Black Friday money needs a landing that converts.
-- Done when: split table (or the error) and one proposal in the standard block.
+- Task: Friday weekly run tomorrow. Besides Billo and the raise rule: (1) Brand campaign impressions, impression share and lost share (budget, rank) Oct 12 to Nov 8 vs last year: did people search "memobrick" less, or did we show less? (2) If Adspirer can read Merchant Center or Shopping product status, the counts approved, limited, disapproved and top issues. (3) Read the live PMax text: is "Use Code EARLYHOLIDAY20" still there. Adspirer usage check first.
+- Why: home page search landings lost 1,075 sessions and free listings fell 90%; this says whether the fix is ads, brand demand or the feed.
+- Done when: a 3-row answer table in your numbers file, or the exact error per row.
 
 ## seo-strategist (Mariana)
-- Task: AI and search visibility check for 6 buying queries ("photo to lego mosaic", "custom lego portrait from photo", "personalized lego gift", "lego mosaic of my dog", "brick mosaic kit custom", "personalized christmas gift to build"): who shows up, whether Memobrick does, and which of our live or drafted pages should answer each. Write the 3 gaps that a published draft would close, by ID.
-- Why: search lost 1,184 sessions; knowing which queries we no longer win tells Eden which publish matters most.
-- Done when: query table and the 3 gaps in your folder.
+- Task: Daily backlog upkeep, then a brand search check: search "memobrick", "memo brick", "memobrick reviews" and "memobrick coupon" and write who shows first, whether our site, a reseller, a coupon site or a competitor ad takes the click, and whether any result sends people somewhere other than our home page. No new briefs unless the backlog is under 10.
+- Why: home page search visits fell by two thirds; if brand searches land on coupon or competitor pages, that is a fixable leak.
+- Done when: a 4-row table in your folder and the backlog count in your report.
 
 ## seo-blog-writer (Sandra)
-- Task: Wednesday writing day, but 12 checked drafts are unpublished, so a new article will not move sales this month. Write one only if the next brief by publish-by date is due before Nov 25; it must link the gift collection and the editor. Otherwise write "no new draft: 12 waiting" and stop. Publish any article Eden approved today, same run.
-- Why: published pages bring search visits; unpublished ones bring none.
-- Done when: draft marked ready for check, or the one-line note; any approved article live and logged.
+- Task: Write one draft only: backlog row 19 `custom-brick-portrait-from-photo` (the only buying query with no draft, Brick Me and Sean Kenney are cited, publish by Nov 19). It links the editor and the gift collection. Publish any article Eden approves today, same run.
+- Why: "custom lego portrait from photo" is a buying search we are absent from; every other gap already has a draft waiting.
+- Done when: draft marked ready for check and the brief marked taken; any approved article live and logged.
 
 ## seo-technical (Inesita)
-- Task: (1) If A-2026W44-025 (SearchPie off) lapses today unapplied, re-propose it as a fresh item with a later expiry and a 3-step Eden card (no other change). (2) Check any draft Sandra marks ready for check. (3) Apply any article publish Eden approves, with Sandra, and re-test the 404 table.
-- Why: two titles on every page hurts every search click, and the switch costs Eden two minutes.
-- Done when: fresh item (or "applied"), checks done, status table updated.
+- Task: (1) One bundle proposal: a single P- item, Executor seo-blog-writer, Expires 2026-11-25, listing every checked article draft still unpublished (including those lapsing Nov 12 to 14 and the memorial draft), each with its draft path, so one "approved" publishes all. (2) Read-only product feed check for free listings: for the 5 best-selling products, is the product published to the Google & YouTube sales channel, and does the live product page carry Product schema with price, availability, brand and image? List any gap.
+- Why: 11 checked articles bring zero visits while Eden faces 11 decisions; free Shopping listings fell from 347 to 36 sessions.
+- Done when: the bundle block in your report and the 5-row feed table in your folder.
 
 ## conversion-auditor (Wilson)
-- Task: Wednesday run, up to 3. (1) Walk the free-proof path on phone and desktop (homepage proof view and `/pages/free-preview`): does the Hulk form load, how long it takes, what the submit button does, where a request goes. Stop before submitting. (2) Read-only Shopify: `updatedAt` of the free-preview page and theme dates (created, updated, published) between May 4 and Jun 1 2026, to date any change near May 18. (3) CARRIED: the smaller version of the dog page change: one line for the first phone screen and where the editor button goes, in the standard block, or "blocked: <reason>".
-- Why: draft orders are the largest lost-order cause and dropped the week of May 18; the dog page had 145 visits and 3 carts.
-- Done when: walk notes with screenshots, the dates table, and one proposal or the blocked line.
+- Task: (1) Read-only: of the abandoned checkouts Nov 2 to 11 with shipping added, how many had a discount code applied and how many were at or over $125 (code amounts and totals only, no customer fields). (2) Correct your Nov 11 note: free US shipping over $125 exists as an automatic discount and does not combine with codes. (3) Check whether the cart tells phone visitors about the $125 threshold. If not, propose one cart line in the standard block, Executor site-developer (for example the free-shipping threshold and that codes and free shipping do not combine).
+- Why: only 5 of 24 phone checkouts completed; if shipping surprise is the cause, one line can win back several orders a week.
+- Done when: the counts, the corrected note and one proposal (or "cart already says it").
 
 ## site-developer (Jenny)
-- Task: Read-only: compare the free-proof form code (section, snippet, app embed or script tag) in the live theme 189310075100 with the oldest theme copy that still exists, and list any copy from before May 18 2026 with its dates. Write what differs. If a theme slot is free, build nothing new before A-2026W44-018 is live.
-- Why: if the proof form changed around May 18, putting it back could return 10 to 15 orders a week.
-- Done when: diff notes in your folder, or "no copy older than May 18".
+- Task: Write a one-screen Eden card for publishing 189322330332: the preview link, the 4 files it changes and what each does, a 60-second phone check (home, free proof, cart), and the undo. Re-check by checksum that live 189310075100 has not changed since the copy was made; if it has, say what to rebuild. Say plainly that publishing needs no free slot; list 3 copies safe to delete only for later builds.
+- Why: A-2026W44-018 and 019 have waited 10 days on one click and lapse Nov 15; a clear card makes that click two minutes.
+- Done when: the card in your folder and the checksum result in your report.
 
 ## outreach-gift-guide-pr (Mario)
-- Task: Tuesday Nov 17. Find 2 last-minute Christmas gift guides (newsletters or local sites that publish after Dec 1) with a visible pitch route and draft one pitch each pointing to the gift collection, Dec 15 order-by. If none, "dropped".
-- Why: late guides still send buyers before Dec 15.
-- Done when: up to 2 drafts or "dropped".
+- Task: Open the Gmail drafts for the four Oct 28 pitches (A-2026W44-033) and the two Nov 11 pitches. Make each ready to send in one click: recipient filled where the address is known, gift collection link with UTM, Dec 15 order-by line. Edit drafts only, send nothing. One line per draft: ready, or what is missing.
+- Why: drafted pitches earn nothing until sent; one-click drafts make the send likely before guides close.
+- Done when: a 6-line status list in your report.
 
 ## outreach-link-builder (Bertha)
-- Task: Write the 5-line "send now" card for Eden (the smaller version of yesterday's task): the 5 best of the 15 queued pitches (A-2026W44-054 lapses Nov 12, 064 Nov 13, 071 Nov 14), each one line: outlet, why, where to paste. Then the reply check. No new pitches.
-- Why: zero links earned; 15 pitches are written and none sent.
-- Done when: card on main, reply check logged.
+- Task: Reply and links check only. Mark in your card which pitches lapse today (A-2026W44-054) and which stay sendable. No new pitches until Eden sends some. Say in one line that this run will not move sales.
+- Why: 15 pitches wait; new ones add nothing.
+- Done when: links-earned.md logged and the card updated.
 
 ## outreach-creator-scout (María Beatriz)
-- Task: No task. Mac unavailable. Note in your status that A-2026W44-034 and 035 (Niki) lapse today unapplied.
-- Why: nothing moves without the Mac.
-- Done when: status says so.
+- Task: Thursday Mac run, only if the Mac job starts: read pending Collabs applications and sort them, no sends unless approved. If the Mac is off, no run.
+- Why: creators are a cheap pre-Christmas source, but nothing moves without the Mac.
+- Done when: sorted list in your folder, or no run.
 
 ## social-community-manager (Patricia)
-- Task: No new sheet. Write a 10-minute card for Eden from the already approved A-2026W44-048 (lapses Nov 12): the 5 best groups by size and fit, each with the text to paste and the group link. Record any results Eden reported.
-- Why: these posts are approved and unused; three newer sheets wait undecided.
-- Done when: card in your folder; results recorded or "none reported".
+- Task: Record any results Eden reported. No new sheet. If none, write one line: "groups paused until Eden posts from the Nov 11 card", and stop.
+- Why: two weeks of group sheets have no recorded post or order; more sheets will not move sales.
+- Done when: results recorded or the one line.
 
 ## social-planner (Hugo)
-- Task: CARRIED, smaller version. Thursday Nov 12: list the Nov 14 to 22 days with no approved post, and check every link in the W47 kit (A-2026W45-015): write per post whether it points to the gift collection or the editor, and propose a link swap where it does not. Else "blocked: <reason>".
-- Why: social carts halved (4.7% vs 8.7% cart rate); where posts land matters more than how many there are.
-- Done when: gap list and link table in your folder, or the blocked line.
+- Task: Thursday weekly run: plan W49 (Nov 30 to Dec 6): CYBERBRICK20 on Nov 30 only, then "order by Dec 15" every post, gift collection or editor links only, at most one carousel and one reel per day. Update followers and insights. Do not re-propose W46 to W48.
+- Why: Dec 1 to 15 is the 20-orders-a-day period; social must land on pages with real cart rates.
+- Done when: W49 week files and week.md proposed as one item, followers.md updated.
 
 ## social-publisher (Freddy)
-- Task: Approvals check and Buffer read only. If nothing is approved, one line in your log and stop: this run will not move sales until a social week is approved (A-2026W44-059 lapses Nov 14).
-- Why: no approved post exists to publish.
-- Done when: one log line.
+- Task: Read the 4 failed Buffer posts (S-20261026-1-fb, S-20261028-1-fb, S-20261030-1-fb, S-20261101-1-ig) and write the cause of each in one line, plus a kit rule that avoids it (video format, size, length). Read only. If a week is approved, schedule it first.
+- Why: once a week is approved, posts must not fail the way the last four did.
+- Done when: the cause list and the rule in your log.
 
 ## email-campaign-writer (Marcela)
-- Task: Tuesday Nov 17. Check whether A-2026W44-061 (Nov 19 VIP edit, lapses Nov 18) and the A-2026W45-010 vs A-2026W46-005 pair were decided and say so in one line. Then read Omnisend: if Nov 16 to 18 has no send to Warm, propose one short "order by Dec 15, gift collection" email for Wed Nov 18 (no new code; EARLYHOLIDAY20 only as in the calendar).
-- Why: nothing was sent Nov 4 to 18; real deadlines were last year's best emails.
-- Done when: the decision line and one proposal (or "Nov 16 to 18 already covered").
+- Task: Read only: confirm in Omnisend that nothing is scheduled to Warm Nov 12 to 19 and the Warm segment size; confirm in Shopify that EARLYHOLIDAY20 is active to Nov 22. Write a one-line note for Betty: "Approve A-2026W46-006 by Sat Nov 14 18:00 so it can be built for Mon Nov 16." If it is approved, build and schedule it the same run.
+- Why: the Nov 16 email is the only Warm send possible before Nov 20.
+- Done when: the checks and the note in your report; scheduled if approved.
 
 ## email-flow-optimizer (Aura María)
-- Task: Tuesday Nov 17. Write the spec for an "opened the editor, no cart" flow: the site event it needs (from the editor's "memobrick:photo" browser event to Omnisend), one email, delay, exit rules. Propose it with site-developer as executor for the event and you for the flow.
-- Why: editor visitors are the highest-intent group and get no email today.
-- Done when: spec file and one proposal in the standard block.
+- Task: Cut Eden's flow decision from three to one: rank A-2026W45-017, A-2026W44-062 and A-2026W45-012 by expected orders before Dec 15 in one short table and say which one to approve and which two to reject. A-2026W44-062 lapses Nov 13. No new proposal.
+- Why: three open flow tests and no decision means none runs through Black Friday.
+- Done when: the table and the one-line recommendation in your report.
