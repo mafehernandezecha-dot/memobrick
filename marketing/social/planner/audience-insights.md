@@ -122,3 +122,27 @@ Sources: Buffer (Instagram @memobrick, `list_posts` with metrics, 2026-10-29), t
 ## Update 2026-11-05
 
 No new evidence: `marketing/data/` still has no Meta, TikTok, Pinterest or GA4 snapshot, and W45 to W47 are not approved or posted, so there are no new organic results. Findings above stand. W48 plan follows them (pets, family photo, couples, gifts for him; real hands in the first 2 seconds; saveable carousels) and adds three tests: a stud-by-stud "watch it fill" reel, a Thanksgiving how-to carousel and a 09:00 deal-day post time (EXP-SP-20261124-01, EXP-SP-20261125-01, EXP-SP-20261127-01).
+
+## Update 2026-11-12 (W49 plan)
+
+Sources: Buffer `list_posts` with metrics (Oct 21 to Nov 1, pulled 2026-11-12), Shopify read-only (orders by product and by referrer). Still no Meta, TikTok, Pinterest or GA4 snapshot; nothing has been posted since Nov 1 (W45 to W48 wait for approval), so the evidence below is the Oct 28 to Nov 1 posts and Shopify.
+
+**New evidence**
+- Build time reel (TikTok, Oct 28, "How long does a 20×20 take? About 4 hours"): average watch 5.98 s, the best of any video (others 2.5 to 4.5 s). A real question answered with a real number, over real hands building, holds people.
+- Guess the photo Friday (Oct 30): Instagram reach 166 and 4.45 s average watch (second best), TikTok 4.0 s; 0 comments. The format holds attention but does not get people to type.
+- Size guide carousel (Oct 29): Instagram 1 save and 1 comment on 85 reach; Facebook gave the first link click (1 on 30 reach).
+- "Order by December 15" carousel (Nov 1): the first Facebook share (1 on 59 reach).
+- Facebook reels: 3 of 4 failed in Buffer since Oct 26; only carousels reliably reach Facebook so far.
+- Shopify, last 90 days to Nov 12: 20×20 kit 50 orders ($5,314), 16×16 41, 20×30 16, 30×20 13, 10×10 13, 30×30 7; frames 31. The 20×20 has passed the 16×16 as the most ordered size, so W49 uses 20×20 in the reels and cards. Last 30 days by referrer: Facebook 8 orders ($1,071), Instagram 3 ($353), Google 29.
+
+**Top 3 themes (unchanged, evidence above and earlier):** family photo as the gift; pets (dogs first); couples and "for him".
+
+**Top 3 formats (updated):** 1. reels that open on real hands and answer a question with a number (5.98 s and 4.1 s, the two best watch times); 2. reveal reels (guess the photo: 4.45 s, the saves); 3. useful carousels (kit 8.74% engagement, size guide save and click, deadline share).
+
+**Hooks that worked:** "How long does a 20×20 take?", "What actually comes in a Memobrick kit?", "Guess the photo Friday". **Did not:** open questions that ask for a comment with no easy answer (0 comments on guess the photo).
+
+**Best days and times:** no new evidence; evening 19:00 for weekday reels and carousels, 11:00 at weekends. The deal days (Nov 27, Nov 30) test 09:00.
+
+**Stop doing (added):** asking for an open comment on a reveal reel. W49 gives three choices instead (EXP-SP-20261204-01).
+
+**Plan rule for W49:** about 70% proven (Mon couple reel with the code, Wed pet series, Thu kit carousel, Sat family "for mom", Sun deadline card) and about 30% tests (Tue gift guide landing on the gift collection, EXP-SP-20261201-01; Fri multiple-choice guess the photo, EXP-SP-20261204-01). Links only to the gift collection or the editor (task board rule).

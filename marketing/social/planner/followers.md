@@ -72,3 +72,7 @@ Not yet posted: S-20261027-1 is a Buffer draft on hold (moved to Nov 9); Oct 28 
 | 2026-11-05 | Facebook | missing | missing | missing (no snapshot) |
 | 2026-11-05 | TikTok | missing | missing | missing (no snapshot) |
 | 2026-11-05 | Pinterest | missing | missing | missing (no snapshot) |
+| 2026-11-12 | Instagram | missing (no snapshot; Buffer has no follower count; request in `marketing/data/requests.md`) | missing | No post since Nov 1. Of the Oct 28 to Nov 1 posts: the size guide carousel S-20261029 (1 save, 1 comment) and Guess the photo Friday Oct 30 (reach 166, 4.45 s watch); 0 follows on every post that reports it |
+| 2026-11-12 | Facebook | missing | missing | "Order by December 15" carousel Nov 1 (reach 59, 1 share, the first Facebook share); size guide Oct 29 (1 link click). 3 of 4 Facebook reels failed in Buffer |
+| 2026-11-12 | TikTok | missing | missing | Build time reel Oct 28 (115 reach, 4 likes, average watch 5.98 s, the best of any video); no saves or follows reported |
+| 2026-11-12 | Pinterest | missing | missing | missing (pins are kits for the Mac; nothing posted; no snapshot) |
