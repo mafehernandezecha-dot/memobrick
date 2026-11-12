@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: custom lego style portrait from photo
 Hub: Buyer questions (editor intent) / Family
 Page type: article
