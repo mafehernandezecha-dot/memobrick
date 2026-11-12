@@ -1,0 +1,72 @@
+{
+ "phone": {
+  "home": {
+   "theme": 189322330332,
+   "sw": 390,
+   "iw": 390,
+   "brick": null
+  },
+  "freeProof": {
+   "theme": 189322330332,
+   "sw": 390,
+   "iw": 390,
+   "brick": null,
+   "fallbackShown": true
+  },
+  "product": {
+   "theme": 189322330332,
+   "sw": 390,
+   "iw": 390,
+   "brick": null
+  },
+  "add": 200,
+  "cart": {
+   "theme": 189322330332,
+   "sw": 390,
+   "iw": 390,
+   "brick": null,
+   "text": "1 MEMOBRICK Your cart Custom Photo Brick Mosaic 10x10 in, One Face - Personalized Mini DIY Photo Gift Kit Default Title This kit has no photo yet. Add your photo so we can make your design, then remove this line. $35.00 Remove Total $35.00 Update Checkout Taxes are calculated at checkout. ← Back to MemoBrick How it works Get My Free Proof Reviews Blog Business services Ready-made designs Frames Track your order Sizes Gift kit FAQs Corporate & bulk Contact"
+  },
+  "errors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D978Q9JC77U49KGPM850&lib=ttq' ",
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js"
+  ]
+ },
+ "desktop": {
+  "home": {
+   "theme": 189322330332,
+   "sw": 1440,
+   "iw": 1440,
+   "brick": null
+  },
+  "freeProof": {
+   "theme": 189322330332,
+   "sw": 1440,
+   "iw": 1440,
+   "brick": null,
+   "fallbackShown": true
+  },
+  "product": {
+   "theme": 189322330332,
+   "sw": 1440,
+   "iw": 1440,
+   "brick": null
+  },
+  "add": 429,
+  "cart": {
+   "sw": 1440,
+   "iw": 1440,
+   "brick": null,
+   "text": "Your connection needs to be verified before you can proceed Incompatible browser extension or network configuration Your browser extensions or network settings have blocked the security verification process required by mymemobrick.com. To resolve this, try the following steps: Temporarily disable browser extensions: Go to your browser settings. Locate your browser extensions and temporarily disable them. Once browser extensions are disabled, refresh this page. Check your network settings: Verify if your internet or firewall settings have blocked your device from reaching “challenges.cloudflare.com”. You may need to consult your operating system's help documentation or your network administra"
+  },
+  "errors": [
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to execute 'importScripts' on 'WorkerGlobalScope': The script at 'https://analytics.tiktok.com/i18n/pixel/shopify.js?sdkid=D978Q9JC77U49KGPM850&lib=ttq' ",
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js",
+   "Failed to fetch dynamically imported module: https://cdn.shopify.com/shopifycloud/shop-js/modules/v2/loader.init-shop-cart-sync.en.esm.js"
+  ]
+ }
+}
