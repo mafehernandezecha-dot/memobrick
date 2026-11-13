@@ -72,3 +72,6 @@ MAIN still "Memobrick fixes" 189310075100 (updatedAt 2026-10-28T08:37:41Z). No l
 - 2026-11-02 12:59 to 13:14 UTC: layout/theme.liquid (733c51e6... -> f32a7472...; Google Fonts trimmed, loads new assets/memobrick-type.css d0a02db0..., phone text min 14 px).
 - 2026-11-03 19:40 UTC: missing-brick wording "for as long as you own the kit" -> "within 14 days of delivery" in assets/memobrick.js (0b2713d1... -> 6c93a8d4...), sections/memobrick-site.liquid (my c67bbe7a... -> fb445597...), templates/product.liquid (ace1fe68... -> dad6ea4f...), templates/page.faqs.liquid (22866b45... -> 6e69cf20...).
 Publish card for Eden: publish-card-189322330332.md. Theme count 20 of 20.
+
+## Check 2026-11-13
+MAIN still "Memobrick fixes" 189310075100 (updatedAt 2026-10-28T08:37:41Z); its 018/019 target files still equal the repo "before" files (memobrick-site f3cd4967..., free-proof-page 79ad60f5..., cart.liquid 13f6c57b...). "Memobrick proof and cart fixes" 189322330332 unchanged since 2026-11-03T19:40:04Z. Theme count 20 of 20. Rebuild plan (if the outside edits are not Eden's): fixes/rebuild-018-019-plan.md. No copy created.
