@@ -33,3 +33,6 @@ None (the three items from Nov 11 are still pending in the queue).
 
 ## Next run
 Tuesday Nov 17: weekly research with the task board's late guides that publish after Dec 1, then act on whatever of A-2026W46-013 to -015 is approved, then log sends and replies from Gmail.
+
+## Correction (2026-11-13)
+The gift collection handle is `/collections/the-gift-for-everyone`, not `/collections/gifts` (checked in Shopify on Nov 13). The correct UTM links are in `marketing/outreach/gift-guide-pr/to-send/2026-11-13-send-as-is-card.md`.
