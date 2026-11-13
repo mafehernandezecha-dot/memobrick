@@ -2,38 +2,25 @@
 
 Written by the marketing-coordinator only. To decide, edit each `Status:` line to `approved`, `rejected`, or `changes: <your note>`.
 
-Updated 2026-11-12. Added A-2026W46-016 (one approval publishes 13 articles), 017 (cart free-shipping and code line) and 018 (W49 social week). Archived 11: A-2026W44-060, 025, 034, 035, A-2026W45-024 (expired Nov 11), A-2026W44-055, 056, 048, 054, 057 (lapse Nov 12), A-2026W41-012 (already live). Earlier Needs-your-attention blocks (Oct 29 to Nov 11) moved to `archive/2026-W46.md`. Earlier runs are summarized in `marketing/reports/<date>-marketing-coordinator.md`.
+Updated 2026-11-13. Added A-2026W46-019 (Abandoned Checkout email 1 honesty fix, re-proposal of A-2026W44-062) and 020 (Google Brand budget +$15 from Nov 16). Archived 3 that lapse today undecided: A-2026W44-062, 064, A-2026W46-002. Commit lines updated (same items, pending) for A-2026W46-016, 001, 003, 010 and A-2026W45-015 after today's draft fixes. Thursday's Needs-your-attention block moved to `archive/2026-W46.md`. Earlier runs are summarized in `marketing/reports/<date>-marketing-coordinator.md`.
 
 ## Needs your attention
 
 No Status line needs a fix.
 
-**Your Thursday, Nov 12: one question and 4 clicks, by expected orders.**
+**Your Friday, Nov 13: one question and 4 clicks, by expected orders.**
 
-- (Q) The manual draft orders "memobrick 16x16" at $82.10, marked paid, 8 to 14 a week until May 25 2026: where did they come from (a marketplace, a reseller, phone or chat orders, someone entering them for you) and can that channel restart before Nov 16? Last year it was 51 orders in 30 days.
-1. Publish theme 189322330332 in Online Store > Themes (no free slot needed to publish; undo: republish 189310075100). It ships approved A-2026W44-018 (lapses Nov 15) and 019. First answer site-developer's one question on A-2026W44-018: were the Nov 2 and Nov 3 edits in that copy yours?
-2. Approve A-2026W46-006, the Mon Nov 16 "Order by Dec 15" email (needed by Sat Nov 14 18:00; lapses Nov 15). It is the only Warm email before Nov 20.
-3. Reply with one daily ads budget for Nov 16 to 22, and approve A-2026W46-007 and A-2026W46-008 (both lapse Nov 16).
-4. Articles: approve A-2026W46-016, the bundle that publishes all 13 checked articles with one reply. Then the 10 single article items marked "covered by A-2026W46-016" need no decision.
+- (Q) "Your Etsy orders used to be typed into Shopify by hand (shipping line 'etsy'). The last one was May 25. Is the Etsy shop still open and selling, and are its orders now handled outside Shopify? If it is closed or paused, can it sell again before Dec 1? Last year it brought about 165 orders from Dec 1 to 14." (seo-strategist adds: the store Gmail holds an Etsy email of a permanent suspension on May 18, appeals denied May 22 and Jul 30. If that still stands, say so, and whether anything changed after Jul 30.)
+1. A-2026W44-018: were the Nov 2 (phone text size) and Nov 3 ("within 14 days of delivery") edits in theme copy 189322330332 yours or your developer's? If yes, publish 189322330332 in Online Store > Themes (undo: republish 189310075100); it ships approved A-2026W44-018 (lapses Nov 15) and 019. If no, delete "Memobrick kit page fix" 188955361500 and reply; site-developer rebuilds both in about 25 minutes.
+2. Approve A-2026W46-006, the Mon Nov 16 "Order by Dec 15" email, by Sat Nov 14 18:00 (lapses Nov 15). It is the only Warm email before Nov 20.
+3. Reply with one daily ads budget for Nov 16 to 22, and decide A-2026W46-007 and A-2026W46-008 (both lapse Nov 16; for 008 ads-analyst now suggests `changes: skip Part A`). New beside them: A-2026W46-020, Brand +$15 a day.
+4. Articles: approve A-2026W46-016, the bundle that publishes all 13 checked articles. 8 of them still state build times; add them to the Facts table or answer `changes: strip build times`.
 
-Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bundle), 048 (group posts), 054 (pet pitches), 057 (hub description). Next to lapse: A-2026W44-062, 064, A-2026W46-002 (Nov 13); A-2026W44-059 (W46 social), 071 (Nov 14).
+Lapsed today with no decision, archived: A-2026W44-062 (re-proposed as A-2026W46-019), 064, A-2026W46-002. Next to lapse, Nov 14: A-2026W44-059 (W46 social; the planner asks you to reject it and approve W47, A-2026W45-015), 071, 069, and the single article items already in the bundle.
 
 ## Time-sensitive
 
 (Items expiring within 7 days, highest expected sales impact first.)
-
-## A-2026W46-016
-- Agent: seo-technical
-- Executor: seo-blog-writer
-- Type: publish
-- Draft: marketing/seo/technical/publish-bundle-2026-11-12.md
-- Commit: 1e75c1d
-- Reason: One "approved" publishes all 13 checked articles live on the Shopify blog, in the bundle file's order. That covers A-2026W44-055, 056, 068, 070, A-2026W45-006, 013, 016, 021, 023, A-2026W46-001, 003, 010, plus the new portrait article. They use the default article template, so they look different from the GemPages articles; Eden can rebuild any of them in GemPages afterward. Every week of delay is a week less for Google to index them before the Dec 15 order-by date.
-- Expires: 2026-11-25
-- Status: pending
-- From: P-seo-technical-20261112-1
-- Flag: Publishes the same articles as the 10 open single items marked "covered by A-2026W46-016" (055 and 056 lapsed today and were archived). Approve this one and leave or reject the singles, not both. The flags of the singles carry over: the baby article names BRICKFRIDAY25 and CYBERBRICK20 ("scheduled", not "active"); the dad, memorial and new portrait articles give build times while the Facts row "Faces per size and build time" is unknown. EARLYHOLIDAY20 lines are dropped if publishing after Nov 22 (bundle file says so).
-- Note: Placed at the top of Time-sensitive on the task board's request although it expires Nov 25: it replaces 11 article decisions with one. The new portrait article's title uses "LEGO-Style", a third-party brand name; say `changes: row 3` if you want it reworded.
 
 ## A-2026W44-018
 - Agent: conversion-auditor
@@ -61,6 +48,18 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Note: Not a conflict: Warm would get Nov 12 (A-2026W44-060, if approved today), Nov 16 (this) and your own Nov 20 "EARLYHOLIDAY20 Ends Sunday" campaign, four days apart. EARLYHOLIDAY20 (active to Nov 22) and Dec 15 match offers-calendar.
 - Note (2026-11-12): the writer needs your approval by Sat Nov 14 18:00 to build it for Mon Nov 16.
 
+## A-2026W46-019
+- Agent: email-flow-optimizer
+- Executor: email-flow-optimizer
+- Type: send
+- Draft: marketing/email/flow-optimizer/test-checkout-first-email-clean-base-draft.md
+- Commit: 3d79a39
+- Reason: Honesty fix plus test (re-proposal of lapsed A-2026W44-062, same draft): I switch off Abandoned Checkout (68ecddff00915ec475c65e01) for about 30 seconds, replace email 1 (block 59841a953e40551380000002) with this designed version that removes the five claims the live email still makes today (740+ reviews, Fox News/NBC/Yahoo, ships in 2-4 days, free replacements for life, Erica H. quote), keep the saved-design block and checkout link, and re-enable; emails 2 and 3 untouched. Before Black Friday so every lost phone checkout gets a truthful email. Test plan: test-checkout-first-email-clean-base.md (EFO-20261027-01).
+- Expires: 2026-11-30
+- Status: pending
+- From: P-email-flow-optimizer-20261113-1
+- Note: Placed below A-2026W46-006 on the task board's request although it expires Nov 30. Same draft and commit as A-2026W44-062 (archived today, lapsed undecided), so this is the only open item on that draft. Abandoned checkout is a marketing flow, not the order workflow. The optimizer recommends this test first and rejecting A-2026W45-012 and A-2026W45-017.
+
 ## A-2026W46-007
 - Agent: ads-analyst
 - Executor: ads-analyst
@@ -83,6 +82,33 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Expires: 2026-11-16
 - Status: pending
 - From: P-ads-analyst-20261111-2
+- Note (2026-11-13): ads-analyst now suggests `changes: skip Part A`: Proven Winners brought 3 orders on $110 in Nov 6 to 12 (ROAS 3.25), so only the two zero-order Holiday Gifts ad groups would pause. A-2026W46-020 (Brand +$15) does not depend on Part A.
+
+## A-2026W46-020
+- Agent: ads-analyst
+- Executor: ads-analyst
+- Type: ad-change
+- Draft: marketing/analytics/ads-analyst/changes/google-brand-budget-plus15-2026-11-16.md
+- Commit: 63a1bb0
+- Reason: If approved, Daniel has the Mac raise the Google brand campaign (17949461961) from $45 to $60 a day by Chrome task (above the $25 Search cap, so Eden's OK is needed). It lost 55.5% of impressions to budget at 9.2% conversion and $3.44 a click, so $15 should buy about 4.4 clicks and 0.4 orders a day. Caveat: it spent only $16 a day of $45 in Nov 6 to 12, so part of the $15 may go unspent.
+- Expires: 2026-11-16
+- Status: pending
+- From: P-ads-analyst-20261113-1
+- Note: The task board asked for a net-zero shift funded by Part A of A-2026W46-008. If you approve 008 with `changes: skip Part A` (as ads-analyst now suggests), total ads spend rises about $15 a day to $193, inside the $250 cap. The Chrome task is drafted; ads-analyst flips it to ready on his next run after approval, or you can paste it yourself the same day. Someone raised Brand from $35 to $45 and cut Holiday Gifts to $5 outside any item; ads-analyst asks who.
+
+## A-2026W46-016
+- Agent: seo-technical
+- Executor: seo-blog-writer
+- Type: publish
+- Draft: marketing/seo/technical/publish-bundle-2026-11-12.md
+- Commit: 2d65b54
+- Reason: One "approved" publishes all 13 checked articles live on the Shopify blog, in the bundle file's order. That covers A-2026W44-055, 056, 068, 070, A-2026W45-006, 013, 016, 021, 023, A-2026W46-001, 003, 010, plus the new portrait article. They use the default article template, so they look different from the GemPages articles; Eden can rebuild any of them in GemPages afterward. Every week of delay is a week less for Google to index them before the Dec 15 order-by date.
+- Expires: 2026-11-25
+- Status: pending
+- From: P-seo-technical-20261112-1
+- Flag: Publishes the same articles as the 10 open single items marked "covered by A-2026W46-016"; approve this one and leave or reject the singles, not both. Updated 2026-11-13: the dad, memorial, portrait and baby drafts no longer give build times, the baby article now marks BRICKFRIDAY25 and CYBERBRICK20 "scheduled", and the portrait title is now "Custom Brick Portrait From Your Photo". Still open: 8 other drafts in the bundle (mosaic maker, stocking stuffers, Black Friday, dog lovers, girlfriend, husband, mom, boyfriend) still state build times while the Facts row "Faces per size and build time" is unknown. Either add build times to the Facts table, or answer `changes: strip build times` and the writer removes them in one pass (seo-blog-writer). EARLYHOLIDAY20 lines are dropped if publishing after Nov 22.
+- Note: Placed at the top of Time-sensitive on the task board's request although it expires Nov 25: it replaces 11 article decisions with one. The new portrait article's title uses "LEGO-Style", a third-party brand name; say `changes: row 3` if you want it reworded.
+- Note (2026-11-13): seo-technical re-checked the 4 edited drafts and updated their hashes in the bundle file (rows 3, 11, 12, 13); same item, Commit updated to 2d65b54. Approving it approves this version. Optional wording only: the dad draft names the two codes without "scheduled" (dates correct); the portrait FAQ keeps "LEGO-style" inside the trademark disclaimer.
 
 ## A-2026W44-059
 - Agent: social-planner
@@ -95,18 +121,7 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Status: pending
 - From: P-social-planner-20261029-2
 - Flag: S-20261027-1 (free-proof carousel, Mon Nov 9 19:00) is also listed in approved A-2026W42-037 with the same file and date. The planner says the publisher schedules it once; if you would rather not rely on that, send it back with `changes: S-20261027-1 already in A-2026W42-037`.
-
-## A-2026W44-062
-- Agent: email-flow-optimizer
-- Executor: email-flow-optimizer
-- Type: send
-- Draft: marketing/email/flow-optimizer/test-checkout-first-email-clean-base-draft.md
-- Commit: 3d79a39
-- Reason: If approved, I switch off Abandoned Checkout (68ecddff00915ec475c65e01) for about 30 seconds, replace email 1 (block 59841a953e40551380000002) with this designed version that drops five claims we cannot back up (740+ reviews, Fox News/NBC/Yahoo, 2-4 days, lifetime replacements, named quote), keep the saved-design block and checkout link, and re-enable; emails 2 and 3 untouched. Test plan: `test-checkout-first-email-clean-base.md` (EFO-20261027-01).
-- Expires: 2026-11-13
-- Status: pending
-- From: P-email-flow-optimizer-20261030-1
-- Note (2026-11-12): email-flow-optimizer recommends approving this one today (lapses Nov 13) and rejecting A-2026W45-012 and A-2026W45-017; if approved it is carried out on the Nov 13 run.
+- Note (2026-11-13): the planner asks to withdraw this item (W46 is almost over). Reject it, or leave it to lapse on Nov 14; approve A-2026W45-015 (W47) instead.
 
 ## A-2026W44-061
 - Agent: email-campaign-writer
@@ -118,6 +133,7 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Expires: 2026-11-18
 - Status: pending
 - From: P-email-campaign-writer-20261030-2
+- Note (2026-11-13): the draft gives the send as 12:00 ET; the live campaign is 11:00 ET (16:00 UTC). The writer keeps the live 11:00 ET time if approved (draft left unedited so the item stays approvable).
 
 ## A-2026W44-050
 - Agent: growth-director
@@ -153,17 +169,6 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Status: pending
 - From: P-conversion-auditor-20261031-1
 
-## A-2026W44-064
-- Agent: outreach-link-builder
-- Executor: outreach-link-builder
-- Type: send
-- Draft: marketing/outreach/link-builder/pitches/2026-10-30-batch.md
-- Commit: ae16058
-- Reason: Five Christmas pitches (InsideHook Miami, What the Redhead Said, Time Out Miami, One Mama's Daily Drama, Chris Loves Julia); if approved I make a Gmail draft or paste sheet for each and Eden sends. Only InsideHook has a confirmed address.
-- Expires: 2026-11-13
-- Status: pending
-- From: P-outreach-link-builder-20261030-1
-
 ## A-2026W44-071
 - Agent: outreach-link-builder
 - Executor: outreach-link-builder
@@ -175,18 +180,6 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Status: pending
 - From: P-outreach-link-builder-20261101-1
 - Note: Executor kept as outreach-link-builder, as in A-2026W44-054 and 064 (its own pitches). Editorial mention only, no paid placement.
-
-## A-2026W46-002
-- Agent: social-community-manager
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/community/2026-11-09-wed-fri-sheet.md
-- Commit: 9612aac
-- Reason: If approved, Eden may use the 2 replies and 1 pet post by hand in Facebook groups on Nov 11 to 13; nothing is posted automatically.
-- Expires: 2026-11-13
-- Status: pending
-- From: P-social-community-manager-20261109-1
-- Flag: Facebook group rules and Eden's memberships are unknown (community manager cannot open Facebook); no prices, codes or dates in the sheet.
 
 ## A-2026W46-004
 - Agent: social-community-manager
@@ -316,39 +309,42 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Executor: seo-blog-writer
 - Type: publish
 - Draft: marketing/seo/writer/drafts/babys-first-christmas-gift.md
-- Commit: 90922ba
+- Commit: 2d65b54
 - Reason: Will publish "Baby's First Christmas Gift: A Photo Keepsake to Build" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages afterward). Targets high-intent baby gift searches with a $35 entry kit; publish by Nov 19 to be indexed before the Dec 15 cut-off.
 - Expires: 2026-11-16
 - Status: pending
 - From: P-seo-technical-20261109-1
-- Flag: the draft names BRICKFRIDAY25 and CYBERBRICK20, which are scheduled (owner chat 2026-10-26) not yet active in offers-calendar.md, and EARLYHOLIDAY20, which ends Nov 22; the writer must drop the EARLYHOLIDAY20 line if publishing after Nov 22.
+- Flag (resolved 2026-11-13): was: the draft names BRICKFRIDAY25 and CYBERBRICK20, which are scheduled (owner chat 2026-10-26) not yet active in offers-calendar.md, and EARLYHOLIDAY20, which ends Nov 22; the writer must drop the EARLYHOLIDAY20 line if publishing after Nov 22.
 - Note (2026-11-12): covered by A-2026W46-016 (article bundle, row 11). Approve the bundle or this item, not both.
+- Note (2026-11-13): the writer edited this draft today (build times removed; baby codes marked "scheduled"), seo-technical re-checked it; Commit updated to 2d65b54, so approving it approves the new version. Still covered by A-2026W46-016.
 
 ## A-2026W46-003
 - Agent: seo-technical
 - Executor: seo-blog-writer
 - Type: publish
 - Draft: marketing/seo/writer/drafts/christmas-gift-for-dad-from-kids.md
-- Commit: d55a2c6
+- Commit: 2d65b54
 - Reason: Will publish "A Christmas Gift for Dad From the Kids, Built From a Photo" live on the Shopify blog, default article template (looks different from the GemPages articles; Eden can rebuild it in GemPages afterward). Targets dad gift searches with kits from $69.88; publish by Nov 19 to be indexed before the Dec 15 cut-off.
 - Expires: 2026-11-17
 - Status: pending
 - From: P-seo-technical-20261110-1
-- Flag: Build times and people counts in the size table rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown. Dec 15 and prices match the Facts table and Shopify; no codes used.
+- Flag (resolved 2026-11-13): was: Build times and people counts in the size table rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown. Dec 15 and prices match the Facts table and Shopify; no codes used.
 - Note (2026-11-12): covered by A-2026W46-016 (article bundle, row 12). Approve the bundle or this item, not both.
+- Note (2026-11-13): the writer edited this draft today (build times removed; baby codes marked "scheduled"), seo-technical re-checked it; Commit updated to 2d65b54, so approving it approves the new version. Still covered by A-2026W46-016.
 
 ## A-2026W46-010
 - Agent: seo-technical
 - Executor: seo-blog-writer
 - Type: publish
 - Draft: marketing/seo/writer/drafts/christmas-gift-in-memory-of-a-loved-one.md
-- Commit: 4d4e440
+- Commit: 2d65b54
 - Reason: Will publish "A Christmas Gift in Memory of a Loved One" live on the Shopify blog. It uses the default article template, so it looks different from the GemPages articles; Eden can rebuild it in GemPages afterward. It targets memorial gift searches and points to the editor, the free proof and the Art Gift Kit. Publish by Nov 18 so Google indexes it before the Dec 15 cut-off.
 - Expires: 2026-11-18
 - Status: pending
 - From: P-seo-technical-20261111-1
-- Flag: The size table gives build times ("about 2.5 hours" to "about 12 hours") and people counts that rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown (same as A-2026W46-003). Dec 15 and prices match the Facts table and Shopify; no codes.
+- Flag (resolved 2026-11-13): was: The size table gives build times ("about 2.5 hours" to "about 12 hours") and people counts that rest on the Shopify listings; the Facts row "Faces per size and build time" is still unknown (same as A-2026W46-003). Dec 15 and prices match the Facts table and Shopify; no codes.
 - Note (2026-11-12): covered by A-2026W46-016 (article bundle, row 13). Approve the bundle or this item, not both.
+- Note (2026-11-13): the writer edited this draft today (build times removed; baby codes marked "scheduled"), seo-technical re-checked it; Commit updated to 2d65b54, so approving it approves the new version. Still covered by A-2026W46-016.
 
 ## Open
 
@@ -365,6 +361,19 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Status: approved
 - From: P-conversion-auditor-20261026-2
 - Note: Cart display only; it changes no order email, checkout step or fulfillment. Reported Oct 26 but missed by earlier runs; first queued Oct 28.
+
+## A-2026W45-015
+- Agent: social-planner
+- Executor: social-publisher
+- Type: publish
+- Draft: marketing/social/planner/2026-W47/week.md
+- Commit: 63b404a
+- Reason: Approving this item approves every listed W47 post (Nov 16 to 22) on every channel its post file lists (YouTube Shorts too, for the 3 reels); the publisher prepares the kits for the Mac to post at each time. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Posted before the code EARLYHOLIDAY20 ends on Nov 22.
+- Expires: 2026-11-21
+- Status: pending
+- From: P-social-planner-20261103-1
+- Note (2026-11-11): the planner changed week.md and re-proposed it as P-social-planner-20261111-1 (same draft file, so no new item; Commit updated to the new version). Links now go to the gift collection or the editor instead of articles and the dog page. Approving this item approves the new version.
+- Note (2026-11-13): the planner gave the 3 W47 reels (S-20261117-1, S-20261119-1, S-20261120-1) original music at 48 kHz (they had no audio) and updated their hashes in week.md; same item, Commit updated to 63b404a. All 7 posts link only to the gift collection or the editor, and EARLYHOLIDAY20 stops at Nov 22. The planner asks you to approve this one first: it is the first week of the 12-a-day goal.
 
 ## A-2026W46-009
 - Agent: seo-technical
@@ -389,18 +398,6 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 - Status: pending
 - From: P-conversion-auditor-20261112-1
 - Note: Cart display only, not order workflow. The wording matches the Facts row "Discount codes and free shipping" (owner, 2026-10-20). site-developer: it is built only after you answer the 189322330332 question on A-2026W44-018, and from a fresh copy of the live theme. Aims at phone checkout (5 of 24 completed last week).
-
-## A-2026W45-015
-- Agent: social-planner
-- Executor: social-publisher
-- Type: publish
-- Draft: marketing/social/planner/2026-W47/week.md
-- Commit: a381dda
-- Reason: Approving this item approves every listed W47 post (Nov 16 to 22) on every channel its post file lists (YouTube Shorts too, for the 3 reels); the publisher prepares the kits for the Mac to post at each time. Single posts can be sent back with `changes: <post-id> <note>` (posts not named stay approved). Posted before the code EARLYHOLIDAY20 ends on Nov 22.
-- Expires: 2026-11-21
-- Status: pending
-- From: P-social-planner-20261103-1
-- Note (2026-11-11): the planner changed week.md and re-proposed it as P-social-planner-20261111-1 (same draft file, so no new item; Commit updated to the new version). Links now go to the gift collection or the editor instead of articles and the dog page. Approving this item approves the new version.
 
 ## A-2026W45-019
 - Agent: social-planner
@@ -608,6 +605,14 @@ Lapsed today with no decision, archived: A-2026W44-055, 056 (both now in the bun
 
 ## Flagged
 
+Run 24 (2026-11-13). No flags, so no overlaps file today.
+
+- A-2026W46-019 copied, no flag: re-proposal of A-2026W44-062 on the same draft; 062 lapses today and was archived first, so no open item shares the draft. Abandoned Checkout is a marketing flow, not the order workflow; no offer or code; Executor email-flow-optimizer correct.
+- A-2026W46-020 copied, no flag: budget change only, no offer, code, date or contact; Executor ads-analyst correct. It goes above the $25 per-campaign Search cap, which the item asks you to OK, and its net-zero funding depends on Part A of A-2026W46-008 (see its Note).
+- Same items, Commit updated: A-2026W46-016 (bundle hashes for rows 3, 11, 12, 13), A-2026W46-001, 003, 010 (their flags are resolved) and A-2026W45-015 (W47 reels now carry 48 kHz music). The W49 reels were remuxed to 48 kHz too, but week.md and the W49 post files did not change, so A-2026W46-018 is unchanged.
+- Not proposals: the other 12 Nov 13 reports and the Nov 12 social-publisher report proposed none. outreach-gift-guide-pr appended a correction to its Nov 12 report (gift collection handle is `/collections/the-gift-for-everyone`).
+- Dropped: none. Archived 3 (see the queue header). No Status line changed.
+
 Run 23 (2026-11-12). Details in `marketing/coordination/coordinator/overlaps-2026-11-12.md`.
 
 - A-2026W46-016 copied with a flag: it publishes the same articles as 10 open single items (approve the bundle or the singles, not both); the single items' flags carry over (BRICKFRIDAY25 and CYBERBRICK20 scheduled, not active, in the baby article; build times in the dad, memorial and portrait articles while that Facts row is unknown). The new portrait article (row 3) has no single item.
@@ -755,6 +760,18 @@ Run 2 (2026-10-14). No proposal touches the order workflow, every new draft file
 - Still open from earlier: A-2026W41-010 (cart flow test) is approved but on hold; the shared blocks state "2-4 business days", which is not in the Facts table. A-2026W42-010 writes a cart attribute for its A/B test; it changes no order email, fulfillment or checkout step, so it was kept.
 
 ## Missing owner inputs
+
+**New 2026-11-13:**
+
+- Etsy (2026-11-13): is the Etsy shop open and selling, or closed since the May 18 suspension, and can it sell again before Dec 1? Last year about 165 orders came from it Dec 1 to 14 (growth-analyst, growth-director, seo-strategist; etsy.com is unreachable from the cloud session, Mac read requested).
+- Codes on orders that are not in offers-calendar.md: 20OFF (PMax order, Nov 11), MATHS (Billo order, Nov 8), EARLYBIRDB20 (PMax order, Nov 1). Say whether they are live on purpose (ads-analyst).
+- Google Ads budgets changed outside any item: Brand $35 to $45, Holiday Gifts $10 to $5. Who and when (ads-analyst).
+- Meta reports about 3 times the purchases Shopify shows (34 vs 11 in 28 days); pixel deduplication unverified (ads-analyst).
+- Build times in 8 bundle articles: add "Faces per size and build time" to the Facts table, or let the writer strip them (seo-blog-writer; A-2026W46-016).
+- Gift collection: optional manual sort to move the gift card (tile 19, among $500+ kits) next to the 10x10 (conversion-auditor). A-2026W45-009 needs a free theme slot (20 of 20) and your publish.
+- W48 reels (A-2026W45-019) have no audio yet; the planner can fix them next run, which changes W48's hashes (social-planner).
+- The Nov 2 and Nov 3 theme edits cannot be traced through the API; check Settings > Users last logins or each file's Older versions (site-developer). The 14-day missing-brick wording is still not in product-facts.md.
+- Unchanged: Mac data pull still "never" (GA4, Search Console, Merchant Center, Meta, Google Ads); holiday ad budget, product margins, faces per size and build time unknown in the Facts table; email preview PNGs fail; Ahrefs not connected; A-2026W44-033 drafts (4 Gmail drafts, still unsent; send-as-is card at `marketing/outreach/gift-guide-pr/to-send/2026-11-13-send-as-is-card.md`).
 
 **New 2026-11-12:**
 
