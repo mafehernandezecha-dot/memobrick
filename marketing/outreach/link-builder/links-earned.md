@@ -84,3 +84,8 @@ Links and mentions on other websites that point to mymemobrick.com (or name Memo
 ## 2026-11-12 check
 
 - Searched web for "Memobrick" OR "mymemobrick.com": no third-party mention or link (look-alike names only: Memory Bricks on Etsy, Memo Block app). Gmail inbox and Sent, last 3 days: no pitch replies and no pitches sent (app notices, a customer package thread, Semrush tracking). Total earned links: zero confirmed. Backlink tool still not connected.
+
+## 2026-11-13 check
+
+- Searched web for "Memobrick" OR "mymemobrick.com", and Memobrick with brick mosaic, review and gift guide: no third-party mention or link (look-alike names only: Memory Bricks on Etsy, Memo Block app; competitor pages Brick Me, BrickPicFun). One competitor placement seen: ipsnews.net "How to Turn Your Favorite Photo Into a Stunning Brick Mosaic" names BrickPicFun, not Memobrick.
+- Gmail inbox, Nov 11 to 13: no pitch replies (affiliate, app, vendor and customer support mail only). Sent, Nov 10 to 13: nothing sent, so none of the 15 queued link-builder pitches has gone out. Total earned links: zero confirmed. Backlink tool still not connected.
