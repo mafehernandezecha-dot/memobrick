@@ -12,5 +12,5 @@ python3 "$dir/compose.py" "$mood" "$dur" "$tmp/music.wav" "${4:-7}"
 fade_start=$(python3 -c "print(max(0, $dur - 1.5))")
 ffmpeg -y -v error -i "$in" -i "$tmp/music.wav" \
   -filter_complex "[1:a]atrim=0:$dur,afade=t=in:d=0.3,afade=t=out:st=$fade_start:d=1.5,loudnorm=I=-16:TP=-1.5:LRA=11[a]" \
-  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 128k -ar 44100 -shortest -movflags +faststart "$out"
+  -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 128k -ar 48000 -ac 2 -shortest -movflags +faststart "$out"
 rm -rf "$tmp"
