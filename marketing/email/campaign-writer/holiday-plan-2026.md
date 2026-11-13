@@ -121,3 +121,12 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Shopify read 2026-11-12: EARLYHOLIDAY20 is ACTIVE, ends 2026-11-23 04:59:59 UTC (Nov 22 23:59:59 ET), no usage limit, combines with nothing, 15 uses so far. Matches offers-calendar.
 - A-2026W44-060 (Nov 12 dog email) expired undecided; nothing created. A-2026W46-006 (Nov 16) is still pending, expires Nov 15, draft unchanged since its commit 4300178, so it can be built as soon as it is approved.
 - No new gap: Nov 16 to 22 is covered by the Nov 16 draft (pending), Nov 19 VIP and Nov 20; Nov 23 to 26 by the Nov 24 or Nov 25 drafts (pending, pick one). Still open: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
+
+
+## Update 2026-11-13
+
+- Omnisend read 2026-11-13 (task board check): Nov 19 "Q4 | Nov 19 | VIP Early Access 20% (Past Buyers)" (6ab3af384dae2e28118748b8) is still scheduled for Thu Nov 19 16:00 UTC = 11:00 ET, Past Buyers (6ab3a04c426f40d1edc2e690) minus Unengaged 180d (6ab3a050426f40d1edc2e691), last edited Sep 24. Nov 20 "Q4 | Nov 20 | EARLYHOLIDAY20 Ends Sunday (Warm)" (6ae55a1aead775b0ac41ecc5) is still scheduled for Fri Nov 20 15:00 UTC = 10:00 ET, Warm (6ab3a047d52351bd34134eb5) minus Past Buyers, recent buyers (6ab4c0626a51901673723534) and Unengaged 180d, last edited Oct 31.
+- Rest of schedule unchanged: Nov 27 09:00, Nov 30 10:00, Dec 3, 8, 11 at 11:00, Dec 14 12:00 ET. Nothing sent since Nov 3, so no new performance numbers.
+- Note: `improve-nov19-vip.md` says the VIP send is 12:00 ET; 16:00 UTC on Nov 19 is 11:00 EST (written before DST ended). Not edited, so A-2026W44-061 stays valid. The Nov 19 VIP excludes only Unengaged 180d, not recent buyers.
+- A-2026W46-006 (Nov 16) still pending, draft unchanged since commit 4300178, image and gift collection link return 200. Needs approval by Sat Nov 14 18:00.
+- Still open: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
