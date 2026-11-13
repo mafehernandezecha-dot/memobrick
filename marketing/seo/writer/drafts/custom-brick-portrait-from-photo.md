@@ -1,6 +1,7 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/custom-brick-portrait-from-photo.md
-Title: Custom LEGO-Style Portrait From Your Photo
+Title: Custom Brick Portrait From Your Photo
+Title option (Eden's choice): Custom LEGO-Style Portrait From Your Photo
 Meta description: Turn a photo of a person, couple, family or pet into a custom brick portrait you build yourself, in 40+ colors. See it in the editor first.
 URL handle: custom-brick-portrait-from-photo
 Blog: news
@@ -8,7 +9,7 @@ Featured image: Shopify product photo, 20×20 custom brick mosaic portrait: http
 Featured image alt: Custom 20x20 inch brick mosaic portrait made from a photo
 Images note: real product photo only, no AI-drawn mosaic, no real person's photo. Prices re-checked on the live store on 2026-11-12 (products/*.js, "No (Build at home)" variant): 16×16 $69.88, 20×20 $99.88, 40×20 $189.99, 30×30 $209.99, 30×40 $279.00, 40×50 $431.98. Links checked 2026-11-12, all return 200: editor, free-preview, brick-mosaic-sizes, personalized-christmas-photo-gifts, photo-christmas-gift-for-wife, gift collection, dog-brick-mosaic, celebrate-the-pets-who-fill-your-home-with-love, blog-memorial, and the six size product pages. Not linked because they return 404 today (drafts not yet published): best-photo-for-a-brick-mosaic, can-you-turn-a-photo-into-a-lego-style-mosaic, photo-to-brick-mosaic-maker, christmas-gifts-for-dog-lovers. Suggested spots once live: best-photo in "What makes a good portrait photo", maker and lego-style-mosaic in the FAQ "Can you make a portrait from any photo", dog lovers in "Pets". No article with this handle exists on 2026-11-12 (URL returns 404).
 
-# Custom LEGO-Style Portrait From Your Photo
+# Custom Brick Portrait From Your Photo
 
 A custom brick portrait turns a photo of you, your partner, your family or your dog into a mosaic of small 1×1 bricks that you build yourself. Up close you see every brick; from across the room you see the face.
 
@@ -56,22 +57,22 @@ In the editor you can adjust colors and details and compare sizes before you dec
 
 ## Choose a size
 
-Prices are from our store on November 12, 2026, for the kit you build at home. Building times are Shopify's estimates for the whole kit.
+Prices are from our store on November 12, 2026, for the kit you build at home.
 
-| Size (inches) | Pieces | Build time (estimate) | Fits | Kit price |
-|---|---|---|---|---|
-| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | about 2.5 hours | not listed | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | not listed | $99.88 |
-| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | about 8 hours | 1 to 3 people | $189.99 |
-| [30×30](https://mymemobrick.com/products/3-3-boards) | 9,216 | about 9 hours | 1 to 4 people | $209.99 |
-| [30×40](https://mymemobrick.com/products/3-4-boards) | 12,288 | about 12 hours | 1 to 5 people | $279.00 |
-| [40×50](https://mymemobrick.com/products/4-5-boards) | 20,480 | about 20 hours | 1 to 6 people | $431.98 |
+| Size (inches) | Pieces | Fits | Kit price |
+|---|---|---|---|
+| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | not listed | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | not listed | $99.88 |
+| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | 1 to 3 people | $189.99 |
+| [30×30](https://mymemobrick.com/products/3-3-boards) | 9,216 | 1 to 4 people | $209.99 |
+| [30×40](https://mymemobrick.com/products/3-4-boards) | 12,288 | 1 to 5 people | $279.00 |
+| [40×50](https://mymemobrick.com/products/4-5-boards) | 20,480 | 1 to 6 people | $431.98 |
 
 Every kit has white baseplates, 1×1 bricks sorted into labeled bags by color, a printed color map made from your photo, and a building tool. Frames are sold separately. Our [brick mosaic size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes) compares every size, and the [gift collection](https://mymemobrick.com/collections/the-gift-for-everyone) shows them all in one place.
 
 ## A portrait you build together
 
-A brick portrait is also something to do. The build takes from about 2.5 hours for a 16×16 to about 20 hours for a 40×50, so it can be one quiet evening or a project for several weekends.
+A brick portrait is also something to do. A small kit is a cozy project, and the larger sizes, with more bricks, take longer and are easy to share.
 
 It works well as a shared activity. One person reads the color map, another finds the bricks, someone else places them. Row by row, the face appears. When it is finished, it goes on the wall or a shelf as a keepsake you made yourselves.
 

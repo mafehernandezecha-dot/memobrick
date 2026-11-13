@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-in-memory-of-a-loved-one.md
 Title: A Christmas Gift in Memory of a Loved One
 Meta description: A Christmas gift in memory of a loved one: a favorite photo, turned into a brick mosaic the family builds together and keeps. Gentle ideas, honest dates.
@@ -54,15 +54,15 @@ Pets are family too, and the first Christmas without them is felt. Our [pet memo
 
 ## Choosing a size, and where it goes
 
-Prices are from our store on November 11, 2026. Building times are estimates for the whole kit.
+Prices are from our store on November 11, 2026.
 
-| Size | Pieces | Build time (estimate) | Kit price |
+| Size | Pieces | Fits | Kit price |
 |---|---|---|---|
-| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | about 2.5 hours | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | $99.88 |
-| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | about 6 hours | $149.00 |
-| [30×30](https://mymemobrick.com/products/3-3-boards) | 9,216 | about 9 hours, 1 to 4 people | $209.99 |
-| [30×40](https://mymemobrick.com/products/3-4-boards) | 12,288 | about 12 hours, 1 to 5 people | $279.00 |
+| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | not listed | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | not listed | $99.88 |
+| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | not listed | $149.00 |
+| [30×30](https://mymemobrick.com/products/3-3-boards) | 9,216 | 1 to 4 people | $209.99 |
+| [30×40](https://mymemobrick.com/products/3-4-boards) | 12,288 | 1 to 5 people | $279.00 |
 
 A single portrait suits a 16×16 or 20×20. A family photo with several people needs more room. The people counts above are what Shopify lists for a photo of that size. Our [brick mosaic size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes) compares every size side by side.
 
@@ -80,7 +80,7 @@ There is also no rush to give it on the day. Some families build it on Christmas
 
 ### What is a meaningful Christmas gift in memory of someone?
 
-Something made from them, not only about them. A favorite photo turned into a custom brick mosaic gives the family an evening of building together and a piece to keep on the wall.
+Something made from them, not only about them. A favorite photo turned into a custom brick mosaic gives the family time building together and a piece to keep on the wall.
 
 ### Can I use an old or printed photo?
 
@@ -117,7 +117,7 @@ When you are ready, [upload a favorite photo and see it as a mosaic in the edito
       "name": "What is a meaningful Christmas gift in memory of someone?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Something made from them, not only about them. A favorite photo turned into a custom brick mosaic gives the family an evening of building together and a piece to keep on the wall."
+        "text": "Something made from them, not only about them. A favorite photo turned into a custom brick mosaic gives the family time building together and a piece to keep on the wall."
       }
     },
     {

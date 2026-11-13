@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-dad-from-kids.md
 Title: A Christmas Gift for Dad From the Kids, Built From a Photo
 Meta description: A Christmas gift for dad from the kids: turn a favorite photo into a custom brick mosaic kit he builds and hangs. Kits from $69.88. Order by Dec 15.
@@ -16,7 +16,7 @@ Looking for a Christmas gift for dad from the kids that is not another mug? Turn
 
 Dad says he wants nothing. Then he opens a tie and says thanks. What he keeps is the gift that has you in it.
 
-A photo mosaic is made from your picture, so no one else has the same one. And it is not only something to unwrap. He gets an evening of building, then a piece of art that stays on the wall. Up close it is a pattern of 1×1 bricks in 40+ colors. From across the room, it is the photo.
+A photo mosaic is made from your picture, so no one else has the same one. And it is not only something to unwrap. He gets the fun of building it, then a piece of art that stays on the wall. Up close it is a pattern of 1×1 bricks in 40+ colors. From across the room, it is the photo.
 
 ## Photo ideas of the kids with dad
 
@@ -37,20 +37,20 @@ This works best as a family project, with an adult helping.
 - **Help with the building.** The kit has small 1×1 bricks, so an adult should supervise. Kids can sort bags and place bricks while an adult reads the map.
 - **Wrap it.** Add a drawing from the kids on the box.
 
-Two ways to give it. Wrap the kit as it comes, and build it with him on Christmas week. Or build it first and give him the finished piece, ready to hang. Building time is an estimate for the whole kit, so plan it as one or two evenings, not a rush.
+Two ways to give it. Wrap the kit as it comes, and build it with him on Christmas week. Or build it first and give him the finished piece, ready to hang.
 
 ## Which size to pick
 
-Prices are from our store on November 10, 2026. Building times are estimates.
+Prices are from our store on November 10, 2026.
 
-| Size | Pieces | Build time (estimate) | Kit price |
+| Size | Pieces | Fits | Kit price |
 |---|---|---|---|
-| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | about 2.5 hours | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | $99.88 |
-| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | about 6 hours | $149.00 |
-| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | about 8 hours, 1 to 3 people | $189.99 |
-| [30×30](https://mymemobrick.com/products/3-3-boards) | 9,216 | about 9 hours, 1 to 4 people | $209.99 |
-| [30×40](https://mymemobrick.com/products/3-4-boards) | 12,288 | about 12 hours, 1 to 5 people | $279.00 |
+| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | not listed | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | not listed | $99.88 |
+| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | not listed | $149.00 |
+| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | 1 to 3 people | $189.99 |
+| [30×30](https://mymemobrick.com/products/3-3-boards) | 9,216 | 1 to 4 people | $209.99 |
+| [30×40](https://mymemobrick.com/products/3-4-boards) | 12,288 | 1 to 5 people | $279.00 |
 
 The 16×16 and 20×20 suit a close-up of one or two people. Go bigger when the photo has more in it, like a whole family or a scene. The people counts above are what Shopify lists for a photo of that size. For every size side by side, see our [brick mosaic size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes).
 
@@ -88,9 +88,9 @@ Yes. Building is the activity, and kids can help pick the photo, sort the bags a
 
 One clear subject that fills the picture, with faces close to the camera and good light. Upload a few in the editor and compare the previews before you order.
 
-### How long does it take, and does a frame come with it?
+### Does a frame come with it?
 
-Build times are estimates: about 2.5 hours for a 16×16 and about 4 hours for a 20×20, more for larger sizes. Frames are sold separately.
+No. Frames are sold separately, for example $49.00 for a 16×16 and $65.00 for a 20×20.
 
 ### When do I need to order for Christmas?
 
@@ -138,10 +138,10 @@ As seen on FOX.
     },
     {
       "@type": "Question",
-      "name": "How long does it take, and does a frame come with it?",
+      "name": "Does a frame come with it?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Build times are estimates: about 2.5 hours for a 16×16 and about 4 hours for a 20×20, more for larger sizes. Frames are sold separately."
+        "text": "No. Frames are sold separately, for example $49.00 for a 16×16 and $65.00 for a 20×20."
       }
     },
     {

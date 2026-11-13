@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/babys-first-christmas-gift.md
 Title: Baby's First Christmas Gift: A Photo Keepsake to Build
 Meta description: A baby's first Christmas gift the family keeps: turn a favorite baby photo into a custom brick mosaic kit. Order by Dec 15, 2026.
@@ -29,11 +29,11 @@ You do not need a studio portrait. You need a clear photo in good light.
 
 ### A close-up of the baby's face
 
-A bright, close photo with the face filling most of the frame makes the strongest mosaic. For a small gift, the [10×10 one-face mini kit](https://mymemobrick.com/products/custom-bricked-mosaic-10x10) is $35.00 (1,024 bricks, 1 baseplate, about 1 hour to build). For a wall piece, the [16×16 kit](https://mymemobrick.com/products/1-big-board) is $69.88 (about 2.5 hours).
+A bright, close photo with the face filling most of the frame makes the strongest mosaic. For a small gift, the [10×10 one-face mini kit](https://mymemobrick.com/products/custom-bricked-mosaic-10x10) is $35.00 (1,024 bricks, 1 baseplate). For a wall piece, the [16×16 kit](https://mymemobrick.com/products/1-big-board) is $69.88.
 
 ### Baby with mom, dad or the grandparents
 
-A photo with two people needs more room. Look at the 20×20 ($99.88, about 4 hours) or larger in the [size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes), and check the preview before you order.
+A photo with two people needs more room. Look at the 20×20 ($99.88) or larger in the [size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes), and check the preview before you order.
 
 ### Not sure? Let the parents choose
 
@@ -70,8 +70,8 @@ To receive your kit before Christmas, order by **December 15, 2026**. Kits are m
 Holiday offers this year:
 
 - **EARLYHOLIDAY20:** 20% off, until November 22, 2026.
-- **BRICKFRIDAY25:** 25% off, November 27 to 29, 2026.
-- **CYBERBRICK20:** 20% off, November 30, 2026.
+- **BRICKFRIDAY25 (scheduled):** 25% off, scheduled for November 27 to 29, 2026.
+- **CYBERBRICK20 (scheduled):** 20% off, scheduled for November 30, 2026.
 
 Codes cannot be combined with each other, with other offers, or with free shipping.
 
