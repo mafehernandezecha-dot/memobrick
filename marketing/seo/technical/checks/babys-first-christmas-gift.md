@@ -28,3 +28,6 @@ Issues fixed: none needed.
 {"@context":"https://schema.org","@type":"Article","headline":"Baby's First Christmas Gift: A Photo Keepsake to Build","description":"A baby's first Christmas gift the family keeps: turn a favorite baby photo into a custom brick mosaic kit. Order by Dec 15, 2026.","mainEntityOfPage":"https://mymemobrick.com/blogs/news/babys-first-christmas-gift","image":"https://mymemobrick.com/cdn/shop/files/Custom-Bricked-Mosaic-Portrait-16x16_-Memobrick-61979964.png?width=1200","author":{"@type":"Organization","name":"Memobrick"},"publisher":{"@type":"Organization","name":"Memobrick"}}
 </script>
 ```
+
+## Re-check 2026-11-13
+Writer edits from commit 17d4629 (bundle flags). Title, meta description, single H1 and heading order are fine; FAQPage JSON-LD in the draft parses and matches the visible FAQ word for word; all internal links return 200; prices match the live store; copy check passes; handle still 404. Status set to `checked`. New hash in `publish-bundle-2026-11-12.md`.

@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/christmas-gift-in-memory-of-a-loved-one.md
 Title: A Christmas Gift in Memory of a Loved One
 Meta description: A Christmas gift in memory of a loved one: a favorite photo, turned into a brick mosaic the family builds together and keeps. Gentle ideas, honest dates.

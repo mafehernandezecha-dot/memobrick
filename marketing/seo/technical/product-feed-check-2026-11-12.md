@@ -23,3 +23,17 @@ Read-only. Top 5 products by orders, last 60 days (Shopify analytics). Channel s
 
 ## Why free listings fell (347 to 36 sessions)
 Not explained by channel status: all four top kits are on the channel. The cause is most likely in Merchant Center (disapproved or limited items, or a feed or policy issue). The Merchant Center read (ads-analyst, 2026-11-11) is the next step.
+
+## Update 2026-11-13: which Product block Google can use (read-only)
+Re-read the live HTML of 2-2-boards, 1-big-board, 3-2-boards and frame-2-2. Both blocks parse as valid JSON.
+
+| Block | Offer type | price | availability | brand | image | rating | GTIN / MPN | shipping / returns |
+|---|---|---|---|---|---|---|---|---|
+| Vitals (app) | AggregateOffer with one Offer per variant | yes (lowPrice, highPrice, and per variant) | **yes, per variant (InStock)** | Memobrick | 12 images | yes (4.9 / 202 on 20x20) | no | no |
+| Theme | single Offer | yes (lowest variant, for example 99.88) | yes (InStock) | Memobrick | 1 image | no | no | no |
+
+- Correction to gap 2 above: the Vitals block does carry availability, inside each variant Offer. It is not missing.
+- Free listings are filled from the Merchant Center feed that the Google & YouTube app sends from Shopify product data, not from the page schema. Google uses page schema to check and auto-update price and availability, and for rich results.
+- For merchant listing rich results, Google reads a single `Offer` with price. That is the theme block. The Vitals AggregateOffer fits product snippets (the review stars). So today Google most likely takes price and availability from the theme block and the stars from the Vitals block. Prices in both match the live store.
+- Missing for Merchant Center: GTIN and MPN in both blocks, and in the feed unless the Google & YouTube app marks the kits "no identifier". Custom kits have no GTIN, so the fix is the "identifier exists: no" setting, which only the Merchant Center read can confirm (requested 2026-11-11 and 2026-11-12 in `marketing/data/requests.md`). Optional fields `shippingDetails` and `hasMerchantReturnPolicy` are absent from both blocks; Merchant Center takes these from its own account settings.
+- Nothing on the page explains the 90% free-listing drop. No proposal today (board row).

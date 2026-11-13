@@ -29,3 +29,7 @@ Issues fixed: none needed.
 </script>
 ```
 Plus the draft's FAQPage JSON-LD.
+
+## Re-check 2026-11-13
+Writer edits from commit 17d4629 (bundle flags). Title, meta description, single H1 and heading order are fine; FAQPage JSON-LD in the draft parses and matches the visible FAQ word for word; all internal links return 200; prices match the live store; copy check passes; handle still 404. Status set to `checked`. New hash in `publish-bundle-2026-11-12.md`.
+- Dad: the Offers lines show BRICKFRIDAY25 and CYBERBRICK20 without the word "scheduled" (the baby draft now has it). Dates are correct; optional wording for the writer.

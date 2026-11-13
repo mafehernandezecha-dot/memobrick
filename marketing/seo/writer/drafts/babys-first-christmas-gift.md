@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/babys-first-christmas-gift.md
 Title: Baby's First Christmas Gift: A Photo Keepsake to Build
 Meta description: A baby's first Christmas gift the family keeps: turn a favorite baby photo into a custom brick mosaic kit. Order by Dec 15, 2026.

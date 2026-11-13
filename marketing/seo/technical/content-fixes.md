@@ -28,3 +28,8 @@ GemPages articles: visible text, headings and links are edited by Eden in GemPag
 - New default-template articles (calm series, 3 Christmas gap articles, size guide, gift guide) all have a second SearchPie title and description until A-2026W44-025 is done by Eden.
 - Writer refresh list: `personalized-stocking-stuffers` names three discount codes that end Nov 22, Nov 29 and Nov 30; remove the offer list after Nov 30.
 - Next fixes in line (oldest first): the 8 articles with a 320-character auto excerpt, then the 36 articles with a blank description (Christmas, Thanksgiving, grandparents, pets, couples first).
+
+## Update 2026-11-13
+| URL | What is missing |
+|---|---|
+| `/pages/dog-brick-mosaic` | Two H1 tags ("Your Dog in Bricks" in the top block and "Your dog, in 1×1 bricks" in the landing block). Keep one H1 and make the other an H2. Eden, in the page editor. |

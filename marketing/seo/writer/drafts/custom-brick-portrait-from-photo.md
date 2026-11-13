@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/custom-brick-portrait-from-photo.md
 Title: Custom Brick Portrait From Your Photo
 Title option (Eden's choice): Custom LEGO-Style Portrait From Your Photo
