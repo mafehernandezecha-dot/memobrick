@@ -172,3 +172,15 @@ Covered, no new brief: "gifts for grandparents from grandkids photo" (live grand
 |---|---|---|---|---|
 | christmas gift for in-laws photo | commercial | /blogs/news/christmas-gift-for-in-laws-photo (planned) | A, Q | unknown |
 | christmas gift for mother in law | commercial | same | A | unknown |
+
+## Update 2026-11-14 (Etsy product terms, task board)
+
+Etsy has been suspended since May 18, so these product terms from last year's Etsy shoppers now need website pages. Full table: [etsy-terms-gap-2026-11-14.md](etsy-terms-gap-2026-11-14.md).
+
+| Keyword | Hub | Intent | Target URL | Evidence | Volume |
+|---|---|---|---|---|---|
+| custom photo mosaic kit | Buyer questions | transactional | /blogs/news/diy-brick-mosaic-kit-from-your-photo (briefed, row 20) | T (task board, Etsy terms) | unknown |
+| brick portrait from photo | Buyer questions / Family | commercial | /blogs/news/custom-brick-portrait-from-photo (bundle #3) | T | unknown |
+| photo puzzle gift for grandparents | Family | commercial | live grandparents articles (no new page) | T | unknown |
+| personalized gift for couples | Couples | commercial | /blogs/news/personalized-anniversary-gifts (briefed hub, row 11) | T | unknown |
+| pet portrait kit | Pets | commercial | live pet post `duplicate-from-celebrate-the-pets-who-fill-your-home-with-love` (improve into the pet hub; brief due Nov 16) | T | unknown |
