@@ -1,4 +1,4 @@
-Status: needs owner: re-approval (moved to Mon 2026-11-09 19:00 ET, after A-2026W42-037 expires on 2026-10-31; the planner re-proposes it in the next weekly batch)
+Status: expired (2026-11-14, publisher: post time long past and its offers and dates are out of date; never post this kit. Was: needs owner: re-approval (moved to Mon 2026-11-09 19:00 ET, after A-2026W42-037 expires on 2026-10-31; the planner re-proposes it in the next weekly batch))
 Post time (ET): 2026-11-09 19:00
 Approval: A-2026W42-037 S-20261027-1
 Post file: marketing/social/planner/2026-W44/S-20261027-1.md

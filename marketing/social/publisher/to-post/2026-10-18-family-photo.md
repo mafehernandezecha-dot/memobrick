@@ -1,4 +1,4 @@
-Status: ready
+Status: expired (2026-11-14, publisher: post time long past and its offers and dates are out of date; never post this kit. Was: ready)
 Post time (ET): 2026-10-25 19:00 (new time under A-2026W43-004)
 Approval: A-2026W43-004 (was A-2026W41-003, expired)
 Post file: marketing/social/planner/2026-W42/S-20261018-1.md
