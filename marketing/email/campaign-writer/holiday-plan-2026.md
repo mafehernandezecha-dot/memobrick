@@ -130,3 +130,12 @@ Also in Omnisend as drafts (not scheduled, ignore): Summer Memories Sale, Early 
 - Note: `improve-nov19-vip.md` says the VIP send is 12:00 ET; 16:00 UTC on Nov 19 is 11:00 EST (written before DST ended). Not edited, so A-2026W44-061 stays valid. The Nov 19 VIP excludes only Unengaged 180d, not recent buyers.
 - A-2026W46-006 (Nov 16) still pending, draft unchanged since commit 4300178, image and gift collection link return 200. Needs approval by Sat Nov 14 18:00.
 - Still open: Dec 15 order-by-day email (draft by Dec 8), Dec 16 gift card email (draft by Dec 9).
+
+
+## Update 2026-11-14
+
+- Task board check, Omnisend read 2026-11-14:
+  - Nov 27 "Q4 | Nov 27 | Black Friday 20% (Warm)" (6ab3af11a46e779522c64477): scheduled Fri Nov 27 14:00 UTC = 09:00 ET. Warm (6ab3a047d52351bd34134eb5) minus Unengaged 180d (6ab3a050426f40d1edc2e691) only, no recent-buyers exclusion. Subject "Black Friday: 25% off, code inside", preheader "Use BRICKFRIDAY25 through Sunday night." Body prints BRICKFRIDAY25, "Ends Sunday, Nov 29 at midnight ET", button to the gift collection with UTM 2026-11-black-friday, footer "BRICKFRIDAY25 cannot be combined with other discounts or free shipping." Matches the calendar. Internal name still says 20% (not customer-facing). One banner image (6a5fb5c27ecb00c4e53cf75e, alt "... Limited-time discount.") links to the home page; its printed text could not be viewed through the API.
+  - Nov 30 "Q4 | Nov 30 | Cyber Monday LAST DAY 20% (replaces booster)" (6ab50397de9e4985592a5cb0): scheduled Mon Nov 30 15:00 UTC = 10:00 ET. Warm minus Unengaged 180d and recent buyers (6ab4c0626a51901673723534). Prints no CYBERBRICK20: it uses an Omnisend personal 20% code (applies to all orders, once per customer, no combining) with "20% off every size, every photo" and a banner "20% off every Memobrick ... through Cyber Monday". Rate (20%) and day match CYBERBRICK20; the code and the "every size" wording do not. Fix already pending as A-2026W45-011 (expires Nov 29).
+- Shopify read 2026-11-14: BRICKFRIDAY25 SCHEDULED, 25%, 2026-11-27 05:00 UTC to 2026-11-30 04:59:59 UTC (Nov 27 00:00 to Nov 29 23:59:59 ET), no minimum, combines with nothing. CYBERBRICK20 SCHEDULED, 20%, 2026-11-30 05:00 UTC to 2026-12-01 04:59:59 UTC (Nov 30 00:00 to 23:59:59 ET), no minimum, combines with nothing. EARLYHOLIDAY20 ACTIVE, ends Nov 22 23:59:59 ET. All match offers-calendar.
+- A-2026W46-006 (Nov 16) still pending, expires Nov 15. Rest of schedule unchanged (Nov 19, Nov 20, Dec 3, 8, 11, 14). Nothing sent since Nov 3.
