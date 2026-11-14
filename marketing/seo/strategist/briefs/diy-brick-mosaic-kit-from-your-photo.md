@@ -1,4 +1,4 @@
-Status: ready for writer
+Status: drafted
 Target keyword: custom brick mosaic kit from your photo
 Hub: Buyer questions (editor intent)
 Page type: product-support

@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/black-friday-personalized-photo-gifts.md
 Title: Personalized Black Friday Gifts Made From a Photo
 Meta description: Personalized gifts for Black Friday: a custom brick mosaic kit made from your photo. Sizes from $69.88. Order by Dec 15, 2026 for Christmas.
@@ -33,14 +33,14 @@ Free shipping applies to US orders of $125 or more. When you use a code, you get
 
 ## Pick your size and price
 
-Choose the size by how much is in the photo and how long you want the build to last. Build times are Shopify's estimates.
+Choose the size by how much is in the photo. "Fits" is the number of people Shopify lists for that size.
 
-| Size | Pieces | Build time (estimate) | Kit price |
+| Size | Pieces | Fits | Kit price |
 |---|---|---|---|
-| 16×16 | 2,500 | about 2.5 hours | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | $99.88 |
-| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | about 6 hours | $149.00 |
-| [40×20](https://mymemobrick.com/products/4-2-boards) (fits 1 to 3 people) | 8,192 | about 8 hours | $189.99 |
+| 16×16 | 2,500 | not listed | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | not listed | $99.88 |
+| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | not listed | $149.00 |
+| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | 1 to 3 people | $189.99 |
 
 One face or a pet works well on a 16×16 or 20×20. A couple or a small group suits a 30×20 or 40×20. Frames are sold separately. For every size side by side, see our [brick mosaic size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes).
 
@@ -80,7 +80,7 @@ No. Codes cannot be combined with each other, with other offers, or with free sh
 
 ### Which size is the best value?
 
-It depends on the photo. A 20×20 at $99.88 is a good first project for one or two evenings. A 30×20 at $149.00 gives more room for a couple or a small group.
+It depends on the photo. A 20×20 at $99.88 is a good first project. A 30×20 at $149.00 gives more room for a couple or a small group.
 
 ### What if I cannot choose a photo yet?
 
@@ -109,7 +109,7 @@ As seen on FOX.
     {"@type": "Question", "name": "Is a personalized gift worth buying on Black Friday?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you plan the photo first. A personalized photo gift is made for one person, so it does not compete with generic deals, and you have time to order before December 15, 2026."}},
     {"@type": "Question", "name": "Can a personalized gift still arrive before Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "Order by December 15, 2026 to receive your kit before Christmas. Kits are made and shipped from Miami, Florida."}},
     {"@type": "Question", "name": "Can I combine codes?", "acceptedAnswer": {"@type": "Answer", "text": "No. Codes cannot be combined with each other, with other offers, or with free shipping. Free shipping is for US orders of $125 or more."}},
-    {"@type": "Question", "name": "Which size is the best value?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the photo. A 20×20 at $99.88 is a good first project for one or two evenings. A 30×20 at $149.00 gives more room for a couple or a small group."}},
+    {"@type": "Question", "name": "Which size is the best value?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the photo. A 20×20 at $99.88 is a good first project. A 30×20 at $149.00 gives more room for a couple or a small group."}},
     {"@type": "Question", "name": "What if I cannot choose a photo yet?", "acceptedAnswer": {"@type": "Answer", "text": "Give the Art Gift Kit or a gift card. With the Art Gift Kit, the person you are gifting chooses the photo and approves the design, then we make and ship the kit. You can also ask for a free design proof."}},
     {"@type": "Question", "name": "Do frames come with the kit?", "acceptedAnswer": {"@type": "Answer", "text": "No. Frames are sold separately."}}
   ]

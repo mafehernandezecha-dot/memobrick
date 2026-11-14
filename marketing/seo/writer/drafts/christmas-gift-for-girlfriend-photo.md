@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-girlfriend-photo.md
 Title: A Christmas Gift for Your Girlfriend, Built From a Photo
 Meta description: A Christmas gift for your girlfriend: turn a favorite photo of you two into a custom brick mosaic kit. Kits from $69.88. Order by Dec 15.
@@ -33,11 +33,11 @@ Choose a photo where faces are close to the camera and clear. Not sure which one
 
 Two kit sizes are under $100 today. Prices are from our store on November 3, 2026.
 
-| Size | Pieces | Build time (estimate) | Kit price |
-|---|---|---|---|
-| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | about 2.5 hours | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | $99.88 |
-| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | about 6 hours | $149.00 |
+| Size | Pieces | Kit price |
+|---|---|---|
+| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | $99.88 |
+| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | $149.00 |
 
 The prices above are for the kit. Frames are sold separately: $49.00 for a 16×16 and $65.00 for a 20×20. So the kit alone is under $100, and a frame is an extra choice if you want it ready to hang.
 
@@ -45,7 +45,7 @@ Start with the 16×16 or 20×20 for a close-up of the two of you. Go to the 30×
 
 ## Make it together or surprise her
 
-You can wrap the kit as it comes, with a printed copy of the photo tucked inside as a hint. Then keep a quiet evening free. Put on a movie, sort the bags, and build side by side. One of you reads the map, the other places the bricks. It is a gift and a date night in one.
+You can wrap the kit as it comes, with a printed copy of the photo tucked inside as a hint. Then keep some quiet time free. Put on a movie, sort the bags, and build side by side. One of you reads the map, the other places the bricks. It is a gift and a date night in one.
 
 ## Not sure about the photo? Free proof or Art Gift Kit
 
@@ -77,9 +77,9 @@ A custom brick mosaic kit made from a photo of the two of you. The 16×16 kit is
 
 A clear photo where both faces are close to the camera and well lit. Upload two or three in the editor and compare the previews before you order.
 
-### Which size should I choose, and how long does it take to build?
+### Which size should I choose?
 
-Build times are estimates: about 2.5 hours for a 16×16 and about 4 hours for a 20×20. Larger sizes suit photos with more in the scene.
+A 16×16 ($69.88) or 20×20 ($99.88) suits a close-up of the two of you. Larger sizes suit photos with more in the scene.
 
 ### Can she choose the photo herself?
 
@@ -123,10 +123,10 @@ As seen on FOX.
     },
     {
       "@type": "Question",
-      "name": "Which size should I choose, and how long does it take to build?",
+      "name": "Which size should I choose?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Build times are estimates: about 2.5 hours for a 16×16 and about 4 hours for a 20×20. Larger sizes suit photos with more in the scene."
+        "text": "A 16×16 ($69.88) or 20×20 ($99.88) suits a close-up of the two of you. Larger sizes suit photos with more in the scene."
       }
     },
     {

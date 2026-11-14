@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/photo-to-brick-mosaic-maker.md
 Title: Photo to Brick Mosaic Maker: Upload, Preview, Build
 Meta description: Upload a photo, see it as a custom brick mosaic in 40+ colors, pick a size and order a DIY kit. Try the Memobrick editor, no commitment.
@@ -43,9 +43,9 @@ If you would rather not use the editor, Memobrick's designers can create the des
 
 Frames are sold separately. It is a build-at-home kit, not an assembled piece.
 
-## How long does it take to build?
+## Which size should I pick?
 
-Shopify lists about 2.5 hours for the 16×16 and 4 hours for the 20×20. Bigger sizes take longer, up to about 20 hours for the 40×50. These are estimates, and your time may differ. Building together makes it faster. See the [size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes) for each size.
+Sizes run from a one-face 10×10 up to large multi-board pieces. Bigger sizes have more pieces and more room for people or detail. Building together is part of the fun. See the [size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes) for each size.
 
 ## FAQ
 

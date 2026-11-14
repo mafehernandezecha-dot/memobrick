@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/personalized-stocking-stuffers.md
 Title: Personalized Stocking Stuffers Made From a Photo
 Meta description: Personalized stocking stuffers from a photo: a one-face mini brick mosaic kit for $35, an Art Gift Kit, or a gift card. Order by Dec 15, 2026.
@@ -24,7 +24,7 @@ Most stocking gifts get opened, smiled at, and forgotten by New Year's. A small 
 
 ### 1. The one-face mini kit (10×10, $35.00)
 
-The [10×10 one-face kit](https://mymemobrick.com/products/custom-bricked-mosaic-10x10) turns one face into a mosaic. The product page lists 1,024 1×1 bricks on 1 white baseplate and a build time of about 1 hour (an estimate). Like every Memobrick kit, it comes with the bricks sorted into small labeled bags by color, personalized building instructions, and the building tool. Frames are sold separately.
+The [10×10 one-face kit](https://mymemobrick.com/products/custom-bricked-mosaic-10x10) turns one face into a mosaic. The product page lists 1,024 1×1 bricks on 1 white baseplate. Like every Memobrick kit, it comes with the bricks sorted into small labeled bags by color, personalized building instructions, and the building tool. Frames are sold separately.
 
 Best photo: a close-up of one face in good light. If you want help choosing, the [photo tips](https://mymemobrick.com/blogs/news/brick-mosaic-sizes) in our size guide cover what works at each size.
 
@@ -85,9 +85,9 @@ A one-face 10×10 brick mosaic kit made from a favorite photo is a good pick. It
 
 One. The product is listed as "One Face". For more people in one photo, see our [size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes).
 
-### How long does the mini kit take to build?
+### What comes in the mini kit?
 
-About 1 hour, which is the estimate on the product page. Your time may differ.
+1,024 1×1 bricks sorted into small labeled bags by color, 1 white baseplate, personalized building instructions, and the building tool. Frames are sold separately.
 
 ### What if I do not have a photo?
 
@@ -119,7 +119,7 @@ As seen on FOX.
   "mainEntity": [
     {"@type": "Question", "name": "What is a good personalized stocking stuffer?", "acceptedAnswer": {"@type": "Answer", "text": "A one-face 10×10 brick mosaic kit made from a favorite photo is a good pick. It is $35.00, and it gives the person something to build and keep."}},
     {"@type": "Question", "name": "How many faces fit on the 10×10?", "acceptedAnswer": {"@type": "Answer", "text": "One. The product is listed as One Face. For more people in one photo, see the size guide."}},
-    {"@type": "Question", "name": "How long does the mini kit take to build?", "acceptedAnswer": {"@type": "Answer", "text": "About 1 hour, which is the estimate on the product page. Your time may differ."}},
+    {"@type": "Question", "name": "What comes in the mini kit?", "acceptedAnswer": {"@type": "Answer", "text": "1,024 1×1 bricks sorted into small labeled bags by color, 1 white baseplate, personalized building instructions, and the building tool. Frames are sold separately."}},
     {"@type": "Question", "name": "What if I do not have a photo?", "acceptedAnswer": {"@type": "Answer", "text": "Give the Art Gift Kit, where the recipient picks the photo later, or a Memobrick gift card."}},
     {"@type": "Question", "name": "Is it already built?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a build-at-home kit. Frames are sold separately."}},
     {"@type": "Question", "name": "When do I need to order for Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "Order by December 15, 2026 to receive your kit before Christmas."}}

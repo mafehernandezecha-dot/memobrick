@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-mom-from-kids.md
 Title: A Christmas Gift for Mom From the Kids, in Bricks
 Meta description: A Christmas gift for mom from the kids: turn a favorite family photo into a custom brick mosaic kit. Sizes from $69.88. Order by Dec 15.
@@ -34,16 +34,16 @@ The best photos have one clear subject that fills the picture. Busy backgrounds 
 3. **Build it.** The kit comes with the 1×1 bricks for your design (40+ colors, sorted into small labeled bags), white baseplates, a personalized building map, and a building tool. An adult should help with the small pieces.
 4. **Wrap it.** Wrap the finished piece, or wrap the kit with the photo tucked inside and build it together on Christmas week.
 
-Build times are estimates, so think in evenings, not minutes. A 20×20 has 4,096 pieces and takes about 4 hours. A 30×20 has 6,144 pieces and takes about 6 hours. A larger one is a good project for the whole family over the holidays.
+A 20×20 has 4,096 pieces. A 30×20 has 6,144 pieces. A larger one is a good project for the whole family over the holidays.
 
 ## Which size to pick
 
-| Size | Pieces | Build time (estimate) | Kit price |
+| Size | Pieces | Fits | Kit price |
 |---|---|---|---|
-| 16×16 | 2,500 | about 2.5 hours | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | $99.88 |
-| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | about 6 hours | $149.00 |
-| [40×20](https://mymemobrick.com/products/4-2-boards) (fits 1 to 3 people) | 8,192 | about 8 hours | $189.99 |
+| 16×16 | 2,500 | not listed | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | not listed | $99.88 |
+| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | not listed | $149.00 |
+| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | 1 to 3 people | $189.99 |
 
 A close-up of the kids suits a 20×20. A wider photo with mom and everyone in it suits 30×20 or 40×20. Frames are sold separately ($65.00 for a 20×20 and $79.00 for a 30×20 at the time of writing). For every size side by side, see our [brick mosaic size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes).
 
@@ -81,9 +81,9 @@ Yes. Building is the activity, placing small 1×1 bricks on a baseplate by follo
 
 One with a clear subject, good light, and faces that fill a good part of the frame. Upload a few in the editor and compare the previews before you order.
 
-### How long does it take? Does a frame come with it?
+### Does a frame come with it?
 
-Build times are estimates: about 4 hours for a 20×20, about 6 hours for a 30×20, about 8 hours for a 40×20. Frames are sold separately.
+No. Frames are sold separately.
 
 ### When do I need to order for Christmas?
 
@@ -106,7 +106,7 @@ Have the photo already? [Upload it and see your mosaic in the editor](https://my
     {"@type": "Question", "name": "What can kids give mom that is not store-bought?", "acceptedAnswer": {"@type": "Answer", "text": "Something made from a photo only your family has. A custom brick mosaic lets the kids choose the picture and help build it, so the gift has their hands in it."}},
     {"@type": "Question", "name": "Can a child help make it?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Building is the activity, placing small 1×1 bricks on a baseplate by following the map. An adult should supervise because the pieces are small."}},
     {"@type": "Question", "name": "Which photo works best?", "acceptedAnswer": {"@type": "Answer", "text": "One with a clear subject, good light, and faces that fill a good part of the frame. Upload a few in the editor and compare the previews before you order."}},
-    {"@type": "Question", "name": "How long does it take? Does a frame come with it?", "acceptedAnswer": {"@type": "Answer", "text": "Build times are estimates: about 4 hours for a 20×20, about 6 hours for a 30×20, about 8 hours for a 40×20. Frames are sold separately."}},
+    {"@type": "Question", "name": "Does a frame come with it?", "acceptedAnswer": {"@type": "Answer", "text": "No. Frames are sold separately."}},
     {"@type": "Question", "name": "When do I need to order for Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "Order by December 15, 2026 to receive your kit before Christmas."}}
   ]
 }

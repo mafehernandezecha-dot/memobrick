@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gifts-for-dog-lovers.md
 Title: Christmas Gifts for Dog Lovers: Their Dog in Bricks
 Meta description: Christmas gifts for dog lovers: turn a photo of their dog into a custom brick mosaic kit they build and hang. From $35. Order by Dec 15.
@@ -53,14 +53,14 @@ Put a note about it in a card and they have something to open on Christmas morni
 
 ## Which size for a dog portrait
 
-| Size | Price | Pieces | Estimated build time |
-|---|---|---|---|
-| [10×10, one face](https://mymemobrick.com/products/custom-bricked-mosaic-10x10) | $35.00 | 1,024 | about 1 hour |
-| [16×16](https://mymemobrick.com/products/1-big-board) | $69.88 | 2,500 | about 2.5 hours |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | from $99.88 | 4,096 | about 4 hours |
-| [30×30](https://mymemobrick.com/products/3-3-boards) | from $209.99 | 9,216 | about 9 hours |
+| Size | Price | Pieces |
+|---|---|---|
+| [10×10, one face](https://mymemobrick.com/products/custom-bricked-mosaic-10x10) | $35.00 | 1,024 |
+| [16×16](https://mymemobrick.com/products/1-big-board) | $69.88 | 2,500 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | from $99.88 | 4,096 |
+| [30×30](https://mymemobrick.com/products/3-3-boards) | from $209.99 | 9,216 |
 
-Prices are the kit only. Frames are sold separately: $49.00 for 16×16, $65.00 for 20×20, and $85.00 for 30×30. Build times are estimates and yours may differ.
+Prices are the kit only. Frames are sold separately: $49.00 for 16×16, $65.00 for 20×20, and $85.00 for 30×30.
 
 For one dog, the 16×16 is a good starting point. The 10×10 is a sweet small gift for a face-only close-up. For more detail, or a gift meant to hang in the living room, look at the 20×20 or larger. Our [size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes) goes into more detail.
 
@@ -84,7 +84,7 @@ Handle this one gently. A mosaic of a dog who is gone can be a comfort, and it i
 
 ## Build it over the holidays
 
-A mosaic is a gift you can build together. A 16×16 takes about 2.5 hours, a 20×20 about 4, and a 30×30 about 9, as estimated on the product pages. Spread it across a long weekend with a movie on. For a family building project, see our [Christmas photo gift ideas](https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts), and for a wider look at pet gifts, [celebrate the pets who fill your home with love](https://mymemobrick.com/blogs/news/celebrate-the-pets-who-fill-your-home-with-love).
+A mosaic is a gift you can build together. Put a movie on, sort the bags, and take turns placing bricks. For a family building project, see our [Christmas photo gift ideas](https://mymemobrick.com/blogs/news/personalized-christmas-photo-gifts), and for a wider look at pet gifts, [celebrate the pets who fill your home with love](https://mymemobrick.com/blogs/news/celebrate-the-pets-who-fill-your-home-with-love).
 
 ## Order by December 15 for Christmas
 

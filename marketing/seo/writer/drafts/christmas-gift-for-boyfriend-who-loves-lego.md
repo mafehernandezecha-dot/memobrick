@@ -1,4 +1,4 @@
-Status: checked
+Status: ready for check
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-boyfriend-who-loves-lego.md
 Title: Christmas Gift for a Boyfriend Who Loves Building
 Meta description: A Christmas gift for a boyfriend who loves building: a custom brick mosaic kit from a photo of you two. From $69.88. Order by Dec 15.
@@ -36,18 +36,16 @@ Choose a photo where faces and shapes are clear. Not sure which one? Upload two 
 
 Each kit comes with 1×1 bricks in 40+ colors, sorted into small labeled bags, white baseplates, personalized building instructions (a printed color map), and a building tool. There are no big bricks and no loose guessing. You follow the map and place each small brick.
 
-Build times are estimates and depend on the size. A 16×16 takes about 2.5 hours. A 20×20 takes about 4 hours. A 30×20 takes about 6 hours. A 40×20 takes about 8 hours. That is a quiet weekend, or a few evenings.
-
 ## Which size to pick
 
 Prices are for the kit and come from our store on November 4, 2026.
 
-| Size | Pieces | Build time (estimate) | Kit price |
+| Size | Pieces | Fits | Kit price |
 |---|---|---|---|
-| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | about 2.5 hours | $69.88 |
-| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | about 4 hours | $99.88 |
-| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | about 6 hours | $149.00 |
-| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | about 8 hours | $189.99 |
+| [16×16](https://mymemobrick.com/products/1-big-board) | 2,500 | not listed | $69.88 |
+| [20×20](https://mymemobrick.com/products/2-2-boards) | 4,096 | not listed | $99.88 |
+| [30×20](https://mymemobrick.com/products/3-2-boards) | 6,144 | not listed | $149.00 |
+| [40×20](https://mymemobrick.com/products/4-2-boards) | 8,192 | 1 to 3 people | $189.99 |
 
 Choose 16×16 or 20×20 for a close-up of the two of you. Choose 30×20 or 40×20 for a scene with more in it, like a trip, a skyline, or a group. Frames are sold separately. For every size side by side, see our [brick mosaic size guide](https://mymemobrick.com/blogs/news/brick-mosaic-sizes).
 
@@ -79,9 +77,9 @@ Give him a build nobody else can buy: a custom brick mosaic kit made from a phot
 
 No. Memobrick is not affiliated with the LEGO Group. Memobrick kits are DIY brick mosaic kits made from your photo, with 1×1 bricks, baseplates, a color map, and a building tool.
 
-### Which photo works best, and how long does the build take?
+### Which photo works best?
 
-A clear photo with good light works best. Build times are estimates: about 2.5 hours for a 16×16, 4 hours for a 20×20, 6 hours for a 30×20, and 8 hours for a 40×20.
+A clear photo with good light works best. Upload two or three in the editor and compare the previews before you order.
 
 ### Can he pick the photo himself?
 
@@ -125,10 +123,10 @@ As seen on FOX.
     },
     {
       "@type": "Question",
-      "name": "Which photo works best, and how long does the build take?",
+      "name": "Which photo works best?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A clear photo with good light works best. Build times are estimates: about 2.5 hours for a 16×16, 4 hours for a 20×20, 6 hours for a 30×20, and 8 hours for a 40×20."
+        "text": "A clear photo with good light works best. Upload two or three in the editor and compare the previews before you order."
       }
     },
     {
