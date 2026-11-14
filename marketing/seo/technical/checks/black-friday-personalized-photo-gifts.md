@@ -29,3 +29,6 @@ Issues fixed: none needed.
 
 ## Internal links to add from live articles
 - `personalized-christmas-photo-gifts`, `last-minute-personalized-christmas-gifts`, `brick-mosaic-sizes`: one line each (link plan: marketing/seo/strategist/link-plan-2026-11-07.md section 1).
+
+## Re-check 2026-11-14
+Writer edits from commit 3105e18 (build-time lines removed; build-time table column replaced by "Fits" from Shopify, "1 to 3 people" on the 40×20 matches the product page). No build time, hours or evenings about our kit remain in the body or the JSON-LD. Title, meta description, single H1 and heading order are fine. FAQPage JSON-LD parses and matches the visible FAQ word for word. All internal links return 200. Every price matches the live store today. Copy check passes. Handle still 404. Status set to `checked`; new hash in `publish-bundle-2026-11-12.md`.

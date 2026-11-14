@@ -23,3 +23,6 @@ Heads-up: the codes in the body expire (Nov 22, Nov 29, Nov 30). After Nov 30 th
 Publishing notes: default article template (not GemPages): theme supplies BlogPosting and Breadcrumb; FAQPage JSON-LD is in the draft (6 questions, text matches the visible FAQ). Eden can rebuild it in GemPages after it is live.
 
 Internal links in to add: Christmas hub A, the last-minute guide, and the gift-for-someone article.
+
+## Re-check 2026-11-14
+Writer edits from commit 3105e18 (build-time lines removed). No build time, hours or evenings remain in the body or the JSON-LD. Title, meta description, single H1 and heading order unchanged and fine. FAQPage JSON-LD parses, question for question with the visible FAQ. Technical fix by seo-technical: the FAQPage answer text had drifted from the visible answers on wording, so I set it to the visible wording (photo-to-brick-mosaic-maker: "Is the preview what I will build?" and "Is this LEGO?"; personalized-stocking-stuffers: "How many faces fit on the 10×10?"). No visible text changed. All internal links return 200 except best-photo-for-a-brick-mosaic (row 1 of the same bundle, publish first). Every price matches the live store today. Copy check passes. Handle still 404. Status set to `checked`; new hash in `publish-bundle-2026-11-12.md`.

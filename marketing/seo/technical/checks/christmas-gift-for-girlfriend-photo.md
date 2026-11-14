@@ -23,3 +23,6 @@ Publishing notes: default article template (not GemPages; looks different, Eden 
 - Changes since last check: editor links now `/pages/editor?size=20x20&utm_source=blog&utm_medium=seo&utm_campaign=<recipient>-christmas#editor`; closing CTA says "Make yours from your photo. Order by December 15, 2026 for Christmas."; Dec 15 matches offers-calendar. Husband also has a new H2 "Shopping late for a husband gift?" (heading order still valid).
 - Live link check: editor entry, free-preview, board products, linked articles and featured image all 200. Title, meta length, one H1, JSON-LD parse: pass. FAQ and JSON-LD unchanged.
 - Status set to `Status: checked`. Draft changed after the earlier approval item, so a new publish item is proposed.
+
+## Re-check 2026-11-14
+Writer edits from commit 3105e18 (build-time lines removed; build-time table column replaced by "Fits" from Shopify, "1 to 3 people" on the 40×20 matches the product page). No build time, hours or evenings about our kit remain in the body or the JSON-LD. Title, meta description, single H1 and heading order are fine. FAQPage JSON-LD parses and matches the visible FAQ word for word. All internal links return 200. Every price matches the live store today. Copy check passes. Handle still 404. Status set to `checked`; new hash in `publish-bundle-2026-11-12.md`.

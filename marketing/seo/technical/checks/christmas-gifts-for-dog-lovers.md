@@ -18,3 +18,6 @@
 Issues found and fixed: none. Status line set to `Status: checked`.
 
 Publishing notes: default article template (not GemPages; looks different from the GemPages articles, Eden can rebuild it in GemPages after it is live). Theme supplies BlogPosting and Breadcrumb; FAQPage JSON-LD is in the draft. Links in: Christmas hub A, dog page, pets post, memorial post (body edits for those are Eden/GemPages for GemPages articles).
+
+## Re-check 2026-11-14
+Writer edits from commit 3105e18 (build-time lines removed; build-time table column replaced by "Fits" from Shopify, "1 to 3 people" on the 40×20 matches the product page). No build time, hours or evenings about our kit remain in the body or the JSON-LD. Title, meta description, single H1 and heading order are fine. FAQPage JSON-LD parses and matches the visible FAQ word for word. All internal links return 200. Every price matches the live store today. Copy check passes. Handle still 404. Status set to `checked`; new hash in `publish-bundle-2026-11-12.md`.

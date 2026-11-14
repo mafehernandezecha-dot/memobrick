@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/photo-christmas-gift-for-husband.md
 Title: A Photo Christmas Gift for Your Husband He Can Build
 Meta description: A photo Christmas gift for your husband: turn a favorite photo into a custom brick mosaic kit he builds and hangs. Sizes from $69.88. Order by Dec 15.

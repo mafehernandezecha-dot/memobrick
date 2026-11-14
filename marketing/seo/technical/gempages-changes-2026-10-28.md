@@ -66,3 +66,7 @@ These links work (each old address sends visitors to the new one with a 301), so
 | same page | https://mymemobrick.com/blogs/news/looking-beyond-photo-frames-try-these-personalized-photo-gift-ideas-vrrphy | https://mymemobrick.com/blogs/news/personalized-photo-gift-ideas-beyond-frames |
 
 If these sit in a GemPages "related articles" block rather than a text link, they may refresh on their own the next time the page is saved in GemPages.
+
+## 7. Added 2026-11-14: dog landing page has two H1 headings (2 minutes)
+
+https://mymemobrick.com/pages/dog-brick-mosaic shows two H1 headings in the HTML Google reads: "Your Dog in Bricks" (top block) and "Your dog, in 1×1 bricks" (the landing block below it). Keep "Your Dog in Bricks" as the only H1. Open the page in the editor it was built with (GemPages or Online Store > Customize), select "Your dog, in 1×1 bricks", and change its tag from H1 to H2. The words stay the same. Nothing here needs an approval item. Tell any agent when it is done and seo-technical will re-check the live page.

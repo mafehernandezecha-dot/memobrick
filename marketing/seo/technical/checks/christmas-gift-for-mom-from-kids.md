@@ -21,3 +21,6 @@ Blocker to publish: the featured image is marked NEEDED in the draft (a Memobric
 Publishing notes: default article template (not GemPages); theme supplies BlogPosting and Breadcrumb, FAQPage JSON-LD is in the draft. Eden can rebuild it in GemPages after it is live.
 
 Internal links in: Christmas hub A (see `site-changes/hub-a-christmas-links.md`), the wife and grandparents articles (add a line back to this one on their next edit, in GemPages by Eden).
+
+## Re-check 2026-11-14
+Writer edits from commit 3105e18 (build-time lines removed; build-time table column replaced by "Fits" from Shopify, "1 to 3 people" on the 40×20 matches the product page). No build time, hours or evenings about our kit remain in the body or the JSON-LD. Title, meta description, single H1 and heading order are fine. FAQPage JSON-LD parses and matches the visible FAQ word for word. All internal links return 200. Every price matches the live store today. Copy check passes. Handle still 404. Status set to `checked`; new hash in `publish-bundle-2026-11-12.md`.

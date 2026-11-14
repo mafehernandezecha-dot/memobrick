@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/personalized-stocking-stuffers.md
 Title: Personalized Stocking Stuffers Made From a Photo
 Meta description: Personalized stocking stuffers from a photo: a one-face mini brick mosaic kit for $35, an Art Gift Kit, or a gift card. Order by Dec 15, 2026.
@@ -118,7 +118,7 @@ As seen on FOX.
   "@type": "FAQPage",
   "mainEntity": [
     {"@type": "Question", "name": "What is a good personalized stocking stuffer?", "acceptedAnswer": {"@type": "Answer", "text": "A one-face 10×10 brick mosaic kit made from a favorite photo is a good pick. It is $35.00, and it gives the person something to build and keep."}},
-    {"@type": "Question", "name": "How many faces fit on the 10×10?", "acceptedAnswer": {"@type": "Answer", "text": "One. The product is listed as One Face. For more people in one photo, see the size guide."}},
+    {"@type": "Question", "name": "How many faces fit on the 10×10?", "acceptedAnswer": {"@type": "Answer", "text": "One. The product is listed as \"One Face\". For more people in one photo, see our size guide."}},
     {"@type": "Question", "name": "What comes in the mini kit?", "acceptedAnswer": {"@type": "Answer", "text": "1,024 1×1 bricks sorted into small labeled bags by color, 1 white baseplate, personalized building instructions, and the building tool. Frames are sold separately."}},
     {"@type": "Question", "name": "What if I do not have a photo?", "acceptedAnswer": {"@type": "Answer", "text": "Give the Art Gift Kit, where the recipient picks the photo later, or a Memobrick gift card."}},
     {"@type": "Question", "name": "Is it already built?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is a build-at-home kit. Frames are sold separately."}},

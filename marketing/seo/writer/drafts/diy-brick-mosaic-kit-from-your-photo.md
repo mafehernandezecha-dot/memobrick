@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/diy-brick-mosaic-kit-from-your-photo.md
 Title: Custom Brick Mosaic Kit From Your Photo: What You Get
 Meta description: What is in a custom brick mosaic kit made from your photo: 1×1 bricks sorted by color, baseplates, a printed color map and a tool. Sizes and prices.

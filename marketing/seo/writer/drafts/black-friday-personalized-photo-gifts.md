@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/black-friday-personalized-photo-gifts.md
 Title: Personalized Black Friday Gifts Made From a Photo
 Meta description: Personalized gifts for Black Friday: a custom brick mosaic kit made from your photo. Sizes from $69.88. Order by Dec 15, 2026 for Christmas.

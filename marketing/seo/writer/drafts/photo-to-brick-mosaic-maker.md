@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/photo-to-brick-mosaic-maker.md
 Title: Photo to Brick Mosaic Maker: Upload, Preview, Build
 Meta description: Upload a photo, see it as a custom brick mosaic in 40+ colors, pick a size and order a DIY kit. Try the Memobrick editor, no commitment.
@@ -91,9 +91,9 @@ Memobrick is not affiliated with the LEGO Group.
   "mainEntity": [
     {"@type": "Question", "name": "Can I see the mosaic before I pay?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The editor shows your photo as a mosaic before you order, and you can adjust colors and details."}},
     {"@type": "Question", "name": "What photo should I upload?", "acceptedAnswer": {"@type": "Answer", "text": "A sharp, well-lit photo with the subject large in the frame."}},
-    {"@type": "Question", "name": "Is the preview what I will build?", "acceptedAnswer": {"@type": "Answer", "text": "The preview is the design your kit is made from. Up close you see each 1×1 brick, and from a few steps back you see your photo."}},
+    {"@type": "Question", "name": "Is the preview what I will build?", "acceptedAnswer": {"@type": "Answer", "text": "The preview is the design your kit is made from. Bricks are small squares, so up close you see each brick and from a few steps back you see your photo."}},
     {"@type": "Question", "name": "Can Memobrick design it for me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you prefer. Memobrick's designers can create the design and send a free proof before production. It is optional."}},
-    {"@type": "Question", "name": "Is this LEGO?", "acceptedAnswer": {"@type": "Answer", "text": "No. Memobrick makes custom brick mosaic kits with 1×1 bricks and is not affiliated with the LEGO Group."}},
+    {"@type": "Question", "name": "Is this LEGO?", "acceptedAnswer": {"@type": "Answer", "text": "No. Memobrick makes custom brick mosaic kits with 1×1 bricks. Memobrick is not affiliated with the LEGO Group."}},
     {"@type": "Question", "name": "When do I need to order for Christmas?", "acceptedAnswer": {"@type": "Answer", "text": "Order by December 15, 2026 to receive your kit before Christmas."}}
   ]
 }

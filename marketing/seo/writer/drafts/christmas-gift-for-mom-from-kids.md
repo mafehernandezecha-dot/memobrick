@@ -1,4 +1,4 @@
-Status: ready for check
+Status: checked
 Brief: marketing/seo/strategist/briefs/christmas-gift-for-mom-from-kids.md
 Title: A Christmas Gift for Mom From the Kids, in Bricks
 Meta description: A Christmas gift for mom from the kids: turn a favorite family photo into a custom brick mosaic kit. Sizes from $69.88. Order by Dec 15.
