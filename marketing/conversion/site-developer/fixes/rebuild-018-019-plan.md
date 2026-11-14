@@ -4,6 +4,8 @@ Written 2026-11-13 by site-developer. Run it only if Eden says the Nov 2 and Nov
 
 The copy is not created yet (task board: wait for her answer).
 
+Combined version (2026-11-14): `black-friday-theme-copy-plan.md` puts 018, 019 and pending A-2026W46-017 and A-2026W45-009 on one copy with one publish. If only 018 and 019 are approved, this plan is what runs.
+
 ## What Eden does first (1 minute)
 
 The store is at the 20 of 20 theme limit, so a new copy cannot be made. In Online Store > Themes, delete one old unpublished copy. Safe choices, none needed as an undo:
