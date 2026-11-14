@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-12T22:05:00-05:00",
- "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 12 so far, about 21:50 ET: 3 orders, $610.42, not stored).",
+ "updated": "2026-11-13T21:55:00-05:00",
+ "source": "Shopify analytics, read-only. Days are store time (America/New_York). Today's partial day is not included (Nov 13 so far, about 21:47 ET: 3 orders, $221.73, not stored).",
  "days": [
   {
    "date": "2026-09-01",
@@ -361,6 +361,11 @@
    "date": "2026-11-11",
    "orders": 4,
    "netSales": 457.48
+  },
+  {
+   "date": "2026-11-12",
+   "orders": 3,
+   "netSales": 610.42
   }
  ],
  "lastYear": [
@@ -826,18 +831,18 @@
   }
  ],
  "funnel": {
-  "period": "Oct 13 to Nov 11 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 14 to Nov 12 2025 (same weekdays)",
+  "period": "Oct 14 to Nov 12 2026 (store time), referred sessions only (direct excluded because bots inflate it), vs Oct 15 to Nov 13 2025 (same weekdays)",
   "now": {
-   "sessions": 2858,
-   "addedToCart": 215,
-   "reachedCheckout": 122,
-   "purchased": 42
+   "sessions": 2873,
+   "addedToCart": 224,
+   "reachedCheckout": 125,
+   "purchased": 41
   },
   "lastYear": {
-   "sessions": 4077,
-   "addedToCart": 428,
+   "sessions": 4064,
+   "addedToCart": 432,
    "reachedCheckout": 180,
-   "purchased": 74
+   "purchased": 77
   },
   "launch": {
    "period": "Referred sessions by landing page, Oct 28 to Nov 8 2026 (refreshed Nov 9)",
@@ -906,10 +911,10 @@
    "calmBuildGift": "no referred sessions landed on a path containing 'calm' in Oct 28 to Nov 8 (not in the top 15 landing pages)",
    "newArticles": "no /blogs/ landing page in the top 15 referred landing pages Oct 28 to Nov 8 (LIKE filter not supported by ShopifyQL, so not checked below the top 15)",
    "draftOrders": {
-    "period": "Oct 13 to Nov 11 2026 vs Oct 14 to Nov 12 2025, by sales channel (30 days)",
+    "period": "Oct 14 to Nov 12 2026 vs Oct 15 to Nov 13 2025, by sales channel (30 days)",
     "now": 13,
-    "lastYear": 60,
-    "note": "Online Store 62 vs 132. Profile 2026-11-12: the lost draft orders are Etsy orders keyed into Shopify by hand (shipping line titled 'etsy', payment 'manual', custom line item 'memobrick 16x16' etc., no product link). Last one entered 2026-05-25; none since. Card-paid draft invoices for real products (designer proof path) are steady: 9 in Oct 2026 vs 8 in Oct 2025.",
+    "lastYear": 72,
+    "note": "Online Store 60 vs 138, Shop 1 vs 0. Profile 2026-11-12: the lost draft orders are Etsy orders keyed into Shopify by hand (shipping line titled 'etsy', payment 'manual', custom line item 'memobrick 16x16' etc., no product link). Last one entered 2026-05-25; none since. Card-paid draft invoices for real products (designer proof path) are steady: 9 in Oct 2026 vs 8 in Oct 2025.",
     "weekly2026": [
      [
       "2026-04-06",
@@ -1159,6 +1164,56 @@
      },
      "pattern": "Entered Monday to Friday (Monday 321 of 1,157 Jan 2025 to May 2026, weekend 53), 11:00 to 18:00 ET, in batches a few minutes apart. Shipping line 'etsy' at $12 (2025) or $13.50 (2026). Prices are a list of $98 / $141 / $213 / $299 / $399 for 16x16 / 20x20 / 20x30 / 30x30 / 30x40, often 30% off ($68.60 / $98.70 / $149.10 / $209.30 / $279.30). No tags.",
      "lastEtsyOrder": "2026-05-25"
+    },
+    "etsyValueByGoalPeriod": {
+     "basis": "Last year's Etsy-profile orders (Draft Orders with no product link, entered by hand, shipping line 'etsy'), same calendar dates in 2025. Includes a few $0 replacements. Thanksgiving was Nov 27 in 2025 and is Nov 26 in 2026.",
+     "rows": [
+      {
+       "period": "Nov 16 to 30",
+       "etsyOrders": 54,
+       "etsyNetSales": 5617.22,
+       "perDay": 3.6,
+       "goalOrders": 180,
+       "goalNetSales": 19500,
+       "shareOfOrderGoal": 0.3,
+       "shareOfNetGoal": 0.288,
+       "onlineStoreLastYear": 173
+      },
+      {
+       "period": "Dec 1 to 15",
+       "etsyOrders": 174,
+       "etsyNetSales": 16703.7,
+       "perDay": 11.6,
+       "goalOrders": 300,
+       "goalNetSales": 30000,
+       "shareOfOrderGoal": 0.58,
+       "shareOfNetGoal": 0.557,
+       "onlineStoreLastYear": 300
+      }
+     ]
+    },
+    "onlineStorePace": {
+     "note": "Online Store channel only (no draft orders), so Etsy does not distort the line",
+     "weekNov9to12": {
+      "now": {
+       "orders": 12,
+       "netSales": 1637.48
+      },
+      "lastYearSameWeekdays_Nov10to13_2025": {
+       "orders": 27,
+       "netSales": 2730.92
+      }
+     },
+     "monthNov1to12": {
+      "now": {
+       "orders": 30,
+       "netSales": 3885.1
+      },
+      "lastYear_Nov1to12_2025": {
+       "orders": 66,
+       "netSales": 7481.8
+      }
+     }
     }
    },
    "unknown": "Which ad or post sent each dog page visit (ShopifyQL has no UTM). Landing page of checkout-page sessions is the checkout URL itself, so some purchases cannot be tied to a landing page. Direct sessions (bots) inflate '/'.",
@@ -1317,7 +1372,7 @@
     ],
     "note": "Search sessions -56%, purchases 23 vs 47. Social sessions -12% but carts -53% (cart rate 4.7% vs 8.7%). A blank referrer_source row (33 sessions, 12 carts, 4 purchases) is left out. ShopifyQL cannot split paid from organic search or by UTM: unknown."
    },
-   "note": "entryComparison refreshed Nov 10 evening for Oct 12 to Nov 8; searchLandingPages and may18Check added Nov 11 evening.",
+   "note": "entryComparison refreshed Nov 10 evening for Oct 12 to Nov 8; searchLandingPages and may18Check added Nov 11 evening. Etsy value by goal period and Online Store pace added Nov 13 evening.",
    "dogBrickMosaic_note": "Daily rows include direct sessions (145 sessions, 3 carts, Oct 28 to Nov 8); referred only: 121 sessions, 1 cart, 0 purchases.",
    "giftCollectionByDay": [
     {
@@ -1566,15 +1621,15 @@
  },
  "weakPoints": [
   {
-   "title": "Etsy orders stopped reaching Shopify after May 25, and last year they were a third of orders",
-   "detail": "The lost draft orders are Etsy sales entered by hand (shipping line 'etsy', paid 'manual'): 59 in Oct 13 to Nov 12 last year, 0 this year, and none since May 25 2026. Last year the same kind of order ran 15, 29, 92, 73 and 58 a week from Nov 17 to Dec 21. Proof invoices for real products are fine (9 in Oct vs 8 last year). Eden can check whether the Etsy shop is open and selling, or whether its orders are now handled outside Shopify.",
+   "title": "Etsy orders stopped reaching Shopify after May 25, and last year they were over half of early December",
+   "detail": "Hand-entered Etsy orders (shipping line 'etsy', paid 'manual') were 54 orders and $5,617 on Nov 16 to 30 last year (30% of this period's 180-order goal) and 174 orders and $16,704 on Dec 1 to 15 (58% of the 300-order goal). This year there have been none since May 25. Draft orders overall: 13 in the last 30 days vs 72 last year. Eden can check whether the Etsy shop is open and selling.",
    "owners": [
     "owner"
    ]
   },
   {
    "title": "Google search visits that land on the home page fell by two thirds",
-   "detail": "Oct 12 to Nov 8: search sessions landing on the home page were 482 vs 1,557 last year (-69%), with 7 purchasing sessions vs 38; that page is 1,075 of the 1,184 search sessions lost. All referred sessions Oct 13 to Nov 11: 2,858 vs 4,077 (-30%), add to cart 7.5% vs 10.5%, purchases 42 vs 74. Brand, paid or organic split is unknown until Search Console and Google Ads snapshots arrive.",
+   "detail": "Oct 12 to Nov 8: search sessions landing on the home page were 482 vs 1,557 last year (-69%), with 7 purchasing sessions vs 38. All referred sessions Oct 14 to Nov 12: 2,873 vs 4,064 (-29%), add to cart 7.8% vs 10.6%, purchases 41 vs 77. Brand, paid or organic split is unknown until Search Console and Google Ads snapshots arrive.",
    "owners": [
     "ads-analyst",
     "seo-strategist",
@@ -1583,11 +1638,12 @@
    ]
   },
   {
-   "title": "This week needs 24 more orders in 4 days, and the goal rises to 12 a day on Monday",
-   "detail": "Nov 11: 4 orders, $457.48 vs goal 5 and $550. Week Nov 9 to 15: 11 orders through Nov 11 vs 35 (last year 91). November so far (Nov 1 to 11): 30 orders, $3,497.08 vs goal 55 and $6,050; last year 78 and $8,952.40. From Nov 16 the goal is 12 a day against about 2.5 a day over the last 30 days.",
+   "title": "Online Store orders run at less than half of last year, and the goal rises to 12 a day on Monday",
+   "detail": "Online Store alone (no Etsy): 12 orders Nov 9 to 12 vs 27 on the same weekdays last year, and 30 vs 66 for Nov 1 to 12. All channels this week: 14 orders through Nov 12 vs a 35-order goal, so 21 more are needed by Sunday. Referred checkouts complete less often: 41 of 125 (33%) vs 77 of 180 (43%) last year.",
    "owners": [
     "owner",
     "email-campaign-writer",
+    "conversion-auditor",
     "marketing-coordinator"
    ]
   }
